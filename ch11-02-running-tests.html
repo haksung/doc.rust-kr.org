@@ -149,29 +149,28 @@
                         <h2 id="테스트-실행-제어하기"><a class="header" href="#테스트-실행-제어하기">테스트 실행 제어하기</a></h2>
 <p><code>cargo run</code> 명령어가 여러분의 코드를 컴파일하고 만들어진 바이너리를 실행하는 것과 마찬가지로,
 <code>cargo test</code> 명령어는 여러분의 코드를 테스트 모드에서 컴파일하고 만들어진 바이너리를 실행합니다.
-<code>cargo test</code> 명령어에 옵션을 지정하면 기본 동작을 변경할 수 있습니다.
-기본 동작의 예시로는, <code>cargo test</code> 명령어로 생성된 바이너리가
-테스트 결과 관련 출력을 읽기 쉽게 만들기 위해,
-모든 테스트를 병렬로 실행하는 동안 테스트의 출력을 캡처해두고
-화면 표시를 막는 것이 있습니다.</p>
+<code>cargo test</code>에 의해 생성된 바이너리의 기본 동작은 모든 테스트를
+병렬로 실행하고 테스트가 수행되는 동안 생성된 출력을 캡처하는
+것으로, 출력이 표시되는 것을 막고 테스트 결과와 관련된 출력을
+읽기 편하게 해줍니다. 하지만 커맨드 라인 옵션을 지정하여 이러한
+기본 동작을 변경할 수 있습니다.</p>
 <p>명령어 옵션은 <code>cargo test</code> 에 전달되는 것도 있고,
 테스트 바이너리에 전달되는 것도 있습니다.
 이 둘을 구분하기 위해 <code>cargo test</code> 에 전달할 인자를 먼저 나열하고,
 <code>--</code> 구분자(separator)를 작성하고, 그 이후 테스트 바이너리에 전달할 인자를 나열합니다.
 <code>cargo test --help</code> 명령어는 <code>cargo test</code> 명령어에 사용 가능한 옵션을 표시하고,
-<code>cargo test -- --help</code> 명령어는 <code>--</code> 구분자 이후에 사용 가능한 옵션을 표시합니다.</p>
+<code>cargo test -- --help</code> 명령어는 구분자 이후에 사용 가능한 옵션을 표시합니다.</p>
 <h3 id="테스트를-병렬-혹은-순차적으로-실행하기"><a class="header" href="#테스트를-병렬-혹은-순차적으로-실행하기">테스트를 병렬 혹은 순차적으로 실행하기</a></h3>
-<p>여러 테스트를 실행할 때,
-기본적으로는 스레드를 사용해 병렬 실행됩니다.
-테스트를 더 빨리 끝내서 코드 작동 여부를 빠르게 보고하기 위함입니다.
-하지만 여러 테스트가 동시에 실행되므로,
-각 테스트가 공유 상태(공유 자원, 현재 작업 디렉토리, 환경 변수 등)를 갖거나
-다른 테스트에 의존해서는 안 됩니다.</p>
+<p>여러 테스트를 실행할 때는 기본적으로는 스레드를 사용해 병렬 실행되는데,
+이는 테스트를 더 빨리 끝내서 피드백을 더 빠르게 얻기 위함입니다.
+여러 테스트가 동시에 실행되므로, 각 테스트가 공유 상태 (공유 자원,
+현재 작업 디렉토리, 환경 변수 등)를 갖거나 다른 테스트에 의존해서는
+안 됩니다.</p>
 <p>예시를 생각해보죠. 여러분은 각각의 테스트가 <em>test-output.txt</em> 파일을 생성하고
 어떤 데이터를 작성하는 코드를 실행하도록 만들었습니다.
 각 테스트는 파일 내 데이터를 읽고, 파일이 특정 값을 포함하고 있는지 확인하며,
 특정 값은 테스트마다 다릅니다.
-여러 테스트가 동시에 실행되므로, 어떤 테스트가 파일에 작성하고 읽는 사이
+여러 테스트가 동시에 실행되므로, 어떤 테스트가 파일에 작성하고 읽는 사이에
 다른 테스트가 파일의 내용을 덮어쓸 수도 있습니다. 이 경우 방해받은 테스트는 실패할 겁니다.
 코드에 문제가 있어서가 아니라, 병렬 실행되는 도중 방해받아서 말이죠.
 한 가지 해결책은 각 테스트가 서로 다른 파일에 작성하도록 만드는 것일 테고,
@@ -295,12 +294,10 @@ error: test failed, to rerun pass `--lib`
 코드의 특정 영역에서 작업 중이라면 해당 영역에 관련된 테스트만 실행하고 싶을지도 모르죠.
 <code>cargo test</code> 명령어에 테스트의 이름을 인자로 넘겨
 어떤 테스트를 실행할지 선택할 수 있습니다.</p>
-<p>일부 테스트만 실행하는 법을 알아보기 위해, Listing 11-11처럼
+<p>일부 테스트만 실행하는 법을 알아보기 위해, 먼저 Listing 11-11처럼
 <code>add_two</code> 함수에 대한 세 가지 테스트를 작성하고 하나만 골라 실행해보겠습니다.</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>pub fn add_two(a: i32) -&gt; i32 {
+<pre><code class="language-rust noplayground">pub fn add_two(a: i32) -&gt; i32 {
     a + 2
 }
 
@@ -322,8 +319,7 @@ mod tests {
     fn one_hundred() {
         assert_eq!(102, add_two(100));
     }
-}
-<span class="boring">}</span></code></pre></pre>
+}</code></pre>
 <p><span class="caption">Listing 11-11: 세 가지 서로 다른 이름의
 테스트</span></p>
 <p>앞서 살펴본 것처럼, 테스트를 아무 인자도 없이 실행하면
@@ -362,7 +358,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; fini
 </code></pre>
 <p><code>one_hundred</code> 테스트만 실행되었습니다. 나머지 두 테스트는 이름이 맞지 않았습니다.
 테스트 결과는 마지막 요약 줄에서 <code>2 filtered out</code> 을 표시하여,
-우리가 이 명령어로 실행한 테스트 이외에도 다른 테스트가 존재함을 알려줍니다.</p>
+실행한 테스트 이외에도 다른 테스트가 존재함을 알려줍니다.</p>
 <p>이 방법으로 여러 테스트의 이름을 명시할 수는 없습니다. <code>cargo test</code> 명령어는 첫 번째 값만 사용합니다.
 하지만 여러 테스트를 실행하는 방법이 없지는 않습니다.</p>
 <h4 id="테스트를-필터링하여-여러-테스트-실행하기"><a class="header" href="#테스트를-필터링하여-여러-테스트-실행하기">테스트를 필터링하여 여러 테스트 실행하기</a></h4>
@@ -443,8 +439,9 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </code></pre>
 <p>실행할 테스트를 선별하여 <code>cargo test</code> 결과는 빨리 확인할 수 있습니다.
 무시한 테스트의 결과를 확인해야 할 때가 되었고
-그 결과를 기다릴 시간이 있다면,
-<code>cargo test -- --ignored</code> 명령어를 실행합니다.</p>
+그 결과를 기다릴 시간이 있다면, <code>cargo test -- --ignored</code> 명령어를
+실행합니다. 무시되건 그렇지 않건 모든 테스트를 실행하고 싶다면
+<code>cargo test -- --include-ignored</code>를 실행할 수 있습니다.</p>
 
                     </main>
 

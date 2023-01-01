@@ -150,9 +150,12 @@
 <p>앞 절 마지막에 등장한 Listing 4-5 에선 <code>String</code> 이 <code>calculate_length</code> 로
 이동해버린 것 때문에 <code>calclulate_length</code> 를 호출한 함수로 <code>String</code> 을 반환하여,
 함수 호출 이후에도 <code>String</code> 을 사용할 수 있게
-하였습니다.</p>
-<p>이번에는 값의 소유권을 넘기는 대신
-개체의 <em>참조자(reference)</em> 를 넘겨주는 방법을 소개하도록 하겠습니다.
+하였습니다. 이렇게 하는 대신 <code>String</code> 값의 참조자를 만들 수 있습니다.
+*참조자 (reference)*는 해당 주소에 저장된 데이터에 접근할 수 있도록
+해주는 주소값에 해당하는, 포인터와 같은 것입니다; 그 데이터는 다른 어떤
+변수의 소유이구요. 포인터와는 달리, 참조자는 살아있는 동안 특정 타입에 대한
+유효한 값을 가키리는 것을 보장해줍니다.</p>
+<p>이번에는 값의 소유권을 넘기는 대신 개체의 참조자를 넘겨주는 방법을 소개하도록 하겠습니다.
 다음은 참조자를 인자로 받도록 구현한 <code>calculate_length</code> 함수의 정의 및 용례입니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -166,13 +169,14 @@
 fn calculate_length(s: &amp;String) -&gt; usize {
     s.len()
 }</code></pre></pre>
-<p>먼저, 변수 선언부와 함수 반환 값에 위치하던
-튜플 코드가 전부 사라진 것을 볼 수 있습니다.
-또한 <code>calculate_length</code> 함수에 <code>s1</code> 대신 <code>&amp;s1</code> 을 넘기고,
-함수 정의에 <code>String</code> 대신 <code>&amp;String</code> 을 사용했네요.</p>
-<p>여기 사용된 앰퍼샌드(&amp;) 기호가 바로 <em>참조자</em> 입니다.
-참조자를 사용하면 여러분이 어떤 값의 소유권을 갖지 않고도 해당 값을 참조할 수 있죠. 어떤 원리인지 Figure 4-5 다이어그램으로 알아보겠습니다:</p>
-<img alt="&String s 는 String s1 을 가리킵니다" src="img/trpl04-05.svg" class="center" />
+<p>먼저, 변수 선언부와 함수 반환 값에 위치하던 튜플 코드가 전부 사라진
+것을 볼 수 있습니다. 또한 <code>calculate_length</code> 함수에 <code>s1</code> 대신 <code>&amp;s1</code> 을
+넘기고, 함수 정의에 <code>String</code> 대신 <code>&amp;String</code> 을 사용했네요. 이 앰퍼센드
+(&amp;) 기호가 <em>참조자</em>를 나타내고, 어떤 값의 소유권을 가져오지 않고 해당 값을
+참조할 수 있도록 해줍니다. Figure 4-5는 이 개념을 도식화한 것입니다.</p>
+<p><img alt="세 개의 테이블: s 테이블은 s1 테이블을 가리키는 포인터만
+가지고 있습니다. s1 테이블에는 s1에 대한 스택 데이터와 힙 상에 저장된
+문자열을 가리키고 있습니다." src="img/trpl04-05.svg" class="center" /></p>
 <p><span class="caption">Figure 4-5: <code>&amp;String s</code> 는 <code>String s1</code> 을
 가리킴</span></p>
 <blockquote>
@@ -193,11 +197,11 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">    s.len()
 </span><span class="boring">}</span></code></pre></pre>
-<p><code>s1</code> 에 <code>&amp;</code> 를 붙인 <code>&amp;s1</code> 구문은 <code>s1</code> 값을 참조하나,
-해당 값을 소유하지 않는 참조자를 생성합니다.
-함수 정의에서도 마찬가지로 <code>&amp;</code> 를 사용하여 매개변수 <code>s</code> 가 참조자 타입임을 나타내고 있죠.</p>
-<p>참조자는 소유권을 갖지 않으므로, 스코프를 벗어나도 값은 drop 되지 않습니다.
-주석으로 보여드리겠습니다.</p>
+<p><code>s1</code> 에 <code>&amp;</code> 를 붙인 <code>&amp;s1</code> 구문은 <code>s1</code> 값을 참조하나, 해당 값을 소유하지
+않는 참조자를 생성합니다. 값을 소유하지 않으므로 이 참조자가 가리킨 값은
+참조자가 사용되지 않을 때까지 버려지지 않습니다.</p>
+<p>마찬가지로 함수 시그니처에도 <code>&amp;</code>를 사용하여 매개변수 <code>s</code>가 참조자 타입임을
+나타내줍니다. 주석으로 보여드리겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span><span class="boring">    let s1 = String::from(&quot;hello&quot;);
 </span><span class="boring">
@@ -210,16 +214,17 @@ fn calculate_length(s: &amp;String) -&gt; usize {
     s.len()
 } // Here, s goes out of scope. But because it does not have ownership of what
   // it refers to, it is not dropped.</code></pre></pre>
-<p>변수 <code>s</code> 가 유효한 스코프는
-여타 함수의 매개변수에 적용되는 스코프와 동일합니다.
-하지만 참조자에는 스코프를 벗어났을 때 값이 drop 되지 않는다는 차이점이 있고,
-따라서 참조자를 매개변수로 갖는 함수는 소유권을 되돌려주기 위해
-값을 다시 반환할 필요도 없습니다.</p>
-<p>또한, 이처럼 참조자를 매개변수로 사용하는 것을 <em>borrow(빌림)</em> 이라 합니다.
-현실에서도 다른 사람이 소유하고 있는 뭔가를 빌리고,
-용무가 끝나면 돌려주는 것처럼요.</p>
-<p>그럼 borrow 한 값을 수정하면 어떻게 될까요?
-Listing 4-9 코드를 실행해보면 알 수 있으나, 미리 말씀드리자면 이 코드는 작동하지 않습니다:</p>
+<p>변수 <code>s</code> 가 유효한 스코프는 여타 함수의 매개변수에 적용되는
+스코프와 동일합니다. 하지만 <code>s</code>에는 소유권이 없으므로 <code>s</code>가
+더 이상 사용되지 않을 떄에도 이 참조자가 가리킨 값이 버려지지
+않습니다. 함수가 실제 값 대신 참조자를 매개변수로 쓴다면
+애초에 소유권이 없으니까 이 소유권을 돌려주기 위한 값 반환도
+필요 없어집니다.</p>
+<p>또한, 이처럼 참조자 만드는 행위를 <em>borrow (빌림)</em> 이라 합니다.
+현실에서도 여러분이 다른 사람이 소유하고 있는 뭔가를 빌리고,
+용무가 끝나면 돌려주는 것처럼요. 여러분의 소유가 아니니까요.</p>
+<p>그럼 borrow 한 값을 수정하면 어떻게 될까요? Listing 4-6 코드를
+실행해보면 알 수 있으나, 미리 말씀드리자면 이 코드는 작동하지 않습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let s = String::from(&quot;hello&quot;);
@@ -248,7 +253,8 @@ error: could not compile `ownership` due to previous error
 <p>변수가 기본적으로 불변성을 지니듯,
 레퍼런스도 마찬가지로 참조하는 것을 수정할 수 없습니다.</p>
 <h3 id="가변-참조자-mutable-reference"><a class="header" href="#가변-참조자-mutable-reference">가변 참조자 (Mutable Reference)</a></h3>
-<p>Listing 4-6 을 살짝 수정하여 오류를 없애보죠:</p>
+<p>*가변 참조자 (mutable reference)*를 사용하는 식으로 Listing 4-6을 살짝만
+수정하면 오류를 없앨 수 있습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut s = String::from(&quot;hello&quot;);
@@ -259,12 +265,13 @@ error: could not compile `ownership` due to previous error
 fn change(some_string: &amp;mut String) {
     some_string.push_str(&quot;, world&quot;);
 }</code></pre></pre>
-<p><code>s</code> 를 <code>mut</code> 로 변경하고,
-참조자 생성 코드를 <code>&amp;mut s</code> 로 변경해 가변 참조자를 생성하게 만든 뒤,
-함수에서 가변 참조자를 넘겨받도록 <code>some_string: &amp;mut String</code> 으로 수정하는 겁니다.</p>
-<p>다만, 가변 참조자에는 특정 스코프 내 어떤 데이터를 가리키는 가변 참조자를
-딱 하나만 만들 수 있다는 제한이 있다는 걸 알아두세요.
-즉, 다음 코드는 작동하지 않습니다:</p>
+<p>우선 <code>s</code> 를 <code>mut</code> 로 변경합니다. 그런 다음 <code>change</code> 함수를 호출하는 곳에서
+<code>&amp;mut s</code>로 가변 참조자를 생성하고 이 함수에서 가변 참조자를 넘겨받도록
+<code>some_string: &amp;mut String</code> 으로 수정하는 겁니다. 이는 <code>change</code> 함수가
+빌린 값을 수정할 수 있음을 매우 명확하게 해줍니다.</p>
+<p>가변 참조자는 한가지 큰 제약사항이 있습니다: 어떤 값에 대한 가변 참조자가
+있다면, 그 값에 대한 참조자는 더 이상 만들 수 없습니다. 아래의 코드는
+<code>s</code>에 대한 두 개의 가변 참조자를 만드는 시도를 하는 코드로, 작동하지 않습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
@@ -291,22 +298,27 @@ error[E0499]: cannot borrow `s` as mutable more than once at a time
 For more information about this error, try `rustc --explain E0499`.
 error: could not compile `ownership` due to previous error
 </code></pre>
-<p>이 제약으로 인해 가변 참조자는 남용이 불가능합니다.
-대부분의 언어에선 원하는 대로 값을 변경할 수 있으니,
-러스트 입문자가 익숙해지지 못해 고생하는 원인이기도 하죠.</p>
-<p>하지만, 이 제약 덕분에 러스트에선 컴파일 타임에 <em>데이터 레이스(data race)</em> 를 방지할 수 있습니다.
-데이터 레이스란 다음 세 가지 상황이 겹칠 때 일어나는
-특정한 레이스 조건(race condition)입니다:</p>
+<p>이 에러는 <code>s</code>를 가변으로 두번 이상 빌려올 수 없기 때문에 코드가
+유효하지 않다고 말해줍니다. 첫번째 가변 빌림은 <code>r1</code>에 있고,
+<code>println!</code>에서 사용될 때까지 남아있어야 하지만, 이 가변 참조의
+생성과 사용 사이에서 <code>r1</code>과 같은 데이터를 빌리는 <code>r2</code>의 가변 참조를
+만들려고 있습니다.</p>
+<p>같은 데이터에 대하여 동시에 여러 가변 참조자를 사용하는 것을 막는
+이러한 제약은 값의 변경을 잘 제어될 수 있도록 해줍니다. 대부분의 언어들이
+언제든 값 변경을 허용하기 때문에, 러스트에 갓 입문한 사람들에게는 장애물처럼
+다가올 수 있습니다. 하지만, 이 제약 덕분에 러스트에선 컴파일 타임에
+<em>데이터 레이스(data race)</em> 를 방지할 수 있습니다. 데이터 레이스란 다음
+세 가지 상황이 겹칠 때 일어나는 특정한 레이스 조건(race condition)입니다:</p>
 <ul>
 <li>둘 이상의 포인터가 동시에 같은 데이터에 접근</li>
 <li>포인터 중 하나 이상이 데이터에 쓰기 작업을 시행</li>
 <li>데이터 접근 동기화 매커니즘이 존재하지 않음</li>
 </ul>
-<p>데이터 레이스는 정의되지 않은 동작을 일으키며,
-런타임에 추적하려고 할 때 문제 진단 및 수정이 어렵습니다.
-하지만 러스트에선 데이터 레이스가 발생할 가능성이 있는 코드는 아예 컴파일되지 않으니 걱정할 필요가 없죠.</p>
-<p>그럼 가변 참조자를 여러 개 생성하는 법은 뭘까요?
-중괄호로 새로운 스코프를 만들어, 가변 참조자가 동시에 여러개가 존재하는 상황을 회피하는 방법이 있습니다:</p>
+<p>데이터 레이스는 정의되지 않은 동작을 일으키며, 런타임에 추적하려고 할 때
+문제 진단 및 수정이 어렵습니다. 하지만 러스트에선 데이터 레이스가 발생할
+가능성이 있는 코드의 컴파일을 거부하는 것으로 이 문제를 막아줍니다!</p>
+<p>중괄호로 새로운 스코프를 만들어, 가변 참조자를 여러 개 만들면서 <em>동시에</em>
+존재하는 상황을 회피하는 방법이 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
 
@@ -316,7 +328,7 @@ error: could not compile `ownership` due to previous error
 
     let r2 = &amp;mut s;
 <span class="boring">}</span></code></pre></pre>
-<p>가변 참조자와 불변 참조자를 혼용할 때도 유사한 제약이 적용되는데,
+<p>가변 참조자와 불변 참조자를 혼용할 때도 유사한 규칙이 적용됩니다.
 다음 코드는 컴파일 오류가 발생합니다:</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
@@ -345,16 +357,17 @@ error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immuta
 For more information about this error, try `rustc --explain E0502`.
 error: could not compile `ownership` due to previous error
 </code></pre>
-<p>안타깝게도, 가변 참조자는 불변 참조자가 존재하는 동안에도 생성할 수 없습니다.
-불변 참조자를 사용할 때 가변 참조자로 인해
-값이 중간에 변경되리라 예상하지 않으니까요.
-반면 불변 참조자는 데이터를 읽기만 하니 외부에 영향을 주지 않아
-여러 개를 만들 수 있습니다.</p>
-<p>참조자는 정의된 지점부터 시작해,
-해당 참조자가 마지막으로 사용된 부분까지 유효합니다.
-즉, 다음 코드는 가변 참조자 정의가 불변 참조자의 마지막 사용 이후에 있으므로
-컴파일 오류가 발생하지 않습니다.</p>
-<pre><pre class="playground"><code class="language-rust edition2018"><span class="boring">fn main() {
+<p>휴우! 같은 값에 대해 불변 참조자가 있는 동안 가변 참조자를 만드는 것 <em>또한</em>
+불가능합니다.</p>
+<p>불변 참조자를 사용하는 쪽에서는 사용 중  값이 중간에 변경되리라
+예상하지 않으니까요. 반면 데이터를 읽기만 하는 기능으로는 다른 쪽에서
+값을 읽는 기능에 영향을 주지 않으므로 여러 개의 불변 참조자를 만드는 것은
+가능합니다.</p>
+<p>참조자는 정의된 지점부터 시작하여 해당 참조자가 마지막으로
+사용된 부분까지 유효합니다. 즉, 다음 코드는 불변 참조자가 마지막으로
+사용되는 <code>println!</code> 이후에 가변 참조자의 정의가 있으므로 컴파일 오류가
+발생하지 않습니다.</p>
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
 
     let r1 = &amp;s; // no problem
@@ -365,23 +378,25 @@ error: could not compile `ownership` due to previous error
     let r3 = &amp;mut s; // no problem
     println!(&quot;{}&quot;, r3);
 <span class="boring">}</span></code></pre></pre>
-<p>불변 참조자 <code>rl</code>, <code>r2</code> 의 스코프는 자신들이 마지막으로 사용된 <code>println!</code> 이후로 종료되고,
-해당 <code>println!</code> 은 가변 참조자 <code>r3</code> 가 생성되기 이전이니
-서로 스코프가 겹치지 않아서 이 코드는 문제가 없는 것이죠.</p>
+<p>불변 참조자 <code>rl</code>, <code>r2</code> 의 스코프는 자신들이 마지막으로 사용된
+<code>println!</code> 이후로 종료되고, 해당 <code>println!</code> 은 가변 참조자 <code>r3</code>가
+생성되기 이전이니 서로 스코프가 겹치지 않아서 이 코드는 문제가 없는 것이죠:
+컴파일러는 이 참조자가 스코프 끝 이전의 어떤 지점 이후로는 사용되지 않음을
+알 수 있습니다.</p>
 <p>이러한 제약 때문에 머리 아플 수도 있습니다.
 하지만 이는 코드에 숨어 있는 버그를 러스트 컴파일러가 컴파일 타임에 일찌감치 찾아내고,
 런타임 중 원하는 데이터가 나타나지 않았을 때 원인을 찾기 위해 여러분이 하나하나 추적하는 대신
 어느 부분이 문제인지 정확히 집어주는 기능이란 점을 기억해주세요.</p>
 <h3 id="댕글링-참조자dangling-reference"><a class="header" href="#댕글링-참조자dangling-reference">댕글링 참조자(Dangling Reference)</a></h3>
-<p><em>댕글링 포인터(dangling pointer)</em> 란,
-어떤 메모리를 가리키는 포인터가 남아있는 상황에서 해당 메모리를 해제해버림으로써,
-다른 개체가 할당받았을지도 모르는 메모리를 참조하게 된 포인터를 말합니다.
+<p><em>댕글링 포인터(dangling pointer)</em> 란, 어떤 메모리를 가리키는 포인터가
+남아있는 상황에서 해당 메모리를 해제해버림으로써, 다른 개체가 할당받았을지도
+모르는 메모리를 참조하게 된 포인터를 말합니다.
 포인터가 있는 언어에선 자칫 잘못하면 이 댕글링 포인터를 만들기 쉽죠.
 하지만 러스트에선 어떤 데이터의 참조자를 만들면,
 해당 참조자가 스코프를 벗어나기 이전에 데이터가 먼저 스코프를 벗어나는지
 컴파일러에서 확인하여 댕글링 참조자가 생성되지 않도록 보장합니다.</p>
-<p>한번, 컴파일 타임 에러가 발생할 만한
-댕글링 참조자를 만들어 봅시다:</p>
+<p>댕글링 참조자를 만들어서 러스트가 어떤 식으로 컴파일 타임에 이걸
+방지하는지 살펴봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let reference_to_nothing = dangle();
@@ -419,7 +434,7 @@ error: could not compile `ownership` due to previous error
 <p><code>dangle</code> 함수에서 어떤 일이 일어나는지
 단계별로 알아봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
-<pre><code class="language-rust ignore"><span class="boring">fn main() {
+<pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span><span class="boring">    let reference_to_nothing = dangle();
 </span><span class="boring">}
 </span><span class="boring">

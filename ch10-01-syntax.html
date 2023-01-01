@@ -147,8 +147,8 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="제네릭-데이터-타입"><a class="header" href="#제네릭-데이터-타입">제네릭 데이터 타입</a></h2>
-<p>제네릭을 이용하면 함수 시그니처나 구조체의 요소가
-다양한 구체적 데이터 타입을 사용할 수 있도록 정의할 수 있습니다.
+<p>제네릭을 사용하면 함수 시그니처나 구조체의 아이템에 다양한 구체적
+데이터 타입을 사용할 수 있도록 정의할 수 있습니다.
 함수, 구조체, 열거형, 메소드를 제네릭으로 정의하는 방법을 알아보고,
 제네릭이 코드 성능에 미치는 영향을 알아보겠습니다.</p>
 <h3 id="제네릭-함수-정의"><a class="header" href="#제네릭-함수-정의">제네릭 함수 정의</a></h3>
@@ -156,8 +156,9 @@
 반환 값의 데이터 타입 위치에 제네릭을 사용합니다.
 이렇게 작성된 코드는 더 유연해지고, 우리 함수를 호출하는 쪽에서
 더 많은 기능을 사용할 수 있도록 하며 코드 중복 또한 방지합니다.</p>
-<p><code>largest</code> 함수를 이용해 계속해보겠습니다. Listing 10-4는
-슬라이스에서 가장 큰 값을 찾는 두 함수를 보여줍니다.</p>
+<p><code>largest</code> 함수를 이용해 계속해보겠습니다. Listing 10-4는 슬라이스에서
+가장 큰 값을 찾는 두 함수를 보여줍니다. 제네릭 사용하여 이 함수들을
+하나의 함수로 묶어보겠습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn largest_i32(list: &amp;[i32]) -&gt; &amp;i32 {
     let mut largest = &amp;list[0];
@@ -202,8 +203,8 @@ fn main() {
 <code>largest_char</code> 함수는 슬라이스에서 가장 큰 <code>char</code> 를 찾는 함수입니다.
 이 두 함수의 본문은 완벽히 동일하니, 제네릭을 이용해
 이 두 함수를 하나로 만들어서 코드 중복을 제거해보겠습니다.</p>
-<p>새롭게 정의할 함수의 시그니처 내 타입을 매개변수화하려면 타입 매개변수의 이름을 지어줄 필요가 있습니다.
-방법은 함수 매개변수와 비슷합니다.
+<p>새 단일 함수의 시그니처 내 타입을 매개변수화하려면 타입 매개변수의
+이름을 지어줄 필요가 있습니다. 방법은 함수 매개변수와 비슷합니다.
 타입 매개변수의 이름에는 아무 식별자나 사용할 수 있지만, <code>T</code> 로 정하는 것이 일반적입니다.
 러스트에서는 타입 이름을 지어줄 때는 낙타 표기법(CamelCase)을 따르고, 매개변수의 이름은 짧게
 (한 글자로만 된 경우도 종종 있습니다) 짓는 것이 관례이기 때문에,
@@ -247,8 +248,8 @@ fn main() {
     let result = largest(&amp;char_list);
     println!(&quot;The largest char is {}&quot;, result);
 }</code></pre>
-<p><span class="caption">Listing 10-5: 제네릭 타입 매개변수를 이용한 <code>largest</code> 함수
-(아직 컴파일되지는 않음)</span></p>
+<p><span class="caption">Listing 10-5: 제네릭 타입 매개변수를 이용한 <code>largest</code> 함수;
+아직 컴파일되지는 않습니다</span></p>
 <p>이 코드를 지금 바로 컴파일해 보면 다음과 같은 에러가 나타납니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling chapter10 v0.1.0 (file:///projects/chapter10)
@@ -268,20 +269,20 @@ help: consider restricting type parameter `T`
 For more information about this error, try `rustc --explain E0369`.
 error: could not compile `chapter10` due to previous error
 </code></pre>
-<p><code>std::cmp::PartialOrd</code> 가 언급되는데, 이는 <em>트레잇(trait)</em> 입니다.
-트레잇은 다음 절에서 살펴볼 예정이지만 지금 이 에러를 간단히 설명하자면,
-<code>largest</code> 함수는 <code>T</code> 가 될 수 있는 모든 타입으로 동작할 수는 없다는 뜻입니다.
-함수 본문에서 <code>T</code> 타입 값들을 서로 비교하기 때문에,
-서로 비교할 수 없는 타입들은 사용할 수 없습니다. 어떤 타입의 값을 서로 비교하려면
-<code>std::cmp::PartialOrd</code> 트레잇을 해당 타입이 구현해야만 하기 때문입니다.
-(이 트레잇의 자세한 설명은 부록 C를 참고해주세요.)
-제네릭 타입이 특정 트레잇을 구현하도록 명시하는 방법은
-<a href="ch10-02-traits.html#%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98%EB%A1%9C%EC%84%9C%EC%9D%98-%ED%8A%B8%EB%A0%88%EC%9E%87">&quot;매개변수로서의 트레잇&quot;</a><!-- ignore --> 에서 배울 예정이니,
-일단은 또 다른 제네릭 타입 매개변수 사용법을 알아보도록 하죠.</p>
+<p>도움말에서 <em>트레잇(trait)</em> <code>std::cmp::PartialOrd</code>가 언급되는데, 트레잇은
+다음 절에서 살펴볼 예정입니다. 지금은 이 에러가 <code>largest</code>의 본문이 <code>T</code>가
+될 수 있는 모든 타입에 대해 동작할 수 없음을 뜻한다는 정도만 알아둡시다.
+함수 본문에서 <code>T</code> 타입 값들에 대한 비교가 필요하므로, 여기에는 값을 정렬할
+수 있는 타입에 대해서만 동작할 수 있습니다. 비교가 가능하도록 하기 위해,
+표준 라이브러리는 임의의 타입에 대해 구현 가능한 <code>std::cmp::PartialOrd</code>
+트레잇을 제공합니다 (이 트레잇에 대한 더 자세한 사항은 부록 C를 보세요).
+도움말의 제안을 따라서 <code>T</code>가 오직 <code>PartialOrd</code>를 구현한 것일때만 유효하도록
+제한을 두면, 이 예제는 컴파일되는데, 이는 표준 라이브러리가 <code>i32</code>와 <code>char</code>
+둘 모두에 대한 <code>PartialOrd</code>를 구현하고 있기 때문입니다.</p>
 <h3 id="제네릭-구조체-정의"><a class="header" href="#제네릭-구조체-정의">제네릭 구조체 정의</a></h3>
 <p><code>&lt;&gt;</code> 문법으로 구조체 필드에서 제네릭 타입 매개변수를 사용하도록
 구조체를 정의할 수도 있습니다. Listing 10-6은 임의의 타입으로 된
-<code>x</code>, <code>y</code> 를 갖는 <code>Point&lt;T&gt;</code> 구조체를 정의하는 방법을 나타냅니다.</p>
+<code>x</code>, <code>y</code> 를 갖는 <code>Point&lt;T&gt;</code> 구조체를 정의합니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Point&lt;T&gt; {
     x: T,
@@ -295,9 +296,8 @@ fn main() {
 <p><span class="caption">Listing 10-6: <code>T</code> 타입의 값 <code>x</code>, <code>y</code>를 갖는
 <code>Point&lt;T&gt;</code> 구조체</span></p>
 <p>문법은 함수 정의에서 제네릭을 사용하는 것과 유사합니다.
-먼저 구조체 이름 바로 뒤 꺾쇠괄호에
-타입 매개변수 이름을 선언하고,
-구조체 정의 내 구체적 데이터 타입을 명시하던 곳에
+먼저 구조체 이름 바로 뒤 꺾쇠괄호에 타입 매개변수 이름을
+선언하고, 구조체 정의 내 구체적 데이터 타입을 명시하던 곳에
 제네릭 타입을 대신 사용합니다.</p>
 <p><code>Point&lt;T&gt;</code> 선언에 하나의 제네릭 타입만 사용했으므로,
 이 선언은 <code>Point&lt;T&gt;</code> 가 어떤 타입 <code>T</code> 에 대한 제네릭이며
@@ -349,8 +349,9 @@ fn main() {
 <code>x</code>와 <code>y</code>가 서로 다른 타입의 값이 될 수 있는 <code>Point&lt;T, U&gt;</code></span></p>
 <p>이제 위와 같이 모든 <code>Point</code> 인스턴스를 생성할 수 있습니다!
 제네릭 타입 매개변수는 여러분이 원하는 개수만큼 정의할 수 있지만,
-많으면 많아질수록 코드 가독성은 떨어집니다. 만약 코드에서 수많은 제네릭 타입이 필요하다면,
-코드를 리팩토링해서 작은 부분들로 나누는 것을 고려해보셔야 할지도 모릅니다.</p>
+많으면 많아질수록 코드 가독성은 떨어집니다. 만약 여러분의 코드에서 수많은
+제네릭 타입이 필요함을 알게 되었다면, 코드를 리팩토링해서 작은 부분들로
+나누는 것을 고려해보셔야 할지도 모릅니다.</p>
 <h3 id="제네릭-열거형-정의"><a class="header" href="#제네릭-열거형-정의">제네릭 열거형 정의</a></h3>
 <p>구조체처럼, 열거형도 variant 내에서 제네릭 데이터 타입을 갖도록 정의할 수 있습니다.
 6장에서 사용했었던 표준 라이브러리의 <code>Option&lt;T&gt;</code> 열거형을
@@ -362,11 +363,11 @@ fn main() {
     None,
 }
 <span class="boring">}</span></code></pre></pre>
-<p>이제 여러분은 이 코드를 이해할 수 있습니다.
-보시다시피 <code>Option&lt;T&gt;</code> 는 <code>T</code> 타입에 대한 제네릭이며,
-<code>T</code> 타입을 들고 있는 <code>Some</code> variant와
-아무런 값도 들고 있지 않는 <code>None</code> variant를 갖습니다.
-<code>Option&lt;T&gt;</code> 열거형이 제네릭으로 되어있는 덕분에,
+<p>이제 여러분은 이 코드를 이해할 수 있습니다. 보시다시피 <code>Option&lt;T&gt;</code>
+열거형은 <code>T</code> 타입에 대한 제네릭이며, <code>T</code> 타입을 들고 있는 <code>Some</code>
+variant와 아무런 값도 들고 있지 않는 <code>None</code> variant를 갖습니다.
+<code>Option&lt;T&gt;</code> 열거형을 사용함으로써 옵션 값에 대한 추상화된 개념을
+표현할 수 이쏙, <code>Option&lt;T&gt;</code> 열거형이 제네릭으로 되어있는 덕분에,
 옵션 값이 어떤 타입이건 상관없이 추상화하여 사용할 수 있죠.</p>
 <p>열거형에서도 여러 개의 제네릭 타입을 이용할 수 있습니다.
 우리가 9장에서 사용한 <code>Result</code> 열거형의 정의가 대표적인 예시입니다:</p>
@@ -417,10 +418,16 @@ fn main() {
 <p><code>impl</code> 바로 뒤에 <code>T</code> 를 선언하여 <code>Point&lt;T&gt;</code> 타입에
 메소드를 구현한다는 것을 명시했음을 유의하세요.
 이렇게 하면 러스트는 <code>Point</code> 의 꺾쇠괄호 내 타입이
-구체적인 타입이 아닌 제네릭 타입임을 인지합니다.</p>
-<p>임의 제네릭 타입의 <code>Point&lt;T&gt;</code> 가 아닌, <code>Point&lt;f32&gt;</code> 인스턴스에만
-메소드를 정의할 수도 있습니다. Listing 10-10은 <code>impl</code> 뒤에 타입을 선언하지 않고
-구체적인 타입인 <code>f32</code> 를 사용한 모습입니다.</p>
+구체적인 타입이 아닌 제네릭 타입임을 인지합니다. 구조체 정의에
+선언된 제네릭 매개변수와는 다른 제네릭 매개변수를 선택할 수도
+있었겠지만, 같은 이름을 사용하는 것이 관례입니다. 제네릭 타입이
+선언된 <code>impl</code> 내에 작성된 메소드는 이 제네릭 타입에 어떤 구체
+타입을 집어넣을지와는 상관없이 해당 타입의 어떠한 인스턴스에라도
+정의될 것입니다.</p>
+<p>이 타입의 메소드를 정의할 때 제네릭 타입에 대한 제약을 지정할 수도 있습니다.
+예를 들면, 어떠한 제네릭 타입의 <code>Point&lt;T&gt;</code> 인스턴스 말고 오직 <code>Point&lt;f32&gt;</code>
+인스턴스에 대한 메소드를 정의할 수 있습니다. Listing 10-10에서는 구체적
+타입 <code>f32</code>을 사용하였는데, <code>impl</code> 뒤에는 어떤 타입도 선언하지 않았습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct Point&lt;T&gt; {
 </span><span class="boring">    x: T,
@@ -446,18 +453,17 @@ fn main() {
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">Listing 10-10: 구조체의 제네릭 타입 매개변수 <code>T</code>가
 특정 구체적 타입인 경우에만 적용되는 <code>impl</code> 블록</span></p>
-<p>이 코드에서 <code>Point&lt;f32&gt;</code> 타입 인스턴스는
-<code>distance_from_origin</code> 메소드를 사용할 수 있지만,
-<code>T</code> 가 <code>f32</code> 타입이 아닌 <code>Point&lt;T&gt;</code> 인스턴스는 이 메소드를 사용할 수 없습니다.
-이 메소드는 우리가 만든 점과 원점 (0.0, 0.0) 간의 거리를 측정하며
-부동 소수점 타입에서만 사용 가능한 수학적 연산을 이용합니다.</p>
-<p>구조체 정의에서 사용한 제네릭 타입 매개변수와, 구조체의 메소드 시그니처 내에서
-사용하는 제네릭 타입 매개변수가 항상 같은 것은 아닙니다.
-Listing 10-11은 Listing 10-8 코드의 <code>Point&lt;T, U&gt;</code> 구조체에 <code>mixup</code> 이라는 메소드를 정의합니다.
-이 메소드는 또 다른 <code>Point</code>를 매개변수로 전달받는데,
-이는 우리가 <code>mixup</code>을 호출하는 <code>self</code> <code>Point</code> 와 다른 타입일 수도 있습니다.
-이 메소드는 <code>self</code> <code>Point</code> 의 <code>T</code> 타입 <code>x</code> 값과, 매개변수로 넘겨받은
-<code>Point</code> 의 <code>W</code> 타입 <code>y</code> 값으로 새로운 <code>Point</code> 인스턴스를 생성합니다.</p>
+<p>이 코드에서 <code>Point&lt;f32&gt;</code> 타입 인스턴스는 <code>distance_from_origin</code>
+메소드를 갖게 될 것입니다; <code>T</code> 가 <code>f32</code> 타입이 아닌 <code>Point&lt;T&gt;</code>
+인스턴스는 이 메소드가 정의되지 않습니다. 이 메소드는 우리가 만든
+점과 원점 (0.0, 0.0) 간의 거리를 측정하며 부동 소수점 타입에서만
+사용 가능한 수학적 연산을 이용합니다.</p>
+<p>구조체 정의에서 사용한 제네릭 타입 매개변수와, 구조체의 메소드 시그니처 내에서 사용하는
+제네릭 타입 매개변수가 항상 같은 것은 아닙니다. Listing 10-11을 보면 예제를 명료하게
+만들기 위해 <code>Point</code> 구조체에 대해서는 <code>X1</code>와 <code>Y1</code>이라는 제네릭 타입을, 그리고 <code>mixup</code>
+메소드에 대해서는 <code>X2</code>와 <code>Y2</code>라는 제네릭 타입을 사용했습니다. 이 메소드는 <code>self</code>
+<code>Point</code>의 (<code>X1</code> 타입인) <code>x</code>값과, 매개변수로 넘겨받은 <code>Point</code>의 (<code>Y2</code> 타입인) <code>y</code>값으로
+새로운 <code>Point</code> 인스턴스를 생성합니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Point&lt;X1, Y1&gt; {
     x: X1,
@@ -492,19 +498,18 @@ fn main() {
 <code>println!</code> 매크로는 <code>p3.x = 5, p3.y = c</code>를 출력합니다.</p>
 <p>이 예제는 일부 제네릭 매개변수는 <code>impl</code> 에 선언되고
 일부는 메소드 정의에 선언되는 경우를 보여주기 위한 예제입니다.
-제네릭 매개변수 <code>T</code>, <code>U</code> 는 구조체 정의와 한 묶음이니 <code>impl</code> 뒤에 선언해야 하지만,
-제네릭 매개변수 <code>V</code>, <code>W</code> 는 <code>mixup</code> 메소드에만 연관되어 있으므로
-<code>fn mixup</code> 뒤에만 선언합니다.</p>
+제네릭 매개변수 <code>X1</code>, <code>Y1</code> 는 구조체 정의와 한 묶음이니 <code>impl</code>
+뒤에 선언해야 하지만, 제네릭 매개변수 <code>X2</code>, <code>Y2</code>는 <code>mixup</code>
+메소드에만 연관되어 있으므로 <code>fn mixup</code> 뒤에만
+선언합니다.</p>
 <h3 id="제네릭-코드의-성능"><a class="header" href="#제네릭-코드의-성능">제네릭 코드의 성능</a></h3>
-<p>여러분은 제네릭 타입 매개변수를 사용하면 런타임 비용이 발생하는지
-궁금해하고 있을는지도 모르겠습니다.
-좋은 소식은, 러스트는 제네릭을 사용한 코드가 구체적인 타입을 사용했을 때와
-비교해서 전혀 느려지지 않도록 구현한다는 것입니다.</p>
-<p>러스트는 컴파일 타임에
-제네릭을 사용하는 코드를 <em>단형성화(monomorphization)</em> 합니다.
-단형성화란 제네릭 코드를, 실제로 채워질 구체적인 타입으로 된 특정 코드로
-바꾸는 과정을 말합니다.</p>
-<p>이 과정에서, 컴파일러는 우리가 Listing 10-5에서
+<p>제네릭 타입 매개변수를 사용하면 런타임 비용이 발생하는지 궁금해하고
+있을는지도 모르겠습니다. 좋은 소식은, 제네릭 타입의 사용이 구체적인
+타입을 사용했을 때와 비교해서 전혀 느려지지 않는다는 것입니다.</p>
+<p>러스트는 컴파일 타임에 제네릭을 사용하는 코드를
+*단형성화(monomorphization)*합니다. 단형성화란 제네릭 코드를,
+실제로 채워질 구체적인 타입으로 된 특정 코드로 바꾸는 과정을
+말합니다. 이 과정에서, 컴파일러는 우리가 Listing 10-5에서
 제네릭 함수를 만들 때 거친 과정을 정반대로 수행합니다.
 컴파일러는 제네릭 코드가 호출된 곳을 전부 찾고, 제네릭 코드가
 호출할 때 사용된 구체적인 타입으로 코드를 생성합니다.</p>
@@ -518,9 +523,9 @@ let float = Some(5.0);
 <p>러스트는 이 코드를 컴파일할 때 단형성화를 수행합니다.
 이 과정 중 컴파일러는 <code>Option&lt;T&gt;</code> 인스턴스에 사용된 값을 읽고,
 <code>i32</code>, <code>f64</code> 두 종류의 <code>Option&lt;T&gt;</code> 가 있다는 것을 인지합니다.
-그리고 제네릭 정의를 명시적인 것으로 대체하여
-제네릭 <code>Option&lt;T&gt;</code> 정의를 <code>Option_i32</code>, <code>Option_f64</code>로
-확장합니다.</p>
+그리고 제네릭 정의를 <code>i32</code>와 <code>f64</code>에 대해 특성화시킨
+정의로 확장함으로써, 제네릭 정의를 이 구체적인 것들로
+대체합니다.</p>
 <p>단형성화된 코드는 다음과 같습니다.
 제네릭 <code>Option&lt;T&gt;</code> 는 컴파일러에 의해 생성된 명시적인 정의로 변경되었습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
@@ -538,11 +543,12 @@ fn main() {
     let integer = Option_i32::Some(5);
     let float = Option_f64::Some(5.0);
 }</code></pre></pre>
-<p>러스트 컴파일러가 제네릭 코드를 각 인스턴스의
-명시적인 타입으로 변경해주는 덕분에,
-굳이 런타임 비용을 줄이기 위해 우리 손으로 직접
-각 타입마다 중복된 코드를 작성할 필요가 없습니다.
-단형성화 과정은 러스트 제네릭을 런타임에 극도로 효율적이도록 만들어줍니다.</p>
+<p>제네릭 <code>Option&lt;T&gt;</code>가 컴파일러에 의해 특정한 정의들로
+대체되었습니다. 러스트 컴파일러가 제네릭 코드를 각 인스턴스의
+명시적인 타입으로 변경해주는 덕분에, 굳이 런타임 비용을 줄이기 위해
+우리 손으로 직접 각 타입마다 중복된 코드를 작성할 필요가 없습니다.
+단형성화 과정은 러스트 제네릭을 런타임에 극도로 효율적이도록
+만들어줍니다.</p>
 
                     </main>
 
