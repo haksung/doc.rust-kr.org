@@ -1968,7 +1968,7 @@ The value of x is: 6
 궁극적으로 가변성을 사용할지 말지는 여러분의 몫이고 각 상황에서 여러번이
 생각하는 가장 명확한 상태가 어떤 것이냐에 따라 달려있습니다.</p>
 <h3 id="상수-constants"><a class="header" href="#상수-constants">상수 (Constants)</a></h3>
-<p>*상수 (constant)*는 불변 변수와 비슷한데, 어떤 이름에 묶여 있는
+<p><em>상수 (constant)</em> 는 불변 변수와 비슷한데, 어떤 이름에 묶여 있는
 값이고 값을 바꾸는 것이 허용되지 않지만, 변수와는 약간 다른 점들이
 있습니다.</p>
 <p>먼저, <code>mut</code>와 상수를 함께 사용할 수 없습니다. 상수는
@@ -2731,7 +2731,7 @@ error: could not compile `functions` due to previous error
 <div style="break-before: page; page-break-before: always;"></div><h2 id="주석"><a class="header" href="#주석">주석</a></h2>
 <p>모든 프로그래머들은 쉽게 이해되는 코드를 작성하기 위해 노력하지만,
 종종 부연 설명이 필요할 때도 있습니다. 그런 경우 프로그래머들은
-*주석 (comment)*을 코드에 남겨서 컴파일러는 이를 무시하지만
+<em>주석 (comment)</em> 을 코드에 남겨서 컴파일러는 이를 무시하지만
 코드를 읽는 사람들은 유용한 정보를 얻을 수 있게 합니다.</p>
 <p>간단한 주석의 예를 봅시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
@@ -2955,7 +2955,7 @@ error: could not compile `branches` due to previous error
 컴파일러는 더 복잡해지고 보장할 수 있는 것들이 줄어들 것입니다.</p>
 <h3 id="반복문을-이용한-반복"><a class="header" href="#반복문을-이용한-반복">반복문을 이용한 반복</a></h3>
 <p>코드 블록을 한 번 이상 수행하는 일은 자주 쓰입니다. 반복 작업을 위해서,
-러스트는 몇 가지 *반복문(loop)*을 제공하는데 이는 루프 본문의 시작부터
+러스트는 몇 가지 <em>반복문(loop)</em> 을 제공하는데 이는 루프 본문의 시작부터
 끝까지 수행한 뒤 다시 처음부터 수행합니다. 반복문을 실험해보기 위해
 <em>loops</em>라는 이름의 새 프로젝트를 만듭시다.</p>
 <p>러스트에는 <code>loop</code>, <code>while</code>, 그리고 <code>for</code>라는 세 종류의 반복문이 있습니다. 하나씩 써봅시다.</p>
@@ -3274,7 +3274,7 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 <p>소유권 규칙부터 알아보겠습니다.
 앞으로 나올 내용을 보는 동안 다음 규칙을 명심하세요:</p>
 <ul>
-<li>러스트에서, 각각의 값은 *소유자(owner)*가 정해져 있다.</li>
+<li>러스트에서, 각각의 값은 <em>소유자(owner)</em> 가 정해져 있다.</li>
 <li>한 값의 소유자는 동시에 여럿 존재할 수 없다.</li>
 <li>소유자가 스코프 밖으로 벗어날 때, 값은 버려진다(dropped).</li>
 </ul>
@@ -3686,7 +3686,7 @@ fn calculate_length(s: String) -&gt; (String, usize) {
 이동해버린 것 때문에 <code>calclulate_length</code> 를 호출한 함수로 <code>String</code> 을 반환하여,
 함수 호출 이후에도 <code>String</code> 을 사용할 수 있게
 하였습니다. 이렇게 하는 대신 <code>String</code> 값의 참조자를 만들 수 있습니다.
-*참조자 (reference)*는 해당 주소에 저장된 데이터에 접근할 수 있도록
+<em>참조자 (reference)</em> 는 해당 주소에 저장된 데이터에 접근할 수 있도록
 해주는 주소값에 해당하는, 포인터와 같은 것입니다; 그 데이터는 다른 어떤
 변수의 소유이구요. 포인터와는 달리, 참조자는 살아있는 동안 특정 타입에 대한
 유효한 값을 가키리는 것을 보장해줍니다.</p>
@@ -4005,7 +4005,7 @@ error: could not compile `ownership` due to previous error
 </ul>
 <p>다음으로 알아볼 것은 참조자의 또 다른 종류인 슬라이스(slice) 입니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="슬라이스slice"><a class="header" href="#슬라이스slice">슬라이스(Slice)</a></h2>
-<p>*슬라이스 (slice)*는 컬렉션(collection)을 통째로 참조하는 것이 아닌,
+<p><em>슬라이스 (slice)</em> 는 컬렉션(collection)을 통째로 참조하는 것이 아닌,
 컬렉션의 연속된 일련의 요소를 참조하도록 해줍니다. 슬라이스는 참조자의
 일종으로서 소유권을 갖지 않습니다.</p>
 <p>한번 간단한 함수를 만들어 봅시다. 공백문자로 구분된 단어들의 문자열을
@@ -5154,7 +5154,7 @@ fn main() {
 의미한다는 것으로 봅니다.</p>
 <p>필드와 동일한 이름의 메소드를 만드는 경우는 해당 필드의 값을 얻어오는 것
 말고는 안하는 경우가 거의 대부분이긴 합니다. 이러한 메소드를
-*게터 (getter)*라고 부르는데, 러스트는 다른 언어들처럼 구조체 필드에 대한
+<em>게터 (getter)</em> 라고 부르는데, 러스트는 다른 언어들처럼 구조체 필드에 대한
 게터를 자동으로 만들지 않습니다. 필드를 비공개(private)로 하고 메소드는
 공개(public)로 만들 수 있기 때문에 게터는 어떤 타입의 공개 API로서 어떤
 필드의 읽기 전용 접근만을 허용하고자 하는 경우 유용합니다. 공개와 비공개가
@@ -6288,7 +6288,7 @@ Cargo에서 제공하는 <em>작업공간 (workspace)</em> 기능을 이용합�
 이번 장을 마치고 나면, 모듈 시스템을 확실히 이해하고 스코프를 자유자재로 다룰 수 있을 거랍니다!</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="패키지-크레이트"><a class="header" href="#패키지-크레이트">패키지, 크레이트</a></h2>
 <p>우리가 다뤄볼 모듈 시스템의 첫 구성 요소는 패키지와 크레이트입니다.</p>
-<p>*크레이트 (crate)*는 러스트가 컴파일 한 차례에 고려하는 가장 작은
+<p><em>크레이트 (crate)</em> 는 러스트가 컴파일 한 차례에 고려하는 가장 작은
 코드 단위입니다. (1장의 “러스 프로그램 작성하고 실행하기”절에서 했던
 것처럼) <code>cargo</code> 대신 <code>rustc</code>를 실행하여 단일 소스 코드 파일을
 넘겨주더라도, 컴파일러는 그 파일이 크레이트라고 생각합니다. 크레이트는
@@ -6429,7 +6429,7 @@ pub struct Asparagus {}</code></pre>
 <p>이제 이 규칙들의 세부 사항으로 넘어가서 실제로 해보면서 확인합시다!</p>
 <h3 id="모듈로-관련된-코드-묶기"><a class="header" href="#모듈로-관련된-코드-묶기">모듈로 관련된 코드 묶기</a></h3>
 <p><em>모듈</em>은 크레이트 내 코드를 읽기 쉽고 재사용하기도 쉽게끔 구조화를 할 수 있게 해줍니다.
-모듈 내의 코드는 기본적으로 비공개이므로, 모듈은 아이템의 *공개 여부 (privacy)*를
+모듈 내의 코드는 기본적으로 비공개이므로, 모듈은 아이템의 <em>공개 여부 (privacy)</em> 를
 제어하도록 해주기도 합니다. 비공개 아이템은 바깥쪽에서 사용이 허용되지 않는 내부의
 새부 구현입니다. 모듈과 모듈 내 아이템을 선택적으로 공개할 수 있는데, 이렇게
 하여 외부의 코드가 모듈 및 아이템을 의존하고 사용할 수 있도록
@@ -7478,7 +7478,22 @@ pub fn eat_at_restaurant() {
 <p><span class="caption">Listing 8-6: 벡터 요소의 참조자를 가지고 있는 상태에서,
 벡터에 새로운 요소를 추가해 보았습니다</span></p>
 <p>이 예제를 컴파일하면 아래와 같은 에러가 발생합니다:</p>
-<pre><code class="language-console">{{#include ../listings/ch08-common-collections/listing-08-07/output.txt}}
+<pre><code class="language-console">$ cargo run
+   Compiling collections v0.1.0 (file:///projects/collections)
+error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immutable
+ --&gt; src/main.rs:6:5
+  |
+4 |     let first = &amp;v[0];
+  |                  - immutable borrow occurs here
+5 |
+6 |     v.push(6);
+  |     ^^^^^^^^^ mutable borrow occurs here
+7 |
+8 |     println!(&quot;The first element is: {first}&quot;);
+  |                                      ----- immutable borrow later used here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `collections` due to previous error
 </code></pre>
 <p>Listing 8-6의 코드는 동작해야 할 것처럼 보일런지도 모르겠습니다:
 첫 번째 요소의 참조자가 벡터 끝부분의 변경이랑 무슨 상관일까요?
@@ -7540,9 +7555,18 @@ Listing 8-7은 <code>for</code> 루프를 사용하여 <code>i32</code>의 벡�
 모든 열거형 variant들은 같은 타입, 즉 해당 열거형 타입인 것으로 취급될 것입니다.
 따라서 우리는 궁극적으로 다른 타입을 담은 열거형 값에 대한 벡터를 생성할
 수 있습니다. Listing 8-9에서 이를 보여주고 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>{{#rustdoc_include ../listings/ch08-common-collections/listing-08-9/src/main.rs:here}}
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+</span>    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from(&quot;blue&quot;)),
+        SpreadsheetCell::Float(10.12),
+    ];
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">Listing 8-9: 열거형을 정의하여 벡터 내에 다른
 타입의 데이터를 담을 수 있도록 하기</span></p>
@@ -8237,7 +8261,7 @@ to Engineering&quot;이나 &quot;Add Amir to Sales&quot; 같은 식으로요. �
 이는 러스트가 패닉을 마주친 각 함수로부터 스택을 거꾸로 훑어가면서 데이터를
 청소한다는 뜻입니다. 하지만, 이 되감기와 청소 작업은 간단한 작업이 아닙니다.
 그래서 러스트는 프로그램이 데이터 정리 작업 없이 즉각 종료되는 대안인
-*그만두기 (aborting)*를 선택할 수 있도록 해줍니다.</p>
+<em>그만두기 (aborting)</em> 를 선택할 수 있도록 해줍니다.</p>
 <p>프로그램이 사용하고 있던 메모리는 운영체제가 청소해 주어야 합니다.
 여러분의 프로젝트 내에서 결과 바이너리를 가능한 한 작게 만들고 싶다면,
 여러분의 <em>Cargo.toml</em> 내에서 적합한 <code>[profile]</code> 섹션에 <code>panic = 'abort'</code>를
@@ -8582,7 +8606,7 @@ src/main.rs:5:10
 <h3 id="에러-전파하기"><a class="header" href="#에러-전파하기">에러 전파하기</a></h3>
 <p>함수의 구현체 내부에서 실패할지도 모르는 무언가를 호출할 때, 이 함수
 내에서 에러를 처리하는 대신, 에러를 호출하는 코드 쪽으로 반환하여
-그쪽에서 어떻게 할지 결정하도록 할 수 있습니다. 이는 에러 *전파하기 (propagating)*로
+그쪽에서 어떻게 할지 결정하도록 할 수 있습니다. 이는 에러 <em>전파하기 (propagating)</em> 로
 알려져 있으며, 에러가 어떻게 처리해야 좋을지 좌우해야 할 상황에서, 여러분의 코드
 내용 내에서 이용 가능한 것들보다 더 많은 정보와 로직을 가지고 있을 수도 있는
 호출하는 코드 쪽에 더 많은 제어권을 줍니다.</p>
@@ -8992,7 +9016,7 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
 노출시킬 수 있습니다. 이는 여러분이 범위를 벗어난 메모리 접근을 시도했을 경우
 표준 라이브러리가 <code>panic!</code>을 호출하는 주된 이유입니다: 현재 사용하는 자료 구조가
 소유하지 않은 메모리에 접근 시도하는 것은 흔한 보안 문제입니다. 함수는 종종 입력이
-특정 요구사항을 만족시킬 경우에만 함수의 행동이 보장되는 *계약(contracts)*을
+특정 요구사항을 만족시킬 경우에만 함수의 행동이 보장되는 <em>계약(contracts)</em> 을
 갖고 있습니다. 이 계약을 위반했을 때 패닉이 발생하는 것은 이치에 맞는데,
 그 이유는 계약 위반이 언제나 호출자 쪽의 버그임을 나타내고, 이는 호출하는
 코드가 명시적으로 처리하도록 하는 종류의 버그가 아니기 때문입니다. 사실,
@@ -9148,7 +9172,7 @@ impl Guess {
 어떻게 이용할 수 있는지에 대해 다음 장에서 이야기해 보겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="제네릭-타입-트레잇-라이프타임"><a class="header" href="#제네릭-타입-트레잇-라이프타임">제네릭 타입, 트레잇, 라이프타임</a></h1>
 <p>모든 프로그래밍 언어는 중복되는 개념을 효율적으로 처리하기 위한 도구를
-가지고 있습니다. 러스트에선 *제네릭(generic)*이 그 역할을 맡습니다:
+가지고 있습니다. 러스트에선 <em>제네릭(generic)</em> 이 그 역할을 맡습니다:
 제네릭은 구체적(concrete)인 타입이나 다른 속성들의 추상화된 대역입니다.
 컴파일과 실행 시점에 제네릭들이 실제로 어떻게 타입으로 채워지는지 알 필요
 없이도 제네릭의 동작이나 다른 제네릭과의 관계를 표현할 수 있습니다.</p>
@@ -9655,7 +9679,7 @@ fn main() {
 있을는지도 모르겠습니다. 좋은 소식은, 제네릭 타입의 사용이 구체적인
 타입을 사용했을 때와 비교해서 전혀 느려지지 않는다는 것입니다.</p>
 <p>러스트는 컴파일 타임에 제네릭을 사용하는 코드를
-*단형성화(monomorphization)*합니다. 단형성화란 제네릭 코드를,
+<em>단형성화(monomorphization)</em> 합니다. 단형성화란 제네릭 코드를,
 실제로 채워질 구체적인 타입으로 된 특정 코드로 바꾸는 과정을
 말합니다. 이 과정에서, 컴파일러는 우리가 Listing 10-5에서
 제네릭 함수를 만들 때 거친 과정을 정반대로 수행합니다.
@@ -9698,7 +9722,7 @@ fn main() {
 단형성화 과정은 러스트 제네릭을 런타임에 극도로 효율적이도록
 만들어줍니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="트레잇으로-공통된-동작을-정의하기"><a class="header" href="#트레잇으로-공통된-동작을-정의하기">트레잇으로 공통된 동작을 정의하기</a></h2>
-<p>*트레잇(trait)*은 특정 타입이 가지고 있고 다른 타입과 공유할 수 있는
+<p><em>트레잇 (trait)</em> 은 특정 타입이 가지고 있고 다른 타입과 공유할 수 있는
 <strong>기능</strong>을 정의합니다. 트레잇을 사용하면 공통된 기능을 추상적으로
 정의할 수 있습니다. *트레잇 바운드(trait bound)*를 이용하면 어떤 제네릭
 타입 자리에 특정한 동작을 하는 타입이 올 수 있음을 명시할 수 있습니다.</p>
@@ -11072,7 +11096,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 이에 대해서는 이 장의 <a href="ch11-02-running-tests.html#ignoring-some-tests-unless-specifically-requested">“특별 요청이 없다면 몇몇 테스트 무시하기”</a><!-- ignore -->절에서
 다루겠습니다. 이번 예제에는 그런게 없었으므로, 요약에는 <code>0 ignored</code>가
 표시됩니다. 또한 <code>cargo test</code>에 인자를 넘겨서 어떤 문자열과 이름이
-일치하는 테스트만 실행하도록 할 수도 있습니다; 이것을 *필터링 (filtering)*이라고
+일치하는 테스트만 실행하도록 할 수도 있습니다; 이것을 <em>필터링 (filtering)</em> 이라고
 하고, <a href="ch11-02-running-tests.html#running-a-subset-of-tests-by-name">“이름으로 테스트의 부분집합 실행하기”</a><!-- ignore -->절에서
 다룰 예정입니다. 지금의 테스트에서는 필터링도 없었으므로, 요약의 끝 부분에
 <code>0 filtered out</code>이 표시됩니다.</p>
@@ -16307,7 +16331,7 @@ for i in 12..buffer.len() {
 이 글을 쓰는 시점에서는 직접 손으로 작성한 것과 같은 어셈블리 코드로 컴파일됩니다.
 <code>coefficients</code>의 값들을 순회하기 위해 동반되는 어떠한 루프도 없습니다:
 러스트는 12번의 반복이 있다는 것을 알고 있으므로, 루프를 &quot;풀어(unrolls)&quot;
-놓습니다. *언롤링(Unrolling)*은 루프 제어 코드의 오버헤드를 제거하고
+놓습니다. <em>언롤링(Unrolling)</em> 은 루프 제어 코드의 오버헤드를 제거하고
 대신 루프의 각 순회에 해당하는 반복되는 코드를 생성하는 최적화
 방법입니다.</p>
 <p>모든 계수들은 레지스터에 저장되는데, 이는 값에 대한 접근이 매우 빠르다는
@@ -16709,7 +16733,7 @@ GitHub 계정으로 로그인하세요. (현재는 GitHub 계정이 필수지만
 <pre><code class="language-console">$ cargo login abcdefghijklmnopqrstuvwxyz012345
 </code></pre>
 <p>이 명령어는 Cargo에게 여러분의 API 토큰을 알려주고 로컬의 <em>~/.cargo/credentials</em>에
-저장하도록 합니다. 이 토큰은 *비밀키 (secret)*임을 주의하세요: 아무와도
+저장하도록 합니다. 이 토큰은 <em>비밀키 (secret)</em> 임을 주의하세요: 아무와도
 공유하지 마세요. 어떤 이유에서든 누군가와 공유했다면, 이 토큰을 무효화시키고
 <a href="https://crates.io">crates.io</a><!-- ignore-->에서 새 토큰을 생성해야
 합니다.</p>
@@ -16824,7 +16848,7 @@ copy just the relevant lines below
 <p>킄레이트의 이전 버전을 제거할 수는 없지만, 향후의 프로젝트들이 이를 새로운
 의존성으로 추가하는 것을 방지할 수는 있습니다. 이는 어떤 크레이트 버전이
 어떤 이유에서인가 깨졌을 때 유용합니다. 그런 상황에서 Cargo는
-어떤 크레이트 버전의 *끌어내기 (yanking)*를 지원합니다.</p>
+어떤 크레이트 버전의 <em>끌어내기 (yanking)</em> 를 지원합니다.</p>
 <p>버전 끌어내기는 이 버전에 의존중인 존재하는 모든 프로젝트들이 계속 지원하면서
 새 프로젝트가 이 버전에 의존하는 것을 방지합니다. 근본적으로 끌어내기란
 <em>Cargo.lock</em>이 있는 모든 프로젝트가 깨지지 않으면서, 이후에 생성되는

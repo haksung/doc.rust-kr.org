@@ -272,7 +272,22 @@
 <p><span class="caption">Listing 8-6: 벡터 요소의 참조자를 가지고 있는 상태에서,
 벡터에 새로운 요소를 추가해 보았습니다</span></p>
 <p>이 예제를 컴파일하면 아래와 같은 에러가 발생합니다:</p>
-<pre><code class="language-console">{{#include ../listings/ch08-common-collections/listing-08-07/output.txt}}
+<pre><code class="language-console">$ cargo run
+   Compiling collections v0.1.0 (file:///projects/collections)
+error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immutable
+ --&gt; src/main.rs:6:5
+  |
+4 |     let first = &amp;v[0];
+  |                  - immutable borrow occurs here
+5 |
+6 |     v.push(6);
+  |     ^^^^^^^^^ mutable borrow occurs here
+7 |
+8 |     println!(&quot;The first element is: {first}&quot;);
+  |                                      ----- immutable borrow later used here
+
+For more information about this error, try `rustc --explain E0502`.
+error: could not compile `collections` due to previous error
 </code></pre>
 <p>Listing 8-6의 코드는 동작해야 할 것처럼 보일런지도 모르겠습니다:
 첫 번째 요소의 참조자가 벡터 끝부분의 변경이랑 무슨 상관일까요?
@@ -334,9 +349,18 @@ Listing 8-7은 <code>for</code> 루프를 사용하여 <code>i32</code>의 벡�
 모든 열거형 variant들은 같은 타입, 즉 해당 열거형 타입인 것으로 취급될 것입니다.
 따라서 우리는 궁극적으로 다른 타입을 담은 열거형 값에 대한 벡터를 생성할
 수 있습니다. Listing 8-9에서 이를 보여주고 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
-</span><span class="boring">fn main() {
-</span>{{#rustdoc_include ../listings/ch08-common-collections/listing-08-9/src/main.rs:here}}
+<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+</span>    enum SpreadsheetCell {
+        Int(i32),
+        Float(f64),
+        Text(String),
+    }
+
+    let row = vec![
+        SpreadsheetCell::Int(3),
+        SpreadsheetCell::Text(String::from(&quot;blue&quot;)),
+        SpreadsheetCell::Float(10.12),
+    ];
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">Listing 8-9: 열거형을 정의하여 벡터 내에 다른
 타입의 데이터를 담을 수 있도록 하기</span></p>
