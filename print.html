@@ -35,6 +35,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -172,9 +173,9 @@
 <a href="https://rust-book.cs.brown.edu">https://rust-book.cs.brown.edu</a></p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="들어가기에-앞서"><a class="header" href="#들어가기에-앞서">들어가기에 앞서</a></h1>
-<p>콕 집어서 말할 순 없지만, 러스트는 기본적으로 <em>권한 양도</em> 에 근간을 두고 있습니다.
-따라서 러스트는 여러분이 어떤 종류의 코드를 작성하던 간에
-가능한 한 많은 권한을 주어 프로그래머가 다양한 분야에서
+<p>콕 집어서 말할 순 없지만, 러스트 프로그래밍 언어는 <em>권한 부여 (empowerment)</em> 에
+근간을 두고 있습니다: 여러분이 지금 어떤 종류의 코드를 작성하고 있건 간에,
+러스트는 여러분에게 더 많은 권한을 부여하여 프로그래머가 다양한 분야에서
 이전보다 더 자신감 있게 프로그래밍할 수 있도록 도와줍니다.</p>
 <p>메모리 관리, 데이터 표현, 동시성 등 저수준을
 세부적으로 다루는 시스템 프로그래밍을 생각해봅시다.
@@ -402,7 +403,7 @@ PowerShell 한정 예제입니다.</p>
 실행할 수 없다는 에러가 나타나면 따로 설치하셔야 합니다.
 이 에러는 C 컴파일러를 설치할때 같이 설치되는 링커로 해결되므로
 플랫폼에 맞는 C 컴파일러를 찾아서 설치하시기 바랍니다. 몇 가지 흔히 사용되는
-러스트 패키지들이 C 코드를 이용하고 있기 떄문에 C 컴파일러가 필요할 수도 있습니다.</p>
+러스트 패키지들이 C 코드를 이용하고 있기 때문에 C 컴파일러가 필요할 수도 있습니다.</p>
 <p>macOS에서는 아래와 같이 실행하여 C 컴파일러를 설치할 수 있습니다:</p>
 <pre><code class="language-console">$ xcode-select --install
 </code></pre>
@@ -3751,7 +3752,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
   // it refers to, it is not dropped.</code></pre></pre>
 <p>변수 <code>s</code> 가 유효한 스코프는 여타 함수의 매개변수에 적용되는
 스코프와 동일합니다. 하지만 <code>s</code>에는 소유권이 없으므로 <code>s</code>가
-더 이상 사용되지 않을 떄에도 이 참조자가 가리킨 값이 버려지지
+더 이상 사용되지 않을 때에도 이 참조자가 가리킨 값이 버려지지
 않습니다. 함수가 실제 값 대신 참조자를 매개변수로 쓴다면
 애초에 소유권이 없으니까 이 소유권을 돌려주기 위한 값 반환도
 필요 없어집니다.</p>
@@ -4420,7 +4421,7 @@ assert_eq!(slice, &amp;[2, 3]);
 열거형(6장에서 배울 예정입니다)을 이용하면, 여러분이 직접 만든 타입에도
 러스트의 컴파일 시점 타입 검사 기능을 최대한 활용할 수 있습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="구조체-정의-및-인스턴트화"><a class="header" href="#구조체-정의-및-인스턴트화">구조체 정의 및 인스턴트화</a></h2>
-<p>구조체는 여러 개의 연관된 값을 가질 수 있다는 측면에서 볼 떄
+<p>구조체는 여러 개의 연관된 값을 가질 수 있다는 측면에서 볼 때
 <a href="ch03-02-data-types.html#the-tuple-type">“튜플 타입”</a><!-- ignore -->절에서 살펴본 튜플과 비슷합니다.
 튜플처럼 구조체의 구성 요소들은 각각 다른 타입이 될 수 있습니다.
 그리고 여기에 더해서, 구조체는 각각의 구성 요소에 이름을 붙일 수 있습니다.
@@ -5015,7 +5016,7 @@ fn main() {
     dbg!(&amp;rect1);
 }</code></pre></pre>
 <p>표현식 <code>30 * scale</code>을 <code>dbg!</code>으로 감싸넣었는데, 이는 <code>dbg!</code>가 표현식 값의 소유권을
-반환하면서 <code>dbg!</code> 호출을 하지 않았을 떄와 같은 값이 <code>width</code> 필드에 입력되기
+반환하면서 <code>dbg!</code> 호출을 하지 않았을 때와 같은 값이 <code>width</code> 필드에 입력되기
 때문입니다. <code>dbg!</code>가 <code>rect1</code>의 소유권을 가져가는 것은 원치 않으므로, 그 다음의
 호출에서는 <code>rect1</code>에 대한 참조자를 사용하였습니다.
 위 예제의 출력 결과는 아래와 같습니다:</p>
@@ -8150,7 +8151,7 @@ Blue: 10
 어울려 동작합니다.</p>
 <p>Listing 8-24의 코드를 실행하면 <code>{&quot;Yellow&quot;: 50, &quot;Blue&quot;: 10}</code>를 출력할 것입니다.
 첫 번째 <code>entry</code> 호출은 옐로우 팀에 대한 키에 대하여 값 50을 삽입하는데, 이는
-옐로우 팀이 값을 가지고 있지 않기 떄문입니다. 두 번째 <code>entry</code> 호출은 해쉬맵을
+옐로우 팀이 값을 가지고 있지 않기 때문입니다. 두 번째 <code>entry</code> 호출은 해쉬맵을
 변경하지 않는데, 왜냐하면 블루 팀은 이미 값 10을 가지고 있기
 때문입니다.</p>
 <h4 id="이전-값을-기초로-값을-갱신하기"><a class="header" href="#이전-값을-기초로-값을-갱신하기">이전 값을 기초로 값을 갱신하기</a></h4>
@@ -12940,7 +12941,7 @@ fn parse_config(args: &amp;[String]) -&gt; Config {
 이러한 종류의 상황에서 더 효율적인 메소드를 사용하는 방법을 배울 것입니다.
 하지만 지금으로서는 계속 진행하기 위해 약간의 문자열을 복사하는
 정도는 괜찮은데, 이 복사가 딱 한번만 일어나고 파일 경로와 질의
-문자열이 매우 작기 떄문입니다. 한번에 매우 최적화된 코드 작성을
+문자열이 매우 작기 때문입니다. 한번에 매우 최적화된 코드 작성을
 시도하기 보다는 다소 비효율적이라도 동작하는 프로그램을 갖는 편이
 좋습니다. 여러분이 러스트에 더 경험을 쌓게 되면 가장 효율적인
 해답을 가지고 시작하기 더 쉽겠으나, 지금으로선 <code>clone</code>을 호출하는
@@ -14299,7 +14300,7 @@ Trust me.&quot;;
 우리가 사용하려는 소문자 <code>u</code>나 <code>t</code>가 들어있지 않으므로, <code>&quot;rust&quot;</code>를 담고 있는
 새로운 <code>String</code>을 할당해야 합니다. 이제 <code>query</code>를 <code>contains</code>의 인자로
 넘길때는 앰퍼센드를 붙여줄 필요가 있는데 이는 <code>contains</code>의 시그니처가 문자열
-슬라이스를 받도록 정의되어 있기 떄문입니다.</p>
+슬라이스를 받도록 정의되어 있기 때문입니다.</p>
 <p>다음으로 <code>line</code>의 모든 글자를 소문자로 만들기 위해 <code>to_lowercase</code> 호출을
 추가합니다. 이제 <code>line</code>과 <code>query</code>를 소문자로 변환했으니 질의어의 대소문자에
 상관없이 매치된 라인들을 찾아낼 것입니다.</p>
@@ -17237,139 +17238,139 @@ cargo install something you don't have, copy relevant output below
 쉽게 사용될 수 있으며 러스트 언어 자체보다 훨씬 빠른 속도로 발전합니다.
 여러분에게 유용한 코드가 있다면 주저말고 <a href="https://crates.io">crates.io</a><!-- ignore -->에
 공유하세요; 분명 다른 누군가에게도 도움이 될 테니까요!</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="smart-pointers"><a class="header" href="#smart-pointers">Smart Pointers</a></h1>
-<p>A <em>pointer</em> is a general concept for a variable that contains an address in
-memory. This address refers to, or “points at,” some other data. The most
-common kind of pointer in Rust is a reference, which you learned about in
-Chapter 4. References are indicated by the <code>&amp;</code> symbol and borrow the value they
-point to. They don’t have any special capabilities other than referring to
-data, and have no overhead.</p>
-<p><em>Smart pointers</em>, on the other hand, are data structures that act like a
-pointer but also have additional metadata and capabilities. The concept of
-smart pointers isn’t unique to Rust: smart pointers originated in C++ and exist
-in other languages as well. Rust has a variety of smart pointers defined in the
-standard library that provide functionality beyond that provided by references.
-To explore the general concept, we’ll look at a couple of different examples of
-smart pointers, including a <em>reference counting</em> smart pointer type. This
-pointer enables you to allow data to have multiple owners by keeping track of
-the number of owners and, when no owners remain, cleaning up the data.</p>
-<p>Rust, with its concept of ownership and borrowing, has an additional difference
-between references and smart pointers: while references only borrow data, in
-many cases, smart pointers <em>own</em> the data they point to.</p>
-<p>Though we didn’t call them as such at the time, we’ve already encountered a few
-smart pointers in this book, including <code>String</code> and <code>Vec&lt;T&gt;</code> in Chapter 8. Both
-these types count as smart pointers because they own some memory and allow you
-to manipulate it. They also have metadata and extra capabilities or guarantees.
-<code>String</code>, for example, stores its capacity as metadata and has the extra
-ability to ensure its data will always be valid UTF-8.</p>
-<p>Smart pointers are usually implemented using structs. Unlike an ordinary
-struct, smart pointers implement the <code>Deref</code> and <code>Drop</code> traits. The <code>Deref</code>
-trait allows an instance of the smart pointer struct to behave like a reference
-so you can write your code to work with either references or smart pointers.
-The <code>Drop</code> trait allows you to customize the code that’s run when an instance
-of the smart pointer goes out of scope. In this chapter, we’ll discuss both
-traits and demonstrate why they’re important to smart pointers.</p>
-<p>Given that the smart pointer pattern is a general design pattern used
-frequently in Rust, this chapter won’t cover every existing smart pointer. Many
-libraries have their own smart pointers, and you can even write your own. We’ll
-cover the most common smart pointers in the standard library:</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="스마트-포인터"><a class="header" href="#스마트-포인터">스마트 포인터</a></h1>
+<p><em>포인터 (pointer)</em> 는 메모리의 주소값을 담고 있는 변수에 대한 일반적인
+개념입니다. 이 주소값은 어떤 다른 데이터를 참조합니다. 혹은 바꿔 말하면,
+“가리킵니다”. 러스트에서 가장 흔한 종류의 포인터는 4장에서 배웠던 참조자입니다.
+참조자는 <code>&amp;</code> 심볼로 표시하고 이들이 가리키고 있는 값을 빌려옵니다.
+이들은 값을 참조하는 것 외에 다른 어떤 특별한 능력은 없으며, 오버헤드도
+없습니다.</p>
+<p>한편, <em>스마트 포인터 (smart pointer)</em> 는 포인터처럼 작동할 뿐만 아니라
+추가적인 메타데이터와 능력들도 가지고 있는 데이터 구조입니다. 스마트 포인터의 개념은
+러스트 고유의 것이 아닙니다: 스마트 포인터는 C++로부터 유래되었고 또한 다른
+언어들에도 존재합니다. 러스트의 표준 라이브러리에는 다양한 종류의 스마트 포인터들이
+정의되어 있는데 이를 통해 참조자가 제공하는 것 이상의 기능을 제공합니다.
+일반적인 개념을 탐구하기 위하여 몇 가지 스마트 포인터 예제를 살펴보려고 하는데,
+그 중에는 <em>참조 카운팅 (reference counting)</em> 스마트 포인터 타입이 있습니다.
+이 포인터는 소유자의 갯수를 계속 추적하고, 더 이상 소유자가 없으면 데이터를 정리하는
+방식으로, 어떤 데이터에 대한 여러 소유자들을 만들 수 있게 해 줍니다.</p>
+<p>소유권과 빌림의 개념을 가지고 있는 러스트에서, 참조자와 스마트 포인터 사이에는 추가적인
+차이점이 있습니다: 참조자가 데이터를 빌리기만 하는 반면, 대부분의 경우 스마트 포인터는
+가리킨 데이터를 <em>소유합니다.</em></p>
+<p>우리는 이미 이 책에서 8장의 <code>String</code>과 <code>Vec&lt;T&gt;</code>와 같은 몇 가지 스마트 포인터들을
+마주쳤습니다. 비록 그때는 이것들을 스마트 포인터라고 부르지 않았지만요. 이 두 타입
+모두 스마트 포인터로 치는데 그 이유는 이들이 어느 정도의 메모리를 소유하고 이를
+다룰 수 있게 해주기 때문입니다. 그들은 또한 메타데이터와 추가 능력 또는 보장성을
+갖고 있습니다. 예를 들어 <code>String</code>은 자신의 용량을 메타데어로 저장하고 자신의
+데이터가 언제나 유효한 UTF-8임을 보증하는 추가 능력도 가지고 있습니다.</p>
+<p>스마트 포인터는 보통 구조체를 이용하여 구현되어 있습니다. 보통의 구조체와는
+달리 스마트 포인터는 <code>Deref</code>와 <code>Drop</code> 트레잇을 구현합니다. <code>Deref</code> 트레잇은
+스마트 포인터 구조체의 인스턴스가 참조자처럼 동작하도록 하여 참조자
+혹은 스마트 포인터와 함께 작동하는 코드를 작성할 수 있도록 해줍니다.
+<code>Drop</code> 트레잇은 스마트 포인터의 인스턴스가 스코프 밖으로 벗어났을 때 실행되는
+코드를 커스터마이징 가능하도록 해 줍니다. 이번 장에서는 이 두 개의 트레잇 모두를
+다루고 이들이 어째서 스마트 포인터에게 중요한지를 보여줄 것입니다.</p>
+<p>스마트 포인터 패턴은 러스트에서 자주 사용되는 일반적인 디자인 패턴임을 생각하면,
+이번 장에서 존재하는 모든 스마트 포인터를 다루지는 못할 것입니다. 많은 라이브러리들이
+자신만의 스마트 포인터를 가지고 있고, 심지어 여러분도 자신만의 것을 작성할 수 있습니다.
+여기서는 표준 라이브러리에 있는 가장 일반적인 스마트 포인터들을 다루겠습니다:</p>
 <ul>
-<li><code>Box&lt;T&gt;</code> for allocating values on the heap</li>
-<li><code>Rc&lt;T&gt;</code>, a reference counting type that enables multiple ownership</li>
-<li><code>Ref&lt;T&gt;</code> and <code>RefMut&lt;T&gt;</code>, accessed through <code>RefCell&lt;T&gt;</code>, a type that enforces
-the borrowing rules at runtime instead of compile time</li>
+<li>값을 힙에 할당하기 위한 <code>Box&lt;T&gt;</code></li>
+<li>복수 소유권을 가능하게 하는 참조 카운팅 타입인 <code>Rc&lt;T&gt;</code></li>
+<li>빌림 규칙을 컴파일 타임 대신 런타임에 강제하는 타입인, <code>RefCell&lt;T&gt;</code>를 통해
+접근 가능한 <code>Ref&lt;T&gt;</code>와 <code>RefMut&lt;T&gt;</code></li>
 </ul>
-<p>In addition, we’ll cover the <em>interior mutability</em> pattern where an immutable
-type exposes an API for mutating an interior value. We’ll also discuss
-<em>reference cycles</em>: how they can leak memory and how to prevent them.</p>
-<p>Let’s dive in!</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="using-boxt-to-point-to-data-on-the-heap"><a class="header" href="#using-boxt-to-point-to-data-on-the-heap">Using <code>Box&lt;T&gt;</code> to Point to Data on the Heap</a></h2>
-<p>The most straightforward smart pointer is a <em>box</em>, whose type is written
-<code>Box&lt;T&gt;</code>. Boxes allow you to store data on the heap rather than the stack. What
-remains on the stack is the pointer to the heap data. Refer to Chapter 4 to
-review the difference between the stack and the heap.</p>
-<p>Boxes don’t have performance overhead, other than storing their data on the
-heap instead of on the stack. But they don’t have many extra capabilities
-either. You’ll use them most often in these situations:</p>
+<p>추가적으로 불변 타입이 내부 값을 변경하기 위하여 API를 노출하는 <em>내부 가변성
+(interior mutability)</em> 패턴에 대해서 다루겠습니다. 또한 <em>참조 순환 (reference cycles)</em> 이
+어떤 식으로 메모리가 세어나가게 할 수 있으며, 이를 어떻게 방지하는지에 대해서도 논의해 보겠습니다.</p>
+<p>함께 뛰어들어 볼까요!</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="boxt를-사용하여-힙에-있는-데이터-가리키기"><a class="header" href="#boxt를-사용하여-힙에-있는-데이터-가리키기"><code>Box&lt;T&gt;</code>를 사용하여 힙에 있는 데이터 가리키기</a></h2>
+<p>가장 직관적인 스마트 포인터는 <em>박스 (box)</em> 인데, <code>Box&lt;T&gt;</code>로 쓰여지는
+타입입니다. 박스는 스택이 아니라 힙에 데이터를 저장할 수 있도록 해줍니다.
+스택에 남는 것은 힙 데이터를 가리키는 포인터입니다. 스택과 힙의
+차이에 대해 다시 보고싶다면 4장을 참조하세요.</p>
+<p>박스는 스택 대신 힙에 데이터를 저장한다는 점 외에는, 성능 측면에서의 오버헤드가
+없습니다. 하지만 여러 추가 기능도 없습니다. 박스는 아래와 같은 상황에서
+가장 자주 쓰이게 됩니다:</p>
 <ul>
-<li>When you have a type whose size can’t be known at compile time and you want
-to use a value of that type in a context that requires an exact size</li>
-<li>When you have a large amount of data and you want to transfer ownership but
-ensure the data won’t be copied when you do so</li>
-<li>When you want to own a value and you care only that it’s a type that
-implements a particular trait rather than being of a specific type</li>
+<li>컴파일 타임에는 크기를 알 수 없는 타입이 있는데, 정확한 크기를 요구하는 맥락
+내에서 그 타입의 값을 사용하고 싶을 때</li>
+<li>커다란 데이터를 가지고 있고 소유권을 옮기고 싶지만 그렇게 했을 때 데이터가
+복사되지 않을 것이라고 보장하고 싶을 때</li>
+<li>어떤 값을 소유하고 이 값의 구체화된 타입보다는 특정 트레잇을 구현한 타입이라는
+점만 신경 쓰고 싶을 때</li>
 </ul>
-<p>We’ll demonstrate the first situation in the <a href="ch15-01-box.html#enabling-recursive-types-with-boxes">“Enabling Recursive Types with
-Boxes”</a><!-- ignore --> section. In the
-second case, transferring ownership of a large amount of data can take a long
-time because the data is copied around on the stack. To improve performance in
-this situation, we can store the large amount of data on the heap in a box.
-Then, only the small amount of pointer data is copied around on the stack,
-while the data it references stays in one place on the heap. The third case is
-known as a <em>trait object</em>, and Chapter 17 devotes an entire section, <a href="ch17-02-trait-objects.html#using-trait-objects-that-allow-for-values-of-different-types">“Using
-Trait Objects That Allow for Values of Different Types,”</a><!--
-ignore --> just to that topic. So what you learn here you’ll apply again in
-Chapter 17!</p>
-<h3 id="using-a-boxt-to-store-data-on-the-heap"><a class="header" href="#using-a-boxt-to-store-data-on-the-heap">Using a <code>Box&lt;T&gt;</code> to Store Data on the Heap</a></h3>
-<p>Before we discuss the heap storage use case for <code>Box&lt;T&gt;</code>, we’ll cover the
-syntax and how to interact with values stored within a <code>Box&lt;T&gt;</code>.</p>
-<p>Listing 15-1 shows how to use a box to store an <code>i32</code> value on the heap:</p>
+<p>첫 번째 상황은 <a href="ch15-01-box.html#enabling-recursive-types-with-boxes">“박스로 재귀적 타입 가능하게
+하기”</a><!-- ignore -->절에서 보여주겠습니다.
+두 번째 경우, 방대한 양의 데이터의 소유권 옮기기는 긴 시간이 소요될 수 있는데
+이는 그 데이터가 스택 상에서 복사되기 때문입니다. 이러한 상황에서 성능을
+향상시킬 목적으로 박스 안의 힙에 그 방대한 양의 데이터를 저장할 수 있습니다.
+그러면 작은 양의 포인터 데이터만 스택 상에서 복사되고, 이 포인터가
+참조하는 데이터는 힙 상에서 한 곳에 머물게 됩니다. 세 번째 경우는
+<em>트레잇 객체 (trait object)</em> 라고 알려진 것이고, 17장의 <a href="ch17-02-trait-objects.html#using-trait-objects-that-allow-for-values-of-different-types">“트레잇 객체를
+사용하여 서로 다른 타입의 값 허용하기”</a><!-- ignore -->절
+전체가 이 주제만으로 채워져 있습니다. 그러니 여기서 배운 것을 17장에서 다시
+적용하게 될 것입니다!</p>
+<h3 id="boxt을-사용하여-힙에-데이터-저장하기"><a class="header" href="#boxt을-사용하여-힙에-데이터-저장하기"><code>Box&lt;T&gt;</code>을 사용하여 힙에 데이터 저장하기</a></h3>
+<p><code>Box&lt;T&gt;</code>에 대한 사용례를 논의하기 전에, 먼저 문법 및 <code>Box&lt;T&gt;</code> 내에
+저장된 값의 사용법을 다루겠습니다.</p>
+<p>Listing 15-1은 박스를 사용하여 힙에 <code>i32</code> 값을 저장하는 방법을 보여줍니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let b = Box::new(5);
     println!(&quot;b = {}&quot;, b);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-1: Storing an <code>i32</code> value on the heap using a
-box</span></p>
-<p>We define the variable <code>b</code> to have the value of a <code>Box</code> that points to the
-value <code>5</code>, which is allocated on the heap. This program will print <code>b = 5</code>; in
-this case, we can access the data in the box similar to how we would if this
-data were on the stack. Just like any owned value, when a box goes out of
-scope, as <code>b</code> does at the end of <code>main</code>, it will be deallocated. The
-deallocation happens both for the box (stored on the stack) and the data it
-points to (stored on the heap).</p>
-<p>Putting a single value on the heap isn’t very useful, so you won’t use boxes by
-themselves in this way very often. Having values like a single <code>i32</code> on the
-stack, where they’re stored by default, is more appropriate in the majority of
-situations. Let’s look at a case where boxes allow us to define types that we
-wouldn’t be allowed to if we didn’t have boxes.</p>
-<h3 id="enabling-recursive-types-with-boxes"><a class="header" href="#enabling-recursive-types-with-boxes">Enabling Recursive Types with Boxes</a></h3>
-<p>A value of <em>recursive type</em> can have another value of the same type as part of
-itself. Recursive types pose an issue because at compile time Rust needs to
-know how much space a type takes up. However, the nesting of values of
-recursive types could theoretically continue infinitely, so Rust can’t know how
-much space the value needs. Because boxes have a known size, we can enable
-recursive types by inserting a box in the recursive type definition.</p>
-<p>As an example of a recursive type, let’s explore the <em>cons list</em>. This is a data
-type commonly found in functional programming languages. The cons list type
-we’ll define is straightforward except for the recursion; therefore, the
-concepts in the example we’ll work with will be useful any time you get into
-more complex situations involving recursive types.</p>
-<h4 id="more-information-about-the-cons-list"><a class="header" href="#more-information-about-the-cons-list">More Information About the Cons List</a></h4>
-<p>A <em>cons list</em> is a data structure that comes from the Lisp programming language
-and its dialects and is made up of nested pairs, and is the Lisp version of a
-linked list. Its name comes from the <code>cons</code> function (short for “construct
-function”) in Lisp that constructs a new pair from its two arguments. By
-calling <code>cons</code> on a pair consisting of a value and another pair, we can
-construct cons lists made up of recursive pairs.</p>
-<p>For example, here’s a pseudocode representation of a cons list containing the
-list 1, 2, 3 with each pair in parentheses:</p>
+<p><span class="caption">Listing 15-1: 박스를 사용하여 <code>i32</code> 값을 힙에
+저장하기</span></p>
+<p>변수 <code>b</code>를 정의하여 <code>5</code>라는 값을 가리키는 <code>Box</code> 값을 갖도록 했는데, 여기서
+<code>5</code>는 힙에 할당됩니다. 이 프로그램은 <code>b = 5</code>를 출력할 것입니다; 이 경우,
+박스 안에 있는 데이터는 마치 이 데이터가 스택에 있는 것처럼 접근
+가능합니다. 다른 어떤 소유값과 마찬가지로, <code>b</code>가 <code>main</code>의 끝에
+도달하는 것처럼 어떤 박스가 스코프를 벗어날 때, 할당은 해제될 것입니다.
+할당 해제는 (스택에 저장된) 박스와 이것이 가리키고 있는 (힙에 저장된)
+데이터 모두에게 일어납니다.</p>
+<p>단일 값을 힙에 집어넣는 것은 그다지 유용하지는 않으므로, 이 같은 방식의
+박스 사용은 자주 쓰이지 않을 것입니다. 단일 <code>i32</code>의 저장 공간은
+기본적으로 스택이고, 이러한 값을 스택에 저장하는 것이 대부분의 경우에
+더 적합합니다. 박스를 쓰지 않으면 허용되지 않았을 타입을 박스로 정의하는
+경우를 살펴봅시다.</p>
+<h3 id="박스로-재귀적-타입-가능하게-하기"><a class="header" href="#박스로-재귀적-타입-가능하게-하기">박스로 재귀적 타입 가능하게 하기</a></h3>
+<p><em>재귀적 타입 (recursive type)</em> 의 값은 자신 안에 동일한 타입의 또다른 값을
+담을 수 있습니다. 컴파일 타임에 러스트는 어떤 타입이 얼만큼의 공간을 잡아먹는지
+알아야 하기 때문에 재귀적 타입은 문제를 일으킵니다. 재귀적 타입의 값 중첩은
+이론적으로 무한히 계속될 수 있으므로, 러스트는 이 값에 얼만큼의 공간이
+필요한지 알 수 없습니다. 박스는 알려진 크기를 갖고 있으므로, 재귀적 타입의
+정의에 박스를 집어 넣어서 재귀적 타입을 가능하게 할 수 있습니다.</p>
+<p>재귀적 타입의 예제로, <em>cons list</em>를 탐구해 봅시다. 이것은 함수형
+프로그램 언어에서 흔히 발견되는 데이터 타입입니다. 여기서 정의할
+cons list 타입은 재귀를 제외하면 직관적입니다; 따라서 여기서
+작업할 예제의 개념은 재귀적 타입을 포함하는 더 복잡한 경우에
+직면하더라도 유용할 것입니다.</p>
+<h4 id="cons-list에-대한-더-많은-정보"><a class="header" href="#cons-list에-대한-더-많은-정보">Cons List에 대한 더 많은 정보</a></h4>
+<p><em>cons list</em>는 Lisp 프로그래밍 언어 및 그의 파생 언어들로부터 유래된 데이터
+구조로서 중첩된 쌍으로 구성되며, 연결 리스트(linked list)의 Lisp
+버전입니다. 이 이름은 Lisp의  (“생성 함수 (construct function)”의 줄임말인)
+<code>cons</code> 함수에서 유래되었는데, 이 함수는 두 개의 인자로부터 새로운 쌍을 생성합니다.
+<code>cons</code>에 어떤 값과 다른 쌍으로 구성된 쌍을 넣어 호출함으로써 재귀적인 쌍으로
+이루어진 cons list를 구성할 수 있습니다.</p>
+<p>예를 들어, 다음은 1, 2, 3 리스트를 담고 있는 cons list를 각각의 쌍을 괄호로
+묶어서 표현한 의사 코드입니다:</p>
 <pre><code class="language-text">(1, (2, (3, Nil)))
 </code></pre>
-<p>Each item in a cons list contains two elements: the value of the current item
-and the next item. The last item in the list contains only a value called <code>Nil</code>
-without a next item. A cons list is produced by recursively calling the <code>cons</code>
-function. The canonical name to denote the base case of the recursion is <code>Nil</code>.
-Note that this is not the same as the “null” or “nil” concept in Chapter 6,
-which is an invalid or absent value.</p>
-<p>The cons list isn’t a commonly used data structure in Rust. Most of the time
-when you have a list of items in Rust, <code>Vec&lt;T&gt;</code> is a better choice to use.
-Other, more complex recursive data types <em>are</em> useful in various situations,
-but by starting with the cons list in this chapter, we can explore how boxes
-let us define a recursive data type without much distraction.</p>
-<p>Listing 15-2 contains an enum definition for a cons list. Note that this code
-won’t compile yet because the <code>List</code> type doesn’t have a known size, which
-we’ll demonstrate.</p>
+<p>cons list 내의 각 아이템은 두 개의 요소를 담고 있습니다: 현재 아이템의
+값과 다음 아이템이지요. 리스트의 마지막 아이템은 다음 아이템 없이 <code>Nil</code>
+이라 불리는 값을 담고 있습니다. cons list는 <code>cons</code> 함수를 재귀적으로
+호출함으로써 만들어집니다. 재귀의 기본 케이스를 의미하는 표준 이름이 바로
+<code>Nil</code> 입니다. 6장의 “null” 혹은 “nil” 개념과 동일하지 않다는 점을 주의하세요.
+그것들은 값이 유효하지 않거나 없음을 말합니다.</p>
+<p>cons list는 러스트에서 흔히 사용되는 데이터 구조는 아닙니다. 러스트에서
+아이템 리스트를 쓰는 대부분의 경우에는 <code>Vec&lt;T&gt;</code>가 더 나은 선택입니다.
+그와는 다른, 더 복잡한 재귀적 데이터 타입들은 다양한 상황에서 유용<em>하기는</em>
+하지만, 이 장에서는 cons list로 시작하여 박스가 어떤 식으로 별로 주의를
+기울이지 않고도 재귀적 데이터 타입을 정의하도록 하는지 탐구하겠습니다.</p>
+<p>Listing 15-2는 cons list를 위한 열거형 정의를 담고 있습니다. <code>List</code> 타입이
+알려진 크기를 가지고 있지 않고 있기 때문에 이 코드는 아직 컴파일이 안된다는
+점을 유의하세요. 이것이 여기서 보여주려는 것입니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">enum List {
     Cons(i32, List),
@@ -17377,16 +17378,16 @@ we’ll demonstrate.</p>
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre>
-<p><span class="caption">Listing 15-2: The first attempt at defining an enum to
-represent a cons list data structure of <code>i32</code> values</span></p>
+<p><span class="caption">Listing 15-2: <code>i32</code> 값의 cons list 데이터 구조를
+표현하는 열거형 정의에 대한 첫 번째 시도</span></p>
 <blockquote>
-<p>Note: We’re implementing a cons list that holds only <code>i32</code> values for the
-purposes of this example. We could have implemented it using generics, as we
-discussed in Chapter 10, to define a cons list type that could store values of
-any type.</p>
+<p>Note: 이 예제의 목적을 위해 오직 <code>i32</code> 값만 담는 cons list를
+구현하는 중입니다. 10장에서 논의했던 것처럼, 제네릭을 이용하면
+임의의 타입 값을 저장할 수 있는 cons list 타입을 정의할 수도
+있습니다.</p>
 </blockquote>
-<p>Using the <code>List</code> type to store the list <code>1, 2, 3</code> would look like the code in
-Listing 15-3:</p>
+<p><code>List</code> 타입을 이용하여 리스트 <code>1, 2, 3</code>을 저장하는 것은 Listing 15-3의
+코드처럼 보일 것입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">enum List {
 </span><span class="boring">    Cons(i32, List),
@@ -17398,13 +17399,14 @@ Listing 15-3:</p>
 fn main() {
     let list = Cons(1, Cons(2, Cons(3, Nil)));
 }</code></pre>
-<p><span class="caption">Listing 15-3: Using the <code>List</code> enum to store the list <code>1, 2, 3</code></span></p>
-<p>The first <code>Cons</code> value holds <code>1</code> and another <code>List</code> value. This <code>List</code> value is
-another <code>Cons</code> value that holds <code>2</code> and another <code>List</code> value. This <code>List</code> value
-is one more <code>Cons</code> value that holds <code>3</code> and a <code>List</code> value, which is finally
-<code>Nil</code>, the non-recursive variant that signals the end of the list.</p>
-<p>If we try to compile the code in Listing 15-3, we get the error shown in
-Listing 15-4:</p>
+<p><span class="caption">Listing 15-3: <code>List</code> 열거형을 이용하여 리스트 <code>1, 2, 3</code>
+저장하기</span></p>
+<p>첫 번째 <code>Cons</code> 값은 <code>1</code>과 또다른 <code>List</code> 값을 갖습니다. 이 <code>List</code> 값은
+<code>2</code>와 또다른 <code>List</code> 값을 갖는 <code>Cons</code> 값입니다. 그 안의 <code>List</code> 값에는 <code>3</code>과
+<code>List</code> 값을 갖는 <code>Cons</code>가 하나 더 있는데, 여기서 마지막의 <code>List</code>은 <code>Nil</code>로서,
+리스트의 끝을 알리는 비재귀적인 variant입니다.</p>
+<p>만일 Listing 15-3 코드의 컴파일을 시도하면, Listing 15-4과 같은
+에러를 얻습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling cons-list v0.1.0 (file:///projects/cons-list)
 error[E0072]: recursive type `List` has infinite size
@@ -17423,16 +17425,16 @@ help: insert some indirection (e.g., a `Box`, `Rc`, or `&amp;`) to make `List` r
 For more information about this error, try `rustc --explain E0072`.
 error: could not compile `cons-list` due to previous error
 </code></pre>
-<p><span class="caption">Listing 15-4: The error we get when attempting to define
-a recursive enum</span></p>
-<p>The error shows this type “has infinite size.” The reason is that we’ve defined
-<code>List</code> with a variant that is recursive: it holds another value of itself
-directly. As a result, Rust can’t figure out how much space it needs to store a
-<code>List</code> value. Let’s break down why we get this error. First, we’ll look at how
-Rust decides how much space it needs to store a value of a non-recursive type.</p>
-<h4 id="computing-the-size-of-a-non-recursive-type"><a class="header" href="#computing-the-size-of-a-non-recursive-type">Computing the Size of a Non-Recursive Type</a></h4>
-<p>Recall the <code>Message</code> enum we defined in Listing 6-2 when we discussed enum
-definitions in Chapter 6:</p>
+<p><span class="caption">Listing 15-4: 재귀적 열거형을 정의하는 시도를 했을 때 얻게
+되는 에러</span></p>
+<p>이 에러는 이 타입이 “무한한 크기다”라고 말해줍니다. 그 원인은 재귀적인 variant를
+이용하여 <code>List</code>를 정의했기 때문입니다: 즉 이것은 자신의 또다른 값을 직접 갖습니다.
+결과적으로, 러스트는 <code>List</code> 값을 저장하는데 필요한 크기가 얼마나 되는지 알아낼 수
+없습니다. 왜 이런 에러가 생기는지 쪼개서 봅시다. 먼저, 러스트가 비재귀적인 타입의
+값을 저장하는데 필요한 용량이 얼마나 되는지 결정하는 방법을 살펴봅시다.</p>
+<h4 id="비재귀적-타입의-크기-계산하기"><a class="header" href="#비재귀적-타입의-크기-계산하기">비재귀적 타입의 크기 계산하기</a></h4>
+<p>6장에서 열거형 정의에 대해 논의할 때 Listing 6-2에서 정의했던 <code>Message</code>
+열거형을 상기해봅시다:</p>
 <pre><pre class="playground"><code class="language-rust">enum Message {
     Quit,
     Move { x: i32, y: i32 },
@@ -17441,26 +17443,26 @@ definitions in Chapter 6:</p>
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
-<p>To determine how much space to allocate for a <code>Message</code> value, Rust goes
-through each of the variants to see which variant needs the most space. Rust
-sees that <code>Message::Quit</code> doesn’t need any space, <code>Message::Move</code> needs enough
-space to store two <code>i32</code> values, and so forth. Because only one variant will be
-used, the most space a <code>Message</code> value will need is the space it would take to
-store the largest of its variants.</p>
-<p>Contrast this with what happens when Rust tries to determine how much space a
-recursive type like the <code>List</code> enum in Listing 15-2 needs. The compiler starts
-by looking at the <code>Cons</code> variant, which holds a value of type <code>i32</code> and a value
-of type <code>List</code>. Therefore, <code>Cons</code> needs an amount of space equal to the size of
-an <code>i32</code> plus the size of a <code>List</code>. To figure out how much memory the <code>List</code>
-type needs, the compiler looks at the variants, starting with the <code>Cons</code>
-variant. The <code>Cons</code> variant holds a value of type <code>i32</code> and a value of type
-<code>List</code>, and this process continues infinitely, as shown in Figure 15-1.</p>
+<p><code>Message</code> 값을 할당하기 위해 필요한 공간의 양을 결정하기 위해서, 러스트는 각
+variant들의 내부를 보면서 어떤 variant가 가장 많은 공간을 필요로 하는지를
+알아봅니다. 러스트는 <code>Message::Quit</code>가 어떠한 공간도 필요 없음을, <code>Message::Move</code>는
+두 개의 <code>i32</code> 값을 저장하기에 충분한 공간이 필요함을 알게 되고, 그런 식으로
+진행됩니다. 하나의 variant만 사용될 것이기 때문에, <code>Message</code> 값이 필요로 하는
+가장 큰 공간은 varient 중에서 가장 큰 것을 저장하는데 필요한 공간입니다.</p>
+<p>러스트가 Listing 15-2의 <code>List</code> 열거형과 같은 재귀적 타입이 필요로 하는 공간을
+결정하는 시도를 할 때는 어떤 일이 일어날지 위의 경우와 대조해보세요. 컴파일러는
+<code>Cons</code> variant를 살펴보기 시작하는데, 이는 <code>i32</code> 타입의 값과 <code>List</code> 타입의 값을
+갖습니다. 그러므로 <code>Cons</code>는 <code>i32</code>의 크기에 <code>List</code> 크기를 더한 만큼의 공간을
+필요로 합니다. <code>List</code> 타입이 얼마나 많은 메모리를 차지하는지 알아내기 위해서,
+컴파일러는 그것의 variants를 살펴보는데, 이는 <code>Cons</code> variant로 시작됩니다.
+<code>Cons</code> variant는 <code>i32</code> 타입의 값과 <code>List</code> 타입의 값을 갖고, 이 과정은 Figure
+15-1에서 보는 바와 같이 무한히 계속됩니다.</p>
 <img alt="An infinite Cons list" src="img/trpl15-01.svg" class="center" style="width: 50%;" />
-<p><span class="caption">Figure 15-1: An infinite <code>List</code> consisting of infinite
-<code>Cons</code> variants</span></p>
-<h4 id="using-boxt-to-get-a-recursive-type-with-a-known-size"><a class="header" href="#using-boxt-to-get-a-recursive-type-with-a-known-size">Using <code>Box&lt;T&gt;</code> to Get a Recursive Type with a Known Size</a></h4>
-<p>Because Rust can’t figure out how much space to allocate for recursively
-defined types, the compiler gives an error with this helpful suggestion:</p>
+<p><span class="caption">Figure 15-1: 무한한 <code>Cons</code> variant를 가지고 있는
+무한한 <code>List</code></span></p>
+<h4 id="boxt를-이용하여-알려진-크기를-가진-재귀적-타입-만들기"><a class="header" href="#boxt를-이용하여-알려진-크기를-가진-재귀적-타입-만들기"><code>Box&lt;T&gt;</code>를 이용하여 알려진 크기를 가진 재귀적 타입 만들기</a></h4>
+<p>러스트는 재귀적으로 정의된 타입을 위하여 얼마큼의 공간을 할당하는지 알아낼 수
+없으므로, 컴파일러는 에러와 함께 아래와 같은 유용한 제안을 제공합니다:</p>
 <!-- manual-regeneration
 after doing automatic regeneration, look at listings/ch15-smart-pointers/listing-15-03/output.txt and copy the relevant line
 -->
@@ -17469,19 +17471,19 @@ after doing automatic regeneration, look at listings/ch15-smart-pointers/listing
 2 |     Cons(i32, Box&lt;List&gt;),
   |               ++++    +
 </code></pre>
-<p>In this suggestion, “indirection” means that instead of storing a value
-directly, we should change the data structure to store the value indirectly by
-storing a pointer to the value instead.</p>
-<p>Because a <code>Box&lt;T&gt;</code> is a pointer, Rust always knows how much space a <code>Box&lt;T&gt;</code>
-needs: a pointer’s size doesn’t change based on the amount of data it’s
-pointing to. This means we can put a <code>Box&lt;T&gt;</code> inside the <code>Cons</code> variant instead
-of another <code>List</code> value directly. The <code>Box&lt;T&gt;</code> will point to the next <code>List</code>
-value that will be on the heap rather than inside the <code>Cons</code> variant.
-Conceptually, we still have a list, created with lists holding other lists, but
-this implementation is now more like placing the items next to one another
-rather than inside one another.</p>
-<p>We can change the definition of the <code>List</code> enum in Listing 15-2 and the usage
-of the <code>List</code> in Listing 15-3 to the code in Listing 15-5, which will compile:</p>
+<p>이 제안에서 “간접 (indirection)”이란, 값을 직접 저장하는 대신
+데이터 구조를 바꿔 값을 가리키는 포인터를 저장하는 식으로 값을
+간접적으로 저장해야 함을 의미합니다.</p>
+<p><code>Box&lt;T&gt;</code>가 포인터이기 때문에, 러스트는 언제나 <code>Box&lt;T&gt;</code>가 필요로 하는 공간이
+얼마인지 알고 있습니다: 포인터의 크기는 그것이 가리키고 있는 데이터의 양에
+따라 변경되지 않습니다. 이는 <code>Cons</code> variant 내에 또 다른 <code>List</code> 값을
+직접 넣는 대신 <code>Box&lt;T&gt;</code>를 넣을 수 있음을 의미합니다. <code>Box&lt;T&gt;</code>는 <code>Cons</code>
+variant 안이 아니라 힙에 있을 다음의 <code>List</code> 값을 가리킬 것입니다.
+개념적으로는 여전히 다른 리스트들을 담은 리스트로 만들어진 리스트지만,
+이 구현은 이제 아이템을 다른 것 안쪽에 넣는 것이 아니라 그 다음 위치에 놓는
+형태에 더 가깝습니다.</p>
+<p>Listing 15-2의 <code>List</code> 열거형의 정의와 Listing 15-3의 <code>List</code> 사용법을
+Listing 15-5의 코드로 바꿀 수 있고, 이것은 컴파일될 것입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">enum List {
     Cons(i32, Box&lt;List&gt;),
@@ -17493,57 +17495,57 @@ use crate::List::{Cons, Nil};
 fn main() {
     let list = Cons(1, Box::new(Cons(2, Box::new(Cons(3, Box::new(Nil))))));
 }</code></pre></pre>
-<p><span class="caption">Listing 15-5: Definition of <code>List</code> that uses <code>Box&lt;T&gt;</code> in
-order to have a known size</span></p>
-<p>The <code>Cons</code> variant needs the size of an <code>i32</code> plus the space to store the
-box’s pointer data. The <code>Nil</code> variant stores no values, so it needs less space
-than the <code>Cons</code> variant. We now know that any <code>List</code> value will take up the
-size of an <code>i32</code> plus the size of a box’s pointer data. By using a box, we’ve
-broken the infinite, recursive chain, so the compiler can figure out the size
-it needs to store a <code>List</code> value. Figure 15-2 shows what the <code>Cons</code> variant
-looks like now.</p>
+<p><span class="caption">Listing 15-5: 알려진 크기를 갖도록 하기 위해
+<code>Box&lt;T&gt;</code>를 이용한 <code>List</code> 정의</span></p>
+<p><code>Cons</code> variant에는 <code>i32</code>와 박스의 포인터 데이터를 저장할 공간을 더한 크기만큼이
+필요합니다. <code>Nil</code> variant는 아무런 값도 저장하지 않으므로, <code>Cons</code> variant에 비해
+공간을 덜 필요로 합니다. 이제는 어떠한 <code>List</code> 값이라도 <code>i32</code>의 크기와 박스의 포인터
+데이터 크기를 더한 값만큼만 차지한다는 것을 알게 되었습니다. 박스를 이용하는 것으로
+무한한 재귀적 연결을 깨뜨렸고, 따라서 컴파일러는 <code>List</code> 값을 저장하는데 필요한
+크기를 알아낼 수 있습니다. Figure 15-2는 <code>Cons</code> variant가 이제 어떻게 생겼는지를
+보여주고 있습니다:</p>
 <img alt="A finite Cons list" src="img/trpl15-02.svg" class="center" />
-<p><span class="caption">Figure 15-2: A <code>List</code> that is not infinitely sized
-because <code>Cons</code> holds a <code>Box</code></span></p>
-<p>Boxes provide only the indirection and heap allocation; they don’t have any
-other special capabilities, like those we’ll see with the other smart pointer
-types. They also don’t have the performance overhead that these special
-capabilities incur, so they can be useful in cases like the cons list where the
-indirection is the only feature we need. We’ll look at more use cases for boxes
-in Chapter 17, too.</p>
-<p>The <code>Box&lt;T&gt;</code> type is a smart pointer because it implements the <code>Deref</code> trait,
-which allows <code>Box&lt;T&gt;</code> values to be treated like references. When a <code>Box&lt;T&gt;</code>
-value goes out of scope, the heap data that the box is pointing to is cleaned
-up as well because of the <code>Drop</code> trait implementation. These two traits will be
-even more important to the functionality provided by the other smart pointer
-types we’ll discuss in the rest of this chapter. Let’s explore these two traits
-in more detail.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="treating-smart-pointers-like-regular-references-with-the-deref-trait"><a class="header" href="#treating-smart-pointers-like-regular-references-with-the-deref-trait">Treating Smart Pointers Like Regular References with the <code>Deref</code> Trait</a></h2>
-<p>Implementing the <code>Deref</code> trait allows you to customize the behavior of the
-<em>dereference operator</em> <code>*</code> (not to be confused with the multiplication or glob
-operator). By implementing <code>Deref</code> in such a way that a smart pointer can be
-treated like a regular reference, you can write code that operates on
-references and use that code with smart pointers too.</p>
-<p>Let’s first look at how the dereference operator works with regular references.
-Then we’ll try to define a custom type that behaves like <code>Box&lt;T&gt;</code>, and see why
-the dereference operator doesn’t work like a reference on our newly defined
-type. We’ll explore how implementing the <code>Deref</code> trait makes it possible for
-smart pointers to work in ways similar to references. Then we’ll look at
-Rust’s <em>deref coercion</em> feature and how it lets us work with either references
-or smart pointers.</p>
+<p><span class="caption">Figure 15-2: <code>Cons</code>가 <code>Box</code>를 들고 있기 때문에
+무한한 크기가 아니게 된 <code>List</code></span></p>
+<p>박스는 그저 간접 및 힙 할당만을 제공할 뿐입니다; 이들은 다른 어떤 특별한
+능력들, 다른 스마트 포인터 타입들에서 보게 될 능력 같은 것들은 없습니다.
+또한 이들은 이러한 특별한 능력들이 초래하는 성능적인 오버헤드도 가지고
+있지 않으므로, 필요한 기능이 간접 하나인 cons list와 같은 경우에는
+유용할 수 있습니다. 17장에서 박스에 대한 더 많은 사용례도 살펴볼
+예정입니다.</p>
+<p><code>Box&lt;T&gt;</code> 타입은 <code>Deref</code> 트레잇을 구현하고 있기 때문에 스마트 포인터이며,
+이는 <code>Box&lt;T&gt;</code> 값이 참조자와 같이 취급되도록 허용해줍니다. <code>Box&lt;T&gt;</code> 값이
+스코프 밖으로 벗어날 때, 박스가 가리키고 있는 힙 데이터도 마찬가지로
+정리되는데 이는 <code>Drop</code> 트레잇의 구현 때문에 그렇습니다. 이 두 트레잇이
+이 장의 나머지에서 다루고자 하는 다른 스마트 포인터 타입에 의해 제공되는
+기능들보다도 심지어 더 중요할 것입니다. 이 두 트레잇에 대하여 더 자세히
+탐구해 봅시다.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="deref-트레잇으로-스마트-포인터를-평범한-참조자처럼-취급하기"><a class="header" href="#deref-트레잇으로-스마트-포인터를-평범한-참조자처럼-취급하기"><code>Deref</code> 트레잇으로 스마트 포인터를 평범한 참조자처럼 취급하기</a></h2>
+<p>Deref 트레잇을 구현하는 것은 <em>역참조 연산자 (dereference operator)</em> <code>*</code>
+동작의 커스터마이징을 가능하게 해줍니다 (곱하기 혹은 글롭 연산자와 헷깔리지
+마세요). 스마트 포인터가 보통의 참조자처럼 취급될 수 있도록 Deref를
+구현함으로써, 참조자에 작동하도록 작성된 코드가 스마트 포인터에도 사용되게
+할 수 있습니다.</p>
+<p>먼저 역참조 연산자가 보통의 참조자에 대해 동작하는 방식을 살펴보고,
+그런 다음 <code>Box&lt;T&gt;</code>처럼 동작하는 커스텀 타입의 정의를 시도해 보면서,
+역참조 연산자는 왜 우리가 새로 정의한 타입에서는 참조자처럼 동작하지 않는지
+보겠습니다. <code>Defer</code> 트레잇을 구현하는 것이 어떻게 스마트 포인터가
+참조자와 유사한 방식으로 동작하는 것을 가능하게 해 주는지를 탐구해볼 것입니다.
+그리고나서 러스트의 <em>역참조 강제 (deref corecion)</em> 기능과 이 기능이 어떻게
+참조자 혹은 스마트 포인터와 함께 동작하도록 하는지 살펴보겠습니다.</p>
 <blockquote>
-<p>Note: there’s one big difference between the <code>MyBox&lt;T&gt;</code> type we’re about to
-build and the real <code>Box&lt;T&gt;</code>: our version will not store its data on the heap.
-We are focusing this example on <code>Deref</code>, so where the data is actually stored
-is less important than the pointer-like behavior.</p>
+<p>Note: 이제부터 만들려고 하는 <code>MyBox&lt;T&gt;</code> 타입과 실제 <code>Box&lt;T&gt;</code> 간에는
+한가지 큰 차이점이 있습니다: 우리 버전은 데이터를 힙에 저장하지 않습니다.
+이 예제는 <code>Deref</code>에 초점을 맞추고 있으므로, 데이터가 어디에 저장되는가 하는
+것은 포인터 같은 동작에 비해 덜 중요합니다.</p>
 </blockquote>
 <!-- Old link, do not remove -->
 <p><a id="following-the-pointer-to-the-value-with-the-dereference-operator"></a></p>
-<h3 id="following-the-pointer-to-the-value"><a class="header" href="#following-the-pointer-to-the-value">Following the Pointer to the Value</a></h3>
-<p>A regular reference is a type of pointer, and one way to think of a pointer is
-as an arrow to a value stored somewhere else. In Listing 15-6, we create a
-reference to an <code>i32</code> value and then use the dereference operator to follow the
-reference to the value:</p>
+<h3 id="포인터를-따라가서-값을-얻기"><a class="header" href="#포인터를-따라가서-값을-얻기">포인터를 따라가서 값을 얻기</a></h3>
+<p>보통의 참조자는 포인터의 한 종류이고, 포인터에 대해 생각하는 방법 하나는
+어딘가에 저장된 값을 가리키는 화살표처럼 생각하는 것입니다. Listing 15-6에서는
+<code>i32</code> 값의 참조자를 생성하고는 역참조 연산자를 사용하여 참조자를 따라가서 값을
+얻어냅니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 5;
@@ -17552,16 +17554,16 @@ reference to the value:</p>
     assert_eq!(5, x);
     assert_eq!(5, *y);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-6: Using the dereference operator to follow a
-reference to an <code>i32</code> value</span></p>
-<p>The variable <code>x</code> holds an <code>i32</code> value <code>5</code>. We set <code>y</code> equal to a reference to
-<code>x</code>. We can assert that <code>x</code> is equal to <code>5</code>. However, if we want to make an
-assertion about the value in <code>y</code>, we have to use <code>*y</code> to follow the reference
-to the value it’s pointing to (hence <em>dereference</em>) so the compiler can compare
-the actual value. Once we dereference <code>y</code>, we have access to the integer value
-<code>y</code> is pointing to that we can compare with <code>5</code>.</p>
-<p>If we tried to write <code>assert_eq!(5, y);</code> instead, we would get this compilation
-error:</p>
+<p><span class="caption">Listing 15-6: 역참조 연산자를 사용하여 <code>i32</code> 값에 대한 참조자
+따라가기</span></p>
+<p>변수 <code>x</code>는 <code>i32</code> 값 <code>5</code>를 가지고 있습니다. <code>y</code>에는 <code>x</code>의 참조자를 설정했습니다.
+<code>x</code>는 <code>5</code>와 같음을 단언할 수 있습니다. 하지만 만일 <code>y</code> 안의 값에 대하여
+단언하고 싶다면, <code>*y</code>를 사용하여 참조자를 따라가서 이 참조자가 가리키고 있는 값을
+얻어 내어 (그래서 <em>역참조</em>라고 합니다) 컴파일러가 실제 값을 비교할 수 있도록
+해야 합니다. 일단 <code>y</code>를 역참조하면, <code>5</code>와 비교 가능한 <code>y</code>가 가리키고 있는 정수값에
+접근하게 됩니다.</p>
+<p>대신 <code>assert_eq!(5, y);</code>이라고 작성을 시도했다면, 다음과 같은 컴파일 에러를
+얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling deref-example v0.1.0 (file:///projects/deref-example)
 error[E0277]: can't compare `{integer}` with `&amp;{integer}`
@@ -17586,14 +17588,14 @@ error[E0277]: can't compare `{integer}` with `&amp;{integer}`
 For more information about this error, try `rustc --explain E0277`.
 error: could not compile `deref-example` due to previous error
 </code></pre>
-<p>Comparing a number and a reference to a number isn’t allowed because they’re
-different types. We must use the dereference operator to follow the reference
-to the value it’s pointing to.</p>
-<h3 id="using-boxt-like-a-reference"><a class="header" href="#using-boxt-like-a-reference">Using <code>Box&lt;T&gt;</code> Like a Reference</a></h3>
-<p>We can rewrite the code in Listing 15-6 to use a <code>Box&lt;T&gt;</code> instead of a
-reference; the dereference operator used on the <code>Box&lt;T&gt;</code> in Listing 15-7
-functions in the same way as the dereference operator used on the reference in
-Listing 15-6:</p>
+<p>숫자와 숫자에 대한 참조자를 비교하는 것은 이 둘이 서로 다른 타입이므로
+허용되지 않습니다. <code>*</code>를 사용하여 해당 잠조자를 따라가서 그것이 가리키고
+있는 값을 얻어내야 합니다.</p>
+<h3 id="boxt를-참조자처럼-사용하기"><a class="header" href="#boxt를-참조자처럼-사용하기"><code>Box&lt;T&gt;</code>를 참조자처럼 사용하기</a></h3>
+<p>Listing 15-6의 코드는 참조자 대신 <code>Box&lt;T&gt;</code>를 사용하여 다시 작성할
+수 있습니다; Listing 15-7의 <code>Box&lt;T&gt;</code>에 사용된 역참조 연산자는
+Listing 15-6의 참조자에 사용된 역참조 연산자와 동일한 방식으로
+기능합니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 5;
@@ -17602,23 +17604,23 @@ Listing 15-6:</p>
     assert_eq!(5, x);
     assert_eq!(5, *y);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-7: Using the dereference operator on a
-<code>Box&lt;i32&gt;</code></span></p>
-<p>The main difference between Listing 15-7 and Listing 15-6 is that here we set
-<code>y</code> to be an instance of a <code>Box&lt;T&gt;</code> pointing to a copied value of <code>x</code> rather
-than a reference pointing to the value of <code>x</code>. In the last assertion, we can
-use the dereference operator to follow the pointer of the <code>Box&lt;T&gt;</code> in the same
-way that we did when <code>y</code> was a reference. Next, we’ll explore what is special
-about <code>Box&lt;T&gt;</code> that enables us to use the dereference operator by defining our
-own type.</p>
-<h3 id="defining-our-own-smart-pointer"><a class="header" href="#defining-our-own-smart-pointer">Defining Our Own Smart Pointer</a></h3>
-<p>Let’s build a smart pointer similar to the <code>Box&lt;T&gt;</code> type provided by the
-standard library to experience how smart pointers behave differently from
-references by default. Then we’ll look at how to add the ability to use the
-dereference operator.</p>
-<p>The <code>Box&lt;T&gt;</code> type is ultimately defined as a tuple struct with one element, so
-Listing 15-8 defines a <code>MyBox&lt;T&gt;</code> type in the same way. We’ll also define a
-<code>new</code> function to match the <code>new</code> function defined on <code>Box&lt;T&gt;</code>.</p>
+<p><span class="caption">Listing 15-7: <code>Box&lt;i32&gt;</code>에 역참조 연산자
+사용하기</span></p>
+<p>여기서 Listing 15-7와 Listing 15-6 간의 주요 차이점은 <code>y</code>에 <code>x</code>의
+값을 가리키는 참조자가 아닌 <code>x</code>의 복제된 값을 가리키는 <code>Box&lt;T&gt;</code>의
+인스턴스를 설정했다는 것입니다. 마지막 단언문에서 <code>y</code>가 참조자일 때
+했던 것과 동일한 방식으로 박스 포인터 앞에 역참조 연산자를 사용할 수
+있습니다. 다음으로, 우리만의 박스 타입을 정의함으로써 <code>Box&lt;T&gt;</code>가
+우리에게 역참조 연산자의 사용을 가능하게끔 해주는 특별함이 무엇인지
+탐구해 보겠습니다.</p>
+<h3 id="우리만의-스마트-포인터-정의하기"><a class="header" href="#우리만의-스마트-포인터-정의하기">우리만의 스마트 포인터 정의하기</a></h3>
+<p>표준 라이브러리가 제공하는 <code>Box&lt;T&gt;</code>와 유사한 스마트 포인터를 만들어
+보면서 스마트 포인터는 어떻게 기본적으로 참조자와는 다르게 동작하는지
+경험해 봅시다. 그 다음 역참조 연산자의 사용 기능을 추가하는 방법을
+살펴보겠습니다.</p>
+<p><code>Box&lt;T&gt;</code> 타입은 궁극적으로 하나의 요소를 가진 튜플 구조체로 정의되므로,
+Listing 15-8에서 <code>MyBox&lt;T&gt;</code> 타입을 동일한 방식으로 정의했습니다. 또한
+<code>Box&lt;T&gt;</code>에 정의된 <code>new</code> 함수와 짝을 이루는 <code>new</code> 함수도 정의하겠습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct MyBox&lt;T&gt;(T);
 
@@ -17629,15 +17631,15 @@ impl&lt;T&gt; MyBox&lt;T&gt; {
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
-<p><span class="caption">Listing 15-8: Defining a <code>MyBox&lt;T&gt;</code> type</span></p>
-<p>We define a struct named <code>MyBox</code> and declare a generic parameter <code>T</code>, because
-we want our type to hold values of any type. The <code>MyBox</code> type is a tuple struct
-with one element of type <code>T</code>. The <code>MyBox::new</code> function takes one parameter of
-type <code>T</code> and returns a <code>MyBox</code> instance that holds the value passed in.</p>
-<p>Let’s try adding the <code>main</code> function in Listing 15-7 to Listing 15-8 and
-changing it to use the <code>MyBox&lt;T&gt;</code> type we’ve defined instead of <code>Box&lt;T&gt;</code>. The
-code in Listing 15-9 won’t compile because Rust doesn’t know how to dereference
-<code>MyBox</code>.</p>
+<p><span class="caption">Listing 15-8: <code>MyBox&lt;T&gt;</code> 타입 정의하기</span></p>
+<p><code>MyBox</code>라는 이름의 구조체를 정의하고 제네릭 매개변수 <code>T</code>를 선언했는데, 이는
+어떤 타입의 값이든 가질 수 있도록 하고 싶기 때문입니다. <code>MyBox</code> 타입은 <code>T</code>
+타입의 요소 하나를 가진 튜플 구조체입니다. <code>MyBox::new</code> 함수는 <code>T</code> 타입의
+매개변수 하나를 받아서 그 값을 들고 있는 <code>MyBox</code> 인스턴스를 반환합니다.</p>
+<p>Listing 15-7의 <code>main</code> 함수를 Listing 15-8에 추가하고 <code>Box&lt;T&gt;</code> 대신
+우리가 정의한 <code>MyBox&lt;T&gt;</code> 타입을 사용하도록 고쳐봅시다. 러스트는 <code>MyBox</code>를
+역참조하는 방법을 모르기 때문에 Listing 15-9의 코드는 컴파일되지
+않을 것입니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">struct MyBox&lt;T&gt;(T);
 </span><span class="boring">
@@ -17654,9 +17656,9 @@ code in Listing 15-9 won’t compile because Rust doesn’t know how to derefere
     assert_eq!(5, x);
     assert_eq!(5, *y);
 }</code></pre>
-<p><span class="caption">Listing 15-9: Attempting to use <code>MyBox&lt;T&gt;</code> in the same
-way we used references and <code>Box&lt;T&gt;</code></span></p>
-<p>Here’s the resulting compilation error:</p>
+<p><span class="caption">Listing 15-9: 참조자와 <code>Box&lt;T&gt;</code>에 사용되었던 방식
+그대로 <code>MyBox&lt;T&gt;</code> 사용 시도하기</span></p>
+<p>아래는 그 결과 발생된 컴파일 에러입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling deref-example v0.1.0 (file:///projects/deref-example)
 error[E0614]: type `MyBox&lt;{integer}&gt;` cannot be dereferenced
@@ -17668,16 +17670,16 @@ error[E0614]: type `MyBox&lt;{integer}&gt;` cannot be dereferenced
 For more information about this error, try `rustc --explain E0614`.
 error: could not compile `deref-example` due to previous error
 </code></pre>
-<p>Our <code>MyBox&lt;T&gt;</code> type can’t be dereferenced because we haven’t implemented that
-ability on our type. To enable dereferencing with the <code>*</code> operator, we
-implement the <code>Deref</code> trait.</p>
-<h3 id="treating-a-type-like-a-reference-by-implementing-the-deref-trait"><a class="header" href="#treating-a-type-like-a-reference-by-implementing-the-deref-trait">Treating a Type Like a Reference by Implementing the <code>Deref</code> Trait</a></h3>
-<p>As discussed in the <a href="ch10-02-traits.html#implementing-a-trait-on-a-type">“Implementing a Trait on a Type”</a><!-- ignore
---> section of Chapter 10, to implement a trait, we need to provide
-implementations for the trait’s required methods. The <code>Deref</code> trait, provided
-by the standard library, requires us to implement one method named <code>deref</code> that
-borrows <code>self</code> and returns a reference to the inner data. Listing 15-10
-contains an implementation of <code>Deref</code> to add to the definition of <code>MyBox</code>:</p>
+<p><code>MyBox&lt;T&gt;</code> 타입은 역참조될 수 없는데 그 이유는 이 타입에 그런 기능을
+구현한 적이 없기 때문입니다. <code>*</code> 연산자로 역참조를 할 수 있게 하려면
+<code>Deref</code> 트레잇을 구현해야 합니다.</p>
+<h3 id="deref-트레잇을-구현하여-임의의-타입을-참조자처럼-다루기"><a class="header" href="#deref-트레잇을-구현하여-임의의-타입을-참조자처럼-다루기"><code>Deref</code> 트레잇을 구현하여 임의의 타입을 참조자처럼 다루기</a></h3>
+<p>10장의 <a href="ch10-02-traits.html#implementing-a-trait-on-a-type">“특정 타입에 트레잇 구현하기”</a><!-- ignore -->절에서
+논의한 바와 같이, 어떤 트레잇을 구현하기 위해서는 그 트레잇이 요구하는 메소드에
+대한 구현체를 제공할 필요가 있습니다. 표준 라이브러리가 제공하는 <code>Deref</code> 트레잇은
+<code>deref</code>라는 이름의 메소드 하나를 구현하도록 요구하는데, 이 함수는 <code>self</code>를
+빌려와서 내부 데이터의 참조자를 반환합니다. Listing 15-10은 <code>MyBox</code>의 정의에
+덧붙여 <code>Deref</code>의 구현체를 담고 있습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">use std::ops::Deref;
 
@@ -17704,69 +17706,69 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 </span><span class="boring">    assert_eq!(5, x);
 </span><span class="boring">    assert_eq!(5, *y);
 </span><span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 15-10: Implementing <code>Deref</code> on <code>MyBox&lt;T&gt;</code></span></p>
-<p>The <code>type Target = T;</code> syntax defines an associated type for the <code>Deref</code>
-trait to use. Associated types are a slightly different way of declaring a
-generic parameter, but you don’t need to worry about them for now; we’ll cover
-them in more detail in Chapter 19.</p>
-<p>We fill in the body of the <code>deref</code> method with <code>&amp;self.0</code> so <code>deref</code> returns a
-reference to the value we want to access with the <code>*</code> operator; recall from the
-<a href="ch05-01-defining-structs.html#using-tuple-structs-without-named-fields-to-create-different-types">“Using Tuple Structs without Named Fields to Create Different
-Types”</a><!-- ignore --> section of Chapter 5 that <code>.0</code> accesses
-the first value in a tuple struct. The <code>main</code> function in Listing 15-9 that
-calls <code>*</code> on the <code>MyBox&lt;T&gt;</code> value now compiles, and the assertions pass!</p>
-<p>Without the <code>Deref</code> trait, the compiler can only dereference <code>&amp;</code> references.
-The <code>deref</code> method gives the compiler the ability to take a value of any type
-that implements <code>Deref</code> and call the <code>deref</code> method to get a <code>&amp;</code> reference that
-it knows how to dereference.</p>
-<p>When we entered <code>*y</code> in Listing 15-9, behind the scenes Rust actually ran this
-code:</p>
+<p><span class="caption">Listing 15-10: <code>MyBox&lt;T&gt;</code>에 대한 <code>Deref</code> 구현하기</span></p>
+<p><code>type Target = T;</code> 문법은 <code>Deref</code> 트레잇이 사용할 연관 타입 (associated type)
+을 정의합니다. 연관 타입은 제네릭 매개변수를 선언하는 약간 다른 방식이지만,
+지금은 여기에 신경쓰지 않아도 됩니다; 이에 대해서는 19장에서 더 자세히
+다룰 예정입니다.</p>
+<p><code>deref</code> 메소드의 본문은 <code>&amp;self.0</code>로 채워졌으므로 <code>deref</code>는
+<code>*</code> 연산자를 이용하여 접근하려는 값의 참조자를 반환합니다; 5장의
+<a href="ch05-01-defining-structs.html#using-tuple-structs-without-named-fields-to-create-different-types">“필드명이 없는, 타입 구분용 튜플 구조체”</a><!-- ignore -->절에서
+다룬 것처럼 <code>.0</code>이 튜플 구조체의 첫번째 값에 접근한다는 것을
+상기하세요. Listing 15-9에서 <code>MyBox&lt;T&gt;</code> 값에 대해 <code>*</code>을 호출하는
+<code>main</code> 함수는 이제 컴파일되고 단언문은 통과됩니다!</p>
+<p><code>Deref</code> 트레잇이 없으면 컴파일러는 오직 <code>&amp;</code> 참조자들만 역참조 할 수 있습니다.
+<code>deref</code> 메소드는 컴파일러가 <code>Deref</code>를 구현한 어떤 타입의 값에 대해
+<code>deref</code> 메소드를 호출하여, 자신이 역참조하는 방법을 알고 있는 <code>&amp;</code> 참조자를
+가져올 수 있는 기능을 제공합니다.</p>
+<p>Listing 15-9의 <code>*y</code>에 들어서면 러스트 뒷편에서는 실제로 아래와 같은 코드가
+동작합니다:</p>
 <pre><code class="language-rust ignore">*(y.deref())</code></pre>
-<p>Rust substitutes the <code>*</code> operator with a call to the <code>deref</code> method and then a
-plain dereference so we don’t have to think about whether or not we need to
-call the <code>deref</code> method. This Rust feature lets us write code that functions
-identically whether we have a regular reference or a type that implements
-<code>Deref</code>.</p>
-<p>The reason the <code>deref</code> method returns a reference to a value, and that the
-plain dereference outside the parentheses in <code>*(y.deref())</code> is still necessary,
-is to do with the ownership system. If the <code>deref</code> method returned the value
-directly instead of a reference to the value, the value would be moved out of
-<code>self</code>. We don’t want to take ownership of the inner value inside <code>MyBox&lt;T&gt;</code> in
-this case or in most cases where we use the dereference operator.</p>
-<p>Note that the <code>*</code> operator is replaced with a call to the <code>deref</code> method and
-then a call to the <code>*</code> operator just once, each time we use a <code>*</code> in our code.
-Because the substitution of the <code>*</code> operator does not recurse infinitely, we
-end up with data of type <code>i32</code>, which matches the <code>5</code> in <code>assert_eq!</code> in
-Listing 15-9.</p>
-<h3 id="implicit-deref-coercions-with-functions-and-methods"><a class="header" href="#implicit-deref-coercions-with-functions-and-methods">Implicit Deref Coercions with Functions and Methods</a></h3>
-<p><em>Deref coercion</em> converts a reference to a type that implements the <code>Deref</code>
-trait into a reference to another type. For example, deref coercion can convert
-<code>&amp;String</code> to <code>&amp;str</code> because <code>String</code> implements the <code>Deref</code> trait such that it
-returns <code>&amp;str</code>. Deref coercion is a convenience Rust performs on arguments to
-functions and methods, and works only on types that implement the <code>Deref</code>
-trait. It happens automatically when we pass a reference to a particular type’s
-value as an argument to a function or method that doesn’t match the parameter
-type in the function or method definition. A sequence of calls to the <code>deref</code>
-method converts the type we provided into the type the parameter needs.</p>
-<p>Deref coercion was added to Rust so that programmers writing function and
-method calls don’t need to add as many explicit references and dereferences
-with <code>&amp;</code> and <code>*</code>. The deref coercion feature also lets us write more code that
-can work for either references or smart pointers.</p>
-<p>To see deref coercion in action, let’s use the <code>MyBox&lt;T&gt;</code> type we defined in
-Listing 15-8 as well as the implementation of <code>Deref</code> that we added in Listing
-15-10. Listing 15-11 shows the definition of a function that has a string slice
-parameter:</p>
+<p>러스트는 <code>*</code> 연산자에 <code>deref</code> 메소드 호출과 보통의 역참조를 대입하므로
+<code>deref</code> 메소드를 호출할 필요가 있는지 혹은 없는지에 대해서는 생각하지
+않아도 됩니다. 이 러스트의 기능은 일반적인 참조자의 경우든 혹은
+<code>Deref</code>를 구현한 타입의 경우든 간에 동일하게 기능하는 코드를 작성하도록
+해 줍니다.</p>
+<p><code>deref</code> 메소드가 값의 참조자를 반환하고, <code>*(y.deref())</code>에서의 괄호
+바깥의 일반 역참조가 여전히 필요한 이유는 소유권 시스템과 함께
+작동시키기 위함입니다. 만일 <code>deref</code> 메소드가 값의 참조자 대신 값을
+직접 반환했다면, 그 값은 <code>self</code> 바깥으로 이동될 것입니다. 위의 경우
+혹은 역참조 연산자를 사용하는 대부분의 경우에서는 <code>MyBox&lt;T&gt;</code> 내부의
+값에 대한 소유권을 얻으려는 것이 아닙니다.</p>
+<p>코드에 <code>*</code>를 쓸 때마다 이 <code>*</code> 연산자가 <code>deref</code> 함수의 호출 후
+<code>*</code>를 한번만 호출하는 것으로 대치된다는 점을 주의하세요.
+<code>*</code> 연산자의 대입이 무한히 재귀적으로 실행되지 않기 때문에,
+결국 <code>i32</code> 타입의 데이터를 얻게 되는데, 이는 Listing 15-9의
+<code>assert_eq!</code> 내의 <code>5</code>와 일치합니다.</p>
+<h3 id="함수와-메소드를-이용한-암묵적-역참조-강제"><a class="header" href="#함수와-메소드를-이용한-암묵적-역참조-강제">함수와 메소드를 이용한 암묵적 역참조 강제</a></h3>
+<p><em>역참조 강제(deref coercion)</em> 는 <code>Deref</code>를 구현한 어떤 타입의 참조자를
+다른 타입의 참조자로 바꿔줍니다. 예를 들어, 역참조 강제는 <code>&amp;String</code>을 <code>&amp;str</code>로
+바꿔줄 수 있는데, 이는 <code>String</code>의 <code>Deref</code> 트레잇 구현이 그렇게 <code>&amp;str</code>을
+반환하도록 했기 때문입니다. 역참조 강제는 러스트가 함수와 메소드의 인자에
+대해 수행해주는 편의성 기능이고, <code>Deref</code> 트레잇을 구현한 타입에 대해서만
+동작합니다. 이는 어떤 특정한 타입값에 대한 참조자를 함수 혹은 메소드의
+인자로 넘기는데 이 함수나 메소드의 정의에는 그 매개변수 타입이 맞지
+않을때 자동적으로 발생합니다. 일련의 <code>deref</code> 메소드 호출이 인자로 제공한
+타입을 매개변수로서 필요한 타입으로 변경해 줍니다.</p>
+<p>역참조 강제는 함수와 메소드 호출을 작성하는 프로그래머들이 <code>&amp;</code>와 <code>*</code>를
+사용하여 수많은 명시적인 참조 및 역참조를 추가할 필요가 없도록 하기 위해
+도입되었습니다. 또한 역참조 강제 기능은 참조자나 스마트 포인터 둘 중 어느
+경우라도 작동되는 코드를 더 많이 작성할 수 있도록 해 줍니다.</p>
+<p>역참조 강제가 실제 작동하는 것을 보기 위해서, Listing 15-8에서
+정의했던 <code>MyBox&lt;T&gt;</code>과 Listing 15-10에서 추가했던 <code>Deref</code>의 구현체를
+이용해 봅시다. Listing 15-11은 문자열 슬라이스 매개변수를 갖는 함수의
+정의를 보여줍니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
     println!(&quot;Hello, {name}!&quot;);
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
-<p><span class="caption">Listing 15-11: A <code>hello</code> function that has the parameter
-<code>name</code> of type <code>&amp;str</code></span></p>
-<p>We can call the <code>hello</code> function with a string slice as an argument, such as
-<code>hello(&quot;Rust&quot;);</code> for example. Deref coercion makes it possible to call <code>hello</code>
-with a reference to a value of type <code>MyBox&lt;String&gt;</code>, as shown in Listing 15-12:</p>
+<p><span class="caption">Listing 15-11: <code>&amp;str</code> 타입의 <code>name</code> 매개변수를 갖는
+<code>hello</code> 함수</span></p>
+<p><code>hello</code> 함수는 이를 테면 <code>hello(&quot;Rust&quot;);</code>와 같이 문자열 슬라이스를 인자로
+호출될 수 있습니다. Listing 15-12에서 보는 바와 같이, 역참조 강제는 <code>MyBox&lt;String&gt;</code>
+타입 값에 대한 참조자로 <code>hello</code>의 호출을 가능하게 만들어 줍니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::ops::Deref;
 </span><span class="boring">
@@ -17794,18 +17796,18 @@ with a reference to a value of type <code>MyBox&lt;String&gt;</code>, as shown i
     let m = MyBox::new(String::from(&quot;Rust&quot;));
     hello(&amp;m);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-12: Calling <code>hello</code> with a reference to a
-<code>MyBox&lt;String&gt;</code> value, which works because of deref coercion</span></p>
-<p>Here we’re calling the <code>hello</code> function with the argument <code>&amp;m</code>, which is a
-reference to a <code>MyBox&lt;String&gt;</code> value. Because we implemented the <code>Deref</code> trait
-on <code>MyBox&lt;T&gt;</code> in Listing 15-10, Rust can turn <code>&amp;MyBox&lt;String&gt;</code> into <code>&amp;String</code>
-by calling <code>deref</code>. The standard library provides an implementation of <code>Deref</code>
-on <code>String</code> that returns a string slice, and this is in the API documentation
-for <code>Deref</code>. Rust calls <code>deref</code> again to turn the <code>&amp;String</code> into <code>&amp;str</code>, which
-matches the <code>hello</code> function’s definition.</p>
-<p>If Rust didn’t implement deref coercion, we would have to write the code in
-Listing 15-13 instead of the code in Listing 15-12 to call <code>hello</code> with a value
-of type <code>&amp;MyBox&lt;String&gt;</code>.</p>
+<p><span class="caption">Listing 15-12: 역참조 강제에 의해 작동되는,
+<code>MyBox&lt;String&gt;</code> 값에 대한 참조자로 <code>hello</code> 호출하기</span></p>
+<p>여기서는 <code>hello</code> 함수에 <code>&amp;m</code> 인자를 넣어 호출하고 있는데, 이것이 <code>MyBox&lt;String&gt;</code>
+값에 대한 참조자입니다. Listing 15-10에서 <code>MyBox&lt;T&gt;</code>에 대한 <code>Deref</code> 트레잇을
+구현했으므로, 러스트는 <code>deref</code>를 호출하여 <code>&amp;MyBox&lt;String&gt;</code>을  <code>&amp;String</code>로
+바꿀 수 있습니다. 표준 라이브러리에 구현되어 있는 <code>String</code>의 <code>Deref</code>가
+문자열 슬라이스를 반환하고, 이는 <code>Deref</code>에 대한 API 문서에도 있습니다.
+러스트는 다시 한번 <code>deref</code>를 호출하여 <code>&amp;String</code>을 <code>&amp;str</code>로 바꾸는데,
+이것이 <code>hello</code> 함수의 정의와 일치하게 됩니다.</p>
+<p>만일 러스트에 역참조 강제가 구현되어 있지 않았다면, <code>&amp;MyBox&lt;String&gt;</code>
+타입의 값으로 <code>hello</code>를 호출하기 위해서는 Listing 15-12의 코드 대신
+Listing 15-13의 코드를 작성했어야 할 것입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::ops::Deref;
 </span><span class="boring">
@@ -17833,68 +17835,68 @@ of type <code>&amp;MyBox&lt;String&gt;</code>.</p>
     let m = MyBox::new(String::from(&quot;Rust&quot;));
     hello(&amp;(*m)[..]);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-13: The code we would have to write if Rust
-didn’t have deref coercion</span></p>
-<p>The <code>(*m)</code> dereferences the <code>MyBox&lt;String&gt;</code> into a <code>String</code>. Then the <code>&amp;</code> and
-<code>[..]</code> take a string slice of the <code>String</code> that is equal to the whole string to
-match the signature of <code>hello</code>. This code without deref coercions is harder to
-read, write, and understand with all of these symbols involved. Deref coercion
-allows Rust to handle these conversions for us automatically.</p>
-<p>When the <code>Deref</code> trait is defined for the types involved, Rust will analyze the
-types and use <code>Deref::deref</code> as many times as necessary to get a reference to
-match the parameter’s type. The number of times that <code>Deref::deref</code> needs to be
-inserted is resolved at compile time, so there is no runtime penalty for taking
-advantage of deref coercion!</p>
-<h3 id="how-deref-coercion-interacts-with-mutability"><a class="header" href="#how-deref-coercion-interacts-with-mutability">How Deref Coercion Interacts with Mutability</a></h3>
-<p>Similar to how you use the <code>Deref</code> trait to override the <code>*</code> operator on
-immutable references, you can use the <code>DerefMut</code> trait to override the <code>*</code>
-operator on mutable references.</p>
-<p>Rust does deref coercion when it finds types and trait implementations in three
-cases:</p>
+<p><span class="caption">Listing 15-13: 러스트에 역참조 강제가 없었을 경우
+작성했어야 할 코드</span></p>
+<p><code>(*m)</code>은 <code>MyBox&lt;String&gt;</code>을 <code>String</code>로 역참조해 줍니다. 그런 다음 <code>&amp;</code>과
+<code>[..]</code>가 전체 문자열과 동일한 <code>String</code>의 문자열 슬라이스를 얻어와서 <code>hello</code>
+시그니처와 일치되도록 합니다. 역참조 강제가 없는 코드는 이 모든 기호들이 수반된
+상태가 되어 읽기도, 쓰기도, 이해하기도 더 힘들어집니다. 역참조 강제는 러스트가
+프로그래머 대신 이러한 변환을 자동적으로 다룰 수 있도록 해 줍니다.</p>
+<p>인자로 넣어진 타입에 대해 <code>Deref</code> 트레잇이 정의되어 있다면, 러스트는 해당
+타입을 분석하고 <code>Deref::deref</code>를 필요한 만큼 사용하여 매개변수 타입과
+일치하는 참조자를 얻을 것입니다. <code>Deref::deref</code>가 추가되어야 하는 횟수는
+컴파일 타임에 분석되므로, 역참조 강제의 이점을 얻는 데에 관해서 어떠한
+런타임 페널티도 없습니다!</p>
+<h3 id="역참조-강제가-가변성과-상호작용-하는-법"><a class="header" href="#역참조-강제가-가변성과-상호작용-하는-법">역참조 강제가 가변성과 상호작용 하는 법</a></h3>
+<p><code>Deref</code> 트레잇을 사용하여 불변 참조자에 대한 <code>*</code>를 오버라이딩하는 방법과
+비슷한 방식으로, <code>DerefMut</code> 트레잇을 사용하여 가변 참조자에 대한 <code>*</code> 연산자를
+오버라이딩할 수 있습니다.</p>
+<p>러스트는 다음의 세 가지 경우에 해당하는 타입과 트레잇 구현을 찾았을 때
+역참조 강제를 수행합니다: </p>
 <ul>
-<li>From <code>&amp;T</code> to <code>&amp;U</code> when <code>T: Deref&lt;Target=U&gt;</code></li>
-<li>From <code>&amp;mut T</code> to <code>&amp;mut U</code> when <code>T: DerefMut&lt;Target=U&gt;</code></li>
-<li>From <code>&amp;mut T</code> to <code>&amp;U</code> when <code>T: Deref&lt;Target=U&gt;</code></li>
+<li><code>T: Deref&lt;Target=U&gt;</code>일때 <code>&amp;T</code>에서 <code>&amp;U</code>로</li>
+<li><code>T: DerefMut&lt;Target=U&gt;</code>일때 <code>&amp;mut T</code>에서 <code>&amp;mut U</code>로</li>
+<li><code>T: Deref&lt;Target=U&gt;</code>일때 <code>&amp;mut T</code>에서 <code>&amp;U</code>로</li>
 </ul>
-<p>The first two cases are the same as each other except that the second
-implements mutability. The first case states that if you have a <code>&amp;T</code>, and <code>T</code>
-implements <code>Deref</code> to some type <code>U</code>, you can get a <code>&amp;U</code> transparently. The
-second case states that the same deref coercion happens for mutable references.</p>
-<p>The third case is trickier: Rust will also coerce a mutable reference to an
-immutable one. But the reverse is <em>not</em> possible: immutable references will
-never coerce to mutable references. Because of the borrowing rules, if you have
-a mutable reference, that mutable reference must be the only reference to that
-data (otherwise, the program wouldn’t compile). Converting one mutable
-reference to one immutable reference will never break the borrowing rules.
-Converting an immutable reference to a mutable reference would require that the
-initial immutable reference is the only immutable reference to that data, but
-the borrowing rules don’t guarantee that. Therefore, Rust can’t make the
-assumption that converting an immutable reference to a mutable reference is
-possible.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="running-code-on-cleanup-with-the-drop-trait"><a class="header" href="#running-code-on-cleanup-with-the-drop-trait">Running Code on Cleanup with the <code>Drop</code> Trait</a></h2>
-<p>The second trait important to the smart pointer pattern is <code>Drop</code>, which lets
-you customize what happens when a value is about to go out of scope. You can
-provide an implementation for the <code>Drop</code> trait on any type, and that code can
-be used to release resources like files or network connections.</p>
-<p>We’re introducing <code>Drop</code> in the context of smart pointers because the
-functionality of the <code>Drop</code> trait is almost always used when implementing a
-smart pointer. For example, when a <code>Box&lt;T&gt;</code> is dropped it will deallocate the
-space on the heap that the box points to.</p>
-<p>In some languages, for some types, the programmer must call code to free memory
-or resources every time they finish using an instance of those types. Examples
-include file handles, sockets, or locks. If they forget, the system might
-become overloaded and crash. In Rust, you can specify that a particular bit of
-code be run whenever a value goes out of scope, and the compiler will insert
-this code automatically. As a result, you don’t need to be careful about
-placing cleanup code everywhere in a program that an instance of a particular
-type is finished with—you still won’t leak resources!</p>
-<p>You specify the code to run when a value goes out of scope by implementing the
-<code>Drop</code> trait. The <code>Drop</code> trait requires you to implement one method named
-<code>drop</code> that takes a mutable reference to <code>self</code>. To see when Rust calls <code>drop</code>,
-let’s implement <code>drop</code> with <code>println!</code> statements for now.</p>
-<p>Listing 15-14 shows a <code>CustomSmartPointer</code> struct whose only custom
-functionality is that it will print <code>Dropping CustomSmartPointer!</code> when the
-instance goes out of scope, to show when Rust runs the <code>drop</code> function.</p>
+<p>처음 두 가지 경우는 두번째가 가변성을 구현했다는 점을 제외하면 동일합니다.
+첫번째 경우는 어떤 <code>&amp;T</code>가 있는데, <code>T</code>가 어떤 타입 <code>U</code>에 대한 <code>Deref</code>를
+구현했다면, 명료하게 <code>&amp;U</code>를 얻을 수 있음을 기술하고 있습니다. 두 번째 경우는
+동일한 역참조 강제가 가변 참조자에 대해서도 발생함을 기술합니다.</p>
+<p>세 번째 경우는 좀 더 교묘합니다: 러스트는 가변 참조자를 불변 참조자로 강제할
+수도 있습니다. 하지만 그 역은 <em>불가능합니다</em>: 불변 참조자는 가변 참조자로
+결코 강제되지 않을 것입니다. 빌림 규칙에 의거하여, 가변 참조자가 있을
+경우에는 그 가변 참조자가 해당 데이터에 대한 유일한 참조자여야 합니다
+(그렇지 않다면, 그 프로그램은 컴파일되지 않을 것입니다). 가변 참조자를
+불변 참조자로 변경하는 것은 결코 빌림 규칙을 깨트리지 않을 것입니다.
+불변 참조자를 가변 참조자로 변경하는 것은 초기 불변 참조자가 해당 데이터에
+대한 단 하나의 불변 참조자여야 함을 요구할 것인데, 빌림
+규칙으로는 이걸 보장해줄 수 없습니다. 따라서, 러스트는
+불변 참조자를 가변 참조자로 변경하는 것이 가능함을 가정할
+수 없습니다.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="drop-트레잇으로-메모리-정리-코드-실행하기"><a class="header" href="#drop-트레잇으로-메모리-정리-코드-실행하기"><code>Drop</code> 트레잇으로 메모리 정리 코드 실행하기</a></h2>
+<p>스마트 포인터 패턴에서 중요한 트레잇 그 두번쨰는 <code>Drop</code>인데, 이는 값이 스코프
+밖으로 벗어나려고 할 때 무슨 일을 할지 커스터마이징하게끔 해줍니다. 어떠한
+타입이든 <code>Drop</code> 트레잇을 구현할 수 있고, 이 코드가 파일이나 네트워크 연결 같은
+자원 해제에 사용되게 할 수 있습니다.</p>
+<p>스마트 포인터에 대한 내용을 다루는 중에 <code>Drop</code>을 소개하는 이유는 <code>Drop</code>
+트레잇의 기능이 스마트 포인터를 구현할 때 거의 항상 이용되기 때문입니다.
+예를 들어 <code>Box&lt;T&gt;</code>가 버려질 때는 이 박스가 가리키고 있는 힙 공간의 할당을
+해제할 것입니다.</p>
+<p>몇몇 언어들에서는 어떤 타입의 인스턴스 사용을 끝낼 때마다 프로그래머가
+직접 메모리 혹은 자원을 해제하는 코드를 호출해줘야 합니다. 그 예에는
+파일 핸들, 소켓, 또는 락이 포함됩니다. 해제를 잊어버리면 시스템은
+과부하에 걸리고 멈출 수도 있습니다. 러스트에서는 값이 스코프 밖으로
+벗어날 때마다 실행되는 특정 코드를 지정할 수 있고, 컴파일러가 이 코드를
+자동으로 삽입해줄 것입니다. 결과적으로, 프로그램 내에서 특정 타입의
+인스턴스 사용이 끝나는 지점마다 메모리 정리 코드를 집어넣는 것에 관한
+걱정하지 않아도 됩니다-여전히 자원 누수는 발생하지 않을테니까요!</p>
+<p><code>Drop</code> 트레잇을 구현하는 것으로 어떤 값이 스코프 밖으로 벗어났을 때 실행되는 코드를
+지정합니다. <code>Drop</code> 트레잇은 <code>drop</code>이라는 이름의 메소드 하나를 구현해야 하는데 이
+메소드는 <code>self</code>에 대한 가변 참조자를 매개변수로 갖습니다. 러스트가 언제 <code>drop</code>을
+호출하는지 보기 위해서, 지금은 <code>println!</code> 구문과 함께 <code>drop</code>을 구현해봅시다.</p>
+<p>Listing 15-4는 러스트가 <code>drop</code> 함수를 호출하는 때를 보여주기 위해서,
+인스턴스가 스코프 밖으로 벗어났을 때 <code>Dropping CustomSmartPointer!</code>를
+출력하는 커스텀 기능만을 갖춘 <code>CustomSmartPointer</code> 구조체를 보여줍니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct CustomSmartPointer {
     data: String,
@@ -17915,20 +17917,20 @@ fn main() {
     };
     println!(&quot;CustomSmartPointers created.&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-14: A <code>CustomSmartPointer</code> struct that
-implements the <code>Drop</code> trait where we would put our cleanup code</span></p>
-<p>The <code>Drop</code> trait is included in the prelude, so we don’t need to bring it into
-scope. We implement the <code>Drop</code> trait on <code>CustomSmartPointer</code> and provide an
-implementation for the <code>drop</code> method that calls <code>println!</code>. The body of the
-<code>drop</code> function is where you would place any logic that you wanted to run when
-an instance of your type goes out of scope. We’re printing some text here to
-demonstrate visually when Rust will call <code>drop</code>.</p>
-<p>In <code>main</code>, we create two instances of <code>CustomSmartPointer</code> and then print
-<code>CustomSmartPointers created</code>. At the end of <code>main</code>, our instances of
-<code>CustomSmartPointer</code> will go out of scope, and Rust will call the code we put
-in the <code>drop</code> method, printing our final message. Note that we didn’t need to
-call the <code>drop</code> method explicitly.</p>
-<p>When we run this program, we’ll see the following output:</p>
+<p><span class="caption">Listing 15-14: 메모리 정리 코드를 집어넣게 될
+<code>Drop</code> 트레잇을 구현한 <code>CustomSmartPointer</code> 구조체</span></p>
+<p><code>Drop</code> 트레잇은 프렐루드에 포함되어 있으므로, 이를 스코프로 가져올 필요는
+없습니다. <code>CustomSmartPointer</code>에는 <code>Drop</code> 트레잇이 구현되어 여기에
+<code>println!</code>을 호출하는 <code>drop</code> 메소드 구현체를 제공하였습니다. <code>drop</code> 함수의
+본문 부분에는 해당 타입의 인스턴스가 스코프 밖으로 벗어났을 때 실행시키고 싶은
+어떠한 로직이든 집어넣을 수 있습니다. 여기서는 러스트가 <code>drop</code>을 호출하게 될
+때를 보여주기 위해서 어떤 텍스트를 출력하는 중입니다.</p>
+<p><code>main</code>에서는 두 개의 <code>CustomSmartPointer</code> 인스턴스를 만든 다음
+<code>CustomSmartPointers created.</code>를 출력합니다. <code>main</code>의 끝부분에서,
+<code>CustomSmartPointer</code> 인스턴스들은 스코프 밖으로 벗어날 것이고, 러스트는
+<code>drop</code> 메소드에 집어넣은 코드를 호출할 것이고, 이는 마지막 메세지를 출력합니다.
+<code>drop</code> 메소드를 명시적으로 호출할 필요가 없다는 점을 주목하세요.</p>
+<p>이 프로그램을 실행시키면 다음과 같은 출력을 보게 될 것입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling drop-example v0.1.0 (file:///projects/drop-example)
     Finished dev [unoptimized + debuginfo] target(s) in 0.60s
@@ -17937,25 +17939,25 @@ CustomSmartPointers created.
 Dropping CustomSmartPointer with data `other stuff`!
 Dropping CustomSmartPointer with data `my stuff`!
 </code></pre>
-<p>Rust automatically called <code>drop</code> for us when our instances went out of scope,
-calling the code we specified. Variables are dropped in the reverse order of
-their creation, so <code>d</code> was dropped before <code>c</code>. This example’s purpose is to
-give you a visual guide to how the <code>drop</code> method works; usually you would
-specify the cleanup code that your type needs to run rather than a print
-message.</p>
-<h3 id="dropping-a-value-early-with-stdmemdrop"><a class="header" href="#dropping-a-value-early-with-stdmemdrop">Dropping a Value Early with <code>std::mem::drop</code></a></h3>
-<p>Unfortunately, it’s not straightforward to disable the automatic <code>drop</code>
-functionality. Disabling <code>drop</code> isn’t usually necessary; the whole point of the
-<code>Drop</code> trait is that it’s taken care of automatically. Occasionally, however,
-you might want to clean up a value early. One example is when using smart
-pointers that manage locks: you might want to force the <code>drop</code> method that
-releases the lock so that other code in the same scope can acquire the lock.
-Rust doesn’t let you call the <code>Drop</code> trait’s <code>drop</code> method manually; instead
-you have to call the <code>std::mem::drop</code> function provided by the standard library
-if you want to force a value to be dropped before the end of its scope.</p>
-<p>If we try to call the <code>Drop</code> trait’s <code>drop</code> method manually by modifying the
-<code>main</code> function from Listing 15-14, as shown in Listing 15-15, we’ll get a
-compiler error:</p>
+<p>러스트는 인스턴스가 스코프 밖으로 벗어났을 때 <code>drop</code>을 호출했고,
+이것이 지명된 코드를 실행시켰습니다. 변수들은 만들어진 순서의 역순으로
+버려지므로, <code>d</code>는 <code>c</code> 이전에 버려집니다. 이 예제의 목적은 여러분에게
+<code>drop</code> 메소드가 어떻게 동작하는 대한 시각적인 가이드를 제공하는 것입니다;
+보통은 메시지 출력이 아니라 여러분의 타입에 대해 실행할 필요가 있는 메모리
+정리 코드를 지정하게 될 것입니다.</p>
+<h3 id="stdmemdrop으로-값을-일찍-버리기"><a class="header" href="#stdmemdrop으로-값을-일찍-버리기"><code>std::mem::drop</code>으로 값을 일찍 버리기</a></h3>
+<p>불행하게도 자동적인 <code>drop</code> 기능을 비활성화하는 일은 직관적이지 않습니다.
+<code>drop</code> 비활성화는 보통 필요가 없습니다; <code>Drop</code> 트레잇의 요점은 이것이
+자동적으로 이루어진다는 것이니까요. 하지만 가끔은 어떤 값을 일찍 정리하고
+싶을 때도 있습니다. 한 가지 예는 락을 관리하는 스마트 포인터를 이용할
+때입니다: 강제로 <code>drop</code> 메소드를 실행하여 락을 해제해서 같은 스코프의
+다른 코드에서 해당 락을 얻도록 하고 싶을 수도 있지요. 러스트는 수동으로
+<code>Drop</code> 트레잇의 <code>drop</code> 메소드를 호출하게 해주지는 않습니다; 대신에
+표준 라이브러리가 제공하는 <code>std::mem::drop</code> 함수를 호출하여 스코프가
+끝나기 전에 강제로 값을 버리도록 할 수 있습니다.</p>
+<p>Listing 15-14의 <code>main</code> 함수를 Listing 15-15 처럼 수정하여
+<code>Drop</code> 트레잇의 <code>drop</code> 메소드를 수동으로 호출하려고 하면 컴파일
+에러가 납니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
@@ -17975,9 +17977,9 @@ compiler error:</p>
     c.drop();
     println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
 }</code></pre>
-<p><span class="caption">Listing 15-15: Attempting to call the <code>drop</code> method from
-the <code>Drop</code> trait manually to clean up early</span></p>
-<p>When we try to compile this code, we’ll get this error:</p>
+<p><span class="caption">Listing 15-15: 메모리를 일찍 정리하기 위한 <code>Drop</code>
+트레잇의 <code>drop</code> 메소드의 수동 호출 시도하기</span></p>
+<p>이 코드의 컴파일을 시도하면 다음과 같은 에러를 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling drop-example v0.1.0 (file:///projects/drop-example)
 error[E0040]: explicit use of destructor method
@@ -17992,22 +17994,22 @@ error[E0040]: explicit use of destructor method
 For more information about this error, try `rustc --explain E0040`.
 error: could not compile `drop-example` due to previous error
 </code></pre>
-<p>This error message states that we’re not allowed to explicitly call <code>drop</code>. The
-error message uses the term <em>destructor</em>, which is the general programming term
-for a function that cleans up an instance. A <em>destructor</em> is analogous to a
-<em>constructor</em>, which creates an instance. The <code>drop</code> function in Rust is one
-particular destructor.</p>
-<p>Rust doesn’t let us call <code>drop</code> explicitly because Rust would still
-automatically call <code>drop</code> on the value at the end of <code>main</code>. This would cause a
-<em>double free</em> error because Rust would be trying to clean up the same value
-twice.</p>
-<p>We can’t disable the automatic insertion of <code>drop</code> when a value goes out of
-scope, and we can’t call the <code>drop</code> method explicitly. So, if we need to force
-a value to be cleaned up early, we use the <code>std::mem::drop</code> function.</p>
-<p>The <code>std::mem::drop</code> function is different from the <code>drop</code> method in the <code>Drop</code>
-trait. We call it by passing as an argument the value we want to force drop.
-The function is in the prelude, so we can modify <code>main</code> in Listing 15-15 to
-call the <code>drop</code> function, as shown in Listing 15-16:</p>
+<p>이 에러 메시지는 <code>drop</code>를 명시적으로 호출하는 것이 허용되지 않음을 기술하고
+있습니다. 에러 메시지에서 <em>소멸자 (destructor)</em> 라는 용어가 사용되었는데,
+이는 인스턴스를 정리하는 함수에 대한 일반적인 프로그래밍 용어입니다. <em>소멸자</em>는
+인스턴스를 생성하는 <em>생성자 (constructor)</em> 와 유사한 용어입니다. 러스트의 <code>drop</code>
+함수는 특정한 형태의 소멸자입니다.</p>
+<p>러스트는 <code>drop</code>을 명시적으로 호출하도록 해주지 않는데 이는 러스트가 여전히 <code>main</code>의
+끝부분에서 그 값에 대한 <code>drop</code> 호출을 자동으로 할 것이기 때문입니다. 이는 러스트가
+동일한 값에 대해 두 번 메모리 정리를 시도할 것이므로 <em>중복 해제 (double free)</em> 에러가
+될 수 있습니다.</p>
+<p>어떤 값이 스코프 밖으로 벗어났을 때의 자동적인 <code>drop</code> 호출을 비활성화할 수
+없고, <code>drop</code> 메소드를 명시적으로 호출할 수도 없습니다. 따라서, 어떤 값에 대한
+메모리 정리를 강제로 일찍 하기 원할 때는  <code>std::mem::drop</code> 함수를 이용합니다.</p>
+<p><code>std::mem::drop</code> 함수는 <code>Drop</code> 트레잇에 있는 <code>drop</code> 메소드와는
+다릅니다. 이 함수에 일찍 버리려고 하는 값을 인자로 넘겨 호출합니다.
+이 함수는 프렐루드에 포함되어 있어서, Listing 15-14의 <code>main</code>을
+Listing 15-16처럼 수정할 수 있습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
@@ -18027,9 +18029,9 @@ call the <code>drop</code> function, as shown in Listing 15-16:</p>
     drop(c);
     println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-16: Calling <code>std::mem::drop</code> to explicitly
-drop a value before it goes out of scope</span></p>
-<p>Running this code will print the following:</p>
+<p><span class="caption">Listing 15-16: <code>std::mem::drop</code>을 호출하여
+값이 스코프를 벗어나기 전에 명시적으로 버리기</span></p>
+<p>이 코드를 실행하면 아래와 같이 출력할 것입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling drop-example v0.1.0 (file:///projects/drop-example)
     Finished dev [unoptimized + debuginfo] target(s) in 0.73s
@@ -18038,58 +18040,58 @@ CustomSmartPointer created.
 Dropping CustomSmartPointer with data `some data`!
 CustomSmartPointer dropped before the end of main.
 </code></pre>
-<p>The text <code>Dropping CustomSmartPointer with data `some data`!</code> is printed
-between the <code>CustomSmartPointer created.</code> and <code>CustomSmartPointer dropped before the end of main.</code> text, showing that the <code>drop</code> method code is called to
-drop <code>c</code> at that point.</p>
-<p>You can use code specified in a <code>Drop</code> trait implementation in many ways to
-make cleanup convenient and safe: for instance, you could use it to create your
-own memory allocator! With the <code>Drop</code> trait and Rust’s ownership system, you
-don’t have to remember to clean up because Rust does it automatically.</p>
-<p>You also don’t have to worry about problems resulting from accidentally
-cleaning up values still in use: the ownership system that makes sure
-references are always valid also ensures that <code>drop</code> gets called only once when
-the value is no longer being used.</p>
-<p>Now that we’ve examined <code>Box&lt;T&gt;</code> and some of the characteristics of smart
-pointers, let’s look at a few other smart pointers defined in the standard
-library.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="rct-the-reference-counted-smart-pointer"><a class="header" href="#rct-the-reference-counted-smart-pointer"><code>Rc&lt;T&gt;</code>, the Reference Counted Smart Pointer</a></h2>
-<p>In the majority of cases, ownership is clear: you know exactly which variable
-owns a given value. However, there are cases when a single value might have
-multiple owners. For example, in graph data structures, multiple edges might
-point to the same node, and that node is conceptually owned by all of the edges
-that point to it. A node shouldn’t be cleaned up unless it doesn’t have any
-edges pointing to it and so has no owners.</p>
-<p>You have to enable multiple ownership explicitly by using the Rust type
-<code>Rc&lt;T&gt;</code>, which is an abbreviation for <em>reference counting</em>. The <code>Rc&lt;T&gt;</code> type
-keeps track of the number of references to a value to determine whether or not
-the value is still in use. If there are zero references to a value, the value
-can be cleaned up without any references becoming invalid.</p>
-<p>Imagine <code>Rc&lt;T&gt;</code> as a TV in a family room. When one person enters to watch TV,
-they turn it on. Others can come into the room and watch the TV. When the last
-person leaves the room, they turn off the TV because it’s no longer being used.
-If someone turns off the TV while others are still watching it, there would be
-uproar from the remaining TV watchers!</p>
-<p>We use the <code>Rc&lt;T&gt;</code> type when we want to allocate some data on the heap for
-multiple parts of our program to read and we can’t determine at compile time
-which part will finish using the data last. If we knew which part would finish
-last, we could just make that part the data’s owner, and the normal ownership
-rules enforced at compile time would take effect.</p>
-<p>Note that <code>Rc&lt;T&gt;</code> is only for use in single-threaded scenarios. When we discuss
-concurrency in Chapter 16, we’ll cover how to do reference counting in
-multithreaded programs.</p>
-<h3 id="using-rct-to-share-data"><a class="header" href="#using-rct-to-share-data">Using <code>Rc&lt;T&gt;</code> to Share Data</a></h3>
-<p>Let’s return to our cons list example in Listing 15-5. Recall that we defined
-it using <code>Box&lt;T&gt;</code>. This time, we’ll create two lists that both share ownership
-of a third list. Conceptually, this looks similar to Figure 15-3:</p>
+<p><code>Dropping CustomSmartPointer with data `some data`!</code>라는 텍스트가
+<code>CustomSmartPointer created.</code>와 <code>CustomSmartPointer dropped before the end of main.</code> 사이에 출력되는데, 이는 <code>c</code>를 버리는 <code>drop</code>
+메소드가 그 지점에서 호출되었음을 보여줍니다.</p>
+<p><code>Drop</code> 트레잇 구현체에 지정되는 코드를 다양한 방식으로 사용하여 메모리 정리를
+편리하고 안전하게 할 수 있습니다: 예를 들면, 이것을 사용하여 여러분만의 고유한
+메모리 할당자를 만들 수 있습니다! <code>Drop</code> 트레잇과 러스트의 소유권 시스템을 이용하면
+러스트가 메모리 정리를 자동적으로 수행하기 때문에 메모리 정리를 기억해두지 않아도 됩니다.</p>
+<p>또한 아직 사용 중인 값이 뜻하지 않게 정리되면서 발생하는 문제도
+걱정할 필요 없습니다: 참조자가 항상 유효하도록 보장해주는 소유권
+시스템은 그 값이 더 이상 사용되지 않을 때 <code>drop</code>이 한번만 호출되는
+것도 보장합니다.</p>
+<p>지금까지 <code>Box&lt;T&gt;</code>와 스마트 포인터의 몇 가지 특성을 시험해 보았으니,
+표준 라이브러리에 정의되어 있는 몇 가지 다른 스마트 포인터를
+살펴봅시다.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="rct-참조-카운팅-스마트-포인터"><a class="header" href="#rct-참조-카운팅-스마트-포인터"><code>Rc&lt;T&gt;</code>, 참조 카운팅 스마트 포인터</a></h2>
+<p>대부분의 경우에서 소유권은 명확합니다: 즉 어떤 변수가 주어진 값을
+소유하는지 정확히 압니다. 그러나 하나의 값이 여러 개의 소유자를 가질 수
+있는 경우도 있습니다. 예를 들어, 그래프 데이터 구조에서 여러 에지가
+동일한 노드를 가리킬 수도 있고, 그 노드는 개념적으로 해당 노드를 가리키는
+모든 에지들에 의해 소유됩니다. 노드는 어떠한 에지도 이를 가리키지 않아
+소유자가 하나도 없는 상태가 아니라면 메모리 정리가 되어서는 안됩니다.</p>
+<p>명시적으로 복수 소유권을 가능하게 하려면 러스트의 <code>Rc&lt;T&gt;</code> 타입을 이용해야
+하는데, 이는 <em>참조 카운팅 (reference counting)</em> 의 약자입니다. <code>Rc&lt;T&gt;</code>
+타입은 어떤 값의 참조자 갯수를 계속 추척하여 해당 값이 계속 사용중인지를
+판단합니다. 만일 어떤 값에 대한 참조자가 0개라면 이 값의 메모리 정리를
+하더라도 유효하지 않은 참조자가 발생되지 않을 수 있습니다.</p>
+<p><code>Rc&lt;T&gt;</code>를 거실의 TV라고 상상해 봅시다. 한 사람이 TV를 보러 들어올 때
+TV를 킵니다. 다른 사람들은 거실로 들어와서 TV를 볼 수 있습니다. 마지막 사람이
+거실을 나선다면, TV는 더 이상 사용되고 있지 않으므로 끕니다. 만일 누군가
+계속 TV를 보고 있는 중에 어떤이가 끈다면, 남아있던 TV 시청자들로부터 엄청난
+소란이 있겠죠!</p>
+<p><code>Rc&lt;T&gt;</code> 타입은 프로그램의 여러 부분에서 읽을 데이터를 힙에 할당하고
+싶은데 컴파일 타임에는 어떤 부분이 그 데이터를 마지막에 이용하게 될지
+알 수 없는 경우 사용됩니다. 만일 어떤 부분이 마지막으로 사용하는지
+알았다면, 그냥 그 해당 부분을 데이터의 소유자로 만들면 되고, 보통의
+소유권 규칙이 컴파일 타임에 수행되어 효력을 발생시킬 겁니다.</p>
+<p><code>Rc&lt;T&gt;</code>는 오직 단일 스레드 시나리오용이라는 점을 주의하세요. 16장에서
+동시성(cuncurrency)에 대한 논의를 할 때, 다중 스레드 프로그램에서
+참조 카운팅을 하는 방법을 다루겠습니다.</p>
+<h3 id="rct를-사용하여-데이터-공유하기"><a class="header" href="#rct를-사용하여-데이터-공유하기"><code>Rc&lt;T&gt;</code>를 사용하여 데이터 공유하기</a></h3>
+<p>Listing 15-5의 cons list 예제로 돌아가 봅시다. <code>Box&lt;T&gt;</code>를 이용해서 이를
+정의했던 것을 상기합시다. 이번에는 두 개의 리스트를 만들고 이 둘이 모두 세번째
+리스트의 소유권을 공유하도록 하겠습니다. 개념적으로는 Figure 15-3처럼 생겼습니다:</p>
 <img alt="Two lists that share ownership of a third list" src="img/trpl15-03.svg" class="center" />
-<p><span class="caption">Figure 15-3: Two lists, <code>b</code> and <code>c</code>, sharing ownership of
-a third list, <code>a</code></span></p>
-<p>We’ll create list <code>a</code> that contains 5 and then 10. Then we’ll make two more
-lists: <code>b</code> that starts with 3 and <code>c</code> that starts with 4. Both <code>b</code> and <code>c</code>
-lists will then continue on to the first <code>a</code> list containing 5 and 10. In other
-words, both lists will share the first list containing 5 and 10.</p>
-<p>Trying to implement this scenario using our definition of <code>List</code> with <code>Box&lt;T&gt;</code>
-won’t work, as shown in Listing 15-17:</p>
+<p><span class="caption">Figure 15-3: 세번째 리스트 <code>a</code>의 소유권을 공유하는
+두 리스트 <code>b</code>와 <code>c</code></span></p>
+<p>먼저 5와 10을 담은 리스트 <code>a</code>를 만들겠습니다. 그런 다음 두 개의 리스트를 더
+만들 것입니다: 3으로 시작하는 <code>b</code>와 4로 시작하는 <code>c</code>를 말이죠. 그리고나서 <code>b</code>와
+<code>c</code> 리스트 둘 모두 5와 10을 가지고 있는 첫번째 <code>a</code> 리스트로 계속되도록 하겠습니다.
+바꿔 말하면, 두 리스트 모두 5와 10을 담고 있는 첫 리스트를 공유하게 될 것입니다.</p>
+<p>Listing 15-17과 같이 <code>Box&lt;T&gt;</code>를 가지고 정의한 <code>List</code>를 이용하여 이
+시나리오의 구현을 시도하면 작동하지 않을 것입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">enum List {
     Cons(i32, Box&lt;List&gt;),
@@ -18103,9 +18105,9 @@ fn main() {
     let b = Cons(3, Box::new(a));
     let c = Cons(4, Box::new(a));
 }</code></pre>
-<p><span class="caption">Listing 15-17: Demonstrating we’re not allowed to have
-two lists using <code>Box&lt;T&gt;</code> that try to share ownership of a third list</span></p>
-<p>When we compile this code, we get this error:</p>
+<p><span class="caption">Listing 15-17: <code>Box&lt;T&gt;</code>를 이용한 두 리스트가 세 번째
+리스트에 대한 소유권을 공유하는 시도는 허용되지 않음을 보이는 예</span></p>
+<p>이 코드를 컴파일하면 다음과 같은 에러를 얻습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling cons-list v0.1.0 (file:///projects/cons-list)
 error[E0382]: use of moved value: `a`
@@ -18121,24 +18123,24 @@ error[E0382]: use of moved value: `a`
 For more information about this error, try `rustc --explain E0382`.
 error: could not compile `cons-list` due to previous error
 </code></pre>
-<p>The <code>Cons</code> variants own the data they hold, so when we create the <code>b</code> list, <code>a</code>
-is moved into <code>b</code> and <code>b</code> owns <code>a</code>. Then, when we try to use <code>a</code> again when
-creating <code>c</code>, we’re not allowed to because <code>a</code> has been moved.</p>
-<p>We could change the definition of <code>Cons</code> to hold references instead, but then
-we would have to specify lifetime parameters. By specifying lifetime
-parameters, we would be specifying that every element in the list will live at
-least as long as the entire list. This is the case for the elements and lists
-in Listing 15-17, but not in every scenario.</p>
-<p>Instead, we’ll change our definition of <code>List</code> to use <code>Rc&lt;T&gt;</code> in place of
-<code>Box&lt;T&gt;</code>, as shown in Listing 15-18. Each <code>Cons</code> variant will now hold a value
-and an <code>Rc&lt;T&gt;</code> pointing to a <code>List</code>. When we create <code>b</code>, instead of taking
-ownership of <code>a</code>, we’ll clone the <code>Rc&lt;List&gt;</code> that <code>a</code> is holding, thereby
-increasing the number of references from one to two and letting <code>a</code> and <code>b</code>
-share ownership of the data in that <code>Rc&lt;List&gt;</code>. We’ll also clone <code>a</code> when
-creating <code>c</code>, increasing the number of references from two to three. Every time
-we call <code>Rc::clone</code>, the reference count to the data within the <code>Rc&lt;List&gt;</code> will
-increase, and the data won’t be cleaned up unless there are zero references to
-it.</p>
+<p><code>Cons</code> variant는 자신이 들고 있는 데이터를 소유하므로, <code>b</code> 리스트를 만들 때
+<code>a</code>는 <code>b</code> 안으로 이동되어 <code>b</code>의 소유가 됩니다. 그 다음 <code>c</code>를 생성할 때 <code>a</code>를
+다시 사용하려 할 경우는 허용되지 않는데, 이미 <code>a</code>가 이동되었기 때문입니다.</p>
+<p><code>Cons</code>의 정의를 변경하여 참조자를 대신 들고 있도록 할 수도 있지만, 그러면
+라이프타임 파라미터를 명시해야 할 것입니다. 라이프타임 파라미터를 명시함으로써,
+리스트 내의 모든 요소들이 최소한 전체 리스트만큼 오래 살아있도록 지정할
+것입니다. 이는 Listing 15-17의 요소와 리스트에 대한 경우지, 모든 시나리오에
+맞는 것은 아닙니다.</p>
+<p>그 대신 Listing 15-18과 같이 <code>Box&lt;T&gt;</code>의 자리에 <code>Rc&lt;T&gt;</code>를 이용하는
+형태로 <code>List</code>의 정의를 바꾸겠습니다. 각각의 <code>Cons</code> variant는 이제 어떤
+값과 <code>List</code>를 가리키는 <code>Rc&lt;T&gt;</code>를 갖게 될 것입니다. <code>b</code>를 만들 때는 <code>a</code>의
+소유권을 얻는 대신, <code>a</code>를 가지고 있는 <code>Rc&lt;List&gt;</code>를 클론할 것인데, 이는
+참조자의 갯수를 하나에서 둘로 증가시키고 <code>a</code>와 <code>b</code>가 <code>Rc&lt;List&gt;</code> 안에
+있는 데이터의 소유권을 공유하도록 해줍니다. 또한 <code>c</code>를 만들 때도 <code>a</code>를
+클론할 것인데, 이로서 참조자의 갯수가 둘에서 셋으로 늘어납니다. <code>Rc::clone</code>가
+호출될 때마다 그 <code>Rc&lt;List&gt;</code>가 가지고 있는 데이터에 대한 참조 카운트는
+증가할 것이고, 그 데이터는 참조자가 0개가 되지 않으면 메모리가 정리되지
+않을 것입니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">enum List {
     Cons(i32, Rc&lt;List&gt;),
@@ -18153,28 +18155,28 @@ fn main() {
     let b = Cons(3, Rc::clone(&amp;a));
     let c = Cons(4, Rc::clone(&amp;a));
 }</code></pre></pre>
-<p><span class="caption">Listing 15-18: A definition of <code>List</code> that uses
-<code>Rc&lt;T&gt;</code></span></p>
-<p>We need to add a <code>use</code> statement to bring <code>Rc&lt;T&gt;</code> into scope because it’s not
-in the prelude. In <code>main</code>, we create the list holding 5 and 10 and store it in
-a new <code>Rc&lt;List&gt;</code> in <code>a</code>. Then when we create <code>b</code> and <code>c</code>, we call the
-<code>Rc::clone</code> function and pass a reference to the <code>Rc&lt;List&gt;</code> in <code>a</code> as an
-argument.</p>
-<p>We could have called <code>a.clone()</code> rather than <code>Rc::clone(&amp;a)</code>, but Rust’s
-convention is to use <code>Rc::clone</code> in this case. The implementation of
-<code>Rc::clone</code> doesn’t make a deep copy of all the data like most types’
-implementations of <code>clone</code> do. The call to <code>Rc::clone</code> only increments the
-reference count, which doesn’t take much time. Deep copies of data can take a
-lot of time. By using <code>Rc::clone</code> for reference counting, we can visually
-distinguish between the deep-copy kinds of clones and the kinds of clones that
-increase the reference count. When looking for performance problems in the
-code, we only need to consider the deep-copy clones and can disregard calls to
-<code>Rc::clone</code>.</p>
-<h3 id="cloning-an-rct-increases-the-reference-count"><a class="header" href="#cloning-an-rct-increases-the-reference-count">Cloning an <code>Rc&lt;T&gt;</code> Increases the Reference Count</a></h3>
-<p>Let’s change our working example in Listing 15-18 so we can see the reference
-counts changing as we create and drop references to the <code>Rc&lt;List&gt;</code> in <code>a</code>.</p>
-<p>In Listing 15-19, we’ll change <code>main</code> so it has an inner scope around list <code>c</code>;
-then we can see how the reference count changes when <code>c</code> goes out of scope.</p>
+<p><span class="caption">Listing 15-18: <code>Rc&lt;T&gt;</code>를 이용하는 <code>List</code>
+정의</span></p>
+<p><code>Rc&lt;T&gt;</code>는 프렐루드에 포함되어 있지 않으므로 이를 스코프로 가져오려면 <code>use</code> 구문을
+추가할 필요가 있습니다. <code>main</code> 안에서 5와 10을 가지고 있는 리스트가 만들어지고
+이것이 <code>a</code>의 새로운 <code>Rc&lt;List&gt;</code>에 저장됩니다. 그 다음 <code>b</code>와 <code>c</code>를 만들 때는
+<code>Rc::clone</code> 함수를 호출하고 <code>a</code>의 <code>Rc&lt;List&gt;</code>에 대한 참조자를 인자로서
+넘깁니다.</p>
+<p><code>Rc::clone(&amp;a)</code> 대신 <code>a.clone()</code>을 호출할 수도 있지만, 위의 경우
+러스트의 관례는 <code>Rc::clone</code>를 이용하는 것입니다. <code>Rc::clone</code>의 구현체는
+대부분의 타입들에 대한 <code>clone</code> 구현체들이 그러하듯 모든 데이터에 대한 깊은
+복사(deep copy)를 하지 않습니다. <code>Rc::clone</code>의 호출은 오직 참조 카운트만
+증가시키는데, 이는 시간이 얼마 걸리지 않습니다. 데이터의 깊은 복사는 많은
+시간이 걸릴 수 있습니다. 참조 카운팅을 위해 <code>Rc::clone</code>을 사용함으로써
+깊은 복사 종류의 클론과 참조 카운트를 증가시키는 종류의 클론을 시각적으로
+구별할 수 있습니다. 코드에서 성능 문제를 찾는 중이라면 깊은 복사 클론만
+고려할 필요가 있고 <code>Rc::clone</code> 호출은 무시할 수
+있습니다.</p>
+<h3 id="rct를-클론하는-것은-참조-카운트를-증가시킵니다"><a class="header" href="#rct를-클론하는-것은-참조-카운트를-증가시킵니다"><code>Rc&lt;T&gt;</code>를 클론하는 것은 참조 카운트를 증가시킵니다</a></h3>
+<p>Listing 15-18의 작동하는 예제를 변경하여 <code>a</code> 내부의 <code>Rc&lt;List&gt;</code>에 대한
+참조자가 생성되고 버려질 때 참조 카운트가 변하는 것을 볼 수 있도록 해봅시다.</p>
+<p>Listing 15-19에서는 <code>main</code>을 변경하여 안쪽의 스코프가 리스트 <code>c</code>를 감싸도록 하겠습니다;
+그러면 <code>c</code>가 스코프 밖으로 벗어났을 때 참조 카운트가 어떻게 바뀌는지 볼 수 있습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">enum List {
 </span><span class="boring">    Cons(i32, Rc&lt;List&gt;),
@@ -18196,13 +18198,13 @@ then we can see how the reference count changes when <code>c</code> goes out of 
     println!(&quot;count after c goes out of scope = {}&quot;, Rc::strong_count(&amp;a));
 }</code></pre></pre>
 <p><span class="caption">Listing 15-19: Printing the reference count</span></p>
-<p>At each point in the program where the reference count changes, we print the
-reference count, which we get by calling the <code>Rc::strong_count</code> function. This
-function is named <code>strong_count</code> rather than <code>count</code> because the <code>Rc&lt;T&gt;</code> type
-also has a <code>weak_count</code>; we’ll see what <code>weak_count</code> is used for in the
-<a href="ch15-06-reference-cycles.html#preventing-reference-cycles-turning-an-rct-into-a-weakt">“Preventing Reference Cycles: Turning an <code>Rc&lt;T&gt;</code> into a
-<code>Weak&lt;T&gt;</code>”</a><!-- ignore --> section.</p>
-<p>This code prints the following:</p>
+<p>프로그램 내 참조 카운트가 변하는 각 지점에서 참조 카운트 값을
+출력하는데, 이는 <code>Rc::strong_count</code> 함수를 호출하여 얻습니다.
+이 함수가 <code>count</code>가 아니고 <code>strong_count</code>라는 이름이 된 이유는 <code>Rc&lt;T&gt;</code>
+타입이 <code>weak_count</code>도 갖고 있기 때문입니다; <code>weak_count</code>가 뭘 위해서 사용되는지는
+<a href="ch15-06-reference-cycles.html#preventing-reference-cycles-turning-an-rct-into-a-weakt">“참조 순환 방지하기: <code>Rc&lt;T&gt;</code>를 <code>Weak&lt;T&gt;</code>로 바꾸기”</a><!-- ignore -->절에서
+알아보겠습니다.</p>
+<p>이 코드는 다음을 출력합니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling cons-list v0.1.0 (file:///projects/cons-list)
     Finished dev [unoptimized + debuginfo] target(s) in 0.45s
@@ -18212,97 +18214,97 @@ count after creating b = 2
 count after creating c = 3
 count after c goes out of scope = 2
 </code></pre>
-<p>We can see that the <code>Rc&lt;List&gt;</code> in <code>a</code> has an initial reference count of 1; then
-each time we call <code>clone</code>, the count goes up by 1. When <code>c</code> goes out of scope,
-the count goes down by 1. We don’t have to call a function to decrease the
-reference count like we have to call <code>Rc::clone</code> to increase the reference
-count: the implementation of the <code>Drop</code> trait decreases the reference count
-automatically when an <code>Rc&lt;T&gt;</code> value goes out of scope.</p>
-<p>What we can’t see in this example is that when <code>b</code> and then <code>a</code> go out of scope
-at the end of <code>main</code>, the count is then 0, and the <code>Rc&lt;List&gt;</code> is cleaned up
-completely. Using <code>Rc&lt;T&gt;</code> allows a single value to have multiple owners, and
-the count ensures that the value remains valid as long as any of the owners
-still exist.</p>
-<p>Via immutable references, <code>Rc&lt;T&gt;</code> allows you to share data between multiple
-parts of your program for reading only. If <code>Rc&lt;T&gt;</code> allowed you to have multiple
-mutable references too, you might violate one of the borrowing rules discussed
-in Chapter 4: multiple mutable borrows to the same place can cause data races
-and inconsistencies. But being able to mutate data is very useful! In the next
-section, we’ll discuss the interior mutability pattern and the <code>RefCell&lt;T&gt;</code>
-type that you can use in conjunction with an <code>Rc&lt;T&gt;</code> to work with this
-immutability restriction.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="refcellt-and-the-interior-mutability-pattern"><a class="header" href="#refcellt-and-the-interior-mutability-pattern"><code>RefCell&lt;T&gt;</code> and the Interior Mutability Pattern</a></h2>
-<p><em>Interior mutability</em> is a design pattern in Rust that allows you to mutate
-data even when there are immutable references to that data; normally, this
-action is disallowed by the borrowing rules. To mutate data, the pattern uses
-<code>unsafe</code> code inside a data structure to bend Rust’s usual rules that govern
-mutation and borrowing. Unsafe code indicates to the compiler that we’re
-checking the rules manually instead of relying on the compiler to check them
-for us; we will discuss unsafe code more in Chapter 19.</p>
-<p>We can use types that use the interior mutability pattern only when we can
-ensure that the borrowing rules will be followed at runtime, even though the
-compiler can’t guarantee that. The <code>unsafe</code> code involved is then wrapped in a
-safe API, and the outer type is still immutable.</p>
-<p>Let’s explore this concept by looking at the <code>RefCell&lt;T&gt;</code> type that follows the
-interior mutability pattern.</p>
-<h3 id="enforcing-borrowing-rules-at-runtime-with-refcellt"><a class="header" href="#enforcing-borrowing-rules-at-runtime-with-refcellt">Enforcing Borrowing Rules at Runtime with <code>RefCell&lt;T&gt;</code></a></h3>
-<p>Unlike <code>Rc&lt;T&gt;</code>, the <code>RefCell&lt;T&gt;</code> type represents single ownership over the data
-it holds. So, what makes <code>RefCell&lt;T&gt;</code> different from a type like <code>Box&lt;T&gt;</code>?
-Recall the borrowing rules you learned in Chapter 4:</p>
+<p><code>a</code>의 <code>Rc&lt;List&gt;</code>는 초기 참조 카운트 1을 갖고 있음을 볼 수 있습니다;
+그 후 <code>clone</code>을 호출할 때마다 카운트가 1씩 증가합니다. <code>c</code>가 스코프 밖으로
+벗어날 때는 카운트가 1 감소합니다. <code>Rc::clone</code>를 호출하여 참조 카운트를
+증가시켜야 했던 것과 달리 참조 카운트를 감소시키기 위해 어떤 함수를
+호출할 필요는 없습니다: <code>Rc&lt;T&gt;</code> 값이 스코프 밖으로 벗어나면 <code>Drop</code>
+트레잇의 구현체가 자동으로 참조 카운트를 감소시킵니다.</p>
+<p><code>main</code>의 끝부분에서 <code>b</code>와 그 다음 <code>a</code>가 스코프 밖을 벗어나서, 카운트가
+0이 되고, 그 시점에서 <code>Rc&lt;List&gt;</code>가 완전히 메모리 정리되는 것은 이
+예제에서 볼 수 없습니다. <code>Rc&lt;T&gt;</code>를 이용하면 단일값이 복수 소유자를 갖도록
+할 수 있고, 그 갯수는 소유자 중 누구라도 계속 존재하는 한 해당 값이 계속
+유효하도록 보장해줍니다.</p>
+<p><code>Rc&lt;T&gt;</code>는 불변 참조자를 통하여 읽기 전용으로 프로그램의 여러 부분에서
+데이터를 공유하도록 해줍니다. 만일 <code>Rc&lt;T&gt;</code>가 복수개의 가변 참조자도
+만들도록 해준다면, 4장에서 논의했던 빌림 규칙 중 하나를 위반할지도 모릅니다:
+동일한 위치에서 복수개의 가변 빌림은 데이터 레이스 및 데이터 불일치를
+야기할 수 있습니다. 하지만 데이터의 변형을 가능하게 하는 것은 매우 유용하죠!
+다음 절에서는 이러한 불변성 제약과 함께 동작하도록 하기 위한 내부 가변성
+(interior mutability) 패턴 및 <code>Rc&lt;T&gt;</code>와 같이 결합하여 사용할 수 있는
+<code>RefCell&lt;T&gt;</code> 타입에 대해 논의하겠습니다.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="refcellt와-내부-가변성-패턴"><a class="header" href="#refcellt와-내부-가변성-패턴"><code>RefCell&lt;T&gt;</code>와 내부 가변성 패턴</a></h2>
+<p><em>내부 가변성 (interior mutability)</em> 은 어떤 데이터에 대한 불변 참조자가 있을
+때라도 데이터를 변경할 수 있게 해주는 러스트의 디자인 패턴입니다; 보통 이러한
+동작은 빌림 규칙에 의해 허용되지 않습니다. 데이터를 변겨앟기 위해서, 이 패턴은
+데이터 구조 내에서 <code>unsafe</code> 코드를 사용하여 변경과 빌림을 지배하는 러스트의
+일반적인 규칙을 우회합니다. 안전하지 않은 코드는 이 규칙들을 지키고 있는지에
+대한 검사를 컴파일러에게 맡기는 대신 수동으로 하는 중임을 컴파일러에게 알립니다;
+안전하지 않은 코드에 대해서는 19장에서 더 알아보겠습니다.</p>
+<p>컴파일러는 빌림 규칙을 준수함을 보장할 수 없을지라도, 우리가 이를
+런타임에 보장할 수 있을 경우라면 내부 가변성 패턴을 쓰는 타입을
+사용할 수 있습니다. 여기에 포함된 <code>unsafe</code> 코드는 안전한 API로
+감싸져 있고, 바깥쪽 타입은 여전히 불변입니다.</p>
+<p>내부 가변성 패턴을 따르는 <code>RefCell&lt;T&gt;</code> 타입을 살펴보면서 이 개념을
+탐구해 봅시다.</p>
+<h3 id="refcellt으로-런타임에-빌림-규칙-집행하기"><a class="header" href="#refcellt으로-런타임에-빌림-규칙-집행하기"><code>RefCell&lt;T&gt;</code>으로 런타임에 빌림 규칙 집행하기</a></h3>
+<p><code>Rc&lt;T&gt;</code>와는 다르게, <code>RefCell&lt;T&gt;</code> 타입은 가지고 있는 데이터에 대한 단일 소유권을
+나타냅니다. 그렇다면, <code>Box&lt;T&gt;</code>와 같은 타입과 <code>RefCell&lt;T&gt;</code>의 다른 부분은
+무엇일까요? 4장에서 배웠던 빌림 규칙을 상기해봅시다:</p>
 <ul>
-<li>At any given time, you can have <em>either</em> (but not both) one mutable reference
-or any number of immutable references.</li>
-<li>References must always be valid.</li>
+<li>어떠한 경우이든 간에, 하나의 가변 참조자 혹은 여러 개의 불변 참조자 중
+(둘 다가 아니고) 하나<em>만</em> 가질 수 있습니다.</li>
+<li>참조자는 항상 유효해야 합니다.</li>
 </ul>
-<p>With references and <code>Box&lt;T&gt;</code>, the borrowing rules’ invariants are enforced at
-compile time. With <code>RefCell&lt;T&gt;</code>, these invariants are enforced <em>at runtime</em>.
-With references, if you break these rules, you’ll get a compiler error. With
-<code>RefCell&lt;T&gt;</code>, if you break these rules, your program will panic and exit.</p>
-<p>The advantages of checking the borrowing rules at compile time are that errors
-will be caught sooner in the development process, and there is no impact on
-runtime performance because all the analysis is completed beforehand. For those
-reasons, checking the borrowing rules at compile time is the best choice in the
-majority of cases, which is why this is Rust’s default.</p>
-<p>The advantage of checking the borrowing rules at runtime instead is that
-certain memory-safe scenarios are then allowed, where they would’ve been
-disallowed by the compile-time checks. Static analysis, like the Rust compiler,
-is inherently conservative. Some properties of code are impossible to detect by
-analyzing the code: the most famous example is the Halting Problem, which is
-beyond the scope of this book but is an interesting topic to research.</p>
-<p>Because some analysis is impossible, if the Rust compiler can’t be sure the
-code complies with the ownership rules, it might reject a correct program; in
-this way, it’s conservative. If Rust accepted an incorrect program, users
-wouldn’t be able to trust in the guarantees Rust makes. However, if Rust
-rejects a correct program, the programmer will be inconvenienced, but nothing
-catastrophic can occur. The <code>RefCell&lt;T&gt;</code> type is useful when you’re sure your
-code follows the borrowing rules but the compiler is unable to understand and
-guarantee that.</p>
-<p>Similar to <code>Rc&lt;T&gt;</code>, <code>RefCell&lt;T&gt;</code> is only for use in single-threaded scenarios
-and will give you a compile-time error if you try using it in a multithreaded
-context. We’ll talk about how to get the functionality of <code>RefCell&lt;T&gt;</code> in a
-multithreaded program in Chapter 16.</p>
-<p>Here is a recap of the reasons to choose <code>Box&lt;T&gt;</code>, <code>Rc&lt;T&gt;</code>, or <code>RefCell&lt;T&gt;</code>:</p>
+<p>참조자와 <code>Box&lt;T&gt;</code>를 이용할 때, 빌림 규칙의 불변성은 컴파일 타임에 집행됩니다.
+<code>RefCell&lt;T&gt;</code>를 이용할 때, 이 불변성은 <em>런타임에</em> 집행됩니다. 참조자를 가지고서
+이 규칙을 어기면 컴파일러 에러를 얻게 될 것입니다. <code>RefCell&lt;T&gt;</code>를 가지고서
+여러분이 이 규칙을 어기면, 프로그램은 <code>panic!</code>을 일으키고 종료될 것입니다.</p>
+<p>컴파일 타임의 빌림 규칙 검사는 개발 과정에서 에러를 더 일찍 잡을 수
+있다는 점, 그리고 이 모든 분석이 사전에 완료되기 때문에 런타임 성능에
+영향이 없다는 장점이 있습니다. 이러한 이유로 컴파일 타임의 빌림 규칙을
+검사하는 것이 대부분의 경우에서 가장 좋은 선택이고, 이것이 러스트의
+기본 설정인 이유이기도 합니다.</p>
+<p>런타임의 빌림 규칙 검사를 하면 컴파일 타임 검사에 의해서는
+허용되지 않을 특정 메모리 안정성 시나리오가 허용된다는 장점이
+있습니다. 러스트 컴파일러와 같은 정적 분석은 태생적으로 보수적입니다.
+어떤 코드 속성은 코드 분석으로는 발견이 불가능합니다: 가장 유명한
+예제로 정지 문제 (halting problem)가 있는데, 이는 이 책의 범위를
+벗어나지만 연구하기에 흥미로운 주제입니다.</p>
+<p>몇몇 분석이 불가능하기 때문에, 러스트 컴파일러가 어떤 코드의 소유권
+규칙 준수를 확신할 수 없다면, 올바른 프로그램을 거부할지도 모릅니다;
+이런 식으로 컴파일러는 보수적입니다. 러스트가 올바르지 않은 프로그램을
+수용한다면, 사용자들은 러스트가 보장하는 것을 신뢰할 수 없을 것입니다.
+하지만, 만일 러스트가 올바른 프로그램을 거부한다면, 프로그래머는 불편하겠지만
+어떠한 재앙도 일어나지 않을 수 있습니다. <code>RefCell&lt;T&gt;</code> 타입은 여러분의 코드가
+빌림 규칙을 준수한다는 것을 컴파일러는 이해하거나 보장할 수 없지만 여러분이
+여러분이 확신하는 경우 유용합니다.</p>
+<p><code>Rc&lt;T&gt;</code>와 유사하게, <code>RefCell&lt;T&gt;</code>은 단일 스레드 시나리오 내에서만 사용
+가능하고, 다중 스레드에서 사용을 시도할 경우에는 컴파일 타임 에러를
+낼 것입니다. <code>RefCell&lt;T&gt;</code>의 기능을 다중 스레드 프로그램에서 사용하는
+방법에 대해서는 16장에서 이야기하겠습니다.</p>
+<p><code>Box&lt;T&gt;</code>, <code>Rc&lt;T&gt;</code>, 혹은 <code>RefCell&lt;T&gt;</code>을 선택하는 이유의 요점을 정리하면 다음과 같습니다:</p>
 <ul>
-<li><code>Rc&lt;T&gt;</code> enables multiple owners of the same data; <code>Box&lt;T&gt;</code> and <code>RefCell&lt;T&gt;</code>
-have single owners.</li>
-<li><code>Box&lt;T&gt;</code> allows immutable or mutable borrows checked at compile time; <code>Rc&lt;T&gt;</code>
-allows only immutable borrows checked at compile time; <code>RefCell&lt;T&gt;</code> allows
-immutable or mutable borrows checked at runtime.</li>
-<li>Because <code>RefCell&lt;T&gt;</code> allows mutable borrows checked at runtime, you can
-mutate the value inside the <code>RefCell&lt;T&gt;</code> even when the <code>RefCell&lt;T&gt;</code> is
-immutable.</li>
+<li><code>Rc&lt;T&gt;</code>는 동일한 데이터에 대해 복수 소유자를 가능하게 합니다; <code>Box&lt;T&gt;</code>와
+<code>RefCell&lt;T&gt;</code>은 단일 소유자만 갖습니다.</li>
+<li><code>Box&lt;T&gt;</code>는 컴파일 타임에 검사되는 불변 혹은 가변 빌림을 허용합니다; <code>Rc&lt;T&gt;</code>는
+오직 컴파일 타임에 검사되는 불변 빌림만 허용합니다; <code>RefCell&lt;T&gt;</code>는 런타임에
+검사되는 불변 혹은 가변 빌림을 허용합니다.</li>
+<li><code>RefCell&lt;T&gt;</code>이 런타임에 검사되는 가변 빌림을 허용하기 때문에,
+<code>RefCell&lt;T&gt;</code>이 불변일 때라도 <code>RefCell&lt;T&gt;</code> 내부의 값을 변경할
+수 있습니다.</li>
 </ul>
-<p>Mutating the value inside an immutable value is the <em>interior mutability</em>
-pattern. Let’s look at a situation in which interior mutability is useful and
-examine how it’s possible.</p>
-<h3 id="interior-mutability-a-mutable-borrow-to-an-immutable-value"><a class="header" href="#interior-mutability-a-mutable-borrow-to-an-immutable-value">Interior Mutability: A Mutable Borrow to an Immutable Value</a></h3>
-<p>A consequence of the borrowing rules is that when you have an immutable value,
-you can’t borrow it mutably. For example, this code won’t compile:</p>
+<p>불변값 내부의 값을 변경하는 것이 <em>내부 가변성</em> 패턴입니다.
+내부 가변성이 유용한 경우를 살펴보고 이것이 어떻게 가능한지
+조사해 봅시다.</p>
+<h3 id="내부-가변성-불변값에-대한-가변-빌림"><a class="header" href="#내부-가변성-불변값에-대한-가변-빌림">내부 가변성: 불변값에 대한 가변 빌림</a></h3>
+<p>빌림 규칙의 결과로 불변값을 가지고 있을 때 이걸 가변으로 빌려올 수는
+없습니다. 예를 들면, 다음 코드는 컴파일되지 않을 것입니다:</p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = 5;
     let y = &amp;mut x;
 }</code></pre>
-<p>If you tried to compile this code, you’d get the following error:</p>
+<p>이 코드를 컴파일 시도하면, 다음과 같은 에러를 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling borrowing v0.1.0 (file:///projects/borrowing)
 error[E0596]: cannot borrow `x` as mutable, as it is not declared as mutable
@@ -18316,40 +18318,40 @@ error[E0596]: cannot borrow `x` as mutable, as it is not declared as mutable
 For more information about this error, try `rustc --explain E0596`.
 error: could not compile `borrowing` due to previous error
 </code></pre>
-<p>However, there are situations in which it would be useful for a value to mutate
-itself in its methods but appear immutable to other code. Code outside the
-value’s methods would not be able to mutate the value. Using <code>RefCell&lt;T&gt;</code> is
-one way to get the ability to have interior mutability, but <code>RefCell&lt;T&gt;</code>
-doesn’t get around the borrowing rules completely: the borrow checker in the
-compiler allows this interior mutability, and the borrowing rules are checked
-at runtime instead. If you violate the rules, you’ll get a <code>panic!</code> instead of
-a compiler error.</p>
-<p>Let’s work through a practical example where we can use <code>RefCell&lt;T&gt;</code> to mutate
-an immutable value and see why that is useful.</p>
-<h4 id="a-use-case-for-interior-mutability-mock-objects"><a class="header" href="#a-use-case-for-interior-mutability-mock-objects">A Use Case for Interior Mutability: Mock Objects</a></h4>
-<p>Sometimes during testing a programmer will use a type in place of another type,
-in order to observe particular behavior and assert it’s implemented correctly.
-This placeholder type is called a <em>test double</em>. Think of it in the sense of a
-“stunt double” in filmmaking, where a person steps in and substitutes for an
-actor to do a particular tricky scene. Test doubles stand in for other types
-when we’re running tests. <em>Mock objects</em> are specific types of test doubles
-that record what happens during a test so you can assert that the correct
-actions took place.</p>
-<p>Rust doesn’t have objects in the same sense as other languages have objects,
-and Rust doesn’t have mock object functionality built into the standard library
-as some other languages do. However, you can definitely create a struct that
-will serve the same purposes as a mock object.</p>
-<p>Here’s the scenario we’ll test: we’ll create a library that tracks a value
-against a maximum value and sends messages based on how close to the maximum
-value the current value is. This library could be used to keep track of a
-user’s quota for the number of API calls they’re allowed to make, for example.</p>
-<p>Our library will only provide the functionality of tracking how close to the
-maximum a value is and what the messages should be at what times. Applications
-that use our library will be expected to provide the mechanism for sending the
-messages: the application could put a message in the application, send an
-email, send a text message, or something else. The library doesn’t need to know
-that detail. All it needs is something that implements a trait we’ll provide
-called <code>Messenger</code>. Listing 15-20 shows the library code:</p>
+<p>하지만, 어떤 값이 자신의 메소드 내부에서는 변경되지만 다른 코드에서는
+불변으로 보이게 하는 것이 유용한 경우가 있습니다. 그 값의 메소드 바깥쪽
+코드에서는 값을 변경할 수 없을 것입니다. <code>RefCell&lt;T&gt;</code>을 이용하는 것이
+내부 가변성의 기능을 얻는 한 가지 방법이지만, <code>RefCell&lt;T&gt;</code>이 빌림
+규칙을 완벽하게 피하는 것은 아닙니다: 컴파일러의 빌림 검사기는
+이러한 내부 가변성을 허용하고, 대신 빌림 규칙은 런타임에 검사됩니다.
+만일 이 규칙을 위반하면, 컴파일러 에러 대신 <code>panic!</code>을 얻을
+것입니다.</p>
+<p><code>RefCell&lt;T&gt;</code>를 이용하여 불변값을 변경할 수 있는 실질적인 예제를
+실습해보고 이것이 왜 유용한지를 알아봅시다.</p>
+<h4 id="내부-가변성에-대한-용례-목mock-객체"><a class="header" href="#내부-가변성에-대한-용례-목mock-객체">내부 가변성에 대한 용례: 목(mock) 객체</a></h4>
+<p>테스트 중 종종 프로그래머는 어떤 타입 대신 다른 타입을 사용하게 되는데,
+이를 통해 특정 동작을 관측하고 정확하게 구현되었음을 단언하기 위한 것입니다.
+이러한 자리 표시형 타입을 <em>테스트 더블 (test double)</em> 이라고 합니다. 영화 제작에서
+“스턴트 더블 (stunt double)”이라고 부르는, 어떤 사람이 나서서 배우를 대신해 특정한
+어려운 장면을 수행하는 것과 같은 의미로 생각하시면 됩니다. 테스트 더블은 테스트를
+수행할 때 다른 타입 대신 나서는 것이죠. <em>목 객체 (mock object)</em> 는
+테스트 더블의 특정한 형태로서 테스트 중 어떤 일이 일어났는지 기록하여 정확한
+동작이 일어났음을 언할 수 있도록 해줍니다.</p>
+<p>러스트에는 다른 언어들에서의 객체와 동일한 의미의 객체가 없고,
+러스트에는 몇몇 다른 언어들처럼 표준 라이브러리에 미리 만들어진
+목 객체 기능이 없습니다. 하지만, 당연하게도 목 객체로서 동일한
+목적을 제공할 구조체를 만들 수 있습니다.</p>
+<p>여기서 테스트하려는 시나리오는 다음과 같습니다: 최대값을 기준으로 어떤 값을
+추적하여 현재 값이 최대값에 얼마나 근접한지에 대한 메세지를 전송하는
+라이브러리를 만들려고 합니다. 이 라이브러리는 이를테면 한 명의 유저에게
+허용되고 있는 API 호출수의 허용량을 추적하는데 사용될 수 있습니다.</p>
+<p>우리의 라이브러리는 어떤 값이 최대값에 얼마나 근접한지를 추적하고 어떤 메세지를
+언제 보내야 할지에 대한 기능만 제공할 것입니다. 이 라이브러리를 사용하는 어플리케이션이
+메세지를 전송하는 것에 대한 메카니즘을 제공할 예정입니다: 이 어플리케이션은 메세지를
+어플리케이션 내에 집어넣거나, 이메일을 보내거나, 문자 메세지를 보내거나, 혹은 그
+밖의 것들을 할 수 있습니다. 라이브러리는 그런 자세한 사항을 알 필요가 없습니다.
+필요한 모든 것은 우리가 제공하게 될 <code>Messenger</code>라는 이름의 트레잇을 구현하는 것입니다.
+Listing 15-20는 라이브러리 코드를 보여줍니다:</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub trait Messenger {
     fn send(&amp;self, msg: &amp;str);
@@ -18389,24 +18391,24 @@ where
         }
     }
 }</code></pre>
-<p><span class="caption">Listing 15-20: A library to keep track of how close a
-value is to a maximum value and warn when the value is at certain levels</span></p>
-<p>One important part of this code is that the <code>Messenger</code> trait has one method
-called <code>send</code> that takes an immutable reference to <code>self</code> and the text of the
-message. This trait is the interface our mock object needs to implement so that
-the mock can be used in the same way a real object is. The other important part
-is that we want to test the behavior of the <code>set_value</code> method on the
-<code>LimitTracker</code>. We can change what we pass in for the <code>value</code> parameter, but
-<code>set_value</code> doesn’t return anything for us to make assertions on. We want to be
-able to say that if we create a <code>LimitTracker</code> with something that implements
-the <code>Messenger</code> trait and a particular value for <code>max</code>, when we pass different
-numbers for <code>value</code>, the messenger is told to send the appropriate messages.</p>
-<p>We need a mock object that, instead of sending an email or text message when we
-call <code>send</code>, will only keep track of the messages it’s told to send. We can
-create a new instance of the mock object, create a <code>LimitTracker</code> that uses the
-mock object, call the <code>set_value</code> method on <code>LimitTracker</code>, and then check that
-the mock object has the messages we expect. Listing 15-21 shows an attempt to
-implement a mock object to do just that, but the borrow checker won’t allow it:</p>
+<p><span class="caption">Listing 15-20: 어떤 값이 최대값에 얼마나 근접하는지를
+추적하고 특정 수준에 값이 있으면 경고해주는 라이브러리</span></p>
+<p>이 코드에서 한가지 중요한 부분은 <code>Messenger</code> 트레잇이 <code>self</code>에 대한
+불변 참조자와 메세지의 텍스트를 인자로 갖는 <code>send</code>라는 메소드 하나를 갖고
+있다는 것입니다. 이 트레잇은 목 객체가 실제 오브젝트와 동일한 방식으로 사용될
+수 있도록 하기 위해 구현할 필요가 있는 인터페이스입니다. 그 외에 중요한
+부분은 <code>LimitTracker</code> 상의 <code>set_value</code> 메소드의 동작을 테스트가
+필요하다는 점입니다. <code>value</code> 파라미터에 어떤 것을 넘길지 바꿀 수는
+있지만, <code>set_value</code>는 우리가 단언을 하기 위한 어떤 것도 반환하지 않습니다.
+<code>Messenger</code> 트레잇을 구현한 어떤 것과 <code>max</code>에 대한 특정값과 함께
+<code>LimitTracker</code>를 만든다면, <code>value</code>에 대해 다른 숫자들을 넘겼을 때
+메신저가 적합한 메세지를 보냈다고 말할 수 있길 원하는 것이죠.</p>
+<p><code>send</code>를 호출했을 때 메일이나 텍스트 메세지를 보내는 대신, 보냈다고
+언급하는 메세지만 추적할 목 객체가 필요합니다. 목 객체의 새 인스턴스를
+생성하고, 이 목 객체를 사용하는 <code>LimitTracker</code>를 만들고, <code>LimitTracker</code>의
+<code>set_value</code> 메소드를 호출한 다음, 목 객체가 예상한 메세지를 가지고
+있는지 검사할 수 있겠습니다. Listing 15-21이 바로 이런 일을 하기 위한
+목 객체 구현 시도이지만, 빌림 검사기가 이를 허용하지 않을 것입니다:</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">pub trait Messenger {
 </span><span class="boring">    fn send(&amp;self, msg: &amp;str);
@@ -18479,25 +18481,25 @@ mod tests {
         assert_eq!(mock_messenger.sent_messages.len(), 1);
     }
 }</code></pre>
-<p><span class="caption">Listing 15-21: An attempt to implement a <code>MockMessenger</code>
-that isn’t allowed by the borrow checker</span></p>
-<p>This test code defines a <code>MockMessenger</code> struct that has a <code>sent_messages</code>
-field with a <code>Vec</code> of <code>String</code> values to keep track of the messages it’s told
-to send. We also define an associated function <code>new</code> to make it convenient to
-create new <code>MockMessenger</code> values that start with an empty list of messages. We
-then implement the <code>Messenger</code> trait for <code>MockMessenger</code> so we can give a
-<code>MockMessenger</code> to a <code>LimitTracker</code>. In the definition of the <code>send</code> method, we
-take the message passed in as a parameter and store it in the <code>MockMessenger</code>
-list of <code>sent_messages</code>.</p>
-<p>In the test, we’re testing what happens when the <code>LimitTracker</code> is told to set
-<code>value</code> to something that is more than 75 percent of the <code>max</code> value. First, we
-create a new <code>MockMessenger</code>, which will start with an empty list of messages.
-Then we create a new <code>LimitTracker</code> and give it a reference to the new
-<code>MockMessenger</code> and a <code>max</code> value of 100. We call the <code>set_value</code> method on the
-<code>LimitTracker</code> with a value of 80, which is more than 75 percent of 100. Then
-we assert that the list of messages that the <code>MockMessenger</code> is keeping track
-of should now have one message in it.</p>
-<p>However, there’s one problem with this test, as shown here:</p>
+<p><span class="caption">Listing 15-21: 빌림 검사기가 허용하지 않는
+<code>MockMessenger</code> 구현 시도</span></p>
+<p>이 테스트 코드는 보냈다고 알려주는 메세지를 추적하기 위한 <code>String</code>
+값의 <code>Vec</code>인 <code>sent_messages</code> 필드를 갖는 <code>MockMessenger</code> 구조체를
+정의합니다. 또한 연관 함수 <code>new</code>를 정의하여 편리하게 빈 메세지 리스트로
+시작하는 새로운 <code>MockMessenger</code> 값을 생성할 수 있도록 합니다.
+그런 다음에는 <code>MockMessenger</code>에 대한 <code>Messenger</code> 트레잇을 구현하여
+<code>MockMessenger</code>를 <code>LimitTracker</code>에 넘겨줄 수 있도록 하였습니다.
+<code>send</code> 메소드의 정의 부분에서는 파라미터로 넘겨진 메세지를 가져와서
+<code>MockMessenger</code> 내의 <code>sent_messages</code> 리스트에 저장합니다.</p>
+<p>테스트 내에서는 <code>LimitTracker</code>의 <code>value</code>에 <code>max</code> 값의 75 퍼센트 이상인
+어떤 값이 설정되었다 했을때 무슨 일이 일어나는지 테스트하고 있습니다. 먼저
+새로운 <code>MockMessenger</code>를 만드는데, 이는 빈 메시지 리스트로 시작될 것입니다.
+그 다음 새로운 <code>LimitTracker</code>를 만들고 여기에 새로운 <code>MockMessenger</code>의
+참조자와 <code>max</code>값 100을 파라미터로 넘깁니다. <code>LimitTracker</code>의 <code>set_value</code>
+메소드를 80 값으로 호출하였는데, 이는 75 퍼센트 이상입니다. 그 다음
+<code>MockMessenger</code>가 추적하고 있는 메세지 리스트가 이제 한 개의 메세지를
+가지고 있는지를 검사합니다.</p>
+<p>하지만, 이 테스트에는 아래와 같이 한 가지 문제점이 있습니다:</p>
 <pre><code class="language-console">$ cargo test
    Compiling limit-tracker v0.1.0 (file:///projects/limit-tracker)
 error[E0596]: cannot borrow `self.sent_messages` as mutable, as it is behind a `&amp;` reference
@@ -18513,15 +18515,15 @@ For more information about this error, try `rustc --explain E0596`.
 error: could not compile `limit-tracker` due to previous error
 warning: build failed, waiting for other jobs to finish...
 </code></pre>
-<p>We can’t modify the <code>MockMessenger</code> to keep track of the messages, because the
-<code>send</code> method takes an immutable reference to <code>self</code>. We also can’t take the
-suggestion from the error text to use <code>&amp;mut self</code> instead, because then the
-signature of <code>send</code> wouldn’t match the signature in the <code>Messenger</code> trait
-definition (feel free to try and see what error message you get).</p>
-<p>This is a situation in which interior mutability can help! We’ll store the
-<code>sent_messages</code> within a <code>RefCell&lt;T&gt;</code>, and then the <code>send</code> method will be
-able to modify <code>sent_messages</code> to store the messages we’ve seen. Listing 15-22
-shows what that looks like:</p>
+<p>메세지를 추적하기 위해서 <code>MockMessenger</code>를 수정할 수가 없는데, 그 이유는
+<code>send</code> 메소드가 <code>self</code>의 불변 참조자를 가져오기 때문입니다. 또한 에러
+메세지가 제안하는 <code>&amp;mut self</code>를 대신 사용하라는 것도 받아들일 수 없는데, 그렇게
+되면 <code>send</code>의 시그니처가 <code>Messenger</code> 트레잇의 정의에 있는 시그니처와 맞지
+않게 될 것이기 때문입니다 (마음 놓고 한번 시도해보고 어떤 에러가 나오는지 보세요).</p>
+<p>지금이 내부 가변성의 도움을 받을 수 있는 상황입니다! <code>sent_messages</code>가
+<code>RefCell&lt;T&gt;</code> 내에 저장되게 하면, <code>send</code> 메소드는 <code>sent_message</code>를
+수정하여 우리에게 보여지는 메세지를 저장할 수 있게 될 것입니다. Listing
+15-22는 이것이 어떤 형태인지를 보여줍니다: </p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">pub trait Messenger {
 </span><span class="boring">    fn send(&amp;self, msg: &amp;str);
@@ -18596,40 +18598,40 @@ mod tests {
         assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
     }
 }</code></pre>
-<p><span class="caption">Listing 15-22: Using <code>RefCell&lt;T&gt;</code> to mutate an inner
-value while the outer value is considered immutable</span></p>
-<p>The <code>sent_messages</code> field is now of type <code>RefCell&lt;Vec&lt;String&gt;&gt;</code> instead of
-<code>Vec&lt;String&gt;</code>. In the <code>new</code> function, we create a new <code>RefCell&lt;Vec&lt;String&gt;&gt;</code>
-instance around the empty vector.</p>
-<p>For the implementation of the <code>send</code> method, the first parameter is still an
-immutable borrow of <code>self</code>, which matches the trait definition. We call
-<code>borrow_mut</code> on the <code>RefCell&lt;Vec&lt;String&gt;&gt;</code> in <code>self.sent_messages</code> to get a
-mutable reference to the value inside the <code>RefCell&lt;Vec&lt;String&gt;&gt;</code>, which is the
-vector. Then we can call <code>push</code> on the mutable reference to the vector to keep
-track of the messages sent during the test.</p>
-<p>The last change we have to make is in the assertion: to see how many items are
-in the inner vector, we call <code>borrow</code> on the <code>RefCell&lt;Vec&lt;String&gt;&gt;</code> to get an
-immutable reference to the vector.</p>
-<p>Now that you’ve seen how to use <code>RefCell&lt;T&gt;</code>, let’s dig into how it works!</p>
-<h4 id="keeping-track-of-borrows-at-runtime-with-refcellt"><a class="header" href="#keeping-track-of-borrows-at-runtime-with-refcellt">Keeping Track of Borrows at Runtime with <code>RefCell&lt;T&gt;</code></a></h4>
-<p>When creating immutable and mutable references, we use the <code>&amp;</code> and <code>&amp;mut</code>
-syntax, respectively. With <code>RefCell&lt;T&gt;</code>, we use the <code>borrow</code> and <code>borrow_mut</code>
-methods, which are part of the safe API that belongs to <code>RefCell&lt;T&gt;</code>. The
-<code>borrow</code> method returns the smart pointer type <code>Ref&lt;T&gt;</code>, and <code>borrow_mut</code>
-returns the smart pointer type <code>RefMut&lt;T&gt;</code>. Both types implement <code>Deref</code>, so we
-can treat them like regular references.</p>
-<p>The <code>RefCell&lt;T&gt;</code> keeps track of how many <code>Ref&lt;T&gt;</code> and <code>RefMut&lt;T&gt;</code> smart
-pointers are currently active. Every time we call <code>borrow</code>, the <code>RefCell&lt;T&gt;</code>
-increases its count of how many immutable borrows are active. When a <code>Ref&lt;T&gt;</code>
-value goes out of scope, the count of immutable borrows goes down by one. Just
-like the compile-time borrowing rules, <code>RefCell&lt;T&gt;</code> lets us have many immutable
-borrows or one mutable borrow at any point in time.</p>
-<p>If we try to violate these rules, rather than getting a compiler error as we
-would with references, the implementation of <code>RefCell&lt;T&gt;</code> will panic at
-runtime. Listing 15-23 shows a modification of the implementation of <code>send</code> in
-Listing 15-22. We’re deliberately trying to create two mutable borrows active
-for the same scope to illustrate that <code>RefCell&lt;T&gt;</code> prevents us from doing this
-at runtime.</p>
+<p><span class="caption">Listing 15-22: <code>RefCell&lt;T&gt;</code>를 사용하여 바깥쪽에서는
+불변으로 간주되는 한편 내부 값 변경하기</span></p>
+<p><code>sent_message</code> 필드는 이제 <code>Vec&lt;String&gt;</code> 대신 <code>RefCell&lt;Vec&lt;String&gt;&gt;</code>
+타입입니다. <code>new</code> 함수에서는 빈 벡터를 감싼 새로운 <code>RefCell&lt;Vec&lt;String&gt;&gt;</code>
+인스턴스를 생성합니다.</p>
+<p><code>send</code> 메소드의 구현부에서 첫번째 파라미터는 여전히 <code>self</code>의 불변 빌림
+형태인데, 이는 트레잇의 정의와 일치합니다. <code>self.sent_messages</code>의
+<code>RefCell&lt;Vec&lt;String&gt;&gt;</code>에 있는 <code>borrow_mut</code>를 호출하여 <code>RefCell&lt;Vec&lt;String&gt;&gt;</code>
+내부 값, 즉 벡터에 대한 가변 참조자를 얻습니다. 그런 다음에는 그 벡터에 대한
+가변 참조자의 <code>push</code>를 호출하여 테스트하는 동안 보내진 메세지를 추적할
+수 있습니다.</p>
+<p>변경할 필요가 있는 마지막 부분은 단언 부분 안에 있습니다: 내부 벡터 안에
+몇 개의 아이템이 있는지 보기 위해서 <code>RefCell&lt;Vec&lt;String&gt;&gt;</code>의 <code>borrow</code>를
+호출하여 벡터에 대한 불변 참조자를 얻습니다.</p>
+<p>이제 <code>RefCell&lt;T&gt;</code>이 어떻게 동작하는지 보았으니, 어떻게 동작하는지 파봅시다!</p>
+<h4 id="refcellt로-런타임에-빌림-추적하기"><a class="header" href="#refcellt로-런타임에-빌림-추적하기"><code>RefCell&lt;T&gt;</code>로 런타임에 빌림 추적하기</a></h4>
+<p>불변 및 가변 참조자를 만들 때는 각각 <code>&amp;</code> 및 <code>&amp;mut</code> 문법을 사용합니다.
+<code>RefCell&lt;T&gt;</code>으로는 <code>borrow</code>와 <code>borrow_mut</code> 메소드를 사용하는데,
+이들은 <code>RefCell&lt;T&gt;</code>가 보유한 안전한 API 중 일부입니다. <code>borrow</code> 메소드는
+스마트 포인터 타입인 <code>Ref&lt;T&gt;</code>를 반환하고, <code>borrow_mut</code>는 스마트 포인터
+타입 <code>RefMut&lt;T&gt;</code>을 반환합니다. 두 타입 모두 <code>Deref</code>를 구현하였기 때문에,
+이들을 보통의 참조자처럼 다룰 수 있습니다.</p>
+<p><code>RefCell&lt;T&gt;</code>는 현재 활성화된 <code>Ref&lt;T&gt;</code>와 <code>RefMut&lt;T&gt;</code> 스마트 포인터들이
+몇개나 있는지 추적합니다. <code>borrow</code>를 호출할 때마다, <code>RefCell&lt;T&gt;</code>는
+불변 참조자가 활성화된 갯수를 증가시킵니다. <code>Ref&lt;T&gt;</code> 값이 스코프 밖으로 벗어날
+때는 불변 빌림의 갯수가 하나 감소합니다. 컴파일 타임에서의 빌림 규칙과 똑같이,
+<code>RefCell&lt;T&gt;</code>는 어떤 시점에서든 여러 개의 불변 빌림 혹은 하나의 가변 빌림을
+가질 수 있도록 만들어줍니다.</p>
+<p>만일 이 규칙들을 위반한다면, <code>RefCell&lt;T&gt;</code>의 구현체는 참조자에 대해 그렇게
+했을 때처럼 컴파일 에러를 내는 것이 아니라, 런타임에 <code>panic!</code>을 일으킬
+것입니다. Listing 15-23은 Listing 15-22의 <code>send</code> 구현을 수정한
+것입니다. 고의로 같은 스코프에서 두 개의 가변 빌림을 만드는 시도를 하여
+<code>RefCell&lt;T&gt;</code>가 이렇게 하는 것을 런타임에 방지한다는 것을 보여주고
+있습니다.</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust ignore panics"><span class="boring">pub trait Messenger {
 </span><span class="boring">    fn send(&amp;self, msg: &amp;str);
@@ -18707,13 +18709,13 @@ at runtime.</p>
 </span><span class="boring">        assert_eq!(mock_messenger.sent_messages.borrow().len(), 1);
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 15-23: Creating two mutable references in the
-same scope to see that <code>RefCell&lt;T&gt;</code> will panic</span></p>
-<p>We create a variable <code>one_borrow</code> for the <code>RefMut&lt;T&gt;</code> smart pointer returned
-from <code>borrow_mut</code>. Then we create another mutable borrow in the same way in the
-variable <code>two_borrow</code>. This makes two mutable references in the same scope,
-which isn’t allowed. When we run the tests for our library, the code in Listing
-15-23 will compile without any errors, but the test will fail:</p>
+<p><span class="caption">Listing 15-23: 두 개의 가변 참조자를 같은 스코프에서
+만들어서 <code>RefCell&lt;T&gt;</code>이 패닉을 일으키는 것을 보기</span></p>
+<p><code>borrow_mut</code>로부터 반환되는 <code>RefMut&lt;T&gt;</code> 스마트 포인터를 위한 <code>one_borrow</code>
+변수가 만들어졌습니다. 그런 다음 또다른 가변 빌림을 같은 방식으로 <code>two_borrow</code> 변수에
+만들어 넣었습니다. 이는 같은 스코프에 두개의 가변 참조자를 만드는 것이고, 허용되지
+않습니다. 라이브러리를 위한 테스트를 실행하면 Listing 15-23의 코드는 어떠한
+에러 없이 컴파일되겠지만, 테스트는 실패할 것입니다:</p>
 <pre><code class="language-console">$ cargo test
    Compiling limit-tracker v0.1.0 (file:///projects/limit-tracker)
     Finished test [unoptimized + debuginfo] target(s) in 0.91s
@@ -18736,30 +18738,31 @@ test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; 
 
 error: test failed, to rerun pass `--lib`
 </code></pre>
-<p>Notice that the code panicked with the message <code>already borrowed: BorrowMutError</code>. This is how <code>RefCell&lt;T&gt;</code> handles violations of the borrowing
-rules at runtime.</p>
-<p>Choosing to catch borrowing errors at runtime rather than compile time, as
-we’ve done here, means you’d potentially be finding mistakes in your code later
-in the development process: possibly not until your code was deployed to
-production. Also, your code would incur a small runtime performance penalty as
-a result of keeping track of the borrows at runtime rather than compile time.
-However, using <code>RefCell&lt;T&gt;</code> makes it possible to write a mock object that can
-modify itself to keep track of the messages it has seen while you’re using it
-in a context where only immutable values are allowed. You can use <code>RefCell&lt;T&gt;</code>
-despite its trade-offs to get more functionality than regular references
-provide.</p>
-<h3 id="having-multiple-owners-of-mutable-data-by-combining-rct-and-refcellt"><a class="header" href="#having-multiple-owners-of-mutable-data-by-combining-rct-and-refcellt">Having Multiple Owners of Mutable Data by Combining <code>Rc&lt;T&gt;</code> and <code>RefCell&lt;T&gt;</code></a></h3>
-<p>A common way to use <code>RefCell&lt;T&gt;</code> is in combination with <code>Rc&lt;T&gt;</code>. Recall that
-<code>Rc&lt;T&gt;</code> lets you have multiple owners of some data, but it only gives immutable
-access to that data. If you have an <code>Rc&lt;T&gt;</code> that holds a <code>RefCell&lt;T&gt;</code>, you can
-get a value that can have multiple owners <em>and</em> that you can mutate!</p>
-<p>For example, recall the cons list example in Listing 15-18 where we used
-<code>Rc&lt;T&gt;</code> to allow multiple lists to share ownership of another list. Because
-<code>Rc&lt;T&gt;</code> holds only immutable values, we can’t change any of the values in the
-list once we’ve created them. Let’s add in <code>RefCell&lt;T&gt;</code> to gain the ability to
-change the values in the lists. Listing 15-24 shows that by using a
-<code>RefCell&lt;T&gt;</code> in the <code>Cons</code> definition, we can modify the value stored in all
-the lists:</p>
+<p>이 코드가 <code>already borrowed: BorrowMutError</code>라는 메세지와 함께 패닉을
+일으켰음을 주목하세요. 이것이 바로 <code>RefCell&lt;T&gt;</code>가 런타임에 빌림 규칙 위반을
+다루는 방법입니다.</p>
+<p>여기서처럼 빌림 에러를 컴파일 타임이 아닌 런타임에 잡기로 선택하는
+것은 개발 과정 이후에 여러분의 코드에서 실수를 발견할 가능성이 있음을
+의미합니다: 여러분의 코드가 프로덕션으로 배포될 때까지 발견되지 않을
+수도 있습니다. 또한, 여러분의 코드는 컴파일 타임이 아닌 런타임에 빌림을
+추적하는 결과로 약간의 런타임 성능 페널티를 초래할 것입니다.
+하지만 <code>RefCell&lt;T&gt;</code>를 이용하는 것은 오직 불변 값만 허용된 맥락 안에서
+사용하는 중에 본 메세지를 추적하기 위해서 스스로를 변경할 수 있는 목 객체
+작성을 가능하게 해줍니다. 트레이드 오프가 있더라도 <code>RefCell&lt;T&gt;</code>를
+사용하여 일반적인 참조자가 제공하는 것보다 더 많은 기능을 얻을 수
+있습니다.</p>
+<h3 id="rct와-refcellt를-조합하여-가변-데이터의-복수-소유자-만들기"><a class="header" href="#rct와-refcellt를-조합하여-가변-데이터의-복수-소유자-만들기"><code>Rc&lt;T&gt;</code>와 <code>RefCell&lt;T&gt;</code>를 조합하여 가변 데이터의 복수 소유자 만들기</a></h3>
+<p><code>RefCell&lt;T&gt;</code>를 사용하는 일반적인 방법은 <code>Rc&lt;T&gt;</code>와 조합하는 것입니다. <code>Rc&lt;T&gt;</code>이
+어떤 데이터에 대해 복수의 소유자를 허용하지만, 그 데이터에 대한 불변 접근만 제공하는
+것을 상기하세요. 만일 <code>RefCell&lt;T&gt;</code>을 들고 있는 <code>Rc&lt;T&gt;</code>를 가지게 되면, 변경
+가능<em>하면서</em> 복수의 소유자를 갖는 값을 얻을 수 있는 것이죠!</p>
+<p>예를 들면, Listing 15-18에서 <code>Rc&lt;T&gt;</code>를 사용하여 여러 개의 리스트가
+어떤 리스트의 소유권을 공유하도록 해주는 cons 리스트 예제를 상기해보세요.
+<code>Rc&lt;T&gt;</code>가 오직 불변의 값만을 가질 수 있기 때문에, 일단 이것들을 만들면
+리스트 안의 값들을 변경하는 것은 불가능했습니다. <code>RefCell&lt;T&gt;</code>를 추가하여
+이 리스트 안의 값을 변경하는 능력을 얻어봅시다. Listing 15-24는 <code>Cons</code> 정의
+내에 <code>RefCell&lt;T&gt;</code>를 사용하는 것으로 모든 리스트 내에 저장된 값이 변경될 수
+있음을 보여줍니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
 enum List {
@@ -18785,25 +18788,25 @@ fn main() {
     println!(&quot;b after = {:?}&quot;, b);
     println!(&quot;c after = {:?}&quot;, c);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-24: Using <code>Rc&lt;RefCell&lt;i32&gt;&gt;</code> to create a
-<code>List</code> that we can mutate</span></p>
-<p>We create a value that is an instance of <code>Rc&lt;RefCell&lt;i32&gt;&gt;</code> and store it in a
-variable named <code>value</code> so we can access it directly later. Then we create a
-<code>List</code> in <code>a</code> with a <code>Cons</code> variant that holds <code>value</code>. We need to clone
-<code>value</code> so both <code>a</code> and <code>value</code> have ownership of the inner <code>5</code> value rather
-than transferring ownership from <code>value</code> to <code>a</code> or having <code>a</code> borrow from
-<code>value</code>.</p>
-<p>We wrap the list <code>a</code> in an <code>Rc&lt;T&gt;</code> so when we create lists <code>b</code> and <code>c</code>, they
-can both refer to <code>a</code>, which is what we did in Listing 15-18.</p>
-<p>After we’ve created the lists in <code>a</code>, <code>b</code>, and <code>c</code>, we want to add 10 to the
-value in <code>value</code>. We do this by calling <code>borrow_mut</code> on <code>value</code>, which uses the
-automatic dereferencing feature we discussed in Chapter 5 (see the section
-<a href="ch05-03-method-syntax.html#wheres-the---operator">“Where’s the <code>-&gt;</code> Operator?”</a><!-- ignore -->) to
-dereference the <code>Rc&lt;T&gt;</code> to the inner <code>RefCell&lt;T&gt;</code> value. The <code>borrow_mut</code>
-method returns a <code>RefMut&lt;T&gt;</code> smart pointer, and we use the dereference operator
-on it and change the inner value.</p>
-<p>When we print <code>a</code>, <code>b</code>, and <code>c</code>, we can see that they all have the modified
-value of 15 rather than 5:</p>
+<p><span class="caption">Listing 15-24: <code>Rc&lt;RefCell&lt;i32&gt;&gt;</code>을 사용하여
+변경 가능한 <code>List</code> 생성하기</span></p>
+<p>먼저 <code>Rc&lt;RefCell&lt;i32&gt;&gt;</code>의 인스턴스 값을 생성하고 <code>value</code>라는 이름의 변수
+안에 저장하여 나중에 이를 직접 접근할 수 있게 했습니다. 그 다음 <code>value</code>를
+가지고 있는 <code>Cons</code> variant로 <code>List</code>를 생성하여 <code>a</code>에 넣었습니다. <code>value</code>은
+클론되어 <code>value</code>가 가진 내부의 값 <code>5</code> 값에 대한 소유권이 <code>a</code>로 이전되거나
+<code>a</code>가 <code>value</code>로부터 빌려오는 것이 아니라 <code>a</code>와 <code>value</code> 모두가 이 값에 대한
+소유권을 갖도록 할 필요가 있습니다.</p>
+<p>리스트 <code>a</code>는 <code>Rc&lt;T&gt;</code>로 감싸져서, <code>b</code>와 <code>c</code> 리스트를 만들 때는 둘 다 <code>a</code>를
+참조할 수 있는데, 이는 Listing 15-18에서 해본 것입니다.</p>
+<p><code>a</code>, <code>b</code>와 <code>c</code> 리스트가 생성된 이후, <code>value</code>의 값에 10을 더하려고
+합니다. 이는 <code>value</code>의 <code>borrow_mut</code>를 호출하는 식으로 수행되었는데,
+여기서 5장에서 논의했던 자동 역참조 기능이 사용되어 <code>Rc&lt;T&gt;</code>를
+역참조하여 안에 있는 <code>RefCell&lt;T&gt;</code> 값을 얻어옵니다
+(<a href="ch05-03-method-syntax.html#wheres-the---operator">“<code>-&gt;</code> 연산자는 어디로 갔나요?”</a><!-- ignore -->절을 보세요).
+<code>borrow_mut</code> 메소드는 <code>RefMut&lt;T&gt;</code> 스마트 포인터를 반환하고, 여기에 역참조
+연산자를 사용한 다음 내부 값을 변경합니다.</p>
+<p><code>a</code>, <code>b</code>와 <code>c</code>를 출력하면 이 리스트들이 모두 5가 아니라 변경된 값
+15를 가지고 있는 것을 볼 수 있습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling cons-list v0.1.0 (file:///projects/cons-list)
     Finished dev [unoptimized + debuginfo] target(s) in 0.63s
@@ -18812,27 +18815,27 @@ a after = Cons(RefCell { value: 15 }, Nil)
 b after = Cons(RefCell { value: 3 }, Cons(RefCell { value: 15 }, Nil))
 c after = Cons(RefCell { value: 4 }, Cons(RefCell { value: 15 }, Nil))
 </code></pre>
-<p>This technique is pretty neat! By using <code>RefCell&lt;T&gt;</code>, we have an outwardly
-immutable <code>List</code> value. But we can use the methods on <code>RefCell&lt;T&gt;</code> that provide
-access to its interior mutability so we can modify our data when we need to.
-The runtime checks of the borrowing rules protect us from data races, and it’s
-sometimes worth trading a bit of speed for this flexibility in our data
-structures. Note that <code>RefCell&lt;T&gt;</code> does not work for multithreaded code!
-<code>Mutex&lt;T&gt;</code> is the thread-safe version of <code>RefCell&lt;T&gt;</code> and we’ll discuss
-<code>Mutex&lt;T&gt;</code> in Chapter 16.</p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="reference-cycles-can-leak-memory"><a class="header" href="#reference-cycles-can-leak-memory">Reference Cycles Can Leak Memory</a></h2>
-<p>Rust’s memory safety guarantees make it difficult, but not impossible, to
-accidentally create memory that is never cleaned up (known as a <em>memory leak</em>).
-Preventing memory leaks entirely is not one of Rust’s guarantees, meaning
-memory leaks are memory safe in Rust. We can see that Rust allows memory leaks
-by using <code>Rc&lt;T&gt;</code> and <code>RefCell&lt;T&gt;</code>: it’s possible to create references where
-items refer to each other in a cycle. This creates memory leaks because the
-reference count of each item in the cycle will never reach 0, and the values
-will never be dropped.</p>
-<h3 id="creating-a-reference-cycle"><a class="header" href="#creating-a-reference-cycle">Creating a Reference Cycle</a></h3>
-<p>Let’s look at how a reference cycle might happen and how to prevent it,
-starting with the definition of the <code>List</code> enum and a <code>tail</code> method in Listing
-15-25:</p>
+<p>이 기술은 꽤 근사합니다! <code>RefCell&lt;T&gt;</code>을 이용하면 표면상으로는 불변인
+<code>List</code>를 갖게 됩니다. 하지만 데이터를 변경할 필요가 생기면 내부 가변성 접근
+기능을 제공하는 <code>RefCell&lt;T&gt;</code>의 메소드를 사용하여 그렇게 할 수 있습니다.
+빌림 규칙의 런타임 검사는 데이터 레이스로부터 우리를 지켜주고, 데이터 구조에
+대한 이런 유연성을 위해서 약간의 속도를 맞바꾸는 것이 때로는 가치가 있습니다.
+<code>RefCell&lt;T&gt;</code>이 다중 스레드 코드에서는 동작하지 않음을 주의하세요!
+<code>Mutex&lt;T&gt;</code>가 <code>RefCell&lt;T&gt;</code>의 스레드 안전 버전이고, 이는 16장에서
+다룰 것입니다.</p>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="순환-참조는-메모리-릭을-발생시킬-수-있습니다"><a class="header" href="#순환-참조는-메모리-릭을-발생시킬-수-있습니다">순환 참조는 메모리 릭을 발생시킬 수 있습니다</a></h2>
+<p>러스트의 메모리 안정성 보장은 (<em>메모리 릭 (memory leak)</em> 이라고도 알려져 있는) 뜻하지
+않게 해제되지 않는 메모리를 생성하기 어렵게 만들지만, 불가능하게 만드는 것은 아닙니다.
+메모리 릭을 완전히 방지하는 것은 러스트가 보장하는 것 중 하나가 아닌데, 이는 메모리
+릭도 러스트에서는 메모리 안정성에 포함됨을 의미합니다. <code>Rc&lt;T&gt;</code> 및 <code>RefCell&lt;T&gt;</code>를
+사용하면 러스트에서 메모리 릭이 허용되는 것을 알 수 있습니다: 즉 아이템들이 서로를
+순환 참조하는 참조자를 만드는 것이 가능합니다. 이는 메모리 릭을 발생시키는데,
+그 이유는 순환 고리 안의 각 아이템들의 참조 카운트는 결코 0이 되지 않을 것이고,
+그러므로 값들은 버려지지 않을 것이기 때문입니다.</p>
+<h3 id="순환-참조-만들기"><a class="header" href="#순환-참조-만들기">순환 참조 만들기</a></h3>
+<p>Listing 15-25의 <code>List</code> 열거형과 <code>tail</code> 메소드 정의를 시작으로
+어떻게 순환 참조가 생길 수 있고, 이를 어떻게 방지하는지
+알아봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">use crate::List::{Cons, Nil};
 use std::cell::RefCell;
@@ -18854,19 +18857,19 @@ impl List {
 }
 
 fn main() {}</code></pre></pre>
-<p><span class="caption">Listing 15-25: A cons list definition that holds a
-<code>RefCell&lt;T&gt;</code> so we can modify what a <code>Cons</code> variant is referring to</span></p>
-<p>We’re using another variation of the <code>List</code> definition from Listing 15-5. The
-second element in the <code>Cons</code> variant is now <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>, meaning that
-instead of having the ability to modify the <code>i32</code> value as we did in Listing
-15-24, we want to modify the <code>List</code> value a <code>Cons</code> variant is pointing to.
-We’re also adding a <code>tail</code> method to make it convenient for us to access the
-second item if we have a <code>Cons</code> variant.</p>
-<p>In Listing 15-26, we’re adding a <code>main</code> function that uses the definitions in
-Listing 15-25. This code creates a list in <code>a</code> and a list in <code>b</code> that points to
-the list in <code>a</code>. Then it modifies the list in <code>a</code> to point to <code>b</code>, creating a
-reference cycle. There are <code>println!</code> statements along the way to show what the
-reference counts are at various points in this process.</p>
+<p><span class="caption">Listing 15-25: <code>RefCell&lt;T&gt;</code>를 가지고 있어서
+<code>Cons</code> variant가 참조하는 것을 변경할 수 있는 cons 리스트 정의</span></p>
+<p>Listing 15-5의 <code>List</code> 정의의 또다른 변형이 이용되고 있습니다.
+이제 <code>Cons</code> variant 내의 두번째 요소는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>인데,
+이는 Listing 15-24에서 했던 것처럼 <code>i32</code> 값을 변경하는 능력을 갖는 대신,
+<code>Cons</code> variant가 가리키고 있는 <code>List</code> 값을 변경하길 원한다는 의미입니다.
+또한 <code>tail</code> 메소드를 추가하여 <code>Cons</code> variant를 갖고 있다면 두번째 아이템에
+접근하기 편하게 만들었습니다.</p>
+<p>Listing 15-26에서는 Listing 15-25에서 사용한 <code>main</code> 함수를 추가하고 있습니다.
+이 코드는 <code>a</code>에 리스트를 만들고 <code>b</code>에는 <code>a</code>의 리스트를 가리키고 있는 리스트를
+만들어 넣었습니다. 그 다음 <code>a</code>의 리스트가 <code>b</code>를 가리키도록 수정하는데, 이것이
+순환 참조를 생성합니다. 이 과정에서 참조 카운트가 얼마인지 여러 곳에서 확인하기
+위해 곳곳에 <code>println!</code> 구문들을 넣었습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use crate::List::{Cons, Nil};
 </span><span class="boring">use std::cell::RefCell;
@@ -18910,19 +18913,19 @@ reference counts are at various points in this process.</p>
     // it will overflow the stack
     // println!(&quot;a next item = {:?}&quot;, a.tail());
 }</code></pre></pre>
-<p><span class="caption">Listing 15-26: Creating a reference cycle of two <code>List</code>
-values pointing to each other</span></p>
-<p>We create an <code>Rc&lt;List&gt;</code> instance holding a <code>List</code> value in the variable <code>a</code>
-with an initial list of <code>5, Nil</code>. We then create an <code>Rc&lt;List&gt;</code> instance holding
-another <code>List</code> value in the variable <code>b</code> that contains the value 10 and points
-to the list in <code>a</code>.</p>
-<p>We modify <code>a</code> so it points to <code>b</code> instead of <code>Nil</code>, creating a cycle. We do
-that by using the <code>tail</code> method to get a reference to the <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>
-in <code>a</code>, which we put in the variable <code>link</code>. Then we use the <code>borrow_mut</code>
-method on the <code>RefCell&lt;Rc&lt;List&gt;&gt;</code> to change the value inside from an <code>Rc&lt;List&gt;</code>
-that holds a <code>Nil</code> value to the <code>Rc&lt;List&gt;</code> in <code>b</code>.</p>
-<p>When we run this code, keeping the last <code>println!</code> commented out for the
-moment, we’ll get this output:</p>
+<p><span class="caption">Listing 15-26: 두 개의 <code>List</code> 값이 서로를 가리키는
+순환 참조 생성하기</span></p>
+<p>초기값 리스트 <code>5, Nil</code>를 가진 <code>List</code> 값을 갖는 <code>Rc&lt;List&gt;</code> 인스턴스를
+만들어 <code>a</code> 변수에 넣었습니다. 그 다음 <code>Rc&lt;List&gt;</code> 인스턴스에 만들어서 <code>b</code>에
+넣었는데, 여기에는 10과 <code>a</code>의 리스트를 가리키고 있는 또다른 <code>List</code> 값이
+있습니다.</p>
+<p><code>a</code>를 수정하여 이것이 <code>Nil</code> 대신 <code>b</code>를 가리키도록 하였는데, 이렇게 순환이
+만들어집니다. 이는 <code>tail</code> 메소드를 사용하여 <code>a</code>에 있는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>로부터
+참조자를 얻어오는 식으로 이루어졌는데, 이것을 <code>link</code>라는 변수에 넣었습니다. 그 다음
+<code>RefCell&lt;Rc&lt;List&gt;&gt;</code>의 <code>borrow_mut</code> 메소드를 사용하여 <code>Nil</code> 값을 가지고 있는
+<code>Rc&lt;List&gt;</code> 내부의 값을 <code>b</code>의 <code>Rc&lt;List&gt;</code>로 바꾸었습니다.</p>
+<p>잠시 마지막 <code>println!</code> 문이 실해되지 않도록 주석처리하고서 이 코드를 실행시면
+아래와 같은 출력을 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling cons-list v0.1.0 (file:///projects/cons-list)
     Finished dev [unoptimized + debuginfo] target(s) in 0.53s
@@ -18935,75 +18938,75 @@ b next item = Some(RefCell { value: Cons(5, RefCell { value: Nil }) })
 b rc count after changing a = 2
 a rc count after changing a = 2
 </code></pre>
-<p>The reference count of the <code>Rc&lt;List&gt;</code> instances in both <code>a</code> and <code>b</code> are 2 after
-we change the list in <code>a</code> to point to <code>b</code>. At the end of <code>main</code>, Rust drops the
-variable <code>b</code>, which decreases the reference count of the <code>b</code> <code>Rc&lt;List&gt;</code> instance
-from 2 to 1. The memory that <code>Rc&lt;List&gt;</code> has on the heap won’t be dropped at
-this point, because its reference count is 1, not 0. Then Rust drops <code>a</code>, which
-decreases the reference count of the <code>a</code> <code>Rc&lt;List&gt;</code> instance from 2 to 1 as
-well. This instance’s memory can’t be dropped either, because the other
-<code>Rc&lt;List&gt;</code> instance still refers to it. The memory allocated to the list will
-remain uncollected forever. To visualize this reference cycle, we’ve created a
-diagram in Figure 15-4.</p>
+<p><code>a</code>의 리스트가 <code>b</code>를 가리키도록 변경한 이후 <code>a</code>와 <code>b</code>의 <code>Rc&lt;List&gt;</code> 인스턴스의
+참조 카운트는 둘 다 2입니다. <code>main</code>의 끝에서 러스트는 <code>b</code>를 버리는데, 이는
+<code>b</code>의 <code>Rc&lt;List&gt;</code> 참조 카운트를 2에서 1로 줄입니다. <code>Rc&lt;List&gt;</code>가 힙에 보유한
+메모리는 이 시점에서 해제되지 않을 것인데, 그 이유는 참조 카운트가 0이 아닌
+1이기 때문입니다. 그런 다음 러스트는 <code>a</code>을 버리고, 이는 마찬가지로 <code>a</code>의
+<code>Rc&lt;List&gt;</code> 인스턴스가 가진 참조 카운트를 2에서 1로 줄입니다. 이 인스턴스의
+메모리 또한 버러질 수 없는데, 왜냐하면 이쪽의 <code>Rc&lt;List&gt;</code> 인스턴스도 여전히
+무언가를 참조하기 때문입니다. 리스트에 할당된 메모리는 정리되지 않은 채
+영원히 남을 것입니다. 이러한 순환 참조를 시각화하기 위해 Figure 15-4의
+다이어그램을 만들었습니다.</p>
 <img alt="Reference cycle of lists" src="img/trpl15-04.svg" class="center" />
-<p><span class="caption">Figure 15-4: A reference cycle of lists <code>a</code> and <code>b</code>
-pointing to each other</span></p>
-<p>If you uncomment the last <code>println!</code> and run the program, Rust will try to
-print this cycle with <code>a</code> pointing to <code>b</code> pointing to <code>a</code> and so forth until it
-overflows the stack.</p>
-<p>Compared to a real-world program, the consequences creating a reference cycle
-in this example aren’t very dire: right after we create the reference cycle,
-the program ends. However, if a more complex program allocated lots of memory
-in a cycle and held onto it for a long time, the program would use more memory
-than it needed and might overwhelm the system, causing it to run out of
-available memory.</p>
-<p>Creating reference cycles is not easily done, but it’s not impossible either.
-If you have <code>RefCell&lt;T&gt;</code> values that contain <code>Rc&lt;T&gt;</code> values or similar nested
-combinations of types with interior mutability and reference counting, you must
-ensure that you don’t create cycles; you can’t rely on Rust to catch them.
-Creating a reference cycle would be a logic bug in your program that you should
-use automated tests, code reviews, and other software development practices to
-minimize.</p>
-<p>Another solution for avoiding reference cycles is reorganizing your data
-structures so that some references express ownership and some references don’t.
-As a result, you can have cycles made up of some ownership relationships and
-some non-ownership relationships, and only the ownership relationships affect
-whether or not a value can be dropped. In Listing 15-25, we always want <code>Cons</code>
-variants to own their list, so reorganizing the data structure isn’t possible.
-Let’s look at an example using graphs made up of parent nodes and child nodes
-to see when non-ownership relationships are an appropriate way to prevent
-reference cycles.</p>
-<h3 id="preventing-reference-cycles-turning-an-rct-into-a-weakt"><a class="header" href="#preventing-reference-cycles-turning-an-rct-into-a-weakt">Preventing Reference Cycles: Turning an <code>Rc&lt;T&gt;</code> into a <code>Weak&lt;T&gt;</code></a></h3>
-<p>So far, we’ve demonstrated that calling <code>Rc::clone</code> increases the
-<code>strong_count</code> of an <code>Rc&lt;T&gt;</code> instance, and an <code>Rc&lt;T&gt;</code> instance is only cleaned
-up if its <code>strong_count</code> is 0. You can also create a <em>weak reference</em> to the
-value within an <code>Rc&lt;T&gt;</code> instance by calling <code>Rc::downgrade</code> and passing a
-reference to the <code>Rc&lt;T&gt;</code>. Strong references are how you can share ownership of
-an <code>Rc&lt;T&gt;</code> instance. Weak references don’t express an ownership relationship,
-and their count doesn’t affect when an <code>Rc&lt;T&gt;</code> instance is cleaned up. They
-won’t cause a reference cycle because any cycle involving some weak references
-will be broken once the strong reference count of values involved is 0.</p>
-<p>When you call <code>Rc::downgrade</code>, you get a smart pointer of type <code>Weak&lt;T&gt;</code>.
-Instead of increasing the <code>strong_count</code> in the <code>Rc&lt;T&gt;</code> instance by 1, calling
-<code>Rc::downgrade</code> increases the <code>weak_count</code> by 1. The <code>Rc&lt;T&gt;</code> type uses
-<code>weak_count</code> to keep track of how many <code>Weak&lt;T&gt;</code> references exist, similar to
-<code>strong_count</code>. The difference is the <code>weak_count</code> doesn’t need to be 0 for the
-<code>Rc&lt;T&gt;</code> instance to be cleaned up.</p>
-<p>Because the value that <code>Weak&lt;T&gt;</code> references might have been dropped, to do
-anything with the value that a <code>Weak&lt;T&gt;</code> is pointing to, you must make sure the
-value still exists. Do this by calling the <code>upgrade</code> method on a <code>Weak&lt;T&gt;</code>
-instance, which will return an <code>Option&lt;Rc&lt;T&gt;&gt;</code>. You’ll get a result of <code>Some</code>
-if the <code>Rc&lt;T&gt;</code> value has not been dropped yet and a result of <code>None</code> if the
-<code>Rc&lt;T&gt;</code> value has been dropped. Because <code>upgrade</code> returns an <code>Option&lt;Rc&lt;T&gt;&gt;</code>,
-Rust will ensure that the <code>Some</code> case and the <code>None</code> case are handled, and
-there won’t be an invalid pointer.</p>
-<p>As an example, rather than using a list whose items know only about the next
-item, we’ll create a tree whose items know about their children items <em>and</em>
-their parent items.</p>
-<h4 id="creating-a-tree-data-structure-a-node-with-child-nodes"><a class="header" href="#creating-a-tree-data-structure-a-node-with-child-nodes">Creating a Tree Data Structure: a <code>Node</code> with Child Nodes</a></h4>
-<p>To start, we’ll build a tree with nodes that know about their child nodes.
-We’ll create a struct named <code>Node</code> that holds its own <code>i32</code> value as well as
-references to its children <code>Node</code> values:</p>
+<p><span class="caption">Figure 15-4: 리스트 <code>a</code>와 <code>b</code>가 서로를 가리키고
+있는 순환 참조</span></p>
+<p>만일 여러분이 마지막 <code>println!</code>의 주석을 해제하고 프로그램을 실행해보면, 러스트는
+<code>a</code>를 가리키고 있는 <code>b</code>를 가리키고 있는 <code>a</code>를 가리키고 있는 등등 스택 오버플로우가
+날 때까지 이 순환을 출력하려 할 것입니다.</p>
+<p>실제 프로그램과 비교했을 때 이 예제에서의 순환 참조 생성 결과는 그렇게까지
+심각하진 않습니다: 순환 참조가 생성된 직후 프로그램이 종료되니까요.
+하지만, 더 복잡한 프로그램이 많은 양의 메모리를 순환 참조하여 할당하고
+오랜 시간동안 이걸 가지고 있게 되면, 프로그램은 필요한 양보다 더 많은
+메모리를 사용하게 되고 사용 가능한 메모리를 다 써버리게 되어 시스템을
+멈추게 할지도 모릅니다.</p>
+<p>순환 참조를 만드는 것은 쉽게 이루어지지는 않지만, 불가능한 것도 아닙니다.
+만일 여러분이 <code>Rc&lt;T&gt;</code> 값을 가지고 있는 <code>RefCell&lt;T&gt;</code> 혹은 그와 유사하게
+내부 가변성 및 참조 카운팅 기능이 있는 타입들의 중첩된 조합을 사용한다면,
+여러분이 직접 순환을 만들지 않음을 보장해야 합니다; 이 순환들을 찾아내는 것을
+러스트에 의지할 수는 없습니다. 순환 참조를 만드는 것은 프로그램의 논리적
+버그로서, 자동화된 테스트, 코드 리뷰, 그 외 소프트웨어 개발 연습 등을 통해
+최소화해야 할 것입니다.</p>
+<p>순환 참조를 피하는 또다른 해결책은 데이터 구조를 재구성하여 어떤
+참조자는 소유권을 갖고 어떤 참조자는 그렇지 않도록 하는 것입니다.
+결과적으로 몇 개의 소유권 관계와 몇 개의 소유권 없는 관계로 이루어진
+순환을 만들수 있으며, 소유권 관계들만이 값을 버릴지 말지에 관해
+영향을 주게 됩니다. Listing 15-25에서는 <code>Cons</code> variant가 언제나
+리스트를 소유하기를 원하므로, 데이터 구조를 재구성하는 것은 불가능합니다.
+부모 노드와 자식 노드로 구성된 그래프를 이용한 예제를 살펴보면서
+소유권 없는 관계가 순환 참조를 방지하는 적절한 방법이 되는 때가
+언제인지 알아봅시다.</p>
+<h3 id="참조-순환-방지하기-rct를-weakt로-바꾸기"><a class="header" href="#참조-순환-방지하기-rct를-weakt로-바꾸기">참조 순환 방지하기: <code>Rc&lt;T&gt;</code>를 <code>Weak&lt;T&gt;</code>로 바꾸기</a></h3>
+<p>지금까지 <code>Rc::clone</code>을 호출하는 것은 <code>Rc&lt;T&gt;</code> 인스턴스의 <code>strong_count</code>를
+증가시키고, <code>Rc&lt;T&gt;</code> 인스턴스는 자신의 <code>strong_count</code>가 0이 된 경우에만
+제거되는 것을 보았습니다. <code>Rc::downgrade</code>에 <code>Rc&lt;T&gt;</code>의 참조자를 넣어서
+호출하면 <code>Rc&lt;T&gt;</code> 인스턴스 내의 값을 가리키는 <em>약한 참조 (weak reference)</em> 를
+만드는 것도 가능합니다. 강한 참조는 <code>Rc&lt;T&gt;</code> 인스턴스의 소유권을 공유할 수 있는
+방법입니다. 약한 참조는 소유권 관계를 표현하지 않고, 약한 참조의 갯수는
+<code>Rc&lt;T&gt;</code> 인스턴스가 제거되는 경우에 영향을 주지 않습니다. 약한 참조가 포함된
+참조 순환은 그 값의 강한 참조 개수를 0으로 만드는 순간 깨지게 되기 때문에,
+참조 순환을 일으키지 않게 될 것입니다.</p>
+<p><code>Rc::downgrade</code>를 호출하면 <code>Weak&lt;T&gt;</code> 타입의 스마트 포인터를 얻게 됩니다.
+<code>Rc::downgrade</code>는 <code>Rc&lt;T&gt;</code> 인스턴스의 <code>strong_count</code>를 1 증가시키는
+대신 <code>weak_count</code>를 1 증가시킵니다. <code>Rc&lt;T&gt;</code> 타입은 <code>strong_count</code>와
+유사한 방식으로 <code>weak_count</code>를 사용하여 <code>Weak&lt;T&gt;</code> 참조가 몇개 있는지
+추적합니다. 차이점은 <code>Rc&lt;T&gt;</code>인스턴스가 제거되기 위해 <code>weak_count</code>가
+0일 필요는 없다는 것입니다.</p>
+<p><code>Weak&lt;T&gt;</code>가 참조하고 있는 값이 이미 버려졌을지도 모르기 때문에, <code>Weak&lt;T&gt;</code>가
+가리키고 있는 값으로 어떤 일을 하기 위해서는 그 값이 여전히 존재하는지를 반드시
+확인해야 합니다. 이를 위해 <code>Weak&lt;T&gt;</code>의 <code>upgrade</code> 메소드를 호출하는데, 이 메소드는
+<code>Option&lt;Rc&lt;T&gt;&gt;</code>를 반환할 것입니다. 만일 <code>Rc&lt;T&gt;</code> 값이 아직 버려지지 않았다면
+<code>Some</code> 결과를 얻게 될 것이고 <code>Rc&lt;T&gt;</code> 값이 버려졌다면 <code>None</code> 결과값을 얻게
+될 것입니다. <code>upgrade</code>가 <code>Option&lt;T&gt;</code>를 반환하기 때문에, 러스트는 <code>Some</code>의
+경우와 <code>None</code>의 경우가 반드시 처리되도록 할 것이고, 따라서 유효하지 않은 포인터는
+없을 것입니다.</p>
+<p>예제로 리스트처럼 어떤 아이템이 오직 다음 아이템에 대해서만 알고 있는 데이터 구조
+말고, 자식 아이템 <em>그리고</em> 부모 아이템에 대해 모두 알고 있는 아이템을 갖는 트리를
+만들어 보겠습니다.</p>
+<h4 id="트리-데이터-구조-만들기-자식-노드를-가진-node"><a class="header" href="#트리-데이터-구조-만들기-자식-노드를-가진-node">트리 데이터 구조 만들기: 자식 노드를 가진 <code>Node</code></a></h4>
+<p>자신의 자식 노드에 대해 알고 있는 노드로 이루어진 트리를 만드는 것으로 시작해
+보겠습니다. <code>i32</code>값과 함께 자식 <code>Node</code> 값들의 참조자들도 가지고 있는 <code>Node</code>라는
+이름의 구조체를 만들겠습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
 use std::rc::Rc;
@@ -19025,14 +19028,14 @@ struct Node {
 </span><span class="boring">        children: RefCell::new(vec![Rc::clone(&amp;leaf)]),
 </span><span class="boring">    });
 </span><span class="boring">}</span></code></pre></pre>
-<p>We want a <code>Node</code> to own its children, and we want to share that ownership with
-variables so we can access each <code>Node</code> in the tree directly. To do this, we
-define the <code>Vec&lt;T&gt;</code> items to be values of type <code>Rc&lt;Node&gt;</code>. We also want to
-modify which nodes are children of another node, so we have a <code>RefCell&lt;T&gt;</code> in
-<code>children</code> around the <code>Vec&lt;Rc&lt;Node&gt;&gt;</code>.</p>
-<p>Next, we’ll use our struct definition and create one <code>Node</code> instance named
-<code>leaf</code> with the value 3 and no children, and another instance named <code>branch</code>
-with the value 5 and <code>leaf</code> as one of its children, as shown in Listing 15-27:</p>
+<p><code>Node</code>가 자신의 자식들을 소유하도록 하고, 이 소유권을 공유하여 트리의 각
+<code>Node</code>에 직접 접근할 수 있도록 하고 싶습니다. 이렇게 하기 위해 <code>Vec&lt;T&gt;</code>
+아이템이 <code>Rc&lt;Node&gt;</code> 타입의 값이 되도록 정의하였습니다. 또한 어떤 노드가
+다른 노드의 자식이 되도록 수정하려고 <code>Vec&lt;Rc&lt;Node&gt;&gt;</code>를 <code>RefCell&lt;T&gt;</code>로
+감싼 <code>children</code>을 갖도록 하였습니다.</p>
+<p>그 다음 Listing 15-27처럼 이 구조체 정의를 이용하여 3 값과 자식 노드가 없는
+<code>leaf</code>라는 이름의 <code>Node</code> 인스턴스, 그리고 5 값과 <code>leaf</code>를 자식으로 갖는
+<code>branch</code>라는 이름의 인스턴스를 만들도록 하겠습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::Rc;
@@ -19054,28 +19057,28 @@ with the value 5 and <code>leaf</code> as one of its children, as shown in Listi
         children: RefCell::new(vec![Rc::clone(&amp;leaf)]),
     });
 }</code></pre></pre>
-<p><span class="caption">Listing 15-27: Creating a <code>leaf</code> node with no children
-and a <code>branch</code> node with <code>leaf</code> as one of its children</span></p>
-<p>We clone the <code>Rc&lt;Node&gt;</code> in <code>leaf</code> and store that in <code>branch</code>, meaning the
-<code>Node</code> in <code>leaf</code> now has two owners: <code>leaf</code> and <code>branch</code>. We can get from
-<code>branch</code> to <code>leaf</code> through <code>branch.children</code>, but there’s no way to get from
-<code>leaf</code> to <code>branch</code>. The reason is that <code>leaf</code> has no reference to <code>branch</code> and
-doesn’t know they’re related. We want <code>leaf</code> to know that <code>branch</code> is its
-parent. We’ll do that next.</p>
-<h4 id="adding-a-reference-from-a-child-to-its-parent"><a class="header" href="#adding-a-reference-from-a-child-to-its-parent">Adding a Reference from a Child to Its Parent</a></h4>
-<p>To make the child node aware of its parent, we need to add a <code>parent</code> field to
-our <code>Node</code> struct definition. The trouble is in deciding what the type of
-<code>parent</code> should be. We know it can’t contain an <code>Rc&lt;T&gt;</code>, because that would
-create a reference cycle with <code>leaf.parent</code> pointing to <code>branch</code> and
-<code>branch.children</code> pointing to <code>leaf</code>, which would cause their <code>strong_count</code>
-values to never be 0.</p>
-<p>Thinking about the relationships another way, a parent node should own its
-children: if a parent node is dropped, its child nodes should be dropped as
-well. However, a child should not own its parent: if we drop a child node, the
-parent should still exist. This is a case for weak references!</p>
-<p>So instead of <code>Rc&lt;T&gt;</code>, we’ll make the type of <code>parent</code> use <code>Weak&lt;T&gt;</code>,
-specifically a <code>RefCell&lt;Weak&lt;Node&gt;&gt;</code>. Now our <code>Node</code> struct definition looks
-like this:</p>
+<p><span class="caption">Listing 15-27: 자식이 없는 <code>leaf</code> 노드와
+이 <code>leaf</code>를 자식으로 갖는 <code>branch</code> 노드 만들기</span></p>
+<p><code>leaf</code>의 <code>Rc&lt;Node&gt;</code>를 복제하여 이를 <code>branch</code> 내에 저장했는데, 이는 <code>leaf</code>에
+있는 <code>Node</code>의 소유자가 이제 둘이 되었다는 뜻입니다. <code>branch</code>로부터 <code>branch.children</code>를
+통하여 <code>leaf</code>까지 접근할 수 있게 되었지만, <code>leaf</code>에서부터 <code>branch</code>로 접근할
+방법은 없습니다. 그 원인은 <code>leaf</code>가 <code>branch</code>에 대한 참조자를 가지고 있지 않고
+이들 간의 연관성을 알지 못하기 때문입니다. <code>leaf</code>에게 <code>branch</code>가 자신의 부모임을
+알려주고 싶습니다. 이걸 다음에 해보겠습니다.</p>
+<h4 id="자식에서-부모로-가는-참조자-추가하기"><a class="header" href="#자식에서-부모로-가는-참조자-추가하기">자식에서 부모로 가는 참조자 추가하기</a></h4>
+<p>자식 노드가 그의 부모를 알도록 하기 위해서는 <code>parent</code> 필드를 <code>Node</code> 구조체
+정의에 추가할 필요가 있겠습니다. 문제는 <code>parent</code>의 타입을 결정하는 데에
+있습니다. 여기에 <code>Rc&lt;T&gt;</code>를 넣게 되면 <code>branch</code>를 가리키고 있는 <code>leaf.parent</code>와
+<code>leaf</code>를 가리키고 있는 <code>branch.children</code>으로 이루어진 순환 참조를 만들게 되며,
+이들의 <code>strong_count</code>값을 결코 0이 되지 않게 하는 원인을 만들 것이기 때문에,
+여기에 <code>Rc&lt;T&gt;</code>를 사용할 수 없음을 알고 있습니다.</p>
+<p>이 관계들을 다른 방식으로 생각해보면, 부모 노드는 그의 자식들을 소유해야 합니다:
+즉 만일 부모 노드가 버려지게 되면, 그의 자식 노드들도 또한 버려져야 합니다.
+하지만, 자식은 그의 부모를 소유해서는 안됩니다: 즉 자식 노드가 버려지더라도
+그 부모는 여전히 존재해야 합니다. 이것이 바로 약한 참조를 위한 경우입니다!</p>
+<p>따라서 <code>Rc&lt;T&gt;</code> 대신 <code>Weak&lt;T&gt;</code>를 이용하여, 특별히 <code>RefCell&lt;Weak&lt;Node&gt;&gt;</code>를
+이용하여 <code>parent</code>의 타입을 만들겠습니다. 이제 <code>Node</code> 구조체 정의는 아래와
+같이 생겼습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
 use std::rc::{Rc, Weak};
@@ -19106,9 +19109,9 @@ struct Node {
 </span><span class="boring">
 </span><span class="boring">    println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
 </span><span class="boring">}</span></code></pre></pre>
-<p>A node will be able to refer to its parent node but doesn’t own its parent.
-In Listing 15-28, we update <code>main</code> to use this new definition so the <code>leaf</code>
-node will have a way to refer to its parent, <code>branch</code>:</p>
+<p>노드는 자신의 부모 노드를 참조할 수 있게 되겠지만 그 부모를 소유하지는 않습니다.
+Listing 15-28에서는 <code>main</code>을 갱신하여 이 새로운 정의를 사용하도록 해서 <code>leaf</code>
+노드가 자신의 부모인 <code>branch</code>를 참조할 수 있는 방법을 갖도록 합니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::{Rc, Weak};
@@ -19139,41 +19142,41 @@ node will have a way to refer to its parent, <code>branch</code>:</p>
 
     println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
 }</code></pre></pre>
-<p><span class="caption">Listing 15-28: A <code>leaf</code> node with a weak reference to its
-parent node <code>branch</code></span></p>
-<p>Creating the <code>leaf</code> node looks similar to Listing 15-27 with the exception of
-the <code>parent</code> field: <code>leaf</code> starts out without a parent, so we create a new,
-empty <code>Weak&lt;Node&gt;</code> reference instance.</p>
-<p>At this point, when we try to get a reference to the parent of <code>leaf</code> by using
-the <code>upgrade</code> method, we get a <code>None</code> value. We see this in the output from the
-first <code>println!</code> statement:</p>
+<p><span class="caption">Listing 15-28: 부모 노드 <code>branch</code>의 약한 참조를
+갖는 <code>leaf</code> 노드</span></p>
+<p><code>leaf</code> 노드를 만드는 것이 <code>parent</code> 필드를 제외하고는 Listing 15-27와
+비슷해 보입니다: <code>leaf</code>는 부모없이 시작되서, 새 비어있는 <code>Weak&lt;Node&gt;</code>
+참조자 인스턴스를 생성하였습니다.</p>
+<p>이 시점에서 <code>upgrade</code> 메소드를 사용하여 <code>leaf</code>의 부모에 대한 참조자를
+얻는 시도를 하면 <code>None</code> 값을 얻습니다. 첫번째 <code>println!</code> 구문에서는
+아래와 같은 출력을 보게됩니다:</p>
 <pre><code class="language-text">leaf parent = None
 </code></pre>
-<p>When we create the <code>branch</code> node, it will also have a new <code>Weak&lt;Node&gt;</code>
-reference in the <code>parent</code> field, because <code>branch</code> doesn’t have a parent node.
-We still have <code>leaf</code> as one of the children of <code>branch</code>. Once we have the
-<code>Node</code> instance in <code>branch</code>, we can modify <code>leaf</code> to give it a <code>Weak&lt;Node&gt;</code>
-reference to its parent. We use the <code>borrow_mut</code> method on the
-<code>RefCell&lt;Weak&lt;Node&gt;&gt;</code> in the <code>parent</code> field of <code>leaf</code>, and then we use the
-<code>Rc::downgrade</code> function to create a <code>Weak&lt;Node&gt;</code> reference to <code>branch</code> from
-the <code>Rc&lt;Node&gt;</code> in <code>branch.</code></p>
-<p>When we print the parent of <code>leaf</code> again, this time we’ll get a <code>Some</code> variant
-holding <code>branch</code>: now <code>leaf</code> can access its parent! When we print <code>leaf</code>, we
-also avoid the cycle that eventually ended in a stack overflow like we had in
-Listing 15-26; the <code>Weak&lt;Node&gt;</code> references are printed as <code>(Weak)</code>:</p>
+<p><code>branch</code> 노드를 생성할 때도 <code>parent</code> 필드에 새로운 <code>Weak&lt;Node&gt;</code>
+참조자를 넣었는데, 이는 <code>branch</code>에게는 부모 노드가 없기 때문입니다.
+<code>leaf</code>는 여전히 <code>branch</code>의 자식 중 하나입니다. 일단 <code>branch</code>의 <code>Node</code>
+인스턴스를 갖게 되면, <code>leaf</code>를 수정하여 자신의 부모에 대한 <code>Weak&lt;Node&gt;</code>
+참조자를 갖도록 할 수 있습니다. <code>leaf</code>의 <code>parent</code> 필드의
+<code>RefCell&lt;Weak&lt;Node&gt;&gt;</code>에 있는 <code>borrow_mut</code> 메소드를 사용하고, 그런 다음
+<code>Rc::downgrade</code> 함수를 사용하여 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>로부터 <code>branch</code>에
+대한 <code>Weak&lt;Node&gt;</code> 참조자를 생성하였습니다.</p>
+<p><code>leaf</code>의 부모를 다시 한번 출력할 때는 <code>branch</code>를 가지고 있는 <code>Some</code> variant를
+얻게될 것입니다: 이제 <code>leaf</code>는 자신의 부모에 접근할 수 있습니다! <code>leaf</code>를 출력할
+때 Listing 15-26에서와 같이 궁극적으로 스택 오버플로우로 끝나버리는 그 순환 문제도
+피하게 되었습니다; <code>Weak&lt;Node&gt;</code> 참조자는 <code>(Weak)</code>로 출력됩니다:</p>
 <pre><code class="language-text">leaf parent = Some(Node { value: 5, parent: RefCell { value: (Weak) },
 children: RefCell { value: [Node { value: 3, parent: RefCell { value: (Weak) },
 children: RefCell { value: [] } }] } })
 </code></pre>
-<p>The lack of infinite output indicates that this code didn’t create a reference
-cycle. We can also tell this by looking at the values we get from calling
-<code>Rc::strong_count</code> and <code>Rc::weak_count</code>.</p>
-<h4 id="visualizing-changes-to-strong_count-and-weak_count"><a class="header" href="#visualizing-changes-to-strong_count-and-weak_count">Visualizing Changes to <code>strong_count</code> and <code>weak_count</code></a></h4>
-<p>Let’s look at how the <code>strong_count</code> and <code>weak_count</code> values of the <code>Rc&lt;Node&gt;</code>
-instances change by creating a new inner scope and moving the creation of
-<code>branch</code> into that scope. By doing so, we can see what happens when <code>branch</code> is
-created and then dropped when it goes out of scope. The modifications are shown
-in Listing 15-29:</p>
+<p>무한 출력이 없다는 것은 이 코드가 순환 참조를 생성하지 않았음을 나타냅니다.
+또한 <code>Rc::strong_count</code>와 <code>Rc::weak_count</code>를 호출하여 얻은 값을 살펴보는
+것으로도 알 수 있습니다.</p>
+<h4 id="strong_count와-weak_count의-변화를-시각화하기"><a class="header" href="#strong_count와-weak_count의-변화를-시각화하기"><code>strong_count</code>와 <code>weak_count</code>의 변화를 시각화하기</a></h4>
+<p>새로운 내부 스코프를 만들고 <code>branch</code>의 생성 과정을 이 스코프로 옮겨서
+<code>Rc&lt;Node&gt;</code> 인스턴스의 <code>strong_count</code>와 <code>weak_count</code> 값이 어떻게
+변하는지 살펴봅시다. 그렇게 하면 <code>branch</code>가 만들어질 때와, 그 후 스코프
+밖으로 벗어났을 때 어떤일이 생기는지 알 수 있습니다. 수정본은
+Listing 15-29와 같습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::{Rc, Weak};
@@ -19229,45 +19232,45 @@ in Listing 15-29:</p>
 }</code></pre></pre>
 <p><span class="caption">Listing 15-29: Creating <code>branch</code> in an inner scope and
 examining strong and weak reference counts</span></p>
-<p>After <code>leaf</code> is created, its <code>Rc&lt;Node&gt;</code> has a strong count of 1 and a weak
-count of 0. In the inner scope, we create <code>branch</code> and associate it with
-<code>leaf</code>, at which point when we print the counts, the <code>Rc&lt;Node&gt;</code> in <code>branch</code>
-will have a strong count of 1 and a weak count of 1 (for <code>leaf.parent</code> pointing
-to <code>branch</code> with a <code>Weak&lt;Node&gt;</code>). When we print the counts in <code>leaf</code>, we’ll see
-it will have a strong count of 2, because <code>branch</code> now has a clone of the
-<code>Rc&lt;Node&gt;</code> of <code>leaf</code> stored in <code>branch.children</code>, but will still have a weak
-count of 0.</p>
-<p>When the inner scope ends, <code>branch</code> goes out of scope and the strong count of
-the <code>Rc&lt;Node&gt;</code> decreases to 0, so its <code>Node</code> is dropped. The weak count of 1
-from <code>leaf.parent</code> has no bearing on whether or not <code>Node</code> is dropped, so we
-don’t get any memory leaks!</p>
-<p>If we try to access the parent of <code>leaf</code> after the end of the scope, we’ll get
-<code>None</code> again. At the end of the program, the <code>Rc&lt;Node&gt;</code> in <code>leaf</code> has a strong
-count of 1 and a weak count of 0, because the variable <code>leaf</code> is now the only
-reference to the <code>Rc&lt;Node&gt;</code> again.</p>
-<p>All of the logic that manages the counts and value dropping is built into
-<code>Rc&lt;T&gt;</code> and <code>Weak&lt;T&gt;</code> and their implementations of the <code>Drop</code> trait. By
-specifying that the relationship from a child to its parent should be a
-<code>Weak&lt;T&gt;</code> reference in the definition of <code>Node</code>, you’re able to have parent
-nodes point to child nodes and vice versa without creating a reference cycle
-and memory leaks.</p>
-<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
-<p>This chapter covered how to use smart pointers to make different guarantees and
-trade-offs from those Rust makes by default with regular references. The
-<code>Box&lt;T&gt;</code> type has a known size and points to data allocated on the heap. The
-<code>Rc&lt;T&gt;</code> type keeps track of the number of references to data on the heap so
-that data can have multiple owners. The <code>RefCell&lt;T&gt;</code> type with its interior
-mutability gives us a type that we can use when we need an immutable type but
-need to change an inner value of that type; it also enforces the borrowing
-rules at runtime instead of at compile time.</p>
-<p>Also discussed were the <code>Deref</code> and <code>Drop</code> traits, which enable a lot of the
-functionality of smart pointers. We explored reference cycles that can cause
-memory leaks and how to prevent them using <code>Weak&lt;T&gt;</code>.</p>
-<p>If this chapter has piqued your interest and you want to implement your own
-smart pointers, check out <a href="../nomicon/index.html">“The Rustonomicon”</a> for more useful
-information.</p>
-<p>Next, we’ll talk about concurrency in Rust. You’ll even learn about a few new
-smart pointers.</p>
+<p><code>leaf</code>가 생성된 다음, 이것의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와 약한 참조 카운트
+0개를 갖습니다. 내부 스코프에서 <code>branch</code>를 만들고 <code>leaf</code>와 연관짓게 되는데,
+이때 카운트를 출력하면 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와
+(<code>Weak&lt;Node&gt;</code>로 <code>branch</code>를 가리키는 <code>leaf.parent</code>에 대한) 약한 참조 카운트
+1개를 갖고 있을 것입니다. <code>leaf</code> 내의 카운트를 출력하면 강한 참조 카운트 2개를
+갖고 있음을 보게될 것인데, 이는 <code>branch</code>가 이제 <code>branch.children</code>에 저장된
+<code>leaf</code>의 <code>Rc&lt;Node&gt;</code>에 대한 클론을 가지게 되었지만, 약한 참조는 여전히 0개이기
+때문입니다.</p>
+<p>내부 스코프가 끝나게 되면, <code>branch</code>는 스코프 밖으로 벗어나게 되고 <code>Rc&lt;Node&gt;</code>의
+강한 참조 카운트는 0으로 줄어들게 되므로, 이것의 <code>Node</code>는 버려집니다.
+<code>leaf.parent</code>의 약한 참조 카운트 1개는 <code>Node</code>가 버려질지 말지와는
+아무런 관계가 없으므로, 아무런 메모리 릭도 발생하지 않습니다!</p>
+<p>만일 이 스코프의 끝부분 뒤에 <code>leaf</code>의 부모에 접근 시도를 한다면 다시 <code>None</code>을
+얻게 될 것입니다. 프로그램의 끝 부분에서, <code>leaf</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조
+카운트 1개와 약한 참조 카운트 0개를 갖고 있는데, 이제 <code>leaf</code> 변수가 다시
+<code>Rc&lt;Node&gt;</code>에 대한 유일한 참조자이기 때문입니다.</p>
+<p>참조 카운트와 값 버리기를 관리하는 모든 로직은 <code>Rc&lt;T&gt;</code>와 <code>Weak&lt;T&gt;</code>,
+그리고 이들의 <code>Drop</code> 트레잇에 대한 구현부에 만들어져 있습니다.
+자식과 부모의 관계가 <code>Weak&lt;T&gt;</code> 참조자로 있어야 함을 <code>Node</code>의
+정의에 특정함으로써, 여러분은 순환 참조와 메모리 릭을 만들지
+않으면서 자식 노드를 가리키는 부모 노드 혹은 그 반대의 것을 만들
+수 있습니다.</p>
+<h2 id="정리-10"><a class="header" href="#정리-10">정리</a></h2>
+<p>이번 장에서는 러스트가 일반적인 참조자를 가지고 기본적으로 보장하는 것들과는
+다른 보장과 트레이드 오프를 만들어내기 위해 스마트 포인터를 사용하는 방법을
+다루었습니다. <code>Box&lt;T&gt;</code> 타입은 알려진 크기를 갖고 있고 힙에 할당된 데이터를
+가리킵니다. <code>Rc&lt;T&gt;</code> 타입은 힙에 있는 데이터에 대한 참조자의 개수를 추적하여
+그 데이터가 여러 개의 소유자들을 갖을 수 있도록 합니다. 내부 가변성을 갖춘
+<code>RefCell&lt;T&gt;</code> 타입은 불변 타입이 필요하지만 그 타입의 내부 값을 변경할 필요가
+있을 때 사용할 수 있습니다; 이것은 또한 컴파일 타임 대신 런타임에 빌림 규칙을
+따르도록 강제합니다.</p>
+<p>또한 <code>Deref</code> 및 <code>Drop</code> 트레잇을 다루었는데, 이는 스마트 포인터의 수많은
+기능을 활성화해줍니다. 메모리 릭을 발생시킬 수 있는 순환 참조와, <code>Weak&lt;T&gt;</code>을
+이용하여 이를 방지하는 방법도 탐구하였습니다.</p>
+<p>이번 장이 여러분의 흥미를 자극하여 직접 여러분만의 스마트 포인터를
+구현하고 싶어졌다면, <a href="../nomicon/index.html">“러스토노미콘”</a>에서 더 유용한 정보를
+확인하세요.</p>
+<p>다음에는 러스트의 동시성에 대해 이야기해 보겠습니다. 심지어 몇 개의 새로운
+스마트 포인터에 대해서도 배우게 될 것입니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="fearless-concurrency"><a class="header" href="#fearless-concurrency">Fearless Concurrency</a></h1>
 <p>Handling concurrent programming safely and efficiently is another of Rust’s
 major goals. <em>Concurrent programming</em>, where different parts of a program
@@ -20296,7 +20299,7 @@ information is that building new concurrent types not made up of <code>Send</cod
 <code>Sync</code> parts requires careful thought to uphold the safety guarantees. <a href="../nomicon/index.html">“The
 Rustonomicon”</a> has more information about these guarantees and how to
 uphold them.</p>
-<h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
 <p>This isn’t the last you’ll see of concurrency in this book: the project in
 Chapter 20 will use the concepts in this chapter in a more realistic situation
 than the smaller examples discussed here.</p>
@@ -21630,7 +21633,7 @@ problem to take advantage of Rust’s features can provide benefits, such as
 preventing some bugs at compile time. Object-oriented patterns won’t always be
 the best solution in Rust due to certain features, like ownership, that
 object-oriented languages don’t have.</p>
-<h2 id="summary-2"><a class="header" href="#summary-2">Summary</a></h2>
+<h2 id="summary-1"><a class="header" href="#summary-1">Summary</a></h2>
 <p>No matter whether or not you think Rust is an object-oriented language after
 reading this chapter, you now know that you can use trait objects to get some
 object-oriented features in Rust. Dynamic dispatch can give your code some
@@ -22655,7 +22658,7 @@ reason is that we’ve used the struct field shorthand syntax. But we haven’t
 applied any test to the value in the <code>id</code> field in this arm, as we did with the
 first two arms: any value would match this pattern.</p>
 <p>Using <code>@</code> lets us test a value and save it in a variable within one pattern.</p>
-<h2 id="summary-3"><a class="header" href="#summary-3">Summary</a></h2>
+<h2 id="summary-2"><a class="header" href="#summary-2">Summary</a></h2>
 <p>Rust’s patterns are very useful in distinguishing between different kinds of
 data. When used in <code>match</code> expressions, Rust ensures your patterns cover every
 possible value, or your program won’t compile. Patterns in <code>let</code> statements and
@@ -24724,7 +24727,7 @@ pub fn sql(input: TokenStream) -&gt; TokenStream {</code></pre>
 <p>This definition is similar to the custom derive macro’s signature: we receive
 the tokens that are inside the parentheses and return the code we wanted to
 generate.</p>
-<h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
+<h2 id="summary-3"><a class="header" href="#summary-3">Summary</a></h2>
 <p>Whew! Now you have some Rust features in your toolbox that you likely won’t use
 often, but you’ll know they’re available in very particular circumstances.
 We’ve introduced several complex topics so that when you encounter them in
@@ -27401,7 +27404,7 @@ some ideas:</p>
 similar web server using the crate instead. Then compare its API and
 robustness to the thread pool we implemented.</li>
 </ul>
-<h2 id="summary-5"><a class="header" href="#summary-5">Summary</a></h2>
+<h2 id="summary-4"><a class="header" href="#summary-4">Summary</a></h2>
 <p>Well done! You’ve made it to the end of the book! We want to thank you for
 joining us on this tour of Rust. You’re now ready to implement your own Rust
 projects and help with other peoples’ projects. Keep in mind that there is a
@@ -28230,5 +28233,6 @@ of Rust.</p>
         });
         </script>
 
+    </div>
     </body>
 </html>

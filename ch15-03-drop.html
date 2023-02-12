@@ -34,6 +34,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -146,30 +147,30 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="running-code-on-cleanup-with-the-drop-trait"><a class="header" href="#running-code-on-cleanup-with-the-drop-trait">Running Code on Cleanup with the <code>Drop</code> Trait</a></h2>
-<p>The second trait important to the smart pointer pattern is <code>Drop</code>, which lets
-you customize what happens when a value is about to go out of scope. You can
-provide an implementation for the <code>Drop</code> trait on any type, and that code can
-be used to release resources like files or network connections.</p>
-<p>We’re introducing <code>Drop</code> in the context of smart pointers because the
-functionality of the <code>Drop</code> trait is almost always used when implementing a
-smart pointer. For example, when a <code>Box&lt;T&gt;</code> is dropped it will deallocate the
-space on the heap that the box points to.</p>
-<p>In some languages, for some types, the programmer must call code to free memory
-or resources every time they finish using an instance of those types. Examples
-include file handles, sockets, or locks. If they forget, the system might
-become overloaded and crash. In Rust, you can specify that a particular bit of
-code be run whenever a value goes out of scope, and the compiler will insert
-this code automatically. As a result, you don’t need to be careful about
-placing cleanup code everywhere in a program that an instance of a particular
-type is finished with—you still won’t leak resources!</p>
-<p>You specify the code to run when a value goes out of scope by implementing the
-<code>Drop</code> trait. The <code>Drop</code> trait requires you to implement one method named
-<code>drop</code> that takes a mutable reference to <code>self</code>. To see when Rust calls <code>drop</code>,
-let’s implement <code>drop</code> with <code>println!</code> statements for now.</p>
-<p>Listing 15-14 shows a <code>CustomSmartPointer</code> struct whose only custom
-functionality is that it will print <code>Dropping CustomSmartPointer!</code> when the
-instance goes out of scope, to show when Rust runs the <code>drop</code> function.</p>
+                        <h2 id="drop-트레잇으로-메모리-정리-코드-실행하기"><a class="header" href="#drop-트레잇으로-메모리-정리-코드-실행하기"><code>Drop</code> 트레잇으로 메모리 정리 코드 실행하기</a></h2>
+<p>스마트 포인터 패턴에서 중요한 트레잇 그 두번쨰는 <code>Drop</code>인데, 이는 값이 스코프
+밖으로 벗어나려고 할 때 무슨 일을 할지 커스터마이징하게끔 해줍니다. 어떠한
+타입이든 <code>Drop</code> 트레잇을 구현할 수 있고, 이 코드가 파일이나 네트워크 연결 같은
+자원 해제에 사용되게 할 수 있습니다.</p>
+<p>스마트 포인터에 대한 내용을 다루는 중에 <code>Drop</code>을 소개하는 이유는 <code>Drop</code>
+트레잇의 기능이 스마트 포인터를 구현할 때 거의 항상 이용되기 때문입니다.
+예를 들어 <code>Box&lt;T&gt;</code>가 버려질 때는 이 박스가 가리키고 있는 힙 공간의 할당을
+해제할 것입니다.</p>
+<p>몇몇 언어들에서는 어떤 타입의 인스턴스 사용을 끝낼 때마다 프로그래머가
+직접 메모리 혹은 자원을 해제하는 코드를 호출해줘야 합니다. 그 예에는
+파일 핸들, 소켓, 또는 락이 포함됩니다. 해제를 잊어버리면 시스템은
+과부하에 걸리고 멈출 수도 있습니다. 러스트에서는 값이 스코프 밖으로
+벗어날 때마다 실행되는 특정 코드를 지정할 수 있고, 컴파일러가 이 코드를
+자동으로 삽입해줄 것입니다. 결과적으로, 프로그램 내에서 특정 타입의
+인스턴스 사용이 끝나는 지점마다 메모리 정리 코드를 집어넣는 것에 관한
+걱정하지 않아도 됩니다-여전히 자원 누수는 발생하지 않을테니까요!</p>
+<p><code>Drop</code> 트레잇을 구현하는 것으로 어떤 값이 스코프 밖으로 벗어났을 때 실행되는 코드를
+지정합니다. <code>Drop</code> 트레잇은 <code>drop</code>이라는 이름의 메소드 하나를 구현해야 하는데 이
+메소드는 <code>self</code>에 대한 가변 참조자를 매개변수로 갖습니다. 러스트가 언제 <code>drop</code>을
+호출하는지 보기 위해서, 지금은 <code>println!</code> 구문과 함께 <code>drop</code>을 구현해봅시다.</p>
+<p>Listing 15-4는 러스트가 <code>drop</code> 함수를 호출하는 때를 보여주기 위해서,
+인스턴스가 스코프 밖으로 벗어났을 때 <code>Dropping CustomSmartPointer!</code>를
+출력하는 커스텀 기능만을 갖춘 <code>CustomSmartPointer</code> 구조체를 보여줍니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct CustomSmartPointer {
     data: String,
@@ -190,20 +191,20 @@ fn main() {
     };
     println!(&quot;CustomSmartPointers created.&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-14: A <code>CustomSmartPointer</code> struct that
-implements the <code>Drop</code> trait where we would put our cleanup code</span></p>
-<p>The <code>Drop</code> trait is included in the prelude, so we don’t need to bring it into
-scope. We implement the <code>Drop</code> trait on <code>CustomSmartPointer</code> and provide an
-implementation for the <code>drop</code> method that calls <code>println!</code>. The body of the
-<code>drop</code> function is where you would place any logic that you wanted to run when
-an instance of your type goes out of scope. We’re printing some text here to
-demonstrate visually when Rust will call <code>drop</code>.</p>
-<p>In <code>main</code>, we create two instances of <code>CustomSmartPointer</code> and then print
-<code>CustomSmartPointers created</code>. At the end of <code>main</code>, our instances of
-<code>CustomSmartPointer</code> will go out of scope, and Rust will call the code we put
-in the <code>drop</code> method, printing our final message. Note that we didn’t need to
-call the <code>drop</code> method explicitly.</p>
-<p>When we run this program, we’ll see the following output:</p>
+<p><span class="caption">Listing 15-14: 메모리 정리 코드를 집어넣게 될
+<code>Drop</code> 트레잇을 구현한 <code>CustomSmartPointer</code> 구조체</span></p>
+<p><code>Drop</code> 트레잇은 프렐루드에 포함되어 있으므로, 이를 스코프로 가져올 필요는
+없습니다. <code>CustomSmartPointer</code>에는 <code>Drop</code> 트레잇이 구현되어 여기에
+<code>println!</code>을 호출하는 <code>drop</code> 메소드 구현체를 제공하였습니다. <code>drop</code> 함수의
+본문 부분에는 해당 타입의 인스턴스가 스코프 밖으로 벗어났을 때 실행시키고 싶은
+어떠한 로직이든 집어넣을 수 있습니다. 여기서는 러스트가 <code>drop</code>을 호출하게 될
+때를 보여주기 위해서 어떤 텍스트를 출력하는 중입니다.</p>
+<p><code>main</code>에서는 두 개의 <code>CustomSmartPointer</code> 인스턴스를 만든 다음
+<code>CustomSmartPointers created.</code>를 출력합니다. <code>main</code>의 끝부분에서,
+<code>CustomSmartPointer</code> 인스턴스들은 스코프 밖으로 벗어날 것이고, 러스트는
+<code>drop</code> 메소드에 집어넣은 코드를 호출할 것이고, 이는 마지막 메세지를 출력합니다.
+<code>drop</code> 메소드를 명시적으로 호출할 필요가 없다는 점을 주목하세요.</p>
+<p>이 프로그램을 실행시키면 다음과 같은 출력을 보게 될 것입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling drop-example v0.1.0 (file:///projects/drop-example)
     Finished dev [unoptimized + debuginfo] target(s) in 0.60s
@@ -212,25 +213,25 @@ CustomSmartPointers created.
 Dropping CustomSmartPointer with data `other stuff`!
 Dropping CustomSmartPointer with data `my stuff`!
 </code></pre>
-<p>Rust automatically called <code>drop</code> for us when our instances went out of scope,
-calling the code we specified. Variables are dropped in the reverse order of
-their creation, so <code>d</code> was dropped before <code>c</code>. This example’s purpose is to
-give you a visual guide to how the <code>drop</code> method works; usually you would
-specify the cleanup code that your type needs to run rather than a print
-message.</p>
-<h3 id="dropping-a-value-early-with-stdmemdrop"><a class="header" href="#dropping-a-value-early-with-stdmemdrop">Dropping a Value Early with <code>std::mem::drop</code></a></h3>
-<p>Unfortunately, it’s not straightforward to disable the automatic <code>drop</code>
-functionality. Disabling <code>drop</code> isn’t usually necessary; the whole point of the
-<code>Drop</code> trait is that it’s taken care of automatically. Occasionally, however,
-you might want to clean up a value early. One example is when using smart
-pointers that manage locks: you might want to force the <code>drop</code> method that
-releases the lock so that other code in the same scope can acquire the lock.
-Rust doesn’t let you call the <code>Drop</code> trait’s <code>drop</code> method manually; instead
-you have to call the <code>std::mem::drop</code> function provided by the standard library
-if you want to force a value to be dropped before the end of its scope.</p>
-<p>If we try to call the <code>Drop</code> trait’s <code>drop</code> method manually by modifying the
-<code>main</code> function from Listing 15-14, as shown in Listing 15-15, we’ll get a
-compiler error:</p>
+<p>러스트는 인스턴스가 스코프 밖으로 벗어났을 때 <code>drop</code>을 호출했고,
+이것이 지명된 코드를 실행시켰습니다. 변수들은 만들어진 순서의 역순으로
+버려지므로, <code>d</code>는 <code>c</code> 이전에 버려집니다. 이 예제의 목적은 여러분에게
+<code>drop</code> 메소드가 어떻게 동작하는 대한 시각적인 가이드를 제공하는 것입니다;
+보통은 메시지 출력이 아니라 여러분의 타입에 대해 실행할 필요가 있는 메모리
+정리 코드를 지정하게 될 것입니다.</p>
+<h3 id="stdmemdrop으로-값을-일찍-버리기"><a class="header" href="#stdmemdrop으로-값을-일찍-버리기"><code>std::mem::drop</code>으로 값을 일찍 버리기</a></h3>
+<p>불행하게도 자동적인 <code>drop</code> 기능을 비활성화하는 일은 직관적이지 않습니다.
+<code>drop</code> 비활성화는 보통 필요가 없습니다; <code>Drop</code> 트레잇의 요점은 이것이
+자동적으로 이루어진다는 것이니까요. 하지만 가끔은 어떤 값을 일찍 정리하고
+싶을 때도 있습니다. 한 가지 예는 락을 관리하는 스마트 포인터를 이용할
+때입니다: 강제로 <code>drop</code> 메소드를 실행하여 락을 해제해서 같은 스코프의
+다른 코드에서 해당 락을 얻도록 하고 싶을 수도 있지요. 러스트는 수동으로
+<code>Drop</code> 트레잇의 <code>drop</code> 메소드를 호출하게 해주지는 않습니다; 대신에
+표준 라이브러리가 제공하는 <code>std::mem::drop</code> 함수를 호출하여 스코프가
+끝나기 전에 강제로 값을 버리도록 할 수 있습니다.</p>
+<p>Listing 15-14의 <code>main</code> 함수를 Listing 15-15 처럼 수정하여
+<code>Drop</code> 트레잇의 <code>drop</code> 메소드를 수동으로 호출하려고 하면 컴파일
+에러가 납니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
@@ -250,9 +251,9 @@ compiler error:</p>
     c.drop();
     println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
 }</code></pre>
-<p><span class="caption">Listing 15-15: Attempting to call the <code>drop</code> method from
-the <code>Drop</code> trait manually to clean up early</span></p>
-<p>When we try to compile this code, we’ll get this error:</p>
+<p><span class="caption">Listing 15-15: 메모리를 일찍 정리하기 위한 <code>Drop</code>
+트레잇의 <code>drop</code> 메소드의 수동 호출 시도하기</span></p>
+<p>이 코드의 컴파일을 시도하면 다음과 같은 에러를 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling drop-example v0.1.0 (file:///projects/drop-example)
 error[E0040]: explicit use of destructor method
@@ -267,22 +268,22 @@ error[E0040]: explicit use of destructor method
 For more information about this error, try `rustc --explain E0040`.
 error: could not compile `drop-example` due to previous error
 </code></pre>
-<p>This error message states that we’re not allowed to explicitly call <code>drop</code>. The
-error message uses the term <em>destructor</em>, which is the general programming term
-for a function that cleans up an instance. A <em>destructor</em> is analogous to a
-<em>constructor</em>, which creates an instance. The <code>drop</code> function in Rust is one
-particular destructor.</p>
-<p>Rust doesn’t let us call <code>drop</code> explicitly because Rust would still
-automatically call <code>drop</code> on the value at the end of <code>main</code>. This would cause a
-<em>double free</em> error because Rust would be trying to clean up the same value
-twice.</p>
-<p>We can’t disable the automatic insertion of <code>drop</code> when a value goes out of
-scope, and we can’t call the <code>drop</code> method explicitly. So, if we need to force
-a value to be cleaned up early, we use the <code>std::mem::drop</code> function.</p>
-<p>The <code>std::mem::drop</code> function is different from the <code>drop</code> method in the <code>Drop</code>
-trait. We call it by passing as an argument the value we want to force drop.
-The function is in the prelude, so we can modify <code>main</code> in Listing 15-15 to
-call the <code>drop</code> function, as shown in Listing 15-16:</p>
+<p>이 에러 메시지는 <code>drop</code>를 명시적으로 호출하는 것이 허용되지 않음을 기술하고
+있습니다. 에러 메시지에서 <em>소멸자 (destructor)</em> 라는 용어가 사용되었는데,
+이는 인스턴스를 정리하는 함수에 대한 일반적인 프로그래밍 용어입니다. <em>소멸자</em>는
+인스턴스를 생성하는 <em>생성자 (constructor)</em> 와 유사한 용어입니다. 러스트의 <code>drop</code>
+함수는 특정한 형태의 소멸자입니다.</p>
+<p>러스트는 <code>drop</code>을 명시적으로 호출하도록 해주지 않는데 이는 러스트가 여전히 <code>main</code>의
+끝부분에서 그 값에 대한 <code>drop</code> 호출을 자동으로 할 것이기 때문입니다. 이는 러스트가
+동일한 값에 대해 두 번 메모리 정리를 시도할 것이므로 <em>중복 해제 (double free)</em> 에러가
+될 수 있습니다.</p>
+<p>어떤 값이 스코프 밖으로 벗어났을 때의 자동적인 <code>drop</code> 호출을 비활성화할 수
+없고, <code>drop</code> 메소드를 명시적으로 호출할 수도 없습니다. 따라서, 어떤 값에 대한
+메모리 정리를 강제로 일찍 하기 원할 때는  <code>std::mem::drop</code> 함수를 이용합니다.</p>
+<p><code>std::mem::drop</code> 함수는 <code>Drop</code> 트레잇에 있는 <code>drop</code> 메소드와는
+다릅니다. 이 함수에 일찍 버리려고 하는 값을 인자로 넘겨 호출합니다.
+이 함수는 프렐루드에 포함되어 있어서, Listing 15-14의 <code>main</code>을
+Listing 15-16처럼 수정할 수 있습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
@@ -302,9 +303,9 @@ call the <code>drop</code> function, as shown in Listing 15-16:</p>
     drop(c);
     println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-16: Calling <code>std::mem::drop</code> to explicitly
-drop a value before it goes out of scope</span></p>
-<p>Running this code will print the following:</p>
+<p><span class="caption">Listing 15-16: <code>std::mem::drop</code>을 호출하여
+값이 스코프를 벗어나기 전에 명시적으로 버리기</span></p>
+<p>이 코드를 실행하면 아래와 같이 출력할 것입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling drop-example v0.1.0 (file:///projects/drop-example)
     Finished dev [unoptimized + debuginfo] target(s) in 0.73s
@@ -313,20 +314,20 @@ CustomSmartPointer created.
 Dropping CustomSmartPointer with data `some data`!
 CustomSmartPointer dropped before the end of main.
 </code></pre>
-<p>The text <code>Dropping CustomSmartPointer with data `some data`!</code> is printed
-between the <code>CustomSmartPointer created.</code> and <code>CustomSmartPointer dropped before the end of main.</code> text, showing that the <code>drop</code> method code is called to
-drop <code>c</code> at that point.</p>
-<p>You can use code specified in a <code>Drop</code> trait implementation in many ways to
-make cleanup convenient and safe: for instance, you could use it to create your
-own memory allocator! With the <code>Drop</code> trait and Rust’s ownership system, you
-don’t have to remember to clean up because Rust does it automatically.</p>
-<p>You also don’t have to worry about problems resulting from accidentally
-cleaning up values still in use: the ownership system that makes sure
-references are always valid also ensures that <code>drop</code> gets called only once when
-the value is no longer being used.</p>
-<p>Now that we’ve examined <code>Box&lt;T&gt;</code> and some of the characteristics of smart
-pointers, let’s look at a few other smart pointers defined in the standard
-library.</p>
+<p><code>Dropping CustomSmartPointer with data `some data`!</code>라는 텍스트가
+<code>CustomSmartPointer created.</code>와 <code>CustomSmartPointer dropped before the end of main.</code> 사이에 출력되는데, 이는 <code>c</code>를 버리는 <code>drop</code>
+메소드가 그 지점에서 호출되었음을 보여줍니다.</p>
+<p><code>Drop</code> 트레잇 구현체에 지정되는 코드를 다양한 방식으로 사용하여 메모리 정리를
+편리하고 안전하게 할 수 있습니다: 예를 들면, 이것을 사용하여 여러분만의 고유한
+메모리 할당자를 만들 수 있습니다! <code>Drop</code> 트레잇과 러스트의 소유권 시스템을 이용하면
+러스트가 메모리 정리를 자동적으로 수행하기 때문에 메모리 정리를 기억해두지 않아도 됩니다.</p>
+<p>또한 아직 사용 중인 값이 뜻하지 않게 정리되면서 발생하는 문제도
+걱정할 필요 없습니다: 참조자가 항상 유효하도록 보장해주는 소유권
+시스템은 그 값이 더 이상 사용되지 않을 때 <code>drop</code>이 한번만 호출되는
+것도 보장합니다.</p>
+<p>지금까지 <code>Box&lt;T&gt;</code>와 스마트 포인터의 몇 가지 특성을 시험해 보았으니,
+표준 라이브러리에 정의되어 있는 몇 가지 다른 스마트 포인터를
+살펴봅시다.</p>
 
                     </main>
 
@@ -377,5 +378,6 @@ library.</p>
         <script src="ferris.js"></script>
 
 
+    </div>
     </body>
 </html>
