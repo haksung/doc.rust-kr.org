@@ -73,10 +73,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -18236,7 +18238,7 @@ count after c goes out of scope = 2
 <div style="break-before: page; page-break-before: always;"></div><h2 id="refcellt와-내부-가변성-패턴"><a class="header" href="#refcellt와-내부-가변성-패턴"><code>RefCell&lt;T&gt;</code>와 내부 가변성 패턴</a></h2>
 <p><em>내부 가변성 (interior mutability)</em> 은 어떤 데이터에 대한 불변 참조자가 있을
 때라도 데이터를 변경할 수 있게 해주는 러스트의 디자인 패턴입니다; 보통 이러한
-동작은 빌림 규칙에 의해 허용되지 않습니다. 데이터를 변겨앟기 위해서, 이 패턴은
+동작은 빌림 규칙에 의해 허용되지 않습니다. 데이터를 변경하기 위해서, 이 패턴은
 데이터 구조 내에서 <code>unsafe</code> 코드를 사용하여 변경과 빌림을 지배하는 러스트의
 일반적인 규칙을 우회합니다. 안전하지 않은 코드는 이 규칙들을 지키고 있는지에
 대한 검사를 컴파일러에게 맡기는 대신 수동으로 하는 중임을 컴파일러에게 알립니다;
@@ -18277,7 +18279,7 @@ count after c goes out of scope = 2
 수용한다면, 사용자들은 러스트가 보장하는 것을 신뢰할 수 없을 것입니다.
 하지만, 만일 러스트가 올바른 프로그램을 거부한다면, 프로그래머는 불편하겠지만
 어떠한 재앙도 일어나지 않을 수 있습니다. <code>RefCell&lt;T&gt;</code> 타입은 여러분의 코드가
-빌림 규칙을 준수한다는 것을 컴파일러는 이해하거나 보장할 수 없지만 여러분이
+빌림 규칙을 준수한다는 것을 컴파일러는 이해하거나 보장할 수 없지만
 여러분이 확신하는 경우 유용합니다.</p>
 <p><code>Rc&lt;T&gt;</code>와 유사하게, <code>RefCell&lt;T&gt;</code>은 단일 스레드 시나리오 내에서만 사용
 가능하고, 다중 스레드에서 사용을 시도할 경우에는 컴파일 타임 에러를
