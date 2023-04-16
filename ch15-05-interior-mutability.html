@@ -195,9 +195,9 @@
 어떠한 재앙도 일어나지 않을 수 있습니다. <code>RefCell&lt;T&gt;</code> 타입은 여러분의 코드가
 빌림 규칙을 준수한다는 것을 컴파일러는 이해하거나 보장할 수 없지만
 여러분이 확신하는 경우 유용합니다.</p>
-<p><code>Rc&lt;T&gt;</code>와 유사하게, <code>RefCell&lt;T&gt;</code>은 단일 스레드 시나리오 내에서만 사용
-가능하고, 다중 스레드에서 사용을 시도할 경우에는 컴파일 타임 에러를
-낼 것입니다. <code>RefCell&lt;T&gt;</code>의 기능을 다중 스레드 프로그램에서 사용하는
+<p><code>Rc&lt;T&gt;</code>와 유사하게, <code>RefCell&lt;T&gt;</code>은 싱글스레드 시나리오 내에서만 사용
+가능하고, 멀티스레드에서 사용을 시도할 경우에는 컴파일 타임 에러를
+낼 것입니다. <code>RefCell&lt;T&gt;</code>의 기능을 멀티스레드 프로그램에서 사용하는
 방법에 대해서는 16장에서 이야기하겠습니다.</p>
 <p><code>Box&lt;T&gt;</code>, <code>Rc&lt;T&gt;</code>, 혹은 <code>RefCell&lt;T&gt;</code>을 선택하는 이유의 요점을 정리하면 다음과 같습니다:</p>
 <ul>
@@ -734,9 +734,9 @@ c after = Cons(RefCell { value: 4 }, Cons(RefCell { value: 15 }, Nil))
 <p>이 기술은 꽤 근사합니다! <code>RefCell&lt;T&gt;</code>을 이용하면 표면상으로는 불변인
 <code>List</code>를 갖게 됩니다. 하지만 데이터를 변경할 필요가 생기면 내부 가변성 접근
 기능을 제공하는 <code>RefCell&lt;T&gt;</code>의 메소드를 사용하여 그렇게 할 수 있습니다.
-빌림 규칙의 런타임 검사는 데이터 레이스로부터 우리를 지켜주고, 데이터 구조에
+빌림 규칙의 런타임 검사는 데이터 경쟁으로부터 우리를 지켜주고, 데이터 구조에
 대한 이런 유연성을 위해서 약간의 속도를 맞바꾸는 것이 때로는 가치가 있습니다.
-<code>RefCell&lt;T&gt;</code>이 다중 스레드 코드에서는 동작하지 않음을 주의하세요!
+<code>RefCell&lt;T&gt;</code>이 멀티스레드 코드에서는 동작하지 않음을 주의하세요!
 <code>Mutex&lt;T&gt;</code>가 <code>RefCell&lt;T&gt;</code>의 스레드 안전 버전이고, 이는 16장에서
 다룰 것입니다.</p>
 

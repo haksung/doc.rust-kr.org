@@ -193,7 +193,7 @@ Listing 13-10의 코드는 <code>Vec&lt;T&gt;</code> 에 정의된 <code>iter</c
 있는 반복되는 코드를 줄여 줍니다. 반복자는 벡터처럼 인덱스를 사용할 수 있는
 자료구조 뿐만 아니라, 많은 다른 종류의 시퀀스에 대해 동일한 로직을 사용할 수
 있도록 더 많은 유연성을 제공 합니다. 반복자가 어떻게 그렇게 하는지 살펴봅시다.</p>
-<h3 id="iterator트레잇과-next-메서드"><a class="header" href="#iterator트레잇과-next-메서드"><code>Iterator</code>트레잇과 <code>next</code> 메서드</a></h3>
+<h3 id="iterator-트레잇과-next-메소드"><a class="header" href="#iterator-트레잇과-next-메소드"><code>Iterator</code> 트레잇과 <code>next</code> 메소드</a></h3>
 <p>모든 반복자는 표준 라이브러리에 정의된 <code>Iterator</code>라는 이름의 트레잇을
 구현합니다. 트레잇의 정의는 아래처럼 생겼습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
@@ -234,7 +234,7 @@ Listing 13-10의 코드는 <code>Vec&lt;T&gt;</code> 에 정의된 <code>iter</c
         assert_eq!(v1_iter.next(), None);
     }
 <span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 13-12: 반복자의 <code>next</code> 메서드
+<p><span class="caption">Listing 13-12: 반복자의 <code>next</code> 메소드
 호출하기</span></p>
 <p><code>v1_iter</code>를 가변으로 만들 필요가 있음을 주의하세요: 반복자에 대한 <code>next</code>
 메소드 호출은 반복자 내부의 상태를 변경하여 반복자가 현재 시퀀스의 어디에

@@ -481,7 +481,7 @@ fn main() {
 두 매개변수가 같은 타입으로 강제되어야 한다면, 이는 아래와 같이 트레잇
 바운드를 사용해야 합니다:</p>
 <pre><code class="language-rust ignore">pub fn notify&lt;T: Summary&gt;(item1: &amp;T, item2: &amp;T) {</code></pre>
-<p><code>item1</code> 및 <code>item2</code> 매개 변수의 타입으로 지정된 제네릭 타입 <code>T</code>는
+<p><code>item1</code> 및 <code>item2</code> 매개변수의 타입으로 지정된 제네릭 타입 <code>T</code>는
 함수를 호출할 때 <code>item1</code>, <code>item2</code> 인자 값의 구체적인 타입이
 반드시 동일하도록 제한합니다.</p>
 <h4 id="-구문으로-트레잇-바운드를-여럿-지정하기"><a class="header" href="#-구문으로-트레잇-바운드를-여럿-지정하기"><code>+</code> 구문으로 트레잇 바운드를 여럿 지정하기</a></h4>
