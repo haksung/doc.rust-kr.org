@@ -437,10 +437,10 @@ warning: unused `Result` that must be used
   --&gt; src/main.rs:10:5
    |
 10 |     io::stdin().read_line(&amp;mut guess);
-   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    |
-   = note: `#[warn(unused_must_use)]` on by default
    = note: this `Result` may be an `Err` variant, which should be handled
+   = note: `#[warn(unused_must_use)]` on by default
 
 warning: `guessing_game` (bin &quot;guessing_game&quot;) generated 1 warning
     Finished dev [unoptimized + debuginfo] target(s) in 0.59s
@@ -484,7 +484,7 @@ let y = 10;
 
 println!(&quot;x = {x} and y + 2 = {}&quot;, y + 2);
 <span class="boring">}</span></code></pre></pre>
-<p>이 코드는 <code>x = 5 and y = 12</code>을 출력합니다.</p>
+<p>이 코드는 <code>x = 5 and y + 2 = 12</code>을 출력합니다.</p>
 <h3 id="첫번째-부분을-테스트하기"><a class="header" href="#첫번째-부분을-테스트하기">첫번째 부분을 테스트하기</a></h3>
 <p>추리 게임의 처음 부분을 테스트 해 봅시다. <code>cargo run</code>을 통해 실행할 수 있습니다.</p>
 <!-- manual-regeneration
@@ -825,6 +825,7 @@ error[E0308]: mismatched types
    = note: expected reference `&amp;String`
               found reference `&amp;{integer}`
 note: associated function defined here
+  --&gt; /rustc/d5a82bbd26e1ad8b7401f6a718a9c57c96905483/library/core/src/cmp.rs:783:8
 
 For more information about this error, try `rustc --explain E0308`.
 error: could not compile `guessing_game` due to previous error

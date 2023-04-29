@@ -271,7 +271,7 @@
 이야기했었지요. 자, 그때가 되었습니다!</p>
 <p><code>String</code> 원소들의 슬라이스를 <code>args</code> 매개변수로 받았지만, <code>build</code> 함수는
 <code>args</code>를 소유하지 않기 때문에 <code>clone</code>이 필요했습니다. <code>Config</code> 인스턴스의
-소유권을 반환하기 위해서는 <code>Config</code>의 <code>query</code>와 <code>filename</code> 필드로 값을
+소유권을 반환하기 위해서는 <code>Config</code>의 <code>query</code>와 <code>file_path</code> 필드로 값을
 복제하는 것으로 <code>Config</code> 인스턴스가 그 값들을 소유하게 할 필요가 있었습니다.</p>
 <p>반복자에 대한 새로운 지식을 사용하면, 인자로써 슬라이스를 빌리는 대신
 반복자의 소유권을 갖도록 <code>build</code> 함수를 변경할 수 있습니다. 슬라이스의
@@ -582,7 +582,7 @@ Listing 13-20은 Listing 12-23의 코드를 <code>next</code> 메소드를 사�
 <code>Config</code>의 <code>query</code> 필드에 원하는 값을 집어 넣었습니다. <code>next</code>가 <code>Some</code>을
 반환하면, <code>match</code>를 사용하여 값을 추출합니다. 만약 <code>None</code>을 반환한다면,
 이는 충분한 인자가 넘어오지 않았음 의미하고, <code>Err</code> 값과 함께 일찍 반환합니다.
-<code>filename</code> 값도 동일하게 처리 합니다.</p>
+<code>file_path</code> 값도 동일하게 처리 합니다.</p>
 <h3 id="반복자-어댑터로-더-간결한-코드-만들기"><a class="header" href="#반복자-어댑터로-더-간결한-코드-만들기">반복자 어댑터로 더 간결한 코드 만들기</a></h3>
 <p>I/O 프로젝트의 <code>search</code> 함수에도 반복자의 장점을 활용할 수 있는데,
 Listing 12-19의 코드가 Listing 13-21에 재현되어 있습니다:</p>
