@@ -191,7 +191,7 @@
 많은 사람들이 채널 애호가가 되는 이유입니다. 하지만, 러스트의 타입 시스템과
 소유권 규칙에 덕분에 락과 언락이 잘못 될 수는 없습니다.</p>
 <h4 id="mutext의-api"><a class="header" href="#mutext의-api"><code>Mutex&lt;T&gt;</code>의 API</a></h4>
-<p>뮤텍스 사용 방법에 대한 예제로서 Listing 16-12처럼 싱글스레드 맥락에서
+<p>뮤텍스 사용 방법에 대한 예제로서 Listing 16-12처럼 싱글스레드 컨텍스트에서
 뮤텍스를 사용하는 것으로 시작해봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">use std::sync::Mutex;
@@ -206,7 +206,7 @@ fn main() {
 
     println!(&quot;m = {:?}&quot;, m);
 }</code></pre></pre>
-<p><span class="caption">Listing 16-12: 간소화를 위해 싱글스레드 맥락에서
+<p><span class="caption">Listing 16-12: 간소화를 위해 싱글스레드 컨텍스트에서
 <code>Mutex&lt;T&gt;</code>의 API 탐색하기</span></p>
 <p>많은 타입들이 그렇듯 <code>Mutex&lt;T&gt;</code>는 연관함수 <code>new</code>를 사용하여 만들어집니다.
 뮤텍스 내의 데이터에 접근하기 위해서는 <code>lock</code> 메서드를 사용하여 락을

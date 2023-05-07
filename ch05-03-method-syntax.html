@@ -153,7 +153,7 @@
 <p><em>메서드(method)</em> 는 함수와 유사합니다.
 <code>fn</code> 키워드와 함수명으로 선언하고, 매개변수와 반환 값을 가지며,
 다른 어딘가로부터 호출될 때 실행됩니다.
-하지만 메서드는 함수와 달리 구조체 문맥상에 정의되고 (열거형이나
+하지만 메서드는 함수와 달리 구조체 컨텍스트 상에 정의되고 (열거형이나
 트레잇 객체 안에 정의되기도 하며, 이는 각각 <a href="ch06-00-enums.html">6장</a><!-- ignore -->,
 <a href="ch17-02-trait-objects.html">17장</a><!-- ignore -->에서 알아보겠습니다),
 첫 번째 매개변수가 항상 <code>self</code> 라는 차이점이 있습니다.
@@ -188,7 +188,7 @@ fn main() {
 }</code></pre></pre>
 <p><span class="caption">Listing 5-13: <code>Rectangle</code> 구조체에
 <code>area</code> 메서드 정의</span></p>
-<p><code>Rectangle</code> 내에 함수를 정의하기 위해서, <code>Rectangle</code>에 대한 <code>impl</code>
+<p><code>Rectangle</code>의 컨텍스트 내에 함수를 정의하기 위해서, <code>Rectangle</code>에 대한 <code>impl</code>
 (구현, implementation) 블록을 만드는 것으로 시작합니다. 이 <code>impl</code> 블록 내의
 모든 것은 <code>Rectangle</code> 타입에 관련되게 됩니다. 그런 다음 <code>area</code> 함수를 <code>impl</code>의
 중괄호 안으로 옮기고 함수 시그니처의 첫번째 매개변수를 (이번 경우는 유일한

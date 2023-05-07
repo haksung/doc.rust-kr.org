@@ -238,12 +238,12 @@
 <span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre>
-<p>문자열 첫 단어의 끝부분을 찾아 해당 인덱스를 반환하는 함수를 완성했습니다.
-하지만 함수에서 반환하는 <code>usize</code> 값이
-<code>&amp;String</code> 의 내용에 의존적임에도 불구하고,
-<code>String</code> 과 분리되어 있다는 점이 아쉽군요.
-이대로라면, 앞으로도 이 값이 의미 있는 값일 거란 보장을 할 수가 없습니다.
-어떤 뜻인지 Listing 4-8 을 보고 생각해봅시다:</p>
+<p>이제 문자열에서 첫 번째 단어 끝의 인덱스를 찾는 방법이
+생겼지만, 문제가 있습니다. <code>usize</code>를 반환하고 있는데, 이는
+<code>&amp;String</code>의 컨텍스트에서만 의미 있는 숫자일 뿐입니다. 바꿔
+말하면, <code>String</code>과는 별개의 값이기 때문에 향후에도 유효하다는
+보장이 없습니다. Listing 4-7의 <code>first_word</code> 함수를 사용하는
+Listing 4-8의 프로그램을 살펴봅시다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
 </span><span class="boring">    let bytes = s.as_bytes();
@@ -268,7 +268,7 @@
     // we could meaningfully use the value 5 with. word is now totally invalid!
 }</code></pre></pre>
 <p><span class="caption">Listing 4-8: <code>first_word</code> 함수의 결과를 저장했으나,
-이후에 <code>String</code> 의 내용이 변경된 상황</span></p>
+이후에 <code>String</code>의 내용물이 변경된 상황</span></p>
 <p>이 코드는 문법적으로 전혀 문제없고, 정상적으로 컴파일됩니다.
 <code>s.clear()</code> 을 호출한 후에 <code>word</code> 를 사용하는 코드를 작성하더라도,
 <code>word</code> 는 <code>s</code> 와 분리되어 있으니 결과는 마찬가지죠.

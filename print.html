@@ -1871,8 +1871,8 @@ fn main() {
 <p>이 장은 거의 모든 프로그래밍 언어에서 나타나는 개념들과 그 개념들이
 러스트에서 어떻게 다루어지는지 소개합니다. 많은 프로그래밍 언어들은 
 핵심이 비슷합니다. 이 장에서는 러스트 고유의 특성은 소개하지 않겠지만,
-러스트의 문맥 속에서 특성들을 사용해가며
-관례 또한 설명할 것입니다.</p>
+러스트의 맥락에서 논의하고 이러한 개념 사용과 관련된 관례들을
+설명하겠습니다.</p>
 <p>특히 당신은 변수, 기본 타입, 함수, 주석, 제어문에 대해서 배울 것입니다.
 이 기초는 모든 러스트 프로그램에 사용될 것이며, 이들을 일찍 익히는 것은
 여러분에게 강한 초기 기반을 가져다 줄 것입니다.</p>
@@ -3189,11 +3189,11 @@ the value is: 50
 <p>다음으로 넘어갈 준비가 되셨다면, 이번에는 다른 프로그래밍 언어에는
 <em>흔치 않은</em> 러스트의 개념인 소유권 (ownership) 에 대해 알아보겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="소유권-이해하기"><a class="header" href="#소유권-이해하기">소유권 이해하기</a></h1>
-<p>소유권(Ownership)은 러스트에서 가장 특별한 기능이며 언어의 전반적인 요소에 많은
-영향을 끼칩니다. 소유권은 러스트가 가비지 컬렉터 없이 메모리 안정성을 보장하도록
-해주므로, 소유권이 어떻게 동작하는지를 이해하는 것은 중요합니다.
-이번 장에서는 소유권을 비롯해 소유권과 관련된 빌림(Borrowing), 슬라이스(Slice)
-기능과 러스트에선 데이터를 메모리에 어떻게 저장하는지 알아보겠습니다.</p>
+<p>소유권(Ownership)은 러스트에서 가장 독특한 기능이며 언어 전반에 깊은 영향을
+끼칩니다. 소유권은 러스트가 가비지 컬렉터 없이 메모리 안정성을 보장하도록
+해주므로, 소유권이 어떻게 동작하는지를 이해하는 것은 중요합니다. 이 장에서는
+소유권을 비롯해 소유권과 관련된 빌림 (Borrowing), 슬라이스 (Slice) 기능과
+러스트에선 데이터를 메모리에 어떻게 저장하는지 알아보겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="소유권이-뭔가요"><a class="header" href="#소유권이-뭔가요">소유권이 뭔가요?</a></h2>
 <p>소유권은 러스트 프로그램의 메모리 관리법을 지배하는 규칙 묶음입니다.
 모든 프로그램은 작동하는 동안 컴퓨터의 메모리 사용 방법을 관리해야 합니다.
@@ -3284,7 +3284,7 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 직접 <code>main</code> 함수에 코드를
 작성해주셔야 하니 주의해주세요.</p>
 <p>소유권 첫 예제로는 변수의 스코프를 다뤄보도록 하겠습니다.
-스코프란, 프로그램 내에서 개체가 유효한 범위를 말합니다.
+스코프란, 프로그램 내에서 아이템이 유효한 범위를 말합니다.
 다음과 같은 변수가 있다고 가정해 봅시다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -3341,7 +3341,7 @@ Listing 4-1에 변수 <code>s</code>가 유효한 지점을 주석으로 표시�
 사용하는 대신 <code>String</code> 타입에 있는 특정된 <code>from</code> 함수라는 것을 지정할
 수 있게 해주는 네임스페이스 연산자입니다. 메서드 관련 문법은 5장
 <a href="ch05-03-method-syntax.html#method-syntax">“메서드 문법”</a><!-- ignore --> 에서 자세히 다루며, 모듈 및
-네임스페이스는 7장 <a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html">“경로를 사용해 모듈 트리에서 항목 가리키기”</a><!-- ignore -->
+네임스페이스는 7장 <a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html">“경로를 사용해 모듈 트리에서 아이템 가리키기”</a><!-- ignore -->
 에서 다루고 있습니다.</p>
 <p>이 <code>String</code> 문자열은 변경 가능합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
@@ -3398,10 +3398,10 @@ Listing 4-1 에서 문자열 리터럴을 <code>String</code> 으로 바꿔보�
 <code>String</code> 개발자가 작성한 메모리 해제 코드가 실행되겠죠. <code>drop</code> 은 닫힌
 중괄호 <code>}</code> 가 나타나는 지점에서 자동으로 호출됩니다.</p>
 <blockquote>
-<p>Note: C++ 에선 이런 식으로 객체의 수명이 끝나는 시점에 리소스를 해제하는 패턴을
-<em>Resource Acquisition Is Initialization (RAII)</em> 라 합니다.
-RAII 패턴에 익숙하신 분들이라면
-러스트의 <code>drop</code> 함수가 친숙할지도 모르겠네요.</p>
+<p>Note: C++ 에선 이런 식으로 아이템의 수명이 끝나는 시점에 리소스를 해제하는
+패턴을 <em>Resource Acquisition Is Initialization (RAII)</em> 라 합니다.
+RAII 패턴에 익숙하신 분들이라면 러스트의 <code>drop</code> 함수가 친숙할지도
+모르겠네요.</p>
 </blockquote>
 <p>이 패턴은 러스트 코드를 작성하는 데 깊은 영향을 미칩니다.
 지금은 단순해 보이지만, 힙 영역을 사용하는 변수가 많아져 상황이 복잡해지면
@@ -3446,7 +3446,7 @@ style="width: 50%;" /></p>
 <p>문자열 길이와 메모리 용량이 무슨 차이인가 궁금하실 분들을 위해 간단히 설명해드리자면,
 문자열 길이는 <code>String</code> 의 내용이 현재 사용하고 있는 메모리를 바이트 단위로 나타낸 것이고,
 메모리 용량은 메모리 할당자가 <code>String</code> 에 할당한 메모리의 양을 뜻합니다.
-이번 내용에서는 길이, 용량 사이의 차이는 중요한 내용이 아니니,
+지금의 맥락에서는 길이, 용량 사이의 차이는 중요한 내용이 아니니,
 이해가 잘 안 되면 용량 값은 무시하셔도 좋습니다.</p>
 <p><code>s2</code> 에 <code>s</code> 을 대입하면 <code>String</code> 데이터가 복사됩니다.
 이때 데이터는 스택에 있는 데이터, 즉 포인터, 길이, 용량 값을 말하며,
@@ -4096,12 +4096,12 @@ error: could not compile `ownership` due to previous error
 <span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre>
-<p>문자열 첫 단어의 끝부분을 찾아 해당 인덱스를 반환하는 함수를 완성했습니다.
-하지만 함수에서 반환하는 <code>usize</code> 값이
-<code>&amp;String</code> 의 내용에 의존적임에도 불구하고,
-<code>String</code> 과 분리되어 있다는 점이 아쉽군요.
-이대로라면, 앞으로도 이 값이 의미 있는 값일 거란 보장을 할 수가 없습니다.
-어떤 뜻인지 Listing 4-8 을 보고 생각해봅시다:</p>
+<p>이제 문자열에서 첫 번째 단어 끝의 인덱스를 찾는 방법이
+생겼지만, 문제가 있습니다. <code>usize</code>를 반환하고 있는데, 이는
+<code>&amp;String</code>의 컨텍스트에서만 의미 있는 숫자일 뿐입니다. 바꿔
+말하면, <code>String</code>과는 별개의 값이기 때문에 향후에도 유효하다는
+보장이 없습니다. Listing 4-7의 <code>first_word</code> 함수를 사용하는
+Listing 4-8의 프로그램을 살펴봅시다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
 </span><span class="boring">    let bytes = s.as_bytes();
@@ -4126,7 +4126,7 @@ error: could not compile `ownership` due to previous error
     // we could meaningfully use the value 5 with. word is now totally invalid!
 }</code></pre></pre>
 <p><span class="caption">Listing 4-8: <code>first_word</code> 함수의 결과를 저장했으나,
-이후에 <code>String</code> 의 내용이 변경된 상황</span></p>
+이후에 <code>String</code>의 내용물이 변경된 상황</span></p>
 <p>이 코드는 문법적으로 전혀 문제없고, 정상적으로 컴파일됩니다.
 <code>s.clear()</code> 을 호출한 후에 <code>word</code> 를 사용하는 코드를 작성하더라도,
 <code>word</code> 는 <code>s</code> 와 분리되어 있으니 결과는 마찬가지죠.
@@ -4675,7 +4675,7 @@ fn main() {
 <code>Color</code> 타입을 매개변수로 받는 함수에
 <code>Point</code> 타입을 인자로 넘겨주는 건 불가능합니다.
 앞서 말한 점을 제외하면 튜플처럼 사용할 수 있습니다.
-여러 부분으로 해체할 수도 있고, <code>.</code> 과 색인으로 요소에 접근할 수도 있죠.</p>
+여러 부분으로 해체할 수도 있고, <code>.</code> 과 인덱스로 개별 값에 접근할 수도 있죠.</p>
 <h3 id="필드가-없는-유사-유닛-구조체"><a class="header" href="#필드가-없는-유사-유닛-구조체">필드가 없는 유사 유닛 구조체</a></h3>
 <p>필드가 아예 없는 구조체를 정의할 수도 있습니다. 이는
 <a href="ch03-02-data-types.html#the-tuple-type">“튜플 타입”</a><!-- ignore -->에서 다룬 유닛 타입 <code>()</code>과
@@ -4854,7 +4854,7 @@ fn area(dimensions: (u32, u32)) -&gt; u32 {
 <h3 id="구조체로-리팩토링하여-코드에-더-많은-의미를-담기"><a class="header" href="#구조체로-리팩토링하여-코드에-더-많은-의미를-담기">구조체로 리팩토링하여 코드에 더 많은 의미를 담기</a></h3>
 <p>구조체는 데이터에 이름표를 붙여서 의미를 나타낼 수 있습니다.
 Listing 5-10 처럼, 기존에 사용하던 튜플을 구조체로 바꿔
-각 요소에 이름을 지어줍시다.</p>
+각 구성 요소에 이름을 지어줍시다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Rectangle {
     width: u32,
@@ -5055,7 +5055,7 @@ fn main() {
 <p><em>메서드(method)</em> 는 함수와 유사합니다.
 <code>fn</code> 키워드와 함수명으로 선언하고, 매개변수와 반환 값을 가지며,
 다른 어딘가로부터 호출될 때 실행됩니다.
-하지만 메서드는 함수와 달리 구조체 문맥상에 정의되고 (열거형이나
+하지만 메서드는 함수와 달리 구조체 컨텍스트 상에 정의되고 (열거형이나
 트레잇 객체 안에 정의되기도 하며, 이는 각각 <a href="ch06-00-enums.html">6장</a><!-- ignore -->,
 <a href="ch17-02-trait-objects.html">17장</a><!-- ignore -->에서 알아보겠습니다),
 첫 번째 매개변수가 항상 <code>self</code> 라는 차이점이 있습니다.
@@ -5090,7 +5090,7 @@ fn main() {
 }</code></pre></pre>
 <p><span class="caption">Listing 5-13: <code>Rectangle</code> 구조체에
 <code>area</code> 메서드 정의</span></p>
-<p><code>Rectangle</code> 내에 함수를 정의하기 위해서, <code>Rectangle</code>에 대한 <code>impl</code>
+<p><code>Rectangle</code>의 컨텍스트 내에 함수를 정의하기 위해서, <code>Rectangle</code>에 대한 <code>impl</code>
 (구현, implementation) 블록을 만드는 것으로 시작합니다. 이 <code>impl</code> 블록 내의
 모든 것은 <code>Rectangle</code> 타입에 관련되게 됩니다. 그런 다음 <code>area</code> 함수를 <code>impl</code>의
 중괄호 안으로 옮기고 함수 시그니처의 첫번째 매개변수를 (이번 경우는 유일한
@@ -5539,7 +5539,7 @@ v4, v6 는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 정의됩니다.</p>
 <p>구조체 대신 열거형을 사용할 때의 또 다른 장점이 있습니다.
 각 배리언트는 다른 타입과 다른 양의 연관된 데이터를 가질 수 있습니다.
-v4 IP 주소는 항상 0 ~ 255 사이의 숫자 4개로 된 구성요소를 갖게 될 것입니다.
+v4 IP 주소는 항상 0 ~ 255 사이의 숫자 4개로 된 구성 요소를 갖게 될 것입니다.
 <code>V4</code> 주소에 4개의 <code>u8</code> 값을 저장하길 원하지만, v6 주소는 하나의 String 값으로 표현되길 원한다면,
 구조체로는 이렇게 할 수 없습니다.
 열거형은 이런 경우를 쉽게 처리합니다:</p>
@@ -6349,7 +6349,7 @@ Cargo는 해당 패키지가 패키지명과 같은 이름의 라이브러리 �
 <p>이번에는 모듈, 아이템의 이름을 지정하는 <em>경로 (path)</em>,
 스코프에 경로를 가져오는 <code>use</code> 키워드,
 아이템을 공개하는 데 사용하는 <code>pub</code> 키워드를 알아보겠습니다.
-<code>as</code> 키워드, 외부 패키지, 글롭 연산자 등도 다룰 예정입니다.</p>
+<code>as</code> 키워드, 외부 패키지, 글롭 (glob) 연산자 등도 다룰 예정입니다.</p>
 <p>우선은 여러분이 미래에 코드를 구조화할 때 쉽게 참조할 수 있는 규칙을
 나열하는 것으로 시작해 보겠습니다. 그 다음 각각의 규칙에 대한 세부 사항을
 설명해보겠습니다.</p>
@@ -6621,7 +6621,7 @@ error: could not compile `restaurant` due to 2 previous errors
 <p>러스트 모듈 시스템은 내부의 세부 구현을 기본적으로 숨기도록 되어 있습니다.
 이로써, 여러분은 외부 코드의 동작을 망가뜨릴 걱정 없이
 수정할 수 있는 코드가 어느 부분인지 알 수 있죠. 그렇지만
-러스트에서는 <code>pub</code> 키워드를 사용하여 자식 모듈의 내부 요소를
+러스트에서는 <code>pub</code> 키워드를 사용하여 자식 모듈의 내부 구성 요소를
 공개(public)함으로써 외부 상위 모듈로 노출할 방법을 제공합니다.</p>
 <h3 id="pub-키워드로-경로-노출하기"><a class="header" href="#pub-키워드로-경로-노출하기"><code>pub</code> 키워드로 경로 노출하기</a></h3>
 <p><code>hosting</code> 모듈이 비공개임을 의미하던 Listing 7-4 에러로 돌아와보죠.
@@ -7477,8 +7477,8 @@ pub fn eat_at_restaurant() {
 
     println!(&quot;The first element is: {first}&quot;);
 <span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 8-6: 벡터 요소의 참조자를 가지고 있는 상태에서,
-벡터에 새로운 요소를 추가해 보았습니다</span></p>
+<p><span class="caption">Listing 8-6: 아이템의 참조자를 가지고 있는 상태에서
+벡터에 새로운 요소 추가 시도하기</span></p>
 <p>이 예제를 컴파일하면 아래와 같은 에러가 발생합니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling collections v0.1.0 (file:///projects/collections)
@@ -7547,7 +7547,7 @@ Listing 8-7은 <code>for</code> 루프를 사용하여 <code>i32</code>의 벡�
 막습니다.</p>
 <h3 id="열거형을-이용해-여러-타입-저장하기"><a class="header" href="#열거형을-이용해-여러-타입-저장하기">열거형을 이용해 여러 타입 저장하기</a></h3>
 <p>벡터는 같은 타입을 가진 값들만 저장할 수 있습니다. 이는 불편할
-수 있습니다; 다른 타입의 값들에 대한 리스트를 저장해야 하는 상황도
+수 있습니다; 다른 타입의 아이템들에 대한 리스트를 저장해야 하는 상황도
 분명히 있으니까요. 다행히도, 열거형의 배리언트는 같은 열거형 타입
 내에 정의가 되므로, 백터 내에 다른 타입의 값들을 저장할 필요가 있다면
 열거형을 정의하여 사용할 수 있습니다!</p>
@@ -8601,7 +8601,7 @@ code: 2, kind: NotFound, message: &quot;No such file or directory&quot; }',
 src/main.rs:5:10
 </code></pre>
 <p>출시 가능한 품질의 코드에서 대부분의 러스트인들은 <code>unwrap</code> 보다 <code>expect</code>를
-선택하고 왜 해당 연산이 언제나 성공하기를 기대하는지에 대한 더 많은 내용을
+선택하고 왜 해당 연산이 언제나 성공하기를 기대하는지에 대한 더 많은 맥락을
 제공합니다. 이렇게 함으로써 여러분의 가정이 틀린것으로 판명났다면, 여러분은
 디버깅에 사용할 정보를 더 얻게 됩니다.</p>
 <h3 id="에러-전파하기"><a class="header" href="#에러-전파하기">에러 전파하기</a></h3>
@@ -8609,7 +8609,7 @@ src/main.rs:5:10
 내에서 에러를 처리하는 대신, 에러를 호출하는 코드 쪽으로 반환하여
 그쪽에서 어떻게 할지 결정하도록 할 수 있습니다. 이는 에러 <em>전파하기 (propagating)</em> 로
 알려져 있으며, 에러가 어떻게 처리해야 좋을지 좌우해야 할 상황에서, 여러분의 코드
-내용 내에서 이용 가능한 것들보다 더 많은 정보와 로직을 가지고 있을 수도 있는
+컨텍스트 내에서 이용 가능한 것들보다 더 많은 정보와 로직을 가지고 있을 수도 있는
 호출하는 코드 쪽에 더 많은 제어권을 줍니다.</p>
 <p>예를 들면, Listing 9-6는 파일로부터 사용자 이름을 읽는 함수를 작성한 것입니다.
 만일 파일이 존재하지 않거나 읽을 수 없다면, 이 함수는 호출하는 코드 쪽으로
@@ -8730,7 +8730,7 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 <code>OurError</code>를 생성하도록 한다면, <code>read_username_from_file</code> 본체에 있는
 <code>?</code> 연산자 호출은 다른 코드를 추가할 필요없이 <code>from</code>을 호출하여 에러 타입을
 변환할 것입니다.</p>
-<p>Listing 9-7의 내용에서, <code>File::open</code> 호출 부분의 끝에 있는 <code>?</code>는
+<p>Listing 9-7의 컨텍스트에서, <code>File::open</code> 호출 부분의 끝에 있는 <code>?</code>는
 <code>Ok</code>내의 값을 변수 <code>username_file</code>에게 반환해줄 것입니다. 만일 에러가
 발생하면 <code>?</code>는 전체 함수로부터 일찍 빠져나와 호출하는 코드에게 어떤
 <code>Err</code> 값을 줄 것입니다. <code>read_to_string</code> 호출의 끝부분에 있는 <code>?</code>도
@@ -8984,7 +8984,7 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
 <h3 id="에러-처리를-위한-가이드라인"><a class="header" href="#에러-처리를-위한-가이드라인">에러 처리를 위한 가이드라인</a></h3>
 <p>여러분의 코드가 결국 나쁜 상태에 처하게 될 가능성이 있을 때는
 여러분의 코드에 <code>panic!</code>을 넣는 것이 바람직합니다.
-이 글에서 말하는 나쁜 상태란 어떤 가정, 보장, 계약, 혹은 불변성이 깨질 때를 뜻하는 것으로,
+이 글에서 말하는 <em>나쁜 상태</em>란 어떤 가정, 보장, 계약, 혹은 불변성이 깨질 때를 뜻하는 것으로,
 이를테면 유효하지 않은 값이나 모순되는 값, 혹은 찾을 수 없는 값이 여러분의 코드를 통과할
 경우를 말합니다 - 아래에 쓰인 상황중 하나 혹은 그 이상일 경우라면 말이죠:</p>
 <ul>
@@ -9223,8 +9223,8 @@ impl Guess {
 </span>}</code></pre></pre>
 <p><span class="caption">Listing 10-1: 숫자 리스트에서
 가장 큰 수 찾기</span></p>
-<p><code>number_list</code> 변수에는 정수 리스트를 저장하고,
-<code>largest</code> 변수에 리스트의 첫 번째 아이템을 집어넣습니다.
+<p><code>number_list</code> 변수에는 정수 리스트를 저장하고, <code>largest</code>
+변수에 리스트의 첫 번째 숫자에 대한 참조자를 집어넣습니다.
 그리고 리스트 내 모든 숫자들을 순회하는데,
 만약 현재 값이 <code>largest</code> 에 저장된 값보다 크다면
 <code>largest</code> 의 값을 현재 값으로 변경합니다.
@@ -10133,8 +10133,8 @@ where
 <code>returns_summarizable</code> 함수는 <code>Summary</code> 트레잇을 구현하는 어떤 타입을 반환함을 명시했습니다.
 이 경우 <code>returns_summarizable</code> 는 <code>Tweet</code> 을 반환하지만,
 이 함수를 호출하는 쪽의 코드에서는 구체적인 타입을 알 필요가 없습니다.</p>
-<p>구현되는 트레잇으로 반환 타입을 명시하는 기능은 13장에서
-다룰 클로저 및 반복자 문법에서 굉장히 유용합니다. 클로저와
+<p>구현되는 트레잇으로 반환 타입을 명시하는 기능은 13장에서 다룰
+클로저 및 반복자의 컨텍스트에서 굉장히 유용합니다. 클로저와
 반복자는 컴파일만 아는 타입이나, 직접 명시하기에는 굉장히
 긴 타입을 생성합니다. <code>impl Trait</code> 문법을 사용하면 굉장히
 긴 타입을 직접 작성할 필요 없이 <code>Iterator</code> 트레잇을 구현하는
@@ -10472,7 +10472,7 @@ borrow 검사기가 분석할 수 있도록 해야 합니다.</p>
 &amp;'a mut i32 // a mutable reference with an explicit lifetime</code></pre>
 <p>자신의 라이프타임 명시 하나만 있는 것은 딱히 의미가 없습니다. 라이프타임
 명시는 러스트에게 여러 참조자의 제네릭 라이프타임 매개변수가 서로 어떻게
-연관되어있는지 알려주는 용도이기 때문입니다. <code>longest</code> 함수의 문맥에서
+연관되어있는지 알려주는 용도이기 때문입니다. <code>longest</code> 함수의 컨텍스트에서
 라이프타임 명시가 서로에게 어떤 식으로 연관짓는지 실험해 봅시다.</p>
 <h3 id="함수-시그니처에서-라이프타임-명시하기"><a class="header" href="#함수-시그니처에서-라이프타임-명시하기">함수 시그니처에서 라이프타임 명시하기</a></h3>
 <p>라이프타임 명시를 함수 시그니처에서 사용하기 위해서는 제네릭
@@ -11265,7 +11265,7 @@ mod tests {
 포함할 수 있는지 검사하는 <code>can_hold</code> 메서드 테스트</span></p>
 <p><code>tests</code> 모듈에 <code>use super::*;</code> 줄이 추가되었습니다.
 <code>tests</code> 모듈 또한 7장
-<a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html">“Paths for Referring to an Item in the Module Tree”</a><!-- ignore -->에서 다룬
+<a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html">“경로를 사용해 모듈 트리에서 아이템 가리키기”</a><!-- ignore -->에서 다룬
 가시성 규칙을 따르는 평범한 모듈입니다.
 따라서, 내부 모듈인 <code>tests</code> 모듈에서 외부 모듈의 코드를
 테스트하려면 먼저 내부 스코프로 가져와야 합니다.
@@ -12273,7 +12273,7 @@ mod tests {
 }</code></pre>
 <p>이 코드는 자동으로 생성된 테스트 모듈입니다.
 <code>cfg</code> 속성은 <em>설정(configuration)</em> 을 의미하며,
-러스트는 이 요소를 특정 설정 옵션 적용 시에만 포함합니다.
+러스트는 이 아이템을 특정 설정 옵션 적용 시에만 포함합니다.
 이 경우 옵션 값은 러스트에서 테스트를 컴파일, 실행하기 위해 제공하는 <code>test</code> 입니다.
 <code>cfg</code> 속성을 사용하면 Cargo는 <code>cargo test</code> 명령어를
 실행할 때만 테스트 코드를 컴파일합니다.
@@ -14829,7 +14829,7 @@ How dreary to be somebody!
 <p><a id="closures-anonymous-functions-that-can-capture-their-environment"></a></p>
 <h2 id="클로저-자신의-환경을-캡처하는-익명-함수"><a class="header" href="#클로저-자신의-환경을-캡처하는-익명-함수">클로저: 자신의 환경을 캡처하는 익명 함수</a></h2>
 <p>러스트의 <em>클로저</em>는 변수에 저장하거나 다른 함수에 인자로 넘길 수 
-있는 익명 함수입니다. 한 곳에서 클로저를 만들고 다른 문맥 내의 다른
+있는 익명 함수입니다. 한 곳에서 클로저를 만들고 다른 컨텍스트 내의 다른
 곳에서 그것을 평가하기 위해 호출할 수 있습니다. 함수와 다르게 클로저는 
 정의된 스코프에서 값을 캡처할 수 있습니다. 앞으로 클로저의 이러한 
 기능이 코드 재사용과 동작 사용자 정의를 어떻게 가능케 하는지 살펴볼 
@@ -14954,8 +14954,8 @@ The user with preference None gets Blue
 모두가 동의하도록 확신시키는 데에 중요합니다. 반면에 클로저는 함수처럼
 노출된 인터페이스로 사용되지 않습니다: 클로저는 이름이 지어지거나 우리
 라이브러리의 사용자들에게 노출되지 않은 채로 변수에 저장되고 사용됩니다.</p>
-<p>클로저는 통상적으로 짧고 임의의 시나리오보다는 짧은 맥락 내에서만
-관련됩니다. 이러한 한정된 맥락 내에서, 컴파일러는 대부분의 변수에
+<p>클로저는 통상적으로 짧고 임의의 시나리오보다는 짧은 컨텍스트 내에서만
+관련됩니다. 이러한 한정된 컨텍스트 내에서, 컴파일러는 대부분의 변수에
 대한 타입을 추론할 수 있는 방법과 유사한 식으로 클로저의 매개변수와
 반환 타입을 추론합니다 (컴파일러가 클로저 타입을 명시하도록 요구하는
 곳 또한 드물게 있습니다).</p>
@@ -15406,10 +15406,10 @@ Listing 13-10의 코드는 <code>Vec&lt;T&gt;</code> 에 정의된 <code>iter</c
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">Listing 13-11: <code>for</code> 루프에서 반복자 사용하기</span></p>
-<p>표준 라이브러리에서 반복자를 제공하지 않는 언어에서는, 아마도 변수를
-인덱스 0으로 시작하고, 그 변수를 벡터에서 값을 꺼내오기 위한 인덱스로
-사용하고 색인해서 값을 가져오는데 사용하고, 루프 안에서 벡터가 가진
-아이템의 전체 갯수에 다다를 때까지 그 변수값을 중가시키는 것으로 동일한
+<p>표준 라이브러리에서 반복자를 제공하지 않는 언어에서는, 아마도
+변수를 인덱스 0으로 시작하고, 그 변수를 인덱스로 사용하여
+벡터에서 값을 꺼내오고, 루프 안에서 벡터가 가진 아이템의 전체
+갯수에 다다를 때까지 그 변수값을 중가시키는 것으로 동일한
 기능을 작성할 것입니다.</p>
 <p>반복자는 여러분을 위해 그러한 모든 로직을 처리하며, 엉망이 될 가능성이 
 있는 반복되는 코드를 줄여 줍니다. 반복자는 벡터처럼 인덱스를 사용할 수 있는
@@ -16302,7 +16302,7 @@ test bench_search_iter ... bench:  19,234,900 ns/iter (+/- 657,200)
 사용해서 스코프에 있는 세 개의 변수로 수학 연산을 합니다: 데이터의
 <code>buffer</code> 슬라이스, 12개의 <code>coefficients</code> 배열, 그리고 데이터를
 쉬프트 하기 위한 <code>qlp_shift</code> 값으로 말이죠. 이 예제에서는 변수를
-선언했지만 값을 주지는 않았습니다; 비록 이 코드가 문맥 밖에서는
+선언했지만 값을 주지는 않았습니다; 비록 이 코드가 컨텍스트 밖에서는
 큰 의미 없지만, 러스트가 어떻게 고수준의 개념을 저수준의 코드로
 변환하는지에 대한 간결하고 실질적인 예제입니다.</p>
 <pre><code class="language-rust ignore">let buffer: &amp;mut [i32];
@@ -17177,7 +17177,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <p>추가 연습으로 <code>add_one</code> 크레이트와 비슷한 방식으로 이 작업공간에 <code>add_two</code>
 크레이트를 추가하세요!</p>
 <p>여러분의 프로젝트가 커지면 작업공간 사용을 고려해보세요: 하나의 커다란 코드
-덩어리 보다는 작고 개별적인 요소들을 이해하는 것이 쉽습니다. 게다가 작업공간에
+덩어리 보다는 작고 개별적인 구성 요소들을 이해하는 것이 쉽습니다. 게다가 작업공간에
 크레이트들를 유지하는 것은 이 크레이트들이 자주 동시에 변경될 경우 이들간의
 조정을 더 쉽게 해줄 수 있습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- Old link, do not remove -->
@@ -17288,7 +17288,7 @@ cargo install something you don't have, copy relevant output below
 없습니다. 하지만 여러 추가 기능도 없습니다. 박스는 아래와 같은 상황에서
 가장 자주 쓰이게 됩니다:</p>
 <ul>
-<li>컴파일 타임에는 크기를 알 수 없는 타입이 있는데, 정확한 크기를 요구하는 맥락
+<li>컴파일 타임에는 크기를 알 수 없는 타입이 있는데, 정확한 크기를 요구하는 컨텍스트
 내에서 그 타입의 값을 사용하고 싶을 때</li>
 <li>커다란 데이터를 가지고 있고 소유권을 옮기고 싶지만 그렇게 했을 때 데이터가
 복사되지 않을 것이라고 보장하고 싶을 때</li>
@@ -17873,9 +17873,9 @@ Listing 15-13의 코드를 작성했어야 할 것입니다:</p>
 밖으로 벗어나려고 할 때 무슨 일을 할지 커스터마이징하게끔 해줍니다. 어떠한
 타입이든 <code>Drop</code> 트레잇을 구현할 수 있고, 이 코드가 파일이나 네트워크 연결 같은
 자원 해제에 사용되게 할 수 있습니다.</p>
-<p>스마트 포인터에 대한 내용을 다루는 중에 <code>Drop</code>을 소개하는 이유는 <code>Drop</code>
-트레잇의 기능이 스마트 포인터를 구현할 때 거의 항상 이용되기 때문입니다.
-예를 들어 <code>Box&lt;T&gt;</code>가 버려질 때는 이 박스가 가리키고 있는 힙 공간의 할당을
+<p>스마트 포인터에 대한 맥락에서 <code>Drop</code>을 소개하는 이유는 <code>Drop</code> 트레잇의
+기능이 스마트 포인터를 구현할 때 거의 항상 이용되기 때문입니다. 예를
+들어 <code>Box&lt;T&gt;</code>가 버려질 때는 이 박스가 가리키고 있는 힙 공간의 할당을
 해제할 것입니다.</p>
 <p>몇몇 언어들에서는 어떤 타입의 인스턴스 사용을 끝낼 때마다 프로그래머가
 직접 메모리 혹은 자원을 해제하는 코드를 호출해줘야 합니다. 그 예에는
@@ -18275,7 +18275,7 @@ count after c goes out of scope = 2
 빌림 규칙을 준수한다는 것을 컴파일러는 이해하거나 보장할 수 없지만
 여러분이 확신하는 경우 유용합니다.</p>
 <p><code>Rc&lt;T&gt;</code>와 유사하게, <code>RefCell&lt;T&gt;</code>은 싱글스레드 시나리오 내에서만 사용
-가능하고, 멀티스레드에서 사용을 시도할 경우에는 컴파일 타임 에러를
+가능하고, 멀티스레드 컨텍스트에서 사용을 시도할 경우에는 컴파일 타임 에러를
 낼 것입니다. <code>RefCell&lt;T&gt;</code>의 기능을 멀티스레드 프로그램에서 사용하는
 방법에 대해서는 16장에서 이야기하겠습니다.</p>
 <p><code>Box&lt;T&gt;</code>, <code>Rc&lt;T&gt;</code>, 혹은 <code>RefCell&lt;T&gt;</code>을 선택하는 이유의 요점을 정리하면 다음과 같습니다:</p>
@@ -18741,7 +18741,7 @@ error: test failed, to rerun pass `--lib`
 의미합니다: 여러분의 코드가 프로덕션으로 배포될 때까지 발견되지 않을
 수도 있습니다. 또한, 여러분의 코드는 컴파일 타임이 아닌 런타임에 빌림을
 추적하는 결과로 약간의 런타임 성능 페널티를 초래할 것입니다.
-하지만 <code>RefCell&lt;T&gt;</code>를 이용하는 것은 오직 불변 값만 허용된 맥락 안에서
+하지만 <code>RefCell&lt;T&gt;</code>를 이용하는 것은 오직 불변 값만 허용된 컨텍스트 안에서
 사용하는 중에 본 메세지를 추적하기 위해서 스스로를 변경할 수 있는 목 객체
 작성을 가능하게 해줍니다. 트레이드 오프가 있더라도 <code>RefCell&lt;T&gt;</code>를
 사용하여 일반적인 참조자가 제공하는 것보다 더 많은 기능을 얻을 수
@@ -19334,7 +19334,7 @@ examining strong and weak reference counts</span></p>
 버그들</li>
 </ul>
 <p>러스트는 스레드 사용의 부정적인 효과를 완화하는 시도를 하지만,
-멀티스레드 콘텍스트에서의 프로그래밍은 여전히 신중하게 생각해야
+멀티스레드 컨텍스트에서의 프로그래밍은 여전히 신중하게 생각해야
 하고 싱글스레드로 실행되는 프로그램의 것과는 다른 코드 구조가
 필요합니다.</p>
 <p>프로그래밍 언어들은 몇가지 다른 방식으로 스레드를 구현하고, 많은
@@ -19497,7 +19497,7 @@ hi number 4 from the main thread!
 그렇게하면 클로저가 환경으로부터 사용하는 값의 소유권을 갖게 되어 한
 스레드에서 다른 스레드로 소유권이 이전될 것이기 때문입니다. 13장의
 <a href="ch13-01-closures.html#capturing-references-or-moving-ownership">“참조자를 캡처하거나 소유권 이전하기”</a><!-- ignore -->절에서
-클로저의 콘텍스트에서의 <code>move</code>에 대해 다루었습니다. 지금은
+클로저의 컨텍스트에서의 <code>move</code>에 대해 다루었습니다. 지금은
 <code>move</code>와 <code>thread::spawn</code> 사이의 상호작용에 더 집중해 보겠습니다.</p>
 <p>Listing 16-1에서 'thread::spawn'에 넘겨진 클로저는 아무런 인자도 갖지
 않음을 주목하세요: 생성된 스레드의 코드에서는 메인 스레드로부터 온 어떤 데이터도
@@ -19988,7 +19988,7 @@ Got: you
 많은 사람들이 채널 애호가가 되는 이유입니다. 하지만, 러스트의 타입 시스템과
 소유권 규칙에 덕분에 락과 언락이 잘못 될 수는 없습니다.</p>
 <h4 id="mutext의-api"><a class="header" href="#mutext의-api"><code>Mutex&lt;T&gt;</code>의 API</a></h4>
-<p>뮤텍스 사용 방법에 대한 예제로서 Listing 16-12처럼 싱글스레드 맥락에서
+<p>뮤텍스 사용 방법에 대한 예제로서 Listing 16-12처럼 싱글스레드 컨텍스트에서
 뮤텍스를 사용하는 것으로 시작해봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">use std::sync::Mutex;
@@ -20003,7 +20003,7 @@ fn main() {
 
     println!(&quot;m = {:?}&quot;, m);
 }</code></pre></pre>
-<p><span class="caption">Listing 16-12: 간소화를 위해 싱글스레드 맥락에서
+<p><span class="caption">Listing 16-12: 간소화를 위해 싱글스레드 컨텍스트에서
 <code>Mutex&lt;T&gt;</code>의 API 탐색하기</span></p>
 <p>많은 타입들이 그렇듯 <code>Mutex&lt;T&gt;</code>는 연관함수 <code>new</code>를 사용하여 만들어집니다.
 뮤텍스 내의 데이터에 접근하기 위해서는 <code>lock</code> 메서드를 사용하여 락을
@@ -20294,9 +20294,9 @@ changes in the compiler -->
 관련된 불변성을 강제하는데 유용할 따름입니다.</p>
 <p>이 트레잇들을 손수 구현하는 것은 안전하지 않은 (unsafe) 러스트 코드 구현을
 수반합니다. 19장에서 안전하지 않은 러스트 코드에 대하여 이야기 하겠습니다;
-지금으로서 중요한 정보는 <code>Send</code>와 <code>Sync</code>하지 않은 요소들로 구성된 새로운
+지금으로서 중요한 정보는 <code>Send</code>와 <code>Sync</code>하지 않은 구성 요소들로 구성된 새로운
 동시적 타입을 만드는 것이 안전성 보장을 유지하기 위해 신중한 고려가 필요하다는
-점입니다. <a href="../nomicon/index.html">러스토노미콘</a>에 이러한 보장과 유지하는 방법 대한 더 많은
+점입니다. <a href="../nomicon/index.html">“러스토노미콘”</a>에 이러한 보장과 유지하는 방법 대한 더 많은
 정보가 있습니다.</p>
 <h2 id="정리-11"><a class="header" href="#정리-11">정리</a></h2>
 <p>여기가 이 책에서 동시성에 대해 보게될 마지막은 아닙니다: 20장의 프로젝트에서는
@@ -20308,7 +20308,7 @@ changes in the compiler -->
 기술의 크레이트를 온라인으로 검색해서 멀티스레드 상황에서 사용해
 보세요.</p>
 <p>러스트 표준 라이브러리는 메세지 패싱을 위해 채널을 제공하고, 동시적
-맥락에서 사용하기 안전한 <code>Mutex&lt;T&gt;</code>와 <code>Arc&lt;T&gt;</code> 같은 스마트 포인터
+컨텍스트에서 사용하기 안전한 <code>Mutex&lt;T&gt;</code>와 <code>Arc&lt;T&gt;</code> 같은 스마트 포인터
 타입들을 제공합니다. 타입 시스템과 빌림 검사기는 이 솔루션을 이용하는
 코드가 데이터 경쟁 혹은 유효하지 않은 참조자로 끝나지 않을 것을 보장합니다.
 일단 코드가 컴파일된다면, 다른 언어에서는 흔한 추적하기 어려운 버그 없이
@@ -20503,7 +20503,7 @@ Listing 17-2와 같이 구조체에 <code>add</code>, <code>remove</code>, 그�
 될 수 있습니다. 또한 <code>gui</code> 사용자들은 그릴 수 있는 자신만의 타입을 만들고자
 할 것입니다: 일례로, 어떤 프로그래머는 <code>Image</code>를 추가할지도, 또다른
 누군가는 <code>SelectBox</code>를 추가할지도 모릅니다.</p>
-<p>이번 예제에서는 완전한 GUI 라이브러리를 구현하지는 않겠지만 각 요소들이
+<p>이번 예제에서는 완전한 GUI 라이브러리를 구현하지는 않겠지만 이 조각들이
 어떻게 결합되는지 보여주고자 합니다. 라이브러리를 작성하는 시점에서는
 다른 프로그래머들이 만들고자 하는 모든 타입들을 알 수 없죠. 하지만
 <code>gui</code>가 다양한 타입들의 많은 값을 추적해야 하고, <code>draw</code> 메서드가 각각의
@@ -20565,7 +20565,7 @@ Listing 17-2와 같이 구조체에 <code>add</code>, <code>remove</code>, 그�
 <p><span class="caption">Listing 17-4: <code>Draw</code> 트레잇을 구현하는
 트레잇 객체들의 벡터 <code>components</code>를 필드로 가지고 있는 <code>Screen</code>
 구조체의 정의</span></p>
-<p><code>Screen</code> 구조체에서는 Listing 17-5와 같이 <code>components</code>의 각 아이템마다
+<p><code>Screen</code> 구조체에서는 Listing 17-5와 같이 <code>components</code>의 각 요소마다
 <code>draw</code> 메서드를 호출하는 <code>run</code> 메서드를 정의합니다:</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">pub trait Draw {
@@ -21660,7 +21660,7 @@ fn main() {
 <li>자리표시자 (placeholder)</li>
 </ul>
 <p>몇 가지 예제 패턴에는 <code>x</code>, <code>(a, 3)</code>, <code>Some(Color::Red)</code> 같은 것들이 있습니다.
-패턴이 유효한 맥락 내에서 이러한 구성 요소들은 데이터의 형태를 설명합니다.
+패턴이 유효한 컨텍스트 내에서 이러한 구성 요소들은 데이터의 형태를 설명합니다.
 그러면 프로그램은 값들을 패턴에 매칭해보고 특정 코드 조각을 계속 실행하기에
 데이터가 올바른 형태인지 확인합니다.</p>
 <p>패턴을 이용하기 위해서는 그 패턴을 어떤 값에 비교합니다. 패턴이
@@ -22768,7 +22768,7 @@ error: could not compile `patterns` due to previous error
 두 가지 새로운 타입이 있습니다. 참조자와 마찬가지로 원시 포인터는
 불변 또는 가변이며 각각 <code>*const T</code>와 <code>*mut T</code>로 작성됩니다.
 별표는 역참조 연산자가 아니라 타입 이름의 일부입니다. 원시 포인터의
-맥락에서 <em>불변</em>은 포인터가 역참조된 후에 직접 할당할 수 없음을
+컨텍스트에서 <em>불변</em>은 포인터가 역참조된 후에 직접 할당할 수 없음을
 의미합니다.</p>
 <p>참조자와 스맡 포인터와는 다르게 원시 포인터는 다음과 같은 특징이 있습니다:</p>
 <ul>
@@ -22848,7 +22848,7 @@ error: could not compile `patterns` due to previous error
 <p>안전하지 않은 블록에서 수행할 수 있는 두 번째 유형의 작업은
 안전하지 않은 함수를 호출하는 것입니다. 안전하지 않은 함수와
 메서드는 일반 함수나 메서드와 똑같아 보이지만, 정의 앞부분에
-<code>unsafe</code>가 추가됩니다. 이 문맥에서 <code>unsafe</code> 키워드는 이 함수를
+<code>unsafe</code>가 추가됩니다. 이 컨텍스트에서 <code>unsafe</code> 키워드는 이 함수를
 호출할 때 지켜야 할 요구사항이 있음을 나타내는데, 이는 러스트가
 이러한 요구사항을 충족했다고 보장할 수 없기 때문입니다. 안전하지
 않은 함수를 <code>unsafe</code> 블록 내에서 호출한다는 것은 이 함수의 문서를
@@ -25683,7 +25683,7 @@ impl ThreadPool {
 <p><code>size</code> 매개변수의 타입으로 <code>usize</code>를 선택한 이유는 음수 개수의
 스레드가 의미없음을 알고 있기 때문입니다. 또한 3장의
 <a href="ch03-02-data-types.html#integer-types">“정수 타입”</a><!-- ignore -->절에서 설명한 것처럼,
-이 4를 스레드 컬렉션의 아이템 개수로 사용할 것임을 알고 있으며,
+이 4를 스레드 컬렉션의 요소 개수로 사용할 것임을 알고 있으며,
 이것이 바로 <code>usize</code> 타입의 용도입니다.</p>
 <p>다시 한번 코드를 검사해봅시다:</p>
 <pre><code class="language-console">$ cargo check
@@ -28020,7 +28020,7 @@ fn main() {
 수 있습니다. 에디션 변경은 컴파일러가 초기에 코드를 구문 분석하는 방식에만
 영향을 줍니다. 따라서 러스트 2015를 사용 중이고 종속성 중 하나가 러스트 2018을
 사용하는 경우, 프로젝트는 컴파일되고 해당 종속성를 사용할 수 있습니다.
-프로젝트가 러스트 2018을 사용하고 종속 요소가 러스트 2015를 사용하는 반대의
+프로젝트가 러스트 2018을 사용하고 종속성이 러스트 2015를 사용하는 반대의
 상황도 마찬가지입니다.</p>
 <p>명확히 말씀드리자면, 대부분의 기능은 모든 버전에서 사용할 수 있습니다. 모든
 러스트 에디션을 사용하는 개발자는 새로운 안정 버전이 출시되면 계속해서 개선

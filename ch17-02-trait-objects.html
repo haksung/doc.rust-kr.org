@@ -167,7 +167,7 @@
 될 수 있습니다. 또한 <code>gui</code> 사용자들은 그릴 수 있는 자신만의 타입을 만들고자
 할 것입니다: 일례로, 어떤 프로그래머는 <code>Image</code>를 추가할지도, 또다른
 누군가는 <code>SelectBox</code>를 추가할지도 모릅니다.</p>
-<p>이번 예제에서는 완전한 GUI 라이브러리를 구현하지는 않겠지만 각 요소들이
+<p>이번 예제에서는 완전한 GUI 라이브러리를 구현하지는 않겠지만 이 조각들이
 어떻게 결합되는지 보여주고자 합니다. 라이브러리를 작성하는 시점에서는
 다른 프로그래머들이 만들고자 하는 모든 타입들을 알 수 없죠. 하지만
 <code>gui</code>가 다양한 타입들의 많은 값을 추적해야 하고, <code>draw</code> 메서드가 각각의
@@ -229,7 +229,7 @@
 <p><span class="caption">Listing 17-4: <code>Draw</code> 트레잇을 구현하는
 트레잇 객체들의 벡터 <code>components</code>를 필드로 가지고 있는 <code>Screen</code>
 구조체의 정의</span></p>
-<p><code>Screen</code> 구조체에서는 Listing 17-5와 같이 <code>components</code>의 각 아이템마다
+<p><code>Screen</code> 구조체에서는 Listing 17-5와 같이 <code>components</code>의 각 요소마다
 <code>draw</code> 메서드를 호출하는 <code>run</code> 메서드를 정의합니다:</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">pub trait Draw {
