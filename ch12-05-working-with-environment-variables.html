@@ -719,8 +719,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <p>여기서 <code>ignore_case</code>라는 새 변수를 만들었습니다. 이 값을 설정하기 위해서
 <code>env::var</code> 함수를 호출하고 여기에 환경 변수의 이름 <code>INGORE_CASE</code>를
 넘겼습니다. <code>env::var</code> 함수는 <code>Result</code>를 반환하는데 여기에는 해당
-환경 변수에 어떤 값이 설정되어 있을 경우 그 값을 담은 <code>Ok</code> variant가
-될 것입니다. 만일 환경 변수가 설정되어 있지 않다면 <code>Err</code> variant가
+환경 변수에 어떤 값이 설정되어 있을 경우 그 값을 담은 <code>Ok</code> 배리언트가
+될 것입니다. 만일 환경 변수가 설정되어 있지 않다면 <code>Err</code> 배리언트가
 반환될 것입니다.</p>
 <p>환경 변수가 설정되었는지 확인하기 위해서 <code>Result</code>의 <code>is_ok</code> 메서드를
 사용중인데, 이는 프로그램이 대소문자를 구분하지 않는 검색을 해야함을

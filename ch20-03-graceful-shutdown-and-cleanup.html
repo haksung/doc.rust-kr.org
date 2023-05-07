@@ -273,9 +273,9 @@ error: could not compile `hello` due to previous error
 소유한 <code>Worker</code> 인스턴스로부터 스레드를 밖으로 옮겨서 <code>join</code>이 스레드를
 써버릴 수 있도록 할 필요가 있습니다. Listing 17-15에서 이 작업을 해봤었지요:
 <code>Worker</code>가 대신 <code>Option&lt;thread::JoinHandle&lt;()&gt;&gt;</code>을 가지고 있다면,
-<code>Option</code>의 <code>take</code> 메서드를 호출하여 <code>Some</code> variant에서 값을 빼내고
-그 자리에는 <code>None</code> variant를 남길 수 있습니다. 바꿔 말하면, 실행 중인
-<code>Worker</code>는 <code>thread</code>에 <code>Some</code> variant를 갖도록 하고, <code>Worker</code>를 정리하고
+<code>Option</code>의 <code>take</code> 메서드를 호출하여 <code>Some</code> 배리언트에서 값을 빼내고
+그 자리에는 <code>None</code> 배리언트를 남길 수 있습니다. 바꿔 말하면, 실행 중인
+<code>Worker</code>는 <code>thread</code>에 <code>Some</code> 배리언트를 갖도록 하고, <code>Worker</code>를 정리하고
 싶을 때는 <code>Some</code>을 <code>None</code>으로 대체하여 <code>Worker</code>에 실행 스레드가 없도록
 할 것입니다.</p>
 <p>따라서 <code>Worker</code>의 정의를 다음과 같이 업데이트하고 싶습니다:</p>
@@ -554,7 +554,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">        }
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p>17장에서 논의한 것처럼 <code>Option</code>의 <code>take</code> 메서드는 <code>Some</code> variant를
+<p>17장에서 논의한 것처럼 <code>Option</code>의 <code>take</code> 메서드는 <code>Some</code> 배리언트를
 제거하고 그 자리에 <code>None</code>을 남깁니다. 여기서는 <code>if let</code>을 사용해 <code>Some</code>을
 해체하고 스레드를 가져옵니다; 그런 다음 그 스레드에서 <code>join</code>을 호출합니다.
 워커의 스레드가 이미 <code>None</code>이면 해당 워커의 스레드가 이미 정리되었음을 알 수

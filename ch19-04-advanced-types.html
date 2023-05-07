@@ -215,10 +215,7 @@ API를 노출할 수 있습니다.</p>
 <p>타입 동의어의 주요 사용 사례는 반복을 줄이는 것입니다. 예를 들어,
 다음과 같은 긴 타입이 있을 수 있습니다:</p>
 <pre><code class="language-rust ignore">Box&lt;dyn Fn() + Send + 'static&gt;</code></pre>
-<p>Writing this lengthy type in function signatures and as type annotations all
-over the code can be tiresome and error prone. Imagine having a project full of
-code like that in Listing 19-24.
-이 긴 타입을 함수 시그니처 및 코드의 모든 곳에 타입 명시로 작성하는
+<p>이 긴 타입을 함수 시그니처 및 코드의 모든 곳에 타입 명시로 작성하는
 것은 지루하고 에러가 발생하기 쉽습니다. Listing 19-24와 같은 코드로
 가득찬 프로젝트가 있다고 상상해보세요.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {

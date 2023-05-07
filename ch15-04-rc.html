@@ -218,7 +218,7 @@ error[E0382]: use of moved value: `a`
 For more information about this error, try `rustc --explain E0382`.
 error: could not compile `cons-list` due to previous error
 </code></pre>
-<p><code>Cons</code> variant는 자신이 들고 있는 데이터를 소유하므로, <code>b</code> 리스트를 만들 때
+<p><code>Cons</code> 배리언트는 자신이 들고 있는 데이터를 소유하므로, <code>b</code> 리스트를 만들 때
 <code>a</code>는 <code>b</code> 안으로 이동되어 <code>b</code>의 소유가 됩니다. 그 다음 <code>c</code>를 생성할 때 <code>a</code>를
 다시 사용하려 할 경우는 허용되지 않는데, 이미 <code>a</code>가 이동되었기 때문입니다.</p>
 <p><code>Cons</code>의 정의를 변경하여 참조자를 대신 들고 있도록 할 수도 있지만, 그러면
@@ -227,7 +227,7 @@ error: could not compile `cons-list` due to previous error
 것입니다. 이는 Listing 15-17의 요소와 리스트에 대한 경우지, 모든 시나리오에
 맞는 것은 아닙니다.</p>
 <p>그 대신 Listing 15-18과 같이 <code>Box&lt;T&gt;</code>의 자리에 <code>Rc&lt;T&gt;</code>를 이용하는
-형태로 <code>List</code>의 정의를 바꾸겠습니다. 각각의 <code>Cons</code> variant는 이제 어떤
+형태로 <code>List</code>의 정의를 바꾸겠습니다. 각각의 <code>Cons</code> 배리언트는 이제 어떤
 값과 <code>List</code>를 가리키는 <code>Rc&lt;T&gt;</code>를 갖게 될 것입니다. <code>b</code>를 만들 때는 <code>a</code>의
 소유권을 얻는 대신, <code>a</code>를 가지고 있는 <code>Rc&lt;List&gt;</code>를 클론할 것인데, 이는
 참조자의 갯수를 하나에서 둘로 증가시키고 <code>a</code>와 <code>b</code>가 <code>Rc&lt;List&gt;</code> 안에

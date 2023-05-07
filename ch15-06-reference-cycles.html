@@ -184,12 +184,12 @@ impl List {
 
 fn main() {}</code></pre></pre>
 <p><span class="caption">Listing 15-25: <code>RefCell&lt;T&gt;</code>를 가지고 있어서
-<code>Cons</code> variant가 참조하는 것을 변경할 수 있는 cons 리스트 정의</span></p>
+<code>Cons</code> 배리언트가 참조하는 것을 변경할 수 있는 cons 리스트 정의</span></p>
 <p>Listing 15-5의 <code>List</code> 정의의 또다른 변형이 이용되고 있습니다.
-이제 <code>Cons</code> variant 내의 두번째 요소는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>인데,
+이제 <code>Cons</code> 배리언트 내의 두번째 요소는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>인데,
 이는 Listing 15-24에서 했던 것처럼 <code>i32</code> 값을 변경하는 능력을 갖는 대신,
-<code>Cons</code> variant가 가리키고 있는 <code>List</code> 값을 변경하길 원한다는 의미입니다.
-또한 <code>tail</code> 메서드를 추가하여 <code>Cons</code> variant를 갖고 있다면 두번째 아이템에
+<code>Cons</code> 배리언트가 가리키고 있는 <code>List</code> 값을 변경하길 원한다는 의미입니다.
+또한 <code>tail</code> 메서드를 추가하여 <code>Cons</code> 배리언트를 갖고 있다면 두번째 아이템에
 접근하기 편하게 만들었습니다.</p>
 <p>Listing 15-26에서는 Listing 15-25에서 사용한 <code>main</code> 함수를 추가하고 있습니다.
 이 코드는 <code>a</code>에 리스트를 만들고 <code>b</code>에는 <code>a</code>의 리스트를 가리키고 있는 리스트를
@@ -297,7 +297,7 @@ a rc count after changing a = 2
 참조자는 소유권을 갖고 어떤 참조자는 그렇지 않도록 하는 것입니다.
 결과적으로 몇 개의 소유권 관계와 몇 개의 소유권 없는 관계로 이루어진
 순환을 만들수 있으며, 소유권 관계들만이 값을 버릴지 말지에 관해
-영향을 주게 됩니다. Listing 15-25에서는 <code>Cons</code> variant가 언제나
+영향을 주게 됩니다. Listing 15-25에서는 <code>Cons</code> 배리언트가 언제나
 리스트를 소유하기를 원하므로, 데이터 구조를 재구성하는 것은 불가능합니다.
 부모 노드와 자식 노드로 구성된 그래프를 이용한 예제를 살펴보면서
 소유권 없는 관계가 순환 참조를 방지하는 적절한 방법이 되는 때가
@@ -486,7 +486,7 @@ Listing 15-28에서는 <code>main</code>을 갱신하여 이 새로운 정의를
 <code>RefCell&lt;Weak&lt;Node&gt;&gt;</code>에 있는 <code>borrow_mut</code> 메서드를 사용하고, 그런 다음
 <code>Rc::downgrade</code> 함수를 사용하여 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>로부터 <code>branch</code>에
 대한 <code>Weak&lt;Node&gt;</code> 참조자를 생성하였습니다.</p>
-<p><code>leaf</code>의 부모를 다시 한번 출력할 때는 <code>branch</code>를 가지고 있는 <code>Some</code> variant를
+<p><code>leaf</code>의 부모를 다시 한번 출력할 때는 <code>branch</code>를 가지고 있는 <code>Some</code> 배리언트를
 얻게될 것입니다: 이제 <code>leaf</code>는 자신의 부모에 접근할 수 있습니다! <code>leaf</code>를 출력할
 때 Listing 15-26에서와 같이 궁극적으로 스택 오버플로우로 끝나버리는 그 순환 문제도
 피하게 되었습니다; <code>Weak&lt;Node&gt;</code> 참조자는 <code>(Weak)</code>로 출력됩니다:</p>
