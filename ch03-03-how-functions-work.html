@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ko" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -151,12 +151,12 @@
                     <main>
                         <h2 id="함수"><a class="header" href="#함수">함수</a></h2>
 <p>러스트 코드는 온통 함수로 가득합니다. 여러분은 이미 이 언어에서 가장
-중요한 함수 중 하나인 <code>main</code> 함수를 보셨습니다. 이 함수는 많은 프로그램의 
-시작 지점입니다. 또한 새로운 함수를 선언하도록 해주는 <code>fn</code> 키워드도
+중요한 함수 중 하나를 보셨습니다: 바로 많은 프로그램의 시작점인 <code>main</code>
+함수를 말이죠. 또한 새로운 함수를 선언하도록 해주는 <code>fn</code> 키워드도
 보셨습니다.</p>
 <p>러스트 코드는 함수나 변수 이름을 위한 관례로 <em>스네이크 케이스 (snake case)</em> 방식을
 이용하는데, 이는 모든 글자를 소문자로 쓰고 밑줄(underscore)로 단어를 구분하는
-방식을 말합니다. 다음은 예제로 함수를 정의한 프로그램입니다:</p>
+방식을 말합니다. 다음은 예시로 함수를 정의한 프로그램입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     println!(&quot;Hello, world!&quot;);
@@ -167,7 +167,7 @@
 fn another_function() {
     println!(&quot;Another function.&quot;);
 }</code></pre></pre>
-<p>러스트에서는 <code>fn</code> 뒤에 함수 이름과 괄호를 붙여 넣어 함수를
+<p>러스트에서는 <code>fn</code> 뒤에 함수 이름과 괄호를 붙여서 함수를
 정의합니다. 중괄호는 함수 본문의 시작과 끝을 컴파일러에게
 알려줍니다.</p>
 <p>함수의 이름 뒤에 괄호 묶음을 쓰면 우리가 정의해둔 어떤 함수든 호출할 수
@@ -192,11 +192,11 @@ Another function.
 <h3 id="매개변수"><a class="header" href="#매개변수">매개변수</a></h3>
 <p>함수는 <em>매개변수 (parameter)</em> 를 갖도록 정의될 수 있으며, 이는 함수
 시그니처 (function signiture) 의 일부인 특별한 변수입니다.
-함수가 매개변수를 갖고 있으면 이 매개변수를 위한 고정값(concrete value)을
-전달할 수 있습니다. 전문용어로 이런 고정값을 <em>인자 (argument)</em> 라고
-부르지만, 사람들은 보통 <em>매개변수</em>와 <em>인자</em>라는 용어를 함수 정의부 내의
-변수나 함수 호출시 집어넣는 고정값에 대해 말할 때 혼용하는 경향이
-있습니다.</p>
+함수가 매개변수를 갖고 있으면 이 매개변수를 대한 구체적인 값을
+전달할 수 있습니다. 엄밀하게는 이러한 구체적인 값을 <em>인자 (argument)</em> 라고
+부르지만, 일상적인 대화에서는 보통 함수 정의부 내의 변수나 함수를 호출할
+때 전달되는 구체적인 값에 대해 <em>매개변수</em>와 <em>인자</em>라는 용어를 혼용하는
+경향이 있습니다.</p>
 <p>아래의 <code>another_function</code>에는 매개변수가 추가되었습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -213,11 +213,11 @@ fn another_function(x: i32) {
      Running `target/debug/functions`
 The value of x is: 5
 </code></pre>
-<p><code>another_function</code> 선언을 보면 <code>x</code>라는 이름의 매개변수 하나를 갖고 있습니다.
+<p><code>another_function</code> 선언을 보면 <code>x</code>라는 이름의 매개변수를 하나 가지고 있습니다.
 <code>x</code>의 타입은 <code>i32</code>로 명시되어 있습니다. <code>5</code>가 <code>another_function</code>으로 전달되면,
 <code>println!</code> 매크로는 포맷 문자열 내 중괄호 쌍의 위치에 <code>5</code>를
 집어넣습니다.</p>
-<p>함수 시그니처에서는 <em>반드시</em> 각 매개변수의 타입을 선언해야 합니다.
+<p>함수 시그니처에서는 각 매개변수의 타입을 <em>반드시</em> 선언해야 합니다.
 이는 러스트를 설계하면서 신중하게 내린 결정사항입니다: 함수의 정의에 타입 명시를
 강제하면 이 함수를 다른 코드에서 사용할 때 여러분이 의도한 타입을 컴파일러가
 추측하지 않아도 되게 됩니다. 컴파일러는 또한 함수가 기대한 타입이 무엇인지 알고
@@ -246,12 +246,12 @@ fn print_labeled_measurement(value: i32, unit_label: char) {
 The measurement is: 5h
 </code></pre>
 <p><code>value</code>에는 <code>5</code>를, <code>unit_label</code>에는 <code>h</code>를 넣어 함수를 호출했으므로,
-프로그램의 출력이 이 값들을 담게 되었습니다.</p>
+이 값들이 프로그램의 출력에 들어갔습니다.</p>
 <h3 id="구문과-표현식"><a class="header" href="#구문과-표현식">구문과 표현식</a></h3>
-<p>함수 본문은 필요에 따라 표현식(expression)으로 종결되는 구문(statement)의
+<p>함수 본문은 필요에 따라 표현식(expression)으로 끝나는 구문(statement)의
 나열로 구성됩니다. 지금까지 우리가 다룬 함수들은 표현식으로 끝나지 않았지만,
-구문의 일부분으로 표현식이 쓰인건 보셨습니다. 러스트는 표현식 기반의
-언어이므로, 구문과 표현식의 구분은 러스트 이해에 중요합니다.
+표현식이 구문의 일부분으로 쓰인건 보셨습니다. 러스트는 표현식 기반의
+언어이므로, 구문과 표현식의 구분은 러스트를 이해하는데 중요합니다.
 다른 언어들은 이런 구분이 없으므로, 구문과 표현식이 무엇이며
 둘 간의 차이가 함수의 본문에 어떤 영향을 주는지
 살펴보겠습니다.</p>
@@ -322,11 +322,11 @@ error: could not compile `functions` due to 3 previous errors; 1 warning emitted
 것이 없습니다. 이것이 C나 Ruby 같은 다른 언어와의 차이점인데,
 이 언어들은 할당문이 할당된 값을 반환하죠. 이런 언어들에서는
 <code>x = y = 6</code>라고 작성하여 <code>x</code>와 <code>y</code>에 모두 <code>6</code>을 대입할 수 있지만,
-러스트에서는 이렇지 않습니다.</p>
+러스트에서는 그렇지 않습니다.</p>
 <p>여러분이 작성하는 러스트 코드의 대부분은 표현식이며, 이는 어떤 값을 산출합니다.
-<code>5 + 6</code>과 같은 간단한 수학 연산을 살펴봅시다. 이 수식은
-<code>11</code>이란 값을 산출하는 표현식입니다. 표현식은 구문의 일부일 수 있습니다:
-Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <code>6</code>이란 값을 
+<code>5 + 6</code>과 같은 간단한 수학 연산을 살펴봅시다. 이 수식은 <code>11</code>이라는
+값을 산출하는 표현식입니다. 표현식은 구문의 일부일 수 있습니다:
+Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <code>6</code>이라는 값을 
 산출하는 표현식입니다. 함수를 호출하는 것도, 매크로를 호출하는 것도
 표현식입니다. 아래 예제처럼 중괄호로 만들어진 새로운 스코프 블록도
 표현식입니다:</p>
@@ -344,9 +344,9 @@ Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <
     let x = 3;
     x + 1
 }</code></pre>
-<p>같은 경우에는 <code>4</code>를 산출하는 코드 블록입니다. 이 값이 <code>let</code> 구문의 일부로서
-<code>y</code>에 바인딩됩니다. 여러분이 지금까지 봐온 것과 다르게 <code>x + 1</code> 줄의
-마지막이 세미콜론으로 끝나지 않은 점을 주목하세요. 표현식은
+<p>같은 경우에는 <code>4</code>를 산출하는 코드 블록입니다. 이 값이 <code>let</code> 구문의
+일부로서 <code>y</code>에 바인딩됩니다. 여러분이 지금까지 봐온 것과 다르게 <code>x + 1</code>
+줄의 마지막이 세미콜론으로 끝나지 않은 점을 주목하세요. 표현식은
 종결을 나타내는 세미콜론을 쓰지 않습니다. 만약 표현식 끝에 세미콜론을
 추가하면, 표현식은 구문으로 변경되고 값을 반환하지 않게 됩니다.
 이 점을 상기하면서 이후부터 함수의 반환 값과 표현식을 살펴보길
@@ -380,17 +380,17 @@ fn main() {
 The value of x is: 5
 </code></pre>
 <p><code>5</code>는 <code>five</code> 함수의 반환값이며, 이 때문에 반환 타입을 <code>i32</code>으로 한
-것이지요. 좀더 자세히 보자면, 중요한 지점이 두 곳 있습니다: 첫째로,
-<code>let x = five();</code> 줄은 함수의 반환 값을 변수의 초기 값으로 사용하는
-것을 보여줍니다. <code>five</code>의 반환 값이 <code>5</code>이기 때문에, 해당 줄은 다음과 
+것이지요. 좀 더 자세히 보자면, 중요한 지점이 두 곳 있습니다: 첫째로,
+<code>let x = five();</code> 라인은 함수의 반환 값을 변수의 초기 값으로 사용하는
+것을 보여줍니다. <code>five</code>의 반환 값이 <code>5</code>이기 때문에, 해당 라인은 다음과 
 동일합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 5;
 <span class="boring">}</span></code></pre></pre>
 <p>두번째로, <code>five</code> 함수는 매개변수 없이 반환 타입만 정의되어 있지만,
-본문에는 <code>5</code>만이 세미콜론 없이 외로이 있는데 그 이유는 이 값이
-반환하고자 하는 값에 대한 표현식이기 때문입니다.</p>
+본문에는 <code>5</code>만이 세미콜론 없이 외롭게 있는데, 그 이유는 이 값이
+반환하려는 값에 대한 표현식이기 때문입니다.</p>
 <p>다른 예제도 살펴봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -403,8 +403,8 @@ fn plus_one(x: i32) -&gt; i32 {
     x + 1
 }</code></pre></pre>
 <p>이 코드를 실행하면 <code>The value of x is: 6</code>이 출력됩니다.
-만일 <code>x + 1</code> 끝에 세미콜론이 추가되어 표현식에서 구문으로 변경되면
-에러를 보게 됩니다:</p>
+만일 <code>x + 1</code> 끝에 세미콜론이 추가되어 표현식이 구문으로 변경되면
+에러가 발생합니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = plus_one(5);
@@ -434,10 +434,10 @@ error: could not compile `functions` due to previous error
 <p>주 에러 메시지 <code>mismatched types</code>는 이 코드의 핵심 문제를 보여줍니다.
 <code>plus_one</code> 함수의 정의에는 <code>i32</code> 값을 반환한다고 되어 있지만,
 구문은 값을 산출하지 않기에 <code>()</code>로 표현되는 유닛 타입으로 표현됩니다.
-따라서 아무것도 반환되지 않아 함수가 정의된 내용과 상충하게 되어
+따라서 아무 것도 반환되지 않아 함수가 정의된 내용과 상충하게 되어
 에러가 발생됩니다. 위의 출력 결과에서 러스트는 이 문제를 바로잡는데
-도움될 수 있는 메세지를 제공합니다: 바로 세미콜론을 제거하여 에러를
-수정하라는 제안이지요.</p>
+도움될 수 있는 메세지를 제공합니다: 바로 세미콜론을 제거하면 에러가
+수정될 것이란 제안이지요.</p>
 
                     </main>
 

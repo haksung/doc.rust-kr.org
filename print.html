@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="ko" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -945,7 +945,7 @@ fn main() {
 </span><span class="boring">}</span></code></pre>
 <p>이 코드는 게임에 대한 설명하여 사용자의 입력을 요청하는 프롬프트를
 출력하고 있습니다.</p>
-<h3 id="값을-변수에-저장하기"><a class="header" href="#값을-변수에-저장하기">값을 변수에 저장하기</a></h3>
+<h3 id="변수에-값-저장하기"><a class="header" href="#변수에-값-저장하기">변수에 값 저장하기</a></h3>
 <p>다음으로, 아래와 같이 사용자의 입력값을 저장할 <em>변수(variable)</em> 를 생성합니다.</p>
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
@@ -1868,33 +1868,33 @@ fn main() {
 러스트의 특성인 소유권을 다룹니다. 5장에서는 구조체와 메서드 문법을
 다루며 6장에서는 열거형에 대해 다룹니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="일반적인-프로그래밍-개념"><a class="header" href="#일반적인-프로그래밍-개념">일반적인 프로그래밍 개념</a></h1>
-<p>이 장은 거의 모든 프로그래밍 언어에서 나타나는 개념들과 그 개념들이
-러스트에서 어떻게 다루어지는지 소개합니다. 많은 프로그래밍 언어들은 
-핵심이 비슷합니다. 이 장에서는 러스트 고유의 특성은 소개하지 않겠지만,
-러스트의 맥락에서 논의하고 이러한 개념 사용과 관련된 관례들을
+<p>이 장에서는 거의 모든 프로그래밍 언어에 등장하는 개념들과 그 개념들이
+러스트에서 어떻게 작동하는지 소개합니다. 많은 프로그래밍 언어들의
+핵심에는 많은 공통점이 있습니다. 이 장에서 소개하는 개념 중 러스트 고유의
+개념은 없지만, 러스트의 맥락에서 논의하고 이러한 개념 사용과 관련된 규칙을
 설명하겠습니다.</p>
-<p>특히 여러분은 변수, 기본 타입, 함수, 주석, 제어문에 대해서 배울 것입니다.
-이 기초는 모든 러스트 프로그램에 사용될 것이며, 이들을 일찍 익히는 것은
-여러분에게 강한 초기 기반을 가져다 줄 것입니다.</p>
+<p>특히 변수, 기본 타입, 함수, 주석, 그리고 제어 흐름에 대해서 배우게 됩니다.
+이러한 기초는 모든 러스트 프로그램에 사용될 것이며, 이를 일찍 배우면
+강력한 기반을 바탕으로 시작할 수 있게 할 것입니다.</p>
 <blockquote>
 <h4 id="키워드"><a class="header" href="#키워드">키워드</a></h4>
 <p>러스트 언어는 대부분의 다른 언어들과 마찬가지로
 이 언어만 사용 가능한 <em>키워드</em>라는 집합이 있습니다. 키워드는
 함수명이나 변수명으로 사용할 수 없음을 알아두세요. 대부분의 키워드들은
-특수한 의미가 있으며, 러스트 프로그램의 다양한 일들을 처리하기 위해 사용할
+특별한 의미가 있으며, 러스트 프로그램의 다양한 일들을 처리하기 위해 사용할
 것입니다. 몇몇은 아직 아무 기능도 없지만 추후에 추가될 기능들을
-위해 예약되어 있습니다. 키워드 목록은 <a href="appendix-01-keywords.html">부록 A</a><!-- ignore -->
-에서 확인할 수 있습니다.</p>
+위해 예약되어 있습니다. 키워드 목록은 <a href="appendix-01-keywords.html">부록 A</a><!-- ignore -->에서
+확인할 수 있습니다.</p>
 </blockquote>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="변수와-가변성"><a class="header" href="#변수와-가변성">변수와 가변성</a></h2>
 <p><a href="ch02-00-guessing-game-tutorial.html#storing-values-with-variables">“변수에 값 저장하기”</a><!-- ignore -->
-에서 언급했듯이, 변수는 기본적으로 불변입니다. 이것은 러스트가
-제공하는 안정성과 쉬운 동시성이라는 이점을 얻을 수 있는 방향으로
-코드를 쓰게 하는 강제사항(nudge) 중 하나입니다. 하지만 여러분은
-여전히 변수를 가변으로 만들 수 있습니다. 어떻게 하는지 살펴보고
-왜 러스트가 불변성을 권하는지와 어떨 때 가변성을 써야 하는지
-알아봅시다.</p>
-<p>변수가 불변일 때, 한번 값이 묶이면 그 값은 바꿀 수
+에서 언급했듯이, 변수는 기본적으로 불변 (immutable) 입니다. 이것은
+러스트가 제공하는 안정성과 쉬운 동시성을 활용하는 방식으로 코드를 작성할
+수 있도록 하는 넛지 (nudge, 슬며시 선택을 유도하기) 중 하나입니다.
+하지만 여러분은 여전히 변수를 가변 (mutable) 으로 만들 수 있습니다.
+어떻게 하는지 살펴보고 왜 러스트가 불변성을 권하는지와 어떨 때 가변성을
+써야 하는지 알아봅시다.</p>
+<p>변수가 불변일 때, 어떤 이름에 한번 값이 묶이면 그 값은 바꿀 수
 없습니다. 이를 표현하기 위해, <code>cargo new variables</code>로
 <em>projects</em> 디렉토리 안에 <em>variables</em>라는 프로젝트를 만들어 봅시다.</p>
 <p>그리고, 새 <em>variables</em> 디렉토리의 <em>src/main.rc</em> 파일을 열어서
@@ -1928,26 +1928,26 @@ error: could not compile `variables` due to previous error
 <p>이 예시는 컴파일러가 프로그램의 에러 찾기를 어떻게 도와주는지 보여줍니다.
 컴파일러 에러가 실망스러울 수도 있겠지만, 컴파일러는 그저 여러분의 프로그램이 아직은 
 원하는 대로 안전하게 동작하지 않는다고 할 뿐입니다. 컴파일러는 여러분이 좋은 프로그래머가
-아니라고 한 적이 <em>없습니다</em>! 경험이 많은 러스타시안들조차 컴파일러 에러가 발생합니다.</p>
-<p>여러분은 <code>불변 변수 `x`에 두 번 값을 할당할 수 없다</code> 라는 에러 메세지를
-받게 됩니다. 불변 변수 <code>x</code>에 두 번째 값을 할당하려고 했기 때문이죠.</p>
+아니라고 한 적이 <em>없습니다!</em> 경험이 많은 러스타시안들에게조차 컴파일러 에러가 발생합니다.</p>
+<p><code>불변 변수 `x`에 두 번 값을 할당할 수 없다</code> 라는 내용의 에러 메세지를
+받았습니다. 불변 변수 <code>x</code>에 두 번째 값을 할당하려고 했기 때문이죠.</p>
 <p>불변으로 지정한 값을 변경하려고 하는 바로 이 상황이 버그로 이어질 수
-있기 때문에, 컴파일-타임 에러가 발생하는 것은 중요합니다.
+있기 때문에, 컴파일 타임 에러가 발생하는 것은 중요합니다.
 만약 코드의 한 부분이 변수 값은 변하지 않는다는 전제 하에
-작동하고 코드의 다른 부분이 그 값을 바꾼다면, 첫 부분의 코드는
+작동하고 코드의 다른 부분이 그 값을 바꾼다면, 앞 부분의 코드는
 원래 지정된 일을 못할 가능성이 생깁니다. 이런 류의 버그는 발생
 후 추적하는 것이 어려운데, 특히 코드의 두 번째 부분이 값을
-<em>가끔 바꿀 때</em> 그렇습니다. 러스트 컴파일러는 여러분이 변수가
-변하지 않는다고 지정하면 컴파일러가 이를 보증합니다. 이 말은
-코드를 읽고 쓸 때 값이 어디서 어떻게 변할 지 쫓을 필요가 없다는
+<em>가끔씩만</em> 바꿀 때 그렇습니다. 러스트 컴파일러는 값이 바뀌지 않을
+것이라고 여러분이 지정하면 실제로 그렇도록 보증합니다. 이 말은
+코드를 읽고 쓸 때 값이 어디서 어떻게 바뀔지 추적할 필요가 없다는
 것입니다. 따라서 여러분의 코드는 흐름을 따라가기 쉬워집니다.</p>
 <p>하지만 가변성은 아주 유용할 수 있고, 코드 작성을 더 편하게 해줍니다.
 변수는 기본적으로 불변이더라도, 여러분이
-[2장][storing-values-with-varilables]<!-- ignore -->에서 했던
+<a href="ch02-00-guessing-game-tutorial.html#storing-values-with-variables">2장</a><!-- ignore -->에서 했던
 것처럼 변수명 앞에 <code>mut</code>을 붙여서 가변으로 만들 수 있습니다.
-이 변수에게 값이 변할 수 있도록 하는 것에 더해, 다른 부분의 코드에서
-이 변수의 값이 변할 것이라는 의미를 미래의 독자들에게 전달합니다.</p>
-<p>예를 들어, <em>src/main.rs</em>를 다음과 같이 바꿉시다.</p>
+<code>mut</code>를 추가하는 것은 또한 미래에 코드를 읽는 이들에게 코드의 다른
+부분에서 이 변수의 값이 변할 것이라는 의도를 전달합니다.</p>
+<p>예를 들어, <em>src/main.rs</em>를 다음과 같이 바꿉시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut x = 5;
@@ -1963,23 +1963,23 @@ error: could not compile `variables` due to previous error
 The value of x is: 5
 The value of x is: 6
 </code></pre>
-<p>우리는 <code>mut</code>를 사용해 <code>x</code>의 값을 <code>5</code>에서 <code>6</code>으로 바꿀 수 있었습니다.
-궁극적으로 가변성을 사용할지 말지는 여러분의 몫이고 각 상황에서 여러번이
-생각하는 가장 명확한 상태가 어떤 것이냐에 따라 달려있습니다.</p>
-<h3 id="상수-constants"><a class="header" href="#상수-constants">상수 (Constants)</a></h3>
+<p><code>mut</code>를 사용해 <code>x</code>의 값을 <code>5</code>에서 <code>6</code>으로 바꿀 수 있었습니다.
+궁극적으로 가변성을 사용할지 말지는 여러분의 몫이고, 특정 상황에서
+가장 명확하다고 생각하는 것이 어떤 것이냐에 따라 달라집니다.</p>
+<h3 id="상수"><a class="header" href="#상수">상수</a></h3>
 <p><em>상수 (constant)</em> 는 불변 변수와 비슷한데, 어떤 이름에 묶여 있는
 값이고 값을 바꾸는 것이 허용되지 않지만, 변수와는 약간 다른 점들이
 있습니다.</p>
-<p>먼저, <code>mut</code>와 상수를 함께 사용할 수 없습니다. 상수는
+<p>먼저, 상수는 <code>mut</code>와 함께 사용할 수 없습니다. 상수는
 기본적으로 불변인 것이 아니고, 항상 불변입니다. 상수는 <code>let</code>
 키워드 대신 <code>const</code> 키워드로 선언하며, 값의 타입은 <em>반드시</em>
-명시되어야 합니다. 다음 절 <a href="ch03-02-data-types.html#data-types">“데이터 타입”</a><!-- ignore -->
-에서 타입과 타입 명시에 대해 다룰 예정이므로, 자세한 사항은 아직 걱정하지
+명시되어야 합니다. 다음 절 <a href="ch03-02-data-types.html#data-types">“데이터 타입”</a><!-- ignore -->에서
+타입과 타입 명시에 대해 다룰 예정이므로, 자세한 사항은 아직 걱정하지
 않아도 됩니다. 항상 타입 명시를 해야 한다는 것만 알아두세요.</p>
-<p>상수는 전역 스코프를 포함한 어느 스코프에서도 선언 가능한데,
-이는 코드의 많은 부분에서 알 필요가 있는 값들에 유용합니다.</p>
-<p>마지막 차이점은, 상수는 반드시 상수 표현식이어야 하고
-런타임에서만 계산될 수 있는 결과 값은 안된다는 것입니다.</p>
+<p>상수는 전역 스코프를 포함한 어떤 스코프에서도 선언 가능하므로
+코드의 많은 부분에서 알 필요가 있는 값에 유용합니다.</p>
+<p>마지막 차이점은, 상수는 반드시 상수 표현식으로만 설정될 수 하고
+런타임에서만 계산될 수 있는 결과값으로는 안된다는 것입니다.</p>
 <p>아래에 상수 선언의 예제가 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -1990,7 +1990,7 @@ The value of x is: 6
 알아둘 필요가 있는 시간의 숫자)를 모두 곱한 값입니다.
 러스트의 이름 짓기 관례에서 상수는 단어 사이에 밑줄을 사용하고
 모든 글자를 대문자로 쓰는 것입니다. 컴파일러는 컴파일 타임에
-제한된 연산을 수행할 수 있는데, 이는 이런 상수값을 10,800으로
+제한된 연산을 수행할 수 있는데, 이런 상수값을 10,800으로
 쓰는 대신 이해하고 검사하기 더 쉽게 작성할 방법을 제공해줍니다.
 <a href="../reference/const_eval.html">상수값 평가에 대한 러스트 레퍼런스 절</a>에서 상수 선언에
 사용될 수 있는 연산이 어떤 것이 있는지 더 많은 정보를 찾을 수
@@ -2004,14 +2004,14 @@ The value of x is: 6
 미래의 코드 관리자에게 그 값의 의미를 전달하는데 유용합니다.
 또한 나중에 업데이트될 하드코드된 값을
 단 한 군데에서 변경할 수 있게 해줍니다.</p>
-<h3 id="덮어쓰기"><a class="header" href="#덮어쓰기">덮어쓰기</a></h3>
+<h3 id="쉐도잉"><a class="header" href="#쉐도잉">쉐도잉</a></h3>
 <p><a href="ch02-00-guessing-game-tutorial.html#%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%99%80-%EC%B6%94%EB%A6%AC%EA%B0%92%EC%9D%84-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">2장</a><!-- ignore -->에서
-다른 추리 게임에서 보았듯이, 여러분은 새 변수를 이전 변수명과 같은
-이름으로 선언할 수 있습니다. 러스타시안들은 첫 번째 변수가 두 번째 변수에
-의해 *가려졌다 (shadowed)*라고 표현하며, 이는 여러분이 해당 변수의
-이름을 사용할 때 컴파일러가 두번째 번수라는 것을 알게 될 것이라는
+다른 추리 게임에서 보았듯이, 새 변수를 이전 변수명과 같은 이름으로
+선언할 수 있습니다. 러스타시안들은 첫 번째 변수가 두 번째 변수에
+의해 <em>가려졌다 (shadowed)</em> 라고 표현하며, 이는 해당 변수의
+이름을 사용할 때 컴파일러가 두번째 번수를 보게될 것이라는
 의미입니다. 사실상 두번째 변수는 첫번째 것을 가려서, 스스로를 다시
-가리거나 스코프가 끝날때까지 변수명의 사용을 가져가버립니다. 우리는
+가리거나 스코프가 끝날때까지 변수명의 사용을 가져가 버립니다.
 아래처럼 똑같은 변수명과 let` 키워드의 반복으로 변수를 가릴 수
 있습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
@@ -2027,12 +2027,12 @@ The value of x is: 6
 
     println!(&quot;The value of x is: {x}&quot;);
 }</code></pre></pre>
-<p>이 프로그램은 1차로 <code>x</code>에 <code>5</code>라는 값을 묶습니다. 다음으로 <code>let x = </code>을
-반복해 새로운 변수 <code>x</code>를 만들고, 원래 값에 <code>1</code>을 더한 값을 대입하여
-<code>x</code>의 값은 <code>6</code>이 됩니다. 그 후 중괄호를 사용하여 만들어진 안쪽 스코프
+<p>이 프로그램은 먼저 <code>x</code>에 <code>5</code>라는 값을 묶어 넣습니다. 다음으로 <code>let x = </code>을
+반복해 새로운 변수 <code>x</code>를 만들고, 원래 값에 <code>1</code>을 더한 값을 대입해서
+<code>x</code>의 값은 이제 <code>6</code>이 됩니다. 그 후 중괄호를 사용하여 만들어진 안쪽 스코프
 내에 있는 세 번째 <code>let</code> 구문 또한 <code>x</code>를 가리고 새로운 변수를 만드는데,
 이전 값에 <code>2</code>를 곱해 <code>x</code>에 할당해서 <code>x</code>의 최종값은 <code>12</code>가 됩니다.
-이 스코프가 끝나면 안쪽의 가림은 끝나서 <code>x</code>는 다시 <code>6</code>으로 돌아옵니다.
+이 스코프가 끝나면 안쪽의 쉐도잉은 끝나서 <code>x</code>는 다시 <code>6</code>으로 돌아옵니다.
 우리가 이 프로그램을 실행하면 다음과 같이 출력될 것입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling variables v0.1.0 (file:///projects/variables)
@@ -2041,25 +2041,25 @@ The value of x is: 6
 The value of x in the inner scope is: 12
 The value of x is: 6
 </code></pre>
-<p>덮어쓰기는 변수를 <code>mut</code>로 표시하는 것과는 다릅니다.
-<code>let</code> 키워드 없이 값을 재할당 하려고 한다면
-컴파일-타임 에러가 발생하기 때문입니다.
-<code>let</code>을 사용하면, 값을 이전하면서 불변으로
-유지할 수 있습니다.</p>
-<p><code>mut</code>과 덮어쓰기의 또다른 차이점은,
-같은 변수명으로 다른 타입의 값을 저장할 수 있다는 것입니다.
-예를 들어, 프로그램이 사용자에게 글 사이에
-몇 개의 공백을 넣고 싶은지 입력하도록 하고,
-우리는 이 값을 숫자로써 보관하고 싶다 칩시다:</p>
+<p>쉐도잉은 변수를 <code>mut</code>로 표시하는 것과는 다릅니다.
+실수로 <code>let</code> 키워드 없이 변수에 값을 재할당 하려고
+한다면 컴파일 타임 에러가 발생하기 때문입니다.
+<code>let</code>을 사용하면, 값을 변형하면서 변형이 완료된 후에는
+불변으로 유지할 수 있습니다.</p>
+<p><code>mut</code>과 쉐도잉의 또다른 차이점은 다시금 <code>let</code> 키워드를 사용하여 새로운
+변수를 만드는 것이기 때문에 같은 변수명으로 다른 타입의 값을 저장할
+수 있다는 것입니다. 예를 들어, 프로그램이 사용자에게 어떤 텍스트
+사이에 몇 개의 공백을 넣고 싶은지 공백문자를 입력하도록 요청하고,
+이 값을 숫자로 저장하고 싶다 칩시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let spaces = &quot;   &quot;;
     let spaces = spaces.len();
 <span class="boring">}</span></code></pre></pre>
 <p>첫번째 <code>spaces</code>는 문자열 타입이고 두번째 <code>spaces</code>는 숫자 타입입니다.
-따라서 변수명 가리기는 <code>spaces_str</code>과 <code>spaces_num</code> 같이 구분되는
-변수명을 쓸 필요가 없도록 여유를 줍니다. 그 대신 우리는 더 간단한
-<code>spaces</code>라는 이름을 재사용할 수 있습니다. 그런데 여기에서 <code>mut</code>을
-사용하려 한다면, 보시다시피 컴파일-타임 에러가 발생합니다:</p>
+따라서 쉐도잉은 <code>spaces_str</code>과 <code>spaces_num</code> 같이 구분되는
+변수명을 쓸 필요가 없도록 여유를 줍니다; 즉, 더 간단한 <code>spaces</code>라는
+이름을 재사용할 수 있게 해줍니다. 그런데 여기에서 <code>mut</code>을 사용하려
+한다면, 보시다시피 컴파일 타임 에러가 발생합니다:</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let mut spaces = &quot;   &quot;;
     spaces = spaces.len();
@@ -2081,23 +2081,23 @@ error: could not compile `variables` due to previous error
 <p>변수가 어떻게 작동하는지 알아보았으니, 변수가 가질 수 있는 더 많은
 타입들에 대해 알아봅시다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="데이터-타입"><a class="header" href="#데이터-타입">데이터 타입</a></h2>
-<p>러스트에서 사용되는 모든 값들은 어떤 <em>타입</em>을 갖습니다. 그러니 어떤 형태의 데이터인지 명시하여
-러스트 컴파일러가 데이터를 어떤 식으로 다룰 수 있는지 알게끔 해야합니다. 여기서는
+<p>러스트의 모든 값들은 특정한 <em>타입</em>을 가지며, 이는 러스트가 해당 데이터로 작업하는
+방법을 알 수 있도록 어떤 종류의 데이터가 지정되고 있는지 알려줍니다. 여기서는
 타입을 스칼라 타입과 복합 타입, 두 가지 부분 집합으로 나누어 보겠습니다.</p>
-<p>러스트는 <em>타입이 고정된 (statically typed)</em> 언어라는 점을 주지하세요.
+<p>러스트는 <em>정적 타입의 (statically typed)</em> 언어라는 점을 주지하세요.
 이게 의미하는 바는 모든 변수의 타입이 컴파일 시점에 반드시 정해져 있어야 한다는 겁니다.
-보통 컴파일러는 우리가 값을 어떻게 사용하는지에 따라 타입을 추측할 수 있습니다.
-2장의 <a href="ch02-00-guessing-game-tutorial.html#%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%99%80-%EC%B6%94%EB%A6%AC%EA%B0%92%EC%9D%84-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">&quot;비밀번호와 추리값을 비교하기&quot;</a><!-- ignore -->
-에서 <code>String</code>을 <code>parse</code>를 사용하여 숫자로
-변환했던 경우처럼 타입의 선택 폭이 넓은 경우는
-다음과 같이 반드시 타입을 명시해야 합니다:</p>
+보통 컴파일러는 우리가 값을 어떻게 사용하는지에 따라 타입을 추측할 수 있습니다. 2장의
+<a href="ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number">“비밀번호와 추리값을 비교하기”</a><!-- ignore -->에서
+<code>String</code>에 <code>parse</code>를 사용하여 숫자로 변환했던 경우처럼
+여러가지 타입이 가능한 경우에는 다음과 같이 반드시
+타입 명시를 추가해야 합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let guess: u32 = &quot;42&quot;.parse().expect(&quot;Not a number!&quot;);
 <span class="boring">}</span></code></pre></pre>
-<p>여기에 <code>: u32</code>이라는 타입 명시를 하지 않으면 러스트는 아래와 같은 에러를 발생시킵니다.
-이와 같은 에러는 컴파일러가 우리에게 사용하고 싶은 타입이 무엇인지 추가적인
-정보를 요구하는 겁니다:</p>
+<p>여기에 <code>: u32</code>라는 타입 명시를 하지 않으면 러스트는 아래와 같은 에러를
+출력하는데, 이는 컴파일러에게 사용하고자 하는 타입이 무엇인지에 대한
+추가적인 정보가 필요하다는 뜻입니다:</p>
 <pre><code class="language-console">$ cargo build
    Compiling no_type_annotations v0.1.0 (file:///projects/no_type_annotations)
 error[E0282]: type annotations needed
@@ -2114,20 +2114,20 @@ help: consider giving `guess` an explicit type
 For more information about this error, try `rustc --explain E0282`.
 error: could not compile `no_type_annotations` due to previous error
 </code></pre>
-<p>우리가 다루고자 하는 다양한 데이터 타입들의 타입 명시를 살펴보겠습니다.</p>
+<p>다양한 데이터 타입들의 타입 명시를 살펴보겠습니다.</p>
 <h3 id="스칼라-타입"><a class="header" href="#스칼라-타입">스칼라 타입</a></h3>
-<p><em>스칼라</em> 타입은 하나의 값을 표현합니다. 러스트는 정수, 부동소수점 숫자, boolean, 그리고 문자,
-이렇게 네 가지 스칼라 타입을 갖고 있습니다. 아마 다른 프로그래밍 언어에서도 이런걸 본 적이
+<p><em>스칼라 (scalar)</em> 타입은 하나의 값을 표현합니다. 러스트는 정수, 부동소수점 숫자, 부울린 (boolean),
+그리고 문자, 이렇게 네 가지 스칼라 타입을 갖고 있습니다. 아마 다른 프로그래밍 언어에서도 이런걸 본 적이
 있을 겁니다. 러스트에서는 이들이 어떤 식으로 동작하는지 살펴보도록 합시다.</p>
 <h4 id="정수형"><a class="header" href="#정수형">정수형</a></h4>
-<p><em>정수형</em>은 소수점이 없는 숫자입니다. 2장에서 정수형 중 하나인
-<code>u32</code> 타입을 사용했었죠. 해당 타입의 선언은 부호 없는 32비트
-변수임을 나타냅니다 (부호 있는 타입은 <code>u</code>대신 <code>i</code>로
-시작합니다.) Table 3-1은 러스트에서 사용되는 정수형들을
+<p><em>정수형 (integer type)</em> 은 소수점이 없는 숫자입니다. 2장에서
+정수형 중 하나인 <code>u32</code> 타입을 사용했었죠. 해당 타입의 선언은
+부호 없는 32비트 변수임을 나타냅니다 (부호 있는 타입은 <code>u</code>대신
+<code>i</code>로 시작합니다.) Table 3-1은 러스트에서 사용되는 정수형들을
 보여줍니다. 이 변형 중 어떤 것이라도 정수 값의 타입 선언에
 사용할 수 있습니다.</p>
 <p><span class="caption">Table 3-1: 러스트의 정수형 타입들</span></p>
-<div class="table-wrapper"><table><thead><tr><th>Length</th><th>Signed</th><th>Unsigned</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>길이</th><th>부호 있음 (Signed)</th><th>부호 없음 (Unsigned)</th></tr></thead><tbody>
 <tr><td>8-bit</td><td><code>i8</code></td><td><code>u8</code></td></tr>
 <tr><td>16-bit</td><td><code>i16</code></td><td><code>u16</code></td></tr>
 <tr><td>32-bit</td><td><code>i32</code></td><td><code>u32</code></td></tr>
@@ -2136,23 +2136,23 @@ error: could not compile `no_type_annotations` due to previous error
 <tr><td>arch</td><td><code>isize</code></td><td><code>usize</code></td></tr>
 </tbody></table>
 </div>
-<p>각각의 타입은 부호 있는 혹은 부호 없는 타입이며 명시된 크기를 갖습니다.
-부호 혹은 부호 없음의 의미는, 이 타입이 음수를 다룰 수 있는지를
+<p>각각의 타입은 부호 있는 (signed) 혹은 부호 없는 (unsigned) 타입이며 명시된 크기를
+갖습니다. 부호 혹은 부호 없음의 의미는, 이 타입이 음수를 다룰 수 있는지를
 나타냅니다. 다르게 말하면, 숫자가 부호를 가져야 하는 경우인지 (부호 있는)
 혹은 오직 양수만을 가질 것이기에 부호 없이 표현가능한지를 (부호 없는)
-나타냅니다. 종이에 숫자 기재하는 것과 같죠:
-부호와 함께 다뤄야 하는 경우 숫자는 더하기 혹은 빼기 기호와 함께 표시하죠.
+나타냅니다. 종이에 숫자 기재하는 것과 같습니다:
+부호와 함께 다뤄야 하는 경우 숫자는 덧셈이나 뺄셈 기호와 함께 표시하지요.
 하지만 숫자가 양수라고 가정해도 문제 없는 상황에는 부호 없이 표시하게 됩니다. 
 부호된 숫자는 <a href="https://en.wikipedia.org/wiki/Two%27s_complement">2의 보수</a><!-- ignore -->형태를 사용하여
 저장됩니다.</p>
-<p>각 부호 있는 타입의 변수는 -(2<sup>n - 1</sup>) 부터 2<sup>n - 1</sup> - 1 까지의 값을 포괄합니다.
-여기서 <em>n</em>은 사용되는 타입의 비트 수 입니다. 따라서 <code>i8</code>은 -(2<sup>7</sup>) 에서
-2<sup>7</sup> - 1 까지의 값, 즉 -128 에서 127 사이의 값을 저장할 수 있습니다.
-부호 없는 타입은 0 에서 2<sup>n</sup> - 1 까지의 값을 저장할 수 있습니다. 그래서
+<p>각 부호 있는 타입의 변수는 -(2<sup>n - 1</sup>)부터 2<sup>n - 1</sup> - 1 까지의 값을
+저장할 수 있습니다. 여기서 <em>n</em>은 사용되는 타입의 비트 수 입니다. 따라서 <code>i8</code>은
+-(2<sup>7</sup>)에서 2<sup>7</sup> - 1 까지의 값, 즉 -128 에서 127 사이의 값을 저장할 수
+있습니다. 부호 없는 타입은 0 에서 2<sup>n</sup> - 1 까지의 값을 저장할 수 있습니다. 그래서
 <code>u8</code> 타입은 0 에서 2<sup>8</sup> - 1 다시 말해, 0 에서 255 까지의 값을 저장할 수 있습니다. </p>
 <p>추가로, <code>isize</code>와 <code>usize</code> 타입은 여러분의 프로그램이 동작하는 컴퓨터
 환경에 따라 결정되는데, 위 테이블에는 “arch”라고 적시되어 있습니다.
-64-bit 아키텍처이면 64bit를, 32-bit 아키텍처이면 32bit를 갖게
+64-bit 아키텍처이면 64비트를, 32-bit 아키텍처이면 32비트를 갖게
 됩니다.</p>
 <p>정수형 리터럴은 Table 3-2에서 보시는 것과 같은 형태로 작성할 수 있습니다.
 여러 숫자 타입이 될 수 있는 숫자 리터럴에는 <code>57u8</code>과 같은 타입 접미사를
@@ -2160,7 +2160,7 @@ error: could not compile `no_type_annotations` due to previous error
 구분을 위해 <code>_</code>을 사용할 수 있는데, 이는 <code>1000</code>이라고 명시한 것과
 같은 값이 될 것입니다.</p>
 <p><span class="caption">Table 3-2: 러스트의 정수형 리터럴</span></p>
-<div class="table-wrapper"><table><thead><tr><th>Number literals</th><th>Example</th></tr></thead><tbody>
+<div class="table-wrapper"><table><thead><tr><th>숫자 리터럴</th><th>예</th></tr></thead><tbody>
 <tr><td>Decimal</td><td><code>98_222</code></td></tr>
 <tr><td>Hex</td><td><code>0xff</code></td></tr>
 <tr><td>Octal</td><td><code>0o77</code></td></tr>
@@ -2168,18 +2168,18 @@ error: could not compile `no_type_annotations` due to previous error
 <tr><td>Byte (<code>u8</code> only)</td><td><code>b'A'</code></td></tr>
 </tbody></table>
 </div>
-<p>그러면 어떤 타입의 정수를 사용해야 하는지는 어떻게 알까요? 확실하게
-정해진 경우가 아니면 러스트의 기본 값인 <code>i32</code>가 일반적으로는 좋은
-시작점입니다. <code>isize</code>나 <code>usize</code>는 주로 컬렉션 타입 종류의 인덱스에
+<p>그러면 어떤 타입의 정수를 사용해야 하는지는 어떻게 알아낼까요? 확실히
+정해진 경우가 아니라면 러스트의 기본 값인 <code>i32</code>가 일반적으로 좋은
+시작지점이 됩니다. <code>isize</code>나 <code>usize</code>는 주로 어떤 컬렉션 종류의 인덱스에
 사용됩니다.</p>
 <blockquote>
 <h5 id="정수-오버플로우"><a class="header" href="#정수-오버플로우">정수 오버플로우</a></h5>
 <p>여러분이 0과 255 사이의 값을 담을 수 있는 <code>u8</code> 타입의 변수를 갖고 있다고
 해봅시다. 만약에 이 변수에 256처럼 범위 밖의 값으로 변경하려고 하면
 <em>정수 오버플로우 (integer overflow)</em> 가 일어나는데, 이는 둘 중
-한가지 동작을 일으킵니다. 코드를 디버그 모드에서 컴파일하는 경우에는
-런타임에 정수 오버플로우가 발생했을 때 <em>패닉 (panic)</em> 을 발생시키도록
-검사합니다. 러스트에서는 에러가 발생하면서 프로그램이 종료되는 경우
+한 가지 동작을 일으킵니다. 코드를 디버그 모드에서 컴파일하는 경우,
+러스트는 런타임에 정수 오버플로우가 발생했을 때 <em>패닉 (panic)</em> 을 발생시키는
+검사를 포함시킵니다. 러스트에서는 에러가 발생하면서 프로그램이 종료되는 경우
 패닉이라는 용어를 사용합니다; 9장의 <a href="ch09-01-unrecoverable-errors-with-panic.html">“복구 불가능한 에러에는
 <code>panic!</code>”</a><!-- ignore -->
 절에서 패닉에 대해 좀 더 자세히 다루겠습니다.</p>
@@ -2197,14 +2197,14 @@ error: could not compile `no_type_annotations` due to previous error
 <li><code>wrapping_add</code>와 같은 <code>wrapping_*</code> 메서드로 감싸기 동작 실행하기</li>
 <li><code>checked_*</code> 메서드를 사용하여 오버플로우가 발생하면 <code>None</code> 값 반환하기</li>
 <li><code>overflowing_*</code> 메서드를 사용하여 값과 함께 오버플로우 발생이 있었는지를
-알려주는 boolean 값 반환하기</li>
+알려주는 부울린 값 반환하기</li>
 <li><code>saturating_*</code> 메서드를 사용하여 값의 최대 혹은 최소값 사이로
 제한하기</li>
 </ul>
 </blockquote>
 <h4 id="부동-소수점-타입"><a class="header" href="#부동-소수점-타입">부동 소수점 타입</a></h4>
-<p>또한 러스트에는 소수점을 갖는 숫자인 <em>부동 소수점 (floating-point) 숫자</em> 기본 타입도
-두 가지 있습니다. 러스트의 부동소수점 타입은 <code>f32</code>와 <code>f64</code>로,
+<p>러스트에도 소수점을 갖는 숫자인 <em>부동 소수점 (floating-point) 숫자</em> 기본
+타입이 두 가지 있습니다. 러스트의 부동 소수점 타입은 <code>f32</code>와 <code>f64</code>로,
 각각 32bit와 64bit의 크기를 갖습니다. 기본 타입은 <code>f64</code>인데, 그 이유는
 현대의 CPU 상에서 <code>f64</code>가 <code>f32</code>와 대략 비슷한 속도를 내면서도 더 정밀하기
 때문입니다. 모든 부동 소수점 타입은 부호가 있습니다.</p>
@@ -2241,12 +2241,12 @@ error: could not compile `no_type_annotations` due to previous error
     let remainder = 43 % 5;
 }</code></pre></pre>
 <p>위의 구문에서 각 표현식들은 수학 연산자를 사용하여 값을 산출한
-뒤, 그 값을 변수에 바인딩합니다. <a href="appendix-02-operators.html">부록 B</a><!-- ignore -->에
+뒤, 그 값을 변수에 묶어 넣습니다. <a href="appendix-02-operators.html">부록 B</a><!-- ignore -->에
 러스트가 제공하는 모든 연산자 목록이
 있습니다.</p>
 <h4 id="부울린-타입"><a class="header" href="#부울린-타입">부울린 타입</a></h4>
-<p>대부분의 타 언어들처럼, 러스트에서의 부울린 (boolean) 타입도 <code>true</code>와 <code>false</code> 둘 중
-하나의 값만 갖습니다. 부울린 값은 1 byte 크기입니다. 러스트에서 부울린 타입은
+<p>대부분의 다른 언어들처럼, 러스트에서의 부울린 (boolean) 타입도 <code>true</code>와 <code>false</code> 두
+값을 가질 수 있습니다. 부울린 값은 1바이트 크기입니다. 러스트에서 부울린 타입은
 <code>bool</code>로 명시됩니다. 예를 들면:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -2256,19 +2256,19 @@ error: could not compile `no_type_annotations` due to previous error
 }</code></pre></pre>
 <p>부울린 값을 사용하는 주요 방식은 <code>if</code> 표현식과 같은 조건문에서 사용하는
 것입니다. 러스트에서 <code>if</code> 표현식이 동작하는 방식에 대해서는
-<a href="ch03-05-control-flow.html#control-flow">“흐름 제어문”</a><!-- ignore --> 절에서 다루겠습니다.</p>
+<a href="ch03-05-control-flow.html#control-flow">“흐름 제어문”</a><!-- ignore -->절에서 다루겠습니다.</p>
 <h4 id="문자-타입"><a class="header" href="#문자-타입">문자 타입</a></h4>
 <p>러스트의 <code>char</code>는 이 언어의 가장 기본적인 알파벳 타입입니다.
-다음의 코드는 이를 사용하는 한 예입니다</p>
+다음 코드는 <code>char</code> 값을 선언하는 몇 가지 예시입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let c = 'z';
     let z: char = 'ℤ'; // with explicit type annotation
     let heart_eyed_cat = '😻';
 }</code></pre></pre>
-<p>문자열 리터럴이 큰따옴표를 쓰는 것에 반면, <code>char</code> 타입은 작은따옴표로
-쓰는 점을 주목하세요. 러스트의 <code>char</code>타입은 4 byte 크기이며 유니코드
-스칼라 값을 표현하는데, 이는 ASCII 보다 훨씬 더 많은 값을 표현할 수
+<p>문자열 리터럴이 큰따옴표를 쓰는 반면, <code>char</code> 타입은 작은따옴표를
+쓰는 점을 주목하세요. 러스트의 <code>char</code>타입은 4바이트 크기이며 유니코드
+스칼라 값을 표현하며, 이는 ASCII 보다 훨씬 더 많은 값을 표현할 수
 있다는 의미입니다. 억양 표시가 있는 문자, 한국어/중국어/일본어 문자,
 이모지, 넓이가 0인 공백문자 모두가 러스트에서는 유효한 <code>char</code> 값입니다.
 유니코드 스칼라 값의 범위는 <code>U+0000</code>에서 <code>U+D7FF</code>, 그리고 <code>U+E000</code>에서
@@ -2278,7 +2278,7 @@ error: could not compile `no_type_annotations` due to previous error
 에서 이 주제에 대해 자세히 다루겠습니다.</p>
 <h3 id="복합-타입"><a class="header" href="#복합-타입">복합 타입</a></h3>
 <p><em>복합 타입 (compound type)</em> 은 여러 값들을 하나의 타입으로 묶을 수 있습니다.
-러스트는 튜플(tuple)과 배열(array) 두 가지 기본 복합 타입을 제공합니다.</p>
+러스트에는 튜플(tuple)과 배열(array), 두 가지 기본 복합 타입이 있습니다.</p>
 <h4 id="튜플-타입"><a class="header" href="#튜플-타입">튜플 타입</a></h4>
 <p><em>튜플</em>은 다양한 타입의 여러 값들을 묶어 하나의 복합 타입으로 만드는 일반적인
 방법입니다. 튜플은 고정된 길이를 갖습니다. 즉, 한번 선언되면 그 크기를
@@ -2303,8 +2303,8 @@ error: could not compile `no_type_annotations` due to previous error
     println!(&quot;The value of y is: {y}&quot;);
 }</code></pre></pre>
 <p>이 프로그램은 먼저 튜플을 만든 후 이를 변수 <code>tup</code>에 바인딩 시킵니다.
-그 다음 <code>let</code> 기반의 패턴을 사용하여 <code>tup</code>을 세개의 분리된 변수 <code>x</code>, <code>y</code>,
-그리고 <code>z</code>로 바꿉니다. 이것을 <em>구조해체 (destructuring)</em> 라고 부르는 이유는
+그 다음 <code>let</code>을 이용하는 패턴을 사용하여 <code>tup</code>을 세개의 분리된 변수 <code>x</code>, <code>y</code>,
+그리고 <code>z</code>로 바꿉니다. 이것을 <em>구조 해체 (destructuring)</em> 라고 부르는 이유는
 하나의 튜플을 세 부분으로 나누기 때문입니다. 최종적으로 프로그램은 <code>y</code>의 값을
 출력할 것이고 이는 <code>6.4</code>입니다.</p>
 <p>마침표(<code>.</code>) 뒤에 접근하고자 하는 값의 인덱스를 쓰는 방식으로도 튜플 요소에
@@ -2344,9 +2344,9 @@ error: could not compile `no_type_annotations` due to previous error
 크기를 늘리거나 줄일 수 있습니다. 배열을 이용할지 혹은
 벡터를 이용할지 잘 모르겠다면, 아마도 벡터를 사용해야 할 겁니다.
 <a href="ch08-01-vectors.html">8장</a><!-- ignore -->에서 벡터에 대해 더 자세히 다룰 예정입니다.</p>
-<p>그러나 배열은 요소의 개수가 바뀔 필요가 없다는 것을 알고 있을 때라면
+<p>그러나 요소의 개수가 바뀔 필요가 없다는 것을 알고 있을 때라면 배열이
 더 유용합니다. 한 가지 예로, 프로그램에서 달의 이름을 이용하려고 한다면,
-우리는 이것이 언제나 12개의 요소만 담을 것이라는 것을 알고 있으므로,
+이것이 언제나 12개의 요소만 가지고 있을 것이라는 사실을 알고 있으므로,
 아마도 벡터보다는 배열을 사용할 것입니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -2373,7 +2373,7 @@ error: could not compile `no_type_annotations` due to previous error
 좀더 편리한 방식입니다.</p>
 <h5 id="배열-요소에-접근하기"><a class="header" href="#배열-요소에-접근하기">배열 요소에 접근하기</a></h5>
 <p>배열은 스택에 할당될 수 있는 계산 가능한 고정된 크기의 단일 메모리
-뭉치입니다. 여러분은 아래와 같이 인덱스를 통해 배열 요소에 접근할 수
+뭉치입니다. 아래와 같이 인덱스를 통해 배열 요소에 접근할 수
 있습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -2387,8 +2387,8 @@ error: could not compile `no_type_annotations` due to previous error
 얻어진 값 <code>2</code>가 되겠죠.</p>
 <h5 id="유효하지-않은-배열-요소에-대한-접근"><a class="header" href="#유효하지-않은-배열-요소에-대한-접근">유효하지 않은 배열 요소에 대한 접근</a></h5>
 <p>만약 배열의 끝을 넘어선 요소에 접근하려고 하면 어떤 일이 벌어지는지
-알아봅시다. 2장의 추리 게임과 비슷하게 아래 코드를 실행하여 사용자로부터
-배열 인덱스를 가져온다 칩시다:</p>
+알아봅시다. 사용자로부터 배열 인덱스를 입력받기 위해서 2장의 추리
+게임과 유사한 아래 코드를 실행한다 칩시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore panics">use std::io;
 
@@ -2424,9 +2424,9 @@ cargo run
 <pre><code class="language-console">thread 'main' panicked at 'index out of bounds: the len is 5 but the index is 10', src/main.rs:19:19
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </code></pre>
-<p>프로그램은 인텍스 연산에서 잘못된 값을 사용한 시점에서 <em>런타임 (runtime)</em> 에러를
+<p>프로그램은 인덱스 연산에서 잘못된 값을 사용한 시점에서 <em>런타임</em> 에러를
 발생시켰습니다. 이 프로그램은 에러 메세지와 함께 종료되고 마지막 <code>println!</code> 구문을
-실행하지 못했습니다. 여러분이 인덱스를 이용해 요소에 접근 시도를 할 때,
+실행하지 못했습니다. 인덱스를 이용하여 요소에 접근을 시도하는 경우,
 러스트는 여러분이 명시한 인덱스가 배열 길이보다 작은지 검사할 것입니다.
 인덱스가 배열 길이보다 크거나 같을 경우 러스트는 패닉(panic)을 일으킵니다.
 특히 위의 경우 이러한 검사는 런타임에서 일어나야 하는데, 이는 사용자가
@@ -2436,16 +2436,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 이러한 검사가 이루어지지 않고, 여러분이 잘못된 인덱스를 제공하면 유효하지 않은
 메모리에 접근이 가능합니다. 러스트는 이런 메모리 접근을 허용하고 계속 실행하는
 대신 즉시 실행을 종료함으로써 이런 종류의 에러로부터 여러분을 보호합니다. 러스트의
-에러 처리 및 패닉을 일으키지도 않고 유효하지 않은 메모리 접근도 허용하지 않는
+에러 처리 및 패닉을 일으키지 않으면서 유효하지 않은 메모리 접근도 허용하지 않는
 읽기 쉽고 안전한 코드를 작성하는 방법에 대해서는 9장에서 더 자세히 다루겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="함수"><a class="header" href="#함수">함수</a></h2>
 <p>러스트 코드는 온통 함수로 가득합니다. 여러분은 이미 이 언어에서 가장
-중요한 함수 중 하나인 <code>main</code> 함수를 보셨습니다. 이 함수는 많은 프로그램의 
-시작 지점입니다. 또한 새로운 함수를 선언하도록 해주는 <code>fn</code> 키워드도
+중요한 함수 중 하나를 보셨습니다: 바로 많은 프로그램의 시작점인 <code>main</code>
+함수를 말이죠. 또한 새로운 함수를 선언하도록 해주는 <code>fn</code> 키워드도
 보셨습니다.</p>
 <p>러스트 코드는 함수나 변수 이름을 위한 관례로 <em>스네이크 케이스 (snake case)</em> 방식을
 이용하는데, 이는 모든 글자를 소문자로 쓰고 밑줄(underscore)로 단어를 구분하는
-방식을 말합니다. 다음은 예제로 함수를 정의한 프로그램입니다:</p>
+방식을 말합니다. 다음은 예시로 함수를 정의한 프로그램입니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     println!(&quot;Hello, world!&quot;);
@@ -2456,7 +2456,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 fn another_function() {
     println!(&quot;Another function.&quot;);
 }</code></pre></pre>
-<p>러스트에서는 <code>fn</code> 뒤에 함수 이름과 괄호를 붙여 넣어 함수를
+<p>러스트에서는 <code>fn</code> 뒤에 함수 이름과 괄호를 붙여서 함수를
 정의합니다. 중괄호는 함수 본문의 시작과 끝을 컴파일러에게
 알려줍니다.</p>
 <p>함수의 이름 뒤에 괄호 묶음을 쓰면 우리가 정의해둔 어떤 함수든 호출할 수
@@ -2481,11 +2481,11 @@ Another function.
 <h3 id="매개변수"><a class="header" href="#매개변수">매개변수</a></h3>
 <p>함수는 <em>매개변수 (parameter)</em> 를 갖도록 정의될 수 있으며, 이는 함수
 시그니처 (function signiture) 의 일부인 특별한 변수입니다.
-함수가 매개변수를 갖고 있으면 이 매개변수를 위한 고정값(concrete value)을
-전달할 수 있습니다. 전문용어로 이런 고정값을 <em>인자 (argument)</em> 라고
-부르지만, 사람들은 보통 <em>매개변수</em>와 <em>인자</em>라는 용어를 함수 정의부 내의
-변수나 함수 호출시 집어넣는 고정값에 대해 말할 때 혼용하는 경향이
-있습니다.</p>
+함수가 매개변수를 갖고 있으면 이 매개변수를 대한 구체적인 값을
+전달할 수 있습니다. 엄밀하게는 이러한 구체적인 값을 <em>인자 (argument)</em> 라고
+부르지만, 일상적인 대화에서는 보통 함수 정의부 내의 변수나 함수를 호출할
+때 전달되는 구체적인 값에 대해 <em>매개변수</em>와 <em>인자</em>라는 용어를 혼용하는
+경향이 있습니다.</p>
 <p>아래의 <code>another_function</code>에는 매개변수가 추가되었습니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -2502,11 +2502,11 @@ fn another_function(x: i32) {
      Running `target/debug/functions`
 The value of x is: 5
 </code></pre>
-<p><code>another_function</code> 선언을 보면 <code>x</code>라는 이름의 매개변수 하나를 갖고 있습니다.
+<p><code>another_function</code> 선언을 보면 <code>x</code>라는 이름의 매개변수를 하나 가지고 있습니다.
 <code>x</code>의 타입은 <code>i32</code>로 명시되어 있습니다. <code>5</code>가 <code>another_function</code>으로 전달되면,
 <code>println!</code> 매크로는 포맷 문자열 내 중괄호 쌍의 위치에 <code>5</code>를
 집어넣습니다.</p>
-<p>함수 시그니처에서는 <em>반드시</em> 각 매개변수의 타입을 선언해야 합니다.
+<p>함수 시그니처에서는 각 매개변수의 타입을 <em>반드시</em> 선언해야 합니다.
 이는 러스트를 설계하면서 신중하게 내린 결정사항입니다: 함수의 정의에 타입 명시를
 강제하면 이 함수를 다른 코드에서 사용할 때 여러분이 의도한 타입을 컴파일러가
 추측하지 않아도 되게 됩니다. 컴파일러는 또한 함수가 기대한 타입이 무엇인지 알고
@@ -2535,12 +2535,12 @@ fn print_labeled_measurement(value: i32, unit_label: char) {
 The measurement is: 5h
 </code></pre>
 <p><code>value</code>에는 <code>5</code>를, <code>unit_label</code>에는 <code>h</code>를 넣어 함수를 호출했으므로,
-프로그램의 출력이 이 값들을 담게 되었습니다.</p>
+이 값들이 프로그램의 출력에 들어갔습니다.</p>
 <h3 id="구문과-표현식"><a class="header" href="#구문과-표현식">구문과 표현식</a></h3>
-<p>함수 본문은 필요에 따라 표현식(expression)으로 종결되는 구문(statement)의
+<p>함수 본문은 필요에 따라 표현식(expression)으로 끝나는 구문(statement)의
 나열로 구성됩니다. 지금까지 우리가 다룬 함수들은 표현식으로 끝나지 않았지만,
-구문의 일부분으로 표현식이 쓰인건 보셨습니다. 러스트는 표현식 기반의
-언어이므로, 구문과 표현식의 구분은 러스트 이해에 중요합니다.
+표현식이 구문의 일부분으로 쓰인건 보셨습니다. 러스트는 표현식 기반의
+언어이므로, 구문과 표현식의 구분은 러스트를 이해하는데 중요합니다.
 다른 언어들은 이런 구분이 없으므로, 구문과 표현식이 무엇이며
 둘 간의 차이가 함수의 본문에 어떤 영향을 주는지
 살펴보겠습니다.</p>
@@ -2611,11 +2611,11 @@ error: could not compile `functions` due to 3 previous errors; 1 warning emitted
 것이 없습니다. 이것이 C나 Ruby 같은 다른 언어와의 차이점인데,
 이 언어들은 할당문이 할당된 값을 반환하죠. 이런 언어들에서는
 <code>x = y = 6</code>라고 작성하여 <code>x</code>와 <code>y</code>에 모두 <code>6</code>을 대입할 수 있지만,
-러스트에서는 이렇지 않습니다.</p>
+러스트에서는 그렇지 않습니다.</p>
 <p>여러분이 작성하는 러스트 코드의 대부분은 표현식이며, 이는 어떤 값을 산출합니다.
-<code>5 + 6</code>과 같은 간단한 수학 연산을 살펴봅시다. 이 수식은
-<code>11</code>이란 값을 산출하는 표현식입니다. 표현식은 구문의 일부일 수 있습니다:
-Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <code>6</code>이란 값을 
+<code>5 + 6</code>과 같은 간단한 수학 연산을 살펴봅시다. 이 수식은 <code>11</code>이라는
+값을 산출하는 표현식입니다. 표현식은 구문의 일부일 수 있습니다:
+Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <code>6</code>이라는 값을 
 산출하는 표현식입니다. 함수를 호출하는 것도, 매크로를 호출하는 것도
 표현식입니다. 아래 예제처럼 중괄호로 만들어진 새로운 스코프 블록도
 표현식입니다:</p>
@@ -2633,9 +2633,9 @@ Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <
     let x = 3;
     x + 1
 }</code></pre>
-<p>같은 경우에는 <code>4</code>를 산출하는 코드 블록입니다. 이 값이 <code>let</code> 구문의 일부로서
-<code>y</code>에 바인딩됩니다. 여러분이 지금까지 봐온 것과 다르게 <code>x + 1</code> 줄의
-마지막이 세미콜론으로 끝나지 않은 점을 주목하세요. 표현식은
+<p>같은 경우에는 <code>4</code>를 산출하는 코드 블록입니다. 이 값이 <code>let</code> 구문의
+일부로서 <code>y</code>에 바인딩됩니다. 여러분이 지금까지 봐온 것과 다르게 <code>x + 1</code>
+줄의 마지막이 세미콜론으로 끝나지 않은 점을 주목하세요. 표현식은
 종결을 나타내는 세미콜론을 쓰지 않습니다. 만약 표현식 끝에 세미콜론을
 추가하면, 표현식은 구문으로 변경되고 값을 반환하지 않게 됩니다.
 이 점을 상기하면서 이후부터 함수의 반환 값과 표현식을 살펴보길
@@ -2669,17 +2669,17 @@ fn main() {
 The value of x is: 5
 </code></pre>
 <p><code>5</code>는 <code>five</code> 함수의 반환값이며, 이 때문에 반환 타입을 <code>i32</code>으로 한
-것이지요. 좀더 자세히 보자면, 중요한 지점이 두 곳 있습니다: 첫째로,
-<code>let x = five();</code> 줄은 함수의 반환 값을 변수의 초기 값으로 사용하는
-것을 보여줍니다. <code>five</code>의 반환 값이 <code>5</code>이기 때문에, 해당 줄은 다음과 
+것이지요. 좀 더 자세히 보자면, 중요한 지점이 두 곳 있습니다: 첫째로,
+<code>let x = five();</code> 라인은 함수의 반환 값을 변수의 초기 값으로 사용하는
+것을 보여줍니다. <code>five</code>의 반환 값이 <code>5</code>이기 때문에, 해당 라인은 다음과 
 동일합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 5;
 <span class="boring">}</span></code></pre></pre>
 <p>두번째로, <code>five</code> 함수는 매개변수 없이 반환 타입만 정의되어 있지만,
-본문에는 <code>5</code>만이 세미콜론 없이 외로이 있는데 그 이유는 이 값이
-반환하고자 하는 값에 대한 표현식이기 때문입니다.</p>
+본문에는 <code>5</code>만이 세미콜론 없이 외롭게 있는데, 그 이유는 이 값이
+반환하려는 값에 대한 표현식이기 때문입니다.</p>
 <p>다른 예제도 살펴봅시다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -2692,8 +2692,8 @@ fn plus_one(x: i32) -&gt; i32 {
     x + 1
 }</code></pre></pre>
 <p>이 코드를 실행하면 <code>The value of x is: 6</code>이 출력됩니다.
-만일 <code>x + 1</code> 끝에 세미콜론이 추가되어 표현식에서 구문으로 변경되면
-에러를 보게 됩니다:</p>
+만일 <code>x + 1</code> 끝에 세미콜론이 추가되어 표현식이 구문으로 변경되면
+에러가 발생합니다:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = plus_one(5);
@@ -2723,15 +2723,15 @@ error: could not compile `functions` due to previous error
 <p>주 에러 메시지 <code>mismatched types</code>는 이 코드의 핵심 문제를 보여줍니다.
 <code>plus_one</code> 함수의 정의에는 <code>i32</code> 값을 반환한다고 되어 있지만,
 구문은 값을 산출하지 않기에 <code>()</code>로 표현되는 유닛 타입으로 표현됩니다.
-따라서 아무것도 반환되지 않아 함수가 정의된 내용과 상충하게 되어
+따라서 아무 것도 반환되지 않아 함수가 정의된 내용과 상충하게 되어
 에러가 발생됩니다. 위의 출력 결과에서 러스트는 이 문제를 바로잡는데
-도움될 수 있는 메세지를 제공합니다: 바로 세미콜론을 제거하여 에러를
-수정하라는 제안이지요.</p>
+도움될 수 있는 메세지를 제공합니다: 바로 세미콜론을 제거하면 에러가
+수정될 것이란 제안이지요.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="주석"><a class="header" href="#주석">주석</a></h2>
 <p>모든 프로그래머들은 쉽게 이해되는 코드를 작성하기 위해 노력하지만,
 종종 부연 설명이 필요할 때도 있습니다. 그런 경우 프로그래머들은
-<em>주석 (comment)</em> 을 코드에 남겨서 컴파일러는 이를 무시하지만
-코드를 읽는 사람들은 유용한 정보를 얻을 수 있게 합니다.</p>
+<em>주석 (comment)</em> 을 코드에 남겨서, 컴파일러는 이를 무시하지만
+코드를 읽는 사람들은 유용한 정보를 얻을 수 있게끔 합니다.</p>
 <p>간단한 주석의 예를 봅시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -2759,8 +2759,8 @@ error: could not compile `functions` due to previous error
     let lucky_number = 7;
 }</code></pre></pre>
 <p>러스트는 문서화 주석 (documentation comment) 라고 불리우는 또다른 주석 형태를
-가지고 있는데, 14장의 <a href="ch14-02-publishing-to-crates-io.html">“크레이트를 Crates.io에 퍼블리싱 하기”</a><!-- ignore -->
-에서 다루도록 하겠습니다.</p>
+가지고 있는데, 14장의 <a href="ch14-02-publishing-to-crates-io.html">“Crates.io에 크레이트 배포하기”</a><!-- ignore -->에서
+다루도록 하겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="흐름-제어문"><a class="header" href="#흐름-제어문">흐름 제어문</a></h2>
 <p>어떤 조건이 참인지에 따라 특정 코드를 실행하고, 어떤 조건을 만족하는
 동안 특정 코드를 반복 수행하는 기능은 대부분의 프로그래밍 언어에서
@@ -2769,7 +2769,7 @@ error: could not compile `functions` due to previous error
 <h3 id="if-표현식"><a class="header" href="#if-표현식"><code>if</code> 표현식</a></h3>
 <p><code>if</code> 표현식은 여러분의 코드가 조건에 따라 분기할 수 있도록 해줍니다.
 조건을 제공한 뒤 다음과 같이 기술하는 식이죠. “만약 조건을 만족하면,
-이 코드 블록을 실행하세요. 그렇지 않다면 코드 블록을 실행하지 마세요.&quot;</p>
+이 코드 블록을 실행하세요. 그렇지 않다면 코드 블록을 실행하지 마세요.”</p>
 <p><code>if</code> 표현식을 알아보기 위해서 여러분의 <em>projects</em> 디렉토리에 <em>branches</em>라는
 새 프로젝트를 생성합시다. <em>src/main.rs</em> 파일에 다음을 입력하세요:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
@@ -2783,14 +2783,14 @@ error: could not compile `functions` due to previous error
     }
 }</code></pre></pre>
 <p>모든 <code>if</code> 표현식은 <code>if</code>라는 키워드로 시작하고 그 뒤에
-조건문이 옵니다. 위의 경우 조건은 변수 <code>number</code>가 5보다 작은
-값을 갖는지를 검사합니다. 조건이 참일 때 실행하는 코드 블록은
+조건이 옵니다. 위의 경우 조건은 변수 <code>number</code>가 5보다 작은
+값인지 검사합니다. 조건이 참일 때 실행하는 코드 블록은
 조건 바로 뒤 중괄호로 된 블록에 배치됩니다. <code>if</code> 표현식의
-조건과 관련된 코드 블록은 2장의 <a href="ch02-00-guessing-game-tutorial.html#%EB%B9%84%EB%B0%80%EB%B2%88%ED%98%B8%EC%99%80-%EC%B6%94%EB%A6%AC%EA%B0%92%EC%9D%84-%EB%B9%84%EA%B5%90%ED%95%98%EA%B8%B0">“비밀번호와 추리값을
-비교하기”</a><!-- ignore -->절에서
+조건과 관련된 코드 블록은 2장의
+<a href="ch02-00-guessing-game-tutorial.html#comparing-the-guess-to-the-secret-number">“비밀번호와 추리값을 비교하기”</a><!-- ignore -->절에서
 다뤘던 <code>match</code>식의 <em>갈래 (arms)</em> 와 마찬가지로 갈래로
 불리기도 합니다.</p>
-<p>추가적으로 위의 경우처럼 <code>else</code> 표현식을 붙일 수도 있는데,
+<p>추가로 위의 경우처럼 <code>else</code> 표현식을 붙일 수도 있는데,
 이는 프로그램에게 해당 조건이 거짓일 경우 실행되는 코드 블록을
 제공합니다. <code>else</code> 표현식이 없고 조건식이 거짓이라면,
 프로그램은 <code>if</code> 블록을 생략하고 다음 코드로
@@ -2820,8 +2820,8 @@ condition was true
      Running `target/debug/branches`
 condition was false
 </code></pre>
-<p>이 코드의 조건식은 <em>반드시</em> <code>bool</code> 이어야 한다는 점을 주목할 가치가
-있습니다. 조건식이 <code>bool</code>이 아니면 에러가 발생합니다. 예를 들자면
+<p>또한 이 코드의 조건식이 <em>반드시</em> <code>bool</code> 이어야 한다는 점을 주목할
+가치가 있습니다. 조건식이 <code>bool</code>이 아니면 에러가 발생합니다. 예를 들자면
 아래 코드를 실행해보세요:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
@@ -2844,9 +2844,9 @@ error[E0308]: mismatched types
 For more information about this error, try `rustc --explain E0308`.
 error: could not compile `branches` due to previous error
 </code></pre>
-<p>이 에러는 러스트가 <code>bool</code>을 예상했으나 정수값을 얻었다는 것을 알려줍니다.
-루비나 자바스크립트 같은 언어와 달리 러스트는 boolean 타입이 아닌 값을 boolean
-타입으로 자동으로 변환하지 않습니다. 항상 명시적으로 <code>if</code>문에는 boolean 타입의
+<p>이 에러는 러스트가 <code>bool</code>을 예상했으나 정수값을 받았다는 것을 알려줍니다.
+Ruby나 JavaScript 같은 언어와 달리 러스트는 부울린 타입이 아닌 값을 부울린
+타입으로 자동 변환하지 않습니다. <code>if</code>문에는 항상 명시적으로 부울린 타입의
 조건식을 제공해야 합니다. 예를 들어 어떤 숫자가 <code>0</code>이 아닌 경우에만
 <code>if</code> 코드 블록을 실행시키고자 한다면, 다음과 같이 <code>if</code> 표현식을 바꾸면
 됩니다:</p>
@@ -2890,11 +2890,11 @@ number is divisible by 3
 같은 <code>else</code> 블록의 텍스트가 출력되지 않는다는 점을 주목하세요.
 이는 러스트가 처음으로 <code>true</code>인 조건의 본문을 실행하고나면 나머지는
 검사도 하지 않기 때문입니다.</p>
-<p>너무 많은 <code>else if</code> 표현식의 사용은 여러분의 코드를 어지럽게 하므로,
-하나 이상이면 이 코드를 리팩토링하고 싶을지도 모릅니다. 6장에서는 이런 경우에
-적합한 <code>match</code>라는 러스트의 강력한 분기 생성기에 대해 설명합니다.</p>
+<p><code>else if</code> 표현식을 너무 많이 사용하면 코드가 복잡해질 수 있으므로, 표현식이
+두 개 이상이면 코드를 리팩토링하는 것이 좋습니다. 6장에서는 이런 경우에
+적합한 <code>match</code>라는 러스트의 강력한 분기 구조에 대해 설명합니다.</p>
 <h4 id="let-구문에서-if-사용하기"><a class="header" href="#let-구문에서-if-사용하기"><code>let</code> 구문에서 <code>if</code> 사용하기</a></h4>
-<p><code>if</code>는 표현식이기 때문에 Listing 3-2처럼 변수에 산출물을 할당하기
+<p><code>if</code>는 표현식이기 때문에 Listing 3-2처럼 변수에 결과를 할당하기
 위하여 <code>let</code> 구문의 우변에 사용할 수 있습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -2905,7 +2905,7 @@ number is divisible by 3
 }</code></pre></pre>
 <p><span class="caption">Listing 3-2: <code>if</code> 표현식의 결과를 변수에
 할당하기</span></p>
-<p>변수 <code>number</code>에는 <code>if</code> 표현식에서 계산된 값이 바인딩될 것입니다.
+<p>변수 <code>number</code>에는 <code>if</code> 표현식을 계산한 결과값이 바인딩될 것입니다.
 코드를 실행해서 무슨 일이 벌어지는지 봅시다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling branches v0.1.0 (file:///projects/branches)
@@ -2913,7 +2913,7 @@ number is divisible by 3
      Running `target/debug/branches`
 The value of number is: 5
 </code></pre>
-<p>코드 블록은 블록 안의 마지막 표현식을 계산하고 숫자는
+<p>코드 블록은 블록 안의 마지막 표현식을 계산하고, 숫자는
 그 자체로 표현식임을 기억하세요. 위의 경우 전체 <code>if</code>
 표현식의 값은 실행되는 코드 블록에 따라 결정됩니다.
 그렇기에 <code>if</code> 표현식의 각 갈래의 결과값은 같은 타입이어야
@@ -2928,7 +2928,7 @@ The value of number is: 5
 
     println!(&quot;The value of number is: {number}&quot;);
 }</code></pre>
-<p>이 코드를 컴파일하려고 하면 에러를 얻게 됩니다. <code>if</code>와 <code>else</code> 갈래
+<p>이 코드를 컴파일하려고 하면 에러가 발생합니다. <code>if</code>와 <code>else</code> 갈래
 값의 타입이 호환되지 않고, 러스트는 프로그램의 어느 지점에 문제가
 있는지 정확히 알려줍니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -2945,22 +2945,22 @@ For more information about this error, try `rustc --explain E0308`.
 error: could not compile `branches` due to previous error
 </code></pre>
 <p><code>if</code> 블록은 정수값을 계산하는 표현식이고 <code>else</code> 블록은 문자열로
-산출되는 표현식입니다. 이런 경우가 동작하지 않는 이유는 변수가 가질
-수 있는 타입이 오직 하나이기 때문입니다. 러스트는 컴파일 시에 <code>number</code>
-변수의 타입이 뭔지 확실히 알 필요가 있습니다. 그래야 <code>number</code>가 사용되는
-모든 곳에서 해당 타입이 유효한지 컴파일 시점에 검증할 수 있으니까요.
-러스트에서는 <code>number</code>의 타입을 실행 시에 정의되도록 할 수 없습니다.
+산출되는 표현식입니다. 이런 형태의 코드가 동작하지 않는 이유는 변수가 가질
+수 있는 타입이 오직 하나이기 때문입니다. 러스트는 컴파일 시점에 <code>number</code>
+변수의 타입이 무엇인지 확실히 알 필요가 있습니다. 그래야 컴파일 시점에
+<code>number</code>가 사용되는 모든 곳에서 해당 타입이 유효한지 검증할 수 있으니까요.
+러스트에서는 <code>number</code>의 타입이 런타임에 정의되도록 할 수 없습니다;
 컴파일러가 어떤 변수에 대해 여러 타입에 대한 가정값을 추적해야 한다면
 컴파일러는 더 복잡해지고 보장할 수 있는 것들이 줄어들 것입니다.</p>
 <h3 id="반복문을-이용한-반복"><a class="header" href="#반복문을-이용한-반복">반복문을 이용한 반복</a></h3>
 <p>코드 블록을 한 번 이상 수행하는 일은 자주 쓰입니다. 반복 작업을 위해서,
-러스트는 몇 가지 <em>반복문(loop)</em> 을 제공하는데 이는 루프 본문의 시작부터
+러스트는 몇 가지 <em>반복문 (loop)</em> 을 제공하는데 이는 루프 본문의 시작부터
 끝까지 수행한 뒤 다시 처음부터 수행합니다. 반복문을 실험해보기 위해
 <em>loops</em>라는 이름의 새 프로젝트를 만듭시다.</p>
 <p>러스트에는 <code>loop</code>, <code>while</code>, 그리고 <code>for</code>라는 세 종류의 반복문이 있습니다. 하나씩 써봅시다.</p>
 <h4 id="loop로-코드-반복하기"><a class="header" href="#loop로-코드-반복하기"><code>loop</code>로 코드 반복하기</a></h4>
-<p><code>loop</code> 키워드는 여러분이 그만두라고 명시적으로 알려주기 전까지 혹은 영원히
-코드 블록을 반복 수행되도록 해줍니다.</p>
+<p><code>loop</code> 키워드는 여러분이 그만두라고 명시적으로 알려주기 전까지, 혹은 영원히
+코드 블록을 반복 수행하도록 해줍니다.</p>
 <p>일례로 <em>loops</em> 디렉토리의 <em>src/main.rs</em> 코드를 다음과 같이
 바꿔보세요:</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
@@ -2992,19 +2992,19 @@ again!
 누른 지점을 표시합니다. 코드가 정지 신호를 받은 시점에 따라
 <code>^C</code> 이후에 <code>again!</code>이 출력될 수도 안될 수도
 있습니다. </p>
-<p>다행히도 러스트에서는 코드를 사용하여 루프에서 벗어나는 방법도 제공합니다.
-루프 안에 <code>break</code> 키워드를 집어넣으면 언제 루프를 멈춰야 하는지를 프로그램에게
-알려줄 수 있습니다. 2장의 <a href="ch02-00-guessing-game-tutorial.html#%EC%A0%95%EB%8B%B5%20%EC%9D%B4%ED%9B%84%EC%97%90%20%EC%A2%85%EB%A3%8C%ED%95%98%EA%B8%B0">“정답 이후에 종료하기”</a><!--
-ignore -->절의 추측 게임 코드에서 사용자가 정답을 추측하여
-게임에서 이겼을 경우 프로그램을 종료하기 위해 했었던 일을
+<p>다행히 러스트에서는 코드를 사용하여 루프에서 벗어나는 방법도 제공합니다.
+루프 안에 <code>break</code> 키워드를 집어넣으면 루프를 멈춰야 하는 시점을 프로그램에게
+알려줄 수 있습니다. 2장의 <a href="ch02-00-guessing-game-tutorial.html#quitting-after-a-correct-guess">“정답을 맞춘 후 종료하기”</a><!-- ignore -->절의
+추리 게임 코드에서 사용자가 정답을 추리하여 게임에서
+이겼을 경우 프로그램을 종료하기 위해 했었던 일을
 상기해보세요.</p>
 <p>추리 게임에서는 <code>continue</code>도 사용했었는데, 이는 프로그램에게
-루프 내 이번 회차의 남은 코드를 넘겨버리고 다음 회차로 넘어가라고
+이번 회차에서 루프에 남은 코드를 넘겨버리고 다음 회차로 넘어가라고
 알려줍니다.</p>
 <h4 id="반복문에서-값-반환하기"><a class="header" href="#반복문에서-값-반환하기">반복문에서 값 반환하기</a></h4>
 <p><code>loop</code>의 용례 중 하나는 어떤 스레드가 실행 완료되었는지 검사하는 등
-실패할지도 모르는 연산을 재시도할 때 입니다. 여기서 해당 연산의 결과를
-이후 코드에 넘겨주고 싶을지도 모릅니다. 이를 위해서는 루프 정지를
+실패할지도 모르는 연산을 재시도할 때입니다. 여기서 해당 연산의 결과를
+이후의 코드에 전달하고 싶을 수도 있습니다. 이를 위해서는 루프 정지를
 위해 사용한 <code>break</code> 표현식 뒤에 반환하고자 하는 값을 넣으면 됩니다;
 해당 값은 아래와 같이 반복문 밖으로 반환되여 사용 가능하게
 됩니다:</p>
@@ -3023,17 +3023,17 @@ ignore -->절의 추측 게임 코드에서 사용자가 정답을 추측하여
 }</code></pre></pre>
 <p>반복문 전에 <code>counter</code>라는 이름의 변수를 선언하여 <code>0</code>으로 초기화
 했습니다. 그 다음 <code>result</code>라는 변수를 선언하여 반복문으로부터
-반환된 값을 저장하도록 했습니다. 반복문의 매 회차 (iteration) 마다
+반환된 값을 저장하도록 했습니다. 반복문의 매 회차 마다
 <code>counter</code> 변수에 <code>1</code>을 더한 후 값이 <code>10</code>과 같은지 검사합니다.
 그런 경우 <code>break</code> 키워드와 <code>counter * 2</code> 값을 사용하였습니다.
 루프 뒤에는 <code>result</code>에 값을 할당하는 구문을 끝내기 위해 세미콜론을
 붙였습니다. 결과적으로 <code>result</code>의 값이 <code>20</code>으로 출력됩니다.</p>
 <h4 id="루프-라벨로-여러-반복문-사이에-모호함-없애기"><a class="header" href="#루프-라벨로-여러-반복문-사이에-모호함-없애기">루프 라벨로 여러 반복문 사이에 모호함 없애기</a></h4>
 <p>만일 루프 안에 루프가 있다면, <code>break</code>와 <code>continue</code>는 해당 지점의 바로 바깥쪽
-루프에 적용됩니다. 루프 상에 *루프 라벨 (loop label)*을 추가적으로 명시하여
+루프에 적용됩니다. 루프에 <em>루프 라벨 (loop label)</em> 을 추가적으로 명시하면
 <code>break</code>나 <code>continue</code>와 함께 이 키워드들이 바로 바깥쪽 루프 대신 라벨이 적힌
 특정한 루프에 적용되도록 할 수 있습니다. 루프 라벨은 반드시 작은 따옴표로
-시작해야 합니다. 아래에 두 개의 중첩된 루프 예제가 있습니다:</p>
+시작해야 합니다. 아래에 루프가 두 개 중첩된 예제가 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut count = 0;
     'counting_up: loop {
@@ -3057,7 +3057,7 @@ ignore -->절의 추측 게임 코드에서 사용자가 정답을 추측하여
 }</code></pre></pre>
 <p>바깥쪽 루프는 <code>'counting_up</code> 이라는 라벨이 붙어있고, 0에서부터 2까지
 카운트합니다. 라벨이 없는 안쪽 루프는 10에서 9까지 거꾸로 카운트합니다.
-라벨이 명시되지 않은 첫번째 <code>break</code>는 안쪽 루프만 탈출합니다. <code>break 'counting_up;</code>
+라벨이 명시되지 않은 첫번째 <code>break</code>는 안쪽 루프만 벗어납니다. <code>break 'counting_up;</code>
 구문은 바깥쪽 루프를 탈출할 것입니다. 이 코드는 다음을 출력합니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling loops v0.1.0 (file:///projects/loops)
@@ -3074,7 +3074,7 @@ remaining = 10
 End count = 2
 </code></pre>
 <h4 id="while을-이용한-조건-반복문"><a class="header" href="#while을-이용한-조건-반복문"><code>while</code>을 이용한 조건 반복문</a></h4>
-<p>반복문 내에서 조건 검사를 하는 작업도 자주 사용됩니다. 조건문이 <code>true</code>인
+<p>반복문 내에서 조건을 검사하는 작업도 자주 사용됩니다. 조건문이 <code>true</code>인
 동안에는 계속 반복하는 형태죠. 조건문이 <code>true</code>가 아니게 될 때 프로그램은
 <code>break</code>를 호출하여 반복을 종료합니다. 이러한 반복문 형태는 <code>loop</code>, <code>if</code>,
 <code>else</code>와 <code>break</code>의 조합으로 구현할 수 있습니다; 여러분이 원하신다면 그렇게
@@ -3095,9 +3095,9 @@ End count = 2
     println!(&quot;LIFTOFF!!!&quot;);
 }</code></pre></pre>
 <p><span class="caption">Listing 3-3: <code>while</code> 반복문을 사용하여 조건이 참인
-동안 코드 반복 실행하기</span></p>
-<p>이 구조는 <code>loop</code>, <code>if</code>, <code>else</code> 및 <code>break</code>를 사용할 때 필요한
-많은 중첩문을 제거하고 코드를 더 깔끔하게 만듭니다. 조건식이 <code>true</code>로
+동안 코드를 반복 실행하기</span></p>
+<p>이 구조는 <code>loop</code>, <code>if</code>, <code>else</code> 및 <code>break</code>를 사용할 때 필요하게 될
+많은 중첩 구조를 제거하고 코드를 더 깔끔하게 만듭니다. 조건식이 <code>true</code>로
 계산되는 동안 코드가 실행되고, 그렇지 않으면 반복문을 벗어납니다.</p>
 <h4 id="for를-이용한-컬렉션에-대한-반복문"><a class="header" href="#for를-이용한-컬렉션에-대한-반복문"><code>for</code>를 이용한 컬렉션에 대한 반복문</a></h4>
 <p><code>while</code>를 사용하여 배열과 같은 컬렉션의 각 요소에 대한 반복문을
@@ -3139,8 +3139,8 @@ the value is: 50
 조건문을 고치는걸 잊어버린다면 코드는 패닉을 일으킬 것입니다. 또한
 컴파일러가 루프의 매 반복 회차마다 인덱스가 범위 안에 있는지에 대한
 조건문 검사를 수행하는 코드를 붙이기 때문에 느려집니다.</p>
-<p>좀 더 간편한 대안으로 <code>for</code> 반복문을 사용하여 컬렉션의 각 아이템에 대한 어떤 코드를
-수행시킬 수 있습니다. <code>for</code> 반복문은 Listing 3-5의 코드처럼 생겼습니다.</p>
+<p>좀 더 간편한 대안으로 <code>for</code> 반복문을 사용하여 컬렉션의 각 아이템에 대하여 임의의
+코드를 수행시킬 수 있습니다. <code>for</code> 반복문은 Listing 3-5의 코드처럼 생겼습니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let a = [10, 20, 30, 40, 50];
@@ -3154,15 +3154,15 @@ the value is: 50
 <p>이 코드를 실행하면 Listing 3-4의 결과와 동일한 결과를 보게 됩니다.
 그보다 더 중요한 것은 이렇게 함으로써 코드의 안전성이 강화되고
 배열의 끝을 넘어서거나 끝까지 가지 못해서 몇 개의 아이템을 놓쳐서
-발생할 수도 있는 버그의 가능성을 제거했다는 겁니다.</p>
+발생할 수도 있는 버그의 가능성을 제거했다는 것입니다.</p>
 <p><code>for</code> 루프를 사용하면 여러분이 배열 내 값의 개수를
 변경시키더라도 수정해야 할 다른 코드를 기억해둘 필요가
 없어질 겁니다.</p>
 <p>이러한 안전성과 간편성 덕분에 <code>for</code> 반복문은 러스트에서 가장 흔하게
-사용되는 반복문 구성요소가 되었습니다. 심지어 Listing 3-3에서 <code>while</code> 반복문을
-사용했던 카운트다운 예제처럼 어떤 코드를 몇번 정도 반복하고 싶은 경우라도,
-대부분의 러스타시안들은 <code>for</code> 반복문을 이용할 겁니다.
-표준 라이브러리가 제공하는 <code>Range</code> 타입을 이용하면 그렇게 원하는 횟수에 대한
+사용되는 반복문 구성요소가 되었습니다. 심지어 <code>while</code> 반복문을 사용했던
+Listing 3-3의 카운트다운 예제처럼 어떤 코드를 몇 번 정도 반복하고
+싶은 경우라도, 대부분의 러스타시안들은 <code>for</code> 반복문을 이용할 겁니다.
+표준 라이브러리가 제공하는 <code>Range</code> 타입을 이용하면 특정 횟수만큼의
 반복문을 구현할 수 있는데, <code>Range</code>는 어떤 숫자에서 시작하여 다른 숫자 종료
 전까지의 모든 숫자를 차례로 생성해줍니다.</p>
 <p><code>for</code> 반복문을 이용한 카운트다운 구현은 아래처럼 생겼습니다. 여기서 아직 살펴보지
@@ -8860,7 +8860,7 @@ Listing 9-11은 주어진 텍스트에서 첫 번째 줄의 마지막 문자를 
 <p>이 함수는 <code>Option&lt;char&gt;</code>를 반환하는데 이는 어떤 문자가 있을 수도,
 없을 수도 있기 때문입니다. 이 코드는 <code>text</code> 문자열 슬라이스 인자를
 가져와서 <code>lines</code> 메서드를 호출하는데, 이는 해당 문자열의 라인에 대한
-반복자를 반환합니다. 이 함수가 첫번쨰 줄을 시험하길 원하므로,
+반복자를 반환합니다. 이 함수가 첫번째 줄을 시험하길 원하므로,
 반복자의 <code>next</code>를 호출하여 첫번째 값을 얻어옵니다.
 만일 <code>text</code>가 빈 문자열이라면 <code>next</code> 호출은 <code>None</code>을 반환하는데,
 여기서 <code>?</code>를 사용하여 <code>last_char_of_first_line</code>의 실행을 멈추고
@@ -12740,7 +12740,7 @@ fn main() {
 <p>그런 뒤, 다시 한번 임시로 <code>println!</code> 구문을 추가하여 파일을 읽은 후
 <code>contents</code>의 값을 출력함으로써, 현재까지의 프로그램이 잘 작동하는지
 확인합니다.</p>
-<p>첫번쨰 커맨드 라인 인자에는 아무 문자열이나 넣고 (아직 검색 부분은 구현하지
+<p>첫번째 커맨드 라인 인자에는 아무 문자열이나 넣고 (아직 검색 부분은 구현하지
 않았으므로) 두번째 인자에는 <em>poem.txt</em> 파일을 넣어서 이 코드를
 실행해봅시다:</p>
 <pre><code class="language-console">$ cargo run -- the poem.txt
@@ -12785,7 +12785,7 @@ To an admiring bog!
 스코프 내에 더 많은 변수가 있을수록 각 변수의 목적을 계속 추적하는 것이
 어려워질 것입니다. 환경 변수들을 하나의 구조체로 묶어서 목적을 분명히
 하는 것이 가장 좋습니다.</p>
-<p>세번쨰 문제는 파일 읽기 실패 시 에러 메세지 출력을 위해서 <code>expect</code>를
+<p>세번째 문제는 파일 읽기 실패 시 에러 메세지 출력을 위해서 <code>expect</code>를
 사용했는데, 이 에러 메세지가 고작 <code>Should have been able to read the file</code>이나 출력한다는 것입니다. 파일을 읽는 작업은 여러가지 방식으로 실패할
 수 있습니다: 이를테면 파일을 못 찾았거나, 파일을 열 관한이 없었다던가 하는
 식이죠. 현재로서는 상황과는 관계없이 모든 에러에 대해 동일한 에러 메세지를
@@ -17869,7 +17869,7 @@ Listing 15-13의 코드를 작성했어야 할 것입니다:</p>
 불변 참조자를 가변 참조자로 변경하는 것이 가능함을 가정할
 수 없습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="drop-트레잇으로-메모리-정리-코드-실행하기"><a class="header" href="#drop-트레잇으로-메모리-정리-코드-실행하기"><code>Drop</code> 트레잇으로 메모리 정리 코드 실행하기</a></h2>
-<p>스마트 포인터 패턴에서 중요한 트레잇 그 두번쨰는 <code>Drop</code>인데, 이는 값이 스코프
+<p>스마트 포인터 패턴에서 중요한 트레잇 그 두번째는 <code>Drop</code>인데, 이는 값이 스코프
 밖으로 벗어나려고 할 때 무슨 일을 할지 커스터마이징하게끔 해줍니다. 어떠한
 타입이든 <code>Drop</code> 트레잇을 구현할 수 있고, 이 코드가 파일이나 네트워크 연결 같은
 자원 해제에 사용되게 할 수 있습니다.</p>
@@ -27437,7 +27437,7 @@ impl Worker {
 <div style="break-before: page; page-break-before: always;"></div><h2 id="부록-a-키워드"><a class="header" href="#부록-a-키워드">부록 A: 키워드</a></h2>
 <p>다음 목록은 러스트 언어에서 현재 또는 미래에 사용하기 위해 예약된
 키워드입니다. 따라서 키워드는 식별자로 사용할 수 없습니다.
-(“<a href="appendix-01-keywords.html#raw-identifiers">원시 식별자 (Raw Identifiers)</a><!-- ignore -->” 절에서
+(<a href="appendix-01-keywords.html#raw-identifiers">“원시 식별자 (Raw Identifiers)”</a><!-- ignore --> 절에서
 설명할 원시 식별자는 예외입니다.) 식별자는 함수, 변수, 매개변수,
 구조체 필드, 모듈, 크레이트, 상수, 매크로, 정적 값, 속성, 타입,
 트레잇, 또는 라이프타임의 이름입니다.</p>
