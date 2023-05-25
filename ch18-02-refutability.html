@@ -171,13 +171,13 @@
 변경할 필요가 있을 것입니다.</p>
 <p>러스트가 반박 불가능한 패턴을 요구하는 곳에서 반박 가능한 패턴의 사용을
 시도하는 경우와 그 반대의 경우 어떤 일이 발생하는지 예제를 살펴봅시다.
-Listing 18-8은 <code>let</code> 구문을 보여주는데, 이 패턴에는 반박 가능한 패턴인
+예제 18-8은 <code>let</code> 구문을 보여주는데, 이 패턴에는 반박 가능한 패턴인
 <code>Some(x)</code>를 특정했습니다. 예상할 수 있듯 이 코드는 컴파일되지 않습니다.</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span><span class="boring">    let some_option_value: Option&lt;i32&gt; = None;
 </span>    let Some(x) = some_option_value;
 <span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 18-8: <code>let</code>에서 반박 가능한 패턴의
+<p><span class="caption">예제 18-8: <code>let</code>에서 반박 가능한 패턴의
 사용 시도하기</span></p>
 <p><code>some_option_value</code>이 <code>None</code> 값이면 <code>Some(x)</code> 패턴과 매칭되지
 않으므로 이 패턴은 반박 가능합니다. 그러나 <code>let</code> 구문은 <code>None</code>
@@ -217,18 +217,18 @@ error: could not compile `patterns` due to previous error
 <p>반박 불가능한 패턴이 필요한 곳에서 반박 가능한 패턴을 사용한 경우, 패턴을
 사용하는 코드를 변경하여 문제를 해결할 수 있습니다: <code>let</code>을 사용하는 대신
 <code>if let</code>을 사용하면 됩니다. 그러면 패턴이 매칭되지 않는 경우 코드가 중괄호
-안의 코드를 그냥 건너뛰어 유효하게 계속하는 방법을 제공합니다. Listing 18-9는
-Listing 18-8의 코드를 수정하는 방법을 보여줍니다.</p>
+안의 코드를 그냥 건너뛰어 유효하게 계속하는 방법을 제공합니다. 예제 18-9는
+예제 18-8의 코드를 수정하는 방법을 보여줍니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span><span class="boring">    let some_option_value: Option&lt;i32&gt; = None;
 </span>    if let Some(x) = some_option_value {
         println!(&quot;{}&quot;, x);
     }
 <span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 18-9: <code>let</code> 대신 반증 가능한 패턴과 함께
+<p><span class="caption">예제 18-9: <code>let</code> 대신 반증 가능한 패턴과 함께
 <code>if let</code>과 코드 블록 사용하기</span></p>
 <p>코드에 탈출구를 만들어 주었습니다! 에러 없이 반박 가능한 패턴을 사용할
-수 없다는 뜻이지만, 이 코드는 완벽하게 유효합니다. Listing 18-10에
+수 없다는 뜻이지만, 이 코드는 완벽하게 유효합니다. 예제 18-10에
 나오는 <code>x</code>처럼 <code>if let</code>에 항상 매칭되는 패턴을 사용하면, 컴파일러는
 경고를 줄 것입니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
@@ -236,7 +236,7 @@ Listing 18-8의 코드를 수정하는 방법을 보여줍니다.</p>
         println!(&quot;{}&quot;, x);
     };
 <span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 18-10: <code>if let</code>에 반박 불가능한 패턴 사용
+<p><span class="caption">예제 18-10: <code>if let</code>에 반박 불가능한 패턴 사용
 시도하기</span></p>
 <p>러스트는 반박 불가능한 패턴에 <code>if let</code>을 사용하는 것은 이치에 맞지
 않는다고 불평합니다:</p>

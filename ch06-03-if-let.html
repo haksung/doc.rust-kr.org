@@ -152,7 +152,7 @@
                         <h2 id="if-let을-사용한-간결한-흐름-제어"><a class="header" href="#if-let을-사용한-간결한-흐름-제어"><code>if let</code>을 사용한 간결한 흐름 제어</a></h2>
 <p><code>if let</code> 문법은 <code>if</code>와 <code>let</code>을 조합하여 하나의 패턴만 매칭시키고
 나머지 경우는 무시하는 값을 다루는 간결한 방법을 제공합니다.
-Listing 6-6의 프로그램은 <code>config_max</code> 변수의 어떤 <code>Option&lt;u8&gt;</code>
+예제 6-6의 프로그램은 <code>config_max</code> 변수의 어떤 <code>Option&lt;u8&gt;</code>
 값을 매칭하지만 그 값이 <code>Some</code> 배리언트일 경우에만 코드를 실행시키고
 싶어 하는 예제를 보여줍니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
@@ -162,7 +162,7 @@ Listing 6-6의 프로그램은 <code>config_max</code> 변수의 어떤 <code>Op
         _ =&gt; (),
     }
 <span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 6-6: 어떤 값이 <code>Some</code> 일 때에만 코드를 실행하도록
+<p><span class="caption">예제 6-6: 어떤 값이 <code>Some</code> 일 때에만 코드를 실행하도록
 하는 <code>match</code></span></p>
 <p>이 값이 <code>Some</code>이면 패턴 내에 있는 <code>max</code>에 <code>Some</code> 배리언트의 값을
 묶어서 출력합니다. <code>None</code> 값에 대해서는 아무 처리도 하지 않으려고
@@ -170,7 +170,7 @@ Listing 6-6의 프로그램은 <code>config_max</code> 변수의 어떤 <code>Op
 <code>_ =&gt; ()</code>를 붙여야 하는데, 이는 다소 성가신 보일러 플레이트
 코드입니다.</p>
 <p>그 대신, <code>if let</code>을 이용하여 이 코드를 더 짧게 쓸 수 있습니다. 아래의 코드는
-Listing 6-6에서의 <code>match</code>와 동일하게 동작합니다:</p>
+예제 6-6에서의 <code>match</code>와 동일하게 동작합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let config_max = Some(3u8);
     if let Some(max) = config_max {
@@ -193,7 +193,7 @@ Listing 6-6에서의 <code>match</code>와 동일하게 동작합니다:</p>
 <code>match</code> 문을 작성할 때 사용하는 syntax sugar 라고 생각하시면 됩니다.</p>
 <p><code>if let</code>과 함께 <code>else</code>를 포함시킬 수 있습니다. <code>else</code> 뒤에 나오는
 코드 블록은 <code>match</code> 표현식에서 <code>_</code> 케이스 뒤에 나오는 코드 블록과
-동일합니다. Listing 6-4에서 <code>Quarter</code> 배리언트가 <code>UsState</code> 값도 들고
+동일합니다. 예제 6-4에서 <code>Quarter</code> 배리언트가 <code>UsState</code> 값도 들고
 있었던 <code>Coin</code> 열거형 정의부를 상기해 보세요.
 만일 우리가 쿼터가 아닌 모든 동전을 세고 싶은 동시에 쿼터 동전일
 경우 또한 알려주고 싶었다면, 아래와 같이 <code>match</code>문을 쓸 수 있었을

@@ -160,7 +160,7 @@ f를 쓰는) <code>fn</code> 타입으로 강제되는데, <code>Fn</code> 클�
 안됩니다. <code>fn</code> 타입을 <em>함수 포인터 (function pointer)</em> 라고 합니다.
 함수 포인터로 함수를 전달하면 함수를 다른 함수에 대한 인수로 사용할
 수 있습니다.</p>
-<p>매개변수가 함수 포인터임을 지정하는 문법은 Listing 19-27에 나온
+<p>매개변수가 함수 포인터임을 지정하는 문법은 예제 19-27에 나온
 것처럼 클로저의 문법과 유사하며, 여기서는 매개변수에 1을 더하는
 함수 <code>add_one</code>을 정의했습니다. <code>do_twice</code> 함수는 두 개의 매개변수를
 받습니다: <code>i32</code> 매개변수를 받아 <code>i32</code>를 반환하는 함수를 가리키는 함수
@@ -168,7 +168,7 @@ f를 쓰는) <code>fn</code> 타입으로 강제되는데, <code>Fn</code> 클�
 두 번 호출하여 <code>arg</code> 값을 전달한 다음 두 함수 호출 결과를
 합산합니다. <code>main</code> 함수는 <code>add_one</code> 및 <code>5</code>를 인수로 사용하여
 <code>do_twice</code>를 호출합니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
     x + 1
 }
@@ -182,7 +182,7 @@ fn main() {
 
     println!(&quot;The answer is: {}&quot;, answer);
 }</code></pre></pre>
-<p><span class="caption">Listing 19-27: <code>fn</code> 타입을 사용하여 함수 포인터를
+<p><span class="caption">예제 19-27: <code>fn</code> 타입을 사용하여 함수 포인터를
 인자로 허용하기</span></p>
 <p>이 코드는 <code>The answer is: 12</code>를 출력합니다. 여기서는 <code>do_twice</code>의 매개변수
 <code>f</code>가 <code>i32</code> 타입의 매개변수 하나를 받아 <code>i32</code>를 반환하는 <code>fn</code>임을 지정합니다.

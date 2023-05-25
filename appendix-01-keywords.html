@@ -226,7 +226,7 @@
 해주는 문법입니다. <code>r#</code> 접두사를 키워드 앞에 붙이는 식으로 원시 식별자를 사용합니다.</p>
 <p>예를 들면, <code>match</code>는 키워드죠. <code>match</code>를 함수 이름으로 사용하는 다음
 함수를 컴파일 시도하면:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn match(needle: &amp;str, haystack: &amp;str) -&gt; bool {
     haystack.contains(needle)
 }</code></pre>
@@ -240,7 +240,7 @@
 <p>이 에러는 <code>match</code> 키워드를 함수 식별자로 사용할 수 없다는 것을
 보여줍니다. <code>match</code>를 함수 이름으로 사용하려면, 다음과 같이 원시
 식별자 문법을 사용해야 합니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn r#match(needle: &amp;str, haystack: &amp;str) -&gt; bool {
     haystack.contains(needle)
 }

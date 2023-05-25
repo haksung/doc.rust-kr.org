@@ -184,13 +184,13 @@
 메세지는 표준 에러로 출력되게 하여 성공적인 실행으로부터 나온 데이터만
 파일로 행하게 하는 것이 훨씬 유용합니다. 그렇게 바꿔보겠습니다.</p>
 <h3 id="표준-에러로-에러-출력하기"><a class="header" href="#표준-에러로-에러-출력하기">표준 에러로 에러 출력하기</a></h3>
-<p>에러 메세지 출력 방식을 변경하기 위해 Listing 12-24의 코드를 사용해
+<p>에러 메세지 출력 방식을 변경하기 위해 예제 12-24의 코드를 사용해
 보겠습니다. 이 장에서 앞서 했던 리팩토링 덕분에 에러 메세지를 출력하는
 모든 코드는 단 하나의 함수 <code>main</code> 내에 있습니다. 표준 라이브러리는
 표준 에러 스트림으로 출력하는 <code>eprintln!</code> 매크로를 제공하므로, 에러
 출력을 위해 <code>println!</code>을 호출하고 있는 두 군데를 <code>eprintln!</code>로
 바꿔봅시다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::env;
 </span><span class="boring">use std::process;
 </span><span class="boring">
@@ -209,7 +209,7 @@
         process::exit(1);
     }
 }</code></pre>
-<p><span class="caption">Listing 12-24: <code>eprintln!</code>를 사용하여 표준 출력 대신
+<p><span class="caption">예제 12-24: <code>eprintln!</code>를 사용하여 표준 출력 대신
 표준 에러로 에러 메세지 작성하기</span></p>
 <p>이제 동일한 방식, 즉 아무런 인자 없이 <code>&gt;</code>로 표준 출력을 리디렉션하여
 프로그램을 다시 실행해 봅시다:</p>
@@ -224,7 +224,7 @@ Problem parsing arguments: not enough arguments
 </code></pre>
 <p>터미널에는 아무런 출력을 볼 수 없고, <em>output.txt</em>에는 결과물이
 담겨 있을 것입니다:</p>
-<p><span class="filename">Filename: output.txt</span></p>
+<p><span class="filename">파일명: output.txt</span></p>
 <pre><code class="language-text">Are you nobody, too?
 How dreary to be somebody!
 </code></pre>

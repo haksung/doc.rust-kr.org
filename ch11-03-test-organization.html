@@ -178,7 +178,7 @@
 <code>#[cfg(test)]</code> 어노테이션을 작성해 컴파일 결과물에 포함되지 않도록 명시해야 합니다.</p>
 <p>이번 장 첫 번째 절에서 <code>adder</code> 프로젝트를 생성했을 때
 카고가 생성했던 코드를 다시 살펴봅시다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">#[cfg(test)]
 mod tests {
     #[test]
@@ -200,8 +200,8 @@ mod tests {
 다른 언어에서는 비공개 함수를 테스트하기 어렵거나, 불가능하게 만들어두었습니다.
 여러분의 테스트 철학이 어떤지는 모르겠지만, 러스트의 프라이버시 규칙은
 비공개 함수를 테스트하도록 허용합니다.
-Listing 11-12는 비공개 함수 <code>internal_adder</code>를 보여줍니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+예제 11-12는 비공개 함수 <code>internal_adder</code>를 보여줍니다.</p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn add_two(a: i32) -&gt; i32 {
     internal_adder(a, 2)
 }
@@ -219,7 +219,7 @@ mod tests {
         assert_eq!(4, internal_adder(2, 2));
     }
 }</code></pre>
-<p><span class="caption">Listing 11-12: 비공개 함수 테스트하기</span></p>
+<p><span class="caption">예제 11-12: 비공개 함수 테스트하기</span></p>
 <p><code>internal_adder</code> 함수는 <code>pub</code> 으로 표시되지 않았습니다. 테스트는
 그냥 러스트 코드이며 <code>tests</code> 모듈도 그저 또 다른 모듈일 뿐입니다.
 <a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html">“모듈 트리 내 아이템 참조를 위한 경로”</a><!-- ignore -->절에서
@@ -241,7 +241,7 @@ mod tests {
 카고는 디렉토리 내 통합 테스트 파일을 자동으로 인식합니다. 그러면 우리는
 원하는 만큼 통합 테스트 파일을 만들 수 있고, 카고는 각 파일을
 각각의 크레이트로 컴파일합니다.</p>
-<p>통합 테스트를 직접 만들어보죠. Listing 11-12 코드를 <em>src/lib.rs</em> 에 작성한 채로
+<p>통합 테스트를 직접 만들어보죠. 예제 11-12 코드를 <em>src/lib.rs</em> 에 작성한 채로
 <em>tests</em> 디렉토리를 만들고, <em>tests/integration_test.rs</em> 파일을 생성합니다.
 여러분의 디렉토리 구조는 다음과 같이 생겨야 합니다:</p>
 <pre><code class="language-text">adder
@@ -252,15 +252,15 @@ mod tests {
 └── tests
     └── integration_test.rs
 </code></pre>
-<p><em>tests/integration_test.rs</em> 파일에 Listing 11-13의 코드를 입력합시다:</p>
-<p><span class="filename">Filename: tests/integration_test.rs</span></p>
+<p><em>tests/integration_test.rs</em> 파일에 예제 11-13의 코드를 입력합시다:</p>
+<p><span class="filename">파일명: tests/integration_test.rs</span></p>
 <pre><code class="language-rust ignore">use adder;
 
 #[test]
 fn it_adds_two() {
     assert_eq!(4, adder::add_two(2));
 }</code></pre>
-<p><span class="caption">Listing 11-13: <code>adder</code> 크레이트 내 함수를 테스트하는
+<p><span class="caption">예제 11-13: <code>adder</code> 크레이트 내 함수를 테스트하는
 통합 테스트</span></p>
 <p><code>tests</code> 디렉토리의 각 파일은 별개의 크레이트이므로, 각각의 테스트 크레이트의
 스코프로 우리가 만든 라이브러리를 가져올 필요가 있습니다. 이러한 이유로 코드
@@ -298,7 +298,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 모든 유닛 테스트가 통과되어야만 실행되기 때문에 이와 관련한 어떠한 출력도
 없을 것입니다.</p>
 <p>첫 번째 절인 유닛 테스트는 앞서 본 것과 같습니다: 유닛 테스트가
-한 줄씩 (<code>internal</code>은 Listing 11-12 에서 추가했었습니다)
+한 줄씩 (<code>internal</code>은 예제 11-12 에서 추가했었습니다)
 출력되고, 유닛 테스트 결과 요약 줄이 출력됩니다.</p>
 <p>통합 테스트 절은 <code>Running tests/integration_test.rs</code>줄로
 시작합니다. 그다음 통합 테스트 내 각각의 테스트 함수가 한 줄씩
@@ -338,7 +338,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 파일의 동작 방식은 걸림돌이 됩니다. 예를 들어, 우리가
 <em>tests/common.rs</em> 파일을 생성하고, 여러 테스트 파일 내
 함수에서 호출할 <code>setup</code> 함수를 작성한다고 가정해봅시다:</p>
-<p><span class="filename">Filename: tests/common.rs</span></p>
+<p><span class="filename">파일명: tests/common.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn setup() {
     // setup code specific to your library's tests would go here
 }</code></pre>
@@ -401,7 +401,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <p><em>tests/common/mod.rs</em> 파일을 생성하고 나면 다른 통합 테스트 파일에서 모듈처럼 사용할 수 있습니다.
 다음은 <em>tests/integration_test.rs</em> 파일 내 <code>it_adds_two</code> 테스트에서 <code>setup</code> 함수를
 호출하는 예시입니다.</p>
-<p><span class="filename">Filename: tests/integration_test.rs</span></p>
+<p><span class="filename">파일명: tests/integration_test.rs</span></p>
 <pre><code class="language-rust ignore">use adder;
 
 mod common;
@@ -411,7 +411,7 @@ fn it_adds_two() {
     common::setup();
     assert_eq!(4, adder::add_two(2));
 }</code></pre>
-<p>Listing 7-21에서 배운 모듈 선언대로 <code>mod common;</code>를 선언했습니다.
+<p>예제 7-21에서 배운 모듈 선언대로 <code>mod common;</code>를 선언했습니다.
 선언하고 나면 <code>common::setup()</code> 함수를 호출할 수
 있습니다.</p>
 <h4 id="바이너리-크레이트에서의-통합-테스트"><a class="header" href="#바이너리-크레이트에서의-통합-테스트">바이너리 크레이트에서의 통합 테스트</a></h4>

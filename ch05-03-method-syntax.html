@@ -160,9 +160,9 @@
 <code>self</code> 매개변수는 메서드가 호출된 구조체 인스턴스를 나타냅니다.</p>
 <h3 id="메서드-정의"><a class="header" href="#메서드-정의">메서드 정의</a></h3>
 <p>기존의 <code>Rectangle</code> 매개변수를 갖던 <code>area</code> 함수를 수정하여
-Listing 5-13 처럼 <code>Rectangle</code> 구조체에 정의된
+예제 5-13 처럼 <code>Rectangle</code> 구조체에 정의된
 <code>area</code> 메서드로 바꿔봅시다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
 struct Rectangle {
     width: u32,
@@ -186,7 +186,7 @@ fn main() {
         rect1.area()
     );
 }</code></pre></pre>
-<p><span class="caption">Listing 5-13: <code>Rectangle</code> 구조체에
+<p><span class="caption">예제 5-13: <code>Rectangle</code> 구조체에
 <code>area</code> 메서드 정의</span></p>
 <p><code>Rectangle</code>의 컨텍스트 내에 함수를 정의하기 위해서, <code>Rectangle</code>에 대한 <code>impl</code>
 (구현, implementation) 블록을 만드는 것으로 시작합니다. 이 <code>impl</code> 블록 내의
@@ -224,7 +224,7 @@ fn main() {
 <p>구조체의 필드 이름과 동일한 이름의 메서드를 만들 수도 있습니다.
 예를 들면, <code>width</code>라는 중복된 이름의 메서드를 <code>Rectangle</code>상에 정의할 수
 있지요:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
@@ -308,9 +308,9 @@ fn main() {
 이번에 만들 새로운 메서드는 다른 <code>Rectangle</code> 인스턴스를 받아서,
 <code>self</code> 사각형 (첫번째 <code>Rectangle</code>) 면적 내에 두 번째 사각형 <code>Rectangle</code>
 인스턴스가 완전히 들어갈 수 있다면 <code>true</code>를 반환하고, 못 들어가면 <code>false</code>를
-반환할 겁니다. 즉, <code>can_hold</code> 메서드를 정의하여 다음 Listing 5-14에 나오는
+반환할 겁니다. 즉, <code>can_hold</code> 메서드를 정의하여 다음 예제 5-14에 나오는
 프로그램이 작동하도록 만들겠습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore">fn main() {
     let rect1 = Rectangle {
         width: 30,
@@ -328,7 +328,7 @@ fn main() {
     println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
     println!(&quot;Can rect1 hold rect3? {}&quot;, rect1.can_hold(&amp;rect3));
 }</code></pre>
-<p><span class="caption">Listing 5-14: <code>can_hold</code> 메서드를 작성하고 나면
+<p><span class="caption">예제 5-14: <code>can_hold</code> 메서드를 작성하고 나면
 작동할 코드</span></p>
 <p><code>rect2</code>는 너비와 높이 둘 다 <code>rect1</code>보다 작지만,
 <code>rect3</code>는  <code>rect1</code> 보다 너비가 넓으므로
@@ -347,9 +347,9 @@ Can rect1 hold rect3? false
 논리적으로도 불변 참조자가 가장 적합합니다.
 반환값은 Boolean 타입이 될 거고, <code>self</code>의 너비, 높이가
 다른 <code>Rectangle</code>의 너비, 높이보다 큰지 검사하는 식으로 구현될 겁니다.
-그럼 이제 Listing 5-13의 <code>impl</code> 블록에 <code>can_hold</code> 메서드를 새로 추가해보죠!
-추가하고 난 모습은 다음 Listing 5-15와 같습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+그럼 이제 예제 5-13의 <code>impl</code> 블록에 <code>can_hold</code> 메서드를 새로 추가해보죠!
+추가하고 난 모습은 다음 예제 5-15와 같습니다:</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
@@ -383,9 +383,9 @@ Can rect1 hold rect3? false
 </span><span class="boring">    println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
 </span><span class="boring">    println!(&quot;Can rect1 hold rect3? {}&quot;, rect1.can_hold(&amp;rect3));
 </span><span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 5-15: 다른 <code>Rectangle</code> 인스턴스를
+<p><span class="caption">예제 5-15: 다른 <code>Rectangle</code> 인스턴스를
 매개변수로 갖는 <code>can_hold</code> 메서드를 <code>Rectangle</code> 에 구현</span></p>
-<p>이제 Listing 5-14 에서 본
+<p>이제 예제 5-14 에서 본
 <code>main</code> 함수를 실행하면 원했던 결과가 나올 겁니다.
 이처럼 메서드는 <code>self</code> 매개변수 뒤에 여러 매개변수를 가질 수 있으며,
 이 매개변수는 함수에서의 매개변수와 동일하게 기능합니다.</p>
@@ -403,7 +403,7 @@ Can rect1 hold rect3? false
 치수 하나를 매개변수로 받고 해당 치수로 너비 높이를 설정하는 연관함수를 만들어,
 더 간단하게 정사각형을 만드는 연관 함수 <code>square</code>를
 제공해보겠습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
@@ -432,7 +432,7 @@ Can rect1 hold rect3? false
 네임스페이스에도 사용됩니다.</p>
 <h3 id="impl-블록은-여러-개일-수-있습니다"><a class="header" href="#impl-블록은-여러-개일-수-있습니다"><code>impl</code> 블록은 여러 개일 수 있습니다</a></h3>
 <p>각 구조체는 여러 개의 <code>impl</code> 블록을 가질 수 있습니다.
-다음 Listing 5-16은 Listing 5-15에 나온 코드를 변경해
+다음 예제 5-16은 예제 5-15에 나온 코드를 변경해
 <code>impl</code> 블록을 여러 개로 만든 모습입니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
@@ -469,7 +469,7 @@ impl Rectangle {
 </span><span class="boring">    println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
 </span><span class="boring">    println!(&quot;Can rect1 hold rect3? {}&quot;, rect1.can_hold(&amp;rect3));
 </span><span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 5-16: Listing 5-15 를 여러 <code>impl</code>
+<p><span class="caption">예제 5-16: 예제 5-15 를 여러 <code>impl</code>
 블록을 사용하도록 재작성</span></p>
 <p>위 코드에서는 <code>impl</code> 블록을 여러 개로 나눠야 할 이유가 전혀 없지만,
 <code>impl</code> 블록을 반드시 하나만 작성해야 할 필요는 없음을 보여드리기 위해 예시로 작성했습니다.

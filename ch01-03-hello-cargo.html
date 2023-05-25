@@ -194,8 +194,8 @@ $ cd hello_cargo
 그 외의 다른 옵션들은 <code>cargo new --help</code> 로 확인할 수 있습니다.</p>
 </blockquote>
 <p>이제 텍스트 에디터로 <em>Cargo.toml</em> 을 열어보세요.
-Listing 1-2 처럼 나오면 정상입니다.</p>
-<p><span class="filename">Filename: Cargo.toml</span></p>
+예제 1-2 처럼 나오면 정상입니다.</p>
+<p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[package]
 name = &quot;hello_cargo&quot;
 version = &quot;0.1.0&quot;
@@ -205,7 +205,7 @@ edition = &quot;2021&quot;
 
 [dependencies]
 </code></pre>
-<p><span class="caption">Listing 1-2: <code>cargo new</code> 로 생성한
+<p><span class="caption">예제 1-2: <code>cargo new</code> 로 생성한
 <em>Cargo.toml</em> 파일의 내용</span></p>
 <p>이 파일은 <a href="https://toml.io"><em>TOML</em></a><!-- ignore --> (<em>Tom’s Obvious, Minimal
 Language</em>) 포맷으로 되어있고, 이 포맷은 카고 설정에서 사용하는 포맷입니다.</p>
@@ -220,12 +220,12 @@ Language</em>) 포맷으로 되어있고, 이 포맷은 카고 설정에서 사�
 부릅니다. 이 프로젝트에는 크레이트가 필요 없지만, 2장 첫 프로젝트에서는
 필요하므로 그때 사용해보겠습니다.</p>
 <p>이제 <em>src/main.rs</em>를 열어 살펴봅시다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     println!(&quot;Hello, world!&quot;);
 }</code></pre></pre>
 <p>카고가 “Hello, world!” 프로그램을 만들어 놨네요.
-Listing 1-1에서 만든 프로젝트와 다른 점은
+예제 1-1에서 만든 프로젝트와 다른 점은
 이번엔 코드 위치가 <em>src</em> 디렉토리라는 점과
 최상위 디렉토리에 <em>Cargo.toml</em> 설정 파일이 존재한다는 점입니다.</p>
 <p>카고는 소스 파일이 <em>src</em> 내에 있다고 예상합니다.

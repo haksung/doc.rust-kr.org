@@ -159,10 +159,10 @@
 반환 값의 데이터 타입 위치에 제네릭을 사용합니다.
 이렇게 작성된 코드는 더 유연해지고, 우리 함수를 호출하는 쪽에서
 더 많은 기능을 사용할 수 있도록 하며 코드 중복 또한 방지합니다.</p>
-<p><code>largest</code> 함수를 이용해 계속해보겠습니다. Listing 10-4는 슬라이스에서
+<p><code>largest</code> 함수를 이용해 계속해보겠습니다. 예제 10-4는 슬라이스에서
 가장 큰 값을 찾는 두 함수를 보여줍니다. 제네릭 사용하여 이 함수들을
 하나의 함수로 묶어보겠습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn largest_i32(list: &amp;[i32]) -&gt; &amp;i32 {
     let mut largest = &amp;list[0];
 
@@ -200,9 +200,9 @@ fn main() {
     println!(&quot;The largest char is {}&quot;, result);
 <span class="boring">    assert_eq!(*result, 'y');
 </span>}</code></pre></pre>
-<p><span class="caption">Listing 10-4: 이름과 타입 시그니처만 다른
+<p><span class="caption">예제 10-4: 이름과 타입 시그니처만 다른
 두 함수</span></p>
-<p>함수 <code>largest_i32</code>는  Listing 10-3에서 봤던 슬라이스에서 가장 큰 <code>i32</code>를 찾는 함수이고,
+<p>함수 <code>largest_i32</code>는  예제 10-3에서 봤던 슬라이스에서 가장 큰 <code>i32</code>를 찾는 함수이고,
 <code>largest_char</code> 함수는 슬라이스에서 가장 큰 <code>char</code>를 찾는 함수입니다.
 이 두 함수의 본문은 완벽히 동일하니, 제네릭을 이용해
 이 두 함수를 하나로 만들어서 코드 중복을 제거해보겠습니다.</p>
@@ -223,11 +223,11 @@ fn main() {
 읽습니다. 이 함수는 <code>T</code> 타입 값들의 슬라이스인 <code>list</code> 매개변수를
 가지며, 동일한 <code>T</code> 타입의 값에 대한 참조자를
 반환합니다.</p>
-<p>Listing 10-5는 제네릭 데이터 타입을 사용해 하나로 통합한 <code>largest</code> 함수 정의를 나타냅니다.
+<p>예제 10-5는 제네릭 데이터 타입을 사용해 하나로 통합한 <code>largest</code> 함수 정의를 나타냅니다.
 코드에서 볼 수 있듯, 우린 이 함수를 <code>i32</code> 값들의 슬라이스로 호출할 수도 있고
 <code>char</code> 값들의 슬라이스로도 호출할 수 있습니다.
 다만 이 코드는 컴파일되지 않으니 유의해주세요! 에러 해결법은 이번 장에서 천천히 알아보겠습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn largest&lt;T&gt;(list: &amp;[T]) -&gt; &amp;T {
     let mut largest = &amp;list[0];
 
@@ -251,7 +251,7 @@ fn main() {
     let result = largest(&amp;char_list);
     println!(&quot;The largest char is {}&quot;, result);
 }</code></pre>
-<p><span class="caption">Listing 10-5: 제네릭 타입 매개변수를 이용한 <code>largest</code> 함수;
+<p><span class="caption">예제 10-5: 제네릭 타입 매개변수를 이용한 <code>largest</code> 함수;
 아직 컴파일되지는 않습니다</span></p>
 <p>이 코드를 지금 바로 컴파일해 보면 다음과 같은 에러가 나타납니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -284,9 +284,9 @@ error: could not compile `chapter10` due to previous error
 둘 모두에 대한 <code>PartialOrd</code>를 구현하고 있기 때문입니다.</p>
 <h3 id="제네릭-구조체-정의"><a class="header" href="#제네릭-구조체-정의">제네릭 구조체 정의</a></h3>
 <p><code>&lt;&gt;</code> 문법으로 구조체 필드에서 제네릭 타입 매개변수를 사용하도록
-구조체를 정의할 수도 있습니다. Listing 10-6은 임의의 타입으로 된
+구조체를 정의할 수도 있습니다. 예제 10-6은 임의의 타입으로 된
 <code>x</code>, <code>y</code>를 갖는 <code>Point&lt;T&gt;</code> 구조체를 정의합니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Point&lt;T&gt; {
     x: T,
     y: T,
@@ -296,7 +296,7 @@ fn main() {
     let integer = Point { x: 5, y: 10 };
     let float = Point { x: 1.0, y: 4.0 };
 }</code></pre></pre>
-<p><span class="caption">Listing 10-6: <code>T</code> 타입의 값 <code>x</code>, <code>y</code>를 갖는
+<p><span class="caption">예제 10-6: <code>T</code> 타입의 값 <code>x</code>, <code>y</code>를 갖는
 <code>Point&lt;T&gt;</code> 구조체</span></p>
 <p>문법은 함수 정의에서 제네릭을 사용하는 것과 유사합니다.
 먼저 구조체 이름 바로 뒤 꺾쇠괄호에 타입 매개변수 이름을
@@ -305,9 +305,9 @@ fn main() {
 <p><code>Point&lt;T&gt;</code> 선언에 하나의 제네릭 타입만 사용했으므로,
 이 선언은 <code>Point&lt;T&gt;</code>가 어떤 타입 <code>T</code> 에 대한 제네릭이며
 <code>x</code>, <code>y</code> 필드는 실제 타입이 무엇이건 간에 <em>서로</em> 동일한 타입이라는 것을 의미합니다.
-만약 Listing 10-7처럼 서로 다른 타입의 값을 갖는 <code>Point&lt;T&gt;</code> 인스턴스를 생성하려고 할 경우,
+만약 예제 10-7처럼 서로 다른 타입의 값을 갖는 <code>Point&lt;T&gt;</code> 인스턴스를 생성하려고 할 경우,
 코드는 컴파일되지 않습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">struct Point&lt;T&gt; {
     x: T,
     y: T,
@@ -316,7 +316,7 @@ fn main() {
 fn main() {
     let wont_work = Point { x: 5, y: 4.0 };
 }</code></pre>
-<p><span class="caption">Listing 10-7: <code>x</code>와 <code>y</code> 필드는 둘 다 동일한
+<p><span class="caption">예제 10-7: <code>x</code>와 <code>y</code> 필드는 둘 다 동일한
 제네릭 데이터 타입 <code>T</code> 이므로, 서로 동일한 타입이어야 합니다</span></p>
 <p>컴파일러는 우리가 <code>x</code> 에 정수 값 5를 대입할 때 <code>Point&lt;T&gt;</code> 인스턴스의
 제네릭 타입 <code>T</code>를 정수 타입으로 인지합니다.
@@ -335,9 +335,9 @@ error: could not compile `chapter10` due to previous error
 </code></pre>
 <p>제네릭 <code>Point</code> 구조체의 <code>x</code>, <code>y</code>가 서로 다른 타입일 수 있도록
 정의하고 싶다면 여러 개의 제네릭 타입 매개변수를 사용해야 합니다.
-Listing 10-8에서는 <code>x</code>는 <code>T</code> 타입으로, <code>y</code>는 <code>U</code> 타입으로 정의한
+예제 10-8에서는 <code>x</code>는 <code>T</code> 타입으로, <code>y</code>는 <code>U</code> 타입으로 정의한
 제네릭 <code>Point</code> 정의를 나타냅니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Point&lt;T, U&gt; {
     x: T,
     y: U,
@@ -348,7 +348,7 @@ fn main() {
     let both_float = Point { x: 1.0, y: 4.0 };
     let integer_and_float = Point { x: 5, y: 4.0 };
 }</code></pre></pre>
-<p><span class="caption">Listing 10-8: 두 타입의 제네릭을 사용하여,
+<p><span class="caption">예제 10-8: 두 타입의 제네릭을 사용하여,
 <code>x</code>와 <code>y</code>가 서로 다른 타입의 값이 될 수 있는 <code>Point&lt;T, U&gt;</code></span></p>
 <p>이제 위와 같이 모든 <code>Point</code> 인스턴스를 생성할 수 있습니다!
 제네릭 타입 매개변수는 여러분이 원하는 개수만큼 정의할 수 있지만,
@@ -386,7 +386,7 @@ fn main() {
 제네릭으로 정의되어있는 덕분에,
 <code>Result</code> 열거형을 연산이 성공할지(따라서 <code>T</code> 타입 값을 반환할지)
 실패할지(<code>E</code> 타입 값을 반환할지) 알 수 없는 어떤 곳에서든 편리하게 사용할 수 있습니다.
-우리가 Listing 9-3 에서 파일을 열 때도 사용했었죠.
+우리가 예제 9-3 에서 파일을 열 때도 사용했었죠.
 이때는 파일을 여는 데 성공하면 <code>T</code>는  <code>std::fs::File</code> 타입이 되고,
 파일을 열다가 문제가 생기면 <code>E</code>는  <code>std::io::Error</code> 타입이 됐었습니다.</p>
 <p>여러분이 작성한 코드에 보유하는 값의
@@ -394,9 +394,9 @@ fn main() {
 제네릭 타입을 사용해 코드 중복을 제거해보세요.</p>
 <h3 id="제네릭-메서드-정의"><a class="header" href="#제네릭-메서드-정의">제네릭 메서드 정의</a></h3>
 <p>5장에서 했던 것처럼 구조체나 열거형에 메서드를 구현하되,
-제네릭 타입을 이용해 정의할 수도 있습니다. Listing 10-9는
-Listing 10-6에서 정의했던 <code>Point&lt;T&gt;</code> 구조체에 <code>x</code> 메서드를 구현한 모습입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+제네릭 타입을 이용해 정의할 수도 있습니다. 예제 10-9는
+예제 10-6에서 정의했던 <code>Point&lt;T&gt;</code> 구조체에 <code>x</code> 메서드를 구현한 모습입니다.</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Point&lt;T&gt; {
     x: T,
     y: T,
@@ -413,7 +413,7 @@ fn main() {
 
     println!(&quot;p.x = {}&quot;, p.x());
 }</code></pre></pre>
-<p><span class="caption">Listing 10-9: <code>T</code> 타입의 <code>x</code> 필드에 대한
+<p><span class="caption">예제 10-9: <code>T</code> 타입의 <code>x</code> 필드에 대한
 참조자를 반환하는 <code>x</code> 메서드를 <code>Point&lt;T&gt;</code> 에
 정의</span></p>
 <p><code>x</code> 필드 데이터의 참조자를 반환하는 <code>x</code> 메서드를 <code>Point&lt;T&gt;</code> 에
@@ -429,9 +429,9 @@ fn main() {
 정의될 것입니다.</p>
 <p>이 타입의 메서드를 정의할 때 제네릭 타입에 대한 제약을 지정할 수도 있습니다.
 예를 들면, 어떠한 제네릭 타입의 <code>Point&lt;T&gt;</code> 인스턴스 말고 오직 <code>Point&lt;f32&gt;</code>
-인스턴스에 대한 메서드를 정의할 수 있습니다. Listing 10-10에서는 구체적
+인스턴스에 대한 메서드를 정의할 수 있습니다. 예제 10-10에서는 구체적
 타입 <code>f32</code>을 사용하였는데, <code>impl</code> 뒤에는 어떤 타입도 선언하지 않았습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct Point&lt;T&gt; {
 </span><span class="boring">    x: T,
 </span><span class="boring">    y: T,
@@ -454,7 +454,7 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">    println!(&quot;p.x = {}&quot;, p.x());
 </span><span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 10-10: 구조체의 제네릭 타입 매개변수 <code>T</code>가
+<p><span class="caption">예제 10-10: 구조체의 제네릭 타입 매개변수 <code>T</code>가
 특정 구체적 타입인 경우에만 적용되는 <code>impl</code> 블록</span></p>
 <p>이 코드에서 <code>Point&lt;f32&gt;</code> 타입 인스턴스는 <code>distance_from_origin</code>
 메서드를 갖게 될 것입니다; <code>T</code>가 <code>f32</code> 타입이 아닌 <code>Point&lt;T&gt;</code>
@@ -462,12 +462,12 @@ fn main() {
 점과 원점 (0.0, 0.0) 간의 거리를 측정하며 부동 소수점 타입에서만
 사용 가능한 수학적 연산을 이용합니다.</p>
 <p>구조체 정의에서 사용한 제네릭 타입 매개변수와, 구조체의 메서드 시그니처 내에서 사용하는
-제네릭 타입 매개변수가 항상 같은 것은 아닙니다. Listing 10-11을 보면 예제를 명료하게
+제네릭 타입 매개변수가 항상 같은 것은 아닙니다. 예제 10-11을 보면 예제를 명료하게
 만들기 위해 <code>Point</code> 구조체에 대해서는 <code>X1</code>와 <code>Y1</code>이라는 제네릭 타입을, 그리고 <code>mixup</code>
 메서드에 대해서는 <code>X2</code>와 <code>Y2</code>라는 제네릭 타입을 사용했습니다. 이 메서드는 <code>self</code>
 <code>Point</code>의 (<code>X1</code> 타입인) <code>x</code>값과, 매개변수로 넘겨받은 <code>Point</code>의 (<code>Y2</code> 타입인) <code>y</code>값으로
 새로운 <code>Point</code> 인스턴스를 생성합니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Point&lt;X1, Y1&gt; {
     x: X1,
     y: Y1,
@@ -490,7 +490,7 @@ fn main() {
 
     println!(&quot;p3.x = {}, p3.y = {}&quot;, p3.x, p3.y);
 }</code></pre></pre>
-<p><span class="caption">Listing 10-11: 구조체 정의와 다른 제네릭 타입을
+<p><span class="caption">예제 10-11: 구조체 정의와 다른 제네릭 타입을
 사용하는 메서드</span></p>
 <p><code>main</code> 에서, 우린 <code>i32</code> 타입 <code>x</code> (<code>5</code>)와
 <code>f64</code> 타입 <code>y</code> (<code>10.4</code>)를 갖는 <code>Point</code>를 정의했습니다.
@@ -512,7 +512,7 @@ fn main() {
 <p>러스트는 컴파일 타임에 제네릭을 사용하는 코드를
 <em>단형성화(monomorphization)</em> 합니다. 단형성화란 제네릭 코드를,
 실제로 채워질 구체적인 타입으로 된 특정 코드로 바꾸는 과정을
-말합니다. 이 과정에서, 컴파일러는 우리가 Listing 10-5에서
+말합니다. 이 과정에서, 컴파일러는 우리가 예제 10-5에서
 제네릭 함수를 만들 때 거친 과정을 정반대로 수행합니다.
 컴파일러는 제네릭 코드가 호출된 곳을 전부 찾고, 제네릭 코드가
 호출할 때 사용된 구체적인 타입으로 코드를 생성합니다.</p>
@@ -531,7 +531,7 @@ let float = Some(5.0);
 대체합니다.</p>
 <p>단형성화된 코드는 다음과 같습니다.
 제네릭 <code>Option&lt;T&gt;</code>는  컴파일러에 의해 생성된 명시적인 정의로 변경되었습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">enum Option_i32 {
     Some(i32),
     None,

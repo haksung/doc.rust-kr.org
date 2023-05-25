@@ -170,10 +170,10 @@
 지정합니다. <code>Drop</code> 트레잇은 <code>drop</code>이라는 이름의 메서드 하나를 구현해야 하는데 이
 메서드는 <code>self</code>에 대한 가변 참조자를 매개변수로 갖습니다. 러스트가 언제 <code>drop</code>을
 호출하는지 보기 위해서, 지금은 <code>println!</code> 구문과 함께 <code>drop</code>을 구현해봅시다.</p>
-<p>Listing 15-4는 러스트가 <code>drop</code> 함수를 호출하는 때를 보여주기 위해서,
+<p>예제 15-4는 러스트가 <code>drop</code> 함수를 호출하는 때를 보여주기 위해서,
 인스턴스가 스코프 밖으로 벗어났을 때 <code>Dropping CustomSmartPointer!</code>를
 출력하는 커스텀 기능만을 갖춘 <code>CustomSmartPointer</code> 구조체를 보여줍니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct CustomSmartPointer {
     data: String,
 }
@@ -193,7 +193,7 @@ fn main() {
     };
     println!(&quot;CustomSmartPointers created.&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-14: 메모리 정리 코드를 집어넣게 될
+<p><span class="caption">예제 15-14: 메모리 정리 코드를 집어넣게 될
 <code>Drop</code> 트레잇을 구현한 <code>CustomSmartPointer</code> 구조체</span></p>
 <p><code>Drop</code> 트레잇은 프렐루드에 포함되어 있으므로, 이를 스코프로 가져올 필요는
 없습니다. <code>CustomSmartPointer</code>에는 <code>Drop</code> 트레잇이 구현되어 여기에
@@ -231,10 +231,10 @@ Dropping CustomSmartPointer with data `my stuff`!
 <code>Drop</code> 트레잇의 <code>drop</code> 메서드를 호출하게 해주지는 않습니다; 대신에
 표준 라이브러리가 제공하는 <code>std::mem::drop</code> 함수를 호출하여 스코프가
 끝나기 전에 강제로 값을 버리도록 할 수 있습니다.</p>
-<p>Listing 15-14의 <code>main</code> 함수를 Listing 15-15 처럼 수정하여
+<p>예제 15-14의 <code>main</code> 함수를 예제 15-15 처럼 수정하여
 <code>Drop</code> 트레잇의 <code>drop</code> 메서드를 수동으로 호출하려고 하면 컴파일
 에러가 납니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
 </span><span class="boring">}
@@ -253,7 +253,7 @@ Dropping CustomSmartPointer with data `my stuff`!
     c.drop();
     println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
 }</code></pre>
-<p><span class="caption">Listing 15-15: 메모리를 일찍 정리하기 위한 <code>Drop</code>
+<p><span class="caption">예제 15-15: 메모리를 일찍 정리하기 위한 <code>Drop</code>
 트레잇의 <code>drop</code> 메서드의 수동 호출 시도하기</span></p>
 <p>이 코드의 컴파일을 시도하면 다음과 같은 에러를 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -284,9 +284,9 @@ error: could not compile `drop-example` due to previous error
 메모리 정리를 강제로 일찍 하기 원할 때는  <code>std::mem::drop</code> 함수를 이용합니다.</p>
 <p><code>std::mem::drop</code> 함수는 <code>Drop</code> 트레잇에 있는 <code>drop</code> 메서드와는
 다릅니다. 이 함수에 일찍 버리려고 하는 값을 인자로 넘겨 호출합니다.
-이 함수는 프렐루드에 포함되어 있어서, Listing 15-14의 <code>main</code>을
-Listing 15-16처럼 수정할 수 있습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+이 함수는 프렐루드에 포함되어 있어서, 예제 15-14의 <code>main</code>을
+예제 15-16처럼 수정할 수 있습니다:</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
 </span><span class="boring">}
@@ -305,7 +305,7 @@ Listing 15-16처럼 수정할 수 있습니다:</p>
     drop(c);
     println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 15-16: <code>std::mem::drop</code>을 호출하여
+<p><span class="caption">예제 15-16: <code>std::mem::drop</code>을 호출하여
 값이 스코프를 벗어나기 전에 명시적으로 버리기</span></p>
 <p>이 코드를 실행하면 아래와 같이 출력할 것입니다:</p>
 <pre><code class="language-console">$ cargo run

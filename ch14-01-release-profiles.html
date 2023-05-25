@@ -176,7 +176,7 @@ $ cargo build --release
 커스터마이징을 원하는 프로필에 대해 <code>[profile.*]</code>절을 추가하면 이
 기본 설정을 덮어 씌울 수 있습니다. 여기 예시로 <code>opt-level</code> 설정에
 대한 <code>dev</code> 와 <code>release</code> 프로필의 기본 설정 값을 보여드리겠습니다:</p>
-<p><span class="filename">Filename: Cargo.toml</span></p>
+<p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[profile.dev]
 opt-level = 0
 
@@ -196,7 +196,7 @@ opt-level = 3
 수 있습니다. 예를 들어 개발용 프로필에 최적화 단계 1을 사용하고
 싶다면, 프로젝트의 <em>Cargo.toml</em>에 아래의 두 줄을 추가하면
 됩니다:</p>
-<p><span class="filename">Filename: Cargo.toml</span></p>
+<p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[profile.dev]
 opt-level = 1
 </code></pre>

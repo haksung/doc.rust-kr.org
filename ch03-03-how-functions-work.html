@@ -157,7 +157,7 @@
 <p>러스트 코드는 함수나 변수 이름을 위한 관례로 <em>스네이크 케이스 (snake case)</em> 방식을
 이용하는데, 이는 모든 글자를 소문자로 쓰고 밑줄(underscore)로 단어를 구분하는
 방식을 말합니다. 다음은 예시로 함수를 정의한 프로그램입니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     println!(&quot;Hello, world!&quot;);
 
@@ -198,7 +198,7 @@ Another function.
 때 전달되는 구체적인 값에 대해 <em>매개변수</em>와 <em>인자</em>라는 용어를 혼용하는
 경향이 있습니다.</p>
 <p>아래의 <code>another_function</code>에는 매개변수가 추가되었습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     another_function(5);
 }
@@ -224,7 +224,7 @@ The value of x is: 5
 있을 경우 더욱 유용한 에러 메세지를 제공할 수 있습니다.</p>
 <p>여러 매개변수를 정의하려면 아래처럼 쉼표 기호로 매개변수
 정의를 구분하세요:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     print_labeled_measurement(5, 'h');
 }
@@ -262,17 +262,17 @@ The measurement is: 5h
 </ul>
 <p>우리는 실제로는 이미 구문과 표현식을 사용해 봤습니다.
 <code>let</code> 키워드로 변수를 만들고 값을 할당하는 것은 구문입니다.
-Listing 3-1의 <code>let y = 6;</code>은 구문입니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+예제 3-1의 <code>let y = 6;</code>은 구문입니다:</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let y = 6;
 }</code></pre></pre>
-<p><span class="caption">Listing 3-1: 구문 하나로 되어있는 <code>main</code> 함수</span></p>
+<p><span class="caption">예제 3-1: 구문 하나로 되어있는 <code>main</code> 함수</span></p>
 <p>또한 함수 정의도 구문입니다; 위 예제는 그 자체로 구문에
 해당됩니다.</p>
 <p>구문은 값을 반환하지 않습니다. 따라서 아래와 같이 <code>let</code> 구문을 다른 변수에
 할당하려고 하면 에러가 납니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = (let y = 6);
 }</code></pre>
@@ -326,11 +326,11 @@ error: could not compile `functions` due to 3 previous errors; 1 warning emitted
 <p>여러분이 작성하는 러스트 코드의 대부분은 표현식이며, 이는 어떤 값을 산출합니다.
 <code>5 + 6</code>과 같은 간단한 수학 연산을 살펴봅시다. 이 수식은 <code>11</code>이라는
 값을 산출하는 표현식입니다. 표현식은 구문의 일부일 수 있습니다:
-Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <code>6</code>이라는 값을 
+예제 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <code>6</code>이라는 값을 
 산출하는 표현식입니다. 함수를 호출하는 것도, 매크로를 호출하는 것도
 표현식입니다. 아래 예제처럼 중괄호로 만들어진 새로운 스코프 블록도
 표현식입니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let y = {
         let x = 3;
@@ -359,7 +359,7 @@ Listing 3-1의 <code>let y = 6;</code>이라는 구문에서 <code>6</code>은 <
 함수로부터 일찍 값을 반환할 수 있지만, 대부분의 함수들은 암묵적으로
 마지막 표현식 값을 반환합니다. 값을 반환하는 함수의 예를
 보겠습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn five() -&gt; i32 {
     5
 }
@@ -392,7 +392,7 @@ The value of x is: 5
 본문에는 <code>5</code>만이 세미콜론 없이 외롭게 있는데, 그 이유는 이 값이
 반환하려는 값에 대한 표현식이기 때문입니다.</p>
 <p>다른 예제도 살펴봅시다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = plus_one(5);
 
@@ -405,7 +405,7 @@ fn plus_one(x: i32) -&gt; i32 {
 <p>이 코드를 실행하면 <code>The value of x is: 6</code>이 출력됩니다.
 만일 <code>x + 1</code> 끝에 세미콜론이 추가되어 표현식이 구문으로 변경되면
 에러가 발생합니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = plus_one(5);
 

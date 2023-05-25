@@ -155,12 +155,12 @@
 어떻게 <code>Config::build</code> 함수와 <code>search</code> 함수의 구현을 개선시킬 수
 있는지 살펴봅시다.</p>
 <h3 id="반복자를-사용하여-clone-제거하기"><a class="header" href="#반복자를-사용하여-clone-제거하기">반복자를 사용하여 <code>clone</code> 제거하기</a></h3>
-<p>Listing 12-6에서는 <code>String</code> 값의 슬라이스를 받아서 슬라이스에 인덱스로
+<p>예제 12-6에서는 <code>String</code> 값의 슬라이스를 받아서 슬라이스에 인덱스로
 접근하고 복사하는 방식으로 <code>Config</code> 구조체의 인스턴스를 생성하는 코드를
-넣었고, <code>Config</code> 구조체가 이 값들을 소유하도록 했습니다. Listing 13-17에서는
-<code>COnfig::build</code> 함수의 구현체를 Listing 12-23에 있던 것처럼 재현한
+넣었고, <code>Config</code> 구조체가 이 값들을 소유하도록 했습니다. 예제 13-17에서는
+<code>COnfig::build</code> 함수의 구현체를 예제 12-23에 있던 것처럼 재현한
 것입니다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::env;
 </span><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
@@ -265,7 +265,7 @@
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 13-17: Listing 12-23의 <code>Config::build</code>
+<p><span class="caption">예제 13-17: 예제 12-23의 <code>Config::build</code>
 함수 재현</span></p>
 <p>그때는 비효율적인 <code>clone</code> 호출에 대해서, 나중에 제거할테니 걱정하지 말라고
 이야기했었지요. 자, 그때가 되었습니다!</p>
@@ -283,7 +283,7 @@
 <code>Config</code> 로 이동할 수 있습니다.</p>
 <h4 id="반환된-반복자를-직접-사용하기"><a class="header" href="#반환된-반복자를-직접-사용하기">반환된 반복자를 직접 사용하기</a></h4>
 <p>여러분의 I/O 프로젝트에 있는 <em>src/main.rs</em> 파일을 열어보면, 아래와 같이 생겼을 것입니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::env;
 </span><span class="boring">use std::process;
 </span><span class="boring">
@@ -304,10 +304,10 @@
 </span><span class="boring">        process::exit(1);
 </span><span class="boring">    }
 </span>}</code></pre>
-<p>먼저 Listing 12-24에 있던 <code>main</code> 함수의 시작점을 수정하여 Listing
-13-18의 코드로 바꾸려고 하는데, 이번에는 반복자를 사용합니다.
+<p>먼저 예제 12-24에 있던 <code>main</code> 함수의 시작점을 수정하여 예제 13-18의
+코드로 바꾸려고 하는데, 이번에는 반복자를 사용합니다.
 <code>Config::build</code>도 마찬가지로 업데이트할 때까지는 컴파일 되지 않습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">use std::env;
 </span><span class="boring">use std::process;
 </span><span class="boring">
@@ -326,17 +326,17 @@
 </span><span class="boring">        process::exit(1);
 </span><span class="boring">    }
 </span>}</code></pre>
-<p><span class="caption">Listing 13-18: <code>env::args</code>의 반환값을 <code>Config::build</code>로
+<p><span class="caption">예제 13-18: <code>env::args</code>의 반환값을 <code>Config::build</code>로
 넘기기</span></p>
 <p><code>env::args</code> 함수는 반복자를 반환합니다! 반복자의 값들을 벡터로 모아서
 <code>Config::build</code>에 슬라이스를 넘기는 대신, 이번에는 <code>env::args</code>로부터
 반환된 반복자의 소유권을 <code>Config::build</code>로 직접 전달하고
 있습니다.</p>
 <p>다음으로는 <code>Config::build</code>의 정의를 업데이트할 필요가 있습니다. 여러분의
-I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, Listing 13-19와 같이
+I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같이
 <code>Config::build</code>의 시그니처를 변경합시다. 함수 본문을 업데이트해야 하기
 때문이 여전히 컴파일 되지 않습니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">use std::env;
 </span><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
@@ -444,7 +444,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, Listing 13-19와 �
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 13-19: 반복자를 받도록 <code>Config::build</code>의 시그니처
+<p><span class="caption">예제 13-19: 반복자를 받도록 <code>Config::build</code>의 시그니처
 업데이트하기</span></p>
 <p><code>env::args</code> 함수에 대한 표준 라이브러리 문서에는 반환되는 반복자의
 타입이 <code>std::env::Args</code>이며, 이 타입은 <code>Iterator</code> 트레잇을 구현하고
@@ -461,8 +461,8 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, Listing 13-19와 �
 <h4 id="인덱싱-대신-iterator-트레잇-메서드-사용하기"><a class="header" href="#인덱싱-대신-iterator-트레잇-메서드-사용하기">인덱싱 대신 <code>Iterator</code> 트레잇 메서드 사용하기</a></h4>
 <p>다음으로 <code>Config::build</code>의 본문을 수정하겠습니다. <code>args</code>가 <code>Iterator</code> 트레잇을
 구현하고 있으므로, 여기에 <code>next</code> 메서드를 호출할 수 있다는 것을 알고 있지요!
-Listing 13-20은 Listing 12-23의 코드를 <code>next</code> 메서드를 사용하여 업데이트한 것입니다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+예제 13-20은 예제 12-23의 코드를 <code>next</code> 메서드를 사용하여 업데이트한 것입니다:</p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">use std::env;
 </span><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
@@ -574,7 +574,7 @@ Listing 13-20은 Listing 12-23의 코드를 <code>next</code> 메서드를 사�
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 13-20: 반복자 메서드를 사용하여
+<p><span class="caption">예제 13-20: 반복자 메서드를 사용하여
 <code>Config::build</code>의 본문 변경하기</span></p>
 <p><code>env::args</code> 반환값의 첫번째 값이 프로그램의 이름이라는 점을 기억해둡시다.
 이 첫번째 값은 무시하고 그 다음 값을 얻고자 하므로, 우선 <code>next</code>를 호출한
@@ -585,8 +585,8 @@ Listing 13-20은 Listing 12-23의 코드를 <code>next</code> 메서드를 사�
 <code>file_path</code> 값도 동일하게 처리 합니다.</p>
 <h3 id="반복자-어댑터로-더-간결한-코드-만들기"><a class="header" href="#반복자-어댑터로-더-간결한-코드-만들기">반복자 어댑터로 더 간결한 코드 만들기</a></h3>
 <p>I/O 프로젝트의 <code>search</code> 함수에도 반복자의 장점을 활용할 수 있는데,
-Listing 12-19의 코드가 Listing 13-21에 재현되어 있습니다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+예제 12-19의 코드가 예제 13-21에 재현되어 있습니다:</p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">
@@ -641,15 +641,15 @@ Listing 12-19의 코드가 Listing 13-21에 재현되어 있습니다:</p>
 </span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 13-21: Listing 12-19의 <code>search</code>
+<p><span class="caption">예제 13-21: 예제 12-19의 <code>search</code>
 함수 구현</span></p>
 <p>반복자 어댑터 메서드를 사용하면 이 코드를 더 간결한 방식으로 작성할 수 있습니다.
 이렇게 하면 변경 가능한 중간 <code>results</code> 벡터를 만드는 것도 회피할 수 있게 해줍니다.
 함수형 프로그래밍 스타일은 더 명확한 코드를 만들기 위해 변경 가능한 상태의 양을
 최소화하는 것을 선호합니다. 가변 상태를 제거하면 추후에 검색을 병렬로 수행하도록 하는
 향상이 가능해지는데, 이는 <code>results</code> 벡터에 대한 동시 접근을 관리하지 않아도 되기
-때문입니다. Listing 13-22는 이러한 변경을 보여줍니다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+때문입니다. 예제 13-22는 이러한 변경을 보여줍니다:</p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::env;
 </span><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
@@ -756,10 +756,10 @@ Listing 12-19의 코드가 Listing 13-21에 재현되어 있습니다:</p>
 </span><span class="boring">        );
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 13-22: <code>search</code> 함수 구현에서 반복자 어댑터
+<p><span class="caption">예제 13-22: <code>search</code> 함수 구현에서 반복자 어댑터
 메서드 사용하기</span></p>
 <p><code>search</code> 함수의 목적은 <code>query</code>를 포함하는 <code>contents</code>의 모든 라인을 반환하는
-것임을 상기합시다. Listing 13-16의 <code>filter</code> 예제와 유사하게, 이 코드는
+것임을 상기합시다. 예제 13-16의 <code>filter</code> 예제와 유사하게, 이 코드는
 <code>line.contains(query)</code>이 <code>true</code>를 반환하는 라인들만 유지하기 위해서
 <code>filter</code> 어댑터를 사용 합니다. 그런 다음 <code>collect</code>를 사용하여 매칭된 라인들을
 모아 새로운 벡터로 만듭니다. 훨씬 단순하군요! 마찬가지로
@@ -767,7 +767,7 @@ Listing 12-19의 코드가 Listing 13-21에 재현되어 있습니다:</p>
 해보셔도 됩니다.</p>
 <h3 id="루프와-반복자-중-선택하기"><a class="header" href="#루프와-반복자-중-선택하기">루프와 반복자 중 선택하기</a></h3>
 <p>그렇다면 여러분의 코드에서 어떤 스타일을 선택하는 것이 좋은지와 그 이유에 대한
-질문이 논리적으로 뒤따르겠지요: Listing 13-21에 있는 원래 구현과 Listing 13-29에
+질문이 논리적으로 뒤따르겠지요: 예제 13-21에 있는 원래 구현과 예제 13-29에
 있는 반복자를 사용하는 버전 중 어떤 것이 좋을까요? 대부분의 러스트 프로그래머는
 반복자 스타일을 선호 합니다. 처음 사용하기는 다소 어렵습니다만, 다양한 반복자
 어댑터와 어떤 일을 하는지에 대해 일단 감을 잡으면 반복자들을 이해하기

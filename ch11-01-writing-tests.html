@@ -185,7 +185,7 @@ $ cd adder
 </code></pre>
 <p><code>adder</code> 라이브러리의 <em>src/lib.rs</em> 파일 내용은
 다음과 같습니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <!-- manual-regeneration
 cd listings/ch11-writing-automated-tests
 rm -rf listing-11-01
@@ -203,7 +203,7 @@ mod tests {
         assert_eq!(result, 4);
     }
 }</code></pre>
-<p><span class="caption">Listing 11-1: <code>cargo new</code> 명령어로 자동 생성된
+<p><span class="caption">예제 11-1: <code>cargo new</code> 명령어로 자동 생성된
 테스트 모듈과 함수</span></p>
 <p>맨 위 두 줄은 무시하고 함수에 집중합시다. <code>#[test]</code> 어노테이션을 주목해주세요:
 이 속성은 해당 함수가 테스트 함수임을 표시하며, 테스트 실행기는 이 표시를
@@ -215,7 +215,7 @@ mod tests {
 일반적인 테스트 형식 예제로서 제공됩니다. 한번 테스트를 실행해 이 테스트가
 통과되는지 확인해보죠.</p>
 <p><code>cargo test</code> 명령어는 프로젝트 내 모든 테스트를 실행합니다.
-결과는 Listing 11-2처럼 나타납니다.</p>
+결과는 예제 11-2처럼 나타납니다.</p>
 <pre><code class="language-console">$ cargo test
    Compiling adder v0.1.0 (file:///projects/adder)
     Finished test [unoptimized + debuginfo] target(s) in 0.57s
@@ -233,7 +233,7 @@ running 0 tests
 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
 </code></pre>
-<p><span class="caption">Listing 11-2: 자동 생성된 테스트
+<p><span class="caption">예제 11-2: 자동 생성된 테스트
 실행 결과</span></p>
 <p>카고가 테스트를 컴파일하고 실행했습니다. <code>running 1 test</code> 줄이
 보입니다. 그 다음 줄에는 생성된 테스트 함수의 이름 <code>it_works</code> 와 테스트
@@ -259,7 +259,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 지금은 일단 <code>Doc-tests</code> 출력을 무시하겠습니다.</p>
 <p>우리의 요구사항에 맞춰서 테스트 커스터마이징을 시작해봅시다. 먼저 다음과 같이
 <code>it_works</code> 함수의 이름을 <code>exploration</code> 같은 다른 이름으로 변경해봅시다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">#[cfg(test)]
 mod tests {
     #[test]
@@ -290,9 +290,9 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 테스트 함수 내에서 패닉이 발생하면 테스트는 실패합니다. 각각의 테스트는
 새로운 스레드에서 실행되며, 메인 스레드에서 테스트 스레드가 죽은 것을
 알게 되면 해당 테스트는 실패한 것으로 처리됩니다. 9장에서, 가장 쉽게 패닉을
-일으키는 방법은 <code>panic</code> 매크로를 호출하는 것이라고 이야기 했습니다. Listing 11-3처럼
+일으키는 방법은 <code>panic</code> 매크로를 호출하는 것이라고 이야기 했습니다. 예제 11-3처럼
 <em>src/lib.rs</em> 파일에 <code>another</code> 라는 테스트를 새로 추가해봅시다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust panics noplayground">#[cfg(test)]
 mod tests {
     #[test]
@@ -305,9 +305,9 @@ mod tests {
         panic!(&quot;Make this test fail&quot;);
     }
 }</code></pre>
-<p><span class="caption">Listing 11-3: <code>panic!</code> 매크로를 호출하여 실패하도록 만든
+<p><span class="caption">예제 11-3: <code>panic!</code> 매크로를 호출하여 실패하도록 만든
 테스트 추가</span></p>
-<p><code>cargo test</code>를 다시 실행해보죠. 출력 결과는 Listing 11-4처럼
+<p><code>cargo test</code>를 다시 실행해보죠. 출력 결과는 예제 11-4처럼
 <code>exploration</code> 테스트는 통과하고 <code>another</code> 테스트는 실패했다고 나타날 겁니다.</p>
 <pre><code class="language-console">$ cargo test
    Compiling adder v0.1.0 (file:///projects/adder)
@@ -332,7 +332,7 @@ test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; 
 
 error: test failed, to rerun pass `--lib`
 </code></pre>
-<p><span class="caption">Listing 11-4: 테스트 하나는 통과하고 다른 하나는 실패했을 때의
+<p><span class="caption">예제 11-4: 테스트 하나는 통과하고 다른 하나는 실패했을 때의
 테스트 결과</span></p>
 <p><code>test tests::another</code> 줄은 <code>ok</code>가 아니라 <code>FAILED</code> 로 표시됩니다.
 개별 결과와 요약 사이에 새로운 절이 두 개 나타났네요:
@@ -355,10 +355,10 @@ error: test failed, to rerun pass `--lib`
 테스트는 통과합니다. <code>false</code> 값일 경우, <code>assert!</code> 매크로는 <code>panic!</code> 매크로를
 호출하여 테스트는 실패하도록 만듭니다. 우리가 작성한 코드가 의도대로 기능하는지
 검사할 때 <code>assert!</code> 매크로를 유용하게 사용할 수 있습니다.</p>
-<p>5장 Listing 5-15에서 <code>Rectangle</code> 구조체랑 <code>can_hold</code> 메서드를 사용했었죠.
-(Listing 11-5로 다시 보여드립니다.) 이 코드를 <em>src/lib.rs</em> 파일에
+<p>5장 예제 5-15에서 <code>Rectangle</code> 구조체랑 <code>can_hold</code> 메서드를 사용했었죠.
+(예제 11-5로 다시 보여드립니다.) 이 코드를 <em>src/lib.rs</em> 파일에
 작성하고, 그 다음 <code>assert!</code> 매크로로 테스트를 작성해봅시다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">#[derive(Debug)]
 struct Rectangle {
     width: u32,
@@ -370,14 +370,14 @@ impl Rectangle {
         self.width &gt; other.width &amp;&amp; self.height &gt; other.height
     }
 }</code></pre>
-<p><span class="caption">Listing 11-5: 5장 <code>Rectangle</code> 구조체와
+<p><span class="caption">예제 11-5: 5장 <code>Rectangle</code> 구조체와
 <code>can_hold</code> 메서드</span></p>
 <p><code>can_hold</code> 메서드는 Boolean 값을 반환하니
 <code>assert</code> 매크로 사용 예시로 쓰기에 딱 알맞습니다.
-Listing 11-6는 <code>can_hold</code> 메서드를 시험하는 테스트를 작성한 모습입니다.
+예제 11-6는 <code>can_hold</code> 메서드를 시험하는 테스트를 작성한 모습입니다.
 너비 8, 높이 7 <code>Rectangle</code> 인스턴스를 생성하고,
 이 인스턴스는 너비 5, 높이 1 <code>Rectangle</code> 인스턴스를 포함할 수 있음을 단언합니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
@@ -408,7 +408,7 @@ mod tests {
         assert!(larger.can_hold(&amp;smaller));
     }
 }</code></pre>
-<p><span class="caption">Listing 11-6: 큰 사각형이 작은 사각형을 정말로
+<p><span class="caption">예제 11-6: 큰 사각형이 작은 사각형을 정말로
 포함할 수 있는지 검사하는 <code>can_hold</code> 메서드 테스트</span></p>
 <p><code>tests</code> 모듈에 <code>use super::*;</code> 줄이 추가되었습니다.
 <code>tests</code> 모듈 또한 7장
@@ -441,7 +441,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </code></pre>
 <p>통과됐네요! 이번에는 작은 사각형이 큰 사각형을 포함할 수 없음을
 단언하는 테스트를 추가해봅시다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
@@ -595,9 +595,9 @@ error: test failed, to rerun pass `--lib`
 <em>실패 사유</em> 를 더 알기 쉽게 보여줍니다.
 <code>assert!</code> 매크로는 <code>==</code> 표현식이 <code>false</code> 값임을 알려줄 뿐,
 어떤 값으로 인해 <code>false</code> 값이 나왔는지 출력하지는 않습니다.</p>
-<p>Listing 11-7은 매개변수에 <code>2</code>를 더하는 <code>add_two</code> 함수를 작성한 다음,
+<p>예제 11-7은 매개변수에 <code>2</code>를 더하는 <code>add_two</code> 함수를 작성한 다음,
 <code>assert_eq!</code> 매크로를 이용해 테스트하는 예제입니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn add_two(a: i32) -&gt; i32 {
     a + 2
 }
@@ -611,7 +611,7 @@ mod tests {
         assert_eq!(4, add_two(2));
     }
 }</code></pre>
-<p><span class="caption">Listing 11-7: <code>assert_eq!</code> 매크로를 이용한
+<p><span class="caption">예제 11-7: <code>assert_eq!</code> 매크로를 이용한
 <code>add_two</code> 함수 테스트</span></p>
 <p>테스트를 통과하는지 확인해봅시다!</p>
 <pre><code class="language-console">$ cargo test
@@ -702,7 +702,7 @@ error: test failed, to rerun pass `--lib`
 여러분이 직접 정의한 구조체나 열거형에는 <code>PartialEq</code> 트레잇을 구현하여
 해당 타입의 값이 같음을 단언할 수 있도록 할 필요가 있습니다. 또한
 단언 실패 시 값이 출력될 수 있도록 <code>Debug</code> 트레잇도 구현해야 합니다.
-5장 Listing 5-12에서 설명했듯 두 트레잇 모두 파생 가능한 트레잇이기 때문에,
+5장 예제 5-12에서 설명했듯 두 트레잇 모두 파생 가능한 트레잇이기 때문에,
 구조체, 열거형 정의에 <code>#[derive(PartialEq, Debug)]</code>를 어노테이션하는것이 일반적입니다.
 이에 대한 추가 내용 및 파생 가능한 나머지 트레잇은
 부록 C <a href="appendix-03-derivable-traits.html">“Derivable Traits,”</a><!-- ignore -->를 참고해주세요.</p>
@@ -719,7 +719,7 @@ error: test failed, to rerun pass `--lib`
 무엇인지 알아내기 더 수월해지죠.</p>
 <p>예시로, 이름을 불러 사람을 환영하는 함수가 있다고 가정해봅시다.
 함수에 전달한 이름이 출력 내에 존재하는지 확인하는 테스트를 작성하고자 합니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn greeting(name: &amp;str) -&gt; String {
     format!(&quot;Hello {}!&quot;, name)
 }
@@ -829,7 +829,7 @@ error: test failed, to rerun pass `--lib`
 무엇이 달라졌는지 알 수 있어, 디버깅하는 데 도움이 됩니다.</p>
 <h3 id="should_panic-매크로로-패닉-발생-검사하기"><a class="header" href="#should_panic-매크로로-패닉-발생-검사하기"><code>should_panic</code> 매크로로 패닉 발생 검사하기</a></h3>
 <p>반환값을 검사하는 것에 더하여, 코드가 우리의 예상대로 에러 조건을
-잘 처리하는지 검사하는 것도 중요합니다. 예를 들어 9장의 Listing 9-10에서
+잘 처리하는지 검사하는 것도 중요합니다. 예를 들어 9장의 예제 9-10에서
 만들었던 <code>Guess</code> 타입을 생각해보세요. <code>Guess</code> 타입을 사용하는 다른 코드는
 <code>Guess</code> 인스턴스가 1에서 100사이 값만 갖는다는 보장에 의존적입니다.
 이런 경우, 범위를 벗어난 값으로 <code>Guess</code> 인스턴스를 만들면
@@ -837,9 +837,9 @@ error: test failed, to rerun pass `--lib`
 <p>패닉 검사 테스트 함수에는 <code>should_panic</code> 속성을 추가합니다.
 이 테스트는 내부에서 패닉이 발생해야 통과되고,
 패닉이 발생하지 않으면 실패합니다.</p>
-<p>Listing 11-8은 <code>Guess::new</code>의 에러 조건이 의도대로 작동하는지
+<p>예제 11-8은 <code>Guess::new</code>의 에러 조건이 의도대로 작동하는지
 검사하는 테스트를 보여줍니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub struct Guess {
     value: i32,
 }
@@ -864,7 +864,7 @@ mod tests {
         Guess::new(200);
     }
 }</code></pre>
-<p><span class="caption">Listing 11-8: <code>panic!</code> 발생
+<p><span class="caption">예제 11-8: <code>panic!</code> 발생
 테스트</span></p>
 <p><code>#[should_panic]</code> 속성은 <code>#[test]</code> 속성과
 적용할 함수 사이에 위치시켰습니다.
@@ -913,7 +913,7 @@ impl Guess {
 </span><span class="boring">        Guess::new(200);
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p>Listing 11-8 테스트를 실행하면 다음과 같이 실패합니다.</p>
+<p>예제 11-8 테스트를 실행하면 다음과 같이 실패합니다.</p>
 <pre><code class="language-console">$ cargo test
    Compiling guessing_game v0.1.0 (file:///projects/guessing_game)
     Finished test [unoptimized + debuginfo] target(s) in 0.62s
@@ -942,10 +942,10 @@ error: test failed, to rerun pass `--lib`
 <code>should_panic</code> 테스트는 통과할 것입니다. <code>should_panic</code>
 속성에 <code>expected</code> 매개변수를 추가해, 포함되어야 하는 실패
 메세지를 지정하면 더 꼼꼼한 <code>should_panic</code> 테스트를 작성할
-수 있습니다. Listing 11-9는 <code>new</code> 함수에서 값이 너무 작은
+수 있습니다. 예제 11-9는 <code>new</code> 함수에서 값이 너무 작은
 경우와 큰 경우에 서로 다른 메세지로 <code>panic!</code>을 발생시키도록
 수정한 <code>Guess</code> 코드입니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">pub struct Guess {
 </span><span class="boring">    value: i32,
 </span><span class="boring">}
@@ -980,7 +980,7 @@ mod tests {
         Guess::new(200);
     }
 }</code></pre>
-<p><span class="caption">Listing 11-9: 특정한 부분 문자열을 포함하는 패닉 메세지를
+<p><span class="caption">예제 11-9: 특정한 부분 문자열을 포함하는 패닉 메세지를
 사용한 <code>panic!</code>에 대한 테스트</span></p>
 <p><code>should_panic</code> 속성의 <code>expected</code> 매개변수 값이
 <code>Guess::new</code> 함수에서 발생한 패닉 메세지 문자열의 일부이므로 테스트는 통과합니다.
@@ -1057,7 +1057,7 @@ error: test failed, to rerun pass `--lib`
 이제 우린 이 메세지를 단서로 버그를 찾아낼 수 있습니다!</p>
 <h3 id="resultt-e를-이용한-테스트"><a class="header" href="#resultt-e를-이용한-테스트"><code>Result&lt;T, E&gt;</code>를 이용한 테스트</a></h3>
 <p>여태까지는 실패 시 패닉을 발생시키는 테스트만 작성했습니다. 테스트는
-<code>Result&lt;T, E&gt;</code>를 사용해 작성할 수도 있습니다. 다음은 Listing 11-1 테스트를
+<code>Result&lt;T, E&gt;</code>를 사용해 작성할 수도 있습니다. 다음은 예제 11-1 테스트를
 <code>Result&lt;T, E&gt;</code>를 사용하도록 수정한 예시입니다. 패닉을 발생시키는 대신 <code>Err</code>을 반환합니다.</p>
 <pre><code class="language-rust noplayground">#[cfg(test)]
 mod tests {

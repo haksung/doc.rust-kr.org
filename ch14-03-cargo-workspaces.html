@@ -173,7 +173,7 @@ $ cd add
 <code>[workspace]</code> 절로 시작하여 바이너리 크레이트 패키지에 대한 경로를
 명시하는 방식으로 이 작업공간에 멤버를 추가할 것입니다; 지금의 경우
 해당 경로는 <em>adder</em>입니다:</p>
-<p><span class="filename">Filename: Cargo.toml</span></p>
+<p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[workspace]
 
 members = [
@@ -215,7 +215,7 @@ copy output below
 <p>다음으로 다른 멤버 패키지를 작업공간에 생성하여 <code>add_one</code>라고 이름을
 붙입시다. 최상위 <em>Cargo.toml</em>을 수정하여 <code>members</code> 리스트에
 <em>add_one</em> 경로를 지정하세요:</p>
-<p><span class="filename">Filename: Cargo.toml</span></p>
+<p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[workspace]
 
 members = [
@@ -247,14 +247,14 @@ copy output below
 └── target
 </code></pre>
 <p><em>add_one/src/lib.rs</em> 파일에 <code>add_one</code> 함수를 추가합시다:</p>
-<p><span class="filename">Filename: add_one/src/lib.rs</span></p>
+<p><span class="filename">파일명: add_one/src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn add_one(x: i32) -&gt; i32 {
     x + 1
 }</code></pre>
 <p>이제 바이너리를 가지고 있는 <code>adder</code> 패키지와 이것이 의존하는 라이브러리를 갖고 있는
 <code>add_one</code> 패키지를 갖추었습니다. 먼저 <em>adder/Cargo.toml</em>에 <code>add_one</code>의 경로
 의존성을 추가할 필요가 있겠습니다.</p>
-<p><span class="filename">Filename: adder/Cargo.toml</span></p>
+<p><span class="filename">파일명: adder/Cargo.toml</span></p>
 <pre><code class="language-toml">[dependencies]
 add_one = { path = &quot;../add_one&quot; }
 </code></pre>
@@ -262,16 +262,16 @@ add_one = { path = &quot;../add_one&quot; }
 의존성 관계에 대해 명시할 필요가 있습니다.</p>
 <p>다음으로 <code>adder</code> 크레이트에서 (<code>add_one</code> 크레이트에 있는) <code>add_one</code> 함수를
 사용해봅시다. <em>adder/src/main.rs</em> 파일을 열어서 제일 윗 줄에 <code>use</code>을 추가하여
-스코프로 새로운 <code>add_one</code> 라이브러리를 가져옵시다. 그런 다음 Listing 14-7과
+스코프로 새로운 <code>add_one</code> 라이브러리를 가져옵시다. 그런 다음 예제 14-7과
 같이 <code>main</code> 함수를 수정하여 <code>add_one</code> 함수를 호출하세요.</p>
-<p><span class="filename">Filename: adder/src/main.rs</span></p>
+<p><span class="filename">파일명: adder/src/main.rs</span></p>
 <pre><code class="language-rust ignore">use add_one;
 
 fn main() {
     let num = 10;
     println!(&quot;Hello, world! {num} plus one is {}!&quot;, add_one::add_one(num));
 }</code></pre>
-<p><span class="caption">Listing 14-7: <code>adder</code> 크레이트에서 <code>add_one</code> 라이브러리
+<p><span class="caption">예제 14-7: <code>adder</code> 크레이트에서 <code>add_one</code> 라이브러리
 크레이트 사용하기</span></p>
 <p>최상위 <em>add</em> 디렉토리에서 <code>cargo build</code>를 실행하여 작업공간을
 빌드해 봅시다!</p>
@@ -314,7 +314,7 @@ Hello, world! 10 plus one is 11!
 * ch02-00-guessing-game-tutorial.md
 * ch07-04-bringing-paths-into-scope-with-the-use-keyword.md
 -->
-<p><span class="filename">Filename: add_one/Cargo.toml</span></p>
+<p><span class="filename">파일명: add_one/Cargo.toml</span></p>
 <pre><code class="language-toml">[dependencies]
 rand = &quot;0.8.5&quot;
 </code></pre>
@@ -374,7 +374,7 @@ error[E0432]: unresolved import `rand`
 <h4 id="작업공간에-테스트-추가하기"><a class="header" href="#작업공간에-테스트-추가하기">작업공간에 테스트 추가하기</a></h4>
 <p>또다른 발전을 위해 <code>add_one::add_one</code> 함수의 테스트를 <code>add_one</code>
 크레이트 내에 추가해봅시다:</p>
-<p><span class="filename">Filename: add_one/src/lib.rs</span></p>
+<p><span class="filename">파일명: add_one/src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn add_one(x: i32) -&gt; i32 {
     x + 1
 }

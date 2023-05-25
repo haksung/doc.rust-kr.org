@@ -178,9 +178,9 @@
 그런 다음 <a href="ch11-01-writing-tests.html#the-anatomy-of-a-test-function">11장</a><!-- ignore -->에서 그랬던 것처럼 <em>src/lib.rs</em>에
 <code>test</code> 모듈과 함께 테스트 함수를 추가하세요. 테스트 함수는 <code>search</code> 함수가
 가져야할 동작을 특정합니다: 즉 질의값와 검색할 텍스트를 입력받아서
-텍스트로부터 질의값을 담고 있는 라인들만 반환하는 것이죠. Listing 12-15는
+텍스트로부터 질의값을 담고 있는 라인들만 반환하는 것이죠. 예제 12-15는
 이러한 테스트를 보여주는데, 아직 컴파일되진 않을 것입니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">
@@ -223,7 +223,7 @@ Pick three.&quot;;
         assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
     }
 }</code></pre>
-<p><span class="caption">Listing 12-15: 구현하고자 하는 <code>search</code> 함수를 위한
+<p><span class="caption">예제 12-15: 구현하고자 하는 <code>search</code> 함수를 위한
 실패하는 테스트 만들기</span></p>
 <p>이 테스트는 문자열 <code>&quot;duct&quot;</code>를 검색합니다. 검색하는 텍스트는 세 줄인데,
 그중 한줄만이 <code>&quot;duct&quot;</code>를 가지고 있습니다 (앞의 큰 따움표 뒤에 붙은 역슬래시는
@@ -232,11 +232,11 @@ Pick three.&quot;;
 라인만 가지고 있을 것이라고 단언해 두었습니다.</p>
 <p>이 테스트는 아직 컴파일도 되지 않을 것이므로 테스트를 실행시켜서 실패하는
 걸 지켜볼 수는 없습니다: 아직 <code>search</code> 함수가 없으니까요! TDD 원칙에 따라서,
-Listing 12-16과 같이 항상 빈 벡터를 반환하는 <code>search</code> 함수 정의부를
+예제 12-16과 같이 항상 빈 벡터를 반환하는 <code>search</code> 함수 정의부를
 추가하는 것으로 컴파일과 테스트가 동작하기에 딱 충분한 코드만 집어넣어
 보겠습니다. 그러면 테스트는 컴파일되고, 반환된 빈 벡터가 <code>&quot;safe, fast, productive.&quot;</code> 라인을 가지고 있는 벡터와 일치하지 않으므로 실패해야
 합니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">
@@ -283,7 +283,7 @@ Listing 12-16과 같이 항상 빈 벡터를 반환하는 <code>search</code> �
 </span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 12-16: 테스트가 딱 컴파일만 될 정도의
+<p><span class="caption">예제 12-16: 테스트가 딱 컴파일만 될 정도의
 <code>search</code> 함수 정의하기</span></p>
 <p><code>search</code>의 시그니처에는 명시적 라이프타임 <code>'a</code>가 정의될 필요가 있고
 이 라이프타임이 <code>contents</code> 인자와 반환값에 사용되고 있음을 주목하세요.
@@ -366,9 +366,9 @@ error: test failed, to rerun pass `--lib`
 <p>라인들에 대한 반복을 시작으로 각 단계 별로 작업해봅시다.</p>
 <h4 id="lines-메서드로-라인들에-대해-반복하기"><a class="header" href="#lines-메서드로-라인들에-대해-반복하기"><code>lines</code> 메서드로 라인들에 대해 반복하기</a></h4>
 <p>러스트는 문자열의 라인별 반복을 처리하기 위한 유용한 메서드를 제공하는데,
-편리하게도 <code>lines</code>라는 이름이고 Listing 12-17에서 보는 바와 같이 동작합니다.
+편리하게도 <code>lines</code>라는 이름이고 예제 12-17에서 보는 바와 같이 동작합니다.
 아직 컴파일되지 않음을 주의하세요.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">
@@ -417,18 +417,18 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 12-17: <code>contents</code>의 각 줄에 대한 반복
+<p><span class="caption">예제 12-17: <code>contents</code>의 각 줄에 대한 반복
 </span></p>
 <p><code>lines</code> 메서드는 반복자를 반환합니다. 반복자에 대해서는 <a href="ch13-02-iterators.html">13장</a><!-- ignore -->에서
-더 깊이 다루겠습니다만, 여러분은 <a href="ch03-05-control-flow.html#looping-through-a-collection-with-for">Listing 3-5</a><!-- ignore -->에서
+더 깊이 다루겠습니다만, 여러분은 <a href="ch03-05-control-flow.html#looping-through-a-collection-with-for">예제 3-5</a><!-- ignore -->에서
 이런 방식의 반복자 사용을 봤었음을 상기해봅시다. 그때는 어떤 컬렉션 안의 각
 아이템에 대해 어떤 코드를 실행시키기 위해 <code>for</code>과 함께 반복자를 사용했었지요.</p>
 <h4 id="각-라인에서-질의값-검색하기"><a class="header" href="#각-라인에서-질의값-검색하기">각 라인에서 질의값 검색하기</a></h4>
 <p>다음으로는 현재의 라인에 질의 문자열이 들어있는지 검사해 보겠습니다.
 다행히도 이걸 해주는 <code>contains</code>라는 이름의 유용한 메서드가 문자열에
-있습니다! Listing 12-18처럼 <code>search</code> 함수에 <code>contains</code> 메서드 호출을
+있습니다! 예제 12-18처럼 <code>search</code> 함수에 <code>contains</code> 메서드 호출을
 추가하세요. 아직 컴파일되지는 않음을 주의하세요.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">
@@ -479,7 +479,7 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 12-18: 라인이 <code>query</code>의 문자열을 포함하는지
+<p><span class="caption">예제 12-18: 라인이 <code>query</code>의 문자열을 포함하는지
 알아보기 위한 기능 추가하기</span></p>
 <p>이 시점에서는 아직 기능을 쌓아가는 중입니다. 컴파일되기 위해서는
 함수 시그니처에 표시한 것처럼 함수 본문에서 어떤 값을 반환할
@@ -488,8 +488,8 @@ error: test failed, to rerun pass `--lib`
 <p>이 함수를 완성하기 위해서는 반환하고자 하는 매치된 라인들을 저장할 방법이
 필요합니다. 이를 위해서 <code>for</code> 루프 전에 가변 백터를 만들고 <code>line</code>을 이
 벡터에 저장하기 위해 <code>push</code> 메서드를 호출할 수 있겠습니다. <code>for</code> 루프 뒤에는
-Listing 12-19와 같이 이 벡터를 반환합니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+예제 12-19와 같이 이 벡터를 반환합니다.</p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">
@@ -544,7 +544,7 @@ Listing 12-19와 같이 이 벡터를 반환합니다.</p>
 </span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 12-19: 매치된 라인들을 저장하여 반환될 수
+<p><span class="caption">예제 12-19: 매치된 라인들을 저장하여 반환될 수
 있게 하기</span></p>
 <p>이제 <code>search</code> 함수는 <code>query</code>를 담고 있는 라인들만 반환해야 하고
 테스트는 통과되어야 합니다. 테스트를 실행해봅시다:</p>
@@ -583,7 +583,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <code>search</code>를 호출할 필요가 있겠습니다. <code>search</code> 함수에 <code>config.query</code> 값과
 <code>run</code>이 읽어들인 <code>contents</code>를 넘겨줘야 합니다. 그러면 <code>run</code>은
 <code>search</code>가 반환한 각 라인을 출력할 것입니다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
 </span><span class="boring">

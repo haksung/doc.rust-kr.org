@@ -164,7 +164,7 @@
     PATTERN =&gt; EXPRESSION,
 }
 </code></pre>
-<p>예를 들면 아래는 Listing 6-5에서 변수 <code>x</code>에 있는 <code>Option&lt;i32&gt;</code> 값을
+<p>예를 들면 아래는 예제 6-5에서 변수 <code>x</code>에 있는 <code>Option&lt;i32&gt;</code> 값을
 매칭시키는 <code>match</code> 표현식입니다:</p>
 <pre><code class="language-rust ignore">match x {
     None =&gt; None,
@@ -188,16 +188,16 @@
 방법으로써 <code>if let</code> 표현식을 사용하는 법을 다루었습니다. 추가적으로
 <code>if let</code>은 <code>if let</code>의 패턴에 값이 매칭되지 않을 때 실행되는
 코드가 포함된 <code>else</code>를 가질 수 있습니다.</p>
-<p>Listing 18-1은 <code>if let</code>, <code>else if</code>, <code>else if let</code> 표현식을 섞어서
+<p>예제 18-1은 <code>if let</code>, <code>else if</code>, <code>else if let</code> 표현식을 섞어서
 매칭할 수 있음을 알려주는 코드입니다. 그렇게 하면 패턴과 비교할
 값을 하나만 표현할 수 있는 <code>match</code> 표현식보다 더 유연하게 사용할
 수 있습니다. 또한 러스트에서는 일련의 <code>if let</code>, <code>else if</code>,
 <code>else if let</code> 갈래들의 조건식이 서로 관련될 필요도 없습니다.</p>
-<p>Listing 18-1의 코드는 여러 개의 조건을 연속적으로 검사하여
+<p>예제 18-1의 코드는 여러 개의 조건을 연속적으로 검사하여
 배경의 색상을 결정합니다. 이 예제에서는 실제 프로그램에서
 사용자 입력으로 받을 수 있는 하드코딩된 값이 들어있는 변수를
 만들었습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let favorite_color: Option&lt;&amp;str&gt; = None;
     let is_tuesday = false;
@@ -217,7 +217,7 @@
         println!(&quot;Using blue as the background color&quot;);
     }
 }</code></pre></pre>
-<p><span class="caption">Listing 18-1: <code>if let</code>, <code>else if</code>, <code>else if let</code>, <code>else</code>의
+<p><span class="caption">예제 18-1: <code>if let</code>, <code>else if</code>, <code>else if let</code>, <code>else</code>의
 혼합</span></p>
 <p>사용자가 즐겨찾는 색을 지정한 경우 그 색상이 배경으로 사용됩니다.
 즐겨찾는 색상이 지정되지 않았고 오늘이 화요일이면, 배경색은 녹색이
@@ -241,8 +241,8 @@
 수 있는 논리적 버그를 경고해주지 않습니다.</p>
 <h3 id="while-let-조건-루프"><a class="header" href="#while-let-조건-루프"><code>while let</code> 조건 루프</a></h3>
 <p><code>if let</code>과 구조가 비슷한 <code>while let</code> 조건 루프는 패턴이 계속
-매칭되는 동안 <code>while</code> 루프를 실행할 수 있게 해줍니다. Listing
-18-2에서는 벡터를 스택처럼 사용하여 벡터의 값을 푸시된 역순으로
+매칭되는 동안 <code>while</code> 루프를 실행할 수 있게 해줍니다. 예제 18-2에서는
+벡터를 스택처럼 사용하여 벡터의 값을 푸시된 역순으로
 출력하는 <code>while let</code> 루프를 코딩했습니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let mut stack = Vec::new();
@@ -255,7 +255,7 @@
         println!(&quot;{}&quot;, top);
     }
 <span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 18-2: <code>while let</code>을 사용하여 <code>stack.pop()</code>이
+<p><span class="caption">예제 18-2: <code>while let</code>을 사용하여 <code>stack.pop()</code>이
 <code>Some</code>을 반환하는 한 값을 출력하기</span></p>
 <p>이 예제는 3, 2, 1을 출력합니다. <code>pop</code> 메서드는 벡터에서 마지막 요소를
 가져와서 <code>Some(value)</code>를 반환합니다. 벡터가 비어있다면 <code>pop</code>은 <code>None</code>을
@@ -264,7 +264,7 @@
 사용하여 스택의 모든 요소를 팝할 수 있습니다.</p>
 <h3 id="for-루프"><a class="header" href="#for-루프"><code>for</code> 루프</a></h3>
 <p><code>for</code> 루프에서 키워드 <code>for</code> 바로 뒤에 오는 값은 패턴입니다.
-예를 들어 <code>for x in y</code>에서는 <code>x</code>가 패턴입니다. Listing 18-3은
+예를 들어 <code>for x in y</code>에서는 <code>x</code>가 패턴입니다. 예제 18-3은
 <code>for</code> 루프에서 패턴을 사용하여 <code>for</code> 루프의 일부로서 튜플을
 해체 혹은 분해하는 방법을 보여줍니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
@@ -274,9 +274,9 @@
         println!(&quot;{} is at index {}&quot;, value, index);
     }
 <span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 18-3: <code>for</code> 루프에서 패턴을 사용하여
+<p><span class="caption">예제 18-3: <code>for</code> 루프에서 패턴을 사용하여
 튜플 분해하기</span></p>
-<p>Listing 18-3의 코드는 다음을 출력할 것입니다:</p>
+<p>예제 18-3의 코드는 다음을 출력할 것입니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling patterns v0.1.0 (file:///projects/patterns)
     Finished dev [unoptimized + debuginfo] target(s) in 0.52s
@@ -311,11 +311,11 @@ c is at index 2
 의미의 패턴입니다. <code>x</code>라는 이름이 전체 패턴이므로 이 패턴은 사실상
 “값이 무엇이든간에 전부 변수 <code>x</code>에 바인딩해라”라는 뜻이 됩니다.</p>
 <p>패턴 매칭의 관점에서 <code>let</code> 좀 더 명확하게 보기 위해서, <code>let</code>으로
-튜플을 분해하는 패턴을 사용하는 Listing 18-4을 살펴봅시다.</p>
+튜플을 분해하는 패턴을 사용하는 예제 18-4을 살펴봅시다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let (x, y, z) = (1, 2, 3);
 <span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 18-4: 패턴을 사용해 튜플을 분해하여
+<p><span class="caption">예제 18-4: 패턴을 사용해 튜플을 분해하여
 세 변수를 한번에 만들기</span></p>
 <p>여기서는 튜플을 패턴에 매칭합니다. 러스트는 값 <code>(1, 2, 3)</code>을 패턴
 <code>(x, y, z)</code>와 비교하고 이 값이 패턴과 매치되는지 확인하고, <code>1</code>을
@@ -323,12 +323,12 @@ c is at index 2
 이 안에 있는 세 개의 개별적인 변수 패턴이 중첩된 것으로 생각할 수 있습니다.</p>
 <p>패턴의 요소 개수가 주어진 튜플의 요소 개수와 다르면, 전체
 타입이 일치하지 않아서 컴파일러 에러가 발생합니다. 예를 들어
-Listing 18-5는 세 개의 요소가 있는 튜플을 두 개의 변수로 해체하는
+예제 18-5는 세 개의 요소가 있는 튜플을 두 개의 변수로 해체하는
 시도를 보여주는데, 이는 작동하지 않을 것입니다.</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let (x, y) = (1, 2, 3);
 <span class="boring">}</span></code></pre>
-<p><span class="caption">Listing 18-5: 변수 개수가 튜플의 요소 개수와
+<p><span class="caption">예제 18-5: 변수 개수가 튜플의 요소 개수와
 맞지 않는 부정확한 패턴 구성</span></p>
 <p>이 코드의 컴파일을 시도하면 아래와 같은 타입 에러가 발생합니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -354,7 +354,7 @@ error: could not compile `patterns` due to previous error
 변수를 제거하여 변수 수가 튜플의 요소 개수와 같도록 타입을 일치시키는
 것입니다.</p>
 <h3 id="함수-매개변수"><a class="header" href="#함수-매개변수">함수 매개변수</a></h3>
-<p>함수 매개변수도 패턴이 될 수 있습니다. Listing 18-6의 코드는
+<p>함수 매개변수도 패턴이 될 수 있습니다. 예제 18-6의 코드는
 <code>foo</code>라는 이름의 함수를 선언하고 타입 <code>i32</code>인 <code>x</code>라는 매개변수 하나를
 받는데, 이제 친숙하게 보일 것입니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn foo(x: i32) {
@@ -362,12 +362,12 @@ error: could not compile `patterns` due to previous error
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
-<p><span class="caption">Listing 18-6: 매개변수에서 패턴을 사용하는
+<p><span class="caption">예제 18-6: 매개변수에서 패턴을 사용하는
 함수 시그니처</span></p>
 <p><code>x</code> 부분이 패턴입니다! <code>let</code>에서 했던 것처럼 함수 인자의 튜플을 패턴과
-매치시킬 수 있습니다. Listing 18-7은 함수에 값을 넘길때 튜플의 값을
+매치시킬 수 있습니다. 예제 18-7은 함수에 값을 넘길때 튜플의 값을
 분할합니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn print_coordinates(&amp;(x, y): &amp;(i32, i32)) {
     println!(&quot;Current location: ({}, {})&quot;, x, y);
 }
@@ -376,7 +376,7 @@ fn main() {
     let point = (3, 5);
     print_coordinates(&amp;point);
 }</code></pre></pre>
-<p><span class="caption">Listing 18-7: 튜플을 분해하는 매개변수를 가진
+<p><span class="caption">예제 18-7: 튜플을 분해하는 매개변수를 가진
 함수</span></p>
 <p>이 코드는 <code>Current location: (3, 5)</code>를 출력합니다. 값 <code>&amp;(3, 5)</code>는
 패턴 <code>&amp;(x, y)</code>에 매치되어 <code>x</code>는 <code>3</code>이 되고 <code>y</code>는 <code>5</code>가 됩니다.</p>

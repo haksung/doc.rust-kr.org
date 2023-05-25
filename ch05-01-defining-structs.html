@@ -160,8 +160,8 @@
 이때 구조체 이름은 함께 묶을 데이터의 의미에 맞도록 지어주세요.
 이후 중괄호 안에서는 필드(<em>field</em>)라 하는
 각 구성 요소의 이름 및 타입을 정의합니다.
-다음 Listing 5-1은 사용자 계정 정보를 저장하는 구조체입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+다음 예제 5-1은 사용자 계정 정보를 저장하는 구조체입니다.</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct User {
     active: bool,
     username: String,
@@ -170,7 +170,7 @@
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
-<p><span class="caption">Listing 5-1: 사용자 계정 정보를 저장하는 <code>User</code> 구조체 정의</span></p>
+<p><span class="caption">예제 5-1: 사용자 계정 정보를 저장하는 <code>User</code> 구조체 정의</span></p>
 <p>정의한 구조체를 사용하려면 해당 구조체 내
 각 필드의 값을 정해 인스턴스(<em>instance</em>)를 생성해야 합니다.
 인스턴스를 생성하려면 먼저 구조체의 이름을 적고, 중괄호를 열고,
@@ -178,9 +178,9 @@
 이때 필드의 순서는 구조체를 정의했을 때와 동일하지 않아도 됩니다.
 요약하자면, 구조체 정의는 대충 해당 구조체에 무엇이 들어갈지를 정해둔 양식이며,
 인스턴스는 거기에 실제 값을 넣은 것이라고 생각하시면 됩니다.
-예시로 확인해 보죠. Listing 5-2 에서 앞서 정의한 <code>User</code> 구조체로
+예시로 확인해 보죠. 예제 5-2 에서 앞서 정의한 <code>User</code> 구조체로
 사용자를 선언해보겠습니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
@@ -196,14 +196,14 @@
         sign_in_count: 1,
     };
 }</code></pre></pre>
-<p><span class="caption">Listing 5-2: <code>User</code> 구조체의
+<p><span class="caption">예제 5-2: <code>User</code> 구조체의
 인스턴스 생성</span></p>
 <p>구조체 내 특정 값은 점(.) 표기법으로 얻어올 수 있습니다. 예를 들어
 사용자의 이메일 주소를 얻어야 한다치면 <code>user1.email</code> 처럼 사용할 수 있죠.
 변경 가능한 인스턴스라면, 같은 방식으로 특정 필드의 값을 변경할 수도 있습니다.
-다음 Listing 5-3 이 변경 가능한 인스턴스의
+다음 예제 5-3 이 변경 가능한 인스턴스의
 <code>email</code> 필드 값을 변경하는 예시입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
@@ -221,16 +221,16 @@
 
     user1.email = String::from(&quot;anotheremail@example.com&quot;);
 }</code></pre></pre>
-<p><span class="caption">Listing 5-3: <code>User</code> 인스턴스의
+<p><span class="caption">예제 5-3: <code>User</code> 인스턴스의
 <code>email</code> 필드 값 변경</span></p>
 <p>가변성은 해당 인스턴스 전체가 지니게 됩니다.
 일부 필드만 변경 가능하도록 만들 수는 없으니, 기억해두시기 바랍니다.
 또한, 구조체도 다른 표현식과 마찬가지로 함수 마지막 표현식에서
 암묵적으로 새 인스턴스를 생성하고 반환할 수 있습니다.</p>
-<p>Listing 5-4 에선 <code>build_user</code> 함수가 사용자 이메일과 이름을 전달 받고,
+<p>예제 5-4 에선 <code>build_user</code> 함수가 사용자 이메일과 이름을 전달 받고,
 <code>acitve</code>, <code>sign_in_count</code>를 각각 <code>true</code>, <code>1</code> 로 설정한
 <code>User</code> 인스턴스를 반환하는 모습을 보여줍니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
@@ -253,7 +253,7 @@
 </span><span class="boring">        String::from(&quot;someusername123&quot;),
 </span><span class="boring">    );
 </span><span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 5-4: 사용자의 이메일과 이름을 전달 받고
+<p><span class="caption">예제 5-4: 사용자의 이메일과 이름을 전달 받고
 <code>User</code> 인스턴스를 반환하는 <code>build_user</code> 함수</span></p>
 <p>특별히 나쁜 부분은 없지만, 매개변수명과 구조체 필드명이
 <code>email</code>, <code>username</code> 으로 동일한데 굳이 반복해서 작성하는 건 귀찮은 감이 있군요.
@@ -262,11 +262,11 @@
 <!-- Old heading. Do not remove or links may break. -->
 <p><a id="using-the-field-init-shorthand-when-variables-and-fields-have-the-same-name"></a></p>
 <h3 id="필드-초기화-축약법-사용하기"><a class="header" href="#필드-초기화-축약법-사용하기">필드 초기화 축약법 사용하기</a></h3>
-<p>Listing 5-4 처럼 변수명과 구조체 필드명이 같을 땐,
+<p>예제 5-4 처럼 변수명과 구조체 필드명이 같을 땐,
 필드 초기화 축약법(<em>field init shorthand</em>)을 사용해서 더 적은 타이핑으로
-같은 기능을 구현할 수 있습니다. 다음 Listing 5-5 는 <code>email</code>, <code>username</code> 을
+같은 기능을 구현할 수 있습니다. 다음 예제 5-5 는 <code>email</code>, <code>username</code> 을
 반복 작성하는 대신 필드 초기화 축약법을 사용한 예제입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
@@ -289,7 +289,7 @@
 </span><span class="boring">        String::from(&quot;someusername123&quot;),
 </span><span class="boring">    );
 </span><span class="boring">}</span></code></pre></pre>
-<p><span class="caption">Listing 5-5: 변수명과 필드명이 같던
+<p><span class="caption">예제 5-5: 변수명과 필드명이 같던
 <code>username</code>, <code>email</code> 에 필드 초기화 축약법을 적용한
 <code>build_user</code> 함수</span></p>
 <p>이번에는 <code>build_user</code> 함수에서
@@ -301,10 +301,10 @@
 <p>다른 인스턴스에서 대부분의 값을 유지한 채로 몇 개의 값만 바꿔
 새로운 인스턴스를 생성하게 되는 경우가 간혹 있습니다.
 그럴 때 유용한 게 바로 구조체 갱신 문법(<em>struct update syntax</em>)입니다.</p>
-<p>먼저 Listing 5-6에서는 구조체 갱신 문법을 사용하지 않고 새로운 <code>User</code>
+<p>먼저 예제 5-6에서는 구조체 갱신 문법을 사용하지 않고 새로운 <code>User</code>
 인스턴스 <code>user2</code>를 만드는 방법을 보여줍니다. <code>email</code>에는 새로운 값을
-설정했지만 나머지 값들에는 Listing 5-2에서 만들었던 <code>user1</code>의 값과 동일합니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+설정했지만 나머지 값들에는 예제 5-2에서 만들었던 <code>user1</code>의 값과 동일합니다.</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
@@ -329,12 +329,12 @@
         sign_in_count: user1.sign_in_count,
     };
 }</code></pre></pre>
-<p><span class="caption">Listing 5-6: <code>user1</code>의 값 중 하나를 달리한
+<p><span class="caption">예제 5-6: <code>user1</code>의 값 중 하나를 달리한
 새로운 <code>User</code> 인스턴스를 생성</span></p>
-<p>구조체 갱신 문법을 사용하면 다음 Listing 5-7처럼 더 적은 코드로
+<p>구조체 갱신 문법을 사용하면 다음 예제 5-7처럼 더 적은 코드로
 같은 효과를 낼 수 있습니다. <code>..</code>은  따로 명시된 필드를 제외한
 나머지 필드를, 주어진 인스턴스의 필드 값으로 설정하는 구문입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
@@ -357,10 +357,10 @@
         ..user1
     };
 }</code></pre></pre>
-<p><span class="caption">Listing 5-7: 새로운 <code>email</code> 값으로 <code>User</code> 구조체의
+<p><span class="caption">예제 5-7: 새로운 <code>email</code> 값으로 <code>User</code> 구조체의
 인스턴스를 생성하되, 나머지 필드는 구조체 갱신 문법을 이용해 <code>user1</code>의 필드
 값을 사용하기</span></p>
-<p>Listing 5-7의 코드 또한 <code>email</code> 값이 다른 <code>user2</code> 인스턴스를
+<p>예제 5-7의 코드 또한 <code>email</code> 값이 다른 <code>user2</code> 인스턴스를
 생성하지만 <code>username</code>, <code>active</code>, <code>sign_in_count</code>는 <code>user1</code>의
 필드와 같은 값을 갖게 합니다. <code>user1</code>의 값들과 동일한 값들로
 나머지를 채우려면 <code>..user1</code>를 제일 끝에 적어야 하지만,
@@ -387,7 +387,7 @@
 <p>튜플 구조체의 정의는 일반적인 구조체처럼 <code>struct</code> 키워드와 구조체 명으로 시작되나,
 그 뒤에는 타입들로 이루어진 튜플이 따라옵니다. 예시로 살펴볼까요?
 다음은 각각 <code>Color</code>, <code>Point</code> 라는 두 개의 튜플 구조체 정의 및 사용 예시입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
@@ -411,7 +411,7 @@ fn main() {
 어떤 데이터를 저장할 필요는 없을 경우 유용합니다. 트레잇에 대해서는 10장에서
 자세히 다루겠습니다. 아래는 <code>AlwaysEqual</code>이라는 이름의 유닛 구조체를
 선언하고 생성하는 예제입니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">struct AlwaysEqual;
 
 fn main() {
@@ -428,7 +428,7 @@ fn main() {
 구현하는 방법은 10장에서 다룰 것입니다.</p>
 <blockquote>
 <h3 id="구조체-데이터의-소유권"><a class="header" href="#구조체-데이터의-소유권">구조체 데이터의 소유권</a></h3>
-<p>Listing 5-1 의 <code>User</code> 구조체 정의에서는 의도적으로
+<p>예제 5-1 의 <code>User</code> 구조체 정의에서는 의도적으로
 <code>&amp;str</code> 문자열 슬라이스 대신 구조체가 소유권을 갖는 <code>String</code> 타입을 사용했습니다.
 구조체 인스턴스가 유효한 동안 각 인스턴스 내의
 모든 데이터가 유효하도록 만들기 위해서죠.</p>
@@ -437,7 +437,7 @@ fn main() {
 라이프타임을 사용하면 구조체가 존재하는 동안에
 구조체 내 참조자가 가리키는 데이터의 유효함을 보장받을 수 있기 때문이죠.
 만약 라이프타임을 명시하지 않고 참조자를 저장하고자 하면 다음처럼 문제가 발생합니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <!-- CAN'T EXTRACT SEE https://github.com/rust-lang/mdBook/issues/1127 -->
 <pre><code class="language-rust ignore does_not_compile">struct User {
     active: bool,

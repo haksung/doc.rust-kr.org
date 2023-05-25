@@ -212,8 +212,8 @@
 <p>또한 <code>vec!</code> 매크로를 사용하여 두 개의 정수로 이루어진 벡터나 다섯 개의 문자열
 슬라이스로 이루어진 벡터를 만들 수도 있습니다. 값의 개수나 타입을 미리 알 수
 없으므로 함수를 사용하는 것으로는 동일한 작업을 수행할 수 없습니다.</p>
-<p>Listing 19-28은 <code>vec!</code> 매크로의 약간 간소화된 정의를 보여줍니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p>예제 19-28은 <code>vec!</code> 매크로의 약간 간소화된 정의를 보여줍니다.</p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">#[macro_export]
 macro_rules! vec {
     ( $( $x:expr ),* ) =&gt; {
@@ -226,7 +226,7 @@ macro_rules! vec {
         }
     };
 }</code></pre>
-<p><span class="caption">Listing 19-28: 간소화된 버전의 <code>vec!</code> 매크로
+<p><span class="caption">예제 19-28: 간소화된 버전의 <code>vec!</code> 매크로
 정의</span></p>
 <blockquote>
 <p>Note: 표준 라이브러리의 <code>vec!</code> 매크로의 실제 정의에는 정확한 양의
@@ -248,7 +248,7 @@ macro_rules! vec {
 있겠지요.</p>
 <p>매크로 패턴은 값이 아닌 러스트 코드 구조에 대한 매칭을 하기
 때문에 매크로 정의에서 유효한 패턴 문법은 18장에서 다루었던
-패턴 구문과 다릅니다. Listing 19-28의 패턴 조각이 무엇을
+패턴 구문과 다릅니다. 예제 19-28의 패턴 조각이 무엇을
 의미하는지 살펴봅시다; 전체 매크로 패턴 문법은
 <a href="../reference/macros-by-example.html">러스트 레퍼런스 문서</a>를 참조하세요.</p>
 <p>먼저 괄호 한 쌍을 사용하여 전체 패턴을 둘러쌉니다. 달러 기호(<code>$</code>)를
@@ -290,16 +290,16 @@ macro_rules! vec {
 함수형 (function-like) 세 종류가 있으며, 모두 비슷한 방식으로 작동합니다.</p>
 <p>절차적 매크로를 만들 때, 그 정의는 특별한 크레이트 타입을 가진 자신만의
 크레이트에 있어야 합니다. 이는 복잡한 기술적인 이유 때문이고 앞으로는 이러한
-문제를 없애고자 합니다. Listing 19-29에서는 절차적 매크로를 정의하는 방법을
+문제를 없애고자 합니다. 예제 19-29에서는 절차적 매크로를 정의하는 방법을
 보여주는데, 여기서 <code>some_attribute</code>는 특정 매크로 종류를 사용하기 위한
 자리표시자입니다.</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust ignore">use proc_macro;
 
 #[some_attribute]
 pub fn some_name(input: TokenStream) -&gt; TokenStream {
 }</code></pre>
-<p><span class="caption">Listing 19-29: 절차적 매크로 정의
+<p><span class="caption">예제 19-29: 절차적 매크로 정의
 예제</span></p>
 <p>절차적 매크로를 정의하는 함수는 <code>TokenStream</code>을 입력으로 받아서
 <code>TokenStream</code>을 출력으로 생성합니다. <code>TokenStream</code> 타입은 러스트에
@@ -320,9 +320,9 @@ pub fn some_name(input: TokenStream) -&gt; TokenStream {
 타입에 명시하여 <code>hello_macro</code> 함수의 기본 구현을 가져올 수 있도록
 하겠습니다. 기본 구현은 <code>Hello, Macro! My name is TypeName!</code>라고
 출력하는데, 여기서 <code>TypeName</code>은 이 트레잇이 정의된 타입의 이름입니다.
-바꿔 말하면, 다른 프로그래머가 우리의 크레이트를 사용하여 Listing
-19-30과 같은 코드를 작성할 수 있도록 하는 크레이트를 작성할 것입니다.</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+바꿔 말하면, 다른 프로그래머가 우리의 크레이트를 사용하여 예제 19-30과
+같은 코드를 작성할 수 있도록 하는 크레이트를 작성할 것입니다.</p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">use hello_macro::HelloMacro;
 use hello_macro_derive::HelloMacro;
 
@@ -332,14 +332,14 @@ struct Pancakes;
 fn main() {
     Pancakes::hello_macro();
 }</code></pre>
-<p><span class="caption">Listing 19-30: 우리의 절차적 매크로를 사용할 때
+<p><span class="caption">예제 19-30: 우리의 절차적 매크로를 사용할 때
 크레이트 사용자가 작성할 수 있게될 코드</span></p>
 <p>작업을 마치면 이 코드는 <code>Hello, Macro! My name is Pancakes!</code>를 출력할 것입니다.
 첫 번째 단계는 다음과 같이 새로운 라이브러리 크레이트를 만드는 것입니다:</p>
 <pre><code class="language-console">$ cargo new hello_macro --lib
 </code></pre>
 <p>다음은 <code>HelloMacro</code> 트레잇과 그 연관 함수를 정의하는 것입니다:</p>
-<p><span class="filename">Filename: src/lib.rs</span></p>
+<p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub trait HelloMacro {
     fn hello_macro();
 }</code></pre>
@@ -387,7 +387,7 @@ fn main() {
 있습니다. 잠시 후에 보게 되겠지만, <code>syn</code> 및 <code>quote</code> 크레이트의 기능도
 필요하므로, 이들을 종속성으로 추가해야 합니다. <code>hello_macro_derive</code>의
 <em>Cargo.toml</em> 파일에 다음을 추가하세요:</p>
-<p><span class="filename">Filename: hello_macro_derive/Cargo.toml</span></p>
+<p><span class="filename">파일명: hello_macro_derive/Cargo.toml</span></p>
 <pre><code class="language-toml">[lib]
 proc-macro = true
 
@@ -395,10 +395,10 @@ proc-macro = true
 syn = &quot;1.0&quot;
 quote = &quot;1.0&quot;
 </code></pre>
-<p>절차적 매크로 정의를 시작하려면 Listing 19-31의 코드를 <code>hello_macro_derive</code>
+<p>절차적 매크로 정의를 시작하려면 예제 19-31의 코드를 <code>hello_macro_derive</code>
 크레이트의 <em>src/lib.rs</em> 파일에 넣으세요. 이 코드는 <code>impl_hello_macro</code> 함수에
 대한 정의를 추가할 때까지 컴파일되지 않는다는 점에 유의하세요.</p>
-<p><span class="filename">Filename: hello_macro_derive/src/lib.rs</span></p>
+<p><span class="filename">파일명: hello_macro_derive/src/lib.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">use proc_macro::TokenStream;
 use quote::quote;
 use syn;
@@ -412,7 +412,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
     // Build the trait implementation
     impl_hello_macro(&amp;ast)
 }</code></pre>
-<p><span class="caption">Listing 19-31: 대부분의 절차적 매크로 크레이트가
+<p><span class="caption">예제 19-31: 대부분의 절차적 매크로 크레이트가
 러스트 코드를 처리하기 위해 필요로 하는 코드</span></p>
 <p><code>TokenStream</code>의 파싱을 담당하는 <code>hello_macro_derive</code> 함수와
 구문 트리의 변환을 담당하는 <code>impl_hello_macro</code> 함수로 코드를
@@ -440,7 +440,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 해석 및 연산 수행이 가능한 데이터 구조로 변환합니다. 여기서
 <code>syn</code>이 등장합니다. <code>syn</code>의 <code>parse</code> 함수는 <code>TokenStream</code>을
 받아 파싱된 러스트 코드를 나타내는 <code>DeriveInput</code> 구조체를
-반환합니다. Listing 19-32는 <code>struct Pancakes;</code> 문자열을 파싱하여
+반환합니다. 예제 19-32는 <code>struct Pancakes;</code> 문자열을 파싱하여
 얻은 <code>DeriveInput</code> 구조체의 관련 부분을 보여줍니다:</p>
 <pre><code class="language-rust ignore">DeriveInput {
     // --snip--
@@ -459,7 +459,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
         }
     )
 }</code></pre>
-<p><span class="caption">Listing 19-32: Listing 19-30의 매크로 속성이
+<p><span class="caption">예제 19-32: 예제 19-30의 매크로 속성이
 있는 코드를 파싱했을 때 얻게 되는 <code>DeriveInput</code> 인스턴스</span></p>
 <p>이 구조체의 필드는 파싱한 러스트 코드가 <code>Pancakes</code>의 <code>ident</code> (식별자
 (identifier), 이름을 의미) 를 가진 유닛 구조체라는 것을 보여줍니다.
@@ -479,9 +479,9 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 단순화했습니다; 프로덕션 코드에서는 <code>panic!</code> 또는 <code>expect</code>를 사용하여 무엇이
 잘못되었는지에 대한 보다 구체적인 에러 메시지를 제공해야 합니다.</p>
 <p>이제 <code>TokenStream</code>으로부터 어노테이션된 러스트 코드를 <code>DeriveInput</code>
-인스턴스로 변환하는 코드가 있으니, Listing 19-33에 나온 것처럼 어노테이션된
+인스턴스로 변환하는 코드가 있으니, 예제 19-33에 나온 것처럼 어노테이션된
 타입에 <code>HelloMacro</code> 트레잇을 구현하는 코드를 생성해 봅시다.</p>
-<p><span class="filename">Filename: hello_macro_derive/src/lib.rs</span></p>
+<p><span class="filename">파일명: hello_macro_derive/src/lib.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use proc_macro::TokenStream;
 </span><span class="boring">use quote::quote;
 </span><span class="boring">use syn;
@@ -507,14 +507,14 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
     };
     gen.into()
 }</code></pre>
-<p><span class="caption">Listing 19-33: 파싱된 러스트 코드를 사용하여
+<p><span class="caption">예제 19-33: 파싱된 러스트 코드를 사용하여
 <code>HelloMacro</code> 트레잇 구현하기</span></p>
 <p><code>ast.ident</code>을 사용하여 어노테이션된 타입의 이름(식별자)을 담고 있는
-<code>Ident</code> 구조체 인스턴스를 얻습니다. Listing 19-32의 구조체는 Listing
-19-30의 코드에서 <code>impl_hello_macro</code> 함수를 실행할 때, 얻게 되는
+<code>Ident</code> 구조체 인스턴스를 얻습니다. 예제 19-32의 구조체는 예제 19-30의
+코드에서 <code>impl_hello_macro</code> 함수를 실행할 때, 얻게 되는
 <code>ident</code>에 <code>&quot;Pancakes&quot;</code> 값을 가진 <code>ident</code> 필드가 있음을 보여줍니다.
-따라서, Listing 19-33의 <code>name</code> 변수에는 <code>Ident</code> 구조체 인스턴스가
-포함되며, 이 인스턴스를 출력하면 Listing 19-30의 구조체 이름인
+따라서, 예제 19-33의 <code>name</code> 변수에는 <code>Ident</code> 구조체 인스턴스가
+포함되며, 이 인스턴스를 출력하면 예제 19-30의 구조체 이름인
 <code>&quot;Pancakes&quot;</code> 문자열이 됩니다.</p>
 <p><code>quote!</code> 매크로는 반환하고자 하는 러스트 코드를 정의하도록 해줍니다.
 컴파일러는 <code>quote!</code> 매크로 실행의 직접적인 결과와는 다른 것을 기대하므로,
@@ -538,7 +538,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 <code>stringify!</code>를 사용합니다. <code>stringify!</code>를 사용하면 컴파일 타임에
 <code>#name</code>을 문자열 리터럴로 변환하여 할당량을 절약할 수도 있습니다.</p>
 <p>이 시점에서는 <code>cargo build</code>가 <code>hello_macro</code>와 <code>hello_macro_derive</code> 둘
-모두에서 성공적으로 완료되어야 합니다. 이 크레이트를 Listing 19-30의 코드에
+모두에서 성공적으로 완료되어야 합니다. 이 크레이트를 예제 19-30의 코드에
 연결하여 절차적 매크로가 작동하는 것을 확인해 봅시다! <code>cargo new pancakes</code>를
 사용하여 <em>projects</em> 디렉토리에 새 바이너리 프로젝트를 생성하세요. <code>pancake</code>
 크레이트의 <em>Cargo.toml</em>에 종속성으로 <code>hello_macro</code>와 <code>hello_macro_derive</code>를
@@ -548,7 +548,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 <pre><code class="language-toml">hello_macro = { path = &quot;../hello_macro&quot; }
 hello_macro_derive = { path = &quot;../hello_macro/hello_macro_derive&quot; }
 </code></pre>
-<p>Listing 19-30의 코드를 <em>src/main.rs</em>에 넣고 <code>cargo run</code>을 실행하세요:
+<p>예제 19-30의 코드를 <em>src/main.rs</em>에 넣고 <code>cargo run</code>을 실행하세요:
 <code>Hello, Macro! My name is Pancakes!&quot;라고 출력되어야 합니다. 절차적 매크로의 </code>HelloMacro<code>트레잇 구현은</code>pancakes<code>크레이트가 구현할 필요 없이 포함되었습니다;</code>#[derive(HelloMacro)]`이 트레잇 구현을
 추가한 것이지요.</p>
 <p>다음으로 다른 종류의 절차적 매크로는 커스텀 파생 매크로와 어떻게 다른지

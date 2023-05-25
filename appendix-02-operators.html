@@ -154,11 +154,11 @@
 튜플, 괄호 등의 컨텍스트에서 나타나는 연산자 및 기타 기호를 포함하는 러스트
 문법에 대한 용어집이 수록되어 있습니다.</p>
 <h3 id="연산자"><a class="header" href="#연산자">연산자</a></h3>
-<p>Table B-1은 러스트의 연산자, 컨텍스트에서 해당 연산자의 등장 예시,
+<p>표 B-1은 러스트의 연산자, 컨텍스트에서 해당 연산자의 등장 예시,
 간단한 설명, 그리고 해당 연산자가 오버로드 가능한지 여부를 담고 있습니다.
 만약 연산자가 오버로드 가능하다면, 해당 연산자를 오버로드하기 위해 사용해야
 하는 트레잇이 나열되어 있습니다.</p>
-<p><span class="caption">Table B-1: 연산자</span></p>
+<p><span class="caption">표 B-1: 연산자</span></p>
 <div class="table-wrapper"><table><thead><tr><th>연산자</th><th>예시</th><th>설명</th><th>오버로드 가능</th></tr></thead><tbody>
 <tr><td><code>!</code></td><td><code>ident!(...)</code>, <code>ident!{...}</code>, <code>ident![...]</code></td><td>매크로 전개</td><td></td></tr>
 <tr><td><code>!</code></td><td><code>!expr</code></td><td>비트 단위 혹은 논리적 보수</td><td><code>Not</code></td></tr>
@@ -219,9 +219,9 @@
 <h3 id="비연산자-기호"><a class="header" href="#비연산자-기호">비연산자 기호</a></h3>
 <p>다음 목록에는 연산자로 동작하지 않는 모든 기호들을 수록했습니다; 즉, 이 기호들은
 함수 또는 메서드 호출처럼 동작하지 않습니다.</p>
-<p>Table B-2는 자체적으로 나타나는 기호들을 보여주며, 다양한 위치에서
+<p>표 B-2는 자체적으로 나타나는 기호들을 보여주며, 다양한 위치에서
 유효합니다.</p>
-<p><span class="caption">Table B-2: 독립형 문법 </span></p>
+<p><span class="caption">표 B-2: 독립형 문법 </span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>'ident</code></td><td>기명 라이프타임 혹은 루프 라벨</td></tr>
 <tr><td><code>...u8</code>, <code>...i32</code>, <code>...f64</code>, <code>...usize</code>, etc.</td><td>특정 타입의 수치값 리터럴</td></tr>
@@ -236,9 +236,9 @@
 <tr><td><code>_</code></td><td>“무시되는” 패턴 바인딩; 정수형 리터럴을 읽기 편하게 만드는데도 사용됨</td></tr>
 </tbody></table>
 </div>
-<p>Table B-3는 모듈 계층을 통해 아이템에 도달하는 경로의 컨텍스트에서 나타나는
+<p>표 B-3는 모듈 계층을 통해 아이템에 도달하는 경로의 컨텍스트에서 나타나는
 기호들을 보여줍니다.</p>
-<p><span class="caption">Table B-3: 경로 관련 문법</span></p>
+<p><span class="caption">표 B-3: 경로 관련 문법</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>ident::ident</code></td><td>네임스페이스 경로</td></tr>
 <tr><td><code>::path</code></td><td>크레이트 루트 기준 상대 경로 (즉, 명시적인 절대 경로)</td></tr>
@@ -251,9 +251,9 @@
 <tr><td><code>&lt;type as trait&gt;::method(...)</code></td><td>트레잇과 타입 이름으로 메서드 호출을 명확하게 하기</td></tr>
 </tbody></table>
 </div>
-<p>Table B-4는 제네릭 타입 매개변수를 사용하는 컨텍스트에서 나타나는 기호들을
+<p>표 B-4는 제네릭 타입 매개변수를 사용하는 컨텍스트에서 나타나는 기호들을
 보여줍니다.</p>
-<p><span class="caption">Table B-4: 제네릭</span></p>
+<p><span class="caption">표 B-4: 제네릭</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>path&lt;...&gt;</code></td><td>타입에서 제네릭 타입에 대한 매개변수 지정하기 (예: <code>Vec&lt;u8&gt;</code>)</td></tr>
 <tr><td><code>path::&lt;...&gt;</code>, <code>method::&lt;...&gt;</code></td><td>표현식에서 제네릭 타입, 함수, 메서드에 대한 매개변수 지정하기; 종종 터보피쉬 (turbofish) 라고도 불림 (예: <code>&quot;42&quot;.parse::&lt;i32&gt;()</code>)</td></tr>
@@ -265,9 +265,9 @@
 <tr><td><code>type&lt;ident=type&gt;</code></td><td>하나 이상의 연관 타입이 특정한 인수를 갖는 제네릭 타입 (예: <code>Iterator&lt;Item=T&gt;</code>)</td></tr>
 </tbody></table>
 </div>
-<p>Table B-5는 트레잇 바운드를 사용하여 제네릭 타입 매개변수를 제한하는
+<p>표 B-5는 트레잇 바운드를 사용하여 제네릭 타입 매개변수를 제한하는
 컨텍스트에서 나타나는 기호들을 보여줍니다.</p>
-<p><span class="caption">Table B-5: 트레잇 바운드 제약 조건</span></p>
+<p><span class="caption">표 B-5: 트레잇 바운드 제약 조건</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>T: U</code></td><td>제네릭 매개변수 <code>T</code>는 <code>U</code>를 구현하는 타입으로 제한됨</td></tr>
 <tr><td><code>T: 'a</code></td><td>제네릭 타입 <code>T</code>는 <code>'a</code>보다 긴 라이프타임을 가져야 함 (즉 해당 타입은 일시적으로 <code>'a</code> 보다 짧은 라이프타임을 가진 어떤 참조자도 가질 수 없습니다)</td></tr>
@@ -277,9 +277,9 @@
 <tr><td><code>'a + trait</code>, <code>trait + trait</code></td><td>타입 제약 조건 조합</td></tr>
 </tbody></table>
 </div>
-<p>Table B-6은 매크로를 호출하거나 정의하는 컨텍스트 및 아이템에 속성을 지정하는
+<p>표 B-6은 매크로를 호출하거나 정의하는 컨텍스트 및 아이템에 속성을 지정하는
 컨텍스트에서 나타나는 기호들을 보여줍니다.</p>
-<p><span class="caption">Table B-6: 매크로와 속성</span></p>
+<p><span class="caption">표 B-6: 매크로와 속성</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>#[meta]</code></td><td>외부 속성</td></tr>
 <tr><td><code>#![meta]</code></td><td>내부 속성</td></tr>
@@ -289,8 +289,8 @@
 <tr><td><code>ident!(...)</code>, <code>ident!{...}</code>, <code>ident![...]</code></td><td>매크로 호출</td></tr>
 </tbody></table>
 </div>
-<p>Table B-7은 주석을 생성하는 기호들을 보여줍니다.</p>
-<p><span class="caption">Table B-7: 주석</span></p>
+<p>표 B-7은 주석을 생성하는 기호들을 보여줍니다.</p>
+<p><span class="caption">표 B-7: 주석</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>//</code></td><td>한줄 주석</td></tr>
 <tr><td><code>//!</code></td><td>내부 한줄 문서화 주석</td></tr>
@@ -300,8 +300,8 @@
 <tr><td><code>/**...*/</code></td><td>외부 블록 문서화 주석</td></tr>
 </tbody></table>
 </div>
-<p>Table B-8은 튜플을 사용하는 컨텍스트에서 나타나는 기호들을 보여줍니다.</p>
-<p><span class="caption">Table B-8: 튜플</span></p>
+<p>표 B-8은 튜플을 사용하는 컨텍스트에서 나타나는 기호들을 보여줍니다.</p>
+<p><span class="caption">표 B-8: 튜플</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>()</code></td><td>빈 튜플 (일명 유닛), 리터럴이자 타입</td></tr>
 <tr><td><code>(expr)</code></td><td>괄호로 묶인 표현식</td></tr>
@@ -313,15 +313,15 @@
 <tr><td><code>expr.0</code>, <code>expr.1</code>, etc.</td><td>튜플 인덱싱</td></tr>
 </tbody></table>
 </div>
-<p>Table B-9는 중괄호를 사용하는 컨텍스트를 보여줍니다.</p>
-<p><span class="caption">Table B-9: 중괄호</span></p>
+<p>표 B-9는 중괄호를 사용하는 컨텍스트를 보여줍니다.</p>
+<p><span class="caption">표 B-9: 중괄호</span></p>
 <div class="table-wrapper"><table><thead><tr><th>컨텍스트</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>{...}</code></td><td>블록 표현식</td></tr>
 <tr><td><code>Type {...}</code></td><td><code>struct</code> 리터럴</td></tr>
 </tbody></table>
 </div>
-<p>Table B-10은 대괄호를 사용하는 컨텍스트를 보여줍니다.</p>
-<p><span class="caption">Table B-10: 대괄호</span></p>
+<p>표 B-10은 대괄호를 사용하는 컨텍스트를 보여줍니다.</p>
+<p><span class="caption">표 B-10: 대괄호</span></p>
 <div class="table-wrapper"><table><thead><tr><th>컨텍스트</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>[...]</code></td><td>배열 리터럴</td></tr>
 <tr><td><code>[expr; len]</code></td><td><code>expr</code> 값을 <code>len</code>개 복사한 배열 리터럴</td></tr>

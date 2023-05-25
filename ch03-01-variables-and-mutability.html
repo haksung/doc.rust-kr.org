@@ -162,7 +162,7 @@
 <em>projects</em> 디렉토리 안에 <em>variables</em>라는 프로젝트를 만들어 봅시다.</p>
 <p>그리고, 새 <em>variables</em> 디렉토리의 <em>src/main.rc</em> 파일을 열어서
 다음의 코드로 교체하세요 (아직은 컴파일되지 않습니다):</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = 5;
     println!(&quot;The value of x is: {x}&quot;);
@@ -211,7 +211,7 @@ error: could not compile `variables` due to previous error
 <code>mut</code>를 추가하는 것은 또한 미래에 코드를 읽는 이들에게 코드의 다른
 부분에서 이 변수의 값이 변할 것이라는 의도를 전달합니다.</p>
 <p>예를 들어, <em>src/main.rs</em>를 다음과 같이 바꿉시다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut x = 5;
     println!(&quot;The value of x is: {x}&quot;);
@@ -277,7 +277,7 @@ The value of x is: 6
 가리거나 스코프가 끝날때까지 변수명의 사용을 가져가 버립니다.
 아래처럼 똑같은 변수명과 let` 키워드의 반복으로 변수를 가릴 수
 있습니다:</p>
-<p><span class="filename">Filename: src/main.rs</span></p>
+<p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 5;
 
