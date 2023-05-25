@@ -183,7 +183,7 @@
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">Listing 8-2: 값을 저장하고 있는 새로운 벡터
 생성하기</span></p>
-<p>러스트는 <code>i32</code> 값이 초깃값으로 설정된 것을 이용해, <code>v</code> 의 타입을 <code>Vec&lt;i32&gt;</code>
+<p>러스트는 <code>i32</code> 값이 초깃값으로 설정된 것을 이용해, <code>v</code>의 타입을 <code>Vec&lt;i32&gt;</code>
 로 추론할 수 있습니다. 따라서 타입 명시는 필요 없습니다. 다음으로는 벡터를
 수정하는 방법을 살펴보겠습니다.</p>
 <h3 id="벡터-갱신하기"><a class="header" href="#벡터-갱신하기">벡터 갱신하기</a></h3>
@@ -202,7 +202,7 @@
 <p>3장에서 설명한 바와 같이, 어떤 변수의 값을 변경하려면 <code>mut</code> 키워드를 사용하여
 해당 변수를 변경 가능하게 만들어야 합니다. 또한 <code>Vec&lt;i32&gt;</code> 타입 명시를 붙이지
 않아도 되는 이유는, 우리가 집어넣은 숫자가 모두 <code>i32</code> 타입인 점을 이용해
-러스트가 <code>v</code> 의 타입을 추론하기 때문입니다.</p>
+러스트가 <code>v</code>의 타입을 추론하기 때문입니다.</p>
 <h3 id="벡터-요소-읽기"><a class="header" href="#벡터-요소-읽기">벡터 요소 읽기</a></h3>
 <p>벡터 내에 저장된 값을 참조하는 두 가지 방법이 있습니다. 다음의
 예제에서는 특별히 더 명료하게 하기 위해 함수들이 반환하는 값의
@@ -224,7 +224,7 @@
 <p><span class="caption">Listing 8-4: 인덱스 문법 혹은 <code>get</code> 메서드를 사용하여
 벡터 내의 아이템에 접근하기</span></p>
 <p>여기 몇 가지 세부 사항이 있습니다. 벡터의 인덱스는 0부터 시작하므로,
-세 번째 값을 얻어오기 위해서는 인덱스값 <code>2</code> 를 사용합니다.
+세 번째 값을 얻어오기 위해서는 인덱스값 <code>2</code>를 사용합니다.
 <code>&amp;</code>와 <code>[]</code>를 사용하면 인덱스 값에 위치한 요소의 참조자를 얻게 됩니다.
 <code>get</code> 함수에 인덱스를 매개변수로 넘기면, <code>match</code> 통해 처리할 수 있는
 <code>Option&lt;&amp;T&gt;</code>를 얻게 됩니다.</p>
@@ -330,7 +330,7 @@ Listing 8-7은 <code>for</code> 루프를 사용하여 <code>i32</code>의 벡�
 <p><span class="caption">Listing 8-8: 벡터 내의 요소에 대한 가변 참조자로
 반복하기</span></p>
 <p>가변 참조자가 가리키는 값을 수정하려면,
-<code>+=</code> 연산자를 쓰기 전에 <code>*</code> 역참조 연산자로 <code>i</code> 의 값을 얻어야 합니다.
+<code>+=</code> 연산자를 쓰기 전에 <code>*</code> 역참조 연산자로 <code>i</code>의 값을 얻어야 합니다.
 역참조 연산자는 15장
 <a href="ch15-02-deref.html#following-the-pointer-to-the-value-with-the-dereference-operator">&quot;Following the Pointer to the Value with the Dereference Operator&quot;</a>
 에서 자세히 알아볼 예정입니다.</p>

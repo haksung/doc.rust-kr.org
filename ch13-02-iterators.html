@@ -215,7 +215,7 @@ Listing 13-10의 코드는 <code>Vec&lt;T&gt;</code> 에 정의된 <code>iter</c
 되겠습니다.</p>
 <p><code>Iterator</code> 트레잇은 구현하려는 이에게 딱 하나의 메서드 정의를 요구합니다: 바로
 <code>next</code> 메서드인데, 이 메서드는 <code>Some</code>으로 감싼 반복자의 한 아이템을 반환하고,
-반복자가 종료될 때는 <code>None</code> 을 반환합니다.</p>
+반복자가 종료될 때는 <code>None</code>을 반환합니다.</p>
 <p>반복자의 <code>next</code> 메서드를 직접 호출할 수 있습니다; Listing 13-12는
 벡터로부터 생성된 반복자에 대하여 <code>next</code>를 반복적으로 호출했을 때 어떤
 값들이 반환되는지 보여줍니다.</p>
@@ -240,12 +240,12 @@ Listing 13-10의 코드는 <code>Vec&lt;T&gt;</code> 에 정의된 <code>iter</c
 메서드 호출은 반복자 내부의 상태를 변경하여 반복자가 현재 시퀀스의 어디에
 있는지 추적합니다. 바꿔 말하면, 이 코드는 반복자를 <em>소비합니다</em>, 혹은 다
 써 버립니다. <code>next</code> 에 대한 각 호출은 반복자로부터 하나의 아이템을 소비합니다.
-<code>for</code> 루프를 사용할 때는 <code>v1_iter</code> 를 변경할 수 있도록 만들 필요가 없는데, 
-루프가 <code>v1_iter</code> 의 소유권을 갖고 내부적으로 변경 가능하도록 만들기 때문입니다.</p>
+<code>for</code> 루프를 사용할 때는 <code>v1_iter</code>를 변경할 수 있도록 만들 필요가 없는데, 
+루프가 <code>v1_iter</code>의 소유권을 갖고 내부적으로 변경 가능하도록 만들기 때문입니다.</p>
 <p>또한 <code>next</code> 호출로 얻어온 값들은 벡터 내의 값들에 대한 불변
 참조자라는 점도 주의하세요. <code>iter</code> 메서드는 불변 참조자에 대한
 반복자를 만듭니다. 만약 <code>v1</code>의 소유권을 얻어서 반환하도록 하고
-싶다면, <code>iter</code> 대신 <code>into_iter</code> 를 호출할 수 있습니다. 비슷하게,
+싶다면, <code>iter</code> 대신 <code>into_iter</code>를 호출할 수 있습니다. 비슷하게,
 가변 참조자에 대한 반복자가 필요하면, <code>iter</code> 대신 <code>iter_mut</code>을
 호출할 수 있습니다.</p>
 <h3 id="반복자를-소비하는-메서드들"><a class="header" href="#반복자를-소비하는-메서드들">반복자를 소비하는 메서드들</a></h3>

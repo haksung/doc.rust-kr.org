@@ -150,9 +150,9 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="참조자와-borrow"><a class="header" href="#참조자와-borrow">참조자와 Borrow</a></h2>
-<p>앞 절 마지막에 등장한 Listing 4-5 에선 <code>String</code> 이 <code>calculate_length</code> 로
-이동해버린 것 때문에 <code>calclulate_length</code> 를 호출한 함수로 <code>String</code> 을 반환하여,
-함수 호출 이후에도 <code>String</code> 을 사용할 수 있게
+<p>앞 절 마지막에 등장한 Listing 4-5 에선 <code>String</code>이 <code>calculate_length</code> 로
+이동해버린 것 때문에 <code>calclulate_length</code>를 호출한 함수로 <code>String</code>을 반환하여,
+함수 호출 이후에도 <code>String</code>을 사용할 수 있게
 하였습니다. 이렇게 하는 대신 <code>String</code> 값의 참조자를 만들 수 있습니다.
 <em>참조자 (reference)</em> 는 해당 주소에 저장된 데이터에 접근할 수 있도록
 해주는 주소값에 해당하는, 포인터와 같은 것입니다; 그 데이터는 다른 어떤
@@ -174,16 +174,16 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 }</code></pre></pre>
 <p>먼저, 변수 선언부와 함수 반환 값에 위치하던 튜플 코드가 전부 사라진
 것을 볼 수 있습니다. 또한 <code>calculate_length</code> 함수에 <code>s1</code> 대신 <code>&amp;s1</code> 을
-넘기고, 함수 정의에 <code>String</code> 대신 <code>&amp;String</code> 을 사용했네요. 이 앰퍼센드
+넘기고, 함수 정의에 <code>String</code> 대신 <code>&amp;String</code>을 사용했네요. 이 앰퍼센드
 (&amp;) 기호가 <em>참조자</em>를 나타내고, 어떤 값의 소유권을 가져오지 않고 해당 값을
 참조할 수 있도록 해줍니다. Figure 4-5는 이 개념을 도식화한 것입니다.</p>
 <p><img alt="세 개의 테이블: s 테이블은 s1 테이블을 가리키는 포인터만
 가지고 있습니다. s1 테이블에는 s1에 대한 스택 데이터와 힙 상에 저장된
 문자열을 가리키고 있습니다." src="img/trpl04-05.svg" class="center" /></p>
-<p><span class="caption">Figure 4-5: <code>&amp;String s</code> 는 <code>String s1</code> 을
+<p><span class="caption">Figure 4-5: <code>&amp;String s</code>는  <code>String s1</code> 을
 가리킴</span></p>
 <blockquote>
-<p>Note: <code>&amp;</code> 를 이용한 참조의 반대는
+<p>Note: <code>&amp;</code>를 이용한 참조의 반대는
 <em>역참조(dereferencing)</em> 라 합니다.
 역참조 기호는 <code>*</code> 이며, 8장 에서 몇 번 다뤄보고
 15장에서 자세한 내용을 배울 예정입니다.</p>
@@ -200,7 +200,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">    s.len()
 </span><span class="boring">}</span></code></pre></pre>
-<p><code>s1</code> 에 <code>&amp;</code> 를 붙인 <code>&amp;s1</code> 구문은 <code>s1</code> 값을 참조하나, 해당 값을 소유하지
+<p><code>s1</code> 에 <code>&amp;</code>를 붙인 <code>&amp;s1</code> 구문은 <code>s1</code> 값을 참조하나, 해당 값을 소유하지
 않는 참조자를 생성합니다. 값을 소유하지 않으므로 이 참조자가 가리킨 값은
 참조자가 사용되지 않을 때까지 버려지지 않습니다.</p>
 <p>마찬가지로 함수 시그니처에도 <code>&amp;</code>를 사용하여 매개변수 <code>s</code>가 참조자 타입임을
@@ -217,7 +217,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
     s.len()
 } // Here, s goes out of scope. But because it does not have ownership of what
   // it refers to, it is not dropped.</code></pre></pre>
-<p>변수 <code>s</code> 가 유효한 스코프는 여타 함수의 매개변수에 적용되는
+<p>변수 <code>s</code>가 유효한 스코프는 여타 함수의 매개변수에 적용되는
 스코프와 동일합니다. 하지만 <code>s</code>에는 소유권이 없으므로 <code>s</code>가
 더 이상 사용되지 않을 때에도 이 참조자가 가리킨 값이 버려지지
 않습니다. 함수가 실제 값 대신 참조자를 매개변수로 쓴다면
@@ -268,7 +268,7 @@ error: could not compile `ownership` due to previous error
 fn change(some_string: &amp;mut String) {
     some_string.push_str(&quot;, world&quot;);
 }</code></pre></pre>
-<p>우선 <code>s</code> 를 <code>mut</code> 로 변경합니다. 그런 다음 <code>change</code> 함수를 호출하는 곳에서
+<p>우선 <code>s</code>를 <code>mut</code> 로 변경합니다. 그런 다음 <code>change</code> 함수를 호출하는 곳에서
 <code>&amp;mut s</code>로 가변 참조자를 생성하고 이 함수에서 가변 참조자를 넘겨받도록
 <code>some_string: &amp;mut String</code> 으로 수정하는 겁니다. 이는 <code>change</code> 함수가
 빌린 값을 수정할 수 있음을 매우 명확하게 해줍니다.</p>
@@ -381,8 +381,8 @@ error: could not compile `ownership` due to previous error
     let r3 = &amp;mut s; // no problem
     println!(&quot;{}&quot;, r3);
 <span class="boring">}</span></code></pre></pre>
-<p>불변 참조자 <code>rl</code>, <code>r2</code> 의 스코프는 자신들이 마지막으로 사용된
-<code>println!</code> 이후로 종료되고, 해당 <code>println!</code> 은 가변 참조자 <code>r3</code>가
+<p>불변 참조자 <code>rl</code>, <code>r2</code>의 스코프는 자신들이 마지막으로 사용된
+<code>println!</code> 이후로 종료되고, 해당 <code>println!</code>은  가변 참조자 <code>r3</code>가
 생성되기 이전이니 서로 스코프가 겹치지 않아서 이 코드는 문제가 없는 것이죠:
 컴파일러는 이 참조자가 스코프 끝 이전의 어떤 지점 이후로는 사용되지 않음을
 알 수 있습니다.</p>
@@ -448,11 +448,11 @@ error: could not compile `ownership` due to previous error
     &amp;s // we return a reference to the String, s
 } // Here, s goes out of scope, and is dropped. Its memory goes away.
   // Danger!</code></pre>
-<p><code>s</code> 는 <code>dangle</code> 함수 내에서 생성됐기 때문에,
+<p><code>s</code>는  <code>dangle</code> 함수 내에서 생성됐기 때문에,
 함수가 끝날 때 할당 해제됩니다.
-하지만 코드에선 <code>&amp;s</code> 를 반환하려 했고, 이는 유효하지 않은 <code>String</code> 을 가리키는
+하지만 코드에선 <code>&amp;s</code>를 반환하려 했고, 이는 유효하지 않은 <code>String</code>을 가리키는
 참조자를 반환하는 행위이기 때문에 에러가 발생합니다.</p>
-<p>따라서, 이런 경우엔 <code>String</code> 을 직접 반환해야 합니다:</p>
+<p>따라서, 이런 경우엔 <code>String</code>을 직접 반환해야 합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span><span class="boring">    let string = no_dangle();
 </span><span class="boring">}

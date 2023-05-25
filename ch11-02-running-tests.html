@@ -191,7 +191,7 @@
 <h3 id="함수-출력-표시하기"><a class="header" href="#함수-출력-표시하기">함수 출력 표시하기</a></h3>
 <p>기본적으로, 러스트 테스트 라이브러리는 성공한 테스트의 모든 표준 출력(standard output)을 캡쳐합니다.
 테스트에서 <code>println!</code> 매크로를 호출해도, 해당 테스트가 성공하면
-터미널에서 <code>println!</code> 의 출력을 찾아볼 수 없습니다.
+터미널에서 <code>println!</code>의 출력을 찾아볼 수 없습니다.
 해당 테스트가 성공했다고 표시된 줄만 볼 수 있죠.
 테스트가 실패하면 표준 출력으로 출력됐던 모든 내용이 실패 메세지 아래에 표시됩니다.</p>
 <p>Listing 11-10은 매개변수를 출력하고 10을 반환하는 단순한 함수와,
@@ -218,7 +218,7 @@ mod tests {
         assert_eq!(5, value);
     }
 }</code></pre>
-<p><span class="caption">Listing 11-10: <code>println!</code> 을 호출하는
+<p><span class="caption">Listing 11-10: <code>println!</code>을 호출하는
 함수 테스트</span></p>
 <p><code>cargo test</code> 명령어를 실행하면 다음 결과가 나타납니다.</p>
 <pre><code class="language-console">$ cargo test
@@ -248,8 +248,8 @@ test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; 
 error: test failed, to rerun pass `--lib`
 </code></pre>
 <p>성공한 테스트에서 출력했던
-<code>I got the value 4</code> 은 캡쳐되었으므로 찾아볼 수 없습니다.
-실패한 테스트에서 출력한 <code>I got the value 8</code> 는 테스트 실패 원인과 함께
+<code>I got the value 4</code>은  캡쳐되었으므로 찾아볼 수 없습니다.
+실패한 테스트에서 출력한 <code>I got the value 8</code>는  테스트 실패 원인과 함께
 테스트 출력 요약 절에 나타납니다.</p>
 <p>성공한 테스트에서 출력한 내용도 보고 싶다면, <code>--show-output</code> 옵션을 이용해
 성공한 테스트의 출력도 표시하도록 러스트에게 전달할 수 있습니다.</p>
@@ -360,14 +360,14 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 2 filtered out; fini
 
 </code></pre>
 <p><code>one_hundred</code> 테스트만 실행되었습니다. 나머지 두 테스트는 이름이 맞지 않았습니다.
-테스트 결과는 마지막 요약 줄에서 <code>2 filtered out</code> 을 표시하여,
+테스트 결과는 마지막 요약 줄에서 <code>2 filtered out</code>을 표시하여,
 실행한 테스트 이외에도 다른 테스트가 존재함을 알려줍니다.</p>
 <p>이 방법으로 여러 테스트의 이름을 명시할 수는 없습니다. <code>cargo test</code> 명령어는 첫 번째 값만 사용합니다.
 하지만 여러 테스트를 실행하는 방법이 없지는 않습니다.</p>
 <h4 id="테스트를-필터링하여-여러-테스트-실행하기"><a class="header" href="#테스트를-필터링하여-여러-테스트-실행하기">테스트를 필터링하여 여러 테스트 실행하기</a></h4>
 <p>테스트 이름의 일부만 지정하면 해당 값에 맞는 모든 테스트가 실행됩니다.
 예를 들어, <code>cargo test add</code> 명령어를 실행하면 우리가 작성한 세 개의 테스트 중
-<code>add</code> 가 포함된 두 개가 실행됩니다.</p>
+<code>add</code>가 포함된 두 개가 실행됩니다.</p>
 <pre><code class="language-console">$ cargo test add
    Compiling adder v0.1.0 (file:///projects/adder)
     Finished test [unoptimized + debuginfo] target(s) in 0.61s
@@ -380,7 +380,7 @@ test tests::add_two_and_two ... ok
 test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; finished in 0.00s
 
 </code></pre>
-<p>이 명령어는 <code>add</code> 가 이름에 포함된 모든 테스트를 실행하고,
+<p>이 명령어는 <code>add</code>가 이름에 포함된 모든 테스트를 실행하고,
 <code>one_hundred</code> 테스트를 필터링했습니다.
 테스트가 위치한 모듈도 테스트 이름의 일부로 나타나는 점을 기억해두세요.
 모듈 이름으로 필터링하면 해당 모듈 내 모든 테스트를 실행할 수 있습니다.</p>

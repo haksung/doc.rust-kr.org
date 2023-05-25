@@ -179,7 +179,7 @@
 }</code></pre>
 <p><span class="caption">Listing 10-12: <code>summarize</code> 메서드가 제공하는
 '요약' 동작으로 구성된 <code>Summary</code> 트레잇</span></p>
-<p><code>trait</code> 키워드 다음 트레잇의 이름 <code>Summary</code> 를 작성해
+<p><code>trait</code> 키워드 다음 트레잇의 이름 <code>Summary</code>를 작성해
 트레잇을 선언했습니다. 또한 트레잇을 <code>pub</code>로 선언하여 몇몇
 예제에서 볼 것처럼 이 크레이트에 의존하는 다른 크레이트들이
 이 트레잇을 사용할 수 있도록 하였습니다. 중괄호 안에는 이 트레잇을
@@ -320,7 +320,7 @@ fn main() {
 <code>impl Summary for NewsArticle {}</code> 처럼 비어있는 <code>impl</code> 블록을 명시합니다.</p>
 <p><code>impl</code> 블록을 비워도 <code>NewsArticle</code> 인스턴스에서 <code>summarize</code> 메서드를 호출할 수 있습니다.
 <code>NewsArticle</code> 에 <code>summarize</code> 메서드를 직접적으로 정의하지는 않았지만,
-<code>NewsArticle</code> 은 <code>Summary</code> 트레잇을 구현하도록 지정되어 있으며,
+<code>NewsArticle</code>은  <code>Summary</code> 트레잇을 구현하도록 지정되어 있으며,
 <code>Summary</code> 트레잇은 <code>summarize</code> 메서드의 기본 구현을 제공하기 때문입니다:</p>
 <pre><code class="language-rust ignore"><span class="boring">use aggregator::{self, NewsArticle, Summary};
 </span><span class="boring">
@@ -391,7 +391,7 @@ fn main() {
         format!(&quot;@{}&quot;, self.username)
     }
 }</code></pre>
-<p><code>summarize_author</code> 를 정의하고 나면 <code>Tweet</code> 인스턴스에서 <code>summarize</code> 를 호출할 수 있습니다.
+<p><code>summarize_author</code>를 정의하고 나면 <code>Tweet</code> 인스턴스에서 <code>summarize</code>를 호출할 수 있습니다.
 이러면 <code>summarize</code> 기본 구현이 우리가 정의한 <code>summarize_author</code> 메서드를 호출할 겁니다.
 우린 <code>summarize_author</code> 만 구현하고 추가적인 코드를 전혀 작성하지 않았지만,
 <code>Summary</code> 트레잇은 우리에게 <code>summarize</code> 메서드의 기능도 제공해주는 것을
@@ -410,7 +410,7 @@ fn main() {
 
     println!(&quot;1 new tweet: {}&quot;, tweet.summarize());
 <span class="boring">}</span></code></pre>
-<p>이 코드는 <code>1 new tweet: (Read more from @horse_ebooks...)</code> 를 출력합니다.</p>
+<p>이 코드는 <code>1 new tweet: (Read more from @horse_ebooks...)</code>를 출력합니다.</p>
 <p>단, 어떤 메서드를 오버라이딩하는 구현을 하면 해당 메서드의 기본 구현을
 호출할 수는 없다는 점을 기억해두세요.</p>
 <h3 id="매개변수로서의-트레잇"><a class="header" href="#매개변수로서의-트레잇">매개변수로서의 트레잇</a></h3>
@@ -457,7 +457,7 @@ fn main() {
 이 매개변수는 명시된 트레잇을 구현하는 타입이라면 어떤 타입이건 전달받을 수 있습니다.
 <code>notify</code> 본문 내에서는 <code>item</code> 에 <code>summarize</code> 등
 <code>Summary</code> 트레잇의 모든 메서드를 호출할 수 있습니다.
-<code>notify</code> 는 <code>NewsArticle</code> 인스턴스로도, <code>Tweet</code> 인스턴스로도 호출할 수 있습니다.
+<code>notify</code>는  <code>NewsArticle</code> 인스턴스로도, <code>Tweet</code> 인스턴스로도 호출할 수 있습니다.
 만약 <code>notify</code> 함수를 <code>Summary</code> 트레잇을 구현하지 않는
 <code>String</code>, <code>i32</code> 등의 타입으로 호출하는 코드를 작성한다면 컴파일 에러가 발생합니다.</p>
 <!-- Old headings. Do not remove or links may break. -->
@@ -473,10 +473,10 @@ fn main() {
 위치합니다.</p>
 <p><code>impl Trait</code> 문법은 편리하고 단순한 상황에는 코드를 더 간결하게 만들어 주는
 반면, 트레잇 바운드 문법은 더 복잡한 상황을 표현할 수 있습니다. 예를 들어,
-<code>Summary</code> 를 구현하는 두 매개변수를 전달받는 함수를 구현할 때, <code>impl Trait</code>
+<code>Summary</code>를 구현하는 두 매개변수를 전달받는 함수를 구현할 때, <code>impl Trait</code>
 문법으로 표현하면 다음과 같은 모양이 됩니다:</p>
 <pre><code class="language-rust ignore">pub fn notify(item1: &amp;impl Summary, item2: &amp;impl Summary) {</code></pre>
-<p><code>item1</code> 과 <code>item2</code> 가 (둘 다 <code>Summary</code>를 구현하는 타입이되) 서로 다른
+<p><code>item1</code> 과 <code>item2</code>가 (둘 다 <code>Summary</code>를 구현하는 타입이되) 서로 다른
 타입이어도 상관없다면 <code>impl Trait</code> 문법 사용도 적절합니다. 하지만 만약
 두 매개변수가 같은 타입으로 강제되어야 한다면, 이는 아래와 같이 트레잇
 바운드를 사용해야 합니다:</p>
@@ -487,13 +487,13 @@ fn main() {
 <h4 id="-구문으로-트레잇-바운드를-여럿-지정하기"><a class="header" href="#-구문으로-트레잇-바운드를-여럿-지정하기"><code>+</code> 구문으로 트레잇 바운드를 여럿 지정하기</a></h4>
 <p>트레잇 바운드는 여러 개 지정할 수도 있습니다. <code>notify</code> 에서 <code>item</code>의 <code>summarize</code>
 메서드뿐만 아니라 출력 포맷팅까지 사용하고 싶다고 가정해 봅시다: <code>notify</code> 정의에서
-<code>item</code> 이 <code>Display</code>, <code>Summary</code>를 모두 구현해야하도록 지정해야합니다. <code>+</code> 문법을
+<code>item</code>이 <code>Display</code>, <code>Summary</code>를 모두 구현해야하도록 지정해야합니다. <code>+</code> 문법을
 사용하면 트레잇을 여러 개 지정할 수 있습니다:</p>
 <pre><code class="language-rust ignore">pub fn notify(item: &amp;(impl Summary + Display)) {</code></pre>
 <p><code>+</code> 구문은 제네릭 타입의 트레잇 바운드에도 사용할 수 있습니다:</p>
 <pre><code class="language-rust ignore">pub fn notify&lt;T: Summary + Display&gt;(item: &amp;T) {</code></pre>
-<p>두 트레잇 바운드가 지정됐으니, <code>notify</code> 본문에서는 <code>item</code> 의 <code>summarize</code> 메서드를
-호출할 수도 있고 <code>item</code> 을 <code>{}</code> 으로 포맷팅할 수도 있습니다.</p>
+<p>두 트레잇 바운드가 지정됐으니, <code>notify</code> 본문에서는 <code>item</code>의 <code>summarize</code> 메서드를
+호출할 수도 있고 <code>item</code>을 <code>{}</code> 으로 포맷팅할 수도 있습니다.</p>
 <h4 id="where-조항으로-트레잇-바운드-정리하기"><a class="header" href="#where-조항으로-트레잇-바운드-정리하기"><code>where</code> 조항으로 트레잇 바운드 정리하기</a></h4>
 <p>트레잇 바운드가 너무 많아지면 문제가 생깁니다.
 제네릭마다 트레잇 바운드를 갖게 되면, 여러 제네릭 타입 매개변수를 사용하는 함수는
@@ -556,9 +556,9 @@ where
         retweet: false,
     }
 }</code></pre>
-<p>반환 타입에 구체적인 타입명이 아닌 <code>impl Summary</code> 를 작성하여
+<p>반환 타입에 구체적인 타입명이 아닌 <code>impl Summary</code>를 작성하여
 <code>returns_summarizable</code> 함수는 <code>Summary</code> 트레잇을 구현하는 어떤 타입을 반환함을 명시했습니다.
-이 경우 <code>returns_summarizable</code> 는 <code>Tweet</code> 을 반환하지만,
+이 경우 <code>returns_summarizable</code>는  <code>Tweet</code>을 반환하지만,
 이 함수를 호출하는 쪽의 코드에서는 구체적인 타입을 알 필요가 없습니다.</p>
 <p>구현되는 트레잇으로 반환 타입을 명시하는 기능은 13장에서 다룰
 클로저 및 반복자의 컨텍스트에서 굉장히 유용합니다. 클로저와

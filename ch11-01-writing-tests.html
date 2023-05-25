@@ -237,7 +237,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 실행 결과</span></p>
 <p>카고가 테스트를 컴파일하고 실행했습니다. <code>running 1 test</code> 줄이
 보입니다. 그 다음 줄에는 생성된 테스트 함수의 이름 <code>it_works</code> 와 테스트
-실행 결과 <code>ok</code> 가 표시됩니다. 전체 요약 <code>test result: ok.</code>는 모든
+실행 결과 <code>ok</code>가 표시됩니다. 전체 요약 <code>test result: ok.</code>는 모든
 테스트가 통과됐다는 뜻이고, <code>1 passed; 0 failed</code>라는 부분은
 통과하거나 실패한 테스트 개수를 종합합니다.</p>
 <p>어떤 테스트를 무시하도록 표시하여 특정 인스턴스에서는 실행되지 않도록 할 수도 있습니다;
@@ -267,8 +267,8 @@ mod tests {
         assert_eq!(2 + 2, 4);
     }
 }</code></pre>
-<p><code>cargo test</code> 를 다시 실행하면 출력 결과에 <code>it_works</code> 대신
-<code>exploration</code> 이 나타납니다.</p>
+<p><code>cargo test</code>를 다시 실행하면 출력 결과에 <code>it_works</code> 대신
+<code>exploration</code>이 나타납니다.</p>
 <pre><code class="language-console">$ cargo test
    Compiling adder v0.1.0 (file:///projects/adder)
     Finished test [unoptimized + debuginfo] target(s) in 0.59s
@@ -334,7 +334,7 @@ error: test failed, to rerun pass `--lib`
 </code></pre>
 <p><span class="caption">Listing 11-4: 테스트 하나는 통과하고 다른 하나는 실패했을 때의
 테스트 결과</span></p>
-<p><code>test tests::another</code> 줄은 <code>ok</code> 가 아니라 <code>FAILED</code> 로 표시됩니다.
+<p><code>test tests::another</code> 줄은 <code>ok</code>가 아니라 <code>FAILED</code> 로 표시됩니다.
 개별 결과와 요약 사이에 새로운 절이 두 개 나타났네요:
 첫 번째 절은 테스트가 실패한 자세한 이유를 보여줍니다.
 이 경우 <code>another</code> 테스트는 <code>panicked at 'Make this test fail'</code> 라는 이유로 실패했으며,
@@ -421,7 +421,7 @@ mod tests {
 <p>테스트 이름은 <code>larger_can_hold_smaller</code> 로 정하고,
 필요한 <code>Rectangle</code> 인스턴스를 두 개 생성하고,
 <code>larger.can_hold(&amp;smaller)</code> 호출 결과를 전달하여 <code>assert!</code> 매크로를 호출하였습니다.
-<code>larger.can_hold(&amp;smaller)</code> 표현식은 <code>true</code> 를 반환할 테니 테스트는 성공하겠죠. 확인해봅시다!</p>
+<code>larger.can_hold(&amp;smaller)</code> 표현식은 <code>true</code>를 반환할 테니 테스트는 성공하겠죠. 확인해봅시다!</p>
 <pre><code class="language-console">$ cargo test
    Compiling rectangle v0.1.0 (file:///projects/rectangle)
     Finished test [unoptimized + debuginfo] target(s) in 0.66s
@@ -487,7 +487,7 @@ mod tests {
         assert!(!smaller.can_hold(&amp;larger));
     }
 }</code></pre>
-<p>이번에는 <code>can_hold</code> 함수가 <code>false</code> 를 반환해야 하니,
+<p>이번에는 <code>can_hold</code> 함수가 <code>false</code>를 반환해야 하니,
 <code>assert!</code> 매크로에 전달하기 전에 논리 부정 연산자를 사용했습니다.
 결과적으로, 이 테스트는 <code>can_hold</code> 함수에서 <code>false</code> 값을 반환하면 성공합니다.</p>
 <pre><code class="language-console">$ cargo test
@@ -581,8 +581,8 @@ test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; 
 
 error: test failed, to rerun pass `--lib`
 </code></pre>
-<p>테스트로 버그를 찾아냈네요! <code>larger.width</code> 는 8이고 <code>smaller.width</code> 는 5인데
-<code>can_hold</code> 의 너비 비교 결과는 <code>false</code> (<code>larger.width</code> 가 <code>smaller.width</code> 보다 작음) 를 반환합니다.
+<p>테스트로 버그를 찾아냈네요! <code>larger.width</code>는  8이고 <code>smaller.width</code>는  5인데
+<code>can_hold</code>의 너비 비교 결과는 <code>false</code> (<code>larger.width</code>가 <code>smaller.width</code> 보다 작음) 를 반환합니다.
 8이 5보다 작진 않죠.</p>
 <h3 id="assert_eq-assert_ne-매크로를-이용한-동등-테스트"><a class="header" href="#assert_eq-assert_ne-매크로를-이용한-동등-테스트"><code>assert_eq!</code>, <code>assert_ne!</code> 매크로를 이용한 동등 테스트</a></h3>
 <p>기능성 검증의 일반적인 방법은 테스트 내 코드 결과 값이
@@ -595,7 +595,7 @@ error: test failed, to rerun pass `--lib`
 <em>실패 사유</em> 를 더 알기 쉽게 보여줍니다.
 <code>assert!</code> 매크로는 <code>==</code> 표현식이 <code>false</code> 값임을 알려줄 뿐,
 어떤 값으로 인해 <code>false</code> 값이 나왔는지 출력하지는 않습니다.</p>
-<p>Listing 11-7은 매개변수에 <code>2</code> 를 더하는 <code>add_two</code> 함수를 작성한 다음,
+<p>Listing 11-7은 매개변수에 <code>2</code>를 더하는 <code>add_two</code> 함수를 작성한 다음,
 <code>assert_eq!</code> 매크로를 이용해 테스트하는 예제입니다.</p>
 <p><span class="filename">Filename: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn add_two(a: i32) -&gt; i32 {
@@ -633,9 +633,9 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </code></pre>
 <p><code>assert_eq!</code>에 <code>4</code>를 인자로 넘겼는데, 이는 <code>add_two(2)</code> 호출 결과와 같습니다.
 출력 중 테스트에 해당하는 줄은 <code>test tests::it_adds_two ... ok</code> 이고,
-<code>ok</code> 는 테스트가 통과했다는 뜻이죠!</p>
+<code>ok</code>는  테스트가 통과했다는 뜻이죠!</p>
 <p>코드에 버그를 집어넣어서 <code>assert_eq!</code>가 실패했을 때는 어떻게 보여지는지 확인해봅시다.
-<code>add_two</code> 함수가 <code>3</code> 을 더하도록 구현을 변경해봅시다:</p>
+<code>add_two</code> 함수가 <code>3</code>을 더하도록 구현을 변경해봅시다:</p>
 <pre><code class="language-rust not_desired_behavior noplayground">pub fn add_two(a: i32) -&gt; i32 {
     a + 3
 }
@@ -1055,10 +1055,10 @@ error: test failed, to rerun pass `--lib`
 패닉 메세지에 포함되어 있지 않다는 것을 알려줍니다.
 실제로 발생한 패닉 메세지는 <code>Guess value must be greater than or equal to 1, got 200.</code> 입니다.
 이제 우린 이 메세지를 단서로 버그를 찾아낼 수 있습니다!</p>
-<h3 id="resultt-e-를-이용한-테스트"><a class="header" href="#resultt-e-를-이용한-테스트"><code>Result&lt;T, E&gt;</code> 를 이용한 테스트</a></h3>
+<h3 id="resultt-e를-이용한-테스트"><a class="header" href="#resultt-e를-이용한-테스트"><code>Result&lt;T, E&gt;</code>를 이용한 테스트</a></h3>
 <p>여태까지는 실패 시 패닉을 발생시키는 테스트만 작성했습니다. 테스트는
-<code>Result&lt;T, E&gt;</code> 를 사용해 작성할 수도 있습니다. 다음은 Listing 11-1 테스트를
-<code>Result&lt;T, E&gt;</code>를 사용하도록 수정한 예시입니다. 패닉을 발생시키는 대신 <code>Err</code> 을 반환합니다.</p>
+<code>Result&lt;T, E&gt;</code>를 사용해 작성할 수도 있습니다. 다음은 Listing 11-1 테스트를
+<code>Result&lt;T, E&gt;</code>를 사용하도록 수정한 예시입니다. 패닉을 발생시키는 대신 <code>Err</code>을 반환합니다.</p>
 <pre><code class="language-rust noplayground">#[cfg(test)]
 mod tests {
     #[test]
@@ -1072,10 +1072,10 @@ mod tests {
 }</code></pre>
 <p>이제 <code>it_works</code> 함수는 <code>Result&lt;(), String&gt;</code> 타입을 반환합니다.
 함수 본문에서는 <code>assert_eq!</code> 매크로를 호출하는 대신,
-테스트 성공 시에는 <code>Ok(())</code> 를 반환하고 실패 시에는 <code>String</code> 을 갖는 <code>Err</code> 를
+테스트 성공 시에는 <code>Ok(())</code>를 반환하고 실패 시에는 <code>String</code>을 갖는 <code>Err</code> 를
 반환힙니다.</p>
 <p><code>Result&lt;T, E&gt;</code>를 반환하는 테스트에선 <code>?</code> 연산자를 사용할 수 있기 때문에,
-내부 작업이 <code>Err</code> 를 반환할 경우 실패해야 하는 테스트를 작성하기
+내부 작업이 <code>Err</code>를 반환할 경우 실패해야 하는 테스트를 작성하기
 편리합니다.</p>
 <p><code>Result&lt;T, E&gt;</code> 테스트에서는 <code>#[should_panic]</code> 어노테이션을 사용할 수 없습니다.
 연산이 <code>Err</code> 배리언트를 반환하는 것을 단언하기 위해서는 <code>Result&lt;T, E&gt;</code> 값에

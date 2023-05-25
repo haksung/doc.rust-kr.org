@@ -195,7 +195,7 @@ null 값이 허용되는 것은 아닙니다.</p>
 <code>x</code> 변수를 초기값 5로 선언합니다. 안쪽 스코프에서는 <code>r</code> 값에 <code>x</code> 참조자를 대입합니다.
 안쪽 스코프가 끝나면 <code>r</code> 값을 출력합니다.
 이 코드는 컴파일할 수 없습니다.
-<code>r</code> 이 참조하는 값은 우리가 사용하는 시점에 이미 자신의 스코프를 벗어났기 때문입니다.
+<code>r</code>이 참조하는 값은 우리가 사용하는 시점에 이미 자신의 스코프를 벗어났기 때문입니다.
 에러 메세지는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling chapter10 v0.1.0 (file:///projects/chapter10)
@@ -214,11 +214,11 @@ For more information about this error, try `rustc --explain E0597`.
 error: could not compile `chapter10` due to previous error
 </code></pre>
 <p>변수 <code>x</code>가 &quot;충분히 오래 살지 못했습니다(does not live long enough)&quot;.
-<code>x</code> 는 안쪽 스코프가 끝나는 7번째 줄에서 스코프를 벗어나지만 <code>r</code> 은
+<code>x</code>는  안쪽 스코프가 끝나는 7번째 줄에서 스코프를 벗어나지만 <code>r</code> 은
 바깥쪽 스코프에서 유효하기 때문입니다. 우린 스코프가 더 클수록
 &quot;오래 산다(lives longer)&quot; 고 표현합니다. 만약 러스트가 이 코드의 작동을 허용하면
-<code>r</code> 은 <code>x</code> 가 스코프를 벗어날 때 할당 해제된 메모리를 참조할 테고,
-<code>r</code> 을 이용한 모든 작업은 제대로 작동하지 않을 겁니다.
+<code>r</code>은  <code>x</code>가 스코프를 벗어날 때 할당 해제된 메모리를 참조할 테고,
+<code>r</code>을 이용한 모든 작업은 제대로 작동하지 않을 겁니다.
 그렇다면 러스트는 이 코드가 유효한지를 어떻게 검사할까요? 정답은 Borrow 검사기입니다.</p>
 <h3 id="borrow-검사기"><a class="header" href="#borrow-검사기">Borrow 검사기</a></h3>
 <p>러스트 컴파일러는 <em>borrow 검사기</em> 로 스코프를 비교해 borrow의
@@ -234,13 +234,13 @@ error: could not compile `chapter10` due to previous error
                           //          |
     println!(&quot;r: {}&quot;, r); //          |
 }                         // ---------+</code></pre>
-<p><span class="caption">Listing 10-17: <code>r</code>, <code>x</code> 의 라이프타임을 각각
+<p><span class="caption">Listing 10-17: <code>r</code>, <code>x</code>의 라이프타임을 각각
 <code>'a</code>, <code>'b</code> 로 표현한 주석</span></p>
-<p><code>r</code>의 라이프타임은 <code>'a</code>, <code>x</code> 의 라이프타임은 <code>'b</code> 로 표현했습니다.
+<p><code>r</code>의 라이프타임은 <code>'a</code>, <code>x</code>의 라이프타임은 <code>'b</code> 로 표현했습니다.
 보시다시피 안쪽 <code>'b</code> 블록은 바깥쪽 <code>'a</code> 라이프타임 블록보다 작습니다.
 러스트는 컴파일 타임에 두 라이프타임의 크기를 비교하고,
 <code>'a</code> 라이프타임을 갖는 <code>r</code>이 <code>'b</code> 라이프타임을 갖는 메모리를 참조하고 있음을 인지합니다.
-하지만 <code>'b</code> 가 <code>'a</code> 보다 짧으니, 즉 참조 대상이 참조자보다
+하지만 <code>'b</code>가 <code>'a</code> 보다 짧으니, 즉 참조 대상이 참조자보다
 오래 살지 못하니 러스트 컴파일러는 이 프로그램을 컴파일하지 않습니다.</p>
 <p>Listing 10-18는 댕글링 참조자를 만들지 않고 정상적으로
 컴파일되도록 수정한 코드입니다.</p>
@@ -254,7 +254,7 @@ error: could not compile `chapter10` due to previous error
 }                         // ----------+</code></pre></pre>
 <p><span class="caption">Listing 10-18: 데이터의 라이프타임이
 참조자의 라이프타임보다 길어서 문제없는 코드</span></p>
-<p>여기서 <code>x</code> 의 라이프타임 <code>'b</code> 는 <code>'a</code> 보다 더 깁니다.
+<p>여기서 <code>x</code>의 라이프타임 <code>'b</code>는  <code>'a</code> 보다 더 깁니다.
 러스트는 참조자 <code>r</code>이 유효한 동안에는 <code>x</code> 도 유효하다는 것을 알고있으므로,
 <code>r</code>은 <code>x</code>를 참조할 수 있습니다.</p>
 <p>참조자의 라이프타임이 무엇인지, 러스트가 어떻게 라이프타임을 분석하여
@@ -264,7 +264,7 @@ error: could not compile `chapter10` due to previous error
 <p>두 문자열 슬라이스 중 긴 쪽을 반환하는 함수를 작성해 보겠습니다.
 이 함수는 두 문자열 슬라이스를 전달받고 하나의 문자열 슬라이스를 반환합니다.
 <code>longest</code> 함수를 구현하고 나면 Listing 10-19 코드로
-<code>The longest string is abcd</code> 가 출력되어야 합니다.</p>
+<code>The longest string is abcd</code>가 출력되어야 합니다.</p>
 <p><span class="filename">Filename: src/main.rs</span></p>
 <pre><code class="language-rust ignore">fn main() {
     let string1 = String::from(&quot;abcd&quot;);
@@ -347,8 +347,8 @@ borrow 검사기가 분석할 수 있도록 해야 합니다.</p>
 <code>'a</code>를 사용합니다. 라이프타임 매개변수는 참조자의 <code>&amp;</code> 뒤에 위치하며,
 공백을 한 칸 입력하여 참조자의 타입과 분리합니다.</p>
 <p>다음은, 순서대로 라이프타임 매개변수 없는 <code>i32</code> 참조자,
-라이프타임 매개변수 <code>'a</code> 를 갖는 <code>i32</code> 참조자, 마찬가지로
-라이프타임 매개변수 <code>'a</code> 를 갖는 가변 참조자 예시입니다.</p>
+라이프타임 매개변수 <code>'a</code>를 갖는 <code>i32</code> 참조자, 마찬가지로
+라이프타임 매개변수 <code>'a</code>를 갖는 가변 참조자 예시입니다.</p>
 <pre><code class="language-rust ignore">&amp;i32        // a reference
 &amp;'a i32     // a reference with an explicit lifetime
 &amp;'a mut i32 // a mutable reference with an explicit lifetime</code></pre>
@@ -382,7 +382,7 @@ Listing 10-21와 같이 이 라이프타임에 <code>'a</code>라는 이름을 �
     }
 }</code></pre></pre>
 <p><span class="caption">Listing 10-21: 시그니처 내 모든 참조자가
-동일한 라이프타임 <code>'a</code> 를 가져야 함을 나타낸 <code>longest</code> 함수
+동일한 라이프타임 <code>'a</code>를 가져야 함을 나타낸 <code>longest</code> 함수
 정의</span></p>
 <p>이 코드는 정상적으로 컴파일되며, Listing 10-19의 <code>main</code> 코드로
 실행하면 우리가 원했던 결과가 나옵니다.</p>
@@ -413,9 +413,9 @@ Listing 10-21와 같이 이 라이프타임에 <code>'a</code>라는 이름을 �
 <p><code>longest</code> 함수에 구체적인 참조자들이 넘겨질 때 <code>'a</code> 에 대응되는
 구체적인 라이프타임은 <code>x</code> 스코프와 <code>y</code> 스코프가 겹쳐지는 부분입니다.
 다르게 표현하면, <code>x</code> 라이프타임과 <code>y</code> 라이프타임 중 더 작은 쪽이
-제네릭 라이프타임 <code>'a</code> 의 구체적인 라이프타임이 됩니다.
-반환하는 참조자도 동일한 라이프타임 매개변수 <code>'a</code> 를 명시했으므로,
-<code>x</code>, <code>y</code> 중 더 작은 라이프타임 내에서는 <code>longest</code> 가 반환한
+제네릭 라이프타임 <code>'a</code>의 구체적인 라이프타임이 됩니다.
+반환하는 참조자도 동일한 라이프타임 매개변수 <code>'a</code>를 명시했으므로,
+<code>x</code>, <code>y</code> 중 더 작은 라이프타임 내에서는 <code>longest</code>가 반환한
 참조자의 유효함을 보장할 수 있습니다.</p>
 <p>서로 다른 구체적인 라이프타임을 가진 참조자를 <code>longest</code> 함수에 넘겨보면서,
 라이프타임 명시가 어떤 효과를 내는지 알아봅시다. Listing 10-22에
@@ -440,15 +440,15 @@ Listing 10-21와 같이 이 라이프타임에 <code>'a</code>라는 이름을 �
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">Listing 10-22: 서로 다른 구체적인 라이프타임을 가진
 <code>String</code> 값의 참조자로 <code>longest</code> 함수 호출하기</span></p>
-<p><code>string1</code> 은 바깥쪽 스코프가 끝나기 전까지,
+<p><code>string1</code>은  바깥쪽 스코프가 끝나기 전까지,
 <code>string2</code>는 안쪽 스코프가 끝나기 전까지 유효합니다.
-<code>result</code> 는 안쪽 스코프가 끝나기 전까지 유효한 무언가를 참조합니다.
+<code>result</code>는  안쪽 스코프가 끝나기 전까지 유효한 무언가를 참조합니다.
 이 코드는 borrow 검사기가 문제 삼지 않습니다.
-실행하면 <code>The longest string is long string is long</code> 가 출력됩니다.</p>
+실행하면 <code>The longest string is long string is long</code>가 출력됩니다.</p>
 <p>다음은 두 인자 중 하나의 라이프타임이
 <code>result</code> 참조자의 라이프타임보다 작을 경우입니다.
 <code>result</code> 변수의 선언을 안쪽 스코프에서 밖으로 옮기고,
-값의 대입은 <code>string2</code> 가 있는 안쪽 스코프에 남겨보겠습니다.
+값의 대입은 <code>string2</code>가 있는 안쪽 스코프에 남겨보겠습니다.
 그리고 <code>result</code>를 사용하는 <code>println!</code> 구문을 안쪽 스코프가
 끝나고 난 이후의 바깥쪽 스코프로 옮겨보겠습니다.
 이렇게 수정한 Listing 10-23 코드는 컴파일할 수 없습니다.</p>
@@ -488,12 +488,12 @@ error[E0597]: `string2` does not live long enough
 For more information about this error, try `rustc --explain E0597`.
 error: could not compile `chapter10` due to previous error
 </code></pre>
-<p>이 에러는 <code>println!</code> 구문에서 <code>result</code> 가 유효하려면 <code>string2</code> 가
+<p>이 에러는 <code>println!</code> 구문에서 <code>result</code>가 유효하려면 <code>string2</code> 가
 바깥쪽 스코프가 끝나기 전까지 유효해야 한다는 내용입니다.
-우리가 함수 매개변수와 반환 값에 모두 동일한 라이프타임 매개변수 <code>'a</code> 를 명시했으므로,
+우리가 함수 매개변수와 반환 값에 모두 동일한 라이프타임 매개변수 <code>'a</code>를 명시했으므로,
 러스트는 문제를 정확히 파악할 수 있습니다.</p>
 <p>사실 우리 눈으로 보기에는 코드에 문제가 없어 보입니다.
-<code>string1</code> 의 문자열이 <code>string2</code> 보다 더 기니까 <code>result</code>는
+<code>string1</code>의 문자열이 <code>string2</code> 보다 더 기니까 <code>result</code>는
 <code>string1</code>을 참조하게 될 테고, <code>println!</code> 구문을 사용하는 시점에
 <code>string1</code>의 참조자는 유효하니까요. 하지만 컴파일러는 이 점을 알아챌 수 없습니다.
 우리가 러스트에 전달한 건 '<code>longest</code> 함수가 반환할 참조자의 라이프타임은
@@ -522,9 +522,9 @@ borrow 검사기는 Listing 10-23 코드가 잠재적으로 유효하지 않은 
 </span>fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;str) -&gt; &amp;'a str {
     x
 }</code></pre></pre>
-<p>매개변수 <code>x</code>와 반환 타입에만 라이프타임 매개변수 <code>'a</code> 가 지정되어 있습니다.
+<p>매개변수 <code>x</code>와 반환 타입에만 라이프타임 매개변수 <code>'a</code>가 지정되어 있습니다.
 <code>y</code>의 라이프타임은 <code>x</code>나 반환 값의 라이프타임과 전혀 관계 없으므로,
-매개변수 <code>y</code> 에는 <code>'a</code> 를 지정하지 않았습니다.</p>
+매개변수 <code>y</code> 에는 <code>'a</code>를 지정하지 않았습니다.</p>
 <p>참조자를 반환하는 함수를 작성할 때는 반환 타입의 라이프타임 매개변수가
 함수 매개변수 중 하나와 일치해야합니다.
 반환할 레퍼런스가 함수 매개변수중 하나를 참조하지 <em>않을</em> 유일한 가능성은
@@ -545,7 +545,7 @@ borrow 검사기는 Listing 10-23 코드가 잠재적으로 유효하지 않은 
     let result = String::from(&quot;really long string&quot;);
     result.as_str()
 }</code></pre>
-<p>반환 타입에 <code>'a</code> 를 지정했지만,
+<p>반환 타입에 <code>'a</code>를 지정했지만,
 반환 값의 라이프타임이 그 어떤 매개변수와도
 관련 없으므로 컴파일할 수 없습니다.
 나타나는 에러 메세지는 다음과 같습니다:</p>
@@ -560,8 +560,8 @@ error[E0515]: cannot return reference to local variable `result`
 For more information about this error, try `rustc --explain E0515`.
 error: could not compile `chapter10` due to previous error
 </code></pre>
-<p><code>result</code> 는 <code>longest</code> 함수가 끝나면서 스코프를 벗어나 정리되는데,
-함수에서 <code>result</code> 의 참조자를 반환하려고 하니 문제가 발생합니다.
+<p><code>result</code>는  <code>longest</code> 함수가 끝나면서 스코프를 벗어나 정리되는데,
+함수에서 <code>result</code>의 참조자를 반환하려고 하니 문제가 발생합니다.
 여기서 댕글링 참조자가 발생하지 않도록 라이프타임 매개변수를 지정할 방법은 없습니다.
 그리고 러스트는 댕글링 참조자를 생성하는 코드를 눈감아주지 않죠.
 이런 상황을 해결하는 가장 좋은 방법은 참조자 대신 값의 소유권을 갖는
@@ -679,7 +679,7 @@ borrow 검사기가 추론할 수 있도록 하였습니다.</p>
 <code>fn foo&lt;'a&gt;(x: &amp;'a i32) -&gt; &amp;'a i32</code>처럼 말이지요.</p>
 <p>세 번째 규칙은, 입력 라이프타임 매개변수가 여러 개인데,
 그중 하나가 <code>&amp;self</code> 나 <code>&amp;mut self</code> 라면, 즉 메서드라면
-<code>self</code> 의 라이프타임이 모든 출력 라이프타임 매개변수에 대입됩니다.
+<code>self</code>의 라이프타임이 모든 출력 라이프타임 매개변수에 대입됩니다.
 이 규칙은 메서드 코드를 깔끔하게 만드는 데 기여합니다.</p>
 <p>한번 우리가 컴파일러라고 가정해보고, Listing 10-25의
 <code>first_word</code> 함수 시그니처 속 참조자의 라이프타임을
@@ -782,7 +782,7 @@ Listing 10-24의 <code>ImportantExcerpt</code> 구조체로 예시를 들어보�
 </span><span class="boring">}</span></code></pre></pre>
 <p>두 개의 입력 라이프타임이 있으니, 러스트는 첫 번째 라이프타임 생략 규칙대로
 <code>&amp;self</code>, <code>announcement</code>에 각각의 라이프타임을 부여합니다.
-그다음, 매개변수 중 하나가 <code>&amp;self</code> 이니 반환 타입에 <code>&amp;self</code> 의 라이프타임을 부여합니다.
+그다음, 매개변수 중 하나가 <code>&amp;self</code> 이니 반환 타입에 <code>&amp;self</code>의 라이프타임을 부여합니다.
 이제 모든 라이프타임이 추론되었네요.</p>
 <h3 id="정적-라이프타임-static-lifetime"><a class="header" href="#정적-라이프타임-static-lifetime">정적 라이프타임 (Static lifetime)</a></h3>
 <p><code>'static</code> 이라는 특별한 라이프타임을 다뤄봅시다.
@@ -840,7 +840,7 @@ where
 추가했습니다. 이 추가 매개변수는 <code>{}</code>를 사용하여 출력될 것인데,
 이 때문에 <code>Display</code> 트레잇 바운드가 필요합니다. 라이프타임은
 제네릭의 일종이므로, 함수명 뒤의 꺾쇠괄호 안에는 라이프타입
-매개변수 <code>'a</code> 선언과 제네릭 타입 매개변수 <code>T</code> 가 함께
+매개변수 <code>'a</code> 선언과 제네릭 타입 매개변수 <code>T</code>가 함께
 나열되어있습니다.</p>
 <h2 id="정리"><a class="header" href="#정리">정리</a></h2>
 <p>이번 장에서는 정말 많은 내용을 배웠네요!

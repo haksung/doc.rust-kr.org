@@ -191,7 +191,7 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 <p><code>value_in_cents</code> 함수 내의 <code>match</code>를 쪼개 봅시다.
 먼저 <code>match</code> 키워드 뒤에 표현식을 써줬는데, 위의 경우에는 <code>coin</code> 값입니다.
 이는 <code>if</code> 에서 사용하는 조건식과 매우 유사하지만, 큰 차이점이 있습니다.
-<code>if</code> 를 사용할 경우에는 조건문에서 부울린 값을 반환해야 하지만,
+<code>if</code>를 사용할 경우에는 조건문에서 부울린 값을 반환해야 하지만,
 여기서는 어떤 타입이든 가능합니다. 위 예제에서 <code>coin</code>의 타입은
 첫째 줄에서 정의했던 <code>Coin</code> 열거형입니다.</p>
 <p>다음은 <code>match</code> 갈래(arm)들입니다. 하나의 갈래는 패턴과 코드 두 부분으로 이루어져 있습니다.
@@ -265,7 +265,7 @@ enum Coin {
 그 친구는 자기 컬렉션에 그 동전을 추가할 수 있겠지요.</p>
 <p>이 코드를 위한 매치 표현식 내에서는 배리언트 <code>Coin::Quarter</code>의 값과 매치되는 패턴에 <code>state</code>라는
 이름의 변수를 추가합니다. <code>Coin::Quarter</code>이 매치될 때, <code>state</code> 변수는 그 쿼터 동전의 주에 대한
-값에 바인드 될 것입니다. 그러면 우리는 다음과 같이 해당 갈래에서의 코드 내에서 <code>state</code>를 사용할 수
+값에 바인딩 될 것입니다. 그러면 우리는 다음과 같이 해당 갈래에서의 코드 내에서 <code>state</code>를 사용할 수
 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
 </span><span class="boring">enum UsState {
@@ -302,7 +302,7 @@ enum Coin {
 대한 바인딩은 값 <code>UsState::Alaska</code>가 될 것입니다. 그러면 이 바인딩을 <code>println!</code> 표현식
 내에서 사용할 수 있고, 따라서 <code>Quarter</code>에 대한 <code>Coin</code> 열거형 배리언트로부터 내부의 주에 대한
 값을 얻었습니다.</p>
-<h3 id="optiont-를-이용하는-매칭"><a class="header" href="#optiont-를-이용하는-매칭"><code>Option&lt;T&gt;</code> 를 이용하는 매칭</a></h3>
+<h3 id="optiont를-이용하는-매칭"><a class="header" href="#optiont를-이용하는-매칭"><code>Option&lt;T&gt;</code>를 이용하는 매칭</a></h3>
 <p>이전 절에서 <code>Option&lt;T&gt;</code> 값을 사용하려면 <code>Some</code> 일 때 실행돼서,
 <code>Some</code> 내의 <code>T</code> 값을 얻을 수 있는 코드가 필요하다고 했었죠.
 이제 <code>Coin</code> 열거형을 다뤘던 것처럼 <code>Option&lt;T&gt;</code> 도 <code>match</code> 로 다뤄보도록 하겠습니다.
@@ -358,7 +358,7 @@ Listing 6-5와 같이 보일 것입니다:</p>
 </span><span class="boring">    let none = plus_one(None);
 </span><span class="boring">}</span></code></pre>
 <p><code>Some(5)</code>가 <code>Some(i)</code>랑 매칭되나요? 그렇습니다! 동일한 배리언트를 갖고 있습니다.
-<code>Some</code> 내부에 담긴 값은 <code>i</code>에 바인드 되므로, <code>i</code>는 값 <code>5</code>를 갖습니다.
+<code>Some</code> 내부에 담긴 값은 <code>i</code>에 바인딩되므로, <code>i</code>는 값 <code>5</code>를 갖습니다.
 그런 다음 매치 갈래 내의 코드가 실행되므로, <code>i</code>의 값에 1을 더한 다음
 최종적으로 <code>6</code>을 담은 새로운 <code>Some</code> 값을 생성합니다.</p>
 <p>이제 <code>x</code>가 <code>None</code>인 Listing 6-5에서의 <code>plus_one</code>의 두 번째 호출을 살펴봅시다.
