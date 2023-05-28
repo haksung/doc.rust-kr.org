@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>순환 참조는 메모리 릭을 발생시킬 수 있습니다 - The Rust Programming Language</title>
+        <title>순환 참조는 메모리 누수를 발생시킬 수 있습니다 - The Rust Programming Language</title>
 
 
         <!-- Custom HTML head -->
@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">들어가기에 앞서</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">소개</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> 시작해봅시다</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> 러스트 설치</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> 카고를 사용해봅시다</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> 추리 게임</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> 일반적인 프로그래밍 개념</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> 변수와 가변성</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> 데이터 타입</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> 함수</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> 주석</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> 흐름 제어문</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> 소유권 이해하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> 소유권이 뭔가요?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> 참조자와 Borrow</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> 슬라이스(Slice)</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> 연관된 데이터를 구조체로 구조화하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> 구조체 정의 및 인스턴트화</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> 구조체를 사용한 예제 프로그램</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> 메서드 문법</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> 열거형과 패턴 매칭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> 열거형 정의하기</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> match 흐름 제어 구성</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> if let을 사용한 간결한 흐름 제어</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> 커져가는 프로젝트를 패키지, 크레이트, 모듈로 관리하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> 패키지, 크레이트</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> 모듈을 정의하여 스코프 및 공개 여부 제어하기</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> 경로를 사용해 모듈 트리에서 아이템 가리키기</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> use 키워드로 경로를 스코프 내로 가져오기</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> 별개의 파일로 모듈 분리하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> 일반적인 컬렉션</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> 벡터에 여러 값을 목록으로 저장하기</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> 문자열에 UTF-8 텍스트를 저장하기</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> 해쉬맵(hash map)에 서로 연관된 키와 값을 저장하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> 에러 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> 복구 불가능한 에러에는 panic!!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Result와 함께하는 복구 가능한 에러</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> panic!이냐, panic!이 아니냐, 그것이 문제로다</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> 제네릭 타입, 트레잇, 라이프타임</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> 제네릭 데이터 타입</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> 트레잇으로 공통된 동작을 정의하기</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> 라이프타임으로 참조자의 유효성 검증하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> 자동화 테스트 작성하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> 테스트 작성 방법</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> 테스트 실행 제어하기</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> 테스트 조직화</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> I/O 프로젝트: 커맨드 라인 프로그램 만들기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> 커맨드 라인 인자 받기</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> 파일 읽기</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> 모듈성과 에러 처리 향상을 위한 리팩토링</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> 테스트 주도 개발로 라이브러리 기능 개발하기</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> 환경 변수 사용하기</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> 표준 출력 대신 표준 에러로 에러 메세지 작성하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> 함수형 언어의 특성들: 반복자와 클로저</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> 클로저: 자신의 환경을 캡처하는 익명 함수</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> 반복자로 일련의 아이템들 처리하기</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> I/O 프로젝트 개선하기</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> 성능 비교하기: 루프 vs. 반복자</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> 카고와 Crates.io 더 알아보기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> 릴리즈 프로필을 통한 빌드 커스터마이징하기</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Crates.io에 크레이트 배포하기</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> 카고 작업공간</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> cargo install로 Crates.io에 있는 바이너리 설치하기</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> 커스텀 명령어로 카고 확장하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Box&lt;T&gt;를 사용하여 힙에 있는 데이터 가리키기</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Deref 트레잇으로 스마트 포인터를 보통의 참조자처럼 취급하기</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Drop 트레잇으로 메모리 정리 코드 실행하기</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, 참조 카운트 스마트 포인터</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt;와 내부 가변성 패턴</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html" class="active"><strong aria-hidden="true">15.6.</strong> 순환 참조는 메모리 릭을 발생시킬 수 있습니다</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> 겁없는 동시성</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> 스레드를 이용하여 코드를 동시에 실행하기</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> 메세지 패싱을 사용하여 스레드 간 데이터 전송하기</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> 공유 상태 동시성</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Sync와 Send 트레잇을 이용한 확장 가능한 동시성</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> 러스트의 객체 지향 프로그래밍 기능들</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> 객체 지향 언어의 특성</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> 트레잇 객체를 사용하여 다른 타입의 값 허용하기</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> 객체 지향 디자인 패턴 구현하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> 패턴과 매칭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> 패턴이 사용될 수 있는 모든 곳</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> 반박 가능성 (Refutability): 패턴이 매칭에 실패할지의 여부</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> 패턴 문법</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> 고급 기능들</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> 안전하지 않은 러스트</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> 고급 트레잇</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> 고급 타입</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> 고급 함수와 클로저</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> 매크로</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> 최종 프로젝트: 멀티스레드 웹 서버 구축하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> 싱글스레드 웹 서버 구축하기</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> 싱글스레드 서버를 멀티스레드 서버로 바꾸기</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> 우아한 종료와 정리</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> 부록</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - 키워드</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - 연산자와 기호</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - 파생 가능한 트레잇</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - 유용한 개발 도구</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - 에디션</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - 번역본</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - 러스트가 만들어지는 과정과 “Nightly 러스트”</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="title-page.html">The Rust Programming Language</a></li><li class="chapter-item expanded affix "><a href="foreword.html">들어가기에 앞서</a></li><li class="chapter-item expanded affix "><a href="ch00-00-introduction.html">소개</a></li><li class="chapter-item expanded "><a href="ch01-00-getting-started.html"><strong aria-hidden="true">1.</strong> 시작해봅시다</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch01-01-installation.html"><strong aria-hidden="true">1.1.</strong> 러스트 설치</a></li><li class="chapter-item expanded "><a href="ch01-02-hello-world.html"><strong aria-hidden="true">1.2.</strong> Hello, World!</a></li><li class="chapter-item expanded "><a href="ch01-03-hello-cargo.html"><strong aria-hidden="true">1.3.</strong> 카고를 사용해봅시다</a></li></ol></li><li class="chapter-item expanded "><a href="ch02-00-guessing-game-tutorial.html"><strong aria-hidden="true">2.</strong> 추리 게임</a></li><li class="chapter-item expanded "><a href="ch03-00-common-programming-concepts.html"><strong aria-hidden="true">3.</strong> 일반적인 프로그래밍 개념</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch03-01-variables-and-mutability.html"><strong aria-hidden="true">3.1.</strong> 변수와 가변성</a></li><li class="chapter-item expanded "><a href="ch03-02-data-types.html"><strong aria-hidden="true">3.2.</strong> 데이터 타입</a></li><li class="chapter-item expanded "><a href="ch03-03-how-functions-work.html"><strong aria-hidden="true">3.3.</strong> 함수</a></li><li class="chapter-item expanded "><a href="ch03-04-comments.html"><strong aria-hidden="true">3.4.</strong> 주석</a></li><li class="chapter-item expanded "><a href="ch03-05-control-flow.html"><strong aria-hidden="true">3.5.</strong> 흐름 제어문</a></li></ol></li><li class="chapter-item expanded "><a href="ch04-00-understanding-ownership.html"><strong aria-hidden="true">4.</strong> 소유권 이해하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch04-01-what-is-ownership.html"><strong aria-hidden="true">4.1.</strong> 소유권이 뭔가요?</a></li><li class="chapter-item expanded "><a href="ch04-02-references-and-borrowing.html"><strong aria-hidden="true">4.2.</strong> 참조자와 빌림</a></li><li class="chapter-item expanded "><a href="ch04-03-slices.html"><strong aria-hidden="true">4.3.</strong> 슬라이스</a></li></ol></li><li class="chapter-item expanded "><a href="ch05-00-structs.html"><strong aria-hidden="true">5.</strong> 연관된 데이터를 구조체로 구조화하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch05-01-defining-structs.html"><strong aria-hidden="true">5.1.</strong> 구조체 정의 및 인스턴트화</a></li><li class="chapter-item expanded "><a href="ch05-02-example-structs.html"><strong aria-hidden="true">5.2.</strong> 구조체를 사용한 예제 프로그램</a></li><li class="chapter-item expanded "><a href="ch05-03-method-syntax.html"><strong aria-hidden="true">5.3.</strong> 메서드 문법</a></li></ol></li><li class="chapter-item expanded "><a href="ch06-00-enums.html"><strong aria-hidden="true">6.</strong> 열거형과 패턴 매칭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch06-01-defining-an-enum.html"><strong aria-hidden="true">6.1.</strong> 열거형 정의하기</a></li><li class="chapter-item expanded "><a href="ch06-02-match.html"><strong aria-hidden="true">6.2.</strong> match 흐름 제어 구성</a></li><li class="chapter-item expanded "><a href="ch06-03-if-let.html"><strong aria-hidden="true">6.3.</strong> if let을 사용한 간결한 흐름 제어</a></li></ol></li><li class="chapter-item expanded "><a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html"><strong aria-hidden="true">7.</strong> 커져 가는 프로젝트를 패키지, 크레이트, 모듈로 관리하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch07-01-packages-and-crates.html"><strong aria-hidden="true">7.1.</strong> 패키지, 크레이트</a></li><li class="chapter-item expanded "><a href="ch07-02-defining-modules-to-control-scope-and-privacy.html"><strong aria-hidden="true">7.2.</strong> 모듈을 정의하여 스코프 및 공개 여부 제어하기</a></li><li class="chapter-item expanded "><a href="ch07-03-paths-for-referring-to-an-item-in-the-module-tree.html"><strong aria-hidden="true">7.3.</strong> 경로를 사용해 모듈 트리에서 아이템 가리키기</a></li><li class="chapter-item expanded "><a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html"><strong aria-hidden="true">7.4.</strong> use 키워드로 경로를 스코프 내로 가져오기</a></li><li class="chapter-item expanded "><a href="ch07-05-separating-modules-into-different-files.html"><strong aria-hidden="true">7.5.</strong> 별개의 파일로 모듈 분리하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch08-00-common-collections.html"><strong aria-hidden="true">8.</strong> 일반적인 컬렉션</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch08-01-vectors.html"><strong aria-hidden="true">8.1.</strong> 벡터에 여러 값을 목록으로 저장하기</a></li><li class="chapter-item expanded "><a href="ch08-02-strings.html"><strong aria-hidden="true">8.2.</strong> 문자열에 UTF-8 텍스트를 저장하기</a></li><li class="chapter-item expanded "><a href="ch08-03-hash-maps.html"><strong aria-hidden="true">8.3.</strong> 해쉬맵에 서로 연관된 키와 값을 저장하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch09-00-error-handling.html"><strong aria-hidden="true">9.</strong> 에러 처리</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch09-01-unrecoverable-errors-with-panic.html"><strong aria-hidden="true">9.1.</strong> 복구 불가능한 에러에는 panic!!</a></li><li class="chapter-item expanded "><a href="ch09-02-recoverable-errors-with-result.html"><strong aria-hidden="true">9.2.</strong> Result와 함께하는 복구 가능한 에러</a></li><li class="chapter-item expanded "><a href="ch09-03-to-panic-or-not-to-panic.html"><strong aria-hidden="true">9.3.</strong> panic!이냐, panic!이 아니냐, 그것이 문제로다</a></li></ol></li><li class="chapter-item expanded "><a href="ch10-00-generics.html"><strong aria-hidden="true">10.</strong> 제네릭 타입, 트레잇, 라이프타임</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch10-01-syntax.html"><strong aria-hidden="true">10.1.</strong> 제네릭 데이터 타입</a></li><li class="chapter-item expanded "><a href="ch10-02-traits.html"><strong aria-hidden="true">10.2.</strong> 트레잇으로 공통된 동작을 정의하기</a></li><li class="chapter-item expanded "><a href="ch10-03-lifetime-syntax.html"><strong aria-hidden="true">10.3.</strong> 라이프타임으로 참조자의 유효성 검증하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch11-00-testing.html"><strong aria-hidden="true">11.</strong> 자동화 테스트 작성하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch11-01-writing-tests.html"><strong aria-hidden="true">11.1.</strong> 테스트 작성 방법</a></li><li class="chapter-item expanded "><a href="ch11-02-running-tests.html"><strong aria-hidden="true">11.2.</strong> 테스트 실행 제어하기</a></li><li class="chapter-item expanded "><a href="ch11-03-test-organization.html"><strong aria-hidden="true">11.3.</strong> 테스트 조직화</a></li></ol></li><li class="chapter-item expanded "><a href="ch12-00-an-io-project.html"><strong aria-hidden="true">12.</strong> I/O 프로젝트: 커맨드 라인 프로그램 만들기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch12-01-accepting-command-line-arguments.html"><strong aria-hidden="true">12.1.</strong> 커맨드 라인 인자 받기</a></li><li class="chapter-item expanded "><a href="ch12-02-reading-a-file.html"><strong aria-hidden="true">12.2.</strong> 파일 읽기</a></li><li class="chapter-item expanded "><a href="ch12-03-improving-error-handling-and-modularity.html"><strong aria-hidden="true">12.3.</strong> 모듈성과 에러 처리 향상을 위한 리팩터링</a></li><li class="chapter-item expanded "><a href="ch12-04-testing-the-librarys-functionality.html"><strong aria-hidden="true">12.4.</strong> 테스트 주도 개발로 라이브러리 기능 개발하기</a></li><li class="chapter-item expanded "><a href="ch12-05-working-with-environment-variables.html"><strong aria-hidden="true">12.5.</strong> 환경 변수 사용하기</a></li><li class="chapter-item expanded "><a href="ch12-06-writing-to-stderr-instead-of-stdout.html"><strong aria-hidden="true">12.6.</strong> 표준 출력 대신 표준 에러로 에러 메시지 작성하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch13-00-functional-features.html"><strong aria-hidden="true">13.</strong> 함수형 언어의 특성들: 반복자와 클로저</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch13-01-closures.html"><strong aria-hidden="true">13.1.</strong> 클로저: 자신의 환경을 캡처하는 익명 함수</a></li><li class="chapter-item expanded "><a href="ch13-02-iterators.html"><strong aria-hidden="true">13.2.</strong> 반복자로 일련의 아이템들 처리하기</a></li><li class="chapter-item expanded "><a href="ch13-03-improving-our-io-project.html"><strong aria-hidden="true">13.3.</strong> I/O 프로젝트 개선하기</a></li><li class="chapter-item expanded "><a href="ch13-04-performance.html"><strong aria-hidden="true">13.4.</strong> 성능 비교하기: 루프 vs. 반복자</a></li></ol></li><li class="chapter-item expanded "><a href="ch14-00-more-about-cargo.html"><strong aria-hidden="true">14.</strong> 카고와 Crates.io 더 알아보기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch14-01-release-profiles.html"><strong aria-hidden="true">14.1.</strong> 릴리즈 프로필을 통한 빌드 커스터마이징하기</a></li><li class="chapter-item expanded "><a href="ch14-02-publishing-to-crates-io.html"><strong aria-hidden="true">14.2.</strong> Crates.io에 크레이트 배포하기</a></li><li class="chapter-item expanded "><a href="ch14-03-cargo-workspaces.html"><strong aria-hidden="true">14.3.</strong> 카고 작업공간</a></li><li class="chapter-item expanded "><a href="ch14-04-installing-binaries.html"><strong aria-hidden="true">14.4.</strong> cargo install로 Crates.io에 있는 바이너리 설치하기</a></li><li class="chapter-item expanded "><a href="ch14-05-extending-cargo.html"><strong aria-hidden="true">14.5.</strong> 커스텀 명령어로 카고 확장하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch15-00-smart-pointers.html"><strong aria-hidden="true">15.</strong> 스마트 포인터</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch15-01-box.html"><strong aria-hidden="true">15.1.</strong> Box&lt;T&gt;를 사용하여 힙에 있는 데이터 가리키기</a></li><li class="chapter-item expanded "><a href="ch15-02-deref.html"><strong aria-hidden="true">15.2.</strong> Deref 트레잇으로 스마트 포인터를 보통의 참조자처럼 취급하기</a></li><li class="chapter-item expanded "><a href="ch15-03-drop.html"><strong aria-hidden="true">15.3.</strong> Drop 트레잇으로 메모리 정리 코드 실행하기</a></li><li class="chapter-item expanded "><a href="ch15-04-rc.html"><strong aria-hidden="true">15.4.</strong> Rc&lt;T&gt;, 참조 카운트 스마트 포인터</a></li><li class="chapter-item expanded "><a href="ch15-05-interior-mutability.html"><strong aria-hidden="true">15.5.</strong> RefCell&lt;T&gt;와 내부 가변성 패턴</a></li><li class="chapter-item expanded "><a href="ch15-06-reference-cycles.html" class="active"><strong aria-hidden="true">15.6.</strong> 순환 참조는 메모리 누수를 발생시킬 수 있습니다</a></li></ol></li><li class="chapter-item expanded "><a href="ch16-00-concurrency.html"><strong aria-hidden="true">16.</strong> 겁 없는 동시성</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch16-01-threads.html"><strong aria-hidden="true">16.1.</strong> 스레드를 이용하여 코드를 동시에 실행하기</a></li><li class="chapter-item expanded "><a href="ch16-02-message-passing.html"><strong aria-hidden="true">16.2.</strong> 메시지 패싱을 사용하여 스레드 간 데이터 전송하기</a></li><li class="chapter-item expanded "><a href="ch16-03-shared-state.html"><strong aria-hidden="true">16.3.</strong> 공유 상태 동시성</a></li><li class="chapter-item expanded "><a href="ch16-04-extensible-concurrency-sync-and-send.html"><strong aria-hidden="true">16.4.</strong> Sync와 Send 트레잇을 이용한 확장 가능한 동시성</a></li></ol></li><li class="chapter-item expanded "><a href="ch17-00-oop.html"><strong aria-hidden="true">17.</strong> 러스트의 객체 지향 프로그래밍 기능들</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch17-01-what-is-oo.html"><strong aria-hidden="true">17.1.</strong> 객체 지향 언어의 특성</a></li><li class="chapter-item expanded "><a href="ch17-02-trait-objects.html"><strong aria-hidden="true">17.2.</strong> 트레잇 객체를 사용하여 다른 타입의 값 허용하기</a></li><li class="chapter-item expanded "><a href="ch17-03-oo-design-patterns.html"><strong aria-hidden="true">17.3.</strong> 객체 지향 디자인 패턴 구현하기</a></li></ol></li><li class="chapter-item expanded "><a href="ch18-00-patterns.html"><strong aria-hidden="true">18.</strong> 패턴과 매칭</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch18-01-all-the-places-for-patterns.html"><strong aria-hidden="true">18.1.</strong> 패턴이 사용될 수 있는 모든 곳</a></li><li class="chapter-item expanded "><a href="ch18-02-refutability.html"><strong aria-hidden="true">18.2.</strong> 반박 가능성 (Refutability): 패턴이 매칭에 실패할지의 여부</a></li><li class="chapter-item expanded "><a href="ch18-03-pattern-syntax.html"><strong aria-hidden="true">18.3.</strong> 패턴 문법</a></li></ol></li><li class="chapter-item expanded "><a href="ch19-00-advanced-features.html"><strong aria-hidden="true">19.</strong> 고급 기능들</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch19-01-unsafe-rust.html"><strong aria-hidden="true">19.1.</strong> 안전하지 않은 러스트</a></li><li class="chapter-item expanded "><a href="ch19-03-advanced-traits.html"><strong aria-hidden="true">19.2.</strong> 고급 트레잇</a></li><li class="chapter-item expanded "><a href="ch19-04-advanced-types.html"><strong aria-hidden="true">19.3.</strong> 고급 타입</a></li><li class="chapter-item expanded "><a href="ch19-05-advanced-functions-and-closures.html"><strong aria-hidden="true">19.4.</strong> 고급 함수와 클로저</a></li><li class="chapter-item expanded "><a href="ch19-06-macros.html"><strong aria-hidden="true">19.5.</strong> 매크로</a></li></ol></li><li class="chapter-item expanded "><a href="ch20-00-final-project-a-web-server.html"><strong aria-hidden="true">20.</strong> 최종 프로젝트: 멀티스레드 웹 서버 구축하기</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="ch20-01-single-threaded.html"><strong aria-hidden="true">20.1.</strong> 싱글스레드 웹 서버 구축하기</a></li><li class="chapter-item expanded "><a href="ch20-02-multithreaded.html"><strong aria-hidden="true">20.2.</strong> 싱글스레드 서버를 멀티스레드 서버로 바꾸기</a></li><li class="chapter-item expanded "><a href="ch20-03-graceful-shutdown-and-cleanup.html"><strong aria-hidden="true">20.3.</strong> 우아한 종료와 정리</a></li></ol></li><li class="chapter-item expanded "><a href="appendix-00.html"><strong aria-hidden="true">21.</strong> 부록</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="appendix-01-keywords.html"><strong aria-hidden="true">21.1.</strong> A - 키워드</a></li><li class="chapter-item expanded "><a href="appendix-02-operators.html"><strong aria-hidden="true">21.2.</strong> B - 연산자와 기호</a></li><li class="chapter-item expanded "><a href="appendix-03-derivable-traits.html"><strong aria-hidden="true">21.3.</strong> C - 파생 가능한 트레잇</a></li><li class="chapter-item expanded "><a href="appendix-04-useful-development-tools.html"><strong aria-hidden="true">21.4.</strong> D - 유용한 개발 도구</a></li><li class="chapter-item expanded "><a href="appendix-05-editions.html"><strong aria-hidden="true">21.5.</strong> E - 에디션</a></li><li class="chapter-item expanded "><a href="appendix-06-translation.html"><strong aria-hidden="true">21.6.</strong> F - 번역본</a></li><li class="chapter-item expanded "><a href="appendix-07-nightly-rust.html"><strong aria-hidden="true">21.7.</strong> G - 러스트가 만들어지는 과정과 “Nightly 러스트”</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -149,14 +149,14 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h2 id="순환-참조는-메모리-릭을-발생시킬-수-있습니다"><a class="header" href="#순환-참조는-메모리-릭을-발생시킬-수-있습니다">순환 참조는 메모리 릭을 발생시킬 수 있습니다</a></h2>
-<p>러스트의 메모리 안정성 보장은 (<em>메모리 릭 (memory leak)</em> 이라고도 알려져 있는) 뜻하지
+                        <h2 id="순환-참조는-메모리-누수를-발생시킬-수-있습니다"><a class="header" href="#순환-참조는-메모리-누수를-발생시킬-수-있습니다">순환 참조는 메모리 누수를 발생시킬 수 있습니다</a></h2>
+<p>러스트의 메모리 안정성 보장은 (<em>메모리 누수 (memory leak)</em> 라고도 알려져 있는) 뜻하지
 않게 해제되지 않는 메모리를 생성하기 어렵게 만들지만, 불가능하게 만드는 것은 아닙니다.
-메모리 릭을 완전히 방지하는 것은 러스트가 보장하는 것 중 하나가 아닌데, 이는 메모리
-릭도 러스트에서는 메모리 안정성에 포함됨을 의미합니다. <code>Rc&lt;T&gt;</code> 및 <code>RefCell&lt;T&gt;</code>를
-사용하면 러스트에서 메모리 릭이 허용되는 것을 알 수 있습니다: 즉 아이템들이 서로를
-순환 참조하는 참조자를 만드는 것이 가능합니다. 이는 메모리 릭을 발생시키는데,
-그 이유는 순환 고리 안의 각 아이템들의 참조 카운트는 결코 0이 되지 않을 것이고,
+메모리 누수를 완전히 방지하는 것은 러스트가 보장하는 것 중 하나가 아닌데, 이는 메모리
+누수도 러스트에서는 메모리 안정성에 포함됨을 의미합니다. <code>Rc&lt;T&gt;</code> 및 <code>RefCell&lt;T&gt;</code>를
+사용하면 러스트에서 메모리 누수가 허용되는 것을 알 수 있습니다: 즉 아이템들이 서로를
+순환 참조하는 참조자를 만드는 것이 가능합니다. 이는 메모리 누수를 발생시키는데,
+그 이유는 순환 고리 안의 각 아이템의 참조 카운트는 결코 0이 되지 않을 것이고,
 그러므로 값들은 버려지지 않을 것이기 때문입니다.</p>
 <h3 id="순환-참조-만들기"><a class="header" href="#순환-참조-만들기">순환 참조 만들기</a></h3>
 <p>예제 15-25의 <code>List</code> 열거형과 <code>tail</code> 메서드 정의를 시작으로
@@ -185,15 +185,15 @@ impl List {
 fn main() {}</code></pre></pre>
 <p><span class="caption">예제 15-25: <code>RefCell&lt;T&gt;</code>를 가지고 있어서
 <code>Cons</code> 배리언트가 참조하는 것을 변경할 수 있는 cons 리스트 정의</span></p>
-<p>예제 15-5의 <code>List</code> 정의의 또다른 변형이 이용되고 있습니다.
-이제 <code>Cons</code> 배리언트 내의 두번째 요소는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>인데,
-이는 예제 15-24에서 했던 것처럼 <code>i32</code> 값을 변경하는 능력을 갖는 대신,
+<p>예제 15-5의 <code>List</code> 정의의 또 다른 변형이 이용되고 있습니다.
+이제 <code>Cons</code> 배리언트 내의 두 번째 요소는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>인데,
+이는 예제 15-24에서 했던 것처럼 <code>i32</code> 값을 변경하는 능력을 가진 대신,
 <code>Cons</code> 배리언트가 가리키고 있는 <code>List</code> 값을 변경하길 원한다는 의미입니다.
-또한 <code>tail</code> 메서드를 추가하여 <code>Cons</code> 배리언트를 갖고 있다면 두번째 아이템에
+또한 <code>tail</code> 메서드를 추가하여 <code>Cons</code> 배리언트를 갖고 있다면 두 번째 아이템에
 접근하기 편하게 만들었습니다.</p>
 <p>예제 15-26에서는 예제 15-25에서 사용한 <code>main</code> 함수를 추가하고 있습니다.
 이 코드는 <code>a</code>에 리스트를 만들고 <code>b</code>에는 <code>a</code>의 리스트를 가리키고 있는 리스트를
-만들어 넣었습니다. 그 다음 <code>a</code>의 리스트가 <code>b</code>를 가리키도록 수정하는데, 이것이
+만들어 넣었습니다. 그다음 <code>a</code>의 리스트가 <code>b</code>를 가리키도록 수정하는데, 이것이
 순환 참조를 생성합니다. 이 과정에서 참조 카운트가 얼마인지 여러 곳에서 확인하기
 위해 곳곳에 <code>println!</code> 구문들을 넣었습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -241,16 +241,16 @@ fn main() {}</code></pre></pre>
 }</code></pre></pre>
 <p><span class="caption">예제 15-26: 두 개의 <code>List</code> 값이 서로를 가리키는
 순환 참조 생성하기</span></p>
-<p>초기값 리스트 <code>5, Nil</code>를 가진 <code>List</code> 값을 갖는 <code>Rc&lt;List&gt;</code> 인스턴스를
-만들어 <code>a</code> 변수에 넣었습니다. 그 다음 <code>Rc&lt;List&gt;</code> 인스턴스에 만들어서 <code>b</code>에
-넣었는데, 여기에는 10과 <code>a</code>의 리스트를 가리키고 있는 또다른 <code>List</code> 값이
+<p>초깃값 리스트 <code>5, Nil</code>을 가진 <code>List</code> 값을 갖는 <code>Rc&lt;List&gt;</code> 인스턴스를
+만들어 <code>a</code> 변수에 넣었습니다. 그다음 <code>Rc&lt;List&gt;</code> 인스턴스에 만들어서 <code>b</code>에
+넣었는데, 여기에는 10과 <code>a</code>의 리스트를 가리키고 있는 또 다른 <code>List</code> 값이
 있습니다.</p>
 <p><code>a</code>를 수정하여 이것이 <code>Nil</code> 대신 <code>b</code>를 가리키도록 하였는데, 이렇게 순환이
 만들어집니다. 이는 <code>tail</code> 메서드를 사용하여 <code>a</code>에 있는 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>로부터
-참조자를 얻어오는 식으로 이루어졌는데, 이것을 <code>link</code>라는 변수에 넣었습니다. 그 다음
+참조자를 얻어오는 식으로 이루어졌는데, 이것을 <code>link</code>라는 변수에 넣었습니다. 그다음
 <code>RefCell&lt;Rc&lt;List&gt;&gt;</code>의 <code>borrow_mut</code> 메서드를 사용하여 <code>Nil</code> 값을 가지고 있는
 <code>Rc&lt;List&gt;</code> 내부의 값을 <code>b</code>의 <code>Rc&lt;List&gt;</code>로 바꾸었습니다.</p>
-<p>잠시 마지막 <code>println!</code> 문이 실해되지 않도록 주석처리하고서 이 코드를 실행시면
+<p>잠시 마지막 <code>println!</code> 문이 실행되지 않도록 주석 처리하고서 이 코드를 실행시키면
 아래와 같은 출력을 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling cons-list v0.1.0 (file:///projects/cons-list)
@@ -268,35 +268,35 @@ a rc count after changing a = 2
 참조 카운트는 둘 다 2입니다. <code>main</code>의 끝에서 러스트는 <code>b</code>를 버리는데, 이는
 <code>b</code>의 <code>Rc&lt;List&gt;</code> 참조 카운트를 2에서 1로 줄입니다. <code>Rc&lt;List&gt;</code>가 힙에 보유한
 메모리는 이 시점에서 해제되지 않을 것인데, 그 이유는 참조 카운트가 0이 아닌
-1이기 때문입니다. 그런 다음 러스트는 <code>a</code>을 버리고, 이는 마찬가지로 <code>a</code>의
+1이기 때문입니다. 그런 다음 러스트는 <code>a</code>를 버리고, 이는 마찬가지로 <code>a</code>의
 <code>Rc&lt;List&gt;</code> 인스턴스가 가진 참조 카운트를 2에서 1로 줄입니다. 이 인스턴스의
-메모리 또한 버러질 수 없는데, 왜냐하면 이쪽의 <code>Rc&lt;List&gt;</code> 인스턴스도 여전히
+메모리 또한 버려질 수 없는데, 왜냐하면 이쪽의 <code>Rc&lt;List&gt;</code> 인스턴스도 여전히
 무언가를 참조하기 때문입니다. 리스트에 할당된 메모리는 정리되지 않은 채
 영원히 남을 것입니다. 이러한 순환 참조를 시각화하기 위해 그림 15-4의
 다이어그램을 만들었습니다.</p>
 <img alt="Reference cycle of lists" src="img/trpl15-04.svg" class="center" />
 <p><span class="caption">그림 15-4: 리스트 <code>a</code>와 <code>b</code>가 서로를 가리키고
 있는 순환 참조</span></p>
-<p>만일 여러분이 마지막 <code>println!</code>의 주석을 해제하고 프로그램을 실행해보면, 러스트는
+<p>만일 여러분이 마지막 <code>println!</code>의 주석을 해제하고 프로그램을 실행해 보면, 러스트는
 <code>a</code>를 가리키고 있는 <code>b</code>를 가리키고 있는 <code>a</code>를 가리키고 있는 등등 스택 오버플로우가
 날 때까지 이 순환을 출력하려 할 것입니다.</p>
 <p>실제 프로그램과 비교했을 때 이 예제에서의 순환 참조 생성 결과는 그렇게까지
 심각하진 않습니다: 순환 참조가 생성된 직후 프로그램이 종료되니까요.
 하지만, 더 복잡한 프로그램이 많은 양의 메모리를 순환 참조하여 할당하고
-오랜 시간동안 이걸 가지고 있게 되면, 프로그램은 필요한 양보다 더 많은
+오랜 시간 동안 이걸 가지고 있게 되면, 프로그램은 필요한 양보다 더 많은
 메모리를 사용하게 되고 사용 가능한 메모리를 다 써버리게 되어 시스템을
 멈추게 할지도 모릅니다.</p>
 <p>순환 참조를 만드는 것은 쉽게 이루어지지는 않지만, 불가능한 것도 아닙니다.
 만일 여러분이 <code>Rc&lt;T&gt;</code> 값을 가지고 있는 <code>RefCell&lt;T&gt;</code> 혹은 그와 유사하게
 내부 가변성 및 참조 카운팅 기능이 있는 타입들의 중첩된 조합을 사용한다면,
-여러분이 직접 순환을 만들지 않음을 보장해야 합니다; 이 순환들을 찾아내는 것을
+여러분이 직접 순환을 만들지 않음을 보장해야 합니다; 이 순환을 찾아내는 것을
 러스트에 의지할 수는 없습니다. 순환 참조를 만드는 것은 프로그램의 논리적
 버그로서, 자동화된 테스트, 코드 리뷰, 그 외 소프트웨어 개발 연습 등을 통해
 최소화해야 할 것입니다.</p>
-<p>순환 참조를 피하는 또다른 해결책은 데이터 구조를 재구성하여 어떤
+<p>순환 참조를 피하는 또 다른 해결책은 데이터 구조를 재구성하여 어떤
 참조자는 소유권을 갖고 어떤 참조자는 그렇지 않도록 하는 것입니다.
 결과적으로 몇 개의 소유권 관계와 몇 개의 소유권 없는 관계로 이루어진
-순환을 만들수 있으며, 소유권 관계들만이 값을 버릴지 말지에 관해
+순환을 만들 수 있으며, 소유권 관계들만이 값을 버릴지 말지에 관해
 영향을 주게 됩니다. 예제 15-25에서는 <code>Cons</code> 배리언트가 언제나
 리스트를 소유하기를 원하므로, 데이터 구조를 재구성하는 것은 불가능합니다.
 부모 노드와 자식 노드로 구성된 그래프를 이용한 예제를 살펴보면서
@@ -308,21 +308,21 @@ a rc count after changing a = 2
 제거되는 것을 보았습니다. <code>Rc::downgrade</code>에 <code>Rc&lt;T&gt;</code>의 참조자를 넣어서
 호출하면 <code>Rc&lt;T&gt;</code> 인스턴스 내의 값을 가리키는 <em>약한 참조 (weak reference)</em> 를
 만드는 것도 가능합니다. 강한 참조는 <code>Rc&lt;T&gt;</code> 인스턴스의 소유권을 공유할 수 있는
-방법입니다. 약한 참조는 소유권 관계를 표현하지 않고, 약한 참조의 갯수는
+방법입니다. 약한 참조는 소유권 관계를 표현하지 않고, 약한 참조의 개수는
 <code>Rc&lt;T&gt;</code> 인스턴스가 제거되는 경우에 영향을 주지 않습니다. 약한 참조가 포함된
 참조 순환은 그 값의 강한 참조 개수를 0으로 만드는 순간 깨지게 되기 때문에,
 참조 순환을 일으키지 않게 될 것입니다.</p>
 <p><code>Rc::downgrade</code>를 호출하면 <code>Weak&lt;T&gt;</code> 타입의 스마트 포인터를 얻게 됩니다.
 <code>Rc::downgrade</code>는 <code>Rc&lt;T&gt;</code> 인스턴스의 <code>strong_count</code>를 1 증가시키는
 대신 <code>weak_count</code>를 1 증가시킵니다. <code>Rc&lt;T&gt;</code> 타입은 <code>strong_count</code>와
-유사한 방식으로 <code>weak_count</code>를 사용하여 <code>Weak&lt;T&gt;</code> 참조가 몇개 있는지
-추적합니다. 차이점은 <code>Rc&lt;T&gt;</code>인스턴스가 제거되기 위해 <code>weak_count</code>가
+유사한 방식으로 <code>weak_count</code>를 사용하여 <code>Weak&lt;T&gt;</code> 참조가 몇 개 있는지
+추적합니다. 차이점은 <code>Rc&lt;T&gt;</code> 인스턴스가 제거되기 위해 <code>weak_count</code>가
 0일 필요는 없다는 것입니다.</p>
 <p><code>Weak&lt;T&gt;</code>가 참조하고 있는 값이 이미 버려졌을지도 모르기 때문에, <code>Weak&lt;T&gt;</code>가
 가리키고 있는 값으로 어떤 일을 하기 위해서는 그 값이 여전히 존재하는지를 반드시
 확인해야 합니다. 이를 위해 <code>Weak&lt;T&gt;</code>의 <code>upgrade</code> 메서드를 호출하는데, 이 메서드는
 <code>Option&lt;Rc&lt;T&gt;&gt;</code>를 반환할 것입니다. 만일 <code>Rc&lt;T&gt;</code> 값이 아직 버려지지 않았다면
-<code>Some</code> 결과를 얻게 될 것이고 <code>Rc&lt;T&gt;</code> 값이 버려졌다면 <code>None</code> 결과값을 얻게
+<code>Some</code> 결과를 얻게 될 것이고 <code>Rc&lt;T&gt;</code> 값이 버려졌다면 <code>None</code> 결괏값을 얻게
 될 것입니다. <code>upgrade</code>가 <code>Option&lt;T&gt;</code>를 반환하기 때문에, 러스트는 <code>Some</code>의
 경우와 <code>None</code>의 경우가 반드시 처리되도록 할 것이고, 따라서 유효하지 않은 포인터는
 없을 것입니다.</p>
@@ -330,7 +330,7 @@ a rc count after changing a = 2
 말고, 자식 아이템 <em>그리고</em> 부모 아이템에 대해 모두 알고 있는 아이템을 갖는 트리를
 만들어 보겠습니다.</p>
 <h4 id="트리-데이터-구조-만들기-자식-노드를-가진-node"><a class="header" href="#트리-데이터-구조-만들기-자식-노드를-가진-node">트리 데이터 구조 만들기: 자식 노드를 가진 <code>Node</code></a></h4>
-<p>자신의 자식 노드에 대해 알고 있는 노드로 이루어진 트리를 만드는 것으로 시작해
+<p>자기 자식 노드에 대해 알고 있는 노드로 이루어진 트리를 만드는 것으로 시작해
 보겠습니다. <code>i32</code>값과 함께 자식 <code>Node</code> 값들의 참조자들도 가지고 있는 <code>Node</code>라는
 이름의 구조체를 만들겠습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -354,12 +354,12 @@ struct Node {
 </span><span class="boring">        children: RefCell::new(vec![Rc::clone(&amp;leaf)]),
 </span><span class="boring">    });
 </span><span class="boring">}</span></code></pre></pre>
-<p><code>Node</code>가 자신의 자식들을 소유하도록 하고, 이 소유권을 공유하여 트리의 각
+<p><code>Node</code>가 자기 자식들을 소유하도록 하고, 이 소유권을 공유하여 트리의 각
 <code>Node</code>에 직접 접근할 수 있도록 하고 싶습니다. 이렇게 하기 위해 <code>Vec&lt;T&gt;</code>
 아이템이 <code>Rc&lt;Node&gt;</code> 타입의 값이 되도록 정의하였습니다. 또한 어떤 노드가
 다른 노드의 자식이 되도록 수정하려고 <code>Vec&lt;Rc&lt;Node&gt;&gt;</code>를 <code>RefCell&lt;T&gt;</code>로
 감싼 <code>children</code>을 갖도록 하였습니다.</p>
-<p>그 다음 예제 15-27처럼 이 구조체 정의를 이용하여 3 값과 자식 노드가 없는
+<p>그다음 예제 15-27처럼 이 구조체 정의를 이용하여 3 값과 자식 노드가 없는
 <code>leaf</code>라는 이름의 <code>Node</code> 인스턴스, 그리고 5 값과 <code>leaf</code>를 자식으로 갖는
 <code>branch</code>라는 이름의 인스턴스를 만들도록 하겠습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -398,9 +398,9 @@ struct Node {
 <code>leaf</code>를 가리키고 있는 <code>branch.children</code>으로 이루어진 순환 참조를 만들게 되며,
 이들의 <code>strong_count</code>값을 결코 0이 되지 않게 하는 원인을 만들 것이기 때문에,
 여기에 <code>Rc&lt;T&gt;</code>를 사용할 수 없음을 알고 있습니다.</p>
-<p>이 관계들을 다른 방식으로 생각해보면, 부모 노드는 그의 자식들을 소유해야 합니다:
+<p>이 관계들을 다른 방식으로 생각해 보면, 부모 노드는 그의 자식들을 소유해야 합니다:
 즉 만일 부모 노드가 버려지게 되면, 그의 자식 노드들도 또한 버려져야 합니다.
-하지만, 자식은 그의 부모를 소유해서는 안됩니다: 즉 자식 노드가 버려지더라도
+하지만, 자식은 그의 부모를 소유해서는 안 됩니다: 즉 자식 노드가 버려지더라도
 그 부모는 여전히 존재해야 합니다. 이것이 바로 약한 참조를 위한 경우입니다!</p>
 <p>따라서 <code>Rc&lt;T&gt;</code> 대신 <code>Weak&lt;T&gt;</code>를 이용하여, 특별히 <code>RefCell&lt;Weak&lt;Node&gt;&gt;</code>를
 이용하여 <code>parent</code>의 타입을 만들겠습니다. 이제 <code>Node</code> 구조체 정의는 아래와
@@ -437,7 +437,7 @@ struct Node {
 </span><span class="boring">}</span></code></pre></pre>
 <p>노드는 자신의 부모 노드를 참조할 수 있게 되겠지만 그 부모를 소유하지는 않습니다.
 예제 15-28에서는 <code>main</code>을 갱신하여 이 새로운 정의를 사용하도록 해서 <code>leaf</code>
-노드가 자신의 부모인 <code>branch</code>를 참조할 수 있는 방법을 갖도록 합니다:</p>
+노드가 자기 부모인 <code>branch</code>를 참조할 수 있는 방법을 갖도록 합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::{Rc, Weak};
@@ -470,24 +470,24 @@ struct Node {
 }</code></pre></pre>
 <p><span class="caption">예제 15-28: 부모 노드 <code>branch</code>의 약한 참조를
 갖는 <code>leaf</code> 노드</span></p>
-<p><code>leaf</code> 노드를 만드는 것이 <code>parent</code> 필드를 제외하고는 예제 15-27와
-비슷해 보입니다: <code>leaf</code>는 부모없이 시작되서, 새 비어있는 <code>Weak&lt;Node&gt;</code>
+<p><code>leaf</code> 노드를 만드는 것이 <code>parent</code> 필드를 제외하고는 예제 15-27과
+비슷해 보입니다: <code>leaf</code>는 부모 없이 시작돼서, 새 비어있는 <code>Weak&lt;Node&gt;</code>
 참조자 인스턴스를 생성하였습니다.</p>
 <p>이 시점에서 <code>upgrade</code> 메서드를 사용하여 <code>leaf</code>의 부모에 대한 참조자를
-얻는 시도를 하면 <code>None</code> 값을 얻습니다. 첫번째 <code>println!</code> 구문에서는
-아래와 같은 출력을 보게됩니다:</p>
+얻는 시도를 하면 <code>None</code> 값을 얻습니다. 첫 번째 <code>println!</code> 구문에서는
+아래와 같은 출력을 보게 됩니다:</p>
 <pre><code class="language-text">leaf parent = None
 </code></pre>
 <p><code>branch</code> 노드를 생성할 때도 <code>parent</code> 필드에 새로운 <code>Weak&lt;Node&gt;</code>
 참조자를 넣었는데, 이는 <code>branch</code>에게는 부모 노드가 없기 때문입니다.
 <code>leaf</code>는 여전히 <code>branch</code>의 자식 중 하나입니다. 일단 <code>branch</code>의 <code>Node</code>
-인스턴스를 갖게 되면, <code>leaf</code>를 수정하여 자신의 부모에 대한 <code>Weak&lt;Node&gt;</code>
+인스턴스를 갖게 되면, <code>leaf</code>를 수정하여 자기 부모에 대한 <code>Weak&lt;Node&gt;</code>
 참조자를 갖도록 할 수 있습니다. <code>leaf</code>의 <code>parent</code> 필드의
 <code>RefCell&lt;Weak&lt;Node&gt;&gt;</code>에 있는 <code>borrow_mut</code> 메서드를 사용하고, 그런 다음
 <code>Rc::downgrade</code> 함수를 사용하여 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>로부터 <code>branch</code>에
 대한 <code>Weak&lt;Node&gt;</code> 참조자를 생성하였습니다.</p>
 <p><code>leaf</code>의 부모를 다시 한번 출력할 때는 <code>branch</code>를 가지고 있는 <code>Some</code> 배리언트를
-얻게될 것입니다: 이제 <code>leaf</code>는 자신의 부모에 접근할 수 있습니다! <code>leaf</code>를 출력할
+얻게 될 것입니다: 이제 <code>leaf</code>는 자기 부모에 접근할 수 있습니다! <code>leaf</code>를 출력할
 때 예제 15-26에서와 같이 궁극적으로 스택 오버플로우로 끝나버리는 그 순환 문제도
 피하게 되었습니다; <code>Weak&lt;Node&gt;</code> 참조자는 <code>(Weak)</code>로 출력됩니다:</p>
 <pre><code class="language-text">leaf parent = Some(Node { value: 5, parent: RefCell { value: (Weak) },
@@ -501,7 +501,7 @@ children: RefCell { value: [] } }] } })
 <p>새로운 내부 스코프를 만들고 <code>branch</code>의 생성 과정을 이 스코프로 옮겨서
 <code>Rc&lt;Node&gt;</code> 인스턴스의 <code>strong_count</code>와 <code>weak_count</code> 값이 어떻게
 변하는지 살펴봅시다. 그렇게 하면 <code>branch</code>가 만들어질 때와, 그 후 스코프
-밖으로 벗어났을 때 어떤일이 생기는지 알 수 있습니다. 수정본은
+밖으로 벗어났을 때 어떤 일이 생기는지 알 수 있습니다. 수정본은
 예제 15-29와 같습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
@@ -563,34 +563,34 @@ examining strong and weak reference counts</span></p>
 이때 카운트를 출력하면 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와
 (<code>Weak&lt;Node&gt;</code>로 <code>branch</code>를 가리키는 <code>leaf.parent</code>에 대한) 약한 참조 카운트
 1개를 갖고 있을 것입니다. <code>leaf</code> 내의 카운트를 출력하면 강한 참조 카운트 2개를
-갖고 있음을 보게될 것인데, 이는 <code>branch</code>가 이제 <code>branch.children</code>에 저장된
+갖고 있음을 보게 될 것인데, 이는 <code>branch</code>가 이제 <code>branch.children</code>에 저장된
 <code>leaf</code>의 <code>Rc&lt;Node&gt;</code>에 대한 클론을 가지게 되었지만, 약한 참조는 여전히 0개이기
 때문입니다.</p>
 <p>내부 스코프가 끝나게 되면, <code>branch</code>는 스코프 밖으로 벗어나게 되고 <code>Rc&lt;Node&gt;</code>의
 강한 참조 카운트는 0으로 줄어들게 되므로, 이것의 <code>Node</code>는 버려집니다.
 <code>leaf.parent</code>의 약한 참조 카운트 1개는 <code>Node</code>가 버려질지 말지와는
-아무런 관계가 없으므로, 아무런 메모리 릭도 발생하지 않습니다!</p>
+아무런 관계가 없으므로, 아무런 메모리 누수도 발생하지 않습니다!</p>
 <p>만일 이 스코프의 끝부분 뒤에 <code>leaf</code>의 부모에 접근 시도를 한다면 다시 <code>None</code>을
-얻게 될 것입니다. 프로그램의 끝 부분에서, <code>leaf</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조
+얻게 될 것입니다. 프로그램의 끝부분에서, <code>leaf</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조
 카운트 1개와 약한 참조 카운트 0개를 갖고 있는데, 이제 <code>leaf</code> 변수가 다시
 <code>Rc&lt;Node&gt;</code>에 대한 유일한 참조자이기 때문입니다.</p>
 <p>참조 카운트와 값 버리기를 관리하는 모든 로직은 <code>Rc&lt;T&gt;</code>와 <code>Weak&lt;T&gt;</code>,
 그리고 이들의 <code>Drop</code> 트레잇에 대한 구현부에 만들어져 있습니다.
 자식과 부모의 관계가 <code>Weak&lt;T&gt;</code> 참조자로 있어야 함을 <code>Node</code>의
-정의에 특정함으로써, 여러분은 순환 참조와 메모리 릭을 만들지
+정의에 특정함으로써, 여러분은 순환 참조와 메모리 누수를 만들지
 않으면서 자식 노드를 가리키는 부모 노드 혹은 그 반대의 것을 만들
 수 있습니다.</p>
 <h2 id="정리"><a class="header" href="#정리">정리</a></h2>
 <p>이번 장에서는 러스트가 일반적인 참조자를 가지고 기본적으로 보장하는 것들과는
-다른 보장과 트레이드 오프를 만들어내기 위해 스마트 포인터를 사용하는 방법을
+다른 보장과 트레이드오프를 만들어 내기 위해 스마트 포인터를 사용하는 방법을
 다루었습니다. <code>Box&lt;T&gt;</code> 타입은 알려진 크기를 갖고 있고 힙에 할당된 데이터를
 가리킵니다. <code>Rc&lt;T&gt;</code> 타입은 힙에 있는 데이터에 대한 참조자의 개수를 추적하여
-그 데이터가 여러 개의 소유자들을 갖을 수 있도록 합니다. 내부 가변성을 갖춘
+그 데이터가 여러 개의 소유자를 가질 수 있도록 합니다. 내부 가변성을 갖춘
 <code>RefCell&lt;T&gt;</code> 타입은 불변 타입이 필요하지만 그 타입의 내부 값을 변경할 필요가
 있을 때 사용할 수 있습니다; 이것은 또한 컴파일 타임 대신 런타임에 빌림 규칙을
 따르도록 강제합니다.</p>
 <p>또한 <code>Deref</code> 및 <code>Drop</code> 트레잇을 다루었는데, 이는 스마트 포인터의 수많은
-기능을 활성화해줍니다. 메모리 릭을 발생시킬 수 있는 순환 참조와, <code>Weak&lt;T&gt;</code>을
+기능을 활성화해 줍니다. 메모리 누수를 발생시킬 수 있는 순환 참조와, <code>Weak&lt;T&gt;</code>을
 이용하여 이를 방지하는 방법도 탐구하였습니다.</p>
 <p>이번 장이 여러분의 흥미를 자극하여 직접 여러분만의 스마트 포인터를
 구현하고 싶어졌다면, <a href="../nomicon/index.html">“러스토노미콘”</a>에서 더 유용한 정보를
