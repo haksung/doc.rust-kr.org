@@ -408,7 +408,7 @@ let mut bananas= 5; // mutable</code></pre>
 <pre><code class="language-rust ignore">io::stdin().read_line(&amp;mut guess).expect(&quot;Failed to read line&quot;);</code></pre>
 <p>하지만 하나의 긴 라인은 가독성이 떨어지므로 라인을 나누는
 것이 좋습니다. <code>.method_name()</code> 문법으로 어떤 메서드를 호출할 때는
-줄 바꿈과 다른 공백 문자로 긴 라인을 쪼개는 것이 보통 현명한 선택입니다.
+줄 바꿈과 다른 공백문자로 긴 라인을 쪼개는 것이 보통 현명한 선택입니다.
 이제 이 라인이 무슨 일을 하는지 살펴봅시다.</p>
 <p>이전에 언급한 것처럼 <code>read_line</code>은 우리가 인수로 넘긴 문자열에 사용자가
 입력한 것을 저장할 뿐만 아니라 하나의 <code>Result</code> 값을 돌려줍니다.

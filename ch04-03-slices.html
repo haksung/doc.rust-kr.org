@@ -150,16 +150,15 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="슬라이스"><a class="header" href="#슬라이스">슬라이스</a></h2>
-<p><em>슬라이스 (slice)</em> 는 컬렉션(collection)을 통째로 참조하는 것이 아닌,
+<p><em>슬라이스 (slice)</em> 는 컬렉션 (collection) 을 통째로 참조하는 것이 아닌,
 컬렉션의 연속된 일련의 요소를 참조하도록 해줍니다. 슬라이스는 참조자의
 일종으로서 소유권을 갖지 않습니다.</p>
 <p>한번 간단한 함수를 만들어 봅시다. 공백문자로 구분된 단어들의 문자열을
 입력받아서 해당 문자열의 첫 번째 단어를 반환하는 함수를요.
-공백문자를 찾을 수 없는 경우엔 문자열 전체가 하나의 단어라는 뜻이니
+공백문자를 찾을 수 없으면 문자열 전체가 하나의 단어라는 뜻이니
 전체 문자열을 반환하도록 합시다.</p>
-<p>이 문제를 슬라이스가 해결할 수 있음을 이해하기 위해서는 먼저 슬라이스
-없이 이 함수의 시그니처를 어떻게 작성할지
-부터 생각해 봅시다:</p>
+<p>이 문제를 슬라이스로 해결할 수 있음을 이해해 보기 위해서, 먼저 슬라이스 없이
+이 함수의 시그니처를 어떻게 작성할지부터 생각해 봅시다:</p>
 <pre><code class="language-rust ignore">fn first_word(s: &amp;String) -&gt; ?</code></pre>
 <p><code>first_word</code> 함수는 소유권을 가질 필요가 없으니 <code>&amp;String</code>을 매개변수로 갖게 했습니다.
 그런데, 뭘 반환해야 할까요? 문자열 <em>일부분</em>을 나타내는 법을 모르겠네요.
@@ -211,10 +210,10 @@
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre>
-<p>반복자(iterator)는 <a href="ch13-02-iterators.html">13장</a><!-- ignore -->에서 자세히 알아볼
-예정이니 일단 <code>iter</code> 메서드는 컬렉션의 각 요소를 반환하고,
-<code>enumerate</code> 메서드는 <code>iter</code>의 결괏값을
-각각 튜플로 감싸 반환한다는 것만 알아두도록 합시다.
+<p>반복자 (iterator) 는 <a href="ch13-02-iterators.html">13장</a><!-- ignore -->에서 자세히 알아볼
+예정이니, 일단 <code>iter</code> 메서드는 컬렉션의 각 요소를 반환하고,
+<code>enumerate</code> 메서드는 <code>iter</code>의 각 결괏값을
+튜플로 감싸 반환한다는 것만 알아두도록 합시다.
 이때 반환하는 튜플은 첫 번째 요소가 인덱스,
 두 번째 요소가 해당 요소의 참조자로 이루어져 있습니다.</p>
 <p><code>enumerate</code> 메서드가 반환한 튜플은 패턴을 이용해 해체하였습니다.
@@ -223,8 +222,8 @@
 <code>&amp;item</code>은 바이트에 대응됩니다. 이때 패턴에 <code>&amp;</code>를 사용하는
 이유는 <code>iter().enumerate()</code>에서 얻은 요소의 참조자가 필요하기
 때문입니다.</p>
-<p><code>for</code> 반복문 내에서는 바이트 리터럴 문법으로
-공백 문자를 찾고, 찾으면 해당 위치를 반환합니다.
+<p><code>for</code> 반복문 내에서는 바이트 리터럴 문법으로 공백문자를
+나타내는 바이트를 찾고, 찾으면 해당 위치를 반환합니다.
 찾지 못했을 땐 <code>s.len()</code> 으로 문자열의 길이를 반환합니다.</p>
 <pre><code class="language-rust ignore"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
 </span><span class="boring">    let bytes = s.as_bytes();
@@ -283,9 +282,9 @@
 이는 앞선 예제 4-8의 <code>word</code>처럼 어떠한 데이터의 특정 상태에만
 의존하는 값들이 늘어남을 의미합니다. 그러면 여러분은 3개의 관련 없는
 변수들을 계속 동기화해야겠죠.</p>
-<p>다행히도, 문자열 슬라이스라는 적절한 대안이 존재합니다.</p>
+<p>다행히도, 러스트에는 문자열 슬라이스라는 적절한 대안이 존재합니다.</p>
 <h3 id="문자열-슬라이스"><a class="header" href="#문자열-슬라이스">문자열 슬라이스</a></h3>
-<p>문자열 슬라이스(String Slice)는 <code>String</code>의 일부를 가리키는 참조자를 말합니다:</p>
+<p>문자열 슬라이스 (string slice) 는 <code>String</code>의 일부를 가리키는 참조자를 말합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let s = String::from(&quot;hello world&quot;);
 
@@ -341,14 +340,14 @@ let slice = &amp;s[0..len];
 let slice = &amp;s[..];
 <span class="boring">}</span></code></pre></pre>
 <blockquote>
-<p>Note: 본 내용은 문자열 슬라이스를 소개할 목적이기에
-ASCII 문자만 사용하여 문제가 발생하지 않았지만,
-문자열 슬라이스 생성 시 인덱스는 절대 UTF-8 문자 바이트 중간에 지정해선 안 됩니다.
-멀티바이트 문자 중간에 생성할 경우 프로그램은 에러가 발생하고 강제 종료됩니다.
-UTF-8 문자를 다루는 방법은 8장 <a href="ch08-02-strings.html#storing-utf-8-encoded-text-with-strings">“Storing UTF-8 Encoded Text with Strings”</a><!-- ignore -->
-절에서 자세히 알아볼 예정입니다.</p>
+<p>Note: 본 내용은 문자열 슬라이스를 소개할 목적이기에 ASCII 문자만 사용하여 문제가
+발생하지 않았지만, UTF-8 문자열 슬라이스 생성 시 인덱스는 반드시 올바른 UTF-8 문자
+경계로 지정되어야 합니다. 멀티바이트 문자의 중간 부분에 슬라이스를 생성할 경우,
+프로그램은 에러와 함께 강제 종료됩니다. UTF-8 문자를 다루는 방법은 8장
+<a href="ch08-02-strings.html#storing-utf-8-encoded-text-with-strings">“문자열에 UTF-8 텍스트를 저장하기”</a><!-- ignore -->절에서
+자세히 알아보겠습니다.</p>
 </blockquote>
-<p>여태 다룬 내용을 잘 기억해 두고, <code>first_word</code> 함수가 슬라이스를 반환하도록 재작성해 보죠.
+<p>여태 다룬 내용을 잘 기억해 두고, <code>first_word</code> 함수가 슬라이스를 반환하도록 재작성해 봅시다.
 문자열 슬라이스를 나타내는 타입은 <code>&amp;str</code>로 작성합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn first_word(s: &amp;String) -&gt; &amp;str {
@@ -369,8 +368,8 @@ UTF-8 문자를 다루는 방법은 8장 <a href="ch08-02-strings.html#storing-u
 공백문자 발견 시 해당 인덱스를 그대로 반환하는 것이 아니라
 문자열 맨 앞부터 알아낸 위치까지 문자열 슬라이스를 생성하여 반환합니다.</p>
 <p>이제 <code>first_word</code>가 반환하는 값은 원래 데이터와 분리된 값이 아닙니다.
-원래 데이터에서 슬라이스 시작 위치를 가리키는 참조자와,
-슬라이스 요소 개수로 구성된 값이죠.</p>
+이 값은 원래 데이터에서 슬라이스 시작 위치를 가리키는 참조자와,
+슬라이스 요소 개수로 구성되어 있습니다.</p>
 <p><code>second_word</code> 함수도 슬라이스를 반환하도록 바꿔보겠습니다:</p>
 <pre><code class="language-rust ignore">fn second_word(s: &amp;String) -&gt; &amp;str {</code></pre>
 <p>사용법이 훨씬 직관적이지 않나요? 또한 예제 4-8에서 말한
@@ -404,7 +403,7 @@ UTF-8 문자를 다루는 방법은 8장 <a href="ch08-02-strings.html#storing-u
 
     println!(&quot;the first word is: {}&quot;, word);
 }</code></pre>
-<p>나타나는 에러는 다음과 같습니다:</p>
+<p>컴파일러 에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling ownership v0.1.0 (file:///projects/ownership)
 error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
@@ -432,23 +431,23 @@ error: could not compile `ownership` due to previous error
 제거해 줍니다.</p>
 <!-- Old heading. Do not remove or links may break. -->
 <p><a id="string-literals-are-slices"></a></p>
-<h4 id="슬라이스로서의-문자열-리터럴"><a class="header" href="#슬라이스로서의-문자열-리터럴">슬라이스로서의 문자열 리터럴</a></h4>
+<h4 id="슬라이스로써의-문자열-리터럴"><a class="header" href="#슬라이스로써의-문자열-리터럴">슬라이스로써의 문자열 리터럴</a></h4>
 <p>앞서, 문자열 리터럴은 바이너리 내에 저장된다는 이야기를 잠깐 언급했는데, 기억하시나요?
 슬라이스를 배웠으니, 문자열 리터럴도 제대로 이해해 봅시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let s = &quot;Hello, world!&quot;;
 <span class="boring">}</span></code></pre></pre>
-<p>여기서 <code>s</code>는  바이너리의 특정 지점을 가리키는 슬라이스입니다. <code>&amp;str</code> 타입이죠.
+<p>여기서 <code>s</code>는 바이너리의 특정 지점을 가리키는 슬라이스입니다. <code>&amp;str</code> 타입이죠.
 <code>&amp;str</code>은  불변 참조자이므로, 문자열 리터럴은 왜 변경할 수 없는지에 대한 의문도
 풀립니다.</p>
 <h4 id="문자열-슬라이스를-매개변수로-사용하기"><a class="header" href="#문자열-슬라이스를-매개변수로-사용하기">문자열 슬라이스를 매개변수로 사용하기</a></h4>
 <p>리터럴과 <code>String</code>의 슬라이스를 만들 수 있다는 걸 알고 나면
 <code>first_word</code> 함수 정의를 다음과 같이 작성할 수 있습니다:</p>
 <pre><code class="language-rust ignore">fn first_word(s: &amp;String) -&gt; &amp;str {</code></pre>
-<p>경험 많은 러스트 프로그래머는
-다음 예제 4-9처럼 <code>&amp;String</code> 값, <code>&amp;str</code> 값
-모두 사용 가능한 함수를 작성하는 방법도 알죠.</p>
+<p>좀 더 경험이 많은 러스타시안은
+다음 예제 4-9처럼 <code>&amp;String</code> 값과 <code>&amp;str</code> 값
+모두 사용 가능한 함수를 작성할 것입니다.</p>
 <pre><code class="language-rust ignore">fn first_word(s: &amp;str) -&gt; &amp;str {
 <span class="boring">    let bytes = s.as_bytes();
 </span><span class="boring">
@@ -481,15 +480,15 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">    // this works too, without the slice syntax!
 </span><span class="boring">    let word = first_word(my_string_literal);
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">예제 4-9: <code>first_word</code> 함수 개선
-(매개변수 <code>s</code>를 문자열 슬라이스 타입으로 변경)</span></p>
-<p>문자열 슬라이스를 가지고 있다면 이걸 바로 넘길 수 있습니다. <code>String</code>을
-가지고 있다면 <code>String</code>의 슬라이스 혹은 <code>String</code>에 대한 참조자를 넘길 수 있습니다.
+<p><span class="caption">예제 4-9: 매개변수 <code>s</code>를 문자열 슬라이스 타입으로 변경하겨
+<code>first_word</code> 함수 개선하기</span></p>
+<p>문자열 슬라이스라면 이를 바로 인자로써 전달할 수 있습니다. <code>String</code>이라면
+<code>String</code>의 슬라이스 혹은 <code>String</code>에 대한 참조자를 전달할 수 있습니다.
 이러한 유연성은 <em>역참조 강제 (deref coercions)</em> 기능을 이용하는데, 15장의
-<a href="ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">“함수와 메서드의 암묵적 역참조 강제”</a><!--ignore-->절에서
+<a href="ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">“함수와 메서드를 이용한 암묵적 역참조 강제”</a><!--ignore-->절에서
 다룰 것입니다.</p>
 <p><code>String</code>에 대한 참조자 대신에 문자열 슬라이스를 매개변수로 하는 함수를 정의하면
-기능 면에서 손해보지 않고 API를 더 일반적이고 유용하게 만들어 줍니다:</p>
+기능 면에서 손해보지 않으면서 API를 더 일반적이고 유용하게 만들어 줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn first_word(s: &amp;str) -&gt; &amp;str {
 </span><span class="boring">    let bytes = s.as_bytes();
@@ -524,14 +523,14 @@ error: could not compile `ownership` due to previous error
     let word = first_word(my_string_literal);
 }</code></pre></pre>
 <h3 id="그-외-슬라이스"><a class="header" href="#그-외-슬라이스">그 외 슬라이스</a></h3>
-<p>문자열 슬라이스는 문자열에만 특정되어 있습니다.
-물론 문자열에만 사용할 수 있는 것이 아닌 더 범용적인 슬라이스 타입도 존재합니다:</p>
+<p>문자열 슬라이스는 짐작하셨듯 문자열에만 특정되어 있습니다. 하지만
+더 범용적인 슬라이스 타입도 존재합니다. 아래 배열을 봅시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [1, 2, 3, 4, 5];
 <span class="boring">}</span></code></pre></pre>
-<p>문자열 일부를 참조할 때처럼 다음과 같이
-배열 일부를 참조할 수 있죠:</p>
+<p>문자열 일부를 참조할 때처럼 다음과 같이 배열 일부를 참조하고
+싶다면 다음과 같이 할 수 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [1, 2, 3, 4, 5];
@@ -540,16 +539,16 @@ let slice = &amp;a[1..3];
 
 assert_eq!(slice, &amp;[2, 3]);
 <span class="boring">}</span></code></pre></pre>
-<p>이 슬라이스는 <code>&amp;[i32]</code> 타입입니다.
-동작 방식은 문자열 슬라이스와 동일합니다.
-슬라이스의 첫 번째 요소를 참조하는 참조자와 슬라이스의 길이를 저장하여 동작하죠.
-이런 슬라이스는 모든 컬렉션에 사용 가능합니다 (컬렉션은 8장에서 자세히 알아볼 예정입니다).</p>
+<p>이 슬라이스는 <code>&amp;[i32]</code> 타입입니다. 동작 방식은 문자열 슬라이스와
+동일합니다. 슬라이스의 첫 번째 요소를 참조하는 참조자와 슬라이스의
+길이를 저장하여 동작하죠. 이런 슬라이스는 모든 컬렉션에 사용 가능합니다.
+컬렉션은 8장에서 자세히 알아볼 예정입니다.</p>
 <h2 id="정리"><a class="header" href="#정리">정리</a></h2>
-<p>러스트는 소유권, 빌림, 슬라이스는
-러스트가 컴파일 타임에 메모리 안정성을 보장하는 비결입니다.
-여타 시스템 프로그래밍 언어처럼 프로그래머에게 메모리 사용 제어 권한을 주면서,
-어떠한 데이터의 소유자가 스코프를 벗어날 경우 자동으로 해당 데이터를 정리하는 것이 가능하죠.
-또한 제어 코드를 추가 작성하고 디버깅할 필요가 사라지니 프로그래머의 일이 줄어드는 결과도 가져옵니다.</p>
+<p>소유권, 빌림, 슬라이스는 러스트가 컴파일 타임에 메모리 안정성을 보장하는
+비결입니다. 여타 시스템 프로그래밍 언어처럼 프로그래머에게 메모리 사용 제어
+권한을 주면서, 어떠한 데이터의 소유자가 스코프를 벗어날 경우 자동으로 해당
+데이터를 정리하는 것이 가능하죠. 또한 제어 코드를 추가 작성하고 디버깅할
+필요가 사라지니 프로그래머의 일이 줄어드는 결과도 가져옵니다.</p>
 <p>소유권은 수많은 러스트 요소들의 동작 방법에
 영향을 미치는 개념인 만큼 이후 내용에서도 계속해서 다룰 예정입니다.
 그러면 이제 5장에서 <code>struct</code>로 여러 데이터를 묶는 방법을 알아보죠.</p>
