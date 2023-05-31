@@ -221,7 +221,7 @@ fn area(dimensions: (u32, u32)) -&gt; u32 {
 <p><span class="caption">예제 5-9: 사각형의 너비와 높이를
 튜플로 명시하는 코드</span></p>
 <p>튜플을 사용함으로써 더 짜임새 있는 코드가 됐고,
-인수도 단 하나만 넘기면 된다는 점에선 프로그램이 발전했다고 볼 수 있습니다.
+인수도 단 하나만 넘기면 된다는 점에서는 프로그램이 발전했다고 볼 수 있습니다.
 하지만 각 요소가 이름을 갖지 않는 튜플의 특성 때문에
 값을 인덱스로 접근해야 해서 계산식이 불분명해졌네요.</p>
 <p>다행히 넓이를 계산할 땐 어떤 값이 너비이고 어떤 값이 높이인지 구분하지 못해도 별 문제가
@@ -258,7 +258,7 @@ fn area(rectangle: &amp;Rectangle) -&gt; u32 {
 <p><span class="caption">예제 5-10: <code>Rectangle</code> 구조체 정의</span></p>
 <p><code>Rectangle</code>이라는 구조체를 정의하고,
 중괄호 내에 <code>width</code>, <code>height</code> 필드를 <code>u32</code> 타입으로 정의했습니다.
-이후 <code>main</code> 내에선 너비 <code>30</code>, 높이 <code>50</code> 짜리
+이후 <code>main</code> 내에서는 너비 <code>30</code>, 높이 <code>50</code> 짜리
 <code>Rectangle</code> 구조체의 인스턴스를 생성했습니다.</p>
 <p><code>area</code> 함수의 매개변수는 이제 <code>rectangle</code> 하나뿐입니다.
 단, 구조체의 소유권을 가져와 버리면 <code>main</code> 함수에서
@@ -418,7 +418,7 @@ fn main() {
 출력합니다. 이 출력 결과는 <code>Rectangle</code> 타입에 대한 보기 좋은 <code>Debug</code> 포맷을
 이용합니다. <code>dbg!</code> 매크로는 여러분의 코드가 무슨 짓을 하는지 알아볼 때 매우
 유용할 수 있습니다!</p>
-<p>러스트에선 이처럼 <code>Debug</code> 트레잇 말고도 <code>derive</code> 속성으로
+<p>러스트에서는 이처럼 <code>Debug</code> 트레잇 말고도 <code>derive</code> 속성으로
 우리가 만든 타입에 유용한 동작을 추가할 수 있는 트레잇을 여럿 제공합니다.
 이들 목록 및 각각의 동작은 <a href="appendix-03-derivable-traits.html">부록 C</a><!-- ignore -->에서
 확인할 수 있으니 참고해 주세요. 또한, 여러분만의 트레잇을 직접 만들고,

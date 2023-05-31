@@ -280,8 +280,8 @@
 <h2 id="이-책을-어떻게-읽어야-할까요"><a class="header" href="#이-책을-어떻게-읽어야-할까요">이 책을 어떻게 읽어야 할까요?</a></h2>
 <p>먼저, 이 책은 앞에서부터 뒤까지 순서대로
 읽는 가정하에 작성되었음을 알려드립니다.
-따라서 보통 앞 장에선 기초 내용을 배우고,
-뒷장에선 앞서 나온 내용을 기반으로 한 심화 내용을 배웁니다.</p>
+따라서 보통 앞 장에서는 기초 내용을 배우고,
+뒷장에서는 앞서 나온 내용을 기반으로 한 심화 내용을 배웁니다.</p>
 <p>이 책에는 개념 장과 프로젝트 장의 두 가지 종류가 있습니다. 개념
 장에서는 러스트에서의 어떤 개념에 대해 알아봅니다. 프로젝트 장에서는
 그간 배운 내용을 적용하여 작은 프로그램을 함께 만들어 봅니다. 2장,
@@ -304,12 +304,12 @@
 작성한 코드와 해당 API를 체계화하기 위한 모듈 시스템 및 접근 권한 규칙을 다루며,
 8장은 벡터, 문자열, 해쉬맵 등 표준 라이브러리가
 제공하는 일반적인 컬렉션 자료구조를 다룹니다.
-9장에선 러스트의 에러 처리 철학 및 기법을 알아보겠습니다.</p>
+9장에서는 러스트의 에러 처리 철학 및 기법을 알아보겠습니다.</p>
 <p>10장은 여러 가지 타입에 적용될 수 있는 코드를 정의하도록 해주는
 제네릭 (generic), 트레잇 (trait), 라이프타임 (lifetime)을 다루며
-11장에선 작성한 프로그램 로직이 잘 작동함을
+11장에서는 작성한 프로그램 로직이 잘 작동함을
 확인하는 데 필요한 테스트 관련 내용을 다룹니다.
-12장에선 이때까지 배운 수많은 개념을 이용해
+12장에서는 이때까지 배운 수많은 개념을 이용해
 커맨드 라인 도구 <code>grep</code>의 기능 일부를
 직접 구현해 볼 겁니다.</p>
 <p>13장은 클로저 및 반복자를 다룹니다: 함수형 프로그래밍 언어에서 유래된
@@ -317,9 +317,9 @@
 라이브러리를 남들이 쓸 수 있도록 배포하는 방법을 다룹니다.
 15장은 표준 라이브러리가 제공하는 스마트 포인터와
 스마트 포인터를 구현하는 트레잇을 다룹니다.</p>
-<p>16장에선 여러 동시성 프로그래밍 모델에 대해 돌아보고, 러스트에서는
+<p>16장에서는 여러 동시성 프로그래밍 모델에 대해 돌아보고, 러스트에서는
 어째서 두려움 없이 멀티스레드 프로그래밍을 할 수 있는지 이야기하겠습니다.
-17장에선 여러분에게 익숙할 객체 지향 프로그래밍 원칙과
+17장에서는 여러분에게 익숙할 객체 지향 프로그래밍 원칙과
 러스트의 표현 양식 간에 차이를 살펴보겠습니다.</p>
 <p>18장은 러스트 프로그램 전반에 걸쳐 아이디어를 표현하는데 강력한
 방법인 패턴, 그리고 패턴 매칭을 참고 자료 형식으로 다룹니다.
@@ -511,7 +511,7 @@ $ cd hello_world
 $ ./main
 Hello, world!
 </code></pre>
-<p>Windows에선 <code>./main</code>을 <code>.\main.exe</code>로 바꿔주시면 됩니다:</p>
+<p>Windows에서는 <code>./main</code>을 <code>.\main.exe</code>로 바꿔주시면 됩니다:</p>
 <pre><code class="language-powershell">&gt; rustc main.rs
 &gt; .\main.exe
 Hello, world!
@@ -550,7 +550,7 @@ Hello, world!
 <span class="boring">}</span></code></pre></pre>
 <p>화면에 텍스트를 출력하는 코드로, 이 한 라인이 이 자그마한 프로그램의 전부입니다.
 하지만 이 단순한 코드에도 눈여겨볼 것이 네 가지 들어있습니다.</p>
-<p>첫 번째로, 러스트에선 탭 대신 스페이스 4칸을 사용합니다.</p>
+<p>첫 번째로, 러스트에서는 탭 대신 스페이스 4칸을 사용합니다.</p>
 <p>두 번째로, <code>println!</code>는 러스트의 매크로 호출 코드입니다. 이 코드가
 함수 호출 코드였다면 <code>!</code> 없이 <code>println</code>이라고 되어 있었을 것입니다.
 매크로는 19장에서 자세히 다루며, 지금은 <code>!</code>가 붙으면 함수가 아니라
@@ -585,8 +585,8 @@ main.pdb
 main.rs
 </code></pre>
 <p><em>.rs</em> 확장자를 갖는 소스 파일과 실행 파일
-(타 플랫폼에선 <em>main</em>, Windows에선 <em>main.exe</em>입니다)을 확인할 수 있습니다.
-Windows에선 디버깅 정보가 포함된 <em>pdb</em> 확장자 파일도 볼 수 있네요.
+(타 플랫폼에서는 <em>main</em>, Windows에서는 <em>main.exe</em>입니다)을 확인할 수 있습니다.
+Windows에서는 디버깅 정보가 포함된 <em>pdb</em> 확장자 파일도 볼 수 있네요.
 여기서 <em>main</em> 이나 <em>main.exe</em> 를 실행하는 방법은 다음과 같습니다:</p>
 <pre><code class="language-text">$ ./main # Windows에서는 .\main.exe
 </code></pre>
@@ -671,7 +671,7 @@ Language</em>) 포맷으로 되어있고, 이 포맷은 카고 설정에서 사�
 각각 패키지명, 버전, 작성자, 사용하는 러스트 에디션을 나타냅니다.
 <code>edition</code> 키에 대한 설명은 <a href="appendix-05-editions.html">부록 E</a><!-- ignore -->에서 다룹니다.</p>
 <p>마지막 라인의 <code>[dependencies]</code>는 프로젝트에서 사용하는 의존성
-목록입니다. 러스트에선 코드 패키지를 <em>크레이트 (crate)</em> 라고
+목록입니다. 러스트에서는 코드 패키지를 <em>크레이트 (crate)</em> 라고
 부릅니다. 이 프로젝트에는 크레이트가 필요 없지만, 2장 첫 프로젝트에서는
 필요하므로 그때 사용해 보겠습니다.</p>
 <p>이제 <em>src/main.rs</em>를 열어 살펴봅시다:</p>
@@ -2224,20 +2224,20 @@ error: could not compile `no_type_annotations` due to previous error
 어떻게 사용하는지를 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    // addition
+    // 덧셈
     let sum = 5 + 10;
 
-    // subtraction
+    // 뺄셈
     let difference = 95.5 - 4.3;
 
-    // multiplication
+    // 곱셈
     let product = 4 * 30;
 
-    // division
+    // 나눗셈
     let quotient = 56.7 / 32.2;
-    let truncated = -5 / 3; // Results in -1
+    let truncated = -5 / 3; // 결괏값은 -1입니다
 
-    // remainder
+    // 나머지 연산
     let remainder = 43 % 5;
 }</code></pre></pre>
 <p>위의 구문에서 각 표현식은 수학 연산자를 사용하여 값을 평가한
@@ -2252,7 +2252,7 @@ error: could not compile `no_type_annotations` due to previous error
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let t = true;
 
-    let f: bool = false; // with explicit type annotation
+    let f: bool = false; // 명시적인 타입 어노테이션
 }</code></pre></pre>
 <p>부울린 값을 사용하는 주요 방식은 <code>if</code> 표현식과 같은 조건문에서 사용하는
 것입니다. 러스트에서 <code>if</code> 표현식이 동작하는 방식에 대해서는
@@ -2263,7 +2263,7 @@ error: could not compile `no_type_annotations` due to previous error
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let c = 'z';
-    let z: char = 'ℤ'; // with explicit type annotation
+    let z: char = 'ℤ'; // 명시적인 타입 어노테이션
     let heart_eyed_cat = '😻';
 }</code></pre></pre>
 <p>문자열 리터럴이 큰따옴표를 쓰는 반면, <code>char</code> 타입은 작은따옴표를
@@ -2749,13 +2749,13 @@ error: could not compile `functions` due to previous error
 <p>또한 주석은 코드의 뒷 부분에 위치할 수도 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let lucky_number = 7; // I’m feeling lucky today
+    let lucky_number = 7; // 오늘 운이 좋은 느낌이에요
 }</code></pre></pre>
 <p>하지만 아래와 같이 코드 앞줄에 따로 주석을 작성한 형태를
 더 자주 보게 될 겁니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    // I’m feeling lucky today
+    // 오늘 운이 좋은 느낌이에요
     let lucky_number = 7;
 }</code></pre></pre>
 <p>러스트는 문서화 주석 (documentation comment) 라고 불리는 또다른 주석 형태를
@@ -3295,11 +3295,11 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 이 변수는 선언된 시점부터 현재의 <em>스코프</em>를 벗어날 때까지 유효합니다.
 예제 4-1에 변수 <code>s</code>가 유효한 지점을 주석으로 표시한 예제입니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span>    {                      // s is not valid here, it’s not yet declared
-        let s = &quot;hello&quot;;   // s is valid from this point forward
+</span>    {                      // s는 아직 선언되지 않아서 여기서는 유효하지 않습니다
+        let s = &quot;hello&quot;;   // 이 지점부터 s가 유효합니다
 
-        // do stuff with s
-    }                      // this scope is now over, and s is no longer valid
+        // s로 어떤 작업을 합니다
+    }                      // 이 스코프가 종료되었고, s가 더 이상 유효하지 않습니다
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 4-1: 변수와,
 해당 변수가 유효한 스코프</span></p>
@@ -3329,7 +3329,7 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 만능은 아닙니다. 그 이유는 문자열 리터럴이 불변성 (immutable) 을 지니기에
 변경할 수 없다는 점과, 프로그램에 필요한 모든 문자열을 우리가 프로그래밍하는
 시점에 알 수는 없다는 점 때문입니다. 사용자한테 문자열을 입력받아 저장하는 기능
-등을 만들어야 하는 상황에선 문자열 리터럴을 사용할 수 없죠. 따라서 러스트는 또
+등을 만들어야 하는 상황에서는 문자열 리터럴을 사용할 수 없죠. 따라서 러스트는 또
 다른 문자열 타입인 <code>String</code>을 제공합니다. 이 타입은 힙에 할당된 데이터를 다루기
 때문에, 컴파일 타임에 크기를 알 수 없는 텍스트도 저장할 수 있습니다. <code>String</code>
 타입은 다음과 같이 <code>from</code> 함수와 문자열 리터럴을 이용해 생성 가능합니다.</p>
@@ -3372,9 +3372,9 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 <code>String::from</code> 호출 시, 필요한 만큼 메모리를 요청하도록 구현되어 있거든요.
 프로그래밍 언어 사이에서 일반적으로 사용하는 방식이죠.</p>
 <p>하지만 두 번째는 다릅니다.
-<em>가비지 컬렉터 (garbage collector, GC)</em> 를 갖는 언어에선 GC가
+<em>가비지 컬렉터 (garbage collector, GC)</em> 를 갖는 언어에서는 GC가
 사용하지 않는 메모리를 찾아 없애주므로 프로그래머가 신경 쓸 필요 없습니다.
-GC가 없는 대부분의 언어에선 할당받은 메모리가 필요 없어지는 지점을 프로그래머가
+GC가 없는 대부분의 언어에서는 할당받은 메모리가 필요 없어지는 지점을 프로그래머가
 직접 찾아 메모리 해제 코드를 작성해야 합니다. 이 작업은 역사적으로 어려운
 프로그래밍 문제였습니다. 프로그래머가 놓친 부분이 있다면 메모리 낭비가 발생하고,
 메모리 해제 시점을 너무 일찍 잡으면 유효하지 않은 변수가 생깁니다. 두 번 해제할
@@ -3510,7 +3510,7 @@ error: could not compile `ownership` due to previous error
 <p>여러분이 다른 프로그래밍 언어에서 <em>얕은 복사(shallow copy)</em>,
 <em>깊은 복사(deep copy)</em> 라는 용어를 들어보셨다면, 힙 데이터를 복사하지 않고
 포인터, 길이, 용량 값만 복사하는 것을 얕은 복사라고 생각하셨을 수도 있지만,
-러스트에선 기존의 변수를 무효화하기 때문에
+러스트에서는 기존의 변수를 무효화하기 때문에
 이를 얕은 복사가 아닌 <em>이동 (move)</em> 이라 하고,
 앞선 코드는 <code>s1</code>이 <code>s2</code>로 <em>이동되었다</em>라고 표현합니다.</p>
 <p><img alt="세 개의 테이블: s1과 s2 테이블은 스택 상에서 각자의 문자열을
@@ -3592,28 +3592,28 @@ style="width: 50%;" /></p>
 주석으로 표시해 보았습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let s = String::from(&quot;hello&quot;);  // s comes into scope
+    let s = String::from(&quot;hello&quot;);  // s가 스코프 내로 들어옵니다
 
-    takes_ownership(s);             // s's value moves into the function...
-                                    // ... and so is no longer valid here
+    takes_ownership(s);             // s의 값이 함수로 이동됩니다...
+                                    // ... 따라서 여기서는 더 이상 유효하지 않습니다
 
-    let x = 5;                      // x comes into scope
+    let x = 5;                      // x가 스코프 내로 들어옵니다
 
-    makes_copy(x);                  // x would move into the function,
-                                    // but i32 is Copy, so it's okay to still
-                                    // use x afterward
+    makes_copy(x);                  // x가 함수로 이동될 것입니다만,
+                                    // i32는 Copy이므로 앞으로 계속 x를
+                                    // 사용해도 좋습니다
 
-} // Here, x goes out of scope, then s. But because s's value was moved, nothing
-  // special happens.
+} // 여기서 x가 스코프 밖으로 벗어나고 s도 그렇게 됩니다. 그러나 s의 값이 이동되었으므로
+  // 별다른 일이 발생하지 않습니다.
 
-fn takes_ownership(some_string: String) { // some_string comes into scope
+fn takes_ownership(some_string: String) { // some_string이 스코프 내로 들어옵니다
     println!(&quot;{}&quot;, some_string);
-} // Here, some_string goes out of scope and `drop` is called. The backing
-  // memory is freed.
+} // 여기서 some_string이 스코프 밖으로 벗어나고 `drop`이 호출됩니다.
+  // 메모리가 해제됩니다.
 
-fn makes_copy(some_integer: i32) { // some_integer comes into scope
+fn makes_copy(some_integer: i32) { // some_integer가 스코프 내로 들어옵니다
     println!(&quot;{}&quot;, some_integer);
-} // Here, some_integer goes out of scope. Nothing special happens.</code></pre></pre>
+} // 여기서 some_integer가 스코프 밖으로 벗어납니다. 별다른 일이 발생하지 않습니다.</code></pre></pre>
 <p><span class="caption">예제 4-3: 소유권, 스코프가 주석으로
 표시된 함수</span></p>
 <p>러스트는 <code>takes_ownership</code> 함수를 호출한 이후에 <code>s</code>를 사용하려 할 경우,
@@ -3626,33 +3626,33 @@ fn makes_copy(some_integer: i32) { // some_integer comes into scope
 살펴봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let s1 = gives_ownership();         // gives_ownership moves its return
-                                        // value into s1
+    let s1 = gives_ownership();         // gives_ownership이 자신의 반환 값을 s1로
+                                        // 이동시킵니다
 
-    let s2 = String::from(&quot;hello&quot;);     // s2 comes into scope
+    let s2 = String::from(&quot;hello&quot;);     // s2가 스코프 내로 들어옵니다
 
-    let s3 = takes_and_gives_back(s2);  // s2 is moved into
-                                        // takes_and_gives_back, which also
-                                        // moves its return value into s3
-} // Here, s3 goes out of scope and is dropped. s2 was moved, so nothing
-  // happens. s1 goes out of scope and is dropped.
+    let s3 = takes_and_gives_back(s2);  // s2는 takes_and_gives_back로 이동되는데,
+                                        // 이 함수 또한 자신의 반환 값을 s3로
+                                        // 이동시킵니다
+} // 여기서 s3가 스코프 밖으로 벗어나면서 버려집니다. s3는 이동되어서 아무 일도
+  // 일어나지 않습니다. s1은 스코프 밖으로 벗어나고 버려집니다.
 
-fn gives_ownership() -&gt; String {             // gives_ownership will move its
-                                             // return value into the function
-                                             // that calls it
+fn gives_ownership() -&gt; String {             // gives_ownership은 자신의 반환 값을
+                                             // 자신의 호출자 함수로 이동시킬
+                                             // 것입니다
 
-    let some_string = String::from(&quot;yours&quot;); // some_string comes into scope
+    let some_string = String::from(&quot;yours&quot;); // some_string이 스코프 내로 들어옵니다
 
-    some_string                              // some_string is returned and
-                                             // moves out to the calling
-                                             // function
+    some_string                              // some_string이 반환되고
+                                             // 호출자 함수 쪽으로
+                                             // 이동합니다
 }
 
-// This function takes a String and returns one
-fn takes_and_gives_back(a_string: String) -&gt; String { // a_string comes into
-                                                      // scope
+// 이 함수는 String을 취하고 같은 것을 반환합니다
+fn takes_and_gives_back(a_string: String) -&gt; String { // a_string이 스코프 내로
+                                                      // 들어옵니다
 
-    a_string  // a_string is returned and moves out to the calling function
+    a_string  // a_string이 반환되고 호출자 함수 쪽으로 이동합니다
 }</code></pre></pre>
 <p><span class="caption">예제 4-4: 반환 값으로 일어나는
 소유권 이동</span></p>
@@ -3676,7 +3676,7 @@ fn takes_and_gives_back(a_string: String) -&gt; String { // a_string comes into
 }
 
 fn calculate_length(s: String) -&gt; (String, usize) {
-    let length = s.len(); // len() returns the length of a String
+    let length = s.len(); // len()은 String의 길이를 반환합니다
 
     (s, length)
 }</code></pre></pre>
@@ -3694,7 +3694,7 @@ fn calculate_length(s: String) -&gt; (String, usize) {
 변수가 소유하고 있죠. 포인터와는 달리, 참조자는 살아있는 동안 특정 타입에
 대한 유효한 값을 가리킴을 보장해 줍니다.</p>
 <p>이번에는 값의 소유권을 넘기는 대신 개체의 참조자를 넘겨주는 방법을 소개하도록 하겠습니다.
-다음은 참조자를 인수로 받도록 구현한 <code>calculate_length</code> 함수의 정의 및 용례입니다.</p>
+다음은 참조자를 매개변수로 받도록 구현한 <code>calculate_length</code> 함수의 정의 및 용례입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let s1 = String::from(&quot;hello&quot;);
@@ -3709,7 +3709,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 }</code></pre></pre>
 <p>먼저, 변수 선언부와 함수 반환 값에 위치하던 튜플 코드가 전부 사라진
 것을 볼 수 있습니다. 또한 <code>calculate_length</code> 함수에 <code>s1</code> 대신 <code>&amp;s1</code>을
-넘기고, 함수 정의에 <code>String</code> 대신 <code>&amp;String</code>을 사용했네요. 이 앰퍼센드
+전달하고, 함수 정의에 <code>String</code> 대신 <code>&amp;String</code>을 사용했네요. 이 앰퍼센드
 (&amp;) 기호가 <em>참조자</em>를 나타내고, 어떤 값의 소유권을 가져오지 않고 해당 값을
 참조할 수 있도록 해 줍니다. 그림 4-5는 이 개념을 도식화한 것입니다.</p>
 <p><img alt="세 개의 테이블: s 테이블은 s1 테이블을 가리키는 포인터만
@@ -3719,7 +3719,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 가리킴</span></p>
 <blockquote>
 <p>Note: <code>&amp;</code>를 이용한 참조의 반대는
-<em>역참조(dereferencing)</em> 라 합니다.
+<em>역참조 (dereferencing)</em> 라 합니다.
 역참조 기호는 <code>*</code>이며, 8장에서 몇 번 다뤄보고
 15장에서 자세한 내용을 배울 예정입니다.</p>
 </blockquote>
@@ -3735,7 +3735,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">    s.len()
 </span><span class="boring">}</span></code></pre></pre>
-<p><code>s1</code> 에 <code>&amp;</code>를 붙인 <code>&amp;s1</code> 구문은 <code>s1</code> 값을 참조하나, 해당 값을 소유하지
+<p><code>s1</code>에 <code>&amp;</code>를 붙인 <code>&amp;s1</code> 구문은 <code>s1</code> 값을 참조하지만 해당 값을 소유하지
 않는 참조자를 생성합니다. 값을 소유하지 않으므로 이 참조자가 가리킨 값은
 참조자가 사용되지 않을 때까지 버려지지 않습니다.</p>
 <p>마찬가지로 함수 시그니처에도 <code>&amp;</code>를 사용하여 매개변수 <code>s</code>가 참조자 타입임을
@@ -3748,10 +3748,10 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 </span><span class="boring">    println!(&quot;The length of '{}' is {}.&quot;, s1, len);
 </span><span class="boring">}
 </span><span class="boring">
-</span>fn calculate_length(s: &amp;String) -&gt; usize { // s is a reference to a String
+</span>fn calculate_length(s: &amp;String) -&gt; usize { // s는 String의 참조자입니다
     s.len()
-} // Here, s goes out of scope. But because it does not have ownership of what
-  // it refers to, it is not dropped.</code></pre></pre>
+} // 여기서 s가 스코프 밖으로 벗어납니다. 하지만 참조하는 것을 소유하고 있진 않으므로,
+  // 버려지지는 않습니다.</code></pre></pre>
 <p>변수 <code>s</code>가 유효한 스코프는 여타 함수의 매개변수에 적용되는
 스코프와 동일합니다. 하지만 <code>s</code>에는 소유권이 없으므로 <code>s</code>가
 더 이상 사용되지 않을 때도 이 참조자가 가리킨 값이 버려지지
@@ -3790,8 +3790,8 @@ error: could not compile `ownership` due to previous error
 </code></pre>
 <p>변수가 기본적으로 불변성을 지니듯,
 참조자도 마찬가지로 참조하는 것을 수정할 수 없습니다.</p>
-<h3 id="가변-참조자-mutable-reference"><a class="header" href="#가변-참조자-mutable-reference">가변 참조자 (Mutable Reference)</a></h3>
-<p>*가변 참조자 (mutable reference)*를 사용하는 식으로 예제 4-6을 살짝만
+<h3 id="가변-참조자"><a class="header" href="#가변-참조자">가변 참조자</a></h3>
+<p><em>가변 참조자 (mutable reference)</em> 를 사용하는 식으로 예제 4-6을 살짝만
 수정하면 에러를 없앨 수 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
@@ -3804,12 +3804,12 @@ fn change(some_string: &amp;mut String) {
     some_string.push_str(&quot;, world&quot;);
 }</code></pre></pre>
 <p>우선 <code>s</code>를 <code>mut</code> 로 변경합니다. 그런 다음 <code>change</code> 함수를 호출하는 곳에서
-<code>&amp;mut s</code>로 가변 참조자를 생성하고 이 함수에서 가변 참조자를 넘겨받도록
-<code>some_string: &amp;mut String</code> 으로 수정하는 겁니다. 이는 <code>change</code> 함수가
+<code>&amp;mut s</code>로 가변 참조자를 생성하고, 이 함수에서 가변 참조자를 전달받도록
+<code>some_string: &amp;mut String</code>으로 수정합니다. 이는 <code>change</code> 함수가
 빌린 값을 수정할 수 있음을 매우 명확하게 해 줍니다.</p>
 <p>가변 참조자는 한 가지 큰 제약사항이 있습니다: 어떤 값에 대한 가변 참조자가
 있다면, 그 값에 대한 참조자는 더 이상 만들 수 없습니다. 아래의 코드는
-<code>s</code>에 대한 두 개의 가변 참조자를 만드는 시도를 하는 코드로, 작동하지 않습니다:</p>
+<code>s</code>에 대한 두 개의 가변 참조자 생성을 시도하는 코드로, 작동하지 않습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
@@ -3819,7 +3819,7 @@ fn change(some_string: &amp;mut String) {
 
     println!(&quot;{}, {}&quot;, r1, r2);
 <span class="boring">}</span></code></pre>
-<p>나타나는 에러는 다음과 같습니다:</p>
+<p>에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling ownership v0.1.0 (file:///projects/ownership)
 error[E0499]: cannot borrow `s` as mutable more than once at a time
@@ -3841,19 +3841,19 @@ error: could not compile `ownership` due to previous error
 <code>println!</code>에서 사용될 때까지 남아있어야 하지만, 이 가변 참조의
 생성과 사용 사이에서 <code>r1</code>과 같은 데이터를 빌리는 <code>r2</code>의 가변 참조를
 만들려고 있습니다.</p>
-<p>같은 데이터에 대하여 동시에 여러 가변 참조자를 사용하는 것을 막는
-이러한 제약은 값의 변경을 잘 제어될 수 있도록 해 줍니다. 대부분의 언어들이
+<p>같은 데이터에 대하여 동시에 여러 가변 참조자의 사용을 막는 이러한
+제약은 값의 변경에 대한 제어가 원활하도록 해 줍니다. 대부분의 언어들이
 언제든 값 변경을 허용하기 때문에, 러스트에 갓 입문한 사람들에게는 장애물처럼
-다가올 수 있습니다. 하지만, 이 제약 덕분에 러스트에선 컴파일 타임에
-<em>데이터 경쟁(data race)</em> 을 방지할 수 있습니다. 데이터 경쟁이란 다음
-세 가지 상황이 겹칠 때 일어나는 특정한 경쟁 조건(race condition)입니다:</p>
+다가올 수 있습니다. 하지만, 이 제약 덕분에 러스트에서는 컴파일 타임에
+<em>데이터 경합 (data race)</em> 을 방지할 수 있습니다. 데이터 경합이란 다음
+세 가지 상황이 겹칠 때 일어나는 특정한 경합 조건 (race condition) 입니다:</p>
 <ul>
 <li>둘 이상의 포인터가 동시에 같은 데이터에 접근</li>
 <li>포인터 중 하나 이상이 데이터에 쓰기 작업을 시행</li>
-<li>데이터 접근 동기화 메커니즘이 존재하지 않음</li>
+<li>데이터 접근 동기화 메커니즘이 없음</li>
 </ul>
-<p>데이터 경쟁은 정의되지 않은 동작을 일으키며, 런타임에 추적하려고 할 때
-문제 진단 및 수정이 어렵습니다. 하지만 러스트에선 데이터 경쟁이 발생할
+<p>데이터 경합은 정의되지 않은 동작을 일으키며, 런타임에 추적하려고 할 때
+문제 진단 및 수정이 어렵습니다. 하지만 러스트에서는 데이터 경합이 발생할
 가능성이 있는 코드의 컴파일을 거부하는 것으로 이 문제를 막아줍니다!</p>
 <p>중괄호로 새로운 스코프를 만들어, 가변 참조자를 여러 개 만들면서 <em>동시에</em>
 존재하는 상황을 회피하는 방법이 있습니다:</p>
@@ -3862,7 +3862,7 @@ error: could not compile `ownership` due to previous error
 
     {
         let r1 = &amp;mut s;
-    } // r1 goes out of scope here, so we can make a new reference with no problems.
+    } // 여기서 r1이 스코프 밖으로 벗어나며, 따라서 아무 문제없이 새 참조자를 만들 수 있습니다.
 
     let r2 = &amp;mut s;
 <span class="boring">}</span></code></pre></pre>
@@ -3871,13 +3871,13 @@ error: could not compile `ownership` due to previous error
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
 
-    let r1 = &amp;s; // no problem
-    let r2 = &amp;s; // no problem
-    let r3 = &amp;mut s; // BIG PROBLEM
+    let r1 = &amp;s; // 문제없음
+    let r2 = &amp;s; // 문제없음
+    let r3 = &amp;mut s; // 큰 문제
 
     println!(&quot;{}, {}, and {}&quot;, r1, r2, r3);
 <span class="boring">}</span></code></pre>
-<p>나타나는 에러는 다음과 같습니다:</p>
+<p>에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling ownership v0.1.0 (file:///projects/ownership)
 error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immutable
@@ -3895,11 +3895,11 @@ error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immuta
 For more information about this error, try `rustc --explain E0502`.
 error: could not compile `ownership` due to previous error
 </code></pre>
-<p>휴우! 같은 값에 대해 불변 참조자가 있는 동안 가변 참조자를 만드는 것 <em>또한</em>
-불가능합니다.</p>
-<p>불변 참조자를 사용하는 쪽에서는 사용 중  값이 중간에 변경되리라
+<p>휴우! 어떤 값에 대한 불변 참조자가 있는 동안 같은 값의 가변 참조자를 만드는 것
+<em>또한</em> 불가능합니다.</p>
+<p>불변 참조자를 사용하는 쪽에서는 사용 중 값이 중간에 변경되리라
 예상하지 않으니까요. 반면 데이터를 읽기만 하는 기능으로는 다른 쪽에서
-값을 읽는 기능에 영향을 주지 않으므로 여러 개의 불변 참조자를 만드는 것은
+값을 읽는 기능에 영향을 주지 않으므로, 여러 개의 불변 참조자를 만드는 것은
 가능합니다.</p>
 <p>참조자는 정의된 지점부터 시작하여 해당 참조자가 마지막으로
 사용된 부분까지 유효합니다. 즉, 다음 코드는 불변 참조자가 마지막으로
@@ -3908,32 +3908,32 @@ error: could not compile `ownership` due to previous error
 <pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
 
-    let r1 = &amp;s; // no problem
-    let r2 = &amp;s; // no problem
+    let r1 = &amp;s; // 문제없음
+    let r2 = &amp;s; // 문제없음
     println!(&quot;{} and {}&quot;, r1, r2);
-    // variables r1 and r2 will not be used after this point
+    // 이 지점 이후로 변수 r1과 r2는 사용되지 않습니다
 
-    let r3 = &amp;mut s; // no problem
+    let r3 = &amp;mut s; // 문제없음
     println!(&quot;{}&quot;, r3);
 <span class="boring">}</span></code></pre></pre>
 <p>불변 참조자 <code>rl</code>, <code>r2</code>의 스코프는 자신들이 마지막으로 사용된
 <code>println!</code> 이후로 종료되고, 해당 <code>println!</code>은  가변 참조자 <code>r3</code>가
-생성되기 이전이니 서로 스코프가 겹치지 않아서 이 코드는 문제가 없는 것이죠:
-컴파일러는 이 참조자가 스코프 끝 이전의 어떤 지점 이후로는 사용되지 않음을
+생성되기 전이니 서로 스코프가 겹치지 않아서 이 코드는 문제가 없는 것이죠:
+컴파일러는 이 참조자가 어떤 지점 이후로 스코프 끝까지 사용되지 않음을
 알 수 있습니다.</p>
-<p>이러한 제약 때문에 머리 아플 수도 있습니다.
-하지만 이는 코드에 숨어 있는 버그를 러스트 컴파일러가 컴파일 타임에 일찌감치 찾아내고,
-런타임 중 원하는 데이터가 나타나지 않았을 때 원인을 찾기 위해 여러분이 하나하나 추적하는 대신
-어느 부분이 문제인지 정확히 집어주는 기능이란 점을 기억해 주세요.</p>
-<h3 id="댕글링-참조자dangling-reference"><a class="header" href="#댕글링-참조자dangling-reference">댕글링 참조자(Dangling Reference)</a></h3>
-<p><em>댕글링 포인터(dangling pointer)</em> 란, 어떤 메모리를 가리키는 포인터가
-남아있는 상황에서 해당 메모리를 해제해 버림으로써, 다른 개체가 할당받았을지도
-모르는 메모리를 참조하게 된 포인터를 말합니다.
-포인터가 있는 언어에선 자칫 잘못하면 이 댕글링 포인터를 만들기 쉽죠.
-하지만 러스트에선 어떤 데이터의 참조자를 만들면,
-해당 참조자가 스코프를 벗어나기 이전에 데이터가 먼저 스코프를 벗어나는지
-컴파일러에서 확인하여 댕글링 참조자가 생성되지 않도록 보장합니다.</p>
-<p>댕글링 참조자를 만들어서 러스트가 어떤 식으로 컴파일 타임에 이걸
+<p>이러한 제약 때문에 좀 골치 아플 수도 있습니다만, 이는 러스트 컴파일러가
+코드에 숨어 있는 버그를 런타임이 아닌 컴파일 타임에 일찌감치 찾아내어
+어느 부분이 문제인지 정확히 집어주는 기능이란 점을 기억해주세요. 이렇게
+하면 원하는 데이터가 나오지 않는 원인을 하나하나 추적하지 않아도 됩니다.</p>
+<h3 id="댕글링-참조자"><a class="header" href="#댕글링-참조자">댕글링 참조자</a></h3>
+<p><em>댕글링 포인터 (dangling pointer)</em> 란, 어떤 메모리를 가리키는
+포인터가 남아있는 상황에서 일부 메모리를 해제해 버림으로써,
+다른 개체가 할당받았을지도 모르는 메모리를 참조하게 된 포인터를 말합니다.
+포인터가 있는 언어에서는 자칫 잘못하면 이 댕글링 포인터를 만들기 쉽죠.
+하지만 러스트에서는 어떤 데이터의 참조자를 만들면, 해당 참조자가 스코프를
+벗어나기 전에 데이터가 먼저 스코프를 벗어나는지 컴파일러에서 확인하여
+댕글링 참조자가 생성되지 않도록 보장합니다.</p>
+<p>댕글링 참조자를 만들어서 러스트가 어떤 식으로 이것을 컴파일 타임에
 방지하는지 살펴봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
@@ -3945,7 +3945,7 @@ fn dangle() -&gt; &amp;String {
 
     &amp;s
 }</code></pre>
-<p>나타나는 에러는 다음과 같습니다:</p>
+<p>에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
    Compiling ownership v0.1.0 (file:///projects/ownership)
 error[E0106]: missing lifetime specifier
@@ -3976,16 +3976,16 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">    let reference_to_nothing = dangle();
 </span><span class="boring">}
 </span><span class="boring">
-</span>fn dangle() -&gt; &amp;String { // dangle returns a reference to a String
+</span>fn dangle() -&gt; &amp;String { // dangle은 String의 참조자를 반환합니다
 
-    let s = String::from(&quot;hello&quot;); // s is a new String
+    let s = String::from(&quot;hello&quot;); // s는 새로운 String입니다
 
-    &amp;s // we return a reference to the String, s
-} // Here, s goes out of scope, and is dropped. Its memory goes away.
-  // Danger!</code></pre>
+    &amp;s // String s의 참조자를 반환합니다
+} // 여기서 s는 스코프 밖으로 벗어나고 버려집니다. 해당 메모리는 해제됩니다.
+  // 위험합니다!</code></pre>
 <p><code>s</code>는  <code>dangle</code> 함수 내에서 생성됐기 때문에,
 함수가 끝날 때 할당 해제됩니다.
-하지만 코드에선 <code>&amp;s</code>를 반환하려 했고, 이는 유효하지 않은 <code>String</code>을 가리키는
+하지만 코드에서는 <code>&amp;s</code>를 반환하려 했고, 이는 유효하지 않은 <code>String</code>을 가리키는
 참조자를 반환하는 행위이기 때문에 에러가 발생합니다.</p>
 <p>따라서, 이런 경우엔 <code>String</code>을 직접 반환해야 합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
@@ -4000,7 +4000,7 @@ error: could not compile `ownership` due to previous error
 <p>이 코드는 정상적으로 작동합니다.
 소유권은 이동되며, 할당 해제되지도 않죠.</p>
 <h3 id="참조자-규칙"><a class="header" href="#참조자-규칙">참조자 규칙</a></h3>
-<p>배운 내용을 정리해 봅시다:</p>
+<p>참조자에 대해 배운 내용을 정리해 봅시다:</p>
 <ul>
 <li>여러분은 단 하나의 가변 참조자만 갖거나,
 여러 개의 불변 참조자를 가질 수 있습니다.</li>
@@ -4081,7 +4081,7 @@ error: could not compile `ownership` due to previous error
 <code>&amp;item</code>은 바이트에 대응됩니다. 이때 패턴에 <code>&amp;</code>를 사용하는
 이유는 <code>iter().enumerate()</code>에서 얻은 요소의 참조자가 필요하기
 때문입니다.</p>
-<p><code>for</code> 반복문 내에선 바이트 리터럴 문법으로
+<p><code>for</code> 반복문 내에서는 바이트 리터럴 문법으로
 공백 문자를 찾고, 찾으면 해당 위치를 반환합니다.
 찾지 못했을 땐 <code>s.len()</code> 으로 문자열의 길이를 반환합니다.</p>
 <pre><code class="language-rust ignore"><span class="boring">fn first_word(s: &amp;String) -&gt; usize {
@@ -4415,7 +4415,7 @@ assert_eq!(slice, &amp;[2, 3]);
 <p><em>구조체 (struct)</em> 는 여러 값을 묶고 이름을 지어서 의미 있는 묶음을
 정의하는 데에 사용합니다. 객체지향 언어에 익숙하신 분들이라면,
 <em>구조체</em>란 객체의 데이터 속성 (attribute) 과 비슷한 것입니다.
-이번 장에선 앞서 배운 튜플과 구조체를 비교 대조하여 어떤
+이번 장에서는 앞서 배운 튜플과 구조체를 비교 대조하여 어떤
 경우에 구조체로 데이터를 묶는 것이 더 좋은지 보여줄
 것입니다.</p>
 <p>우선 구조체를 정의하고 생성하는 방법을 살펴봅니다. 그리고 구조체의
@@ -4501,7 +4501,7 @@ assert_eq!(slice, &amp;[2, 3]);
 일부 필드만 변경 가능하도록 만들 수는 없으니, 기억해 두시기 바랍니다.
 또한, 구조체도 다른 표현식과 마찬가지로 함수 마지막 표현식에서
 암묵적으로 새 인스턴스를 생성하고 반환할 수 있습니다.</p>
-<p>예제 5-4 에선 <code>build_user</code> 함수가 사용자 이메일과 이름을 전달받고,
+<p>예제 5-4 에서는 <code>build_user</code> 함수가 사용자 이메일과 이름을 전달받고,
 <code>acitve</code>, <code>sign_in_count</code>를 각각 <code>true</code>, <code>1</code>로 설정한
 <code>User</code> 인스턴스를 반환하는 모습을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -4843,7 +4843,7 @@ fn area(dimensions: (u32, u32)) -&gt; u32 {
 <p><span class="caption">예제 5-9: 사각형의 너비와 높이를
 튜플로 명시하는 코드</span></p>
 <p>튜플을 사용함으로써 더 짜임새 있는 코드가 됐고,
-인수도 단 하나만 넘기면 된다는 점에선 프로그램이 발전했다고 볼 수 있습니다.
+인수도 단 하나만 넘기면 된다는 점에서는 프로그램이 발전했다고 볼 수 있습니다.
 하지만 각 요소가 이름을 갖지 않는 튜플의 특성 때문에
 값을 인덱스로 접근해야 해서 계산식이 불분명해졌네요.</p>
 <p>다행히 넓이를 계산할 땐 어떤 값이 너비이고 어떤 값이 높이인지 구분하지 못해도 별 문제가
@@ -4880,7 +4880,7 @@ fn area(rectangle: &amp;Rectangle) -&gt; u32 {
 <p><span class="caption">예제 5-10: <code>Rectangle</code> 구조체 정의</span></p>
 <p><code>Rectangle</code>이라는 구조체를 정의하고,
 중괄호 내에 <code>width</code>, <code>height</code> 필드를 <code>u32</code> 타입으로 정의했습니다.
-이후 <code>main</code> 내에선 너비 <code>30</code>, 높이 <code>50</code> 짜리
+이후 <code>main</code> 내에서는 너비 <code>30</code>, 높이 <code>50</code> 짜리
 <code>Rectangle</code> 구조체의 인스턴스를 생성했습니다.</p>
 <p><code>area</code> 함수의 매개변수는 이제 <code>rectangle</code> 하나뿐입니다.
 단, 구조체의 소유권을 가져와 버리면 <code>main</code> 함수에서
@@ -5040,7 +5040,7 @@ fn main() {
 출력합니다. 이 출력 결과는 <code>Rectangle</code> 타입에 대한 보기 좋은 <code>Debug</code> 포맷을
 이용합니다. <code>dbg!</code> 매크로는 여러분의 코드가 무슨 짓을 하는지 알아볼 때 매우
 유용할 수 있습니다!</p>
-<p>러스트에선 이처럼 <code>Debug</code> 트레잇 말고도 <code>derive</code> 속성으로
+<p>러스트에서는 이처럼 <code>Debug</code> 트레잇 말고도 <code>derive</code> 속성으로
 우리가 만든 타입에 유용한 동작을 추가할 수 있는 트레잇을 여럿 제공합니다.
 이들 목록 및 각각의 동작은 <a href="appendix-03-derivable-traits.html">부록 C</a><!-- ignore -->에서
 확인할 수 있으니 참고해 주세요. 또한, 여러분만의 트레잇을 직접 만들고,
@@ -5096,7 +5096,7 @@ fn main() {
 모든 것은 <code>Rectangle</code> 타입에 관련되게 됩니다. 그런 다음 <code>area</code> 함수를 <code>impl</code>의
 중괄호 안으로 옮기고 함수 시그니처의 첫 번째 매개변수를 (이번 경우는 유일한
 매개변수군요) <code>self</code>로 변경하고 본문 내의 나머지 모든 부분도 변경합니다. 
-그리고 <code>main</code> 함수 내에선 <code>rect1</code>을 인수로 넘겨 <code>area</code> 함수를 호출했었는데,
+그리고 <code>main</code> 함수 내에서는 <code>rect1</code>을 인수로 넘겨 <code>area</code> 함수를 호출했었는데,
 그 대신 <em>메서드 문법(method syntax)</em> 을 사용해 <code>Rectangle</code> 인스턴스의 <code>area</code>
 메서드를 호출할 수 있습니다. 메서드 문법은 차례대로 인스턴스, 점,
 메서드명, 괄호 및 인수로 구성됩니다.</p>
@@ -5780,7 +5780,7 @@ null이 아니라고 안전하게 <em>가정할 수 있습니다</em>.
 <code>None</code> 값일 때만 실행될, <code>T</code> 값을 쓸 수 없는 코드도 필요할 겁니다.
 <code>match</code>라는 제어 흐름을 구성하는 데 쓰이는 표현식을 열거형과 함께 사용하면
 이런 상황을 해결할 수 있습니다. 열거형의 배리언트에 따라서 알맞은 코드를 실행하고,
-해당 코드 내에선 매칭된 값의 데이터를
+해당 코드 내에서는 매칭된 값의 데이터를
 사용할 수 있죠.</p>
 <div style="break-before: page; page-break-before: always;"></div><!-- Old heading. Do not remove or links may break. -->
 <p><a id="the-match-control-flow-operator"></a></p>
@@ -8648,7 +8648,7 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 이는 함수가 <code>Result&lt;T, E&gt;</code> 타입의 값을 반환하는데 제네릭 매개변수 <code>T</code>는
 구체 타입(concrete type)인 <code>String</code>으로 채워져 있고, 제네릭 타입 <code>E</code>는
 구체 타입인 <code>io::Error</code>로 채워져 있다는 의미입니다.</p>
-<p>만일 이 함수가 어떠한 문제 없이 성공하면, 함수를 호출한 코드는
+<p>만일 이 함수가 어떠한 문제없이 성공하면, 함수를 호출한 코드는
 <code>String</code>을 담은 값(이 함수가 파일로부터 읽어 들인 사용자
 이름이겠지요)을 받을 것입니다. 만일 어떤 문제가 발생한다면,
 이 함수를 호출한 코드는 문제가 무엇이었는지에 대한 더 많은
@@ -9174,7 +9174,7 @@ impl Guess {
 어떻게 이용할 수 있는지에 대해 다음 장에서 이야기해 보겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="제네릭-타입-트레잇-라이프타임"><a class="header" href="#제네릭-타입-트레잇-라이프타임">제네릭 타입, 트레잇, 라이프타임</a></h1>
 <p>모든 프로그래밍 언어는 중복되는 개념을 효율적으로 처리하기 위한 도구를
-가지고 있습니다. 러스트에선 <em>제네릭 (generic)</em> 이 그 역할을 맡습니다:
+가지고 있습니다. 러스트에서는 <em>제네릭 (generic)</em> 이 그 역할을 맡습니다:
 제네릭은 구체적(concrete)인 타입이나 다른 속성들의 추상화된 대역입니다.
 컴파일과 실행 시점에 제네릭들이 실제로 어떻게 타입으로 채워지는지 알 필요
 없이도 제네릭의 동작이나 다른 제네릭과의 관계를 표현할 수 있습니다.</p>
@@ -10262,7 +10262,7 @@ impl&lt;T: Display + PartialOrd&gt; Pair&lt;T&gt; {
 이 필요하다는 걸 컴파일러에게 전달할 수 있습니다.
 컴파일러는 트레잇 바운드를 이용하여 우리가 코드에서
 사용한 구체적인 타입들이 알맞은 동작을 제공하는지 검사합니다.
-동적 타입 언어에선 해당 타입이 정의하지 않은 메서드를 호출하면
+동적 타입 언어에서는 해당 타입이 정의하지 않은 메서드를 호출하면
 런타임에 에러가 발생합니다. 하지만 러스트는 컴파일타임에 에러를
 제공하여 코드를 실행하기도 전에 문제를 해결하도록 강제합니다.
 따라서 우린 런타임에 해당 동작을 구현하는지를 검사하는 코드를
@@ -10971,7 +10971,7 @@ where
 그리고, 이 모든 것들은 컴파일 타임에 분석되어
 런타임 성능에 전혀 영향을 주지 않지요!</p>
 <p>이번 장에서 다룬 주제들에서 더 배울 내용이 남았다고 하면 믿어지시나요?
-17장에선 트레잇을 사용하는 또 다른 방법인 트레잇 객체(trait object)를 다룰 예정입니다.
+17장에서는 트레잇을 사용하는 또 다른 방법인 트레잇 객체(trait object)를 다룰 예정입니다.
 매우 고급 시나리오상에서만 필요하게 될 라이프타임 명시에 관한 더 복잡한 시나리오도
 있습니다. 이와 관련해서는 <a href="../reference/index.html">러스트 참고 자료 문서</a>를 읽으셔야 합니다.
 하지만 일단 다음 장에서는 러스트에서 여러분의 코드가 원하던 대로
@@ -11928,7 +11928,7 @@ mod tests {
 함수 본문에서는 <code>assert_eq!</code> 매크로를 호출하는 대신,
 테스트 성공 시에는 <code>Ok(())</code>를 반환하고 실패 시에는 <code>String</code>을 갖는 <code>Err</code>을
 반환합니다.</p>
-<p><code>Result&lt;T, E&gt;</code>를 반환하는 테스트에선 <code>?</code> 연산자를 사용할 수 있기 때문에,
+<p><code>Result&lt;T, E&gt;</code>를 반환하는 테스트에서는 <code>?</code> 연산자를 사용할 수 있기 때문에,
 내부 작업이 <code>Err</code>를 반환할 경우 실패해야 하는 테스트를 작성하기
 편리합니다.</p>
 <p><code>Result&lt;T, E&gt;</code> 테스트에서는 <code>#[should_panic]</code> 어노테이션을 사용할 수 없습니다.
@@ -18224,7 +18224,7 @@ count after c goes out of scope = 2
 <p><code>Rc&lt;T&gt;</code>는 불변 참조자를 통하여 읽기 전용으로 프로그램의 여러 부분에서
 데이터를 공유하도록 해줍니다. 만일 <code>Rc&lt;T&gt;</code>가 복수 개의 가변 참조자도
 만들도록 해준다면, 4장에서 논의했던 빌림 규칙 중 하나를 위반할지도 모릅니다:
-동일한 위치에서 복수 개의 가변 빌림은 데이터 경쟁 및 데이터 불일치를
+동일한 위치에서 복수 개의 가변 빌림은 데이터 경합 및 데이터 불일치를
 야기할 수 있습니다. 하지만 데이터의 변형을 가능하게 하는 것은 매우 유용하죠!
 다음 절에서는 이러한 불변성 제약과 함께 동작하도록 하기 위한 내부 가변성
 (interior mutability) 패턴 및 <code>Rc&lt;T&gt;</code>와 같이 결합하여 사용할 수 있는
@@ -18814,7 +18814,7 @@ c after = Cons(RefCell { value: 4 }, Cons(RefCell { value: 15 }, Nil))
 <p>이 기술은 꽤 근사합니다! <code>RefCell&lt;T&gt;</code>를 이용하면 표면상으로는 불변인
 <code>List</code>를 갖게 됩니다. 하지만 데이터를 변경할 필요가 생기면 내부 가변성 접근
 기능을 제공하는 <code>RefCell&lt;T&gt;</code>의 메서드를 사용하여 그렇게 할 수 있습니다.
-빌림 규칙의 런타임 검사는 데이터 경쟁으로부터 우리를 지켜주고, 데이터 구조에
+빌림 규칙의 런타임 검사는 데이터 경합으로부터 우리를 지켜주고, 데이터 구조에
 대한 이런 유연성을 위해서 약간의 속도를 맞바꾸는 것이 때로는 가치가 있습니다.
 <code>RefCell&lt;T&gt;</code>가 멀티스레드 코드에서는 동작하지 않음을 주의하세요!
 <code>Mutex&lt;T&gt;</code>가 <code>RefCell&lt;T&gt;</code>의 스레드 안전 버전이고, 이는 16장에서
@@ -19328,7 +19328,7 @@ examining strong and weak reference counts</span></p>
 야기할 수 있습니다:</p>
 <ul>
 <li>여러 스레드가 일관성 없는 순서로 데이터 혹은 리소스에 접근하게 되는,
-경쟁 조건 (race condition)</li>
+경합 조건 (race condition)</li>
 <li>두 스레드가 서로를 기다려서 양쪽 스레드 모두 계속 실행되는 것을 막아버리는,
 데드록 (deadlock)</li>
 <li>특정한 상황에서만 발생하여 안정적으로 재현하고 수정하기 힘든
@@ -20311,7 +20311,7 @@ changes in the compiler -->
 <p>러스트 표준 라이브러리는 메시지 패싱을 위해 채널을 제공하고, 동시적
 컨텍스트에서 사용하기 안전한 <code>Mutex&lt;T&gt;</code>와 <code>Arc&lt;T&gt;</code> 같은 스마트 포인터
 타입들을 제공합니다. 타입 시스템과 빌림 검사기는 이 솔루션을 이용하는
-코드가 데이터 경쟁 혹은 유효하지 않은 참조자로 끝나지 않을 것을 보장합니다.
+코드가 데이터 경합 혹은 유효하지 않은 참조자로 끝나지 않을 것을 보장합니다.
 일단 코드가 컴파일된다면, 다른 언어에서는 흔한 추적하기 어려운 버그 없이
 여러 스레드 상에서 행복하게 동작하므로 안심할 수 있습니다.
 동시성 프로그래밍은 더 이상 두려워할 개념이 아닙니다: 앞으로 나아가
@@ -22836,7 +22836,7 @@ error: could not compile `patterns` due to previous error
 생성하려고 시도했다면 코드가 컴파일되지 않았을 것인데, 이는 러스트의 소유권
 규칙에 따르면 가변 참조자와 불변 참조자를 동시에 허용하지 않기 때문입니다.
 원시 포인터를 사용하면 같은 위치에 대한 가변 포인터와 불변 포인터를 생성하고
-가변 포인터를 통해 데이터를 변경하여 잠재적으로 데이터 경쟁을 일으킬 수
+가변 포인터를 통해 데이터를 변경하여 잠재적으로 데이터 경합을 일으킬 수
 있습니다. 조심하세요!</p>
 <p>이런 위험성이 있는데도 왜 원시 포인터를 사용하게 될까요? 한 가지 주요
 사용 사례는 다음 절
@@ -23075,7 +23075,7 @@ pub extern &quot;C&quot; fn call_from_c() {
 <h3 id="가변-정적-변수의-접근-혹은-수정하기"><a class="header" href="#가변-정적-변수의-접근-혹은-수정하기">가변 정적 변수의 접근 혹은 수정하기</a></h3>
 <p>이 책에서 아직 <em>전역 변수 (global variable)</em> 에 대해 언급하지 않았는데, 러스트는
 이를 지원하지만 러스트의 소유권 규칙과 문제가 발생할 수 있습니다. 두 스레드가
-동일한 가변 전역 변수에 접근하고 있다면 데이터 경쟁이 발생할 수 있습니다.</p>
+동일한 가변 전역 변수에 접근하고 있다면 데이터 경합이 발생할 수 있습니다.</p>
 <p>러스트에서 전역 변수는 <em>정적 (static)</em> 변수라고 부릅니다. 예제 19-9는
 문자열 슬라이스를 값으로 사용하는 정적 변수의 선언과 사용례를
 보여줍니다.</p>
@@ -23123,9 +23123,9 @@ fn main() {
 <p>일반적인 변수와 마찬가지로 <code>mut</code> 키워드를 사용하여 가변성을 지정합니다.
 <code>COUNTER</code>를 읽거나 쓰는 모든 코드는 <code>unsafe</code> 블록 내에 있어야 합니다.
 이 코드는 싱글스레드이기 때문에 예상대로 <code>COUNTER: 3</code>을 컴파일하고
-출력합니다. 여러 스레드가 <code>COUNTER</code>에 전근하면 데이터 경쟁이 발생할
+출력합니다. 여러 스레드가 <code>COUNTER</code>에 전근하면 데이터 경합이 발생할
 수 있습니다.</p>
-<p>전역적으로 접근할 수 있는 가변 데이터의 경우 데이터 경쟁이 발생하지 않도록
+<p>전역적으로 접근할 수 있는 가변 데이터의 경우 데이터 경합이 발생하지 않도록
 보장하기가 어려우며, 이것이 러스트가 가변 정적 변수를 안전하지 않은 것으로
 간주하는 이유입니다. 가능하면 16장에서 설명한 동시성 기술과 스레드-안전한
 스마트 포인터를 사용해 컴파일러가 다른 스레드에서 접근한 데이터에 안전하게
@@ -24745,7 +24745,7 @@ pub fn sql(input: TokenStream) -&gt; TokenStream {</code></pre>
 괄호 안에 있는 토큰을 받아서 생성하고자 하는 코드를
 반환합니다.</p>
 <h2 id="정리-18"><a class="header" href="#정리-18">정리</a></h2>
-<p>휴! 자주 사용하지는 않겠지만, 이제 여러분의 도구 상자에는
+<p>휴우! 자주 사용하지는 않겠지만, 이제 여러분의 도구 상자에는
 매우 특정한 상황에서 사용할 수 있는 러스트 기능이 몇 가지
 생겼습니다. 몇몇 복잡한 주제를 소개해서, 에러 메시지의
 제안에서나 다른 사람의 코드에서 이 주제를 접했을 때는 이
@@ -26157,7 +26157,7 @@ error: could not compile `hello` due to previous error
 처리되도록 여러 워커가 있는 하나의 메시지 리스트가 되기를 원합니다.</p>
 <p>또한, 채널 대기열에서 작업을 빼내려면 <code>receiver</code>를 변경해야 하므로,
 스레드가 <code>receiver</code>를 안전하게 공유하고 수정할 수 있는 방법이 필요합니다;
-그렇지 않으면 (16장에서 다룬 것처럼) 데이터 경쟁이 발생할 수 있습니다.</p>
+그렇지 않으면 (16장에서 다룬 것처럼) 데이터 경합이 발생할 수 있습니다.</p>
 <p>16장에서 설명한 스레드 안전 스마트 포인터를 상기해 봅시다: 여러 스레드에서
 소유권을 공유하고 스레드가 값을 변경할 수 있도록 하려면, <code>Arc&lt;Mutex&lt;T&gt;&gt;</code>를
 사용할 필요가 있습니다. <code>Arc</code> 타입은 여러 워커가 수신자를 소유할 수 있도록
