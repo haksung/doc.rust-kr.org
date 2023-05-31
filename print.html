@@ -4118,12 +4118,12 @@ error: could not compile `ownership` due to previous error
 </span>fn main() {
     let mut s = String::from(&quot;hello world&quot;);
 
-    let word = first_word(&amp;s); // word will get the value 5
+    let word = first_word(&amp;s); // word는 값 5를 받습니다
 
-    s.clear(); // this empties the String, making it equal to &quot;&quot;
+    s.clear(); // 이 코드는 String을 비워서 &quot;&quot;으로 만듭니다
 
-    // word still has the value 5 here, but there's no more string that
-    // we could meaningfully use the value 5 with. word is now totally invalid!
+    // 여기서 word에는 여전히 5가 들어있지만, 이 5를 의미있게 쓸 수 있는
+    // 문자열은 더 이상 없습니다. word는 이제 전혀 유효하지 않습니다!
 }</code></pre></pre>
 <p><span class="caption">예제 4-8: <code>first_word</code> 함수의 결과를 저장했으나,
 이후에 <code>String</code>의 내용물이 변경된 상황</span></p>
@@ -4257,7 +4257,7 @@ let slice = &amp;s[..];
 
     let word = first_word(&amp;s);
 
-    s.clear(); // error!
+    s.clear(); // 에러!
 
     println!(&quot;the first word is: {}&quot;, word);
 }</code></pre>
@@ -4321,21 +4321,21 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">fn main() {
 </span><span class="boring">    let my_string = String::from(&quot;hello world&quot;);
 </span><span class="boring">
-</span><span class="boring">    // `first_word` works on slices of `String`s, whether partial or whole
+</span><span class="boring">    // `first_word`는 `String`의 일부 혹은 전체 슬라이스에 대해 작동합니다
 </span><span class="boring">    let word = first_word(&amp;my_string[0..6]);
 </span><span class="boring">    let word = first_word(&amp;my_string[..]);
-</span><span class="boring">    // `first_word` also works on references to `String`s, which are equivalent
-</span><span class="boring">    // to whole slices of `String`s
+</span><span class="boring">    // 또한 `first_word`는 `String`의 전체 슬라이스와 동일한 `String`의
+</span><span class="boring">    // 참조자에 대해서도 작동합니다
 </span><span class="boring">    let word = first_word(&amp;my_string);
 </span><span class="boring">
 </span><span class="boring">    let my_string_literal = &quot;hello world&quot;;
 </span><span class="boring">
-</span><span class="boring">    // `first_word` works on slices of string literals, whether partial or whole
+</span><span class="boring">    // `first_word`는 문자열 리터럴의 일부 혹은 전체 슬라이스에 대해 작동합니다
 </span><span class="boring">    let word = first_word(&amp;my_string_literal[0..6]);
 </span><span class="boring">    let word = first_word(&amp;my_string_literal[..]);
 </span><span class="boring">
-</span><span class="boring">    // Because string literals *are* string slices already,
-</span><span class="boring">    // this works too, without the slice syntax!
+</span><span class="boring">    // 문자열 리터럴은 *곧* 문자열 슬라이스이므로,
+</span><span class="boring">    // 아래의 코드도 슬라이스 문법 없이 작동합니다!
 </span><span class="boring">    let word = first_word(my_string_literal);
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 4-9: 매개변수 <code>s</code>를 문자열 슬라이스 타입으로 변경하겨
@@ -4363,21 +4363,21 @@ error: could not compile `ownership` due to previous error
 </span>fn main() {
     let my_string = String::from(&quot;hello world&quot;);
 
-    // `first_word` works on slices of `String`s, whether partial or whole
+    // `first_word`는 `String`의 일부 혹은 전체 슬라이스에 대해 작동합니다
     let word = first_word(&amp;my_string[0..6]);
     let word = first_word(&amp;my_string[..]);
-    // `first_word` also works on references to `String`s, which are equivalent
-    // to whole slices of `String`s
+    // 또한 `first_word`는 `String`의 전체 슬라이스와 동일한 `String`의
+    // 참조자에 대해서도 작동합니다
     let word = first_word(&amp;my_string);
 
     let my_string_literal = &quot;hello world&quot;;
 
-    // `first_word` works on slices of string literals, whether partial or whole
+    // `first_word`는 문자열 리터럴의 일부 혹은 전체 슬라이스에 대해 작동합니다
     let word = first_word(&amp;my_string_literal[0..6]);
     let word = first_word(&amp;my_string_literal[..]);
 
-    // Because string literals *are* string slices already,
-    // this works too, without the slice syntax!
+    // 문자열 리터럴은 *곧* 문자열 슬라이스이므로,
+    // 아래의 코드도 슬라이스 문법 없이 작동합니다!
     let word = first_word(my_string_literal);
 }</code></pre></pre>
 <h3 id="그-외-슬라이스"><a class="header" href="#그-외-슬라이스">그 외 슬라이스</a></h3>
