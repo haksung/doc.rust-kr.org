@@ -718,7 +718,7 @@ fn main() {
 합니다. 이는 <code>value</code>의 <code>borrow_mut</code>를 호출하는 식으로 수행되었는데,
 여기서 5장에서 논의했던 자동 역참조 기능이 사용되어 <code>Rc&lt;T&gt;</code>를
 역참조하여 안에 있는 <code>RefCell&lt;T&gt;</code> 값을 얻어옵니다
-(<a href="ch05-03-method-syntax.html#wheres-the---operator">‘<code>-&gt;</code> 연산자는 어디로 갔나요?’</a><!-- ignore -->절을 보세요).
+(<a href="ch05-03-method-syntax.html#wheres-the---operator">‘<code>-&gt;</code> 연산자는 없나요?’</a><!-- ignore -->절을 보세요).
 <code>borrow_mut</code> 메서드는 <code>RefMut&lt;T&gt;</code> 스마트 포인터를 반환하고, 여기에 역참조
 연산자를 사용한 다음 내부 값을 변경합니다.</p>
 <p><code>a</code>, <code>b</code>와 <code>c</code>를 출력하면 이 리스트들이 모두 5가 아니라 변경된 값
