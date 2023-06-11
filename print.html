@@ -267,7 +267,7 @@
 안정적인 코드가 빠른 코드도 될 수 있도록 합니다.</p>
 <p>앞서 언급해 온 대상도 대표적인 이해관계자 중 일부일 뿐입니다. 러스트의 최종 목표는,
 기존의 안정성<strong>이나</strong> 생산성 중 하나를 택하면 나머지 하나를 잃는 것이 당연시되던, 프로그래머들이
-여태 받아들여 온 트레이드오프를 제거하는 것입니다. 러스트는 안정성<strong>과</strong>  생산성 두 마리 토끼를 모두 잡고,
+여태 받아들여 온 절충안를 제거하는 것입니다. 러스트는 안정성<strong>과</strong>  생산성 두 마리 토끼를 모두 잡고,
 마찬가지 취급을 받던 성능<strong>과</strong> 개발자 친화성(ergonomics)까지 동시에 끌어안았습니다.
 한번 러스트를 사용해 보고, 이 특성이 여러분과도 잘 맞는지 판단해 보세요.</p>
 <h2 id="이-책은-어떤-사람을-위한-책인가요"><a class="header" href="#이-책은-어떤-사람을-위한-책인가요">이 책은 어떤 사람을 위한 책인가요?</a></h2>
@@ -321,7 +321,7 @@
 어째서 두려움 없이 멀티스레드 프로그래밍을 할 수 있는지 이야기하겠습니다.
 17장에서는 여러분에게 익숙할 객체 지향 프로그래밍 원칙과
 러스트의 표현 양식 간에 차이를 살펴보겠습니다.</p>
-<p>18장은 러스트 프로그램 전반에 걸쳐 아이디어를 표현하는데 강력한
+<p>18장은 러스트 프로그램 전반에 걸쳐 아이디어를 표현하는 데 강력한
 방법인 패턴, 그리고 패턴 매칭을 참고 자료 형식으로 다룹니다.
 19장은 안전하지 않은 러스트, 매크로, 라이프타임, 트레잇, 타입, 함수,
 클로저 등 다양한 고급 주제를 다룹니다.</p>
@@ -5294,7 +5294,7 @@ Can rect1 hold rect3? false
 <h3 id="연관-함수"><a class="header" href="#연관-함수">연관 함수</a></h3>
 <p><code>impl</code> 블록 내에 구현된 모든 함수를 <em>연관 함수 (associated function)</em> 라고
 부르는데, 이는 <code>impl</code> 뒤에 나오는 타입과 모두 연관된 함수이기 때문입니다.
-동작하는데 해당 타입의 인스턴스가 필요하지 않다면 <code>self</code>를 첫 매개변수로
+동작하는 데 해당 타입의 인스턴스가 필요하지 않다면 <code>self</code>를 첫 매개변수로
 갖지 않는 (따라서 메서드가 아닌) 연관 함수를 정의할 수도 있습니다.
 우리는 이미 <code>String</code> 타입에 정의되어 있는 <code>String::from</code> 함수처럼 이런
 종류의 함수를 사용해 봤습니다.</p>
@@ -12173,7 +12173,7 @@ test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 1 filtered out; fini
 테스트가 위치한 모듈도 테스트 이름의 일부로 나타나는 점을 기억해 두세요.
 모듈 이름으로 필터링하면 해당 모듈 내 모든 테스트를 실행할 수 있습니다.</p>
 <h3 id="특별-요청이-없다면-일부-테스트-무시하기"><a class="header" href="#특별-요청이-없다면-일부-테스트-무시하기">특별 요청이 없다면 일부 테스트 무시하기</a></h3>
-<p>간혹 몇몇 특정 테스트는 실행하는데 굉장히 오랜 시간이 걸려서,
+<p>간혹 몇몇 특정 테스트는 실행하는 데 굉장히 오랜 시간이 걸려서,
 <code>cargo test</code> 실행 시 이런 테스트는 제외하고 싶을 수도 있습니다.
 그럴 때는 실행할 모든 테스트를 인수로 열거할 필요 없이
 시간이 오래 걸리는 테스트에 <code>ignore</code> 속성을 어노테이션하면
@@ -12525,28 +12525,28 @@ fn it_adds_two() {
 <div style="break-before: page; page-break-before: always;"></div><h1 id="io-프로젝트-커맨드-라인-프로그램-만들기"><a class="header" href="#io-프로젝트-커맨드-라인-프로그램-만들기">I/O 프로젝트: 커맨드 라인 프로그램 만들기</a></h1>
 <p>이번 장에서는 여러분이 지금까지 배운 여러 기술들을 요약하고 표준 라이브러리의
 기능을 몇 가지 더 탐색해 보겠습니다. 파일 및 커맨드 입출력을 통해 상호작용하는
-커맨드 라인 도구를 만들면서 이제는 여러분의 벨트에 장착된 러스트 개념 몇 가지를
+커맨드 라인 도구를 만들면서 이제는 여러분이 이해하고 있을 러스트 개념 몇 가지를
 연습해 볼 것입니다.</p>
 <p>러스트의 속도, 안정성, 단일 바이너리 출력, 그리고 크로스 플랫폼 지원은
 커맨드 라인 도구를 만들기 위한 이상적인 언어가 되게끔 하므로, 프로젝트를 위해
 고전적인 커맨드 라인 검색 도구인 <code>grep</code>(<strong>g</strong>lobally search a <strong>r</strong>egular
 <strong>e</strong>xpression and <strong>p</strong>rint)의 직접 구현한 버전을 만들어 보려고 합니다.
 가장 단순한 사용례에서 <code>grep</code>은 어떤 특정한 파일에서 특정한 문자열을 검색합니다.
-그렇게 하기 위해 <code>grep</code>은 파일 경로와 문자열을 인수로 받습니다. 그다음
-파일을 읽고, 그 파일에서 중 문자열 인수를 포함하고 있는 줄들을 찾고,
-그 줄들을 출력합니다.</p>
+이를 위해 <code>grep</code>은 파일 경로와 문자열을 인수로 받습니다. 그다음
+파일을 읽고, 그 파일에서 중 문자열 인수를 포함하고 있는 라인을 찾고,
+그 라인들을 출력합니다.</p>
 <p>그러는 와중에 수많은 다른 커맨드 라인 도구들이 사용하는 터미널의 기능을 우리의
 커맨드 라인 도구도 사용할 수 있게 하는 방법을 알아보겠습니다. 먼저 환경 변수의
-값을 읽어서 사용자로 하여금 우리 도구의 동작을 설정하도록 할 것입니다. 또한 표준
-출력 콘솔 스트림 (<code>stdout</code>) 대신 표준 에러 콘솔 스트림 (<code>stderr</code>)에 에러 메시지를
+값을 읽어서 사용자가 커맨드 라인 도구의 동작을 설정하도록 할 것입니다. 또한 표준
+출력 콘솔 스트림 (<code>stdout</code>) 대신 표준 에러 콘솔 스트림 (<code>stderr</code>) 에 에러 메시지를
 출력하여, 예를 들자면 사용자가 화면을 통해 에러 메시지를 보는 동안에도
-성공적인 출력을 파일로 전용(redirect)할 수 있게끔 할 것입니다.</p>
+성공적인 출력을 파일로 리디렉션할 수 있게끔 할 것입니다.</p>
 <p>러스트 커뮤니티 멤버 일원인 앤드루 갈란트 (Andrew Gallant) 가 이미
 <code>ripgrep</code>이라는 이름의, 모든 기능을 가진 <code>grep</code>의 매우 빠른 버전을
-만들었습니다. 그에 비해서 우리의 버전은 꽤 단순할 예정이지만, 이 장은
-여러분에게 <code>ripgrep</code>과 같은 실세계의 프로젝트를 이해하는 데 필요한 배경
+만들었습니다. 그에 비해서 지금 만들어 볼 버전은 꽤 단순할 예정이지만, 이 장은
+여러분에게 <code>ripgrep</code>과 같은 실제 프로젝트를 이해하는 데 필요한 배경
 지식을 제공할 것입니다.</p>
-<p>우리의 <code>grep</code> 프로젝트는 여러분들이 지금까지 배운 여러 개념을 조합할 것입니다:</p>
+<p>이 <code>grep</code> 프로젝트는 지금까지 배운 여러 개념을 조합할 것입니다:</p>
 <ul>
 <li>코드 조직화하기 (<a href="ch07-00-managing-growing-projects-with-packages-crates-and-modules.html">7장</a><!-- ignore -->에서 모듈에 대해 배운
 것들을 사용)</li>
@@ -12556,12 +12556,12 @@ fn it_adds_two() {
   -->)</li>
 <li>테스트 작성하기 (<a href="ch11-00-testing.html">11장</a><!-- ignore -->)</li>
 </ul>
-<p>또한 <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->과 <a href="ch17-00-oop.html">17장</a><!-- ignore -->에서
-자세히 다룰 예정인 클로저(closure), 반복자(iterator), 그리고 트레잇 객체(trait
-object)에 대한 간략한 소개도 하겠습니다.</p>
+<p>아울러 <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->과 <a href="ch17-00-oop.html">17장</a><!-- ignore -->에서
+자세히 다루게 될 클로저 (closure), 반복자 (iterator), 그리고
+트레잇 객체 (trait object) 에 대해서도 간략히 소개하겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="커맨드-라인-인수-받기"><a class="header" href="#커맨드-라인-인수-받기">커맨드 라인 인수 받기</a></h2>
 <p>언제나처럼 <code>cargo new</code>로 새 프로젝트를 만들어 봅시다. 여러분의 시스템에 이미
-설치되어 있을지도 모를 <code>grep</code> 도구와 구분하기 위하여 우리 프로젝트 이름은
+설치되어 있을지도 모를 <code>grep</code> 도구와 구분하기 위하여, 우리 프로젝트 이름은
 <code>minigrep</code>으로 하겠습니다.</p>
 <pre><code class="language-console">$ cargo new minigrep
      Created binary (application) `minigrep` project
@@ -12569,20 +12569,20 @@ $ cd minigrep
 </code></pre>
 <p><code>minigrep</code>을 만들기 위한 첫 과제는 두 개의 커맨드 라인 인수를 받는 것입니다:
 바로 검색할 파일 경로와 문자열이지요. 그 말은즉슨, 다음과 같이 프로그램을 실행하기
-위해 <code>cargo run</code>과, <code>cargo</code> 대신 우리 프로그램을 위한 인수가 나올 것임을 알려주는
+위해 <code>cargo run</code>, <code>cargo</code> 대신 우리 프로그램을 위한 인수가 나올 것임을 알려주는
 두 개의 하이픈, 검색을 위한 문자열, 그리고 검색하길 원하는 파일을 사용할 수 있도록
 하고 싶다는 것입니다:</p>
 <pre><code class="language-console">$ cargo run -- searchstring example-filename.txt
 </code></pre>
-<p>지금 시점에서 <code>cargo new</code>로 생성된 프로그램은 전달하는 인수를 처리할
-수 없습니다. <a href="https://crates.io/">crates.io</a>에 있는 몇 가지 라이브러리가
+<p>현재 <code>cargo new</code>로 생성된 프로그램은 입력된 인수를 처리할 수
+없습니다. <a href="https://crates.io/">crates.io</a>에 있는 몇 가지 라이브러리가
 커맨드 라인 인수를 받는 프로그램 작성에 도움 되겠지만, 지금은 이 개념을 막
 배우는 중이므로 직접 이 기능을 구현해 봅시다.</p>
-<h3 id="인수값-읽기"><a class="header" href="#인수값-읽기">인수값 읽기</a></h3>
-<p><code>minigrep</code>이 커맨드 라인 인수로 넘겨진 값들을 읽을 수 있도록 하기 위해서는
+<h3 id="인수-값-읽기"><a class="header" href="#인수-값-읽기">인수 값 읽기</a></h3>
+<p><code>minigrep</code>이 커맨드 라인 인수로 전달된 값들을 읽을 수 있도록 하기 위해서는
 러스트의 표준 라이브러리가 제공하는 <code>std::env::args</code> 함수를 사용할 필요가
-있겠습니다. 이 함수는 <code>minigrep</code>으로 넘겨진 커맨드 라인 인수의 반복자(iterator)를
-반환합니다. 반복자에 대해서는 <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->에서 모든 내용을 다룰
+있겠습니다. 이 함수는 <code>minigrep</code>으로 넘겨진 커맨드 라인 인수의 반복자 (iterator) 를
+반환합니다. 반복자에 대한 모든 것은 <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->에서 다룰
 예정입니다. 지금은 반복자에 대한 두 가지 세부 사항만 알면 됩니다: 반복자는
 일련의 값들을 생성하고, 반복자의 <code>collect</code> 메서드를 호출하여 반복자가
 생성하는 모든 요소를 담고 있는 벡터 같은 컬렉션으로 바꿀 수 있다는
@@ -12599,28 +12599,28 @@ fn main() {
 <p><span class="caption">예제 12-1: 커맨드 라인 인수들을 벡터로 모으고
 출력하기</span></p>
 <p>먼저 <code>use</code>를 사용하여 <code>std::env</code> 모듈을 스코프로 가져와서 <code>args</code>
-함수를 사용할 수 있게 합니다. <code>std::env::args</code> 함수는 모듈의 2단계로
-중첩되어 있는 점을 주목하세요. <a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#creating-idiomatic-use-paths">7장</a><!-- ignore -->에서
+함수를 사용할 수 있게 합니다. <code>std::env::args</code> 함수는 두 단계로 중첩된
+모듈에 있는 점을 주목하세요. <a href="ch07-04-bringing-paths-into-scope-with-the-use-keyword.html#creating-idiomatic-use-paths">7장</a><!-- ignore -->에서
 논의한 것처럼, 하나 이상의 모듈로 중첩된 곳에 원하는 함수가 있는 경우에는,
-함수보다는 차라리 그 부모 모듈을 스코프로 가져오는 선택을 했습니다.
-그렇게 함으로써 <code>std::env</code>의 다른 함수들도 쉽게 사용할 수 있습니다.
-또한 <code>use std::env::args</code>를 추가하고 <code>args</code> 만으로 함수를 호출하는
-것보다 이쪽이 덜 모호한데, 이는 <code>args</code>가 현재의 모듈 내에 정의된 다른
-함수로 쉽게 오해받을 수 있을지도 모르기 때문입니다.</p>
+함수가 아닌 그 부모 모듈을 스코프로 가져오는 선택을 했습니다.
+이렇게 하면 <code>std::env</code>의 다른 함수들도 쉽게 사용할 수 있습니다.
+또한 이렇게 하는 것이 <code>use std::env::args</code>를 추가하고 <code>args</code> 만으로
+함수를 호출하는 덜 모호한데, 이는 <code>args</code>가 현재의 모듈 내에 정의된 다른
+함수로 쉽게 오해받을 수 있기 때문입니다.</p>
 <blockquote>
 <h3 id="args-함수와-유효하지-않은-유니코드"><a class="header" href="#args-함수와-유효하지-않은-유니코드"><code>args</code> 함수와 유효하지 않은 유니코드</a></h3>
-<p>어떤 인수라도 유효하지 않은 유니코드를 포함한다면 <code>std::env::args</code>가 패닉을 일으킨다는
-점을 주의하세요. 만일 여러분의 프로그램이 유효하지 않은 유니코드를 포함하는 인수들을
-받을 필요가 있다면, 대신 <code>std::env::args_os</code>를 사용하세요. 이 함수는 <code>String</code> 대신
+<p>어떤 인수에라도 유효하지 않은 유니코드가 들어있다면 <code>std::env::args</code>가 패닉을
+일으킨다는 점을 주의하세요. 만일 프로그램이 유효하지 않은 유니코드를 포함하는 인수들을
+받을 필요가 있다면, <code>std::env::args_os</code>를 대신 사용하세요. 이 함수는 <code>String</code> 대신
 <code>OsString</code> 값을 생성하는 반복자를 반환합니다. 여기서는 단순함을 위해 <code>std::env::args</code>을
 사용했는데, 이는 <code>OsString</code> 값이 플랫폼 별로 다르고 <code>String</code> 값을 가지고 작업하는
 것보다 더 복잡하기 때문입니다.</p>
 </blockquote>
 <p><code>main</code>의 첫째 줄에서는 <code>env::args</code>를 호출한 즉시 <code>collect</code>를
 사용하여 반복자에 의해 만들어지는 모든 값을 담고 있는 벡터로 바꿉니다.
-<code>colloect</code> 함수를 사용하여 다양한 종류의 컬렉션을 만들 수 있으므로,
-<code>args</code>의 타입을 명시적으로 표기하여 문자열의 벡터가 필요하다는 것을
-명시하도록 합니다. 러스트에서는 타입을 표기할 필요가 거의 없지만,
+<code>collect</code> 함수를 사용하여 다양한 종류의 컬렉션을 만들 수 있으므로,
+문자열의 벡터가 필요하다는 것을 명시하기 위해 <code>args</code>의 타입을 명시적으로
+표기하였습니다. 러스트에서는 타입을 명시할 필요가 거의 없지만,
 러스트가 여러분이 원하는 종류의 컬렉션을 추론할 수는 없으므로
 <code>collect</code>는 타입 표기가 자주 필요한 함수 중 하나입니다.</p>
 <p>마지막으로 디버그 매크로를 사용하여 벡터를 출력합니다. 먼저 인수 없이 코드를
@@ -12645,15 +12645,15 @@ fn main() {
 </code></pre>
 <p>벡터의 첫 번째 값이 <code>&quot;target/debug/minigrep&quot;</code>, 즉 이 바이너리 파일의
 이름인 점을 주목하세요. 이는 C에서의 인수 리스트의 동작과 일치하며,
-프로그램 실행 중 호출된 이름을 프로그램이 사용할 수 있게 해 줍니다.
+프로그램이 실행될 때 호출된 이름을 사용할 수 있게 해 줍니다.
 프로그램의 이름에 접근할 수 있는 것은 메시지에 이름을 출력하고 싶을 때라던가
 프로그램을 호출할 때 사용된 커맨드 라인 별칭이 무엇이었는지에 기반하여
 프로그램의 동작을 바꾸고 싶을 때 종종 편리하게 이용됩니다. 하지만 이 장의 목적을
-위해서 지금은 이걸 무시하고 우리가 필요로 하는 두 인수만 저장하겠습니다.</p>
-<h3 id="인수값들을-변수에-저장하기"><a class="header" href="#인수값들을-변수에-저장하기">인수값들을 변수에 저장하기</a></h3>
-<p>이 프로그램은 현재 커맨드 라인 인수로 지정된 값들에 접근할 수 있습니다.
-이제는 두 인수의 값들을 변수에 저장할 필요가 있는데, 그렇게 하면 프로그램의
-나머지 부분을 통틀어 이 값들을 사용할 수 있겠습니다. 예제 12-2에서
+위해서 지금은 이를 무시하고 현재 필요한 두 인수만 저장하겠습니다.</p>
+<h3 id="인수-값들을-변수에-저장하기"><a class="header" href="#인수-값들을-변수에-저장하기">인수 값들을 변수에 저장하기</a></h3>
+<p>이제 프로그램은 커맨드 라인 인수로 지정된 값들에 접근할 수 있습니다.
+이제는 두 인수의 값을 변수에 저장할 필요가 있는데, 그렇게 하면 프로그램의
+나머지 부분에서 이 값들을 사용할 수 있겠습니다. 예제 12-2에서
 이 동작을 수행합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust should_panic noplayground">use std::env;
@@ -12667,10 +12667,10 @@ fn main() {
     println!(&quot;Searching for {}&quot;, query);
     println!(&quot;In file {}&quot;, file_path);
 }</code></pre>
-<p><span class="caption">예제 12-2: 질의 인수와 파일 경로 인수를 담은
+<p><span class="caption">예제 12-2: 질의 (query) 인수와 파일 경로 인수를 담은
 변수 생성하기</span></p>
-<p>벡터를 출력할 때 봤듯이, 프로그램의 이름이 벡터의 첫 번째 값 <code>args[0]</code>을
-잡아먹으므로, 인덱스 <code>1</code>에 있는 인수부터 시작하는 중입니다.
+<p>벡터를 출력할 때 본 것처럼 프로그램의 이름이 벡터의 첫 번째 값 <code>args[0]</code>을
+사용하므로, 인덱스 <code>1</code>에 있는 인수부터 시작하고 있습니다.
 <code>minigrep</code>이 취하는 첫 번째 인수는 검색하고자 하는 문자열이므로,
 첫 번째 인수의 참조자를 <code>query</code> 변수에 집어넣습니다. 두 번째 인수는
 파일 경로가 될 것이므로, 두 번째 인수의 참조자를 <code>file_path</code>에
@@ -12685,9 +12685,9 @@ fn main() {
 Searching for test
 In file sample.txt
 </code></pre>
-<p>프로그램이 훌륭하게 동작하네요! 우리가 필요로 하는 인수의 값들이 올바른 변수들에
+<p>프로그램이 훌륭하게 동작하네요! 필요로 하는 인수 값들이 올바른 변수에
 저장되고 있습니다. 나중에는 사용자가 아무런 인수를 제공했을 때처럼 에러가
-발생할 수 있는 특정한 경우를 다루기 위한 에러 처리 기능을 몇 가지 추가할
+발생할 수 있는 특정한 경우를 처리하기 위한 에러 처리 기능을 몇 가지 추가할
 것입니다; 지금은 그런 경우를 무시하고 파일 읽기 기능을 추가하는 작업으로
 넘어가겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="파일-읽기"><a class="header" href="#파일-읽기">파일 읽기</a></h2>
@@ -12710,7 +12710,7 @@ To an admiring bog!
 </code></pre>
 <p><span class="caption">예제 12-3: 에밀리 딕킨슨의 시는 좋은 테스트 케이스를
 만들어 줍니다</span></p>
-<p>텍스트를 채워 넣었다면 예제 12-4에서 보는 것처럼 <em>src/main.rs</em>에 파일을
+<p>텍스트를 채워 넣었다면 예제 12-4처럼 <em>src/main.rs</em>에 파일을
 읽는 코드를 추가하세요.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust should_panic noplayground">use std::env;
@@ -12735,10 +12735,10 @@ fn main() {
 내용물 읽기</span></p>
 <p>먼저 <code>use</code> 구문을 사용하여 표준 라이브러리의 연관된 부분을 가져옵니다:
 파일을 다루기 위해서는 <code>std::fs</code>가 필요하죠.</p>
-<p><code>main</code>에서, 새로운 구문 <code>fs::read_to_string</code>이 <code>file_path</code>를 받아서 그
+<p><code>main</code>에서 새로운 구문 <code>fs::read_to_string</code>이 <code>file_path</code>를 받아서 그
 파일을 열고, 파일 내용물의 <code>std::io::Result&lt;String&gt;</code>을 반환합니다.</p>
-<p>그런 뒤, 다시 한번 임시로 <code>println!</code> 구문을 추가하여 파일을 읽은 후
-<code>contents</code>의 값을 출력함으로써, 현재까지의 프로그램이 잘 작동하는지
+<p>그다음 다시 한번 임시로 <code>println!</code> 구문을 추가하여 파일을 읽은 후
+<code>contents</code>의 값을 출력하는 것으로 현재까지의 프로그램이 잘 작동하는지
 확인합니다.</p>
 <p>첫 번째 커맨드 라인 인수에는 아무 문자열이나 넣고 (아직 검색 부분은 구현하지
 않았으므로) 두 번째 인수에는 <em>poem.txt</em> 파일을 넣어서 이 코드를
@@ -12761,53 +12761,53 @@ To tell your name the livelong day
 To an admiring bog!
 
 </code></pre>
-<p>훌륭해요! 코드가 파일의 내용물을 읽은 뒤 출력했습니다. 하지만 이 코드는
-몇 가지 결점이 있습니다. 현재 <code>main</code> 함수는 여러 가지 기능을 하고 있습니다:
-일반적으로는 함수 하나당 오직 하나의 아이디어에 대한 기능을 구현할 때
-함수가 더 명료해지고 관리하기 쉬워집니다. 또 한 가지 문제는 우리가 할 수
-있는 만큼의 에러 처리를 안 하고 있다는 점입니다. 프로그램은 여전히 작고,
-따라서 이러한 결점이 큰 문제는 아니지만, 프로그램이 커짐에 따라 이 문제들은
-깔끔하게 고치기 어려워질 것입니다. 프로그램을 개발할 때 일찍 리팩터링하는 것은
-좋은 관행인데, 이는 작은 양의 코드를 리팩터링하는 것이 훨씬 쉽기 때문입니다.
+<p>훌륭해요! 코드가 파일의 내용물을 읽은 뒤 출력했습니다. 하지만 이 코드에는
+몇 가지 결점이 있습니다. 현재 <code>main</code> 함수에는 여러 가지 기능이 있습니다:
+일반적으로 함수 하나당 단 하나의 아이디어에 대한 기능을 구현할 때
+함수가 더 명료해지고 관리하기 쉬워집니다. 또 한 가지 문제는 처리 가능한
+수준의 에러 처리를 안 하고 있다는 점입니다. 프로그램은 아직 작고,
+따라서 이러한 결점이 큰 문제는 아니지만, 프로그램이 커지면 이 문제들을
+깔끔하게 고치기 어려워질 것입니다. 작은 양의 코드를 리팩터링하는 것이 훨씬
+쉽기 때문에, 프로그램을 개발할 때 일찍 리팩터링하는 것은 좋은 관행입니다.
 이걸 바로 다음에 하겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="모듈성과-에러-처리-향상을-위한-리팩터링"><a class="header" href="#모듈성과-에러-처리-향상을-위한-리팩터링">모듈성과 에러 처리 향상을 위한 리팩터링</a></h2>
-<p>우리의 프로그램을 개선하기 위해서 프로그램의 구조 및 에러 처리 방법을
-위해 필요한 네 가지 문제를 고치려고 합니다. 첫 번째는, <code>main</code> 함수가 지금 두
-가지 일을 수행한다는 것입니다: 인수 파싱, 파일을 읽는 작업 말입니다. 이 프로그램이
-커짐에 따라 <code>main</code> 함수에서 다루는 분리된 작업의 양은 증가할 것입니다.
+<p>프로그램을 개선하기 위해서 프로그램의 구조 및 잠재적 에러를 처리하는
+방식과 관련된 네 가지 문제를 고치려고 합니다. 첫 번째로는 <code>main</code> 함수가 지금
+두 가지 일을 수행한다는 것입니다: 인수 파싱, 파일을 읽는 작업 말입니다. 이 프로그램이
+커짐에 따라 <code>main</code> 함수에서 처리하는 개별 작업의 개수는 증가할 것입니다.
 어떤 함수가 책임 소재를 계속 늘려나가면, 이 함수는 어떤 기능인지 추론하기
 어려워지고, 테스트하기도 힘들어지고, 기능 일부분을 깨트리지 않으면서 고치기도
-어려워집니다. 기능을 분리하여 각각의 함수가 하나의 작업에 대한 책임만 지는
+어려워집니다. 기능을 나누어 각각의 함수가 하나의 작업에 대한 책임만 지는
 것이 최선입니다.</p>
-<p>또한 이 주제는 두 번째 문제와 엮입니다: <code>query</code>와 <code>file_path</code>가 프로그램의
-환경변수이지만, <code>contents</code> 같은 변수는 프로그램 로직을 수행하기 위해 사용됩니다.
-<code>main</code>이 점점 길어질수록, 필요로 하는 변수들이 더 많이 스코프 안으로 가져와집니다;
-스코프 내에 더 많은 변수가 있을수록 각 변수의 목적을 계속 추적하는 것이
-어려워질 것입니다. 환경 변수들을 하나의 구조체로 묶어서 목적을 분명히
+<p>이 주제는 두 번째 문제와도 엮입니다: <code>query</code>와 <code>file_path</code>가 프로그램의
+설정 변수이지만, <code>contents</code> 같은 변수는 프로그램 로직을 수행하기 위해 사용됩니다.
+<code>main</code>이 점점 길어질수록 필요한 변수들이 더 많이 스코프 안에 있게 되고,
+스코프 안에 더 많은 변수가 있을수록 각 변수의 목적을 추적하는 것이
+더 어려워집니다. 설정 변수들을 하나의 구조체로 묶어서 목적을 분명히
 하는 것이 가장 좋습니다.</p>
 <p>세 번째 문제는 파일 읽기 실패 시 에러 메시지 출력을 위해서 <code>expect</code>를
-사용했는데, 이 에러 메시지가 고작 <code>Should have been able to read the file</code>이나 출력한다는 것입니다. 파일을 읽는 작업은 여러 가지 방식으로 실패할
+사용했는데, 이 에러 메시지가 겨우 <code>Should have been able to read the file</code>이나 출력한다는 것입니다. 파일을 읽는 작업은 여러 가지 방식으로 실패할
 수 있습니다: 이를테면 파일을 못 찾았거나, 파일을 열 권한이 없었다든가 하는
 식이죠. 현재로서는 상황과는 관계없이 모든 에러에 대해 동일한 에러 메시지를
 출력하고 있는데, 이는 사용자에게 어떠한 정보도 제공할 수 없을 것입니다!</p>
 <p>네 번째로, <code>expect</code>가 서로 다른 에러를 처리하기 위해 반복적으로 사용되는데, 만일
 사용자가 실행되기 충분한 인수를 지정하지 않고 프로그램을 실행한다면, 사용자는
 러스트의 <code>index out of bounds</code> 에러를 얻게 될 것이고 이 에러는 문제를 명확하게
-설명하지 못합니다. 모든 에러 처리 코드가 한 곳에 있어서 미래의 코드를 유지보수하는
+설명하지 못합니다. 모든 에러 처리 코드가 한 곳에 있어서 미래에 코드를 유지보수할
 사람이 에러 처리 로직을 변경하기를 원할 경우 찾아봐야 하는 코드가 한 군데에만 있는
-것이 가장 좋을 것입니다. 모든 에러 처리 코드가 한 군데에 있는 것은 또한 프로그램이
-사용자에게 의미 있을 메시지를 출력하는 중이라는 것을 확신시켜 줄 것입니다.</p>
-<p>이 프로젝트를 리팩터링하여 위 네 가지 문제를 해결해 봅시다.</p>
+것이 가장 좋을 것입니다. 모든 에러 처리 코드를 한 곳에 모아두면 최종 사용자에게
+의미 있는 메시지를 출력할 수 있습니다.</p>
+<p>이 프로젝트를 리팩터링하여 위의 네 가지 문제를 해결해 봅시다.</p>
 <h3 id="바이너리-프로젝트에-대한-관심사-분리"><a class="header" href="#바이너리-프로젝트에-대한-관심사-분리">바이너리 프로젝트에 대한 관심사 분리</a></h3>
-<p>여러 작업을 <code>main</code> 함수에 할당하는 조직화 문제는 많은 바이너리
-프로젝트에서 흔히 발생합니다. 이에 따라 러스트 커뮤니티는 <code>main</code>이
+<p>여러 작업에 대한 책임을 <code>main</code> 함수에 떠넘기는 조직화 문제는 많은 바이너리
+프로젝트에서 흔한 일입니다. 이에 따라 러스트 커뮤니티는 <code>main</code>이
 커지기 시작할 때 이 바이너리 프로그램의 별도 관심사를 나누기 위한
 가이드라인을 개발했습니다. 이 프로세스는 다음의 단계로 구성되어
 있습니다:</p>
 <ul>
 <li>프로그램을 <em>main.rs</em>와 <em>lib.rs</em>로 분리하고 프로그램 로직을
 <em>lib.rs</em>로 옮기세요.</li>
-<li>커맨드 라인 파싱 로직이 작은 한, 이 로직은 <em>main.rs</em>에 남을 수
+<li>커맨드 라인 파싱 로직이 작은 동안에는 <em>main.rs</em>에 남을 수
 있습니다.</li>
 <li>커맨드 라인 파싱 로직이 복잡해지기 시작하면, <em>main.rs</em>로부터
 추출하여 <em>lib.rs</em>로 옮기세요.</li>
@@ -12815,8 +12815,8 @@ To an admiring bog!
 <p>이 과정을 거친 후 <code>main</code> 함수에 남아있는 책임소재는 다음으로
 한정되어야 합니다:</p>
 <ul>
-<li>인수값을 가지고 커맨드 라인 파싱 로직 호출하기</li>
-<li>그 밖의 환경 설정</li>
+<li>인수 값을 가지고 커맨드 라인 파싱 로직 호출하기</li>
+<li>그 밖의 설정</li>
 <li><em>lib.rs</em>의 <code>run</code> 함수 호출</li>
 <li><code>run</code>이 에러를 반환할 때 에러 처리하기</li>
 </ul>
@@ -12824,7 +12824,7 @@ To an admiring bog!
 다루고, <em>lib.rs</em>는 당면한 작업의 모든 로직을 처리합니다. <code>main</code> 함수를
 직접 테스트할 수 없으므로, 이 구조는 <em>lib.rs</em> 내의 함수 형태로 테스트를
 옮기게 하여 여러분의 모든 프로그램 로직을 테스트하게끔 합니다. <em>main.rs</em>에
-남겨진 코드는 읽는 것만으로 정확한지를 검증하기 충분할 정도로 작아질 것입니다.
+남겨진 코드는 정확한지 검증할 때 읽는 것만으로도 충분할 정도로 작아질 것입니다.
 이 프로세스를 따르는 것으로 프로그램 작업을 다시 해 봅시다.</p>
 <h4 id="인수-파서-추출"><a class="header" href="#인수-파서-추출">인수 파서 추출</a></h4>
 <p>커맨드 라인 파싱 로직을 <em>src/lib.rs</em>로 옮기기 위한 준비 단계로
@@ -12860,30 +12860,30 @@ fn parse_config(args: &amp;[String]) -&gt; (&amp;str, &amp;str) {
 <p><span class="caption">예제 12-5: <code>main</code>으로부터 <code>parse_config</code> 함수
 추출</span></p>
 <p>여전히 커맨드 라인 인수는 벡터로 모으지만, <code>main</code> 함수 내에서
-인덱스 1번의 인수값을 <code>query</code> 변수에 할당하고 인덱스 2번의
-인수값을 <code>file_path</code> 변수에 할당하는 대신, 전체 벡터를
+인덱스 1번의 인수 값을 <code>query</code> 변수에 할당하고 인덱스 2번의
+인수 값을 <code>file_path</code> 변수에 할당하는 대신, 전체 벡터를
 <code>parse_config</code> 함수에 넘깁니다. 그러면 <code>parse_config</code>
-함수는 어떤 인수값이 어떤 변수에 들어갈지 정하는 로직을
+함수는 어떤 인수 값이 어떤 변수에 들어갈지 정하는 로직을
 담고 있고 이 값들을 <code>main</code>에게 다시 넘겨줍니다. 여전히 <code>query</code>와
 <code>file_path</code> 변수는 <code>main</code> 안에서 만들지만, <code>main</code>은 더 이상
-커맨드 라인 인수와 변수들이 어떻게 상관되어 있는지를 결정할
-책임을 지지 않습니다.</p>
+커맨드 라인 인수와 변수들이 어떻게 대응되는지를 결정할 책임이
+없습니다.</p>
 <p>이러한 재작업은 우리의 작은 프로그램에 대해서는 지나쳐 보일지도 모르겠으나,
 우리는 작게, 점진적인 단계로 리팩터링을 하는 중입니다. 이 변경 후에 프로그램을
 다시 실행하여 인수 파싱이 여전히 동작하는지 검증하세요. 진행률을 자주 체크하는
 것은 좋은 일이며, 문제가 발생했을 때 그 원인을 식별하는 데 도움이 됩니다.</p>
-<h4 id="환경값-묶기"><a class="header" href="#환경값-묶기">환경값 묶기</a></h4>
+<h4 id="설정-값-묶기"><a class="header" href="#설정-값-묶기">설정 값 묶기</a></h4>
 <p><code>parse_config</code> 함수를 더욱 개선하기 위해 작은 단계를 하나 더 진행할 수
 있습니다. 현재는 튜플을 반환하는 중인데, 그런 다음 이 튜플을 개별 부분으로
-즉시 다시 쪼개고 있습니다. 이는 우리가 아직 올바른 추상화에 도달하지
-못했을 수 있다는 신호입니다.</p>
+즉시 다시 쪼개고 있습니다. 이는 아직 적절한 추상화가 이루어지지 않았다는
+신호일 수 있습니다.</p>
 <p>개선의 여지가 남아있음을 보여주는 또 다른 지표는 <code>parse_config</code>의
 <code>config</code> 부분인데, 이는 반환하는 두 값이 연관되어 있고 둘 모두
-하나의 환경 값을 이루는 부분임을 함축합니다. 현재 두 값을 튜플로
+하나의 설정 값을 이루는 부분임을 의미합니다. 현재 두 값을 튜플로
 묶는 것 말고는 데이터의 구조에서 이러한 의미를 전달하지 못하고
 있습니다; 그래서 이 두 값을 하나의 구조체에 넣고 구조체 필드에 각각 의미가
 있는 이름을 부여하려고 합니다. 그렇게 하는 것이 미래에 이 코드를 유지보수하는
-사람에게 이 다른 값들이 어떻게 서로 연관되어 있고 이 값들의 목적은 무엇인지를
+사람에게 이 서로 다른 값들이 어떻게 연관되어 있고 이 값들의 목적은 무엇인지를
 더 쉽게 이해하도록 만들어 줄 것입니다.</p>
 <p>예제 12-6은 <code>parse_config</code> 함수에 대한 개선을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -12922,44 +12922,44 @@ fn parse_config(args: &amp;[String]) -&gt; Config {
 <p><code>query</code>와 <code>file_path</code>라는 이름의 필드를 갖도록 정의된 <code>Config</code>라는 이름의
 구조체를 추가했습니다. <code>parse_config</code>의 시그니처는 이제 <code>Config</code> 값을
 반환함을 나타냅니다. <code>parse_config</code> 본문에서는 원래 <code>args</code>의 <code>String</code> 값들을
-참조하는 문자열 슬라이스를 반환했는데, 이제는 <code>String</code> 값을 소유한 <code>Config</code>을
-정의했습니다. <code>main</code> 안에 있는 <code>args</code> 변수는 인수값들의 소유자이고
-<code>parse_config</code> 함수에게는 이 값을 빌려주고 있을 뿐인데, 이는 만일
-<code>Config</code>가 <code>args</code>의 값에 대한 소유권을 가져가려고 한다면 러스트의 빌림
+참조하는 문자열 슬라이스를 반환했는데, 이제는 <code>String</code> 값을 소유한 <code>Config</code>를
+정의했습니다. <code>main</code> 안에 있는 <code>args</code> 변수는 인수 값들의 소유자이고
+<code>parse_config</code> 함수에게는 이 값을 빌려주고 있을 뿐인데, 이는 즉
+<code>Config</code>가 <code>args</code>의 값에 대한 소유권을 가져가려고 하면 러스트의 빌림
 규칙을 위반하게 된다는 의미입니다.</p>
-<p><code>String</code> 데이터를 관리하는 방법은 다양합니다; 다소 비효율적이지만 가장 쉬운
-길은 그 값에 대하여 <code>clone</code> 메서드를 호출하는 것입니다. 이는 데이터의 전체
-복사본을 만들어 <code>Config</code> 인스턴스가 이를 소유할 수 있게 해 줄 것인데, 이는
+<p><code>String</code> 데이터를 관리하는 방법은 다양하며, 가장 쉬운 방법은 (다소 비효율적이지만)
+그 값에서 <code>clone</code> 메서드를 호출하는 것입니다. 이는 데이터의 전체
+복사본을 만들어 <code>Config</code> 인스턴스가 소유할 수 있게 해주는데, 이는
 문자열 데이터에 대한 참조자를 저장하는 것에 비해 더 많은 시간과 메모리를 소비합니다.
-그러나 값의 복제는 또한 코드를 매우 직관적으로 만들어 주는데, 그 이유는
-참조자의 라이프타임을 관리할 필요가 없어지기 때문입니다; 이러한 환경에서
+그러나 값의 복제는 참조자의 라이프타임을 관리할 필요가 없어지기 때문에
+코드를 매우 직관적으로 만들어 주기도 하므로, 이러한 환경에서
 약간의 성능을 포기하고 단순함을 얻는 것은 가치 있는 절충안입니다.</p>
 <blockquote>
 <h3 id="clone을-사용한-절충안"><a class="header" href="#clone을-사용한-절충안"><code>clone</code>을 사용한 절충안</a></h3>
-<p>러스타시안들 중 많은 이들이 런타임 비용의 이유로 <code>clone</code>을 사용한
-소유권 문제 해결을 회피하는 경향이 있습니다. <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->에서
+<p>러스타시안들 중에서 많은 이들이 런타임 비용의 이유로 <code>clone</code>을 사용한
+소유권 문제 해결을 회피하는 경향을 가지고 있습니다. <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->에서
 이러한 종류의 상황에서 더 효율적인 메서드를 사용하는 방법을 배울 것입니다.
-하지만 지금으로서는 계속 진행하기 위해 약간의 문자열을 복사하는
+하지만 프로젝트를 계속 진행하기 위해 지금으로서는 약간의 문자열을 복사하는
 정도는 괜찮은데, 이 복사가 딱 한 번만 일어나고 파일 경로와 질의
 문자열이 매우 작기 때문입니다. 한 번에 매우 최적화된 코드 작성을
-시도하기보다는 다소 비효율적이라도 동작하는 프로그램을 갖는 편이
+시도하기보다는 다소 비효율적이라도 동작하는 프로그램을 만드는 편이
 좋습니다. 여러분이 러스트에 더 경험을 쌓게 되면 가장 효율적인
 해답을 가지고 시작하기 더 쉽겠으나, 지금으로선 <code>clone</code>을 호출하는
-것도 완전 허용될만 합니다.</p>
+것도 충분히 허용될만 합니다.</p>
 </blockquote>
-<p><code>main</code>을 업데이트하여 <code>parse_config</code>이 반환한 <code>Config</code> 인스턴스를
+<p><code>main</code>을 업데이트하여 <code>parse_config</code>가 반환한 <code>Config</code> 인스턴스를
 <code>config</code>라는 이름의 변수에 위치시켰고, 이전에 별개로 사용된
 <code>query</code>와 <code>file_path</code> 대신 이제는 <code>Config</code> 구조체의 필드를
 이용합니다.</p>
 <p>이제 코드가 <code>query</code>와 <code>file_path</code>가 서로 연관되어 있고 이들의 목적이
-프로그램의 동작 방법을 설정하기 위함임을 더 명료하게 전달합니다. 이 값들을
-이용하는 어떠한 코드라도 <code>config</code> 인스턴스에서 목적에 맞게 명명된 필드 값을
+프로그램의 동작 방법을 설정하기 위함임을 더 명료하게 전달합니다. 이러한 값을
+사용하는 모든 코드는 <code>config</code> 인스턴스에서 목적에 맞게 명명된 필드 값을
 찾을 수 있습니다.</p>
 <h4 id="config를-위한-생성자-만들기"><a class="header" href="#config를-위한-생성자-만들기"><code>Config</code>를 위한 생성자 만들기</a></h4>
 <p>여기까지 해서 <code>main</code>으로부터 커맨드 라인 인수 파싱을 책임지는 로직을
-추출하여 <code>parse_config</code> 함수에 위치시켰습니다. 그렇게 하는 것이
+추출하여 <code>parse_config</code> 함수에 위치시켰습니다. 그렇게 하면
 <code>query</code>와 <code>file_path</code> 값이 연관되어 있고 이 관계가 코드로부터
-전달되어야 함을 알게 해 주었습니다. 그런 다음 <code>query</code>와 <code>file_path</code>의
+전달된다는 것을 알기 쉽게 해주었습니다. 그다음 <code>query</code>와 <code>file_path</code>의
 목적에 연관된 이름을 갖고 <code>parse_config</code> 함수로부터 반환되는 값을
 구조체 필드 값이 되도록 하기 위해 <code>Config</code> 구조체를 추가하였습니다.</p>
 <p>따라서 이제 <code>parse_config</code> 함수의 목적이 <code>Config</code> 인스턴스를 생성하는
@@ -13010,7 +13010,7 @@ fn parse_config(args: &amp;[String]) -&gt; Config {
 <p>원래 <code>parse_config</code>를 호출하고 있던 <code>main</code> 부분을 <code>Config::new</code> 호출로
 바꿨습니다. <code>parse_config</code>의 이름은 <code>new</code>로 변경되었고 <code>impl</code> 블록에
 옮겨졌는데, 이것이 <code>Config</code>와 <code>new</code> 함수를 연관시켜 줍니다.
-이 코드를 다시 한번 컴파일하여 잘 동작하는지 시도하세요.</p>
+이 코드를 다시 한번 컴파일하여 잘 동작하는지 확인하세요.</p>
 <h3 id="에러-처리-수정"><a class="header" href="#에러-처리-수정">에러 처리 수정</a></h3>
 <p>이제부터는 에러 처리 기능을 수정할 겁니다. <code>args</code> 벡터에 3개보다 적은 아이템이
 들어있는 경우에는 인덱스 1이나 2의 값에 접근을 시도하는 것이 프로그램의
@@ -13024,7 +13024,7 @@ thread 'main' panicked at 'index out of bounds: the len is 1 but the index is 1'
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </code></pre>
 <p><code>index out of bounds: the len is 1 but the index is 1</code> 줄은 프로그래머를
-위한 에러 메시지입니다. 우리의 최종 사용자들에게는 대신 무엇을 해야 하는지를
+위한 에러 메시지입니다. 최종 사용자들에게는 무엇을 대신 해야 하는지
 이해시키는 데 도움이 안 될 것입니다. 이제 수정해 봅시다.</p>
 <h4 id="에러-메시지-개선"><a class="header" href="#에러-메시지-개선">에러 메시지 개선</a></h4>
 <p>예제 12-8에서는 인덱스 1과 2에 접근하기 전에 슬라이스의 길이가 충분한지
@@ -13085,9 +13085,9 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 thread 'main' panicked at 'not enough arguments', src/main.rs:26:13
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </code></pre>
-<p>이번 출력이 더 좋습니다: 이제는 적절한 에러 메시지가 되었습니다. 하지만 사용자들에게
-주고 싶지 않은 추가 정보 또한 제공하고 있습니다. 어쩌면 예제 9-13에서
-사용했던 기술을 이용하는 것이 여기에 쓰기 최선은 아닌가 봅니다:
+<p>이번 출력이 더 좋습니다: 이제는 적절한 에러 메시지가 되었습니다. 하지만
+사용자들에게 제공할 필요 없는 추가적인 정보도 제공하고 있습니다. 어쩌면
+예제 9-13에서 사용했던 기술을 여기에 써먹는 것이 최선은 아닌가 봅니다:
 <a href="ch09-03-to-panic-or-not-to-panic.html#guidelines-for-error-handling">9장에서 얘기한 것처럼</a><!-- ignore --> <code>panic!</code>을
 호출하는 것은 사용의 문제보다는 프로그램의 문제에 더 적합합니다. 대신에
 여러분이 9장에서 배웠던 다른 기술, 즉 성공인지 혹은 에러인지를 나타내는
@@ -13095,16 +13095,16 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 <!-- Old headings. Do not remove or links may break. -->
 <p><a id="returning-a-result-from-new-instead-of-calling-panic"></a></p>
 <h4 id="panic-호출-대신-result-반환하기"><a class="header" href="#panic-호출-대신-result-반환하기"><code>panic!</code> 호출 대신 <code>Result</code> 반환하기</a></h4>
-<p>우리는 성공한 경우 <code>Config</code>를 담고 있고 에러가 난 경우 문제를
-설명해 주게 될 <code>Result</code> 값을 반환시킬 수 있습니다. 또한 <code>new</code>라는
+<p>성공한 경우에는 <code>Config</code>를 담고 있고 에러가 난 경우에는 문제를
+설명해줄 <code>Result</code> 값을 반환시킬 수 있습니다. 또한 <code>new</code>라는
 함수 이름은 <code>build</code>로 변경할 것인데, 이는 많은 프로그래머가 <code>new</code>
 함수가 절대 실패하지 않으리라 예상하기 때문입니다. <code>Config::build</code>가
-<code>main</code>과 소통하고 있을 경우, <code>Result</code> 타입을 사용하여 문제에 대한 신호를
+<code>main</code>과 소통하고 있을 때 <code>Result</code> 타입을 사용하여 문제에 대한 신호를
 줄 수 있습니다. 그러면 <code>main</code>을 수정하여 <code>Err</code> 배리언트를 사용자에게
 더 실용적인 에러 메시지로 변경할 수 있고, 이는 <code>panic!</code>의 호출로 인한
 <code>thread 'main'</code>과 <code>RUST_BACKTRACE</code>에 대해 감싸져 있는 텍스트를 없앨 수 있겠습니다.</p>
-<p>예제 12-9는 이제 <code>Config::build</code>라고 부르고 있는 함수의 반환 값과
-<code>Result</code>를 반환할 필요가 있게 된 함수 본문을 위해 필요한 변경점을
+<p>예제 12-9는 이제 <code>Config::build</code>라고 하는 함수의 반환 값과
+<code>Result</code>를 반환할 필요가 있는 함수 본문을 위해서 필요한 변경점을
 보여줍니다. <code>main</code>도 마찬가지로 수정하지 않으면 컴파일 되지 않는다는
 점을 유의하세요. 이건 다음에 하겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -13150,18 +13150,18 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 <p>함수 본문에는 두 가지 변경점이 있었습니다: 사용자가 충분한 인수를 넘기지
 않았을 때 <code>panic!</code>을 호출하는 대신 이제 <code>Err</code> 값을 반환하며, 반환 값
 <code>Config</code>를 <code>Ok</code>로 감쌌습니다. 이러한 변경점이 함수의 새로운 타입 시그니처에
-적합하도록 만듭니다.</p>
+맞도록 합니다.</p>
 <p><code>Config::build</code>로부터 <code>Err</code> 값을 반환하는 것은 <code>main</code> 함수가
 <code>build</code> 함수로부터 반환된 <code>Result</code> 값을 처리하여 에러가 난 경우
 프로세스를 더 깔끔하게 종료하도록 해줍니다. </p>
 <!-- Old headings. Do not remove or links may break. -->
 <p><a id="calling-confignew-and-handling-errors"></a></p>
 <h4 id="configbuild-호출과-에러-처리"><a class="header" href="#configbuild-호출과-에러-처리"><code>Config::build</code> 호출과 에러 처리</a></h4>
-<p>에러가 난 경우를 처리하여 사용자 친화적인 메시지를 출력하기 위해서는,
+<p>에러가 발생한 경우를 처리하여 사용자 친화적인 메시지를 출력하기 위해서는,
 예제 12-10처럼 <code>main</code>을 수정하여 <code>Config::build</code>에 의해 반환되는
-<code>Result</code>를 처리할 피요가 있습니다. 또한 <code>panic!</code>으로부터 벗어나서
+<code>Result</code>를 처리할 필요가 있습니다. 또한 <code>panic!</code>으로부터 벗어나서
 직접 0이 아닌 에러 코드로 커맨드 라인 도구를 종료하도록 구현할 것입니다.
-0이 아닌 종료 상태값은 우리의 프로그램을 호출한 프로세스에게 에러 상태값과
+0이 아닌 종료 상태값은 프로그램을 호출한 프로세스에게 에러 상태값과
 함께 종료되었음을 알려주는 관례입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::env;
@@ -13206,13 +13206,13 @@ fn main() {
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-10: <code>Config</code> 생성이 실패했을 경우 에러
 코드와 함께 종료하기</span></p>
-<p>위의 코드에서는 우리가 아직 상세히 다루지 않은 메서드를 사용했습니다:
-<code>unwrap_or_else</code>인데, 이는 표준 라이브러리의 <code>Result&lt;T, E&gt;</code> 상해 구현되어
-있습니다. <code>unwrap_or_else</code>의 사용은 커스터마이징 된 <code>panic!</code> 아닌 에러 처리를
-정의하도록 해줍니다. 만일 <code>Result</code>가 <code>Ok</code> 값이라면 이 메서드의 동작은 <code>unwrap</code>과
+<p>위의 코드에서는 아직 상세히 다루지 않은 <code>unwrap_or_else</code> 메서드를
+사용했는데, 이는 표준 라이브러리의 <code>Result&lt;T, E&gt;</code>에 구현되어
+있습니다. <code>unwrap_or_else</code>을 사용하면 커스터마이징된 <code>panic!</code>이 아닌 에러 처리를
+정의할 수 있습니다. 만일 <code>Result</code>가 <code>Ok</code> 값이라면 이 메서드의 동작은 <code>unwrap</code>과
 유사합니다: 즉 <code>Ok</code>가 감싸고 있는 안쪽 값을 반환합니다. 하지만 값이 <code>Err</code>
 값이라면, 이 메서드는 <em>클로저 (closure)</em> 안의 코드를 호출하는데, 이는
-우리가 정의하여 <code>unwrap_or_else</code>의 인수로 넘겨준 익명 함수입니다.
+<code>unwrap_or_else</code>의 인수로 넘겨준 우리가 정의한 익명 함수입니다.
 클로저에 대해서는 <a href="ch13-00-functional-features.html">13장</a><!-- ignore -->에서 더 자세히 다루겠습니다.
 지금은 그저 <code>unwrap_or_else</code>가 <code>Err</code>의 내부 값을 클로저의 세로 파이프 (|)
 사이에 있는 <code>err</code> 인수로 넘겨주는데, 이번 경우 그 값은 예제 12-9에
@@ -13234,10 +13234,10 @@ Problem parsing arguments: not enough arguments
 </code></pre>
 <p>훌륭하군요! 이 출력문이 사용자들에게 훨씬 친숙합니다.</p>
 <h3 id="main으로부터-로직-추출하기"><a class="header" href="#main으로부터-로직-추출하기"><code>main</code>으로부터 로직 추출하기</a></h3>
-<p>이제 환경 값 파싱의 리팩터링을 끝냈으니, 프로그램 로직으로 돌아와 봅시다.
-<a href="ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects">“바이너리 프로젝트를 위한 관심사의 분리”</a><!-- ignore -->에서
-기술한 바와 같이, 현재 <code>main</code> 함수에 있는 로직 중 환경 값
-설정이나 에러 처리와는 관련되지 않은 모든 로직을 <code>run</code>이라는
+<p>이제 설정 값 파싱의 리팩터링을 끝냈으니, 프로그램 로직으로 돌아와 봅시다.
+<a href="ch12-03-improving-error-handling-and-modularity.html#separation-of-concerns-for-binary-projects">“바이너리 프로젝트에 대한 관심사 분리”</a><!-- ignore -->절에서
+기술한 바와 같이, 현재 <code>main</code> 함수에 있는 로직 중
+설정 값이나 에러 처리와는 관련되지 않은 모든 로직을 <code>run</code>이라는
 함수로 추출하도록 하겠습니다. 그렇게 하고 나면 <code>main</code>은
 간결하고 검사하기 쉬워질 것이며, 나머지 모든 로직에 대한
 테스트를 작성할 수 있게 될 것입니다.</p>
@@ -13291,18 +13291,18 @@ fn run(config: Config) {
 </span><span class="boring">        Ok(Config { query, file_path })
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">예제 12-11: 프로그램 로직의 나머지를 담고 있는
+<p><span class="caption">예제 12-11: 나머지 프로그램 로직을 담는
 <code>run</code> 함수 추출</span></p>
 <p><code>run</code> 함수는 이제 이는 파일을 읽는 부분부터 시작되는, <code>main</code>으로부터
 남은 모든 로직을 담고 있습니다. <code>run</code> 함수는 <code>Config</code> 인스턴스를 인수로
 취합니다.</p>
 <h4 id="run-함수로부터-에러-반환하기"><a class="header" href="#run-함수로부터-에러-반환하기"><code>run</code> 함수로부터 에러 반환하기</a></h4>
-<p><code>run</code> 함수로 분리된 남은 프로그램 로직에 대하여, Listgin 12-9에서
-<code>Config::build</code>에 대해 했던 것처럼 에러 처리 기능을 개선할 수 있습니다.
-<code>expect</code>를 호출하여 프로그램이 패닉이 되도록 하는 대신, <code>run</code> 함수는
-뭔가 잘못되면 <code>Result&lt;T, E&gt;</code>를 반환할 것입니다. 이것이 사용자 친화적인
-방식으로 에러를 처리하는 <code>main</code> 안의 로직을 더 굳건히 만들게 해 줄
-것입니다. 예제 12-12는 <code>run</code>의 시그니처와 본문에 필요한 변경점을
+<p><code>run</code> 함수로 분리된 남은 프로그램 로직에 대하여, 예제 12-9에서
+<code>Config::build</code>에 했던 것처럼 에러 처리 기능을 개선할 수 있습니다.
+<code>run</code> 함수는 뭔가 잘못되면 <code>expect</code>를 호출하여 프로그램이 패닉이
+되도록 하는 대신 <code>Result&lt;T, E&gt;</code>를 반환할 것입니다. 이를 통해 에러 처리에
+관한 로직을 사용자 친화적인 방식으로 <code>main</code> 안에 더욱 통합시킬 수
+있습니다. 예제 12-12는 <code>run</code>의 시그니처와 본문에 필요한 변경점을
 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use std::env;
@@ -13356,21 +13356,21 @@ fn run(config: Config) {
 변경하기</span></p>
 <p>여기서는 세 가지 중요한 변경점이 있습니다. 첫 번째로, <code>run</code> 함수의 반환
 타입이 <code>Result&lt;(), Box&lt;dyn Error&gt;&gt;</code>으로 변경되었습니다. 이 함수는 원래
-유닛 타입 <code>()</code>를 반환했었는데, <code>Ok</code>인 경우에 반환될 값으로 계속 유지하고
+유닛 타입 <code>()</code>를 반환했었는데, <code>Ok</code>인 경우에 반환될 값으로써 계속 유지하고
 있습니다.</p>
 <p>에러 타입에 대해서는 <em>트레잇 객체</em> <code>Box&lt;dyn Error&gt;</code>를 사용했습니다 (그리고
 상단에 <code>use</code> 구문을 사용하여 <code>std::error::Error</code>를 스코프로 가져 왔습니다).
 트레잇 객체에 대해서는 <a href="ch17-00-oop.html">17장</a><!-- ignore -->에서 다룰 예정입니다. 지금은
-그저 <code>Box&lt;dyn Error&gt;</code>는 이 함수가 <code>Error</code> 트레잇을 구현한 어떤 타입인데,
-반환 값이 어떤 특정한 타입인지는 특정하지 않아도 된다는 것을 의미한다는 정도만
-알면 됩니다. 이는 우리에게 서로 다른 에러의 경우에서 서로 다른 타입이 될지도
-모를 에러값을 반환하는 유연성을 제공합니다. <code>dyn</code> 키워드는 “동적 (dynamic)”의
+그저 <code>Box&lt;dyn Error&gt;</code>는 이 함수가 <code>Error</code> 트레잇을 구현한 어떤 타입을 반환하는데,
+그 반환 값이 구체적으로 어떤 타입인지는 특정하지 않아도 된다는 것을 의미한다는 정도만
+알면 됩니다. 이는 서로 다른 에러의 경우에서 서로 다른 타입이 될지도 모를
+에러값을 반환하는 유연성을 제공합니다. <code>dyn</code> 키워드는 “동적 (dynamic)”의
 줄임말입니다.</p>
 <p>두 번째로 <a href="ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator">9장</a><!-- ignore -->에서 이야기했던
-<code>?</code> 연산자를 활용하여 <code>expect</code>의 호출을 제거했습니다. 에러 상황에서
-<code>panic!</code> 대신, <code>?</code>은 호출자가 처리할 수 있도록 현재의 함수로부터 에러
-값을 반환할 것입니다.</p>
-<p>세 번째로 <code>run</code> 함수는 이제 성공한 경우 <code>Ok</code> 값을 반환합니다.
+<code>?</code> 연산자를 활용하여 <code>expect</code>의 호출을 제거했습니다. <code>?</code>은 에러
+상황에서 <code>panic!</code> 대신 호출하는 쪽이 처리할 수 있도록 현재의 함수로부터
+에러 값을 반환할 것입니다.</p>
+<p>세 번째로 <code>run</code> 함수는 이제부터 성공한 경우 <code>Ok</code> 값을 반환합니다.
 <code>run</code> 함수의 성공 타입은 시그니처 상에서 <code>()</code>로 선언되었는데,
 이는 유닛 타입 값을 <code>Ok</code> 값으로 감쌀 필요가 있다는 의미입니다.
 이 <code>Ok(())</code> 문법은 처음엔 좀 이상해 보일런지도 모릅니다만, 이렇게 <code>()</code>를
@@ -13407,8 +13407,8 @@ To an admiring bog!
 </code></pre>
 <p>러스트가 우리에게 <code>Result</code> 값이 무시되고 있으며 <code>Result</code> 값이 에러가
 발생했음을 나타낼지도 모른다고 알려주는군요. 그렇지만 에러가 있는지 없는지
-알아보는 검사를 안 하고 있고, 그래서 컴파일러가 어떤 에러 처리 코드를 의도했었던
-것은 아닌지 우리에게 상기시켜 줍니다! 이제 이 문제를 바로잡아 봅시다.</p>
+알아보는 검사를 하지 않고 있고, 그래서 어떤 에러 처리 코드를 의도했었던
+것은 아닌지를 상기시켜 줍니다! 이제 이 문제를 바로잡아 봅시다.</p>
 <h4 id="main에서-run으로부터-반환된-에러-처리하기"><a class="header" href="#main에서-run으로부터-반환된-에러-처리하기"><code>main</code>에서 <code>run</code>으로부터 반환된 에러 처리하기</a></h4>
 <p>이제 예제 12-10의 <code>Config::build</code>에 사용했던 것과 비슷한 기술을 사용하여
 에러를 검사하고 이를 처리해 볼 것인데, 약간 다른 점이 있습니다:</p>
@@ -13469,9 +13469,9 @@ To an admiring bog!
 때문에 에러를 찾는 것만 신경 쓰면 되므로, 고작 <code>()</code>나 들어있을 값을
 반환하기 위해 <code>unwrap_or_else</code>를 쓸 필요는 없어집니다.</p>
 <p><code>if let</code>과 <code>unwrap_or_eulse</code> 함수의 본문은 둘 모두 동일합니다:
-에러를 출력하고 종료합니다.</p>
+즉, 에러를 출력하고 종료합니다.</p>
 <h3 id="라이브러리-크레이트로-코드-쪼개기"><a class="header" href="#라이브러리-크레이트로-코드-쪼개기">라이브러리 크레이트로 코드 쪼개기</a></h3>
-<p>여기까지 우리의 <code>minigrep</code> 프로젝트는 괜찮아 보이는군요! 이제 <em>src/main.rs</em>
+<p>여기까지의 <code>minigrep</code> 프로젝트는 괜찮아 보이는군요! 이제 <em>src/main.rs</em>
 파일을 쪼개어 코드 일부를 <em>src/lib.rs</em> 파일에 넣을 것입니다. 그렇게 하여
 코드를 테스트할 수 있고 <em>src/main.rs</em> 파일의 책임 소재를 더 적게 할 수 있습니다.</p>
 <p><code>main</code> 함수가 아닌 모든 코드를 <em>src/main.rs</em>에서 <em>src/lib.rs</em>로
@@ -13554,22 +13554,22 @@ fn main() {
 크레이트 이름을 붙였습니다. 이제 모든 기능이 연결되어 동작해야 합니다.
 <code>cargo run</code>으로 프로그램을 실행하여 모든 것이 정상적으로 동작하는지
 확인하세요.</p>
-<p>휴우! 작업이 참 많았습니다만, 우리는 미래의 성공을 위해 기반을 닦았습니다.
+<p>휴우! 작업이 참 많았습니다만, 우리는 미래의 성공을 위한 기반을 닦았습니다.
 이제 에러를 처리하기도 훨씬 쉽고, 코드도 훨씬 모듈화되었습니다. 이제부터는
 거의 모든 작업이 <em>src/lib.rs</em> 내에서 완료될 것입니다.</p>
-<p>옛날 코드로는 하기 힘들었지만, 새로운 코드로는 하기 쉬운 것을
-하는 것으로 이 새로운 모듈성의 이점을 활용해 봅시다: 테스트를
+<p>이전 코드에서는 어려웠지만 새 코드에서는 쉬운 작업을
+수행하여 이 새로운 모듈성의 이점을 활용해 봅시다: 테스트를
 작성해 보겠습니다!</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="테스트-주도-개발로-라이브러리-기능-개발하기"><a class="header" href="#테스트-주도-개발로-라이브러리-기능-개발하기">테스트 주도 개발로 라이브러리 기능 개발하기</a></h2>
 <p>로직을 <em>src/lib.rs</em>로 추출하고 인수 모으기와 에러 처리는
-<em>src/main.rs</em>에 남겨두었으니, 이제는 우리 코드의 핵심 기능에 대한
+<em>src/main.rs</em>에 남겨두었으니, 이제는 코드의 핵심 기능에 대한
 테스트를 작성하기 무척 쉽습니다. 커맨드 라인에서 바이너리를 호출할
-필요 없이 다양한 인수값을 가지고 함수를 직접 호출하여 반환 값들을
+필요 없이 다양한 인수 값으로 함수를 직접 호출하여 반환 값을
 검사해 볼 수 있습니다.</p>
 <p>이 절에서는 아래의 단계를 따르는 테스트 주도 개발 (Test-Driven Development, TDD)
 프로세스를 사용하여 <code>minigrep</code> 프로그램의 검색 로직을 추가해 보도록 하겠습니다:</p>
 <ol>
-<li>실패하는 테스트를 작성하고, 실행하여 여러분이 예상한 이유대로 실패하는지
+<li>실패하는 테스트를 작성하고 실행하여, 여러분이 예상한 이유대로 실패하는지
 확인합니다.</li>
 <li>이 새로운 테스트를 통과하기 충분한 정도의 코드만 작성하거나 수정하세요. </li>
 <li>추가하거나 변경한 코드를 리팩터링하고 테스트가 계속 통과하는지
@@ -13579,16 +13579,16 @@ fn main() {
 <p>그저 소프트웨어 작성의 수많은 방식 중 하나일 뿐이지만, TDD는 코드 설계를 주도하는데
 도움이 됩니다. 테스트를 통과하도록 해줄 코드를 작성하기 전에 테스트 먼저 작성하는
 것은 프로세스 전체에 걸쳐 높은 테스트 범위를 유지하는 데 도움을 줍니다.</p>
-<p>우리는 질의 문자열을 파일 내용물 안에서 실제로 찾아보고 질의에
-맞는 라인의 리스트를 생성하는 기능의 구현을 테스트 주도적으로
+<p>실제로 파일 내용에서 질의 문자열을 찾아보고 질의와 일치하는
+라인의 목록을 생성하는 기능의 구현을 테스트 주도적으로
 해볼 것입니다. 이 기능을 <code>search</code>라는 이름의 함수에
 추가해 보겠습니다.</p>
 <h3 id="실패하는-테스트-작성하기"><a class="header" href="#실패하는-테스트-작성하기">실패하는 테스트 작성하기</a></h3>
 <p>프로그램 동작을 확인하기 위해 사용되었던 <em>src/lib.rs</em>와 <em>src/main.rs</em>의
 <code>println!</code> 구문들은 이제 더 이상 필요가 없으므로 제거합시다.
-그런 다음 <a href="ch11-01-writing-tests.html#the-anatomy-of-a-test-function">11장</a><!-- ignore -->에서 그랬던 것처럼 <em>src/lib.rs</em>에
+그런 다음 <a href="ch11-01-writing-tests.html#the-anatomy-of-a-test-function">11장</a><!-- ignore -->에서처럼 <em>src/lib.rs</em>에
 <code>test</code> 모듈과 함께 테스트 함수를 추가하세요. 테스트 함수는 <code>search</code> 함수가
-가져야 할 동작을 특정합니다: 즉 질의 값과 검색할 텍스트를 입력받아서
+가져야 할 동작을 지정합니다: 즉 질의 값과 검색할 텍스트를 입력받아서
 텍스트로부터 질의 값을 담고 있는 라인들만 반환하는 것이죠. 예제 12-15는
 이러한 테스트를 보여주는데, 아직 컴파일되진 않을 것입니다.</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
@@ -13638,7 +13638,7 @@ Pick three.&quot;;
 실패하는 테스트 만들기</span></p>
 <p>이 테스트는 문자열 <code>&quot;duct&quot;</code>를 검색합니다. 검색하는 텍스트는 세 줄인데,
 그중 한 줄만이 <code>&quot;duct&quot;</code>를 가지고 있습니다 (앞의 큰 따옴표 뒤에 붙은 역슬래시는
-이 문자열 리터럴 내용의 앞에 새 줄 글자를 집어넣지 않도록 하라고 러스트에게
+이 문자열 리터럴 내용의 앞에 줄 바꿈 문자를 집어넣지 않도록 러스트에게
 알려주는 것임을 유의하세요). <code>search</code> 함수가 반환하는 값은 우리가 예상하는
 라인만 가지고 있을 것이라고 단언해 두었습니다.</p>
 <p>이 테스트는 아직 컴파일도 되지 않을 것이므로 테스트를 실행시켜서 실패하는
@@ -13703,13 +13703,13 @@ Pick three.&quot;;
 점을 상기해 봅시다. 위의 경우에는 반환된 벡터에 (인수 <code>query</code> 쪽이 아니라)
 인수 <code>contents</code>의 슬라이스를 참조하는 문자열 슬라이스가 들어있음을
 나타내고 있습니다.</p>
-<p>바꿔 말하면, 우리는 지금 러스트에게 <code>search</code> 함수에 의해 반환된 데이터가
-<code>search</code> 함수의 <code>contents</code> 인수로 넘겨진 데이터만큼 오래 살 것이라는
+<p>바꿔 말하면, 지금 러스트에게 <code>search</code> 함수에 의해 반환된 데이터가
+<code>search</code> 함수의 <code>contents</code> 인수로 전달된 데이터만큼 오래 살 것이라는
 것을 말해준 것입니다. 이것이 중요합니다! 슬라이스에 의해 참조된 데이터는
 그 참조자가 유효한 동안 유효할 필요가 있습니다; 만일 컴파일러가 <code>contents</code>
-대신 <code>query</code>의 문자열 슬라이스를 만들고 있다고 가정하면, 안전성 검사를
-부정확하게 하게 될 것입니다.</p>
-<p>라이프타임 명시를 까먹고 이 함수의 컴파일을 시도하면, 다음과
+대신 <code>query</code>의 문자열 슬라이스를 만들고 있다고 가정하면, 안전성 검사는
+정확하지 않게 될 것입니다.</p>
+<p>라이프타임 명시를 잊어먹고 이 함수의 컴파일을 시도하면, 다음과
 같은 에러를 얻게 됩니다:</p>
 <pre><code class="language-console">$ cargo build
    Compiling minigrep v0.1.0 (file:///projects/minigrep)
@@ -13728,16 +13728,16 @@ help: consider introducing a named lifetime parameter
 For more information about this error, try `rustc --explain E0106`.
 error: could not compile `minigrep` due to previous error
 </code></pre>
-<p>러스트는 두 인수 중 어떤 쪽을 우리가 원하는지 알 가능성이 없고, 따라서 이를
-명시적으로 말해줄 필요가 있습니다. <code>contetns</code>가 모든 텍스트를 가지고 있는
-인수이고 이 텍스트에서 일치되는 부분을 반환하고 싶은 것이므로, 우리는
-<code>contents</code>가 라이프타임 문법을 사용해 반환 값과 연결되어야 할 인수라는 사실을
-알고 있습니다.</p>
-<p>다른 프로그래밍 언어들은 여러분에게 시그니처에다 인수와 반환 값을 연결하도록
-요구하지 않습니다만, 이 연습은 시간이 지날수록 더 쉬워질 것입니다. 어쩌면
-이 예제와 10장의
+<p>러스트는 두 인수 중 어떤 쪽이 필요한지 알 가능성이 없고, 따라서 이를
+명시적으로 말해줄 필요가 있습니다. <code>contents</code>가 모든 텍스트를 가지고 있는
+인수이고 이 텍스트에서 일치하는 부분을 반환하고 싶은 것이므로,
+라이프타임 문법을 사용해 반환 값과 연결되어야 할 인수는 <code>contents</code>라는
+사실을 알고 있습니다.</p>
+<p>다른 프로그래밍 언어들은 시그니처에 인수와 반환 값을 연결하도록
+요구하지 않습니다만, 이 연습은 시간이 지날수록 더 쉬워질 것입니다.
+어쩌면 이 예제를 10장의
 <a href="ch10-03-lifetime-syntax.html#validating-references-with-lifetimes">“라이프타임으로 참조자의 유효성 검증하기”</a><!-- ignore -->절에
-있는 예제를 비교하고 싶을지도 모르겠습니다.</p>
+있는 예제와 비교하고 싶을지도 모르겠습니다.</p>
 <p>이제 테스트를 실행해 봅시다:</p>
 <pre><code class="language-console">$ cargo test
    Compiling minigrep v0.1.0 (file:///projects/minigrep)
@@ -13765,8 +13765,8 @@ error: test failed, to rerun pass `--lib`
 </code></pre>
 <p>좋습니다. 예상대로 테스트는 실패했습니다. 이제 테스트가 통과되도록 해봅시다!</p>
 <h3 id="테스트를-통과하도록-코드-작성하기"><a class="header" href="#테스트를-통과하도록-코드-작성하기">테스트를 통과하도록 코드 작성하기</a></h3>
-<p>현재는 언제나 빈 벡터가 반환되기 때문에 테스트가 실패하고 있습니다. 이를 고치고
-<code>search</code>를 구현하기 위해서, 우리 프로그램은 아래의 단계를 따를 필요가 있습니다:</p>
+<p>현재는 언제나 빈 벡터가 반환되고 있으므로 테스트가 실패하고 있습니다. 이를 고치고
+<code>search</code>를 구현하려면 프로그램에서 아래의 단계를 따라야 합니다:</p>
 <ul>
 <li>내용물의 각 라인에 대해 반복합니다.</li>
 <li>해당 라인이 질의 문자열을 담고 있는지 검사합니다.</li>
@@ -13831,7 +13831,7 @@ error: test failed, to rerun pass `--lib`
 <p><span class="caption">예제 12-17: <code>contents</code>의 각 줄에 대한 반복
 </span></p>
 <p><code>lines</code> 메서드는 반복자를 반환합니다. 반복자에 대해서는 <a href="ch13-02-iterators.html">13장</a><!-- ignore -->에서
-더 깊이 다루겠습니다만, 여러분은 <a href="ch03-05-control-flow.html#looping-through-a-collection-with-for">예제 3-5</a><!-- ignore -->에서
+더 깊이 다루겠습니다만, <a href="ch03-05-control-flow.html#looping-through-a-collection-with-for">예제 3-5</a><!-- ignore -->에서
 이런 방식의 반복자 사용을 봤었음을 상기해 봅시다. 그때는 어떤 컬렉션 안의 각
 아이템에 대해 어떤 코드를 실행시키기 위해 <code>for</code>과 함께 반복자를 사용했었지요.</p>
 <h4 id="각-라인에서-질의값-검색하기"><a class="header" href="#각-라인에서-질의값-검색하기">각 라인에서 질의값 검색하기</a></h4>
@@ -13892,8 +13892,8 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-18: 라인이 <code>query</code>의 문자열을 포함하는지
 알아보기 위한 기능 추가하기</span></p>
-<p>이 시점에서는 아직 기능을 쌓아가는 중입니다. 컴파일되기 위해서는
-함수 시그니처에 표시한 것처럼 함수 본문에서 어떤 값을 반환할
+<p>이 시점에서는 아직 기능을 구축하는 중입니다. 컴파일되기 위해서는
+함수 시그니처에 명시한 대로 함수 본문에서 어떤 값을 반환할
 필요가 있습니다.</p>
 <h4 id="매칭된-라인-저장하기"><a class="header" href="#매칭된-라인-저장하기">매칭된 라인 저장하기</a></h4>
 <p>이 함수를 완성하기 위해서는 반환하고자 하는 매칭된 라인들을 저장할 방법이
@@ -13983,7 +13983,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 
 </code></pre>
 <p>테스트가 통과되었으므로, 함수가 동작한다는 사실을 알았습니다!</p>
-<p>이 지점에서, 동일한 기능을 유지하여 테스트가 계속 통과되도록
+<p>이 시점에서, 동일한 기능을 유지하여 테스트가 계속 통과되도록
 유지하면서 이 검색 함수의 구현을 리팩터링할 기회를 고려해 볼
 수 있겠습니다. 이 검색함수의 코드는 그렇게 나쁘진 않습니다만,
 반복자의 몇몇 유용한 기능을 활용하고 있지는 않군요.
@@ -14078,12 +14078,12 @@ How dreary to be somebody!
     Finished dev [unoptimized + debuginfo] target(s) in 0.0s
      Running `target/debug/minigrep monomorphization poem.txt`
 </code></pre>
-<p>훌륭하군요! 우리는 고전적인 도구의 우리 자신만의 미니 버전을 만들었고
+<p>훌륭하군요! 고전적인 도구에 대한 여러분만의 미니 버전을 만들었고
 애플리케이션을 구조화하는 방법에 대해 많이 배웠습니다. 또한 파일 입출력과
 라이프타임, 테스트, 커맨드 라인 파싱에 대해서도 약간씩 배웠습니다.</p>
 <p>이 프로젝트를 정리하기 위해서, 환경 변수를 가지고 동작시키는
 방법과 표준 에러로 출력하는 방법을 간략하게 보려고 하는데, 둘 모두
-여러분들이 커맨드 라인 프로그램을 작성할 때 유용합니다.</p>
+커맨드 라인 프로그램을 작성할 때 유용합니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="환경-변수-사용하기"><a class="header" href="#환경-변수-사용하기">환경 변수 사용하기</a></h2>
 <p><code>minigrep</code>에 추가 기능을 넣어서 개선시켜 보겠습니다: 바로 환경
 변수를 통해 사용자가 켤 수 있는 대소문자를 구분하지 않는 검색
@@ -14179,20 +14179,21 @@ Trust me.&quot;;
 <code>&quot;Duct tape.&quot;</code> 라인을 추가였고 이는 대소문자를 구분하는 방식으로 검색할
 때는 질의어 <code>&quot;duct&quot;</code>에 매칭되지 않아야 합니다. 이렇게 예전 테스트를 변경하는
 것은 이미 구현된 대소문자를 구분하는 검색을 우발적으로 깨트리지 않도록
-확인하는 데 도움을 줍니다. 이 테스트는 지금 통과되어야 하며 우리가 대소문자를
+확인하는 데 도움을 줍니다. 이 테스트는 지금 통과되어야 하며 대소문자를
 구분하지 않는 검색에 대해 작업을 하는 중에도 계속해서 통과되어야 합니다.</p>
 <p>대소문자를 <em>구분하지 않는</em> 검색을 위한 새로운 테스트에서는 질의어로 <code>&quot;rUsT&quot;</code>를
-사용합니다. 우리가 추가하고자 하는 <code>search_case_insensitive</code> 함수에서,
-질의어 <code>&quot;rUsT&quot;</code>는 대소문자 구분이 질의어와 다르더라도 대문자 R로 시작하는
-<code>&quot;Rust:&quot;를 포함하는 라인 및 </code>&quot;Trust me.&quot;<code>라인과 매칭되어야 합니다. 이것이 우리의 실패하는 테스트고, 아직</code>search_case_insensitive` 함수를
+사용합니다. 추가하려는 <code>search_case_insensitive</code> 함수에서 질의어
+<code>&quot;rUsT&quot;</code>는 대소문자 구분이 질의어와 다르더라도 대문자 R로 시작하는
+<code>&quot;Rust:&quot;</code>를 포함하는 라인 및 <code>&quot;Trust me.&quot;</code> 라인과 매칭되어야 합니다.
+이것이 실패하는 테스트고, 아직 <code>search_case_insensitive</code> 함수를
 정의하지 않았으므로 컴파일에 실패할 것입니다. 예제 12-16에서 테스트가
-컴파일되고 실패하는 것을 지켜보기 위해 했었던 것과 마찬가지로, 편하게
+컴파일되고 실패하는 것을 지켜보기 위해 했었던 것과 마찬가지로, 간편하게
 언제나 빈 벡터를 반환하는 뼈대 구현을 추가해 봅시다.</p>
 <h3 id="search_case_insensitive-함수-구현하기"><a class="header" href="#search_case_insensitive-함수-구현하기"><code>search_case_insensitive</code> 함수 구현하기</a></h3>
 <p>예제 12-21에서 보시는 <code>search_case_insensitive</code> 함수는 <code>search</code>
 함수와 거의 똑같이 생겼을 것입니다. 유일한 차이점은 <code>query</code>와 각 <code>line</code>을
 소문자로 만들어서 입력된 인수의 대소문자가 어떻든 간에 질의어가 라인에
-포함되어 있는지 확인할 때는 언제나 같은 소문일 것이란 점입니다.</p>
+포함되어 있는지 확인할 때는 언제나 같은 소문자일 것이란 점입니다.</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
@@ -14290,8 +14291,8 @@ Trust me.&quot;;
 방식으로 저장합니다. 질의어에 대해 <code>to_lowercase</code>가 호출되므로
 사용자의 질의어가 <code>&quot;rust&quot;</code>, <code>&quot;RUST&quot;</code>, <code>&quot;Rust&quot;</code>, 혹은 <code>&quot;rUsT&quot;</code>이든
 상관없이 이 질의어를 <code>&quot;rust&quot;</code>로 취급하여 대소문자를 구분하지 않게 될
-것입니다. <code>to_lowercase</code>가 기본적인 유니코드를 다루겠지만, 100% 정확하지는
-않을 것입니다. 실제 애플리케이션을 작성 중이었다면 여기에 약간의 작업을
+것입니다. <code>to_lowercase</code>가 기본적인 유니코드를 처리하겠지만, 100% 정확하지는
+않을 것입니다. 실제 애플리케이션을 작성하는 중이었다면 여기에 약간의 작업을
 추가할 필요가 있겠지만, 이 절은 유니코드가 아니라 환경변수에 대한 것이므로,
 여기서는 그대로 두겠습니다.</p>
 <p><code>to_lowercase</code>의 호출이 존재하는 데이터를 참조하지 않고 새로운 데이터를
@@ -14651,8 +14652,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-23: <code>IGNORE_CASE</code>라는 이름의 환경 변수의
 값을 검사하기</span></p>
-<p>여기서 <code>ignore_case</code>라는 새 변수를 만들었습니다. 이 값을 설정하기 위해서
-<code>env::var</code> 함수를 호출하고 여기에 환경 변수의 이름 <code>INGORE_CASE</code>를
+<p>여기서는 <code>ignore_case</code>라는 새 변수를 만들었습니다. 이 값을 설정하기
+위해서 <code>env::var</code> 함수를 호출하고 환경 변수의 이름 <code>INGORE_CASE</code>를
 넘겼습니다. <code>env::var</code> 함수는 <code>Result</code>를 반환하는데 여기에는 해당
 환경 변수에 어떤 값이 설정되어 있을 경우 그 값을 담은 <code>Ok</code> 배리언트가
 될 것입니다. 만일 환경 변수가 설정되어 있지 않다면 <code>Err</code> 배리언트가
@@ -14663,8 +14664,8 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 <code>is_ok</code>는 거짓값을 반환하고 프로그램은 대소문자를 구분하는 검색을 수행할
 것입니다. 이 환경 변수의 <em>값</em>에 대해서는 고려하지 않고 그저 값이 설정되어
 있는지 아닌지만 고려하므로, 여기서는 <code>unwrap</code>이나 <code>expect</code> 혹은 <code>Result</code>에서
-사용했던 다른 메서드들 대신 <code>ik_ok</code>을 사용하고 있습니다.</p>
-<p>이 <code>ignore_case</code> 변수의 값을 <code>Config</code> 인스턴스에게 넘겼으므로, <code>run</code> 함수는
+사용했던 다른 메서드들 대신 <code>is_ok</code>를 사용하고 있습니다.</p>
+<p>이 <code>ignore_case</code> 변수의 값을 <code>Config</code> 인스턴스에게 전달했으므로, <code>run</code> 함수는
 예제 12-22에 구현된 것처럼 이 값을 읽어서 <code>search_case_insensitive</code> 혹은
 <code>search</code>의 호출 여부를 결정할 수 있습니다.</p>
 <p>한번 시도해 봅시다! 먼저 환경 변수 설정 없이 질의어 <code>to</code>를 넣어 프로그램을
@@ -14700,14 +14701,14 @@ How dreary to be somebody!
 To tell your name the livelong day
 To an admiring bog!
 </code></pre>
-<p>“To”를 담고 있는 라인도 얻었으니, 훌륭합니다! 우리 <code>minigrep</code> 프로그램은 지금부터
+<p>“To”를 담고 있는 라인도 얻었으니, 훌륭합니다! <code>minigrep</code> 프로그램은 지금부터
 환경 변수에 의해 제어되는 대소문자 구별 없는 검색기능을 사용할 수 있게 되었습니다.
 이제 여러분은 커맨드 라인 인수 혹은 환경 변수를 통한 옵션 설정을 관리하는 방법을
 알게 되었습니다.</p>
 <p>어떤 프로그램들은 같은 환경값에 대해 인수와 환경 변수 <em>모두를</em> 사용할 수
 있게 합니다. 그러한 경우에는 보통 한쪽이 다른 쪽에 대해 우선순위를 갖도록
-결정합니다. 여러분 스스로 연습 목적으로, 대소문자 구분 옵션을 커맨드
-라인 혹은 환경 변수로 제어하는 시도를 해보세요. 한쪽은 대소문자를
+결정합니다. 연습용으로 대소문자 구분 옵션을 커맨드 라인 혹은
+환경 변수로 제어하는 시도를 직접 해보세요. 한쪽은 대소문자를
 구분하도록 하고 다른 쪽은 대소문자 구분을 무시하도록 설정되어 실행되었을
 경우에는 커맨드 라인 인수 쪽 혹은 환경 변수 쪽이 우선권을 갖도록 하는
 결정이 필요합니다.</p>
@@ -14721,17 +14722,17 @@ To an admiring bog!
 이러한 구분은 사용자로 하여금 성공한 프로그램의 출력값을 파일로 향하게끔
 하지만 에러 메시지는 여전히 화면에 나타나도록 해줄 수 있습니다.</p>
 <p><code>println!</code> 매크로는 표준 출력으로의 출력 기능만 있으므로, 표준 에러로
-출력하기 위해서는 뭔가 다른 것을 사용해야 합니다.</p>
-<h3 id="에러가-작성되었는지-검사하기"><a class="header" href="#에러가-작성되었는지-검사하기">에러가 작성되었는지 검사하기</a></h3>
+출력하기 위해서는 다른 무언가를 사용해야 합니다.</p>
+<h3 id="에러가-기록되었는지-검사하기"><a class="header" href="#에러가-기록되었는지-검사하기">에러가 기록되었는지 검사하기</a></h3>
 <p>먼저 <code>minigrep</code>이 출력하는 내용들이 현재 표준 에러 쪽에 출력하고
-싶은 에러 메시지를 포함하여 어떤 식으로 표준 출력에 작성되고 있는지
-관찰해 봅시다. 이는 의도적으로 에러를 일으키고 표준 출력 스트림이
-파일 쪽으로 리디렉션 되도록 하여 확인할 것입니다. 표준 에러 스트림은
+싶은 에러 메시지를 포함하여 어떤 식으로 표준 출력에 기록되는지
+관찰해 봅시다. 의도적으로 에러를 발생시키면서 표준 출력 스트림을
+파일 쪽으로 리디렉션하여 이를 확인할 것입니다. 표준 에러 스트림은
 리디렉션하지 않을 것이므로 표준 에러 쪽으로 보내진 내용들은 계속
 화면에 나타날 것입니다.</p>
-<p>커맨드 라인 프로그램들은 표준 에러 스트림 쪽으로 에러 메시지를 보내도록
-예측되므로 표준 출력 스트림이 파일로 리디렉션되더라도 여전히 에러 메시지는
-화면에서 볼 수 있습니다. 우리 프로그램은 현재 잘 만들어지지 않습니다:
+<p>커맨드 라인 프로그램은 표준 에러 스트림 쪽으로 에러 메시지를 보내야
+하므로 표준 출력 스트림이 파일로 리디렉션되더라도 여전히 에러 메시지는
+화면에서 볼 수 있습니다. 이 프로그램은 현재 잘 제대로 동작하지 않습니다:
 에러 메시지가 대신 파일 쪽에 저장되는 것을 막 보려는 참입니다!</p>
 <p>이 동작을 확인해 보기 위해서 프로그램을 <code>&gt;</code>과 파일 경로 <em>output.txt</em>과 함께
 실행해 보려 하는데, 이 파일 경로는 표준 출력 스트림이 리디렉션될 곳입니다.
@@ -14744,13 +14745,13 @@ To an admiring bog!
 의미입니다. 아래가 <em>output.txt</em>이 담고 있는 내용입니다:</p>
 <pre><code class="language-text">Problem parsing arguments: not enough arguments
 </code></pre>
-<p>네, 우리의 에러 메시지가 표준 출력에 출력되고 있네요. 이런 종류의 에러
-메시지는 표준 에러로 출력되게 하여 성공적인 실행으로부터 나온 데이터만
-파일로 행하게 하는 것이 훨씬 유용합니다. 그렇게 바꿔보겠습니다.</p>
+<p>네, 에러 메시지가 표준 출력에 기록되고 있네요. 이런 종류의 에러
+메시지는 표준 에러로 출력되게 함으로써 성공적인 실행으로부터 나온 데이터만
+파일로 향하게 만드는 것이 훨씬 유용합니다. 그렇게 바꿔보겠습니다.</p>
 <h3 id="표준-에러로-에러-출력하기"><a class="header" href="#표준-에러로-에러-출력하기">표준 에러로 에러 출력하기</a></h3>
 <p>에러 메시지 출력 방식을 변경하기 위해 예제 12-24의 코드를 사용해
 보겠습니다. 이 장에서 앞서 했던 리팩터링 덕분에 에러 메시지를 출력하는
-모든 코드는 단 하나의 함수 <code>main</code> 내에 있습니다. 표준 라이브러리는
+모든 코드는 단 하나의 함수 <code>main</code> 안에 있습니다. 표준 라이브러리는
 표준 에러 스트림으로 출력하는 <code>eprintln!</code> 매크로를 제공하므로, 에러
 출력을 위해 <code>println!</code>을 호출하고 있는 두 군데를 <code>eprintln!</code>로
 바꿔봅시다.</p>
@@ -14780,8 +14781,8 @@ To an admiring bog!
 <pre><code class="language-console">$ cargo run &gt; output.txt
 Problem parsing arguments: not enough arguments
 </code></pre>
-<p>이제 우리는 에러를 스크린상에서 보고 <em>output.txt</em>에는 아무것도 없는데,
-이것이 우리가 커맨드 라인 프로그램에 대해 기대한 동작입니다.</p>
+<p>이제는 에러가 화면에 보여지고  <em>output.txt</em>에는 아무것도 없는데,
+이것이 커맨드 라인 프로그램에 대해 기대한 동작입니다.</p>
 <p>다시 한번 프로그램을 시키는데 이번에는 다음과 같이 에러를 내지 않는 인수를
 사용하고 표준 출력을 파일로 리디렉션 시켜봅시다:</p>
 <pre><code class="language-console">$ cargo run -- to poem.txt &gt; output.txt
@@ -14792,10 +14793,10 @@ Problem parsing arguments: not enough arguments
 <pre><code class="language-text">Are you nobody, too?
 How dreary to be somebody!
 </code></pre>
-<p>이는 우리가 이제 성공적인 출력에 대해서는 표준 출력을, 에러 출력에 대해서는
+<p>이는 이제 성공적인 출력에 대해서는 표준 출력을, 에러 출력에 대해서는
 표준 에러를 적절히 사용하고 있음을 입증합니다.</p>
 <h2 id="정리-11"><a class="header" href="#정리-11">정리</a></h2>
-<p>이번 장에서는 여러분이 여태껏 배운 몇몇 주요 개념들을 재점검하고 러스트에서의
+<p>이번 장에서는 여태껏 배운 몇몇 주요 개념들을 재점검하고 러스트에서의
 통상적인 입출력 연산이 수행되는 방식을 다루었습니다. 커맨드 라인 인수, 파일,
 환경 변수, 그리고 에러 출력을 위한 <code>eprintln!</code> 매크로를 사용함으로써,
 여러분은 이제 커맨드 라인 애플리케이션을 작성할 준비가 되었습니다.
@@ -16480,7 +16481,7 @@ HTML을 생성하고 그 결과를 웹 브라우저에 띄워줄 겁니다. 이�
 <li><strong>Errors</strong>: 해당 함수가 <code>Result</code>를 반환하는 경우에는 발생할 수 있는
 에러의 종류와 해당 에러들이 발생하는 조건을 설명해 준다면 호출하는
 사람이 다양한 종류의 에러를 여러 방법으로 처리할 수 있도록 코드를
-작성하는데 도움을 줄 수 있습니다.</li>
+작성하는 데 도움을 줄 수 있습니다.</li>
 <li><strong>Safety</strong>: 함수가 호출하기에 <code>unsafe</code>한 경우라면 (불안전성에 대해서는
 19장에서 다룹니다), 왜 이 함수가 안전하지 않은지와 호출자가 이 함수를
 호출할 때 지켜야 할 불변성에 대해 설명하는 절이 있어야 합니다.</li>
@@ -16569,8 +16570,8 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 사람들은 해당 타입이 존재하는지 발견하는 데 어려움을 겪을 수도 있습니다.
 또한 사용자들은 <code>use</code> <code>my_crate::UsefulType;</code>이 아니라 <code>use</code>
 <code>my_crate::some_module::another_module::UsefulType;</code>라고 입력해야
-하는데 짜증을 낼지도 모릅니다.</p>
-<p>좋은 소식은 지금의 구조가 다른 사람들이 다른 라이브러리에서 사용하는데 편리하지
+하는 데에 짜증을 낼지도 모릅니다.</p>
+<p>좋은 소식은 지금의 구조가 다른 사람들이 다른 라이브러리에서 사용하는 데 편리하지
 <em>않더라도</em> 굳이 내부 구조를 뒤엎을 필요는 없다는 겁니다. 대신에 <code>pub use</code>를
 이용하여 내부 아이템을 다시 내보내서 (<em>re-export</em>) 기존의 비공개 구조와
 다른 공개 구조를 만들 수 있습니다. 다시 내보내기는 어떤 위치에서 공개
@@ -16713,7 +16714,7 @@ fn main() {
 정의들을 여러분의 크레이트의 공개 API의 일부분으로 만드는 것입니다.</p>
 <p>유용한 공개 API를 만드는 것은 기술보단 예술에 가깝고, 여러분은
 반복적으로 사용자들에게 가장 잘 맞는 API를 찾아갈 수 있습니다.
-<code>pub use</code>를 사용하는 것은 크레이트를 내부적으로 구조화하는데 유연성을
+<code>pub use</code>를 사용하는 것은 크레이트를 내부적으로 구조화하는 데 유연성을
 제공하면서 이 내부 구조와 사용자에게 제공하는 것을 분리해 줍니다.
 여러분이 설치한 크레이트 코드 몇 개를 열어서 내부 구조와 공개 API가
 얼마나 다른지 살펴보세요.</p>
@@ -19341,7 +19342,7 @@ examining strong and weak reference counts</span></p>
 운영 체제들이 새로운 스레드를 생성하기 위해 해당 언어가 호출할 수
 있는 API를 제공합니다. 러스트 표준 라이브러리는 스레드 구현에 대해
 <em>1:1</em> 모델을 사용하는데, 이에 따라 프로그램은 하나의 언어 스레드당
-하나의 운영 체제 스레드를 사용합니다. 1:1 모델과는 다른 트레이드오프가
+하나의 운영 체제 스레드를 사용합니다. 1:1 모델과는 다른 절충안이
 있는 그 밖의 스레드 모델을 구현한 크레이트도 있습니다.</p>
 <h3 id="spawn으로-새로운-스레드-생성하기"><a class="header" href="#spawn으로-새로운-스레드-생성하기"><code>spawn</code>으로 새로운 스레드 생성하기</a></h3>
 <p>새로운 스레드를 생성하기 위해서는 <code>thread::spawn</code> 함수를 호출하고 여기에
@@ -19692,7 +19693,7 @@ fn main() {
 튜플을 해체하는 패턴과 함께 <code>let</code> 구문이 사용되고 있습니다;
 <code>let</code> 구문 내에서의 패턴의 사용과 해체에 대해서는 18장에서 다룰
 것입니다. 지금은 이런 방식으로 <code>let</code> 구문을 사용하는 것이
-<code>mpsc::channel</code>에 의해 반환된 튜플의 조각들을 추출하는데 편리한
+<code>mpsc::channel</code>에 의해 반환된 튜플의 조각들을 추출하는 데 편리한
 접근법이라고만 알아둡시다.</p>
 <p>예제 16-7과 같이 송신 단말을 생성된 스레드로 이동시키고 하나의
 문자열을 전송하게 하여 생성된 스레드가 메인 스레드와 통신하도록
