@@ -403,7 +403,7 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 과정을 하나씩 직접 작성해 보고, 간결한 버전은 마지막에 살펴보도록 하겠습니다.
 함수의 반환 타입인 <code>Result&lt;String, io::Error&gt;</code>부터 먼저 살펴봅시다.
 함수가 <code>Result&lt;T, E&gt;</code> 타입의 값을 반환하는데 제네릭 매개변수 <code>T</code>는
-구체 타입(concrete type)인 <code>String</code>으로 채워져 있고, 제네릭 타입 <code>E</code>는
+구체 타입 (concrete type) 인 <code>String</code>으로 채워져 있고, 제네릭 타입 <code>E</code>는
 구체 타입인 <code>io::Error</code>로 채워져 있다는 뜻입니다.</p>
 <p>만일 이 함수가 문제없이 성공하면, 함수를 호출한 코드는
 <code>String</code>(이 함수가 파일로부터 읽어 들인 사용자 이름이겠지요)을

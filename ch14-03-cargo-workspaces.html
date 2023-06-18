@@ -213,7 +213,7 @@ copy output below
 불필요한 재빌드를 피할 수 있습니다.</p>
 <h3 id="작업공간에-두-번째-패키지-생성하기"><a class="header" href="#작업공간에-두-번째-패키지-생성하기">작업공간에 두 번째 패키지 생성하기</a></h3>
 <p>다음으로 다른 멤버 패키지를 작업공간에 생성하여 <code>add_one</code>이라고 이름을
-붙입시다. 최상위 <em>Cargo.toml</em>을 수정하여 <code>members</code> 리스트에
+붙입시다. 최상위 <em>Cargo.toml</em>을 수정하여 <code>members</code> 목록에
 <em>add_one</em> 경로를 지정하세요:</p>
 <p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[workspace]
@@ -366,13 +366,13 @@ error[E0432]: unresolved import `rand`
 </code></pre>
 <p>이를 수정하려면 <code>adder</code> 패키지의 <em>Cargo.toml</em>을 고쳐서 이 패키지도
 <code>rand</code>에 의존함을 알려주세요. <code>adder</code> 패키지를 빌드하면 <em>Cargo.lock</em>에
-있는 <code>adder</code>에 대한 의존성 리스트에 <code>rand</code>를 추가하지만, <code>rand</code>의 추가
+있는 <code>adder</code>에 대한 의존성 목록에 <code>rand</code>를 추가하지만, <code>rand</code>의 추가
 복제본을 내려받지는 않을 것입니다. 카고는 작업공간 내에서 <code>rand</code> 패키지를
 사용하는 모든 패키지의 모든 크레이트가 동일한 버전을 사용할 것임을
 보증하여 저장공간을 아끼고 작업공간 내의 크레이트들이 확실히 서로
 호환되도록 합니다.</p>
 <h4 id="작업공간에-테스트-추가하기"><a class="header" href="#작업공간에-테스트-추가하기">작업공간에 테스트 추가하기</a></h4>
-<p>또 다른 발전을 위해 <code>add_one::add_one</code> 함수의 테스트를 <code>add_one</code>
+<p>또 다른 개선 사항으로, <code>add_one::add_one</code> 함수의 테스트를 <code>add_one</code>
 크레이트 내에 추가해 봅시다:</p>
 <p><span class="filename">파일명: add_one/src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn add_one(x: i32) -&gt; i32 {
@@ -425,7 +425,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 보여주고, 마지막 절에서는 <code>add_one</code> 크레이트 내에서 아무런 문서 테스트도
 발견하지 못했음을 보여줍니다.</p>
 <p><code>-p</code> 플래그와 테스트하고자 하는 크레이트의 이름을 명시하면 최상위
-디렉터리에서 어떤 작업공간 내 특정한 크레이트에 대한 테스트를 실행할
+디렉터리에서 작업공간에 있는 특정 크레이트에 대한 테스트를 실행할
 수도 있습니다:</p>
 <!-- manual-regeneration
 cd listings/ch14-more-about-cargo/no-listing-04-workspace-with-tests/add
@@ -453,11 +453,11 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 작업공간 내 각 크레이트를 별도로 배포할 필요가 있습니다. <code>cargo test</code>처럼
 <code>-p</code> 플래그와 배포하고자 하는 크레이트의 이름을 지정하여 작업공간 내의
 특정 크레이트를 배포할 수 있습니다.</p>
-<p>추가 연습으로 <code>add_one</code> 크레이트와 비슷한 방식으로 이 작업공간에 <code>add_two</code>
-크레이트를 추가하세요!</p>
-<p>여러분의 프로젝트가 커지면 작업공간 사용을 고려해 보세요: 하나의 커다란 코드
-덩어리보다는 작고 개별적인 구성 요소들을 이해하는 것이 쉽습니다. 게다가 작업공간에
-크레이트들를 유지하는 것은 이 크레이트들이 자주 동시에 변경될 경우 이들 간의
+<p>추가 연습을 위해 이 작업공간에 <code>add_one</code> 크레이트와 비슷한 방식으로 <code>add_two</code>
+크레이트를 추가해 보세요!</p>
+<p>프로젝트가 커지면 작업공간 사용을 고려해 보세요: 하나의 커다란 코드 덩어리보다는
+작고 개별적인 구성 요소들을 이해하는 것이 쉬우니까요. 게다가 작업공간에
+크레이트들을 유지하는 것은 이 크레이트들이 동시에 자주 변경될 경우 크레이트 간의
 조정을 더 쉽게 해 줄 수 있습니다.</p>
 
                     </main>

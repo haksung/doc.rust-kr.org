@@ -462,8 +462,8 @@ help: consider cloning the value if the performance cost is acceptable
 For more information about this error, try `rustc --explain E0382`.
 error: could not compile `ownership` due to previous error
 </code></pre>
-<p>여러분이 다른 프로그래밍 언어에서 <em>얕은 복사(shallow copy)</em>,
-<em>깊은 복사(deep copy)</em> 라는 용어를 들어보셨다면, 힙 데이터를 복사하지 않고
+<p>여러분이 다른 프로그래밍 언어에서 <em>얕은 복사 (shallow copy)</em>,
+<em>깊은 복사 (deep copy)</em> 라는 용어를 들어보셨다면, 힙 데이터를 복사하지 않고
 포인터, 길이, 용량 값만 복사하는 것을 얕은 복사라고 생각하셨을 수도 있지만,
 러스트에서는 기존의 변수를 무효화하기 때문에
 이를 얕은 복사가 아닌 <em>이동 (move)</em> 이라 하고,

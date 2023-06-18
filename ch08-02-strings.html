@@ -299,7 +299,7 @@ API들을 사용할 수 있으며, 이를 통해 다양한 옵션들을 제공�
 아니, 잠깐만요. <code>&amp;s2</code>의 타입은 <code>&amp;String</code>이지, <code>add</code>의 두 번째 매개변수에
 지정된 <code>&amp;str</code>은 아니죠. 어째서 예제 8-18가 컴파일되는 걸까요?</p>
 <p><code>&amp;s2</code>를 <code>add</code> 호출에 사용할 수 있는 이유는 <code>&amp;String</code> 인수가 <code>&amp;str</code>로 <em>강제</em>될
-수 있기 때문입니다. <code>add</code> 함수가 호출되면, 러스트는 <em>역참조 강제(deref coercion)</em>
+수 있기 때문입니다. <code>add</code> 함수가 호출되면, 러스트는 <em>역참조 강제 (deref coercion)</em>
 를 사용하는데, 이것이 <code>add</code> 함수 내에서 사용되는 <code>&amp;s2</code>를
 <code>&amp;s2[..]</code>로 바꿉니다. 역참조 강제는 15장에서 더 자세히
 다루겠습니다. <code>add</code>가 매개변수의 소유권을 가져가지는 않으므로, <code>s2</code>는
