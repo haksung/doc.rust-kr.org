@@ -1028,9 +1028,9 @@ let mut bananas= 5; // mutable</code></pre>
 있기 때문에 이 문자열 인수는 가변이어야 합니다.</p>
 <p><code>&amp;</code>는 코드의 여러 부분에서 데이터를 여러 번 메모리로 복사하지 않고
 접근하기 위한 방법을 제공하는 <em>참조자 (reference)</em> 임을 나타냅니다.
-참조자는 복잡한 기능이고, 러스트의 큰 이점 중 하나가 바로
+참조는 복잡한 기능이고, 러스트의 큰 이점 중 하나가 바로
 참조자를 사용할 때의 안전성과 편의성입니다. 이 프로그램을
-작성하기 위해 참조자에 대한 자세한 내용을 알 필요는 없습니다.
+작성하기 위해 참조에 대한 자세한 내용을 알 필요는 없습니다.
 지금 당장은 참조자가 변수처럼 기본적으로 불변임을 알기만 하면 됩니다.
 따라서 <code>&amp;guess</code>가 아니라 <code>&amp;mut guess</code>로 작성하여
 가변으로 만들 필요가 있습니다.
@@ -1395,7 +1395,7 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">    println!(&quot;Guess the number!&quot;);
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
@@ -1509,7 +1509,7 @@ error: could not compile `guessing_game` due to previous error
 </span><span class="boring">
 </span><span class="boring">    println!(&quot;Please input your guess.&quot;);
 </span><span class="boring">
-</span>    // --snip--
+</span>    // --생략--
 
     let mut guess = String::new();
 
@@ -1607,14 +1607,14 @@ Too big!
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
-</span>    // --snip--
+</span>    // --생략--
 
     println!(&quot;The secret number is: {secret_number}&quot;);
 
     loop {
         println!(&quot;Please input your guess.&quot;);
 
-        // --snip--
+        // --생략--
 
 <span class="boring">
 </span><span class="boring">        let mut guess = String::new();
@@ -1705,7 +1705,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">
 </span><span class="boring">        println!(&quot;You guessed: {guess}&quot;);
 </span><span class="boring">
-</span>        // --snip--
+</span>        // --생략--
 
         match guess.cmp(&amp;secret_number) {
             Ordering::Less =&gt; println!(&quot;Too small!&quot;),
@@ -1742,7 +1742,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">
 </span><span class="boring">        let mut guess = String::new();
 </span><span class="boring">
-</span>        // --snip--
+</span>        // --생략--
 
         io::stdin()
             .read_line(&amp;mut guess)
@@ -1755,7 +1755,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
         println!(&quot;You guessed: {guess}&quot;);
 
-        // --snip--
+        // --생략--
 <span class="boring">
 </span><span class="boring">        match guess.cmp(&amp;secret_number) {
 </span><span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
@@ -2117,7 +2117,7 @@ error: could not compile `no_type_annotations` due to previous error
 </code></pre>
 <p>다양한 데이터 타입들의 타입 명시를 살펴보겠습니다.</p>
 <h3 id="스칼라-타입"><a class="header" href="#스칼라-타입">스칼라 타입</a></h3>
-<p><em>스칼라 (scalar)</em> 타입은 하나의 값을 표현합니다. 러스트는 정수, 부동소수점 숫자, 부울린 (boolean),
+<p><em>스칼라 (scalar)</em> 타입은 하나의 값을 표현합니다. 러스트는 정수, 부동 소수점 숫자, 부울린 (boolean),
 그리고 문자, 이렇게 네 가지 스칼라 타입을 갖고 있습니다. 아마 다른 프로그래밍 언어에서도 이런 걸 본 적이
 있을 겁니다. 러스트에서는 이들이 어떤 식으로 동작하는지 살펴보도록 합시다.</p>
 <h4 id="정수형"><a class="header" href="#정수형">정수형</a></h4>
@@ -2209,15 +2209,15 @@ error: could not compile `no_type_annotations` due to previous error
 각각 32bit와 64bit의 크기를 갖습니다. 기본 타입은 <code>f64</code>인데, 그 이유는
 현대의 CPU 상에서 <code>f64</code>가 <code>f32</code>와 대략 비슷한 속도를 내면서도 더 정밀하기
 때문입니다. 모든 부동 소수점 타입은 부호가 있습니다.</p>
-<p>다음은 부동소수점 숫자의 용례입니다:</p>
+<p>다음은 부동 소수점 숫자의 용례입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 2.0; // f64
 
     let y: f32 = 3.0; // f32
 }</code></pre></pre>
-<p>부동소수점 숫자는 IEEE-754 표준을 따릅니다. <code>f32</code> 타입은 1배 수 정밀도 (single-precision) 인
-부동소수점이고, <code>f64</code>는 2배 수 정밀도 (double-precision) 입니다.</p>
+<p>부동 소수점 숫자는 IEEE-754 표준을 따릅니다. <code>f32</code> 타입은 1배 수 정밀도 (single-precision) 인
+부동 소수점이고, <code>f64</code>는 2배 수 정밀도 (double-precision) 입니다.</p>
 <h4 id="수치-연산"><a class="header" href="#수치-연산">수치 연산</a></h4>
 <p>러스트는 모든 숫자 타입에 대해서 여러분이 예상할 수 있는 기본 수학 연산 기능을
 제공합니다: 더하기, 빼기, 곱하기, 나누기 등등을 말이죠. 정수 나눗셈은 가장
@@ -3684,7 +3684,7 @@ fn calculate_length(s: String) -&gt; (String, usize) {
 <p><span class="caption">예제 4-5: 매개변수의 소유권을 되돌려주는 방법</span></p>
 <p>하지만 이런 식은 일반적인 컨셉이 되기엔 너무 거추장스럽고 많은 작업량이
 수반됩니다. 다행히도, 러스트에는 소유권 이동 없이 값을 사용할 수 있는
-<em>참조자 (references)</em> 라는 기능을 가지고 있습니다.</p>
+<em>참조자 (reference)</em> 라는 기능을 가지고 있습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="참조와-대여"><a class="header" href="#참조와-대여">참조와 대여</a></h2>
 <p>앞 절 마지막에 등장한 예제 4-5에서는 <code>String</code>이 <code>calculate_length</code>로
 이동해 버린 것 때문에 <code>calclulate_length</code>를 호출한 함수로 <code>String</code>을
@@ -3759,7 +3759,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 않습니다. 함수가 실제 값 대신 참조자를 매개변수로 쓴다면
 애초에 소유권이 없으니까 이 소유권을 돌려주기 위한 값 반환도
 필요 없어집니다.</p>
-<p>또한, 이처럼 참조자 만드는 행위를 <em>대여 (borrow)</em> 이라 합니다.
+<p>또한, 이처럼 참조자를 만드는 행위를 <em>대여 (borrow)</em> 라고 합니다.
 현실에서도 여러분이 다른 사람이 소유하고 있는 뭔가를 빌리고,
 용무가 끝나면 돌려주는 것처럼요. 여러분의 소유가 아니니까요.</p>
 <p>그럼 빌린 값을 수정하면 어떻게 될까요? 예제 4-6 코드를
@@ -4298,7 +4298,7 @@ error: could not compile `ownership` due to previous error
 </span>let s = &quot;Hello, world!&quot;;
 <span class="boring">}</span></code></pre></pre>
 <p>여기서 <code>s</code>는 바이너리의 특정 지점을 가리키는 슬라이스입니다. <code>&amp;str</code> 타입이죠.
-<code>&amp;str</code>은  불변 참조자이므로, 문자열 리터럴은 왜 변경할 수 없는지에 대한 의문도
+<code>&amp;str</code>은 불변 참조자이므로, 문자열 리터럴은 왜 변경할 수 없는지에 대한 의문도
 풀립니다.</p>
 <h4 id="문자열-슬라이스를-매개변수로-사용하기"><a class="header" href="#문자열-슬라이스를-매개변수로-사용하기">문자열 슬라이스를 매개변수로 사용하기</a></h4>
 <p>리터럴과 <code>String</code>의 슬라이스를 만들 수 있다는 걸 알고 나면
@@ -4587,7 +4587,7 @@ assert_eq!(slice, &amp;[2, 3]);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    let user1 = User {
 </span><span class="boring">        email: String::from(&quot;someone@example.com&quot;),
@@ -4617,7 +4617,7 @@ assert_eq!(slice, &amp;[2, 3]);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    let user1 = User {
 </span><span class="boring">        email: String::from(&quot;someone@example.com&quot;),
@@ -5666,7 +5666,7 @@ struct ChangeColorMessage(i32, i32, i32); // 튜플 구조체
 실수 (Null References: The Billion Dollar Mistake)’에서 다음과 같이 말합니다:</p>
 <blockquote>
 <p>저는 그걸 10억 달러짜리 실수라고 부릅니다. 저는 그 당시 객체 지향
-언어에서 참조자를 위한 첫 포괄적인 타입 시스템을 디자인하고 있었습니다.
+언어에서 참조를 위한 첫 포괄적인 타입 시스템을 디자인하고 있었습니다.
 제 목표는 컴파일러에 의해 자동으로 수행되는 체크를 통해 모든
 참조자의 사용이 절대로 안전함을 보장하는 것이었습니다.
 하지만 구현이 무척 간단하다는 단순한 이유로 널 참조를 넣고
@@ -5879,7 +5879,7 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 enum UsState {
     Alabama,
     Alaska,
-    // --snip--
+    // --생략--
 }
 
 enum Coin {
@@ -5904,7 +5904,7 @@ enum Coin {
 </span><span class="boring">enum UsState {
 </span><span class="boring">    Alabama,
 </span><span class="boring">    Alaska,
-</span><span class="boring">    // --snip--
+</span><span class="boring">    // --생략--
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">enum Coin {
@@ -6191,7 +6191,7 @@ error: could not compile `enums` due to previous error
 </span><span class="boring">enum UsState {
 </span><span class="boring">    Alabama,
 </span><span class="boring">    Alaska,
-</span><span class="boring">    // --snip--
+</span><span class="boring">    // --생략--
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">enum Coin {
@@ -6214,7 +6214,7 @@ error: could not compile `enums` due to previous error
 </span><span class="boring">enum UsState {
 </span><span class="boring">    Alabama,
 </span><span class="boring">    Alaska,
-</span><span class="boring">    // --snip--
+</span><span class="boring">    // --생략--
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">enum Coin {
@@ -6992,12 +6992,12 @@ fn main() {
 use std::io;
 
 fn function1() -&gt; fmt::Result {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}
 
 fn function2() -&gt; io::Result&lt;()&gt; {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}
 <span class="boring">}</span></code></pre></pre>
@@ -7017,12 +7017,12 @@ fn function2() -&gt; io::Result&lt;()&gt; {
 use std::io::Result as IoResult;
 
 fn function1() -&gt; Result {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}
 
 fn function2() -&gt; IoResult&lt;()&gt; {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}</code></pre>
 <p><span class="caption">예제 7-16: 스코프 안으로 가져온 타입의 이름을
@@ -7132,10 +7132,10 @@ fn main() {
 다음 두 <code>use</code> 문은 <code>std</code> 내 아이템을 스코프로 가져옵니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use rand::Rng;
-</span>// --snip--
+</span>// --생략--
 use std::cmp::Ordering;
 use std::io;
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    println!(&quot;Guess the number!&quot;);
@@ -7166,9 +7166,9 @@ use std::io;
 예시는 예제 7-18과 같습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use rand::Rng;
-</span>// --snip--
+</span>// --생략--
 use std::{cmp::Ordering, io};
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    println!(&quot;Guess the number!&quot;);
@@ -9061,7 +9061,7 @@ IP 주소가 다른 곳으로부터 가져올 필요가 생길 경우 <code>expe
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
 </span>    loop {
-        // --snip--
+        // --생략--
 
 <span class="boring">        println!(&quot;Please input your guess.&quot;);
 </span><span class="boring">
@@ -9082,7 +9082,7 @@ IP 주소가 다른 곳으로부터 가져올 필요가 생길 경우 <code>expe
         }
 
         match guess.cmp(&amp;secret_number) {
-            // --snip--
+            // --생략--
 <span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
 </span><span class="boring">            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
 </span><span class="boring">            Ordering::Equal =&gt; {
@@ -10245,7 +10245,7 @@ impl&lt;T: Display + PartialOrd&gt; Pair&lt;T&gt; {
 예를 들어, 표준 라이브러리는 <code>Display</code> 트레이트를 구현하는 모든 타입에 <code>ToString</code>
 트레이트도 구현합니다. 표준 라이브러리의 <code>impl</code> 블록은 다음과 비슷하게 생겼습니다:</p>
 <pre><code class="language-rust ignore">impl&lt;T: Display&gt; ToString for T {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p><code>Display</code> 트레이트가 구현된 모든 타입에서 (<code>ToString</code> 트레이트에
 정의된) <code>to_string()</code> 메서드를 호출할 수 있는 건 표준 라이브러리의
@@ -11314,7 +11314,7 @@ mod tests {
 
     #[test]
     fn larger_can_hold_smaller() {
-        // --snip--
+        // --생략--
 <span class="boring">        let larger = Rectangle {
 </span><span class="boring">            width: 8,
 </span><span class="boring">            height: 7,
@@ -11372,7 +11372,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </span><span class="boring">    height: u32,
 </span><span class="boring">}
 </span><span class="boring">
-</span>// --snip--
+</span>// --생략--
 impl Rectangle {
     fn can_hold(&amp;self, other: &amp;Rectangle) -&gt; bool {
         self.width &lt; other.width &amp;&amp; self.height &gt; other.height
@@ -11746,7 +11746,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </span><span class="boring">    value: i32,
 </span><span class="boring">}
 </span><span class="boring">
-</span>// --snip--
+</span>// --생략--
 impl Guess {
     pub fn new(value: i32) -&gt; Guess {
         if value &lt; 1 {
@@ -11804,7 +11804,7 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">    value: i32,
 </span><span class="boring">}
 </span><span class="boring">
-</span>// --snip--
+</span>// --생략--
 
 impl Guess {
     pub fn new(value: i32) -&gt; Guess {
@@ -12718,7 +12718,7 @@ To an admiring bog!
 use std::fs;
 
 fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">    let args: Vec&lt;String&gt; = env::args().collect();
 </span><span class="boring">
 </span><span class="boring">    let query = &amp;args[1];
@@ -12841,7 +12841,7 @@ To an admiring bog!
 
     let (query, file_path) = parse_config(&amp;args);
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    println!(&quot;Searching for {}&quot;, query);
 </span><span class="boring">    println!(&quot;In file {}&quot;, file_path);
@@ -12902,7 +12902,7 @@ fn parse_config(args: &amp;[String]) -&gt; (&amp;str, &amp;str) {
     let contents = fs::read_to_string(config.file_path)
         .expect(&quot;Should have been able to read the file&quot;);
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    println!(&quot;With text:\n{contents}&quot;);
 </span>}
@@ -12988,10 +12988,10 @@ fn parse_config(args: &amp;[String]) -&gt; Config {
 </span><span class="boring">
 </span><span class="boring">    println!(&quot;With text:\n{contents}&quot;);
 </span>
-    // --snip--
+    // --생략--
 }
 
-// --snip--
+// --생략--
 
 <span class="boring">struct Config {
 </span><span class="boring">    query: String,
@@ -13055,12 +13055,12 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Config {
-</span>    // --snip--
+</span>    // --생략--
     fn new(args: &amp;[String]) -&gt; Config {
         if args.len() &lt; 3 {
             panic!(&quot;not enough arguments&quot;);
         }
-        // --snip--
+        // --생략--
 <span class="boring">
 </span><span class="boring">        let query = args[1].clone();
 </span><span class="boring">        let file_path = args[2].clone();
@@ -13177,7 +13177,7 @@ fn main() {
         process::exit(1);
     });
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    println!(&quot;Searching for {}&quot;, config.query);
 </span><span class="boring">    println!(&quot;In file {}&quot;, config.file_path);
@@ -13251,7 +13251,7 @@ Problem parsing arguments: not enough arguments
 </span><span class="boring">use std::process;
 </span><span class="boring">
 </span>fn main() {
-    // --snip--
+    // --생략--
 
 <span class="boring">    let args: Vec&lt;String&gt; = env::args().collect();
 </span><span class="boring">
@@ -13273,7 +13273,7 @@ fn run(config: Config) {
     println!(&quot;With text:\n{contents}&quot;);
 }
 
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">struct Config {
 </span><span class="boring">    query: String,
@@ -13311,7 +13311,7 @@ fn run(config: Config) {
 </span><span class="boring">use std::process;
 </span>use std::error::Error;
 
-// --snip--
+// --생략--
 
 <span class="boring">
 </span><span class="boring">fn main() {
@@ -13420,7 +13420,7 @@ To an admiring bog!
 </span><span class="boring">use std::process;
 </span><span class="boring">
 </span>fn main() {
-    // --snip--
+    // --생략--
 
 <span class="boring">    let args: Vec&lt;String&gt; = env::args().collect();
 </span><span class="boring">
@@ -13497,7 +13497,7 @@ pub struct Config {
 
 impl Config {
     pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
-        // --snip--
+        // --생략--
 <span class="boring">        if args.len() &lt; 3 {
 </span><span class="boring">            return Err(&quot;not enough arguments&quot;);
 </span><span class="boring">        }
@@ -13510,7 +13510,7 @@ impl Config {
 }
 
 pub fn run(config: Config) -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
-    // --snip--
+    // --생략--
 <span class="boring">    let contents = fs::read_to_string(config.file_path)?;
 </span><span class="boring">
 </span><span class="boring">    println!(&quot;With text:\n{contents}&quot;);
@@ -13531,7 +13531,7 @@ use std::process;
 use minigrep::Config;
 
 fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">    let args: Vec&lt;String&gt; = env::args().collect();
 </span><span class="boring">
 </span><span class="boring">    let config = Config::build(&amp;args).unwrap_or_else(|err| {
@@ -13543,7 +13543,7 @@ fn main() {
 </span><span class="boring">    println!(&quot;In file {}&quot;, config.file_path);
 </span><span class="boring">
 </span>    if let Err(e) = minigrep::run(config) {
-        // --snip--
+        // --생략--
 <span class="boring">        println!(&quot;Application error: {e}&quot;);
 </span><span class="boring">        process::exit(1);
 </span>    }
@@ -14546,7 +14546,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 설정되었는지 확인해 보겠습니다.</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">use std::env;
-// --snip--
+// --생략--
 
 <span class="boring">use std::error::Error;
 </span><span class="boring">use std::fs;
@@ -15376,7 +15376,7 @@ fn main() {
 <div style="break-before: page; page-break-before: always;"></div><h2 id="반복자로-일련의-아이템들-처리하기"><a class="header" href="#반복자로-일련의-아이템들-처리하기">반복자로 일련의 아이템들 처리하기</a></h2>
 <p>반복자 패턴은 일련의 아이템들에 대해 순서대로 어떤 작업을 수행할 수
 있도록 해줍니다. 반복자는 각 아이템을 순회하고 언제 시퀀스가
-종료될 지 결정하는 로직을 담당합니다. 반복자를 사용하면, 그런 로직을
+종료될지 결정하는 로직을 담당합니다. 반복자를 사용하면, 그런 로직을
 다시 구현할 필요가 없습니다.</p>
 <p>러스트에서의 반복자는 <em>게으른데</em>, 이는 반복자를 사용하는 메서드를 호출하여
 반복자를 소비하기 전까지는 동작을 하지 않는다는 의미입니다. 예를 들면,
@@ -15787,7 +15787,7 @@ mod tests {
         process::exit(1);
     });
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    if let Err(e) = minigrep::run(config) {
 </span><span class="boring">        eprintln!(&quot;Application error: {e}&quot;);
@@ -15809,7 +15809,7 @@ mod tests {
         process::exit(1);
     });
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    if let Err(e) = minigrep::run(config) {
 </span><span class="boring">        eprintln!(&quot;Application error: {e}&quot;);
@@ -15841,7 +15841,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
     pub fn build(
         mut args: impl Iterator&lt;Item = String&gt;,
     ) -&gt; Result&lt;Config, &amp;'static str&gt; {
-        // --snip--
+        // --생략--
 <span class="boring">        if args.len() &lt; 3 {
 </span><span class="boring">            return Err(&quot;not enough arguments&quot;);
 </span><span class="boring">        }
@@ -16529,7 +16529,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 //! calculations more convenient.
 
 /// Adds one to the number given.
-// --snip--
+// --생략--
 <span class="boring">///
 </span><span class="boring">/// # Examples
 </span><span class="boring">///
@@ -16609,7 +16609,7 @@ pub mod utils {
     /// Combines two primary colors in equal amounts to create
     /// a secondary color.
     pub fn mix(c1: PrimaryColor, c2: PrimaryColor) -&gt; SecondaryColor {
-        // --snip--
+        // --생략--
 <span class="boring">        unimplemented!();
 </span>    }
 }</code></pre>
@@ -16659,7 +16659,7 @@ pub use self::kinds::SecondaryColor;
 pub use self::utils::mix;
 
 pub mod kinds {
-    // --snip--
+    // --생략--
 <span class="boring">    /// The primary colors according to the RYB color model.
 </span><span class="boring">    pub enum PrimaryColor {
 </span><span class="boring">        Red,
@@ -16676,7 +16676,7 @@ pub mod kinds {
 </span>}
 
 pub mod utils {
-    // --snip--
+    // --생략--
 <span class="boring">    use crate::kinds::*;
 </span><span class="boring">
 </span><span class="boring">    /// Combines two primary colors in equal amounts to create
@@ -16701,7 +16701,7 @@ pub mod utils {
 use art::PrimaryColor;
 
 fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">    let red = PrimaryColor::Red;
 </span><span class="boring">    let yellow = PrimaryColor::Yellow;
 </span><span class="boring">    mix(red, yellow);
@@ -18586,7 +18586,7 @@ mod tests {
 
     #[test]
     fn it_sends_an_over_75_percent_warning_message() {
-        // --snip--
+        // --생략--
 <span class="boring">        let mock_messenger = MockMessenger::new();
 </span><span class="boring">        let mut limit_tracker = LimitTracker::new(&amp;mock_messenger, 100);
 </span><span class="boring">
@@ -19884,7 +19884,7 @@ Got: thread
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span>    // --snip--
+</span>    // --생략--
 
     let (tx, rx) = mpsc::channel();
 
@@ -19921,7 +19921,7 @@ Got: thread
         println!(&quot;Got: {}&quot;, received);
     }
 
-    // --snip--
+    // --생략--
 <span class="boring">}</span></code></pre>
 <p><span class="caption">예제 16-11: 여러 개의 생산자로부터 여러 메시지
 보내기</span></p>
@@ -20318,9 +20318,9 @@ changes in the compiler -->
 구조화하는 자연스러운 방법에 대해 이야기할 것입니다. 더불어 객체 지향 프로그래밍으로부터
 친숙할 수 있을 개념들과 러스트의 관용구가 어떻게 연관되어 있는지 다루겠습니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="러스트의-객체-지향-프로그래밍-기능들"><a class="header" href="#러스트의-객체-지향-프로그래밍-기능들">러스트의 객체 지향 프로그래밍 기능들</a></h1>
-<p>객체 지향 프로그래밍 (OOP) 은 프로그램을 모델링하는 방식입니다. 프로그래밍
-개념으로서의 객체는 1960년대에 프로그래밍 언어 Simula에 도입되었습니다.
-이 객체들은 임의의 객체들이 서로 메시지를 전달하는 Alan Kay의 프로그래밍
+<p>객체 지향 프로그래밍 (object-oriented programming, OOP) 은 프로그램을 모델링하는 방식입니다.
+프로그래밍 개념으로서의 객체는 1960년대에 프로그래밍 언어 시뮬라 (Simula) 에 도입되었습니다.
+이 객체들은 임의의 객체들이 서로 메시지를 전달하는 앨런 케이 (Alan Kay) 의 프로그래밍
 아키텍처에 영향을 끼쳤습니다. 이 아키텍처를 설명하기 위해 그는 1967년
 <em>객체 지향 프로그래밍</em>이라는 용어를 만들었습니다. 다수의 정의가 경쟁적으로
 OOP이 무엇인지 설명하고 있으며, 그중 일부에 따르면 러스트는 객체 지향이지만
@@ -20332,10 +20332,10 @@ OOP이 무엇인지 설명하고 있으며, 그중 일부에 따르면 러스트
 <div style="break-before: page; page-break-before: always;"></div><h2 id="객체-지향-언어의-특성"><a class="header" href="#객체-지향-언어의-특성">객체 지향 언어의 특성</a></h2>
 <p>프로그래밍 커뮤니티에서는 어떤 언어가 객체 지향으로 간주되기 위해 반드시
 갖춰야 하는 기능에 대한 합의가 이루어지지 않았습니다. 러스트는 OOP를 포함한
-많은 프로그래밍 패러다임의 영향을 받습니다; 예를 들어, 13장에서는 함수형
+많은 프로그래밍 패러다임의 영향을 받았습니다; 예를 들어, 13장에서는 함수형
 프로그래밍에서 나온 기능들을 탐구해봤습니다. OOP 언어라면 거의 틀림없이
 몇가지 공통된 특성을 공유하는데, 여기에는 객체 (object), 캡슐화 (encapsulation),
-그리고 상속 (inheritance) 가 있습니다. 각각의 특성이 무엇을 의미하는지와
+그리고 상속 (inheritance) 이 있습니다. 각 특성이 무엇을 의미하는지와
 이를 러스트가 지원하는지를 살펴봅시다.</p>
 <h3 id="객체는-데이터와-동작을-담습니다"><a class="header" href="#객체는-데이터와-동작을-담습니다">객체는 데이터와 동작을 담습니다</a></h3>
 <p>속칭 <em>4인조</em> 책이라고도 불리는 에리히 감마 (Erich Gamma), 리처드 헬름 (Richard Helm),
@@ -20360,7 +20360,7 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 프로그래머가 객체를 사용하는 코드의 변경 없이 이 객체 내부를 변경하거나
 리팩터링할 수 있도록 해줍니다. </p>
 <p>7장에서 어떻게 캡슐화를 제어하는지에 대해 논의했습니다: <code>pub</code> 키워드를
-사용하여 어떤 모듈들, 타입들, 함수들, 그리고 메서드들이 공개될 것인가를
+사용하여 어떤 모듈, 타입, 함수, 그리고 메서드가 공개될 것인가를
 결정할 수 있으며, 기본적으로 다른 모든 것들은 비공개입니다. 예를 들면,
 <code>i32</code> 값의 벡터를 필드로 가지고 있는 <code>AveragedCollection</code> 구조체를
 정의할 수 있습니다. 또한 이 구조체는 벡터의 값에 대한 평균값을 담는
@@ -20378,7 +20378,7 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 구조체</span></p>
 <p>구조체는 <code>pub</code>으로 표시되어 다른 코드가 이를 사용할 수 있지만, 구조체 안에 존재하는
 필드들은 여전히 비공개입니다. 이는 이번 사례에 매우 중요한데, 그 이유는 하나의 값이
-리스트에 추가되거나 제거될 때마다 평균 또한 확실히 업데이트되도록 하고 싶기 때문입니다.
+리스트에 추가되거나 제거될 때마다 평균도 업데이트되는 것을 보장하고 싶기 때문입니다.
 예제 17-2와 같이 구조체에 <code>add</code>, <code>remove</code>, 그리고 <code>average</code> 메서드를 구현하여
 이를 수행합니다:</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
@@ -20415,28 +20415,28 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 }</code></pre>
 <p><span class="caption">예제 17-2: <code>AveragedCollection</code>의 공개 메서드 <code>add</code>,
 <code>remove</code>, 그리고 <code>average</code>의 구현</span></p>
-<p>공개 메서드들 <code>add</code>, <code>remove</code>, 그리고 <code>average</code>는 <code>AveragedCollection</code>
+<p>공개 메서드 <code>add</code>, <code>remove</code>, 그리고 <code>average</code>는 <code>AveragedCollection</code>
 인스턴스의 데이터에 접근하거나 수정할 수 있는 유일한 방법입니다. <code>add</code> 메서드를
 사용하여 <code>list</code>에 아이템을 추가하거나 <code>remove</code> 메서드를 사용하여 제거하면,
 각 구현에서는 <code>average</code> 필드의 업데이트을 처리하는 비공개 메서드
 <code>update_average</code>도 호출합니다.</p>
-<p><code>list</code>와 <code>average</code> 필드는 비공개로 해두었으므로 외부 코드가
-<code>list</code> 필드에 직접 아이템들을 추가하거나 제거할 방법은 없습니다;
-그렇지 않으면, <code>average</code> 필드는 <code>list</code>가 변경될 때 동기화되지 않을 수
+<p><code>list</code>와 <code>average</code> 필드는 비공개로 하였으므로 외부 코드가
+<code>list</code> 필드에 직접 아이템을 추가하거나 제거할 방법은 없습니다;
+그렇게 하면 <code>average</code> 필드는 <code>list</code>가 변경될 때 동기화되지 않을 수
 있습니다. <code>average</code> 메서드는 <code>average</code> 필드의 값을 반환하므로,
 외부 코드가 <code>average</code>를 읽을 수 있도록 하지만 변경할 수는 없습니다.</p>
 <p><code>AveragedCollection</code>의 세부 구현은 캡슐화되었기 때문에,
 향후에 데이터 구조와 같은 측면을 쉽게 변경할 수 있습니다.
 예를 들면, <code>list</code> 필드에 대해서 <code>Vec&lt;i32&gt;</code>가 아닌 <code>HashSet&lt;i32&gt;</code>를
-사용할 수 있습니다. <code>add</code>, <code>remove</code> 그리고 <code>average</code> 공개 메서드의
+사용할 수 있습니다. <code>add</code>, <code>remove</code>, <code>average</code> 공개 메서드의
 시그니처가 그대로 유지되는 한, <code>AveragedCollection</code>를 사용하는 코드들은
 변경될 필요가 없습니다. 대신 <code>list</code>를 공개했다면 반드시 그렇지는
 않았을 것입니다: <code>HashSet&lt;i32&gt;</code>와 <code>Vec&lt;i32&gt;</code>는 아이템들을
 추가하거나 제거하기 위한 메서드들이 다르므로, 만약 외부 코드가 <code>list</code>에
 직접 접근하여 변경했더라면 모두 변경되어야 할 가능성이 높겠지요.</p>
-<p>만약 캡슐화가 객체 지향 언어로 간주하기 위해 필요한 측면이라면, 러스트는
+<p>캡슐화가 객체 지향 언어로 간주하기 위해 필요한 측면이라면, 러스트는
 해당 요구 사항을 충족합니다. 코드의 서로 다른 부분들에 대해 <code>pub</code>을 사용할지
-여부를 선택할 수 있는 옵션을 통해 구현 세부 사항을 캡슐화할 수 있습니다.</p>
+여부를 선택하는 옵션을 통해 구현 세부 사항을 캡슐화할 수 있습니다.</p>
 <h3 id="타입-시스템과-코드-공유로서의-상속"><a class="header" href="#타입-시스템과-코드-공유로서의-상속">타입 시스템과 코드 공유로서의 상속</a></h3>
 <p><em>상속</em>은 어떤 객체가 다른 객체의 정의로부터 요소를 상속받을 수 있는
 메커니즘으로, 이를 통해 객체를 다시 정의하지 않고도 부모 객체의 데이터와
@@ -20473,9 +20473,9 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 <em>범주 내 매개변수형 다형성 (bounded parametric polymophism)</em> 이라고 부릅니다. </p>
 </blockquote>
 <p>최근 많은 프로그래밍 언어에서는 상속이 프로그래밍 디자인
-솔루션으로서 선호되지 않고 있는데 그 이유는 필요 이상으로
+솔루션으로써 선호되지 않고 있는데 그 이유는 필요 이상으로
 많은 코드를 공유할 수 있는 위험이 있기 때문입니다. 하위클래스가
-늘 그들의 부모 클래스의 모든 특성을 공유할 필요는 없지만 상속한다면
+늘 그들의 부모 클래스의 모든 특성을 공유할 필요가 없어도 상속한다면
 그렇게 됩니다. 이는 프로그램 설계의 유연성을 저하시킬 수 있습니다.
 또한 하위클래스에서는 타당하지 않거나 적용될 수 없어서 에러를 유발하는
 메서드들이 호출될 수 있는 가능성을 만듭니다. 게다가, 어떤 언어들은
@@ -20486,7 +20486,7 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 하는지 살펴봅시다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="트레이트-객체를-사용하여-다른-타입의-값-허용하기"><a class="header" href="#트레이트-객체를-사용하여-다른-타입의-값-허용하기">트레이트 객체를 사용하여 다른 타입의 값 허용하기</a></h2>
 <p>8장에서 벡터의 제약사항 중 하나는 딱 하나의 타입에 대한 요소만 보관할 수
-있다는 것임을 언급했습니다. 예제 8-10에서 정수, 부동소수점, 그리고 문자를
+있다는 것임을 언급했습니다. 예제 8-10에서 정수, 부동 소수점, 그리고 문자를
 보관하기 위한 배리언트들을 가지고 있는 <code>SpreadsheetCell</code> 열거형을 정의하는
 해결 방안을 만들었습니다. 즉, 각 칸마다 다른 타입의 데이터를 저장할 수 있으면서도
 여전히 그 칸들의 한 묶음을 대표하는 벡터를 가질 수 있었습니다. 이는 교환 가능한
@@ -20494,15 +20494,15 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 해결책입니다.</p>
 <p>하지만, 때로는 우리의 라이브러리 사용자가 특정 상황에서 유효한 타입의
 집합을 확장할 수 있도록 하길 원할 때가 있습니다. 이를 어떻게 달성할 수 있는지
-보이기 위해, 아이템들의 리스트에 대해 반복하고 각 아이템에 대해 <code>draw</code> 메서드를
-호출하여 이를 화면에 그리는 예제 그래픽 사용자 인터페이스 (GUI) 도구를 만들어
+보이기 위해, 예제로 아이템들의 리스트에 대해 반복하고 각 아이템에 대해 <code>draw</code>
+메서드를 호출하여 이를 화면에 그리는 그래픽 사용자 인터페이스 (GUI) 도구를 만들어
 보겠습니다 - GUI 도구들에게 있어서는 흔한 방식이죠. 우리가 만들 라이브러리 크레이트는
 <code>gui</code>라고 호명되고 GUI 라이브러리 구조를 포괄합니다. 이 크레이트는 사용자들이
 사용할 수 있는 몇 가지 타입들, <code>Button</code>이나 <code>TextField</code> 들을 포함하게
-될 수 있습니다. 또한 <code>gui</code> 사용자들은 그릴 수 있는 자신만의 타입을 만들고자
+될 수 있습니다. 또한 <code>gui</code> 사용자들은 자신만의 그릴 수 있는 타입을 만들고자
 할 것입니다: 일례로, 어떤 프로그래머는 <code>Image</code>를 추가할지도, 또 다른
 누군가는 <code>SelectBox</code>를 추가할지도 모릅니다.</p>
-<p>이번 예제에서는 완전한 GUI 라이브러리를 구현하지는 않겠지만 이 조각들이
+<p>이번 예제에서 완전한 GUI 라이브러리를 구현하지는 않겠지만 이 조각들이
 어떻게 결합하는지 보여주고자 합니다. 라이브러리를 작성하는 시점에서는
 다른 프로그래머들이 만들고자 하는 모든 타입들을 알 수 없죠. 하지만
 <code>gui</code>가 다양한 타입들의 많은 값을 추적해야 하고, <code>draw</code> 메서드가 각각의
@@ -20518,15 +20518,15 @@ Elements of Reusable Object-Oriented Software, Addison-Wesley Professional, 1994
 관계로, 사용자들이 새로운 타입을 정의하고 확장할 수 있도록 <code>gui</code> 라이브러리를
 구조화하는 다른 방법이 필요합니다.</p>
 <h3 id="공통된-동작을-위한-트레이트-정의하기"><a class="header" href="#공통된-동작을-위한-트레이트-정의하기">공통된 동작을 위한 트레이트 정의하기</a></h3>
-<p><code>gui</code>가 갖기를 원하는 동작을 구현하기 위해, <code>draw</code>라는 이름의 메서드가
-하나 있는 <code>Draw</code>라는 이름의 트레이트를 정의할 것입니다. 그러면 <em>트레이트 객체
+<p><code>gui</code>에 필요한 동작을 구현하기 위해, <code>draw</code>라는 이름의 메서드가
+하나 있는 <code>Draw</code>라는 이름의 트레이트를 정의하겠습니다. 그러면 <em>트레이트 객체
 (trait object)</em> 를 담는 벡터를 정의할 수 있습니다. 트레이트 객체는 특정
 트레이트를 구현한 타입의 인스턴스와 런타임에 해당 타입의 트레이트 메서드를
 조회하는 데 사용되는 테이블 모두를 가리킵니다. <code>&amp;</code> 참조자나 <code>Box&lt;T&gt;</code>
 스마트 포인터 같은 포인터 종류로 지정한 다음 <code>dyn</code> 키워드를 붙이고,
 그 뒤에 관련된 트레이트를 특정하면 트레이트 객체를 생성할 수 있습니다.
 (트레이트 객체에 포인터를 사용해야 하는 이유는 19장의
-<a href="ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait">‘동적인 크기의 타입과 Sized’</a><!-- ignore --> 절에서
+<a href="ch19-04-advanced-types.html#dynamically-sized-types-and-the-sized-trait">‘동적 크기 타입과 <code>Sized</code> 트레이트’</a><!-- ignore --> 절에서
 설명하겠습니다.) 제네릭 타입이나 구체 타입 대신 트레이트 객체를 사용할 수 있습니다.
 트레이트 객체를 사용하는 곳이 어디든, 러스트의 타입 시스템은 컴파일 타임에 해당
 컨텍스트에서 사용된 모든 값이 트레이트 객체의 트레이트를 구현할 것을 보장합니다.
@@ -20612,16 +20612,16 @@ where
 <p><span class="caption">예제 17-6: 제네릭과 트레이트 바운드를 사용한
 <code>Screen</code> 구조체와 <code>run</code> 메서드의 대체 구현</span></p>
 <p>이렇게 하면 전부 <code>Button</code> 타입이거나 전부 <code>TextField</code> 타입인 컴포넌트의
-리스트를 가지는 <code>Screen</code> 인스턴스로 제한됩니다. 동일 타입의 컬렉션만 사용한다면
+목록을 가진 <code>Screen</code> 인스턴스로 제한됩니다. 동일 타입의 컬렉션만 사용한다면
 제네릭과 트레이트 바운드를 사용하는 것이 바람직한데, 왜냐하면 그 정의들은 컴파일 타임에
 단형성화 (monomorphize) 되어 구체 타입으로 사용되기 때문입니다.</p>
 <p>반면 트레이트 객체를 사용하는 메서드를 이용할 경우, 하나의 <code>Screen</code> 인스턴스가
-<code>Box&lt;Button&gt;</code>는 물론 <code>Box&lt;TextField&gt;</code>도 담을 수 있는 <code>Vec&lt;T&gt;</code>를 보유할
+<code>Box&lt;Button&gt;</code>은 물론 <code>Box&lt;TextField&gt;</code>도 담을 수 있는 <code>Vec&lt;T&gt;</code>를 보유할
 수 있습니다. 이것이 어떻게 작동하는지 살펴보고 런타임 성능에 미치는 영향에 대해
 설명하겠습니다.</p>
 <h3 id="트레이트-구현하기"><a class="header" href="#트레이트-구현하기">트레이트 구현하기</a></h3>
-<p>이제 <code>Draw</code> 트레이트를 구현하는 몇 가지 타입을 추가하겠습니다. <code>Button</code> 타입을
-제공해 보겠습니다. 다시금 말하지만, 실제 GUI 라이브러리를 구현하는 것은
+<p>이제 <code>Draw</code> 트레이트를 구현하는 타입을 몇 가지 추가하겠습니다. <code>Button</code> 타입을
+제공해 보겠습니다. 다시 한번 말하지만 실제 GUI 라이브러리를 구현하는 것은
 이 책의 범위를 벗어나므로, <code>draw</code>에는 별다른 구현을 하지 않을 겁니다.
 구현이 어떻게 생겼을지 상상해 보자면, <code>Button</code> 구조체에는 예제 17-7에서
 보는 바와 같이 <code>width</code>, <code>height</code> 그리고 <code>label</code> 필드들이 있을 것입니다:</p>
@@ -20650,7 +20650,7 @@ where
 
 impl Draw for Button {
     fn draw(&amp;self) {
-        // code to actually draw a button
+        // 실제로 버튼을 그리는 코드
     }
 }</code></pre>
 <p><span class="caption">예제 17-7: <code>Draw</code> 트레이트를 구현하는
@@ -20678,7 +20678,7 @@ struct SelectBox {
 
 impl Draw for SelectBox {
     fn draw(&amp;self) {
-        // code to actually draw a select box
+        // 실제로 선택 상자를 그리는 코드
     }
 }
 <span class="boring">
@@ -20686,8 +20686,8 @@ impl Draw for SelectBox {
 <p><span class="caption">예제 17-8: <code>gui</code>를 사용하고 <code>Draw</code> 트레이트를
 <code>SelectBox</code> 구조체에 구현한 또 다른 크레이트</span></p>
 <p>이제 라이브러리 사용자는 <code>main</code> 함수를 작성하여 <code>Screen</code> 인스턴스를
-만들 수 있습니다. <code>Screen</code> 인스턴스에는 <code>SelectBox</code>와 <code>Button</code>를
-<code>Box&lt;T&gt;</code> 안에 넣어 트레이트 객체가 되도록 함으로써 이들을 추가할 수 있습니다.
+만들 수 있습니다. <code>Screen</code> 인스턴스에는 <code>SelectBox</code>와 <code>Button</code>을
+<code>Box&lt;T&gt;</code> 안에 넣어 트레이트 객체가 되게 하여 이들을 추가할 수 있습니다.
 그러면 <code>Screen</code> 인스턴스 상의 <code>run</code> 메서드를 호출할 수 있는데, 이는 각 컴포넌트에
 대해 <code>draw</code>를 호출할 것입니다. 예제 17-9는 이러한 구현을 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -20701,7 +20701,7 @@ impl Draw for SelectBox {
 </span><span class="boring">
 </span><span class="boring">impl Draw for SelectBox {
 </span><span class="boring">    fn draw(&amp;self) {
-</span><span class="boring">        // code to actually draw a select box
+</span><span class="boring">        // 실제로 선택 상자를 그리는 코드
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -20739,11 +20739,11 @@ fn main() {
 고려하는 개념은 동적 타입 언어의 <em>오리 타이핑 (duck typing)</em> 이란
 개념과 유사합니다: 만약 오리처럼 걷고 오리처럼 꽥꽥거리면, 그것은
 오리임에 틀림없습니다! 예제 17-5에 있는 <code>Screen</code>에 구현된 <code>run</code>을 보면,
-<code>run</code>은 각 컴포넌트가 어떤 구체적 타입인지 알 필요가 없습니다.
+<code>run</code>은 각 컴포넌트가 어떤 구체 타입인지 알 필요가 없습니다.
 이 함수는 컴포넌트가 <code>Button</code>의 인스턴스인지 혹은 <code>SelectBox</code>의
 인스턴스인지 검사하지 않고 그저 각 컴포넌트의 <code>draw</code> 메서드를 호출할
 뿐입니다. <code>components</code> 벡터에 담기는 값의 타입을 <code>Box&lt;dyn Draw&gt;</code>로
-특정하는 것으로 <code>draw</code> 메서드를 호출할 수 있는 값을 필요로 하는
+지정하는 것으로 <code>draw</code> 메서드의 호출이 가능한 값을 요구하는
 <code>Screen</code>을 정의했습니다.</p>
 <p>트레이트 객체와 러스트의 타입 시스템을 사용하여 오리 타이핑을 사용하는 코드와
 유사한 코드를 작성할 때의 장점은 런타임에 어떤 값이 특정한 메서드를 구현했는지
@@ -20780,10 +20780,10 @@ For more information about this error, try `rustc --explain E0277`.
 error: could not compile `gui` due to previous error
 </code></pre>
 <p>이 에러는 인수로 넘길 의도가 없었던 무언가를 <code>Screen</code>에게 넘기고 있으므로 이를
-다른 타입으로 교체하던가, 아니면 <code>String</code>에 대해 <code>Draw</code>를 구현하여 <code>Screen</code>이
-이것에 대해 <code>draw</code>를 호출할 수 있도록 해야 한다는 것을 알려줍니다.</p>
+다른 타입으로 교체하던가, 아니면 <code>String</code>에 <code>Draw</code>를 구현하여 <code>Screen</code>이
+이것의 <code>draw</code>를 호출할 수 있도록 해야 한다는 것을 알려줍니다.</p>
 <h3 id="트레이트-객체는-동적-디스패치를-수행합니다"><a class="header" href="#트레이트-객체는-동적-디스패치를-수행합니다">트레이트 객체는 동적 디스패치를 수행합니다</a></h3>
-<p>10장의 <a href="ch10-01-syntax.html#performance-of-code-using-generics">‘제네릭을 사용한 코드의 성능’</a><!-- ignore -->절에서
+<p>10장의 <a href="ch10-01-syntax.html#performance-of-code-using-generics">‘제네릭 코드의 성능’</a><!-- ignore -->절에서
 제네릭에 트레이트 바운드를 사용했을 때 컴파일러에 의해 수행되는 단형성화
 프로세스의 실행에 대한 논의를 상기해 보세요: 컴파일러는 제네릭 타입 매개변수
 대신 사용하는 각 구체 타입에 대한 함수와 메서드의 비제네릭 구현체를
@@ -20802,7 +20802,7 @@ error: could not compile `gui` due to previous error
 동적 디스패치는 또한 컴파일러가 메서드의 코드를 인라인 (inline) 화하는 선택을
 막아버리는데, 이것이 결과적으로 몇 가지 최적화를 수행하지 못하게 합니다. 하지만,
 예제 17-5와 같은 코드를 작성하고 예제 17-9과 같은 지원을 가능하게 하는
-추가적인 유연성을 얻었으므로, 여기에는 고려할 기회비용이 있다고 하겠습니다.</p>
+추가적인 유연성을 얻었으므로, 고려할만한 절충안입니다.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="객체-지향-디자인-패턴-구현하기"><a class="header" href="#객체-지향-디자인-패턴-구현하기">객체 지향 디자인 패턴 구현하기</a></h2>
 <p><em>상태 패턴 (state pattern)</em> 은 객체 지향 디자인 패턴입니다. 이
 패턴의 핵심은 어떤 값이 내부적으로 가질 수 있는 상태 집합을 정의한다는
@@ -20814,7 +20814,7 @@ error: could not compile `gui` due to previous error
 상속보다는 구조체와 트레이트를 사용합니다. 각 상태 객체는 자신의
 동작 및 다른 상태로 변경되어야 할 때의 시기를 담당합니다.
 상태 객체를 보유한 값은 상태의 서로 다른 행동 혹은 상태 간의
-전이가 이뤄지는 때에 대해 아무것도 모릅니다.</p>
+전환이 이뤄지는 시점에 대해 아무것도 모릅니다.</p>
 <p>상태 패턴을 사용하면 프로그램의 사업적 요구사항들이 변경될 때,
 상태를 보유한 값의 코드 혹은 그 값을 사용하는 코드는 변경될
 필요가 없다는 이점이 있습니다. 상태 객체 중 하나의 내부 코드를
@@ -20856,11 +20856,11 @@ fn main() {
 <p><span class="caption">예제 17-11: <code>blog</code> 크레이트에 원하는 요구
 동작을 보여주는 코드</span></p>
 <p>사용자가 <code>Post::new</code>를 통해 새로운 블로그 게시물의 초안을 작성할 수 있도록
-허용하고 싶습니다. 블로그 게시물에는 텍스트의 추가가 허용되도록 하고 싶습니다.
+허용하려고 합니다. 블로그 게시물에는 텍스트의 추가를 허용하고 싶습니다.
 만약 승인 전에 게시물의 내용을 즉시 얻어오는 시도를 하면, 해당 게시물이 아직
 초안이기 때문에 텍스트를 가지고 올 수 없어야 합니다. 이를 확인할 목적으로 코드에
 <code>assert_eq!</code>를 추가했습니다. 이를 위한 훌륭한 유닛 테스트는 블로그 게시물 초안이
-<code>content</code> 메서드에서 빈 문자열을 반환하는지 확인하는 것이겠지만, 이 예제에서는
+<code>content</code> 메서드에서 빈 문자열을 반환하는지 확인하는 것이겠지만, 이 예제에서
 테스트를 작성하지는 않겠습니다.</p>
 <p>다음으로 게시물의 검토를 요청하는 것을 활성화하고, 검토를 기다리는 동안에는
 <code>content</code>가 빈 문자열을 반환하도록 하려고 합니다. 게시물이 승인받은
@@ -20877,8 +20877,8 @@ fn main() {
 <h3 id="post를-정의하고-초안-상태의-새-인스턴스-생성하기"><a class="header" href="#post를-정의하고-초안-상태의-새-인스턴스-생성하기"><code>Post</code>를 정의하고 초안 상태의 새 인스턴스 생성하기</a></h3>
 <p>라이브러리 구현을 시작해 봅시다! 어떤 내용물을 담고 있는 공개된
 <code>Post</code> 구조체가 필요하다는 것을 알고 있으므로, 예제 17-12와
-같이 구조체의 정의와 <code>Post</code>의 인스턴스를 만들기 위한 연관 공개
-함수 <code>new</code>를 정의로 시작하겠습니다. <code>Post</code>에 대한 모든 상태
+같이 구조체의 정의와 <code>Post</code>의 인스턴스를 만들기 위한 공개 연관
+함수 <code>new</code>의 정의로 시작하겠습니다. <code>Post</code>에 대한 모든 상태
 객체가 가져야 하는 동작이 정의된 비공개 <code>State</code> 트레이트도
 만들겠습니다.</p>
 <p>그다음 <code>Post</code>는 상태 객체를 담기 위해 <code>Option&lt;T&gt;</code>로 감싸진 <code>Box&lt;dyn State&gt;</code>
@@ -20916,8 +20916,8 @@ impl State for Draft {}</code></pre>
 값을 설정합니다. 이 <code>Box</code>는 <code>Draft</code> 구조체의 새 인스턴스를 가리킵니다.
 이렇게 하면 <code>Post</code>의 새 인스턴스가 생성될 때마다 초안으로 시작되는 것이
 보장됩니다. <code>Post</code>의 <code>state</code> 필드가 비공개이기 때문에, 다른 상태로 <code>Post</code>를
-생성할 방법은 없습니다! <code>Post::new</code> 함수에서는 <code>content</code> 필드를 새로운,
-비어있는 <code>String</code>으로 설정합니다.</p>
+생성할 방법은 없습니다! <code>Post::new</code> 함수에서는 <code>content</code> 필드를 새로운
+빈 <code>String</code>으로 설정합니다.</p>
 <h3 id="게시물-콘텐츠의-텍스트-저장하기"><a class="header" href="#게시물-콘텐츠의-텍스트-저장하기">게시물 콘텐츠의 텍스트 저장하기</a></h3>
 <p>예제 17-11에서 <code>add_text</code>라는 메서드를 호출하고 여기에 <code>&amp;str</code>을
 전달하여 블로그 게시물의 콘텐츠 텍스트로 추가할 수 있길 원한다는
@@ -20933,7 +20933,7 @@ impl State for Draft {}</code></pre>
 </span><span class="boring">}
 </span><span class="boring">
 </span>impl Post {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn new() -&gt; Post {
 </span><span class="boring">        Post {
 </span><span class="boring">            state: Some(Box::new(Draft {})),
@@ -20976,7 +20976,7 @@ impl State for Draft {}</code></pre>
 </span><span class="boring">}
 </span><span class="boring">
 </span>impl Post {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn new() -&gt; Post {
 </span><span class="boring">        Post {
 </span><span class="boring">            state: Some(Box::new(Draft {})),
@@ -21012,7 +21012,7 @@ impl State for Draft {}</code></pre>
 </span><span class="boring">}
 </span><span class="boring">
 </span>impl Post {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn new() -&gt; Post {
 </span><span class="boring">        Post {
 </span><span class="boring">            state: Some(Box::new(Draft {})),
@@ -21061,8 +21061,8 @@ impl State for PendingReview {
 메서드 <code>request_review</code>를 호출하고, 이 두 번째 <code>request_review</code> 메서드는
 현재의 상태를 소비하고 새로운 상태를 반환합니다.</p>
 <p><code>State</code> 트레이트에 <code>request_review</code> 메서드가 추가되었습니다; 트레이트를
-구현하는 모든 타입은 이제 <code>request_review</code> 메서드를 구현할 필요가 있을
-것입니다. 메서드의 첫 인수가 <code>self</code>, <code>&amp;self</code>, 나 <code>&amp;mut self</code>가 아니라
+구현하는 모든 타입은 이제 <code>request_review</code> 메서드를 구현해야 합니다.
+메서드의 첫 인수가 <code>self</code>, <code>&amp;self</code>, 나 <code>&amp;mut self</code>가 아니라
 <code>self:Box&lt;Self&gt;</code>라는 점을 주목하세요. 이 문법은 메서드가 오직 그 타입을
 보유한 <code>Box</code>에 대해서 호출될 경우에만 유효함을 뜻합니다. 이 문법은
 <code>Box&lt;Self&gt;</code>의 소유권을 가져와서 <code>Post</code>의 예전 상태를 무효화하여 <code>Post</code>의
@@ -21104,7 +21104,7 @@ impl State for PendingReview {
 </span><span class="boring">}
 </span><span class="boring">
 </span>impl Post {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn new() -&gt; Post {
 </span><span class="boring">        Post {
 </span><span class="boring">            state: Some(Box::new(Draft {})),
@@ -21141,7 +21141,7 @@ trait State {
 struct Draft {}
 
 impl State for Draft {
-    // --snip--
+    // --생략--
 <span class="boring">    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
 </span><span class="boring">        Box::new(PendingReview {})
 </span><span class="boring">    }
@@ -21154,7 +21154,7 @@ impl State for Draft {
 struct PendingReview {}
 
 impl State for PendingReview {
-    // --snip--
+    // --생략--
 <span class="boring">    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
 </span><span class="boring">        self
 </span><span class="boring">    }
@@ -21197,7 +21197,7 @@ impl State for Published {
 </span><span class="boring">}
 </span><span class="boring">
 </span>impl Post {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn new() -&gt; Post {
 </span><span class="boring">        Post {
 </span><span class="boring">            state: Some(Box::new(Draft {})),
@@ -21212,7 +21212,7 @@ impl State for Published {
 </span>    pub fn content(&amp;self) -&gt; &amp;str {
         self.state.as_ref().unwrap().content(self)
     }
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    pub fn request_review(&amp;mut self) {
 </span><span class="boring">        if let Some(s) = self.state.take() {
@@ -21281,7 +21281,7 @@ impl State for Published {
 <p>그다음은 <code>unwrap</code>이 호출되는데, <code>Post</code>의 메서드가 완료되면
 <code>state</code>에 언제나 <code>Some</code> 값이 들어있음을 보장한다는 것을 알고
 있으므로 패닉이 발생하지 않을 것입니다. 이는 9장의
-<a href="ch09-03-to-panic-or-not-to-panic.html#cases-in-which-you-have-more-information-than-the-compiler">‘여러분이 컴파일러보다 더 많은 정보를 가진 경우’</a><!-- ignore -->
+<a href="ch09-03-to-panic-or-not-to-panic.html#cases-in-which-you-have-more-information-than-the-compiler">‘여러분이 컴파일러보다 더 많은 정보를 가지고 있을 때’</a><!-- ignore -->
 절에서 다루었던, 컴파일러는 이해할 수 없지만 <code>None</code> 값이
 절대 불가능함을 알고 있는 경우 중 한 가지
 입니다.</p>
@@ -21327,7 +21327,7 @@ impl State for Published {
 </span><span class="boring">}
 </span><span class="boring">
 </span>trait State {
-    // --snip--
+    // --생략--
 <span class="boring">    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt;;
 </span><span class="boring">    fn approve(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt;;
 </span><span class="boring">
@@ -21336,7 +21336,7 @@ impl State for Published {
     }
 }
 
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">struct Draft {}
 </span><span class="boring">
@@ -21365,7 +21365,7 @@ impl State for Published {
 </span>struct Published {}
 
 impl State for Published {
-    // --snip--
+    // --생략--
 <span class="boring">    fn request_review(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt; {
 </span><span class="boring">        self
 </span><span class="boring">    }
@@ -21395,29 +21395,29 @@ impl State for Published {
 <h4 id="열거형-쓰면-안되나요"><a class="header" href="#열거형-쓰면-안되나요">열거형 쓰면 안되나요?</a></h4>
 <p>서로 다른 가능한 게시물 상태를 배리언트로 하는 <code>enum</code>을 쓰지 않는 이유가
 궁금하실지도 모르겠습니다. 그것도 확실히 가능한 솔루션이니, 한번 시도해 보고
-그 결과를 비교해서 어떤 쪽이 더 나은지 확인해 보세요! 열거형 사용의 단점
+그 결과를 비교해서 어떤 쪽이 더 나은지 확인해 보세요! 열거형 사용의 단점 중
 하나는 열거형 값을 검사하는 모든 위치에서 가능한 모든 배리언트를 처리하기
 위하여 <code>match</code> 표현식 혹은 이와 유사한 표현식이 필요하다는 점입니다. 이는
 지금의 트레이트 객체 솔루션에 비해 더 반복적일 수 있습니다.</p>
 </blockquote>
-<h3 id="상태-패턴의-기회비용"><a class="header" href="#상태-패턴의-기회비용">상태 패턴의 기회비용</a></h3>
+<h3 id="상태-패턴의-장단점"><a class="header" href="#상태-패턴의-장단점">상태 패턴의 장단점</a></h3>
 <p>게시물이 각 상태에서 가져야 하는 다양한 종류의 동작을 캡슐화하기
 위해서 러스트로 객체 지향 상태 패턴을 충분히 구현할 수 있음을
 보았습니다. <code>Post</code>의 메서드는 이런 다양한 동작에 대해서 전혀 알지 못합니다.
 코드를 구조화한 방식에 따라, 게시된 게시물이 작동할 수 있는 서로 다른
 방식을 알기 위해서는 단 한 곳만 보면 됩니다: 바로 <code>Published</code> 구조체에서
-<code>State</code> 트레이트를 구현한 내용말이죠.</p>
-<p>만약 상태 패턴을 사용하지 않는 다른 구현을 만들려면, 대신
+<code>State</code> 트레이트를 구현한 내용을 말이죠.</p>
+<p>만약 상태 패턴을 사용하지 않는 다른 구현체를 만들려면, 대신
 <code>Post</code>의 메서드나 심지어 <code>main</code> 코드에서 <code>match</code> 표현식을 사용하여
 게시물의 상태를 검사하고 이에 따라 해야 할 행동을 변경할 수도
 있겠습니다. 이는 게시된 상태의 게시물의 모든 결과에 대해
 이해하기 위해서 여러 곳을 살펴봐야 한다는 것을 뜻합니다! 이는
-상태를 더 많이 추가할수록 각 <code>match</code> 표현식에 또 다른 갈래를 추가가
-필요하게 됩니다.</p>
+상태를 더 많이 추가할수록 각 <code>match</code> 표현식에 또 다른 갈래를
+추가해야 합니다.</p>
 <p>상태 패턴을 이용하면 <code>Post</code>의 메서드와 <code>Post</code>를 사용하는 곳에서는
 <code>match</code> 표현식을 사용할 필요가 없고, 새로운 상태를 추가하려면 그저 새로운
 구조체와 구조체에 대한 트레이트 메서드들을 구현하면 됩니다.</p>
-<p>상태 패턴을 사용하는 구현은 더 많은 기능을 추가하는 확장이 쉽습니다.
+<p>상태 패턴을 사용하는 구현은 더 많은 기능 추가를 하는 확장이 쉽습니다.
 상태 패턴을 사용하는 코드를 유지하는 것이 간단하다는 것을 확인해 보려면,
 다음 몇 가지 제안 사항을 시도해 보세요:</p>
 <ul>
@@ -21432,7 +21432,7 @@ impl State for Published {
 때문에, 일부 상태가 서로 결합해 있다는 것입니다. 만약
 <code>PendingReview</code>와 <code>Published</code> 사이에 <code>Scheduled</code>와 같은 또 다른
 상태를 추가하면, <code>PendingReview</code>의 코드를 변경하여 <code>Scheduled</code>로
-대신 전환되도록 해야 합니다. 새로운 상태의 추가할 때 <code>PendingReview</code>가
+대신 전환되도록 해야 합니다. 새로운 상태를 추가할 때 <code>PendingReview</code>가
 변경될 필요가 없었다면 작업량이 줄어들겠지만, 이는 다른 디자인
 패턴으로의 전환을 의미할 겁니다.</p>
 <p>또 다른 단점은 일부 로직이 중복된다는 점입니다. 일부 중복을 제거하기
@@ -21451,8 +21451,8 @@ impl State for Published {
 것으로는 러스트의 강점을 최대한 활용하지 못합니다. 유효하지
 않은 상태와 전환을 컴파일 타임 에러로 만들 수 있도록 <code>blog</code>
 크레이트에 적용할 수 있는 변경 사항 몇 가지를 살펴봅시다.</p>
-<h4 id="상태와-동작을-타입처럼-인코딩하기"><a class="header" href="#상태와-동작을-타입처럼-인코딩하기">상태와 동작을 타입처럼 인코딩하기</a></h4>
-<p>상태 패턴을 재고하여 다른 기회비용 세트를 얻는 방법을 보여드리겠습니다.
+<h4 id="상태와-동작을-타입으로-인코딩하기"><a class="header" href="#상태와-동작을-타입으로-인코딩하기">상태와 동작을 타입으로 인코딩하기</a></h4>
+<p>상태 패턴을 재고하여 다른 절충안을 얻는 방법을 보여드리겠습니다.
 상태와 전환을 완전히 캡슐화하여 외부 코드들이 이를 알 수 없도록 하는
 대신, 상태를 다른 타입들로 인코딩하려고 합니다. 결과적으로 러스트의 타입
 검사 시스템은 컴파일 에러를 발생시켜 게시된 게시물만 허용되는 곳에서
@@ -21554,7 +21554,7 @@ impl DraftPost {
 </span><span class="boring">}
 </span><span class="boring">
 </span>impl DraftPost {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn add_text(&amp;mut self, text: &amp;str) {
 </span><span class="boring">        self.content.push_str(text);
 </span><span class="boring">    }
@@ -21585,15 +21585,15 @@ impl PendingReviewPost {
 각각 <code>PendingReviewPost</code>와 게시된 <code>Post</code>로 변환시킵니다. 이렇게 하면
 <code>request_review</code>를 호출한 후 등등에는 <code>DraftPost</code> 인스턴스가
 남아있지 않게 될 겁니다. <code>PendingReviewPost</code> 구조체에는 <code>content</code>
-메서드가 정의되어 있지 않기 때문에, 그 콘텐츠를 읽으려는 시도는 <code>DraftPost</code>에서와
-마찬가지로 컴파일 에러를 발생시킵니다. <code>content</code> 메서드가 정의된
+메서드의 정의가 없기 때문에, 그 콘텐츠를 읽으려는 시도는 <code>DraftPost</code>에서와
+마찬가지로 컴파일 에러를 발생시킵니다. <code>content</code> 메서드가 정의되어 있는
 게시된 <code>Post</code> 인스턴스를 얻을 수 있는 유일한 방법은 <code>PendingReviewPost</code>의
 <code>approve</code> 메서드를 호출하는 것이고, <code>PendingReviewPost</code>를 얻을 수
 있는 유일한 방법은 <code>DraftPost</code>의 <code>request_review</code>를 호출하는 것이므로,
 이제 블로그 게시물의 작업 흐름을 타입 시스템으로 인코딩했습니다.</p>
 <p>또한 <code>main</code>에도 약간의 수정이 필요합니다. <code>request_review</code>와 <code>approve</code>
 메서드는 호출되고 있는 구조체를 변경하는 것이 아니라 새 인스턴스를
-반환하기 때문에, 더 많은 <code>let post =</code> 섀도잉 할당을 추가하여
+반환하기 때문에, <code>let post =</code> 섀도잉 할당을 몇번 더 추가하여
 반환되는 인스턴스를 보관해야 합니다. 또한 초안과 검토 중인 게시물의
 내용이 빈 문자열이라고 단언할 수도 없고, 단언할 필요도 없습니다: 이 상태에서
 게시물이 콘텐츠를 사용 시도하는 코드는 더 이상 컴파일되지 않습니다.
@@ -21614,20 +21614,20 @@ fn main() {
 }</code></pre>
 <p><span class="caption">예제 17-21: 새로운 블로그 게시물 작업 흐름
 구현을 사용하기 위한 <code>main</code> 수정</span></p>
-<p><code>main</code>에서 <code>post</code>의 다시 대입하기 위해 필요한 이 변경 사항은 즉 이
+<p><code>main</code>에서 <code>post</code>의 다시 대입하기 위해 필요한 이 변경 사항은 곧 이
 구현이 더 이상 객체 지향 상태 패턴을 잘 따르지 않는다는 것을 의미합니다:
 즉 상태 간의 변환이 더 이상 <code>Post</code>의 구현체 내에 모두 캡슐화되지
 않습니다. 하지만, 타입 시스템과 컴파일 타임에 일어나는 타입
 검사로 인해 유효하지 않은 상태는 이제 불가능해졌습니다!
 이는 게시되지 않은 게시물의 내용이 보인다거나 하는 특정
-버그들이 프로덕션에 적용되기 전에 발견될 것임을 보장합니다.</p>
-<p>이번 절의 시작점에서 제안되었던 작업을 예제 17-21의 <code>blog</code>
+버그들이 프로덕션에 적용되기 전에 발견될 것을 보장합니다.</p>
+<p>이번 절의 시작 지점에서 제안되었던 작업을 예제 17-21의 <code>blog</code>
 크레이트에서 그대로 시도해 보면서 이 버전의 코드 디자인에 대해
-어떻게 생각하는지 살펴보세요. 일부 작업은 이번 디자인에서 이미
+어떻게 생각하는지 확인해 보세요. 일부 작업은 이번 디자인에서 이미
 완료되었을 수도 있음을 알려드립니다. </p>
 <p>러스트에서 객체 지향 디자인 패턴의 구현이 가능할지라도, 러스트에서는
 상태를 타입 시스템으로 인코딩하는 다른 패턴도 사용할 수 있음을
-확인했습니다. 이 패턴들은 서로 다른 기회비용을 갖고 있습니다.
+확인했습니다. 이 패턴들은 서로 다른 장단점을 가지고 있습니다.
 여러분이 객체 지향 패턴에 매우 익숙할 수도 있지만, 문제를 다시
 생각하여 러스트의 기능을 활용하면 컴파일 타임에 일부 버그를 방지하는
 등의 이점을 얻을 수 있습니다. 소유권 같은 객체 지향 언어에는
@@ -21635,17 +21635,17 @@ fn main() {
 해결책이 되지는 못합니다.</p>
 <h2 id="정리-16"><a class="header" href="#정리-16">정리</a></h2>
 <p>이 장을 읽은 후 러스트가 객체 지향 언어라고 생각하든 그렇지 않든,
-여러분은 이제 트레이트 객체를 사용하여 일부 객체 지향 기능을 러스트
-내에서 사용할 수 있다는 것을 알게 되었습니다. 동적 디스패치는
-약간의 실행 성능과 맞바꿔 여러분의 코드에 유연성을 줄 수 있습니다.
-이 유연성을 사용하여 여러분의 코드의 유지보수에 도움이 되는
+여러분은 이제 트레이트 객체를 사용하여 일부 객체 지향 기능을 러스트에서
+사용할 수 있다는 것을 알게 되었습니다. 동적 디스패치는
+약간의 실행 성능과 맞바꿔 코드에 유연성을 줄 수 있습니다.
+이 유연성을 사용하여 코드의 유지보수에 도움이 되는
 객체 지행 패턴을 구현할 수 있습니다. 러스트에는 또한 소유권과 같은
 객체 지향 언어들에는 없는 다른 기능도 있습니다. 객체 지향 패턴이
 항상 러스트의 강점을 활용하는 최고의 방법은 아니겠지만, 사용할 수 있는
 옵션입니다.</p>
 <p>다음으로는 패턴을 살펴볼 것인데, 이는 높은 유연성을 제공하는 러스트의
 또 다른 기능 중 하나입니다. 이 책 전체에 걸쳐 패턴을 간단히 살펴보긴
-했지만, 아직 모든 기능을 살펴본 건 아닙니다. 가볼까요!</p>
+했지만, 아직 모든 기능을 살펴본 건 아닙니다. 가볼까요?</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="패턴과-매칭"><a class="header" href="#패턴과-매칭">패턴과 매칭</a></h1>
 <p><em>패턴 (pattern)</em> 은 복잡하거나 단순한 타입의 구조와 매칭을
 위한 러스트의 특수 문법입니다. 패턴을 <code>match</code> 표현 및 기타
@@ -23222,7 +23222,7 @@ fn main() {}</code></pre></pre>
     type Item = u32;
 
     fn next(&amp;mut self) -&gt; Option&lt;Self::Item&gt; {
-        // --snip--
+        // --생략--
 <span class="boring">        if self.count &lt; 5 {
 </span><span class="boring">            self.count += 1;
 </span><span class="boring">            Some(self.count)
@@ -23905,11 +23905,11 @@ API를 노출할 수 있습니다.</p>
 </span>    let f: Box&lt;dyn Fn() + Send + 'static&gt; = Box::new(|| println!(&quot;hi&quot;));
 
     fn takes_long_type(f: Box&lt;dyn Fn() + Send + 'static&gt;) {
-        // --snip--
+        // --생략--
     }
 
     fn returns_long_type() -&gt; Box&lt;dyn Fn() + Send + 'static&gt; {
-        // --snip--
+        // --생략--
 <span class="boring">        Box::new(|| ())
 </span>    }
 <span class="boring">}</span></code></pre></pre>
@@ -23923,11 +23923,11 @@ API를 노출할 수 있습니다.</p>
     let f: Thunk = Box::new(|| println!(&quot;hi&quot;));
 
     fn takes_long_type(f: Thunk) {
-        // --snip--
+        // --생략--
     }
 
     fn returns_long_type() -&gt; Thunk {
-        // --snip--
+        // --생략--
 <span class="boring">        Box::new(|| ())
 </span>    }
 <span class="boring">}</span></code></pre></pre>
@@ -23992,7 +23992,7 @@ pub trait Write {
 반환하지 않을 때 반환 타입을 대신하기 때문에 <em>부정 타입 (never type)</em> 이라고
 부르는 쪽이 선호됩니다. 다음은 예시입니다:</p>
 <pre><code class="language-rust noplayground">fn bar() -&gt; ! {
-    // --snip--
+    // --생략--
 <span class="boring">    panic!();
 </span>}</code></pre>
 <p>이 코드는 ‘함수 <code>bar</code>는 결코 반환하지 않습니다’라고 읽습니다. 결코 반환하지
@@ -24017,7 +24017,7 @@ pub trait Write {
 </span><span class="boring">
 </span><span class="boring">        let mut guess = String::new();
 </span><span class="boring">
-</span><span class="boring">        // --snip--
+</span><span class="boring">        // --생략--
 </span><span class="boring">
 </span><span class="boring">        io::stdin()
 </span><span class="boring">            .read_line(&amp;mut guess)
@@ -24030,7 +24030,7 @@ pub trait Write {
 <span class="boring">
 </span><span class="boring">        println!(&quot;You guessed: {guess}&quot;);
 </span><span class="boring">
-</span><span class="boring">        // --snip--
+</span><span class="boring">        // --생략--
 </span><span class="boring">
 </span><span class="boring">        match guess.cmp(&amp;secret_number) {
 </span><span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
@@ -24151,17 +24151,17 @@ pub trait Write {
 러스트는 암묵적으로 모든 제네릭 함수에 <code>Sized</code> 바운드를 추가합니다.
 즉, 다음과 같은 제네릭 함수 정의는:</p>
 <pre><code class="language-rust ignore">fn generic&lt;T&gt;(t: T) {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p>실제로는 아래와 같이 작성한 것처럼 취급됩니다:</p>
 <pre><code class="language-rust ignore">fn generic&lt;T: Sized&gt;(t: T) {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p>기본적으로 제네릭 함수는 컴파일 시점에 크기가 알려진 타입에 대해서만
 작동합니다. 그러나 다음과 같은 특별 문법을 사용하여 이 제한을 완화할
 수 있습니다:</p>
 <pre><code class="language-rust ignore">fn generic&lt;T: ?Sized&gt;(t: &amp;T) {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p><code>?Size</code> 트레이트 바운드는 ‘<code>T</code>는 <code>Sized</code>일 수도 있고 아닐 수도 있다’는 의미를
 가지며 이 문법은 제네릭 타입이 컴파일 시점에 크기가 알려진 타입이어야 한다는
@@ -24593,7 +24593,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 반환합니다. 예제 19-32는 <code>struct Pancakes;</code> 문자열을 파싱하여
 얻은 <code>DeriveInput</code> 구조체의 관련 부분을 보여줍니다:</p>
 <pre><code class="language-rust ignore">DeriveInput {
-    // --snip--
+    // --생략--
 
     ident: Ident {
         ident: &quot;Pancakes&quot;,
@@ -25097,7 +25097,7 @@ HTML 파일</span></p>
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
 };
-// --snip--
+// --생략--
 
 <span class="boring">fn main() {
 </span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
@@ -25169,7 +25169,7 @@ HTML을 반환합니다. HTML 파일을 반환하기 전에 브라우저가 <em>
 </span><span class="boring">        handle_connection(stream);
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// --snip--
+</span>// --생략--
 
 fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&amp;mut stream);
@@ -25242,7 +25242,7 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        stream.write_all(response.as_bytes()).unwrap();
-</span>    // --snip--
+</span>    // --생략--
     } else {
         let status_line = &quot;HTTP/1.1 404 NOT FOUND&quot;;
         let contents = fs::read_to_string(&quot;404.html&quot;).unwrap();
@@ -25305,10 +25305,10 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">        handle_connection(stream);
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// --snip--
+</span>// --생략--
 
 fn handle_connection(mut stream: TcpStream) {
-    // --snip--
+    // --생략--
 <span class="boring">    let buf_reader = BufReader::new(&amp;mut stream);
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span>
@@ -25366,7 +25366,7 @@ fn handle_connection(mut stream: TcpStream) {
     thread,
     time::Duration,
 };
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
@@ -25379,7 +25379,7 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">}
 </span>
 fn handle_connection(mut stream: TcpStream) {
-    // --snip--
+    // --생략--
 
 <span class="boring">    let buf_reader = BufReader::new(&amp;mut stream);
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
@@ -25393,7 +25393,7 @@ fn handle_connection(mut stream: TcpStream) {
         _ =&gt; (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;),
     };
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    let contents = fs::read_to_string(filename).unwrap();
 </span><span class="boring">    let length = contents.len();
@@ -25731,7 +25731,7 @@ error: could not compile `hello` due to previous error
 <pre><code class="language-rust noplayground"><span class="boring">pub struct ThreadPool;
 </span><span class="boring">
 </span>impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn new(size: usize) -&gt; ThreadPool {
 </span><span class="boring">        ThreadPool
 </span><span class="boring">    }
@@ -25790,7 +25790,7 @@ error: could not compile `hello` due to previous error
         ThreadPool
     }
 
-    // --snip--
+    // --생략--
 <span class="boring">    pub fn execute&lt;F&gt;(&amp;self, f: F)
 </span><span class="boring">    where
 </span><span class="boring">        F: FnOnce() + Send + 'static,
@@ -25838,7 +25838,7 @@ pub struct ThreadPool {
 }
 
 impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    /// Create a new ThreadPool.
 </span><span class="boring">    ///
 </span><span class="boring">    /// The size is the number of threads in the pool.
@@ -25857,7 +25857,7 @@ impl ThreadPool {
 
         ThreadPool { threads }
     }
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    pub fn execute&lt;F&gt;(&amp;self, f: F)
 </span><span class="boring">    where
@@ -25922,7 +25922,7 @@ pub struct ThreadPool {
 }
 
 impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    /// Create a new ThreadPool.
 </span><span class="boring">    ///
 </span><span class="boring">    /// The size is the number of threads in the pool.
@@ -25941,7 +25941,7 @@ impl ThreadPool {
 
         ThreadPool { workers }
     }
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    pub fn execute&lt;F&gt;(&amp;self, f: F)
 </span><span class="boring">    where
@@ -26021,7 +26021,7 @@ pub struct ThreadPool {
 struct Job;
 
 impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    /// Create a new ThreadPool.
 </span><span class="boring">    ///
 </span><span class="boring">    /// The size is the number of threads in the pool.
@@ -26042,7 +26042,7 @@ impl ThreadPool {
 
         ThreadPool { workers, sender }
     }
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    pub fn execute&lt;F&gt;(&amp;self, f: F)
 </span><span class="boring">    where
@@ -26082,7 +26082,7 @@ impl ThreadPool {
 </span><span class="boring">struct Job;
 </span><span class="boring">
 </span>impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    /// Create a new ThreadPool.
 </span><span class="boring">    ///
 </span><span class="boring">    /// The size is the number of threads in the pool.
@@ -26103,7 +26103,7 @@ impl ThreadPool {
 
         ThreadPool { workers, sender }
     }
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    pub fn execute&lt;F&gt;(&amp;self, f: F)
 </span><span class="boring">    where
@@ -26112,7 +26112,7 @@ impl ThreadPool {
 </span><span class="boring">    }
 </span>}
 
-// --snip--
+// --생략--
 
 <span class="boring">
 </span><span class="boring">struct Worker {
@@ -26166,7 +26166,7 @@ error: could not compile `hello` due to previous error
     sync::{mpsc, Arc, Mutex},
     thread,
 };
-// --snip--
+// --생략--
 
 <span class="boring">pub struct ThreadPool {
 </span><span class="boring">    workers: Vec&lt;Worker&gt;,
@@ -26176,7 +26176,7 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">struct Job;
 </span><span class="boring">
 </span>impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    /// Create a new ThreadPool.
 </span><span class="boring">    ///
 </span><span class="boring">    /// The size is the number of threads in the pool.
@@ -26200,7 +26200,7 @@ error: could not compile `hello` due to previous error
         ThreadPool { workers, sender }
     }
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    pub fn execute&lt;F&gt;(&amp;self, f: F)
 </span><span class="boring">    where
@@ -26209,7 +26209,7 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">    }
 </span>}
 
-// --snip--
+// --생략--
 
 <span class="boring">struct Worker {
 </span><span class="boring">    id: usize,
@@ -26218,7 +26218,7 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">
 </span>impl Worker {
     fn new(id: usize, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) -&gt; Worker {
-        // --snip--
+        // --생략--
 <span class="boring">        let thread = thread::spawn(|| {
 </span><span class="boring">            receiver;
 </span><span class="boring">        });
@@ -26250,12 +26250,12 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">    sender: mpsc::Sender&lt;Job&gt;,
 </span><span class="boring">}
 </span><span class="boring">
-</span>// --snip--
+</span>// --생략--
 
 type Job = Box&lt;dyn FnOnce() + Send + 'static&gt;;
 
 impl ThreadPool {
-    // --snip--
+    // --생략--
 <span class="boring">    /// Create a new ThreadPool.
 </span><span class="boring">    ///
 </span><span class="boring">    /// The size is the number of threads in the pool.
@@ -26289,7 +26289,7 @@ impl ThreadPool {
     }
 }
 
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">struct Worker {
 </span><span class="boring">    id: usize,
@@ -26372,7 +26372,7 @@ impl ThreadPool {
 </span><span class="boring">    thread: thread::JoinHandle&lt;()&gt;,
 </span><span class="boring">}
 </span><span class="boring">
-</span>// --snip--
+</span>// --생략--
 
 impl Worker {
     fn new(id: usize, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) -&gt; Worker {
@@ -26511,7 +26511,7 @@ Worker 2 got a job; executing.
 </span><span class="boring">    id: usize,
 </span><span class="boring">    thread: thread::JoinHandle&lt;()&gt;,
 </span><span class="boring">}
-</span>// --snip--
+</span>// --생략--
 
 impl Worker {
     fn new(id: usize, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) -&gt; Worker {
@@ -26851,7 +26851,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">
 </span>impl Worker {
     fn new(id: usize, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) -&gt; Worker {
-        // --snip--
+        // --생략--
 
 <span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
@@ -26980,7 +26980,7 @@ error: could not compile `hello` due to 2 previous errors
     workers: Vec&lt;Worker&gt;,
     sender: Option&lt;mpsc::Sender&lt;Job&gt;&gt;,
 }
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">type Job = Box&lt;dyn FnOnce() + Send + 'static&gt;;
 </span><span class="boring">
@@ -26993,7 +26993,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">    ///
 </span><span class="boring">    /// The `new` function will panic if the size is zero.
 </span>    pub fn new(size: usize) -&gt; ThreadPool {
-        // --snip--
+        // --생략--
 
 <span class="boring">        assert!(size &gt; 0);
 </span><span class="boring">

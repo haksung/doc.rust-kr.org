@@ -185,7 +185,7 @@ error: could not compile `no_type_annotations` due to previous error
 </code></pre>
 <p>다양한 데이터 타입들의 타입 명시를 살펴보겠습니다.</p>
 <h3 id="스칼라-타입"><a class="header" href="#스칼라-타입">스칼라 타입</a></h3>
-<p><em>스칼라 (scalar)</em> 타입은 하나의 값을 표현합니다. 러스트는 정수, 부동소수점 숫자, 부울린 (boolean),
+<p><em>스칼라 (scalar)</em> 타입은 하나의 값을 표현합니다. 러스트는 정수, 부동 소수점 숫자, 부울린 (boolean),
 그리고 문자, 이렇게 네 가지 스칼라 타입을 갖고 있습니다. 아마 다른 프로그래밍 언어에서도 이런 걸 본 적이
 있을 겁니다. 러스트에서는 이들이 어떤 식으로 동작하는지 살펴보도록 합시다.</p>
 <h4 id="정수형"><a class="header" href="#정수형">정수형</a></h4>
@@ -277,15 +277,15 @@ error: could not compile `no_type_annotations` due to previous error
 각각 32bit와 64bit의 크기를 갖습니다. 기본 타입은 <code>f64</code>인데, 그 이유는
 현대의 CPU 상에서 <code>f64</code>가 <code>f32</code>와 대략 비슷한 속도를 내면서도 더 정밀하기
 때문입니다. 모든 부동 소수점 타입은 부호가 있습니다.</p>
-<p>다음은 부동소수점 숫자의 용례입니다:</p>
+<p>다음은 부동 소수점 숫자의 용례입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 2.0; // f64
 
     let y: f32 = 3.0; // f32
 }</code></pre></pre>
-<p>부동소수점 숫자는 IEEE-754 표준을 따릅니다. <code>f32</code> 타입은 1배 수 정밀도 (single-precision) 인
-부동소수점이고, <code>f64</code>는 2배 수 정밀도 (double-precision) 입니다.</p>
+<p>부동 소수점 숫자는 IEEE-754 표준을 따릅니다. <code>f32</code> 타입은 1배 수 정밀도 (single-precision) 인
+부동 소수점이고, <code>f64</code>는 2배 수 정밀도 (double-precision) 입니다.</p>
 <h4 id="수치-연산"><a class="header" href="#수치-연산">수치 연산</a></h4>
 <p>러스트는 모든 숫자 타입에 대해서 여러분이 예상할 수 있는 기본 수학 연산 기능을
 제공합니다: 더하기, 빼기, 곱하기, 나누기 등등을 말이죠. 정수 나눗셈은 가장

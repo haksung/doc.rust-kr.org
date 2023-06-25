@@ -277,12 +277,12 @@ fn main() {
 use std::io;
 
 fn function1() -&gt; fmt::Result {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}
 
 fn function2() -&gt; io::Result&lt;()&gt; {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}
 <span class="boring">}</span></code></pre></pre>
@@ -302,12 +302,12 @@ fn function2() -&gt; io::Result&lt;()&gt; {
 use std::io::Result as IoResult;
 
 fn function1() -&gt; Result {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}
 
 fn function2() -&gt; IoResult&lt;()&gt; {
-    // --snip--
+    // --생략--
 <span class="boring">    Ok(())
 </span>}</code></pre>
 <p><span class="caption">예제 7-16: 스코프 안으로 가져온 타입의 이름을
@@ -417,10 +417,10 @@ fn main() {
 다음 두 <code>use</code> 문은 <code>std</code> 내 아이템을 스코프로 가져옵니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use rand::Rng;
-</span>// --snip--
+</span>// --생략--
 use std::cmp::Ordering;
 use std::io;
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    println!(&quot;Guess the number!&quot;);
@@ -451,9 +451,9 @@ use std::io;
 예시는 예제 7-18과 같습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore"><span class="boring">use rand::Rng;
-</span>// --snip--
+</span>// --생략--
 use std::{cmp::Ordering, io};
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    println!(&quot;Guess the number!&quot;);

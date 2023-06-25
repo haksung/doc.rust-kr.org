@@ -297,7 +297,7 @@
         process::exit(1);
     });
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    if let Err(e) = minigrep::run(config) {
 </span><span class="boring">        eprintln!(&quot;Application error: {e}&quot;);
@@ -319,7 +319,7 @@
         process::exit(1);
     });
 
-    // --snip--
+    // --생략--
 <span class="boring">
 </span><span class="boring">    if let Err(e) = minigrep::run(config) {
 </span><span class="boring">        eprintln!(&quot;Application error: {e}&quot;);
@@ -351,7 +351,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
     pub fn build(
         mut args: impl Iterator&lt;Item = String&gt;,
     ) -&gt; Result&lt;Config, &amp;'static str&gt; {
-        // --snip--
+        // --생략--
 <span class="boring">        if args.len() &lt; 3 {
 </span><span class="boring">            return Err(&quot;not enough arguments&quot;);
 </span><span class="boring">        }

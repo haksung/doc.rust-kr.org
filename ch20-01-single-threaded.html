@@ -467,7 +467,7 @@ HTML 파일</span></p>
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
 };
-// --snip--
+// --생략--
 
 <span class="boring">fn main() {
 </span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
@@ -539,7 +539,7 @@ HTML을 반환합니다. HTML 파일을 반환하기 전에 브라우저가 <em>
 </span><span class="boring">        handle_connection(stream);
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// --snip--
+</span>// --생략--
 
 fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&amp;mut stream);
@@ -612,7 +612,7 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        stream.write_all(response.as_bytes()).unwrap();
-</span>    // --snip--
+</span>    // --생략--
     } else {
         let status_line = &quot;HTTP/1.1 404 NOT FOUND&quot;;
         let contents = fs::read_to_string(&quot;404.html&quot;).unwrap();
@@ -675,10 +675,10 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">        handle_connection(stream);
 </span><span class="boring">    }
 </span><span class="boring">}
-</span>// --snip--
+</span>// --생략--
 
 fn handle_connection(mut stream: TcpStream) {
-    // --snip--
+    // --생략--
 <span class="boring">    let buf_reader = BufReader::new(&amp;mut stream);
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span>

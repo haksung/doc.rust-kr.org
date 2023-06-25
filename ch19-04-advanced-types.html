@@ -222,11 +222,11 @@ API를 노출할 수 있습니다.</p>
 </span>    let f: Box&lt;dyn Fn() + Send + 'static&gt; = Box::new(|| println!(&quot;hi&quot;));
 
     fn takes_long_type(f: Box&lt;dyn Fn() + Send + 'static&gt;) {
-        // --snip--
+        // --생략--
     }
 
     fn returns_long_type() -&gt; Box&lt;dyn Fn() + Send + 'static&gt; {
-        // --snip--
+        // --생략--
 <span class="boring">        Box::new(|| ())
 </span>    }
 <span class="boring">}</span></code></pre></pre>
@@ -240,11 +240,11 @@ API를 노출할 수 있습니다.</p>
     let f: Thunk = Box::new(|| println!(&quot;hi&quot;));
 
     fn takes_long_type(f: Thunk) {
-        // --snip--
+        // --생략--
     }
 
     fn returns_long_type() -&gt; Thunk {
-        // --snip--
+        // --생략--
 <span class="boring">        Box::new(|| ())
 </span>    }
 <span class="boring">}</span></code></pre></pre>
@@ -309,7 +309,7 @@ pub trait Write {
 반환하지 않을 때 반환 타입을 대신하기 때문에 <em>부정 타입 (never type)</em> 이라고
 부르는 쪽이 선호됩니다. 다음은 예시입니다:</p>
 <pre><code class="language-rust noplayground">fn bar() -&gt; ! {
-    // --snip--
+    // --생략--
 <span class="boring">    panic!();
 </span>}</code></pre>
 <p>이 코드는 ‘함수 <code>bar</code>는 결코 반환하지 않습니다’라고 읽습니다. 결코 반환하지
@@ -334,7 +334,7 @@ pub trait Write {
 </span><span class="boring">
 </span><span class="boring">        let mut guess = String::new();
 </span><span class="boring">
-</span><span class="boring">        // --snip--
+</span><span class="boring">        // --생략--
 </span><span class="boring">
 </span><span class="boring">        io::stdin()
 </span><span class="boring">            .read_line(&amp;mut guess)
@@ -347,7 +347,7 @@ pub trait Write {
 <span class="boring">
 </span><span class="boring">        println!(&quot;You guessed: {guess}&quot;);
 </span><span class="boring">
-</span><span class="boring">        // --snip--
+</span><span class="boring">        // --생략--
 </span><span class="boring">
 </span><span class="boring">        match guess.cmp(&amp;secret_number) {
 </span><span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
@@ -468,17 +468,17 @@ pub trait Write {
 러스트는 암묵적으로 모든 제네릭 함수에 <code>Sized</code> 바운드를 추가합니다.
 즉, 다음과 같은 제네릭 함수 정의는:</p>
 <pre><code class="language-rust ignore">fn generic&lt;T&gt;(t: T) {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p>실제로는 아래와 같이 작성한 것처럼 취급됩니다:</p>
 <pre><code class="language-rust ignore">fn generic&lt;T: Sized&gt;(t: T) {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p>기본적으로 제네릭 함수는 컴파일 시점에 크기가 알려진 타입에 대해서만
 작동합니다. 그러나 다음과 같은 특별 문법을 사용하여 이 제한을 완화할
 수 있습니다:</p>
 <pre><code class="language-rust ignore">fn generic&lt;T: ?Sized&gt;(t: &amp;T) {
-    // --snip--
+    // --생략--
 }</code></pre>
 <p><code>?Size</code> 트레이트 바운드는 ‘<code>T</code>는 <code>Sized</code>일 수도 있고 아닐 수도 있다’는 의미를
 가지며 이 문법은 제네릭 타입이 컴파일 시점에 크기가 알려진 타입이어야 한다는

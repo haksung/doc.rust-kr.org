@@ -455,7 +455,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">
 </span>impl Worker {
     fn new(id: usize, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) -&gt; Worker {
-        // --snip--
+        // --생략--
 
 <span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
@@ -584,7 +584,7 @@ error: could not compile `hello` due to 2 previous errors
     workers: Vec&lt;Worker&gt;,
     sender: Option&lt;mpsc::Sender&lt;Job&gt;&gt;,
 }
-// --snip--
+// --생략--
 <span class="boring">
 </span><span class="boring">type Job = Box&lt;dyn FnOnce() + Send + 'static&gt;;
 </span><span class="boring">
@@ -597,7 +597,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">    ///
 </span><span class="boring">    /// The `new` function will panic if the size is zero.
 </span>    pub fn new(size: usize) -&gt; ThreadPool {
-        // --snip--
+        // --생략--
 
 <span class="boring">        assert!(size &gt; 0);
 </span><span class="boring">

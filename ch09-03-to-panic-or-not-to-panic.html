@@ -286,7 +286,7 @@ IP 주소가 다른 곳으로부터 가져올 필요가 생길 경우 <code>expe
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
 </span>    loop {
-        // --snip--
+        // --생략--
 
 <span class="boring">        println!(&quot;Please input your guess.&quot;);
 </span><span class="boring">
@@ -307,7 +307,7 @@ IP 주소가 다른 곳으로부터 가져올 필요가 생길 경우 <code>expe
         }
 
         match guess.cmp(&amp;secret_number) {
-            // --snip--
+            // --생략--
 <span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
 </span><span class="boring">            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
 </span><span class="boring">            Ordering::Equal =&gt; {

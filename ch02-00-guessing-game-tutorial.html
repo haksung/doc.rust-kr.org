@@ -376,9 +376,9 @@ let mut bananas= 5; // mutable</code></pre>
 있기 때문에 이 문자열 인수는 가변이어야 합니다.</p>
 <p><code>&amp;</code>는 코드의 여러 부분에서 데이터를 여러 번 메모리로 복사하지 않고
 접근하기 위한 방법을 제공하는 <em>참조자 (reference)</em> 임을 나타냅니다.
-참조자는 복잡한 기능이고, 러스트의 큰 이점 중 하나가 바로
+참조는 복잡한 기능이고, 러스트의 큰 이점 중 하나가 바로
 참조자를 사용할 때의 안전성과 편의성입니다. 이 프로그램을
-작성하기 위해 참조자에 대한 자세한 내용을 알 필요는 없습니다.
+작성하기 위해 참조에 대한 자세한 내용을 알 필요는 없습니다.
 지금 당장은 참조자가 변수처럼 기본적으로 불변임을 알기만 하면 됩니다.
 따라서 <code>&amp;guess</code>가 아니라 <code>&amp;mut guess</code>로 작성하여
 가변으로 만들 필요가 있습니다.
@@ -743,7 +743,7 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    // --snip--
+    // --생략--
 <span class="boring">    println!(&quot;Guess the number!&quot;);
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
@@ -857,7 +857,7 @@ error: could not compile `guessing_game` due to previous error
 </span><span class="boring">
 </span><span class="boring">    println!(&quot;Please input your guess.&quot;);
 </span><span class="boring">
-</span>    // --snip--
+</span>    // --생략--
 
     let mut guess = String::new();
 
@@ -955,14 +955,14 @@ Too big!
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
-</span>    // --snip--
+</span>    // --생략--
 
     println!(&quot;The secret number is: {secret_number}&quot;);
 
     loop {
         println!(&quot;Please input your guess.&quot;);
 
-        // --snip--
+        // --생략--
 
 <span class="boring">
 </span><span class="boring">        let mut guess = String::new();
@@ -1053,7 +1053,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">
 </span><span class="boring">        println!(&quot;You guessed: {guess}&quot;);
 </span><span class="boring">
-</span>        // --snip--
+</span>        // --생략--
 
         match guess.cmp(&amp;secret_number) {
             Ordering::Less =&gt; println!(&quot;Too small!&quot;),
@@ -1090,7 +1090,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">
 </span><span class="boring">        let mut guess = String::new();
 </span><span class="boring">
-</span>        // --snip--
+</span>        // --생략--
 
         io::stdin()
             .read_line(&amp;mut guess)
@@ -1103,7 +1103,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
         println!(&quot;You guessed: {guess}&quot;);
 
-        // --snip--
+        // --생략--
 <span class="boring">
 </span><span class="boring">        match guess.cmp(&amp;secret_number) {
 </span><span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
