@@ -3926,15 +3926,15 @@ error: could not compile `ownership` due to previous error
 코드에 숨어 있는 버그를 런타임이 아닌 컴파일 타임에 일찌감치 찾아내어
 어느 부분이 문제인지 정확히 집어주는 기능이란 점을 기억해주세요. 이렇게
 하면 원하는 데이터가 나오지 않는 원인을 하나하나 추적하지 않아도 됩니다.</p>
-<h3 id="댕글링-참조자"><a class="header" href="#댕글링-참조자">댕글링 참조자</a></h3>
+<h3 id="댕글링-참조"><a class="header" href="#댕글링-참조">댕글링 참조</a></h3>
 <p><em>댕글링 포인터 (dangling pointer)</em> 란, 어떤 메모리를 가리키는
 포인터가 남아있는 상황에서 일부 메모리를 해제해 버림으로써,
 다른 개체가 할당받았을지도 모르는 메모리를 참조하게 된 포인터를 말합니다.
 포인터가 있는 언어에서는 자칫 잘못하면 이 댕글링 포인터를 만들기 쉽죠.
 하지만 러스트에서는 어떤 데이터의 참조자를 만들면, 해당 참조자가 스코프를
 벗어나기 전에 데이터가 먼저 스코프를 벗어나는지 컴파일러에서 확인하여
-댕글링 참조자가 생성되지 않도록 보장합니다.</p>
-<p>댕글링 참조자를 만들어서 러스트가 어떤 식으로 이것을 컴파일 타임에
+댕글링 참조가 생성되지 않도록 보장합니다.</p>
+<p>댕글링 참조를 만들어서 러스트가 어떤 식으로 이것을 컴파일 타임에
 방지하는지 살펴봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
@@ -10285,9 +10285,9 @@ impl&lt;T: Display + PartialOrd&gt; Pair&lt;T&gt; {
 개념이며, 따라서 친숙하지 않은 느낌이 들 것입니다. 이번 장에서 라이프타임의
 모든 것을 다루지는 않겠지만, 라이프타임이라는 개념에 익숙해질 수 있도록 여러분이
 접하게 될 일반적인 방식의 라이프타임 문법만 다루겠습니다.</p>
-<h3 id="라이프타임으로-댕글링-참조자-방지하기"><a class="header" href="#라이프타임으로-댕글링-참조자-방지하기">라이프타임으로 댕글링 참조자 방지하기</a></h3>
-<p>라이프타임의 주목적은 <em>댕글링 참조자 (dangling reference)</em> 방지입니다.
-댕글링 참조자는 프로그램이 참조하려고 한 데이터가 아닌
+<h3 id="라이프타임으로-댕글링-참조-방지하기"><a class="header" href="#라이프타임으로-댕글링-참조-방지하기">라이프타임으로 댕글링 참조 방지하기</a></h3>
+<p>라이프타임의 주목적은 <em>댕글링 참조 (dangling reference)</em> 방지입니다.
+댕글링 참조는 프로그램이 참조하려고 한 데이터가 아닌
 엉뚱한 데이터를 참조하게 되는 원인입니다. 예제 10-16처럼
 안쪽 스코프와 바깥쪽 스코프를 갖는 프로그램을 생각해 봅시다:</p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
@@ -10361,7 +10361,7 @@ error: could not compile `chapter10` due to previous error
 <code>'a</code> 라이프타임을 갖는 <code>r</code>이 <code>'b</code> 라이프타임을 갖는 메모리를 참조하고 있음을 인지합니다.
 하지만 <code>'b</code>가 <code>'a</code>보다 짧으니, 즉 참조 대상이 참조자보다
 오래 살지 못하니 러스트 컴파일러는 이 프로그램을 컴파일하지 않습니다.</p>
-<p>예제 10-18은 댕글링 참조자를 만들지 않고 정상적으로
+<p>예제 10-18은 댕글링 참조를 만들지 않고 정상적으로
 컴파일되도록 수정한 코드입니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 5;            // ----------+-- 'b
@@ -10648,7 +10648,7 @@ error: could not compile `chapter10` due to previous error
 함수 매개변수 중 하나와 일치해야 합니다.
 반환할 참조자가 함수 매개변수중 하나를 참조하지 <em>않을</em> 유일한 가능성은
 함수 내부에서 만들어진 값의 참조자를 반환하는 경우입니다.
-하지만 이 값은 함수가 끝나는 시점에 스코프를 벗어나므로 댕글링 참조자가
+하지만 이 값은 함수가 끝나는 시점에 스코프를 벗어나므로 댕글링 참조가
 될 것입니다. 다음과 같이 <code>longest</code> 함수를 구현하면 컴파일할 수
 없습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -10681,8 +10681,8 @@ error: could not compile `chapter10` due to previous error
 </code></pre>
 <p><code>result</code>는  <code>longest</code> 함수가 끝나면서 스코프를 벗어나 정리되는데,
 함수에서 <code>result</code>의 참조자를 반환하려고 하니 문제가 발생합니다.
-여기서 댕글링 참조자가 발생하지 않도록 라이프타임 매개변수를 지정할 방법은 없습니다.
-그리고 러스트는 댕글링 참조자를 생성하는 코드를 눈감아주지 않죠.
+여기서 댕글링 참조가 발생하지 않도록 라이프타임 매개변수를 지정할 방법은 없습니다.
+그리고 러스트는 댕글링 참조를 생성하는 코드를 눈감아주지 않죠.
 이런 상황을 해결하는 가장 좋은 방법은 참조자 대신 값의 소유권을 갖는
 데이터 타입을 반환하여 함수를 호출한 함수 측에서
 값을 정리하도록 하는 것입니다.</p>
@@ -10918,7 +10918,7 @@ fn main() {
 하지만 어떤 참조자를 <code>'static</code>으로 지정하기 전에 해당 참조자가 반드시
 프로그램의 전체 라이프타임동안 유지되어야만 하는 참조자인지, 그리고 그것이
 진정 원하는 것인지 고민해 보라고 당부하고 싶습니다. <code>'static</code> 라이프타임을
-제안하는 에러 메시지는 대부분의 경우 댕글링 참조자를 만들다가 발생하거나, 사용
+제안하는 에러 메시지는 대부분의 경우 댕글링 참조를 만들다가 발생하거나, 사용
 가능한 라이프타임이 잘못 짝지어져서 발생합니다. 이러한 경우 바람직한 해결책은
 그런 문제를 고치는 것이지, <code>'static</code> 라이프타임이 아닙니다.</p>
 <h2 id="제네릭-타입-매개변수-트레이트-바운드-라이프타임을-한-곳에-사용해-보기"><a class="header" href="#제네릭-타입-매개변수-트레이트-바운드-라이프타임을-한-곳에-사용해-보기">제네릭 타입 매개변수, 트레이트 바운드, 라이프타임을 한 곳에 사용해 보기</a></h2>
@@ -10967,7 +10967,7 @@ where
 이제 다양한 상황에 맞게 작동하는 코드를 중복 없이 작성할 수 있겠군요.
 제네릭 타입 매개변수로는 다양한 타입으로 작동하는 코드를 작성할 수 있고,
 트레이트와 트레이트 바운드로는 제네릭 타입을 다루면서도 코드에서 필요한 특정 동작을 보장할 수 있습니다.
-라이프타임을 명시하면 이런 유연한 코드를 작성하면서도 댕글링 참조자가 발생할 일이 없습니다.
+라이프타임을 명시하면 이런 유연한 코드를 작성하면서도 댕글링 참조가 발생할 일이 없습니다.
 그리고, 이 모든 것들은 컴파일 타임에 분석되어
 런타임 성능에 전혀 영향을 주지 않습니다!</p>
 <p>이번 장에서 다룬 주제들에서 더 배울 내용이 남았다고 하면 믿어지시나요?
@@ -22694,15 +22694,15 @@ error: could not compile `patterns` due to previous error
 <p>이 장에서 다룰 것들입니다:</p>
 <ul>
 <li>안전하지 않은 러스트: 러스트가 보증하는 것의 일부를 거부하고 해당 보증을
-수동으로 유지하는 것에 대한 착임을 지는 방법</li>
-<li>고급 트레이트: 트레이트와 관련된 연관 타입, 기본 타입 매개변수, 완전 정규화
-(fully qualified) 문법, 슈퍼트레이트 (supertrait), 뉴타입 (newtype) 패턴</li>
-<li>고급 타입: 뉴타입 패턴, 타입 별칭 (alias), 부정 (never) 타입,
+수동으로 유지하는 것에 대한 책임을 지는 방법</li>
+<li>고급 트레이트: 트레이트와 관련된 연관 타입, 기본 타입 매개변수, 완전 정규화 문법
+(fully qualified syntax), 슈퍼트레이트 (supertrait), 뉴타입 패턴 (newtype pattern)</li>
+<li>고급 타입: 뉴타입 패턴, 타입 별칭 (type alias), 부정 타입 (never type),
 동적 크기 타입 (dynamically sized type) 에 대한 더 많은 정보</li>
 <li>고급 함수 및 클로저: 함수 포인터와 클로저 반환하기</li>
 <li>매크로: 코드를 컴파일 타임에 만들어 내는 코드를 정의하는 방법</li>
 </ul>
-<p>모두를 위한 다양한 러스트 기능들이 총결집되어 있습니다! 뛰어들어 볼까요!</p>
+<p>모두를 위한 다양한 러스트 기능들이 총결집되어 있습니다! 뛰어들어 볼까요?</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="안전하지-않은-러스트"><a class="header" href="#안전하지-않은-러스트">안전하지 않은 러스트</a></h2>
 <p>지금까지 살펴본 모든 코드에는 컴파일 타임에 러스트의 메모리 안전 보장이
 적용되었습니다. 그러나 러스트에는 이러한 메모리 안전 보장을 적용하지 않는
@@ -22713,10 +22713,10 @@ error: could not compile `patterns` due to previous error
 않은 프로그램을 허용하는 것보다 일부 유효한 프로그램을 거부하는 것이 더 낫습니다.
 코드가 <em>아마도</em> 괜찮을 수 있겠지만, 러스트 컴파일러는 확신할 수 있는 정보가
 충분하지 않다면 코드를 거부할 것입니다. 이러한 경우, 안전하지 않은 코드를
-사용하여 컴파일러에 ‘날 믿어, 내가 뭘 하고 있는지 알고 있어’라고 말할 수
+사용하여 컴파일러에게 ‘날 믿어, 내가 뭘 하고 있는지 알고 있어’라고 말할 수
 있습니다. 하지만, 안전하지 않은 러스트를 사용하는 것은 사용자의 책임하에 사용해야
-한다는 점에 유의하시기를 바랍니다: 안전하지 않은 코드를 잘못 사용하면, 널 포인터
-역참조와 같은 메모리 안전하지 않은 문제로 인해 문제가 발생할 수 있습니다.</p>
+한다는 점에 유의하시기를 바랍니다: 안전하지 않은 코드를 잘못 사용하면, 메모리
+불안정성으로 인하여 널 포인터 역참조와 같은 문제가 발생할 수 있습니다.</p>
 <p>러스트가 안전하지 않은 분신을 가진 또 다른 이유는 밑바탕이 되는 컴퓨터
 하드웨어가 본질적으로 안전하지 않기 때문입니다. 러스트가 안전하지 않은
 작업을 허용하지 않으면, 특정 작업을 수행할 수 없습니다. 러스트는 운영
@@ -22725,8 +22725,8 @@ error: could not compile `patterns` due to previous error
 이 언어의 목표 중 하나입니다. 안전하지 않은 러스트로 할 수 있는 작업과
 그 방법을 살펴봅시다.</p>
 <h3 id="안전하지-않은-슈퍼파워"><a class="header" href="#안전하지-않은-슈퍼파워">안전하지 않은 슈퍼파워</a></h3>
-<p>안전하지 않은 Rust로 전환하려면 <code>unsafe</code> 키워드를 사용한 다음 안전하지
-않은 코드가 들어있는 새 블록을 시작하세요. 안전하지 않은 러스트에서는
+<p>안전하지 않은 러스트로 전환하려면 <code>unsafe</code> 키워드를 사용한 다음 새 블록을
+시작하여 안전하지 않은 코드를 집어넣으세요. 안전하지 않은 러스트에서는
 <em>안전하지 않은 슈퍼파워</em>라고 부르는 다섯 가지 작업을 수행할 수 있습니다.
 이러한 슈퍼파워에는 다음과 같은 기능이 포함됩니다:</p>
 <ul>
@@ -22745,7 +22745,7 @@ error: could not compile `patterns` due to previous error
 메모리 안전에 문제가 있다는 것을 의미하지 않습니다: 그 의도는
 <code>unsafe</code> 블록 내부의 코드가 유효한 방식으로 메모리에 접근하도록
 프로그래머가 보장해야 한다는 것입니다.</p>
-<p>사람은 누구나 실수를 할 수 있고 실수는 일어나지만, 이 다섯 가지
+<p>사람은 누구나 실수를 할 수 있고 실수는 일어나기 마련이지만, 이 다섯 가지
 안전하지 않은 연산을 <code>unsafe</code>로 주석 처리된 블록 안에 넣도록 하면
 메모리 안전과 관련된 모든 에러는 <code>unsafe</code> 블록 안에 있을 수밖에
 없음을 알 수 있습니다. <code>unsafe</code> 블록을 작게 유지하세요; 나중에 메모리
@@ -22761,13 +22761,13 @@ error: could not compile `patterns` due to previous error
 <p>다섯 개의 안전하지 않은 슈퍼파워를 차례대로 살펴봅시다. 또한 안전하지 않은 코드에
 안전한 인터페이스를 제공하는 추상화도 일부 살펴보겠습니다.</p>
 <h3 id="원시-포인터-역참조하기"><a class="header" href="#원시-포인터-역참조하기">원시 포인터 역참조하기</a></h3>
-<p>4장의 <a href="ch04-02-references-and-borrowing.html#dangling-references">‘댕글링 참조’</a><!-- ignore --> 절에서
+<p>4장의 <a href="ch04-02-references-and-borrowing.html#dangling-references">‘댕글링 참조’</a><!-- ignore -->절에서
 컴파일러가 참조가 항상 유효하다는 것을 보장한다고 언급했습니다.
 안전하지 않은 러스트에는 참조와 유사한 <em>원시 포인터 (raw pointer)</em> 라는
 두 가지 새로운 타입이 있습니다. 참조자와 마찬가지로 원시 포인터는
 불변 또는 가변이며 각각 <code>*const T</code>와 <code>*mut T</code>로 작성됩니다.
 별표는 역참조 연산자가 아니라 타입 이름의 일부입니다. 원시 포인터의
-컨텍스트에서 <em>불변</em>은 포인터가 역참조된 후에 직접 할당할 수 없음을
+맥락에서 <em>불변</em>이란 포인터가 역참조된 후에 직접 할당할 수 없음을
 의미합니다.</p>
 <p>참조자와 스마트 포인터와는 다르게 원시 포인터는 다음과 같은 특징이 있습니다:</p>
 <ul>
@@ -22827,7 +22827,7 @@ error: could not compile `patterns` due to previous error
 <p><span class="caption">예제 19-3: <code>unsafe</code> 블록 내에서 원시 포인터
 역참조하기</span></p>
 <p>포인터를 생성하는 것은 아무런 해를 끼치지 않습니다; 포인터가 가리키는 값에 접근하려고
-할 때 유효하지 않은 값을 처리해야 할 수도 있는 경우에 문제가 되는 것입니다.</p>
+할 때 유효하지 않은 값을 처리해야 할 수도 있는 경우가 문제를 일으키는 것입니다.</p>
 <p>또한 예제 19-1과 19-3에서는 <code>*const i32</code>와 <code>*mut i32</code> 원시 포인터를
 생성했는데, 이 두 포인터는 모두 <code>num</code>이 저장된 동일한 메모리 위치를
 가리키는 것을 주의하세요. 대신 <code>num</code>에 대한 불변 참조자와 가변 참조자를
@@ -22880,7 +22880,7 @@ error: could not compile `unsafe-example` due to previous error
 함수를 올바르게 사용하는 방법을 이해했으며, 해당 함수의 계약서를
 이행하고 있음을 확인한다고 러스트에게 단언하는 꼴입니다.</p>
 <p>안전하지 않은 함수의 본문은 사실상 <code>unsafe</code> 블록이므로, 안전하지 않은 함수
-내에서 다른 안전하지 않은 연산을 수행하기 위해 다른 <code>unsafe</code> 블록을 추가할
+내에서 안전하지 않은 연산을 수행하기 위해 또 <code>unsafe</code> 블록을 추가할
 필요는 없습니다.</p>
 <h4 id="안전하지-않은-코드를-감싸는-안전한-추상화-만들기"><a class="header" href="#안전하지-않은-코드를-감싸는-안전한-추상화-만들기">안전하지 않은 코드를 감싸는 안전한 추상화 만들기</a></h4>
 <p>함수에 안전하지 않은 코드가 포함되어 있다고 해서 전체 함수를 안전하지 않은
@@ -23054,8 +23054,8 @@ fn main() {
 <code>extern</code> 키워드를 추가하고 관련 함수에 대한 <code>fn</code> 키워드 바로 앞에
 사용할 ABI를 지정합니다. 또한 <code>#[no_mangle]</code> 어노테이션을 추가하여
 러스트 컴파일러가 이 함수의 이름을 맹글링하지 않도록 지시해야 합니다.
-<em>맹글링 (mangling)</em> 이란 컴파일러가 우리가 함수에 부여한 이름을 컴파일
-프로세스의 다른 부분에서 사용할 수 있도록 더 많은 정보를 포함하지만 사람이
+<em>맹글링 (mangling)</em> 이란 우리가 함수에 부여한 이름을 컴파일러가 컴파일
+과정의 다른 부분에서 사용할 수 있도록 더 많은 정보를 포함하지만 사람이
 읽기엔 불편한 다른 이름으로 변경하는 것을 말합니다. 모든 프로그래밍 언어
 컴파일러는 이름을 조금씩 다르게 변경하므로, 다른 언어에서 러스트 함수의 이름을
 불리도록 하려면 러스트 컴파일러의 이름 맹글링 기능을 비활성화해야 합니다.</p>
@@ -23086,14 +23086,14 @@ fn main() {
 <p><span class="caption">예제 19-9: 불변 정적 변수의 정의 및
 사용</span></p>
 <p>정적 변수는 3장의
-<a href="ch03-01-variables-and-mutability.html#constants">‘변수와 상수의 차이점’</a><!-- ignore -->에서
+<a href="ch03-01-variables-and-mutability.html#constants">‘상수’</a><!-- ignore -->절에서
 다루었던 상수와 유사합니다. 정적 변수의 이름은 관례적으로
 <code>SCREAMING_SNAKE_CASE</code>를 사용합니다. 정적 변수는 <code>'static</code>
 라이프타임을 가진 참조자만 저장할 수 있으며, 이는 러스트
 컴파일러가 라이프타임을 알아낼 수 있으므로 명시적으로 어노테이션할
 필요가 없음을 의미합니다. 불변 정적 변수에 접근하는 것은
 안전합니다.</p>
-<p>상수와 불변 정적 변수의 미묘한 차이점은 정적 변수의 값은
+<p>상수와 불변 정적 변수의 미묘한 차이점은 정적 변수의 값이
 메모리에 고정된 주소를 갖는다는 점입니다. 값을 사용하면
 항상 동일한 데이터에 접근할 수 있습니다. 반면 상수는 사용할
 때마다 데이터가 복제될 수 있습니다. 또 다른 차이점은 정적 변수가
@@ -23121,7 +23121,7 @@ fn main() {
 <p>일반적인 변수와 마찬가지로 <code>mut</code> 키워드를 사용하여 가변성을 지정합니다.
 <code>COUNTER</code>를 읽거나 쓰는 모든 코드는 <code>unsafe</code> 블록 내에 있어야 합니다.
 이 코드는 싱글스레드이기 때문에 예상대로 <code>COUNTER: 3</code>을 컴파일하고
-출력합니다. 여러 스레드가 <code>COUNTER</code>에 전근하면 데이터 경합이 발생할
+출력합니다. 여러 스레드가 <code>COUNTER</code>에 접근하면 데이터 경합이 발생할
 수 있습니다.</p>
 <p>전역적으로 접근할 수 있는 가변 데이터의 경우 데이터 경합이 발생하지 않도록
 보장하기가 어려우며, 이것이 러스트가 가변 정적 변수를 안전하지 않은 것으로
@@ -23147,8 +23147,8 @@ fn main() {}</code></pre></pre>
 정의 및 구현</span></p>
 <p><code>unsafe impl</code>을 사용하면 컴파일러가 확인할 수 없는 불변성은 우리가
 지키겠다는 약속을 하는 것입니다.</p>
-<p>예를 들어, 16장의 <a href="ch16-04-extensible-concurrency-sync-and-send.html#extensible-concurrency-with-the-sync-and-send-traits">‘<code>Sync</code>와 <code>Send</code> 트레이트를 이용한 확장 가능한
-동시성’</a><!-- ignore --> 절에서
+<p>예를 들어, 16장의
+<a href="ch16-04-extensible-concurrency-sync-and-send.html#extensible-concurrency-with-the-sync-and-send-traits">‘<code>Sync</code>와 <code>Send</code> 트레이트를 이용한 확장 가능한 동시성’</a><!-- ignore -->절에서
 설명한 <code>Sync</code> 및 <code>Send</code> 마커 트레이트를 상기해 봅시다: 타입이
 <code>Send</code> 및 <code>Sync</code> 타입으로만 구성된 경우에는 컴파일러가
 이러한 트레이트를 자동으로 구현합니다. 원시 포인터와 같이
@@ -23313,7 +23313,7 @@ fn main() {
 }
 <span class="boring">}</span></code></pre></pre>
 <p>이 코드는 일반적으로 익숙해 보일 것입니다: 하나의 메서드와 연관된 타입이 있는
-트레이트가라는 점이 말이지요. 새로운 부분은 <code>Rhs=Self</code>입니다: 이 문법을
+트레이트라는 점이 말이지요. 새로운 부분은 <code>Rhs=Self</code>입니다: 이 문법을
 <em>기본 타입 매개변수 (default type parameter)</em> 라고 합니다. <code>Rhs</code> 기본 타입
 매개변수는 (‘오른쪽 (right hand side)’의 줄임말) <code>add</code> 메서드에서 <code>rhs</code>
 매개변수의 타입을 정의합니다. <code>Add</code> 트레이트를 구현할 때 <code>Rhs</code>에 대한 구체적
@@ -23840,8 +23840,8 @@ fn main() {
 타입과 동적 크기 타입 (dynamically sized type) 에 대해서도 설명합니다.</p>
 <h3 id="타입-안전성과-추상화를-위한-뉴타입-패턴-사용하기"><a class="header" href="#타입-안전성과-추상화를-위한-뉴타입-패턴-사용하기">타입 안전성과 추상화를 위한 뉴타입 패턴 사용하기</a></h3>
 <blockquote>
-<p>Note: 이 절은 여러분이 이전 절
-<a href="ch19-03-advanced-traits.html#using-the-newtype-pattern-to-implement-external-traits-on-external-types">‘뉴타입 패턴을 사용하여 외부 타입에 외부 트레이트 구현하기’</a><!-- ignore -->을
+<p>Note: 이 절은 여러분이 이전에 나온
+<a href="ch19-03-advanced-traits.html#using-the-newtype-pattern-to-implement-external-traits-on-external-types">‘뉴타입 패턴을 사용하여 외부 타입에 외부 트레이트 구현하기’</a><!-- ignore -->절을
 읽었다고 가정합니다.</p>
 </blockquote>
 <p>뉴타입 패턴은 지금까지 설명한 것 이외의 작업에도 유용한데, 여기에는
@@ -23863,7 +23863,7 @@ API를 노출할 수 있습니다.</p>
 코드는 내부적으로 이름에 <code>i32</code> ID를 할당한다는 사실을 알 필요가
 없습니다. 뉴타입 패턴은 구현 세부 사항을 숨기는 캡슐화를 달성하는
 가벼운 방법으로, 17장의
-<a href="ch17-01-what-is-oo.html#encapsulation-that-hides-implementation-details">‘구현 세부 사항을 숨기는 캡슐화’</a><!-- ignore -->절에서
+<a href="ch17-01-what-is-oo.html#encapsulation-that-hides-implementation-details">‘상세 구현을 은닉하는 캡슐화’</a><!-- ignore -->절에서
 설명한 바 있습니다.</p>
 <h3 id="타입-별칭으로-타입의-동의어-만들기"><a class="header" href="#타입-별칭으로-타입의-동의어-만들기">타입 별칭으로 타입의 동의어 만들기</a></h3>
 <p>러스트는 <em>타입 별칭 (type alias)</em> 을 선언하여 기존 타입에 다른 이름을 부여하는
@@ -23986,7 +23986,7 @@ pub trait Write {
 <em>그러면서도</em> <code>std::io</code> 전체에 일관된 인터페이스를 제공합니다. 이것은 별칭이기
 때문에 그저 또 다른 <code>Result&lt;T, E&gt;</code>일 뿐이고, 이는 <code>Result&lt;T, E&gt;</code>에서 작동하는
 모든 메서드는 물론, <code>?</code> 연산자와 같은 특별 문법도 사용할 수 있음을 뜻합니다.</p>
-<h3 id="결코-반환하지-않는-부정-타입"><a class="header" href="#결코-반환하지-않는-부정-타입">결코 반환하지 않는 부정 타입</a></h3>
+<h3 id="절대-반환하지-않는-부정-타입"><a class="header" href="#절대-반환하지-않는-부정-타입">절대 반환하지 않는 부정 타입</a></h3>
 <p>러스트에는 <code>!</code>라는 특수한 타입이 있는데, 이 타입은 값이 없기 때문에 타입
 이론 용어로는 <em>빈 타입 (empty type)</em> 이라고 알려져 있습니다. 함수가 절대
 반환하지 않을 때 반환 타입을 대신하기 때문에 <em>부정 타입 (never type)</em> 이라고
@@ -23995,10 +23995,10 @@ pub trait Write {
     // --생략--
 <span class="boring">    panic!();
 </span>}</code></pre>
-<p>이 코드는 ‘함수 <code>bar</code>는 결코 반환하지 않습니다’라고 읽습니다. 결코 반환하지
+<p>이 코드는 ‘함수 <code>bar</code>는 절대로 반환하지 않습니다’라고 읽습니다. 절대로 반환하지
 않는 함수는 <em>발산 함수 (diverging functions)</em> 라고 합니다. <code>!</code> 타입의 값은
-만들 수 없으므로, <code>bar</code>는 결코 반환할 수 없습니다.</p>
-<p>그런데 값을 결코 만들 수 없는 타입은 어디에 쓰는 거죠? 숫자 추리 게임의
+만들 수 없으므로, <code>bar</code>는 절대 반환할 수 없습니다.</p>
+<p>그런데 값을 절대로 만들 수 없는 타입은 어디에 쓰는 거죠? 숫자 추리 게임의
 부분인 예제 2-5의 코드를 기억해 보세요; 여기에 예제 19-26에서
 다시 일부를 재현해 두었습니다.</p>
 <pre><code class="language-rust ignore"><span class="boring">use rand::Rng;
@@ -24061,9 +24061,9 @@ pub trait Write {
 반환하면서 다른 갈래는 <code>continue</code>로 끝나는 것이 허용되었을까요?</p>
 <p>짐작하셨겠지만, <code>continue</code>는 <code>!</code> 값을 가집니다. 즉, 러스트가 <code>guess</code>의
 타입을 계산할 때, 두 개의 매치 갈래를 모두 살펴보게 되는데, 전자는 <code>u32</code> 값을
-가지고 후자는 <code>!</code> 값을 가집니다. <code>!</code>는 결코 값을 가질 수 없으므로, 러스트는
+가지고 후자는 <code>!</code> 값을 가집니다. <code>!</code>는 절대로 값을 가질 수 없으므로, 러스트는
 <code>guess</code>의 타입이 <code>u32</code>라고 결정합니다.</p>
-<p>이 동작을 설명하는 정식 방법은 <code>!</code> 타입의 표현식이 다른 모든 타입으로
+<p>이 동작을 설명하는 공식적인 방법은 <code>!</code> 타입의 표현식이 다른 모든 타입으로
 강제 변환될 수 있다는 것입니다. <code>continue</code>가 값을 반환하지 않기 때문에,
 이 <code>match</code> 갈래가 <code>continue</code>로 끝나도 괜찮습니다; <code>continue</code>는 제어를
 반복문의 맨 위로 이동시키기 때문에, <code>Err</code> 케이스에서는 <code>guess</code>에 값을
@@ -24099,14 +24099,14 @@ pub trait Write {
         print!(&quot;and ever &quot;);
     }
 <span class="boring">}</span></code></pre>
-<p>여기서 루프는 결코 끝나지 않으므로, <code>!</code>가 이 표현식의 값이 됩니다. 하지만
+<p>여기서 루프는 절대 끝나지 않으므로, <code>!</code>가 이 표현식의 값이 됩니다. 하지만
 <code>break</code>를 포함시키면, 루프는 <code>break</code>에 도달했을 때 종료되므로, 이는
 참이 아니게 될 것입니다.</p>
 <h3 id="동적-크기-타입과-sized-트레이트"><a class="header" href="#동적-크기-타입과-sized-트레이트">동적 크기 타입과 <code>Sized</code> 트레이트</a></h3>
 <p>러스트는 특정 타입의 값에 할당할 공간의 크기 등 타입에 대한 특정 세부
 사항을 알아야 합니다. 이로 인해 처음에는 타입 시스템의 한구석이 약간
-혼란스럽습니다: 바로 <em>동적 크기 타입</em>의 개념이 그렇습니다. <em>DTS</em> 또는
-<em>크기가 지정되지 않은 타입 (unsized type)</em> 이라고도 하는 이러한 타입을
+혼란스럽습니다: 바로 <em>동적 크기 타입 (dynamically sized type)</em> 의 개념이 그렇습니다.
+<em>DST</em> 또는 <em>크기가 지정되지 않은 타입 (unsized type)</em> 이라고도 하는 이러한 타입을
 사용하면 런타임에만 크기를 알 수 있는 값을 사용하여 코드를 작성할 수 있습니다.</p>
 <p>이 책 전체에 걸쳐 사용했던 <code>str</code>이라는 동적 크기 타입에 대해 자세히
 알아보겠습니다. 그렇습니다. <code>&amp;str</code>이 아니라 <code>str</code> 자체는 DST입니다.
@@ -24430,7 +24430,7 @@ macro_rules! vec {
 요소들을 담은 벡터를 생성하는 코드를 생성할 수 있습니다.</p>
 <p>매크로를 작성하는 방법에 대해 더 알아보려면 온라인 문서 혹은 다른 자료,
 이를테면 다니엘 킵 (Daniel Keep) 이 시작하고 루카스 위스 (Lukas Wirth) 가 이어오고 있는
-<a href="https://veykril.github.io/tlborm/">‘The Little Book of Rust Macros’</a> 같은 것을 참조하세요.</p>
+<a href="https://veykril.github.io/tlborm/">‘러스트 매크로의 작은 책 (The Little Book of Rust Macros)’</a> 같은 것을 참조하세요.</p>
 <h3 id="속성에서-코드를-생성하기-위한-절차적-매크로"><a class="header" href="#속성에서-코드를-생성하기-위한-절차적-매크로">속성에서 코드를 생성하기 위한 절차적 매크로</a></h3>
 <p>두 번째 형태의 매크로는 <em>절차적 매크로</em>로, 더 함수처럼 작동합니다. (그리고
 프로시저의 일종입니다.) 절차적 매크로는 선언적 매크로처럼 패턴에 매칭해 보고
