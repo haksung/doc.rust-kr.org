@@ -3223,7 +3223,7 @@ the value is: 50
 <p>스택, 힙 둘 다 여러분이 작성한 프로그램이 런타임에 이용하게 될
 메모리 영역이라는 공통점이 있지만, 구조는 각기 다릅니다.
 스택은 값이 들어온 순서대로 저장하고, 역순으로 제거합니다.
-이를 <em>후입선출 (last in, fist out)</em> 이라 하지요. 쌓여 있는 접시로 예를 들어 보겠습니다.
+이를 <em>후입선출 (last in, first out)</em> 이라 하지요. 쌓여 있는 접시로 예를 들어 보겠습니다.
 여러분이 접시 더미에 접시를 추가할 땐 접시 더미의 꼭대기에 쌓고, 반대로 접시를 꺼낼 땐
 꼭대기에서 한 장 꺼낼 겁니다. 중간이나 맨 아래에 끼워 넣는 건 쉽지 않겠죠.
 이런 식으로 접시 더미, 즉 스택에 데이터를 추가하는 행위를 <em>푸시 (push)</em> 라고 하며,
@@ -4339,7 +4339,7 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">    // 아래의 코드도 슬라이스 문법 없이 작동합니다!
 </span><span class="boring">    let word = first_word(my_string_literal);
 </span><span class="boring">}</span></code></pre>
-<p><span class="caption">예제 4-9: 매개변수 <code>s</code>를 문자열 슬라이스 타입으로 변경하겨
+<p><span class="caption">예제 4-9: 매개변수 <code>s</code>를 문자열 슬라이스 타입으로 변경하여
 <code>first_word</code> 함수 개선하기</span></p>
 <p>문자열 슬라이스라면 이를 바로 인수로써 전달할 수 있습니다. <code>String</code>이라면
 <code>String</code>의 슬라이스 혹은 <code>String</code>에 대한 참조자를 전달할 수 있습니다.
@@ -4949,7 +4949,7 @@ fn main() {
 <p>러스트는 디버깅 정보를 출력하는 기능을 <em>자체적으로 가지고 있습니다</em>.
 하지만 우리가 만든 구조체에 해당 기능을 적용하려면 명시적인 동의가 필요하므로,
 예제 5-12처럼 구조체 정의 바로 이전에 <code>#[derive(Debug)]</code>
-외부 속성 (outer attirbute) 을 작성해주어야 합니다.</p>
+외부 속성 (outer attribute) 을 작성해주어야 합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
 struct Rectangle {
@@ -5890,7 +5890,7 @@ enum Coin {
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
-<p><span class="caption">예제 6-4: <code>Quarter</code> 배리언트가 <code>UsSate</code> 값도 담고
+<p><span class="caption">예제 6-4: <code>Quarter</code> 배리언트가 <code>UsState</code> 값도 담고
 있는 <code>Coin</code> 열거형</span></p>
 <p>한 친구가 모든 50개 주 쿼터 동전을 모으기를 시도하는 중이라고 상상해 봅시다.
 동전의 종류에 따라 동전을 분류하는 동안 각 쿼터 동전에 연관된 주의
