@@ -578,8 +578,8 @@ children: RefCell { value: [] } }] } })
         Rc::weak_count(&amp;leaf),
     );
 }</code></pre></pre>
-<p><span class="caption">예제 15-29: Creating <code>branch</code> in an inner scope and
-examining strong and weak reference counts</span></p>
+<p><span class="caption">예제 15-29: 내부 스코프에서 <code>branch</code>를 만들고
+강한 참조 카운트와 약한 참조 카운트 시험하기</span></p>
 <p><code>leaf</code>가 생성된 다음, 이것의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와 약한 참조 카운트
 0개를 갖습니다. 내부 스코프에서 <code>branch</code>를 만들고 <code>leaf</code>와 연관짓게 되는데,
 이때 카운트를 출력하면 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와

@@ -2765,9 +2765,9 @@ error: could not compile `functions` due to previous error
 주석의 경우에는 아래처럼 각 줄마다 <code>//</code>를 추가하면 됩니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>// So we’re doing something complicated here, long enough that we need
-// multiple lines of comments to do it! Whew! Hopefully, this comment will
-// explain what’s going on.
+</span>// 그래서 여기서는 여러 줄의 주석을 달 필요가 있을 정도로
+// 복잡한 작업을 하고 있습니다! 휴우! 이 주석으로 무슨 일이
+// 일어나고 있는지 설명할 수 있기를 바랍니다.
 <span class="boring">}</span></code></pre></pre>
 <p>또한 주석은 코드의 뒷 부분에 위치할 수도 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -3370,9 +3370,9 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
 
-    s.push_str(&quot;, world!&quot;); // push_str() appends a literal to a String
+    s.push_str(&quot;, world!&quot;); // push_str()이 문자열에 리터럴을 추가합니다
 
-    println!(&quot;{}&quot;, s); // This will print `hello, world!`
+    println!(&quot;{}&quot;, s); // 이 줄이 `hello, world!`를 출력합니다
 <span class="boring">}</span></code></pre></pre>
 <p>하지만, 문자열 리터럴과 <code>String</code> 에 무슨 차이가 있길래 어떤 것은 변경할 수 있고
 어떤 것은 변경할 수 없을까요? 차이점은 각 타입의 메모리 사용 방식에 있습니다.</p>
@@ -3408,11 +3408,11 @@ GC가 없는 대부분의 언어에서는 할당받은 메모리가 필요 없�
 예제 4-1에서 문자열 리터럴을 <code>String</code>으로 바꿔봤습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    {
-        let s = String::from(&quot;hello&quot;); // s is valid from this point forward
+        let s = String::from(&quot;hello&quot;); // s는 이 지점부터 유효합니다
 
-        // do stuff with s
-    }                                  // this scope is now over, and s is no
-                                       // longer valid
+        // s를 가지고 무언가 합니다
+    }                                  // 이 스코프가 종료되었고, s는 더 이상
+                                       // 유효하지 않습니다.
 <span class="boring">}</span></code></pre></pre>
 <p>보시면 <code>String</code>에서 사용한 메모리를 자연스럽게 해제하는 지점이 있습니다.
 <code>s</code>가 스코프 밖으로 벗어날 때인데, 러스트는 변수가 스코프 밖으로 벗어나면
@@ -6562,10 +6562,10 @@ pub struct Asparagus {}</code></pre>
 }
 
 pub fn eat_at_restaurant() {
-    // Absolute path
+    // 절대 경로
     crate::front_of_house::hosting::add_to_waitlist();
 
-    // Relative path
+    // 상대 경로
     front_of_house::hosting::add_to_waitlist();
 }</code></pre>
 <p><span class="caption">예제 7-3: 절대 경로와 상대 경로로
@@ -6659,10 +6659,10 @@ error: could not compile `restaurant` due to 2 previous errors
 }
 
 pub fn eat_at_restaurant() {
-    // Absolute path
+    // 절대 경로
     crate::front_of_house::hosting::add_to_waitlist();
 
-    // Relative path
+    // 상대 경로
     front_of_house::hosting::add_to_waitlist();
 }</code></pre>
 <p><span class="caption">예제 7-5: <code>eat_at_restaurant</code> 함수에서 <code>hosting</code> 모듈을
@@ -6721,10 +6721,10 @@ error: could not compile `restaurant` due to 2 previous errors
 }
 
 pub fn eat_at_restaurant() {
-    // Absolute path
+    // 절대 경로
     crate::front_of_house::hosting::add_to_waitlist();
 
-    // Relative path
+    // 상대 경로
     front_of_house::hosting::add_to_waitlist();
 }</code></pre>
 <p><span class="caption">예제 7-7: <code>mod hosting</code>, <code>fn add_to_waitlist</code> 에
@@ -12447,7 +12447,7 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 함수에서 호출하려는 <code>setup</code> 함수를 작성한다고 가정해 봅시다:</p>
 <p><span class="filename">파일명: tests/common.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn setup() {
-    // setup code specific to your library's tests would go here
+    // 여기에 라이브러리 테스트와 관련된 설정 코드를 작성하려고 합니다
 }</code></pre>
 <p>이제 테스트를 실행하면, 결과 출력에 새로운 절이 <em>common.rs</em> 파일 때문에
 생성된 모습을 볼 수 있습니다. <em>common.rs</em> 파일은 어떤 테스트 함수도 담고 있지 않고,
@@ -19249,8 +19249,8 @@ children: RefCell { value: [] } }] } })
         Rc::weak_count(&amp;leaf),
     );
 }</code></pre></pre>
-<p><span class="caption">예제 15-29: Creating <code>branch</code> in an inner scope and
-examining strong and weak reference counts</span></p>
+<p><span class="caption">예제 15-29: 내부 스코프에서 <code>branch</code>를 만들고
+강한 참조 카운트와 약한 참조 카운트 시험하기</span></p>
 <p><code>leaf</code>가 생성된 다음, 이것의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와 약한 참조 카운트
 0개를 갖습니다. 내부 스코프에서 <code>branch</code>를 만들고 <code>leaf</code>와 연관짓게 되는데,
 이때 카운트를 출력하면 <code>branch</code>의 <code>Rc&lt;Node&gt;</code>는 강한 참조 카운트 1개와
@@ -19589,7 +19589,7 @@ fn main() {
         println!(&quot;Here's a vector: {:?}&quot;, v);
     });
 
-    drop(v); // oh no!
+    drop(v); // 오, 이런!
 
     handle.join().unwrap();
 }</code></pre>
@@ -19648,7 +19648,7 @@ error[E0382]: use of moved value: `v`
 7  |         println!(&quot;Here's a vector: {:?}&quot;, v);
    |                                           - variable moved due to use in closure
 ...
-10 |     drop(v); // oh no!
+10 |     drop(v); // 오, 이런!
    |          ^ value used here after move
 
 For more information about this error, try `rustc --explain E0382`.
@@ -21903,7 +21903,7 @@ error: could not compile `patterns` due to previous error
 <code>foo</code>라는 이름의 함수를 선언하고 타입 <code>i32</code>인 <code>x</code>라는 매개변수 하나를
 받는데, 이제는 친숙하게 보일 것입니다.</p>
 <pre><pre class="playground"><code class="language-rust">fn foo(x: i32) {
-    // code goes here
+    // 여기에 코드를 작성합니다
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
@@ -22648,7 +22648,7 @@ error: could not compile `patterns` due to previous error
 같이 동작합니다:</p>
 <pre><code class="language-text">(4 | 5 | 6) if y =&gt; ...
 </code></pre>
-<p>rather than this:</p>
+<p>이런 식이 아니고요:</p>
 <pre><code class="language-text">4 | 5 | (6 if y) =&gt; ...
 </code></pre>
 <p>코드가 실행하고 나면 우선순위 동작은 명확해집니다: <code>|</code>
@@ -23157,11 +23157,11 @@ fn main() {
 앞에 <code>unsafe</code> 키워드를 추가하고 그 트레이트의 구현체도 <code>unsafe</code>로 표시함으로써
 트레이트가 <code>unsafe</code>하다고 선언할 수 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust">unsafe trait Foo {
-    // methods go here
+    // 여기에 메소드가 작성됩니다
 }
 
 unsafe impl Foo for i32 {
-    // method implementations go here
+    // 여기에 메소드 구현이 작성됩니다
 }
 
 fn main() {}</code></pre></pre>
@@ -24577,11 +24577,11 @@ use syn;
 
 #[proc_macro_derive(HelloMacro)]
 pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
-    // Construct a representation of Rust code as a syntax tree
-    // that we can manipulate
+    // 조작 가능한 구문 트리로 러스트 코드의 표현을
+    // 구성합니다
     let ast = syn::parse(input).unwrap();
 
-    // Build the trait implementation
+    // 트레이트 구현체를 생성합니다
     impl_hello_macro(&amp;ast)
 }</code></pre>
 <p><span class="caption">예제 19-31: 대부분의 절차적 매크로 크레이트가

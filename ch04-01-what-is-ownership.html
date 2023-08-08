@@ -324,9 +324,9 @@ B 테이블로 이동해서 하나 주문받고, 다시 A로, 다시 B로 이동
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let mut s = String::from(&quot;hello&quot;);
 
-    s.push_str(&quot;, world!&quot;); // push_str() appends a literal to a String
+    s.push_str(&quot;, world!&quot;); // push_str()이 문자열에 리터럴을 추가합니다
 
-    println!(&quot;{}&quot;, s); // This will print `hello, world!`
+    println!(&quot;{}&quot;, s); // 이 줄이 `hello, world!`를 출력합니다
 <span class="boring">}</span></code></pre></pre>
 <p>하지만, 문자열 리터럴과 <code>String</code> 에 무슨 차이가 있길래 어떤 것은 변경할 수 있고
 어떤 것은 변경할 수 없을까요? 차이점은 각 타입의 메모리 사용 방식에 있습니다.</p>
@@ -362,11 +362,11 @@ GC가 없는 대부분의 언어에서는 할당받은 메모리가 필요 없�
 예제 4-1에서 문자열 리터럴을 <code>String</code>으로 바꿔봤습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    {
-        let s = String::from(&quot;hello&quot;); // s is valid from this point forward
+        let s = String::from(&quot;hello&quot;); // s는 이 지점부터 유효합니다
 
-        // do stuff with s
-    }                                  // this scope is now over, and s is no
-                                       // longer valid
+        // s를 가지고 무언가 합니다
+    }                                  // 이 스코프가 종료되었고, s는 더 이상
+                                       // 유효하지 않습니다.
 <span class="boring">}</span></code></pre></pre>
 <p>보시면 <code>String</code>에서 사용한 메모리를 자연스럽게 해제하는 지점이 있습니다.
 <code>s</code>가 스코프 밖으로 벗어날 때인데, 러스트는 변수가 스코프 밖으로 벗어나면
