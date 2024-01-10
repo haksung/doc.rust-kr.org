@@ -432,7 +432,7 @@ style="width: 50%;" /></p>
 메모리 용량은 메모리 할당자가 <code>String</code>에 할당한 메모리의 양을 뜻합니다.
 지금의 맥락에서는 길이, 용량 사이의 차이는 중요한 내용이 아니니,
 이해가 잘 안되면 용량 값은 무시하셔도 좋습니다.</p>
-<p><code>s2</code>에 <code>s</code>를 대입하면 <code>String</code> 데이터가 복사됩니다.
+<p><code>s2</code>에 <code>s1</code>를 대입하면 <code>String</code> 데이터가 복사됩니다.
 이때 데이터는 스택에 있는 데이터, 즉 포인터, 길이, 용량 값을 말하며,
 포인터가 가리키는 힙 영역의 데이터는 복사되지 않습니다.
 즉, 다음과 같은 메모리 구조를 갖게 됩니다.</p>
@@ -618,7 +618,7 @@ fn makes_copy(some_integer: i32) { // some_integer가 스코프 안으로 들어
     let s3 = takes_and_gives_back(s2);  // s2는 takes_and_gives_back로 이동되는데,
                                         // 이 함수 또한 자신의 반환 값을 s3로
                                         // 이동시킵니다
-} // 여기서 s3가 스코프 밖으로 벗어나면서 버려집니다. s3는 이동되어서 아무 일도
+} // 여기서 s3가 스코프 밖으로 벗어나면서 버려집니다. s2는 이동되어서 아무 일도
   // 일어나지 않습니다. s1은 스코프 밖으로 벗어나고 버려집니다.
 
 fn gives_ownership() -&gt; String {             // gives_ownership은 자신의 반환 값을
