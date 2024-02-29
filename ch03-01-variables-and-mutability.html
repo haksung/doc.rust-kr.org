@@ -194,9 +194,9 @@
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let x = 5;
-    println!(&quot;The value of x is: {x}&quot;);
+    println!("The value of x is: {x}");
     x = 6;
-    println!(&quot;The value of x is: {x}&quot;);
+    println!("The value of x is: {x}");
 }</code></pre>
 <p>저장하고 <code>cargo run</code>으로 프로그램을 실행해 보세요. 다음의 출력처럼
 불변성 에러에 관한 에러 메시지를 받을 것입니다:</p>
@@ -210,7 +210,7 @@ error[E0384]: cannot assign twice to immutable variable `x`
   |         |
   |         first assignment to `x`
   |         help: consider making this binding mutable: `mut x`
-3 |     println!(&quot;The value of x is: {x}&quot;);
+3 |     println!("The value of x is: {x}");
 4 |     x = 6;
   |     ^^^^^ cannot assign twice to immutable variable
 
@@ -218,7 +218,7 @@ For more information about this error, try `rustc --explain E0384`.
 error: could not compile `variables` due to previous error
 </code></pre>
 <p>이 예시는 컴파일러가 프로그램의 에러 찾기를 어떻게 도와주는지 보여줍니다.
-컴파일러 에러가 실망스러울 수도 있겠지만, 컴파일러는 그저 여러분의 프로그램이 아직은 
+컴파일러 에러가 실망스러울 수도 있겠지만, 컴파일러는 그저 여러분의 프로그램이 아직은
 원하는 대로 안전하게 동작하지 않는다고 할 뿐입니다. 컴파일러는 여러분이 좋은 프로그래머가
 아니라고 한 적이 <em>없습니다!</em> 경험이 많은 러스타시안들에게조차 컴파일러 에러가 발생합니다.</p>
 <p><code>불변 변수 `x`에 두 번 값을 할당할 수 없다</code>라는 내용의 에러 메시지를
@@ -243,9 +243,9 @@ error: could not compile `variables` due to previous error
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut x = 5;
-    println!(&quot;The value of x is: {x}&quot;);
+    println!("The value of x is: {x}");
     x = 6;
-    println!(&quot;The value of x is: {x}&quot;);
+    println!("The value of x is: {x}");
 }</code></pre></pre>
 <p>지금 이 프로그램을 실행하면, 다음의 출력을 얻습니다.</p>
 <pre><code class="language-console">$ cargo run
@@ -314,10 +314,10 @@ The value of x is: 6
 
     {
         let x = x * 2;
-        println!(&quot;The value of x in the inner scope is: {x}&quot;);
+        println!("The value of x in the inner scope is: {x}");
     }
 
-    println!(&quot;The value of x is: {x}&quot;);
+    println!("The value of x is: {x}");
 }</code></pre></pre>
 <p>이 프로그램은 먼저 <code>x</code>에 <code>5</code>라는 값을 묶어 넣습니다. 다음으로 <code>let x = </code>을
 반복해 새로운 변수 <code>x</code>를 만들고, 원래 값에 <code>1</code>을 더한 값을 대입해서
@@ -344,7 +344,7 @@ The value of x is: 6
 사이에 몇 개의 공백을 넣고 싶은지 공백문자를 입력하도록 요청하고,
 이 값을 숫자로 저장하고 싶다 칩시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span>    let spaces = &quot;   &quot;;
+</span>    let spaces = "   ";
     let spaces = spaces.len();
 <span class="boring">}</span></code></pre></pre>
 <p>첫 번째 <code>spaces</code>는 문자열 타입이고 두 번째 <code>spaces</code>는 숫자 타입입니다.
@@ -353,7 +353,7 @@ The value of x is: 6
 이름을 재사용할 수 있게 해 줍니다. 그런데 여기에서 <code>mut</code>을 사용하려
 한다면, 보시다시피 컴파일 타임 에러가 발생합니다:</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
-</span>    let mut spaces = &quot;   &quot;;
+</span>    let mut spaces = "   ";
     spaces = spaces.len();
 <span class="boring">}</span></code></pre>
 <p>에러는 변수의 타입을 바꿀 수 없다고 알려줍니다.</p>
@@ -362,7 +362,7 @@ The value of x is: 6
 error[E0308]: mismatched types
  --&gt; src/main.rs:3:14
   |
-2 |     let mut spaces = &quot;   &quot;;
+2 |     let mut spaces = "   ";
   |                      ----- expected due to this value
 3 |     spaces = spaces.len();
   |              ^^^^^^^^^^^^ expected `&amp;str`, found `usize`

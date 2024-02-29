@@ -203,13 +203,13 @@
 </span>impl Config {
     pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
         if args.len() &lt; 3 {
-            return Err(&quot;not enough arguments&quot;);
+            return Err("not enough arguments");
         }
 
         let query = args[1].clone();
         let file_path = args[2].clone();
 
-        let ignore_case = env::var(&quot;IGNORE_CASE&quot;).is_ok();
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
 
         Ok(Config {
             query,
@@ -229,7 +229,7 @@
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    for line in results {
-</span><span class="boring">        println!(&quot;{line}&quot;);
+</span><span class="boring">        println!("{line}");
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    Ok(())
@@ -269,27 +269,27 @@
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_sensitive() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Duct tape.&quot;;
+</span><span class="boring">Duct tape.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_insensitive() {
-</span><span class="boring">        let query = &quot;rUsT&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "rUsT";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Trust me.&quot;;
+</span><span class="boring">Trust me.";
 </span><span class="boring">
 </span><span class="boring">        assert_eq!(
-</span><span class="boring">            vec![&quot;Rust:&quot;, &quot;Trust me.&quot;],
+</span><span class="boring">            vec!["Rust:", "Trust me."],
 </span><span class="boring">            search_case_insensitive(query, contents)
 </span><span class="boring">        );
 </span><span class="boring">    }
@@ -322,14 +322,14 @@
     let args: Vec&lt;String&gt; = env::args().collect();
 
     let config = Config::build(&amp;args).unwrap_or_else(|err| {
-        eprintln!(&quot;Problem parsing arguments: {err}&quot;);
+        eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     });
 
     // --생략--
 <span class="boring">
 </span><span class="boring">    if let Err(e) = minigrep::run(config) {
-</span><span class="boring">        eprintln!(&quot;Application error: {e}&quot;);
+</span><span class="boring">        eprintln!("Application error: {e}");
 </span><span class="boring">        process::exit(1);
 </span><span class="boring">    }
 </span>}</code></pre>
@@ -344,14 +344,14 @@
 </span><span class="boring">
 </span>fn main() {
     let config = Config::build(env::args()).unwrap_or_else(|err| {
-        eprintln!(&quot;Problem parsing arguments: {err}&quot;);
+        eprintln!("Problem parsing arguments: {err}");
         process::exit(1);
     });
 
     // --생략--
 <span class="boring">
 </span><span class="boring">    if let Err(e) = minigrep::run(config) {
-</span><span class="boring">        eprintln!(&quot;Application error: {e}&quot;);
+</span><span class="boring">        eprintln!("Application error: {e}");
 </span><span class="boring">        process::exit(1);
 </span><span class="boring">    }
 </span>}</code></pre>
@@ -382,13 +382,13 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
     ) -&gt; Result&lt;Config, &amp;'static str&gt; {
         // --생략--
 <span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
 </span><span class="boring">        let file_path = args[2].clone();
 </span><span class="boring">
-</span><span class="boring">        let ignore_case = env::var(&quot;IGNORE_CASE&quot;).is_ok();
+</span><span class="boring">        let ignore_case = env::var("IGNORE_CASE").is_ok();
 </span><span class="boring">
 </span><span class="boring">        Ok(Config {
 </span><span class="boring">            query,
@@ -408,7 +408,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    for line in results {
-</span><span class="boring">        println!(&quot;{line}&quot;);
+</span><span class="boring">        println!("{line}");
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    Ok(())
@@ -448,27 +448,27 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_sensitive() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Duct tape.&quot;;
+</span><span class="boring">Duct tape.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_insensitive() {
-</span><span class="boring">        let query = &quot;rUsT&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "rUsT";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Trust me.&quot;;
+</span><span class="boring">Trust me.";
 </span><span class="boring">
 </span><span class="boring">        assert_eq!(
-</span><span class="boring">            vec![&quot;Rust:&quot;, &quot;Trust me.&quot;],
+</span><span class="boring">            vec!["Rust:", "Trust me."],
 </span><span class="boring">            search_case_insensitive(query, contents)
 </span><span class="boring">        );
 </span><span class="boring">    }
@@ -510,15 +510,15 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 
         let query = match args.next() {
             Some(arg) =&gt; arg,
-            None =&gt; return Err(&quot;Didn't get a query string&quot;),
+            None =&gt; return Err("Didn't get a query string"),
         };
 
         let file_path = match args.next() {
             Some(arg) =&gt; arg,
-            None =&gt; return Err(&quot;Didn't get a file path&quot;),
+            None =&gt; return Err("Didn't get a file path"),
         };
 
-        let ignore_case = env::var(&quot;IGNORE_CASE&quot;).is_ok();
+        let ignore_case = env::var("IGNORE_CASE").is_ok();
 
         Ok(Config {
             query,
@@ -538,7 +538,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    for line in results {
-</span><span class="boring">        println!(&quot;{line}&quot;);
+</span><span class="boring">        println!("{line}");
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    Ok(())
@@ -578,27 +578,27 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_sensitive() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Duct tape.&quot;;
+</span><span class="boring">Duct tape.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_insensitive() {
-</span><span class="boring">        let query = &quot;rUsT&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "rUsT";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Trust me.&quot;;
+</span><span class="boring">Trust me.";
 </span><span class="boring">
 </span><span class="boring">        assert_eq!(
-</span><span class="boring">            vec![&quot;Rust:&quot;, &quot;Trust me.&quot;],
+</span><span class="boring">            vec!["Rust:", "Trust me."],
 </span><span class="boring">            search_case_insensitive(query, contents)
 </span><span class="boring">        );
 </span><span class="boring">    }
@@ -627,7 +627,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -661,13 +661,13 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn one_result() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
-</span><span class="boring">Pick three.&quot;;
+</span><span class="boring">Pick three.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 13-21: 예제 12-19의 <code>search</code>
@@ -697,15 +697,15 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">
 </span><span class="boring">        let query = match args.next() {
 </span><span class="boring">            Some(arg) =&gt; arg,
-</span><span class="boring">            None =&gt; return Err(&quot;Didn't get a query string&quot;),
+</span><span class="boring">            None =&gt; return Err("Didn't get a query string"),
 </span><span class="boring">        };
 </span><span class="boring">
 </span><span class="boring">        let file_path = match args.next() {
 </span><span class="boring">            Some(arg) =&gt; arg,
-</span><span class="boring">            None =&gt; return Err(&quot;Didn't get a file path&quot;),
+</span><span class="boring">            None =&gt; return Err("Didn't get a file path"),
 </span><span class="boring">        };
 </span><span class="boring">
-</span><span class="boring">        let ignore_case = env::var(&quot;IGNORE_CASE&quot;).is_ok();
+</span><span class="boring">        let ignore_case = env::var("IGNORE_CASE").is_ok();
 </span><span class="boring">
 </span><span class="boring">        Ok(Config {
 </span><span class="boring">            query,
@@ -725,7 +725,7 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    for line in results {
-</span><span class="boring">        println!(&quot;{line}&quot;);
+</span><span class="boring">        println!("{line}");
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    Ok(())
@@ -760,27 +760,27 @@ I/O 프로젝트에 있는 <em>src/lib.rs</em> 파일에서, 예제 13-19와 같
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_sensitive() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Duct tape.&quot;;
+</span><span class="boring">Duct tape.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn case_insensitive() {
-</span><span class="boring">        let query = &quot;rUsT&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "rUsT";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
 </span><span class="boring">Pick three.
-</span><span class="boring">Trust me.&quot;;
+</span><span class="boring">Trust me.";
 </span><span class="boring">
 </span><span class="boring">        assert_eq!(
-</span><span class="boring">            vec![&quot;Rust:&quot;, &quot;Trust me.&quot;],
+</span><span class="boring">            vec!["Rust:", "Trust me."],
 </span><span class="boring">            search_case_insensitive(query, contents)
 </span><span class="boring">        );
 </span><span class="boring">    }

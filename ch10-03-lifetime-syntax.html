@@ -208,7 +208,7 @@
         r = &amp;x;
     }
 
-    println!(&quot;r: {}&quot;, r);
+    println!("r: {}", r);
 }</code></pre>
 <p><span class="caption">예제 10-16: 스코프 밖으로 벗어난 값을
 참조하는 코드</span></p>
@@ -236,7 +236,7 @@ error[E0597]: `x` does not live long enough
 7 |     }
   |     - `x` dropped here while still borrowed
 8 |
-9 |     println!(&quot;r: {}&quot;, r);
+9 |     println!("r: {}", r);
   |                       - borrow later used here
 
 For more information about this error, try `rustc --explain E0597`.
@@ -261,7 +261,7 @@ error: could not compile `chapter10` due to previous error
         r = &amp;x;           //  |       |
     }                     // -+       |
                           //          |
-    println!(&quot;r: {}&quot;, r); //          |
+    println!("r: {}", r); //          |
 }                         // ---------+</code></pre>
 <p><span class="caption">예제 10-17: <code>r</code>, <code>x</code>의 라이프타임을 각각
 <code>'a</code>, <code>'b</code>로 표현한 주석</span></p>
@@ -278,7 +278,7 @@ error: could not compile `chapter10` due to previous error
                           //           |
     let r = &amp;x;           // --+-- 'a  |
                           //   |       |
-    println!(&quot;r: {}&quot;, r); //   |       |
+    println!("r: {}", r); //   |       |
                           // --+       |
 }                         // ----------+</code></pre></pre>
 <p><span class="caption">예제 10-18: 데이터의 라이프타임이
@@ -296,11 +296,11 @@ error: could not compile `chapter10` due to previous error
 <code>The longest string is abcd</code>가 출력되어야 합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore">fn main() {
-    let string1 = String::from(&quot;abcd&quot;);
-    let string2 = &quot;xyz&quot;;
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
     let result = longest(string1.as_str(), string2);
-    println!(&quot;The longest string is {}&quot;, result);
+    println!("The longest string is {}", result);
 }</code></pre>
 <p><span class="caption">예제 10-19: 두 문자열 슬라이스 중 긴 쪽을 찾기 위해
 <code>longest</code> 함수를 호출하는 <code>main</code> 함수</span></p>
@@ -314,11 +314,11 @@ error: could not compile `chapter10` due to previous error
 컴파일 에러가 발생합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
-</span><span class="boring">    let string1 = String::from(&quot;abcd&quot;);
-</span><span class="boring">    let string2 = &quot;xyz&quot;;
+</span><span class="boring">    let string1 = String::from("abcd");
+</span><span class="boring">    let string2 = "xyz";
 </span><span class="boring">
 </span><span class="boring">    let result = longest(string1.as_str(), string2);
-</span><span class="boring">    println!(&quot;The longest string is {}&quot;, result);
+</span><span class="boring">    println!("The longest string is {}", result);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn longest(x: &amp;str, y: &amp;str) -&gt; &amp;str {
@@ -396,11 +396,11 @@ error: could not compile `chapter10` due to previous error
 각 참조자에 추가하겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span><span class="boring">    let string1 = String::from(&quot;abcd&quot;);
-</span><span class="boring">    let string2 = &quot;xyz&quot;;
+</span><span class="boring">    let string1 = String::from("abcd");
+</span><span class="boring">    let string2 = "xyz";
 </span><span class="boring">
 </span><span class="boring">    let result = longest(string1.as_str(), string2);
-</span><span class="boring">    println!(&quot;The longest string is {}&quot;, result);
+</span><span class="boring">    println!("The longest string is {}", result);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
@@ -415,7 +415,7 @@ error: could not compile `chapter10` due to previous error
 정의</span></p>
 <p>이 코드는 정상적으로 컴파일되며, 예제 10-19의 <code>main</code> 코드로
 실행하면 우리가 원했던 결과가 나옵니다.</p>
-<p>이 함수 시그니처는 러스트에게, 함수는 두 매개변수를 갖고 
+<p>이 함수 시그니처는 러스트에게, 함수는 두 매개변수를 갖고
 둘 다 적어도 라이프타임 <code>'a</code>만큼 살아있는 문자열 슬라이스이며,
 반환하는 문자열 슬라이스도 라이프타임 <code>'a</code>만큼 살아있다는
 정보를 알려줍니다. 이것의 실제 의미는, <code>longest</code> 함수가
@@ -451,12 +451,12 @@ error: could not compile `chapter10` due to previous error
 예제 10-22에 간단한 예제가 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let string1 = String::from(&quot;long string is long&quot;);
+    let string1 = String::from("long string is long");
 
     {
-        let string2 = String::from(&quot;xyz&quot;);
+        let string2 = String::from("xyz");
         let result = longest(string1.as_str(), string2.as_str());
-        println!(&quot;The longest string is {}&quot;, result);
+        println!("The longest string is {}", result);
     }
 }
 <span class="boring">
@@ -483,13 +483,13 @@ error: could not compile `chapter10` due to previous error
 이렇게 수정한 예제 10-23 코드는 컴파일할 수 없습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
-    let string1 = String::from(&quot;long string is long&quot;);
+    let string1 = String::from("long string is long");
     let result;
     {
-        let string2 = String::from(&quot;xyz&quot;);
+        let string2 = String::from("xyz");
         result = longest(string1.as_str(), string2.as_str());
     }
-    println!(&quot;The longest string is {}&quot;, result);
+    println!("The longest string is {}", result);
 }
 <span class="boring">
 </span><span class="boring">fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;'a str) -&gt; &amp;'a str {
@@ -511,7 +511,7 @@ error[E0597]: `string2` does not live long enough
   |                                            ^^^^^^^^^^^^^^^^ borrowed value does not live long enough
 7 |     }
   |     - `string2` dropped here while still borrowed
-8 |     println!(&quot;The longest string is {}&quot;, result);
+8 |     println!("The longest string is {}", result);
   |                                          ------ borrow later used here
 
 For more information about this error, try `rustc --explain E0597`.
@@ -541,11 +541,11 @@ error: could not compile `chapter10` due to previous error
 다음 코드는 정상적으로 컴파일됩니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span><span class="boring">    let string1 = String::from(&quot;abcd&quot;);
-</span><span class="boring">    let string2 = &quot;efghijklmnopqrstuvwxyz&quot;;
+</span><span class="boring">    let string1 = String::from("abcd");
+</span><span class="boring">    let string2 = "efghijklmnopqrstuvwxyz";
 </span><span class="boring">
 </span><span class="boring">    let result = longest(string1.as_str(), string2);
-</span><span class="boring">    println!(&quot;The longest string is {}&quot;, result);
+</span><span class="boring">    println!("The longest string is {}", result);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn longest&lt;'a&gt;(x: &amp;'a str, y: &amp;str) -&gt; &amp;'a str {
@@ -563,15 +563,15 @@ error: could not compile `chapter10` due to previous error
 없습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
-</span><span class="boring">    let string1 = String::from(&quot;abcd&quot;);
-</span><span class="boring">    let string2 = &quot;xyz&quot;;
+</span><span class="boring">    let string1 = String::from("abcd");
+</span><span class="boring">    let string2 = "xyz";
 </span><span class="boring">
 </span><span class="boring">    let result = longest(string1.as_str(), string2);
-</span><span class="boring">    println!(&quot;The longest string is {}&quot;, result);
+</span><span class="boring">    println!("The longest string is {}", result);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn longest&lt;'a&gt;(x: &amp;str, y: &amp;str) -&gt; &amp;'a str {
-    let result = String::from(&quot;really long string&quot;);
+    let result = String::from("really long string");
     result.as_str()
 }</code></pre>
 <p>반환 타입에 <code>'a</code>를 지정했지만,
@@ -611,8 +611,8 @@ error: could not compile `chapter10` due to previous error
 }
 
 fn main() {
-    let novel = String::from(&quot;Call me Ishmael. Some years ago...&quot;);
-    let first_sentence = novel.split('.').next().expect(&quot;Could not find a '.'&quot;);
+    let novel = String::from("Call me Ishmael. Some years ago...");
+    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
     let i = ImportantExcerpt {
         part: first_sentence,
     };
@@ -650,12 +650,12 @@ fn main() {
 }
 <span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let my_string = String::from(&quot;hello world&quot;);
+</span><span class="boring">    let my_string = String::from("hello world");
 </span><span class="boring">
 </span><span class="boring">    // first_word works on slices of `String`s
 </span><span class="boring">    let word = first_word(&amp;my_string[..]);
 </span><span class="boring">
-</span><span class="boring">    let my_string_literal = &quot;hello world&quot;;
+</span><span class="boring">    let my_string_literal = "hello world";
 </span><span class="boring">
 </span><span class="boring">    // first_word works on slices of string literals
 </span><span class="boring">    let word = first_word(&amp;my_string_literal[..]);
@@ -769,14 +769,14 @@ fn main() {
 <span class="boring">
 </span><span class="boring">impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
 </span><span class="boring">    fn announce_and_return_part(&amp;self, announcement: &amp;str) -&gt; &amp;str {
-</span><span class="boring">        println!(&quot;Attention please: {}&quot;, announcement);
+</span><span class="boring">        println!("Attention please: {}", announcement);
 </span><span class="boring">        self.part
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let novel = String::from(&quot;Call me Ishmael. Some years ago...&quot;);
-</span><span class="boring">    let first_sentence = novel.split('.').next().expect(&quot;Could not find a '.'&quot;);
+</span><span class="boring">    let novel = String::from("Call me Ishmael. Some years ago...");
+</span><span class="boring">    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
 </span><span class="boring">    let i = ImportantExcerpt {
 </span><span class="boring">        part: first_sentence,
 </span><span class="boring">    };
@@ -797,14 +797,14 @@ fn main() {
 </span><span class="boring">
 </span>impl&lt;'a&gt; ImportantExcerpt&lt;'a&gt; {
     fn announce_and_return_part(&amp;self, announcement: &amp;str) -&gt; &amp;str {
-        println!(&quot;Attention please: {}&quot;, announcement);
+        println!("Attention please: {}", announcement);
         self.part
     }
 }
 <span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let novel = String::from(&quot;Call me Ishmael. Some years ago...&quot;);
-</span><span class="boring">    let first_sentence = novel.split('.').next().expect(&quot;Could not find a '.'&quot;);
+</span><span class="boring">    let novel = String::from("Call me Ishmael. Some years ago...");
+</span><span class="boring">    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
 </span><span class="boring">    let i = ImportantExcerpt {
 </span><span class="boring">        part: first_sentence,
 </span><span class="boring">    };
@@ -819,7 +819,7 @@ fn main() {
 모든 문자열 리터럴은 <code>'static</code> 라이프타임을 가지며, 다음과 같이 명시할 수 있습니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let s: &amp;'static str = &quot;I have a static lifetime.&quot;;
+</span>let s: &amp;'static str = "I have a static lifetime.";
 <span class="boring">}</span></code></pre></pre>
 <p>이 문자열의 텍스트는 프로그램의 바이너리 내에
 직접 저장되기 때문에 언제나 이용할 수 있습니다.
@@ -835,15 +835,15 @@ fn main() {
 <p>제네릭 타입 매개변수, 트레이트 바운드, 라이프타임이 문법이 함수 하나에
 전부 들어간 모습을 살펴봅시다!</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span><span class="boring">    let string1 = String::from(&quot;abcd&quot;);
-</span><span class="boring">    let string2 = &quot;xyz&quot;;
+</span><span class="boring">    let string1 = String::from("abcd");
+</span><span class="boring">    let string2 = "xyz";
 </span><span class="boring">
 </span><span class="boring">    let result = longest_with_an_announcement(
 </span><span class="boring">        string1.as_str(),
 </span><span class="boring">        string2,
-</span><span class="boring">        &quot;Today is someone's birthday!&quot;,
+</span><span class="boring">        "Today is someone's birthday!",
 </span><span class="boring">    );
-</span><span class="boring">    println!(&quot;The longest string is {}&quot;, result);
+</span><span class="boring">    println!("The longest string is {}", result);
 </span><span class="boring">}
 </span><span class="boring">
 </span>use std::fmt::Display;
@@ -856,7 +856,7 @@ fn longest_with_an_announcement&lt;'a, T&gt;(
 where
     T: Display,
 {
-    println!(&quot;Announcement! {}&quot;, ann);
+    println!("Announcement! {}", ann);
     if x.len() &gt; y.len() {
         x
     } else {

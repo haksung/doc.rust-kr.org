@@ -211,13 +211,13 @@ fn main() {
 </span><span class="boring">    let query = &amp;args[1];
 </span><span class="boring">    let file_path = &amp;args[2];
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Searching for {}&quot;, query);
-</span>    println!(&quot;In file {}&quot;, file_path);
+</span><span class="boring">    println!("Searching for {}", query);
+</span>    println!("In file {}", file_path);
 
     let contents = fs::read_to_string(file_path)
-        .expect(&quot;Should have been able to read the file&quot;);
+        .expect("Should have been able to read the file");
 
-    println!(&quot;With text:\n{contents}&quot;);
+    println!("With text:\n{contents}");
 }</code></pre>
 <p><span class="caption">예제 12-4: 두 번째 인수로 명시된 파일의
 내용물 읽기</span></p>

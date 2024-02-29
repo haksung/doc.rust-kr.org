@@ -248,25 +248,25 @@ fn main() {}</code></pre></pre>
 </span>fn main() {
     let a = Rc::new(Cons(5, RefCell::new(Rc::new(Nil))));
 
-    println!(&quot;a initial rc count = {}&quot;, Rc::strong_count(&amp;a));
-    println!(&quot;a next item = {:?}&quot;, a.tail());
+    println!("a initial rc count = {}", Rc::strong_count(&amp;a));
+    println!("a next item = {:?}", a.tail());
 
     let b = Rc::new(Cons(10, RefCell::new(Rc::clone(&amp;a))));
 
-    println!(&quot;a rc count after b creation = {}&quot;, Rc::strong_count(&amp;a));
-    println!(&quot;b initial rc count = {}&quot;, Rc::strong_count(&amp;b));
-    println!(&quot;b next item = {:?}&quot;, b.tail());
+    println!("a rc count after b creation = {}", Rc::strong_count(&amp;a));
+    println!("b initial rc count = {}", Rc::strong_count(&amp;b));
+    println!("b next item = {:?}", b.tail());
 
     if let Some(link) = a.tail() {
         *link.borrow_mut() = Rc::clone(&amp;b);
     }
 
-    println!(&quot;b rc count after changing a = {}&quot;, Rc::strong_count(&amp;b));
-    println!(&quot;a rc count after changing a = {}&quot;, Rc::strong_count(&amp;a));
+    println!("b rc count after changing a = {}", Rc::strong_count(&amp;b));
+    println!("a rc count after changing a = {}", Rc::strong_count(&amp;a));
 
     // Uncomment the next line to see that we have a cycle;
     // it will overflow the stack
-    // println!(&quot;a next item = {:?}&quot;, a.tail());
+    // println!("a next item = {:?}", a.tail());
 }</code></pre></pre>
 <p><span class="caption">예제 15-26: 두 개의 <code>List</code> 값이 서로를 가리키는
 순환 참조 생성하기</span></p>
@@ -452,7 +452,7 @@ struct Node {
 </span><span class="boring">        children: RefCell::new(vec![]),
 </span><span class="boring">    });
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
+</span><span class="boring">    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
 </span><span class="boring">
 </span><span class="boring">    let branch = Rc::new(Node {
 </span><span class="boring">        value: 5,
@@ -462,7 +462,7 @@ struct Node {
 </span><span class="boring">
 </span><span class="boring">    *leaf.parent.borrow_mut() = Rc::downgrade(&amp;branch);
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
+</span><span class="boring">    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
 </span><span class="boring">}</span></code></pre></pre>
 <p>노드는 자신의 부모 노드를 참조할 수 있게 되겠지만 그 부모를 소유하지는 않습니다.
 예제 15-28에서는 <code>main</code>을 업데이트하여 이 새로운 정의를 사용하도록 해서 <code>leaf</code>
@@ -485,7 +485,7 @@ struct Node {
         children: RefCell::new(vec![]),
     });
 
-    println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
 
     let branch = Rc::new(Node {
         value: 5,
@@ -495,7 +495,7 @@ struct Node {
 
     *leaf.parent.borrow_mut() = Rc::downgrade(&amp;branch);
 
-    println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
 }</code></pre></pre>
 <p><span class="caption">예제 15-28: 부모 노드 <code>branch</code>의 약한 참조를
 갖는 <code>leaf</code> 노드</span></p>
@@ -551,7 +551,7 @@ children: RefCell { value: [] } }] } })
     });
 
     println!(
-        &quot;leaf strong = {}, weak = {}&quot;,
+        "leaf strong = {}, weak = {}",
         Rc::strong_count(&amp;leaf),
         Rc::weak_count(&amp;leaf),
     );
@@ -566,21 +566,21 @@ children: RefCell { value: [] } }] } })
         *leaf.parent.borrow_mut() = Rc::downgrade(&amp;branch);
 
         println!(
-            &quot;branch strong = {}, weak = {}&quot;,
+            "branch strong = {}, weak = {}",
             Rc::strong_count(&amp;branch),
             Rc::weak_count(&amp;branch),
         );
 
         println!(
-            &quot;leaf strong = {}, weak = {}&quot;,
+            "leaf strong = {}, weak = {}",
             Rc::strong_count(&amp;leaf),
             Rc::weak_count(&amp;leaf),
         );
     }
 
-    println!(&quot;leaf parent = {:?}&quot;, leaf.parent.borrow().upgrade());
+    println!("leaf parent = {:?}", leaf.parent.borrow().upgrade());
     println!(
-        &quot;leaf strong = {}, weak = {}&quot;,
+        "leaf strong = {}, weak = {}",
         Rc::strong_count(&amp;leaf),
         Rc::weak_count(&amp;leaf),
     );

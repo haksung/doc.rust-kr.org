@@ -220,13 +220,13 @@ use std::time::Duration;
 fn main() {
     thread::spawn(|| {
         for i in 1..10 {
-            println!(&quot;hi number {} from the spawned thread!&quot;, i);
+            println!("hi number {} from the spawned thread!", i);
             thread::sleep(Duration::from_millis(1));
         }
     });
 
     for i in 1..5 {
-        println!(&quot;hi number {} from the main thread!&quot;, i);
+        println!("hi number {} from the main thread!", i);
         thread::sleep(Duration::from_millis(1));
     }
 }</code></pre></pre>
@@ -277,13 +277,13 @@ use std::time::Duration;
 fn main() {
     let handle = thread::spawn(|| {
         for i in 1..10 {
-            println!(&quot;hi number {} from the spawned thread!&quot;, i);
+            println!("hi number {} from the spawned thread!", i);
             thread::sleep(Duration::from_millis(1));
         }
     });
 
     for i in 1..5 {
-        println!(&quot;hi number {} from the main thread!&quot;, i);
+        println!("hi number {} from the main thread!", i);
         thread::sleep(Duration::from_millis(1));
     }
 
@@ -324,7 +324,7 @@ use std::time::Duration;
 fn main() {
     let handle = thread::spawn(|| {
         for i in 1..10 {
-            println!(&quot;hi number {} from the spawned thread!&quot;, i);
+            println!("hi number {} from the spawned thread!", i);
             thread::sleep(Duration::from_millis(1));
         }
     });
@@ -332,7 +332,7 @@ fn main() {
     handle.join().unwrap();
 
     for i in 1..5 {
-        println!(&quot;hi number {} from the main thread!&quot;, i);
+        println!("hi number {} from the main thread!", i);
         thread::sleep(Duration::from_millis(1));
     }
 }</code></pre></pre>
@@ -377,7 +377,7 @@ fn main() {
     let v = vec![1, 2, 3];
 
     let handle = thread::spawn(|| {
-        println!(&quot;Here's a vector: {:?}&quot;, v);
+        println!("Here's a vector: {:?}", v);
     });
 
     handle.join().unwrap();
@@ -395,7 +395,7 @@ error[E0373]: closure may outlive the current function, but it borrows `v`, whic
   |
 6 |     let handle = thread::spawn(|| {
   |                                ^^ may outlive borrowed value `v`
-7 |         println!(&quot;Here's a vector: {:?}&quot;, v);
+7 |         println!("Here's a vector: {:?}", v);
   |                                           - `v` is borrowed here
   |
 note: function requires argument type to outlive `'static`
@@ -403,7 +403,7 @@ note: function requires argument type to outlive `'static`
   |
 6 |       let handle = thread::spawn(|| {
   |  __________________^
-7 | |         println!(&quot;Here's a vector: {:?}&quot;, v);
+7 | |         println!("Here's a vector: {:?}", v);
 8 | |     });
   | |______^
 help: to force the closure to take ownership of `v` (and any other referenced variables), use the `move` keyword
@@ -427,7 +427,7 @@ fn main() {
     let v = vec![1, 2, 3];
 
     let handle = thread::spawn(|| {
-        println!(&quot;Here's a vector: {:?}&quot;, v);
+        println!("Here's a vector: {:?}", v);
     });
 
     drop(v); // 오, 이런!
@@ -463,7 +463,7 @@ fn main() {
     let v = vec![1, 2, 3];
 
     let handle = thread::spawn(move || {
-        println!(&quot;Here's a vector: {:?}&quot;, v);
+        println!("Here's a vector: {:?}", v);
     });
 
     handle.join().unwrap();
@@ -486,7 +486,7 @@ error[E0382]: use of moved value: `v`
 5  |
 6  |     let handle = thread::spawn(move || {
    |                                ------- value moved into closure here
-7  |         println!(&quot;Here's a vector: {:?}&quot;, v);
+7  |         println!("Here's a vector: {:?}", v);
    |                                           - variable moved due to use in closure
 ...
 10 |     drop(v); // 오, 이런!

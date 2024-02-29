@@ -194,9 +194,9 @@
     let number = 3;
 
     if number &lt; 5 {
-        println!(&quot;condition was true&quot;);
+        println!("condition was true");
     } else {
-        println!(&quot;condition was false&quot;);
+        println!("condition was false");
     }
 }</code></pre></pre>
 <p>모든 <code>if</code> 표현식은 <code>if</code>라는 키워드로 시작하고 그 뒤에
@@ -225,9 +225,9 @@ condition was true
 </span>    let number = 7;
 <span class="boring">
 </span><span class="boring">    if number &lt; 5 {
-</span><span class="boring">        println!(&quot;condition was true&quot;);
+</span><span class="boring">        println!("condition was true");
 </span><span class="boring">    } else {
-</span><span class="boring">        println!(&quot;condition was false&quot;);
+</span><span class="boring">        println!("condition was false");
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>프로그램을 다시 실행시키면 다음과 같은 결과를 보게 됩니다:</p>
@@ -245,7 +245,7 @@ condition was false
     let number = 3;
 
     if number {
-        println!(&quot;number was three&quot;);
+        println!("number was three");
     }
 }</code></pre>
 <p>이 경우에는 <code>if</code> 조건식의 결과가 <code>3</code>이고, 러스트는 에러를
@@ -272,7 +272,7 @@ Ruby나 JavaScript 같은 언어와 달리 러스트는 부울린 타입이 아�
     let number = 3;
 
     if number != 0 {
-        println!(&quot;number was something other than zero&quot;);
+        println!("number was something other than zero");
     }
 }</code></pre></pre>
 <p>이 코드를 실행시키면 <code>number was something other than zero</code>가 출력될 것입니다.</p>
@@ -284,13 +284,13 @@ Ruby나 JavaScript 같은 언어와 달리 러스트는 부울린 타입이 아�
     let number = 6;
 
     if number % 4 == 0 {
-        println!(&quot;number is divisible by 4&quot;);
+        println!("number is divisible by 4");
     } else if number % 3 == 0 {
-        println!(&quot;number is divisible by 3&quot;);
+        println!("number is divisible by 3");
     } else if number % 2 == 0 {
-        println!(&quot;number is divisible by 2&quot;);
+        println!("number is divisible by 2");
     } else {
-        println!(&quot;number is not divisible by 4, 3, or 2&quot;);
+        println!("number is not divisible by 4, 3, or 2");
     }
 }</code></pre></pre>
 <p>이 프로그램은 분기 가능한 4개의 경로가 있습니다. 실행하면 다음과
@@ -318,7 +318,7 @@ number is divisible by 3
     let condition = true;
     let number = if condition { 5 } else { 6 };
 
-    println!(&quot;The value of number is: {number}&quot;);
+    println!("The value of number is: {number}");
 }</code></pre></pre>
 <p><span class="caption">예제 3-2: <code>if</code> 표현식의 결과를 변수에
 할당하기</span></p>
@@ -341,9 +341,9 @@ The value of number is: 5
 <pre><code class="language-rust ignore does_not_compile">fn main() {
     let condition = true;
 
-    let number = if condition { 5 } else { &quot;six&quot; };
+    let number = if condition { 5 } else { "six" };
 
-    println!(&quot;The value of number is: {number}&quot;);
+    println!("The value of number is: {number}");
 }</code></pre>
 <p>이 코드를 컴파일하려고 하면 에러가 발생합니다. <code>if</code>와 <code>else</code> 갈래
 값의 타입이 호환되지 않고, 러스트는 프로그램의 어느 지점에 문제가
@@ -353,7 +353,7 @@ The value of number is: 5
 error[E0308]: `if` and `else` have incompatible types
  --&gt; src/main.rs:4:44
   |
-4 |     let number = if condition { 5 } else { &quot;six&quot; };
+4 |     let number = if condition { 5 } else { "six" };
   |                                 -          ^^^^^ expected integer, found `&amp;str`
   |                                 |
   |                                 expected because of this
@@ -383,7 +383,7 @@ error: could not compile `branches` due to previous error
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore">fn main() {
     loop {
-        println!(&quot;again!&quot;);
+        println!("again!");
     }
 }</code></pre>
 <p>이 프로그램을 실행시키면, 우리가 프로그램을 강제로 정지시키기 전까지
@@ -408,7 +408,7 @@ again!
 <p>기호 <code>^C</code>는 우리가 <span class="keystroke">ctrl-c</span>를
 누른 지점을 표시합니다. 코드가 정지 신호를 받은 시점에 따라
 <code>^C</code> 이후에 <code>again!</code>이 출력될 수도 안될 수도
-있습니다. </p>
+있습니다.</p>
 <p>다행히 러스트에서는 코드를 사용하여 루프에서 벗어나는 방법도 제공합니다.
 루프 안에 <code>break</code> 키워드를 집어넣으면 루프를 멈춰야 하는 시점을 프로그램에게
 알려줄 수 있습니다. 2장의 <a href="ch02-00-guessing-game-tutorial.html#quitting-after-a-correct-guess">‘정답을 맞힌 후 종료하기’</a><!-- ignore -->절의
@@ -436,7 +436,7 @@ again!
         }
     };
 
-    println!(&quot;The result is {result}&quot;);
+    println!("The result is {result}");
 }</code></pre></pre>
 <p>반복문 전에 <code>counter</code>라는 이름의 변수를 선언하여 <code>0</code>으로 초기화
 했습니다. 그 다음 <code>result</code>라는 변수를 선언하여 반복문으로부터
@@ -454,11 +454,11 @@ again!
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut count = 0;
     'counting_up: loop {
-        println!(&quot;count = {count}&quot;);
+        println!("count = {count}");
         let mut remaining = 10;
 
         loop {
-            println!(&quot;remaining = {remaining}&quot;);
+            println!("remaining = {remaining}");
             if remaining == 9 {
                 break;
             }
@@ -470,7 +470,7 @@ again!
 
         count += 1;
     }
-    println!(&quot;End count = {count}&quot;);
+    println!("End count = {count}");
 }</code></pre></pre>
 <p>바깥쪽 루프는 <code>'counting_up</code> 이라는 라벨이 붙어있고, 0에서부터 2까지
 카운트합니다. 라벨이 없는 안쪽 루프는 10에서 9까지 거꾸로 카운트합니다.
@@ -504,12 +504,12 @@ End count = 2
     let mut number = 3;
 
     while number != 0 {
-        println!(&quot;{number}!&quot;);
+        println!("{number}!");
 
         number -= 1;
     }
 
-    println!(&quot;LIFTOFF!!!&quot;);
+    println!("LIFTOFF!!!");
 }</code></pre></pre>
 <p><span class="caption">예제 3-3: <code>while</code> 반복문을 사용하여 조건이 참인
 동안 코드를 반복 실행하기</span></p>
@@ -526,7 +526,7 @@ End count = 2
     let mut index = 0;
 
     while index &lt; 5 {
-        println!(&quot;the value is: {}&quot;, a[index]);
+        println!("the value is: {}", a[index]);
 
         index += 1;
     }
@@ -563,7 +563,7 @@ the value is: 50
     let a = [10, 20, 30, 40, 50];
 
     for element in a {
-        println!(&quot;the value is: {element}&quot;);
+        println!("the value is: {element}");
     }
 }</code></pre></pre>
 <p><span class="caption">예제 3-5: <code>for</code> 반복문을 이용하여 콜랙션의
@@ -587,9 +587,9 @@ the value is: 50
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     for number in (1..4).rev() {
-        println!(&quot;{number}!&quot;);
+        println!("{number}!");
     }
-    println!(&quot;LIFTOFF!!!&quot;);
+    println!("LIFTOFF!!!");
 }</code></pre></pre>
 <p>이 코드가 좀 더 괜찮죠?</p>
 <h2 id="정리"><a class="header" href="#정리">정리</a></h2>

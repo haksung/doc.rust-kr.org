@@ -209,12 +209,12 @@ $ cd hello
 <pre><pre class="playground"><code class="language-rust no_run">use std::net::TcpListener;
 
 fn main() {
-    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
 
-        println!(&quot;Connection established!&quot;);
+        println!("Connection established!");
     }
 }</code></pre></pre>
 <p><span class="caption">예제 20-1: 들어오는 스트림 수신 대기하기 및
@@ -297,7 +297,7 @@ Connection established!
 };
 
 fn main() {
-    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
@@ -314,7 +314,7 @@ fn handle_connection(mut stream: TcpStream) {
         .take_while(|line| !line.is_empty())
         .collect();
 
-    println!(&quot;Request: {:#?}&quot;, http_request);
+    println!("Request: {:#?}", http_request);
 }</code></pre></pre>
 <p><span class="caption">예제 20-2: <code>TcpStream</code>을 읽고 데이터
 출력하기</span></p>
@@ -350,20 +350,20 @@ fn handle_connection(mut stream: TcpStream) {
     Finished dev [unoptimized + debuginfo] target(s) in 0.42s
      Running `target/debug/hello`
 Request: [
-    &quot;GET / HTTP/1.1&quot;,
-    &quot;Host: 127.0.0.1:7878&quot;,
-    &quot;User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0&quot;,
-    &quot;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8&quot;,
-    &quot;Accept-Language: en-US,en;q=0.5&quot;,
-    &quot;Accept-Encoding: gzip, deflate, br&quot;,
-    &quot;DNT: 1&quot;,
-    &quot;Connection: keep-alive&quot;,
-    &quot;Upgrade-Insecure-Requests: 1&quot;,
-    &quot;Sec-Fetch-Dest: document&quot;,
-    &quot;Sec-Fetch-Mode: navigate&quot;,
-    &quot;Sec-Fetch-Site: none&quot;,
-    &quot;Sec-Fetch-User: ?1&quot;,
-    &quot;Cache-Control: max-age=0&quot;,
+    "GET / HTTP/1.1",
+    "Host: 127.0.0.1:7878",
+    "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:99.0) Gecko/20100101 Firefox/99.0",
+    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language: en-US,en;q=0.5",
+    "Accept-Encoding: gzip, deflate, br",
+    "DNT: 1",
+    "Connection: keep-alive",
+    "Upgrade-Insecure-Requests: 1",
+    "Sec-Fetch-Dest: document",
+    "Sec-Fetch-Mode: navigate",
+    "Sec-Fetch-Site: none",
+    "Sec-Fetch-User: ?1",
+    "Cache-Control: max-age=0",
 ]
 </code></pre>
 <p>브라우저에 따라 약간 다른 출력이 표시될 수 있습니다. 이제 요청
@@ -432,7 +432,7 @@ message-body
 </span><span class="boring">};
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
 </span><span class="boring">        let stream = stream.unwrap();
@@ -449,7 +449,7 @@ message-body
         .take_while(|line| !line.is_empty())
         .collect();
 
-    let response = &quot;HTTP/1.1 200 OK\r\n\r\n&quot;;
+    let response = "HTTP/1.1 200 OK\r\n\r\n";
 
     stream.write_all(response.as_bytes()).unwrap();
 }</code></pre></pre>
@@ -473,9 +473,9 @@ message-body
 한 가지 예시를 보여줍니다.</p>
 <p><span class="filename">파일명: hello.html</span></p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang="en"&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta charset="utf-8"&gt;
     &lt;title&gt;Hello!&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
@@ -499,7 +499,7 @@ HTML 파일</span></p>
 // --생략--
 
 <span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
 </span><span class="boring">        let stream = stream.unwrap();
@@ -516,12 +516,12 @@ HTML 파일</span></p>
         .take_while(|line| !line.is_empty())
         .collect();
 
-    let status_line = &quot;HTTP/1.1 200 OK&quot;;
-    let contents = fs::read_to_string(&quot;hello.html&quot;).unwrap();
+    let status_line = "HTTP/1.1 200 OK";
+    let contents = fs::read_to_string("hello.html").unwrap();
     let length = contents.len();
 
     let response =
-        format!(&quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;);
+        format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 
     stream.write_all(response.as_bytes()).unwrap();
 }</code></pre></pre>
@@ -560,7 +560,7 @@ HTML을 반환합니다. HTML 파일을 반환하기 전에 브라우저가 <em>
 </span><span class="boring">};
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
 </span><span class="boring">        let stream = stream.unwrap();
@@ -574,13 +574,13 @@ fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&amp;mut stream);
     let request_line = buf_reader.lines().next().unwrap().unwrap();
 
-    if request_line == &quot;GET / HTTP/1.1&quot; {
-        let status_line = &quot;HTTP/1.1 200 OK&quot;;
-        let contents = fs::read_to_string(&quot;hello.html&quot;).unwrap();
+    if request_line == "GET / HTTP/1.1" {
+        let status_line = "HTTP/1.1 200 OK";
+        let contents = fs::read_to_string("hello.html").unwrap();
         let length = contents.len();
 
         let response = format!(
-            &quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;
+            "{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}"
         );
 
         stream.write_all(response.as_bytes()).unwrap();
@@ -618,7 +618,7 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">};
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
 </span><span class="boring">        let stream = stream.unwrap();
@@ -631,24 +631,24 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">    let buf_reader = BufReader::new(&amp;mut stream);
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span><span class="boring">
-</span><span class="boring">    if request_line == &quot;GET / HTTP/1.1&quot; {
-</span><span class="boring">        let status_line = &quot;HTTP/1.1 200 OK&quot;;
-</span><span class="boring">        let contents = fs::read_to_string(&quot;hello.html&quot;).unwrap();
+</span><span class="boring">    if request_line == "GET / HTTP/1.1" {
+</span><span class="boring">        let status_line = "HTTP/1.1 200 OK";
+</span><span class="boring">        let contents = fs::read_to_string("hello.html").unwrap();
 </span><span class="boring">        let length = contents.len();
 </span><span class="boring">
 </span><span class="boring">        let response = format!(
-</span><span class="boring">            &quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;
+</span><span class="boring">            "{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}"
 </span><span class="boring">        );
 </span><span class="boring">
 </span><span class="boring">        stream.write_all(response.as_bytes()).unwrap();
 </span>    // --생략--
     } else {
-        let status_line = &quot;HTTP/1.1 404 NOT FOUND&quot;;
-        let contents = fs::read_to_string(&quot;404.html&quot;).unwrap();
+        let status_line = "HTTP/1.1 404 NOT FOUND";
+        let contents = fs::read_to_string("404.html").unwrap();
         let length = contents.len();
 
         let response = format!(
-            &quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;
+            "{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}"
         );
 
         stream.write_all(response.as_bytes()).unwrap();
@@ -663,9 +663,9 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 사용해도 됩니다.</p>
 <p><span class="filename">파일명: 404.html</span></p>
 <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
+&lt;html lang="en"&gt;
   &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta charset="utf-8"&gt;
     &lt;title&gt;Hello!&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
@@ -696,7 +696,7 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 </span><span class="boring">};
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
 </span><span class="boring">        let stream = stream.unwrap();
@@ -711,17 +711,17 @@ fn handle_connection(mut stream: TcpStream) {
 <span class="boring">    let buf_reader = BufReader::new(&amp;mut stream);
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span>
-    let (status_line, filename) = if request_line == &quot;GET / HTTP/1.1&quot; {
-        (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+    let (status_line, filename) = if request_line == "GET / HTTP/1.1" {
+        ("HTTP/1.1 200 OK", "hello.html")
     } else {
-        (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;)
+        ("HTTP/1.1 404 NOT FOUND", "404.html")
     };
 
     let contents = fs::read_to_string(filename).unwrap();
     let length = contents.len();
 
     let response =
-        format!(&quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;);
+        format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 
     stream.write_all(response.as_bytes()).unwrap();
 }</code></pre></pre>

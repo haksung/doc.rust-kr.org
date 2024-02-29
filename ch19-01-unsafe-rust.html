@@ -295,8 +295,8 @@
     let r2 = &amp;mut num as *mut i32;
 
     unsafe {
-        println!(&quot;r1 is: {}&quot;, *r1);
-        println!(&quot;r2 is: {}&quot;, *r2);
+        println!("r1 is: {}", *r1);
+        println!("r2 is: {}", *r2);
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 19-3: <code>unsafe</code> 블록 내에서 원시 포인터
@@ -506,21 +506,21 @@ fn split_at_mut(values: &amp;mut [i32], mid: usize) -&gt; (&amp;mut [i32], &amp;
 적용하지 않고, 러스트가 이를 확인할 수 없어서 프로그래머에게 안전을
 보장할 책임이 있기 때문입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">extern &quot;C&quot; {
+<pre><pre class="playground"><code class="language-rust">extern "C" {
     fn abs(input: i32) -&gt; i32;
 }
 
 fn main() {
     unsafe {
-        println!(&quot;Absolute value of -3 according to C: {}&quot;, abs(-3));
+        println!("Absolute value of -3 according to C: {}", abs(-3));
     }
 }</code></pre></pre>
 <p><span class="caption">예제 19-8: 다른 언어에 정의된 <code>extern</code> 함수의
 선언 및 호출</span></p>
-<p><code>extern &quot;C&quot;</code> 블록에는 호출하려는 다른 언어의 외부 함수의
-이름과 시그니처를 나열합니다. <code>&quot;C&quot;</code> 부분은 외부 함수가 사용하는
+<p><code>extern "C"</code> 블록에는 호출하려는 다른 언어의 외부 함수의
+이름과 시그니처를 나열합니다. <code>"C"</code> 부분은 외부 함수가 사용하는
 <em>ABI (application binary interface)</em> 를 정의합니다: ABI는
-어셈블리 수준에서 함수를 호출하는 방법을 정의합니다. <code>&quot;C&quot;</code> ABI는
+어셈블리 수준에서 함수를 호출하는 방법을 정의합니다. <code>"C"</code> ABI는
 가장 일반적이며 C 프로그래밍 언어의 ABI를 따릅니다.</p>
 <blockquote>
 <h4 id="다른-언어에서-러스트-함수-호출하기"><a class="header" href="#다른-언어에서-러스트-함수-호출하기">다른 언어에서 러스트 함수 호출하기</a></h4>
@@ -539,8 +539,8 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[no_mangle]
-pub extern &quot;C&quot; fn call_from_c() {
-    println!(&quot;Just called a Rust function from C!&quot;);
+pub extern "C" fn call_from_c() {
+    println!("Just called a Rust function from C!");
 }
 <span class="boring">}</span></code></pre></pre>
 <p>이러한 <code>extern</code>의 사용에는 <code>unsafe</code>가 필요 없습니다.</p>
@@ -553,10 +553,10 @@ pub extern &quot;C&quot; fn call_from_c() {
 문자열 슬라이스를 값으로 사용하는 정적 변수의 선언과 사용례를
 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">static HELLO_WORLD: &amp;str = &quot;Hello, world!&quot;;
+<pre><pre class="playground"><code class="language-rust">static HELLO_WORLD: &amp;str = "Hello, world!";
 
 fn main() {
-    println!(&quot;name is: {}&quot;, HELLO_WORLD);
+    println!("name is: {}", HELLO_WORLD);
 }</code></pre></pre>
 <p><span class="caption">예제 19-9: 불변 정적 변수의 정의 및
 사용</span></p>
@@ -588,7 +588,7 @@ fn main() {
     add_to_count(3);
 
     unsafe {
-        println!(&quot;COUNTER: {}&quot;, COUNTER);
+        println!("COUNTER: {}", COUNTER);
     }
 }</code></pre></pre>
 <p><span class="caption">예제 19-10: 가변 정적 변수를 읽거나 쓰는 것은

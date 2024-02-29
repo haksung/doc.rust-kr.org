@@ -187,7 +187,7 @@
 <li>구조체와 열거형에 사용되는 <code>derive</code> 속성이 추가된 코드를 지정하는
 커스텀 <code>#[derive]</code> 매크로</li>
 <li>모든 아이템에 사용 가능한 커스텀 속성을 정의하는 속성형 (attribute-like) 매크로</li>
-<li>함수 호출처럼 보이지만 지정된 토큰을 인수로써 조작하는 
+<li>함수 호출처럼 보이지만 지정된 토큰을 인수로써 조작하는
 함수형 (function-like) 매크로</li>
 </ul>
 <p>순차적으로 각각에 대해 이야기할 것이지만, 먼저 함수가 이미 있음에도 매크로가
@@ -203,8 +203,8 @@
 함수에는 없는 몇 가지 추가 기능이 있습니다.</p>
 <p>함수 시그니처는 함수에 있는 매개변수의 개수와 타입을 선언해야
 합니다. 반면 매크로는 가변적인 수의 매개변수를 사용할 수 있습니다:
-하나의 인수로 <code>println!(&quot;hello&quot;)</code>를 호출하거나 두 개의 인수로
-<code>println!(&quot;hello {}&quot;, name)</code>을 호출할 수 있는 것처럼요. 또한 매크로는
+하나의 인수로 <code>println!("hello")</code>를 호출하거나 두 개의 인수로
+<code>println!("hello {}", name)</code>을 호출할 수 있는 것처럼요. 또한 매크로는
 컴파일러가 코드의 의미를 해석하기 전에 확장되기 때문에, 매크로는 이를테면
 주어진 타입에 대한 트레이트를 구현할 수 있습니다. 이는 함수로는 불가능한데,
 함수는 런타임에 호출되고 트레이트는 컴파일 타임에 구현되어야 하기 때문입니다.</p>
@@ -380,7 +380,7 @@ struct Pancakes;
 
 impl HelloMacro for Pancakes {
     fn hello_macro() {
-        println!(&quot;Hello, Macro! My name is Pancakes!&quot;);
+        println!("Hello, Macro! My name is Pancakes!");
     }
 }
 
@@ -421,8 +421,8 @@ fn main() {
 proc-macro = true
 
 [dependencies]
-syn = &quot;1.0&quot;
-quote = &quot;1.0&quot;
+syn = "1.0"
+quote = "1.0"
 </code></pre>
 <p>절차적 매크로 정의를 시작하려면 예제 19-31의 코드를 <code>hello_macro_derive</code>
 크레이트의 <em>src/lib.rs</em> 파일에 넣으세요. 이 코드는 <code>impl_hello_macro</code> 함수에
@@ -475,7 +475,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
     // --생략--
 
     ident: Ident {
-        ident: &quot;Pancakes&quot;,
+        ident: "Pancakes",
         span: #0 bytes(95..103)
     },
     data: Struct(
@@ -530,7 +530,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
     let gen = quote! {
         impl HelloMacro for #name {
             fn hello_macro() {
-                println!(&quot;Hello, Macro! My name is {}!&quot;, stringify!(#name));
+                println!("Hello, Macro! My name is {}!", stringify!(#name));
             }
         }
     };
@@ -541,10 +541,10 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 <p><code>ast.ident</code>를 사용하여 어노테이션된 타입의 이름(식별자)을 담고 있는
 <code>Ident</code> 구조체 인스턴스를 얻습니다. 예제 19-32의 구조체는 예제 19-30의
 코드에서 <code>impl_hello_macro</code> 함수를 실행할 때, 얻게 되는
-<code>ident</code>에 <code>&quot;Pancakes&quot;</code> 값을 가진 <code>ident</code> 필드가 있음을 보여줍니다.
+<code>ident</code>에 <code>"Pancakes"</code> 값을 가진 <code>ident</code> 필드가 있음을 보여줍니다.
 따라서, 예제 19-33의 <code>name</code> 변수에는 <code>Ident</code> 구조체 인스턴스가
 포함되며, 이 인스턴스를 출력하면 예제 19-30의 구조체 이름인
-<code>&quot;Pancakes&quot;</code> 문자열이 됩니다.</p>
+<code>"Pancakes"</code> 문자열이 됩니다.</p>
 <p><code>quote!</code> 매크로는 반환하고자 하는 러스트 코드를 정의하도록 해 줍니다.
 컴파일러는 <code>quote!</code> 매크로 실행의 직접적인 결과와는 다른 것을 기대하므로,
 이를 <code>TokenStream</code>으로 변환할 필요가 있습니다. 이 중간 표현을 소비하고
@@ -561,7 +561,7 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 출력한 다음 어노테이션된 타입의 이름을 출력하는 것이죠.</p>
 <p>여기에 사용된 <code>stringify!</code> 매크로는 러스트에 내장되어 있습니다. 이
 매크로는 <code>1 + 2</code>와 같은 러스트 표현식을 받아서, 컴파일 타임에 이 표현식을
-<code>&quot;1 + 2&quot;</code>와 같은 문자열 리터럴로 변환합니다. 이는 표현식을 평가한 다음
+<code>"1 + 2"</code>와 같은 문자열 리터럴로 변환합니다. 이는 표현식을 평가한 다음
 결과를 <code>String</code>으로 변환하는 매크로인 <code>format!</code> 또는 <code>println!</code>과는
 다릅니다. <code>#name</code> 입력이 문자 그대로 인쇄할 표현식일 가능성이 있으므로
 <code>stringify!</code>를 사용합니다. <code>stringify!</code>를 사용하면 컴파일 타임에
@@ -574,11 +574,11 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 추가해야 합니다. <a href="https://crates.io/">crates.io</a>에 <code>hello_macro</code>와
 <code>hello_macro_derive</code> 버전을 배포하는 중이라면, 일반적인 종속성이 됩니다;
 그렇지 않은 경우 다음과 같이 <code>path</code> 종속성으로 지정할 수 있습니다:</p>
-<pre><code class="language-toml">hello_macro = { path = &quot;../hello_macro&quot; }
-hello_macro_derive = { path = &quot;../hello_macro/hello_macro_derive&quot; }
+<pre><code class="language-toml">hello_macro = { path = "../hello_macro" }
+hello_macro_derive = { path = "../hello_macro/hello_macro_derive" }
 </code></pre>
 <p>예제 19-30의 코드를 <em>src/main.rs</em>에 넣고 <code>cargo run</code>을 실행하세요:
-<code>Hello, Macro! My name is Pancakes!&quot;라고 출력되어야 합니다. 절차적 매크로의 </code>HelloMacro<code>트레이트 구현은</code>pancakes<code>크레이트가 구현할 필요 없이 포함되었습니다;</code>#[derive(HelloMacro)]`이 트레이트 구현을
+<code>Hello, Macro! My name is Pancakes!"라고 출력되어야 합니다. 절차적 매크로의 </code>HelloMacro<code>트레이트 구현은</code>pancakes<code>크레이트가 구현할 필요 없이 포함되었습니다;</code>#[derive(HelloMacro)]`이 트레이트 구현을
 추가한 것이지요.</p>
 <p>다음으로 다른 종류의 절차적 매크로는 커스텀 파생 매크로와 어떻게 다른지
 알아보겠습니다.</p>
@@ -589,14 +589,14 @@ hello_macro_derive = { path = &quot;../hello_macro/hello_macro_derive&quot; }
 속성은 함수와 같은 다른 아이템에도 적용이 가능합니다. 다음은 속성형
 매크로를 사용하는 예제입니다: 웹 애플리케이션 프레임워크를 사용할
 때 함수에 어노테이션하는 <code>route</code>라는 속성이 있다고 가정해 보겠습니다:</p>
-<pre><code class="language-rust ignore">#[route(GET, &quot;/&quot;)]
+<pre><code class="language-rust ignore">#[route(GET, "/")]
 fn index() {</code></pre>
 <p>이 <code>#[route]</code> 속성은 절차적 매크로로써 프레임워크에 의해 정의된
 것입니다. 매크로 정의 함수의 시그니처는 다음과 같습니다:</p>
 <pre><code class="language-rust ignore">#[proc_macro_attribute]
 pub fn route(attr: TokenStream, item: TokenStream) -&gt; TokenStream {</code></pre>
 <p>여기에는 <code>TokenStream</code> 타입의 매개변수 두 개가 있습니다. 첫 번째는
-속성의 내용에 대한 것입니다: 즉, <code>GET, &quot;/&quot;</code> 부분입니다. 두 번째는
+속성의 내용에 대한 것입니다: 즉, <code>GET, "/"</code> 부분입니다. 두 번째는
 속성이 연결된 아이템의 본문입니다: 이 경우에는 <code>fn index() {}</code>와
 나머지 함수 본문입니다.</p>
 <p>그 외에, 속성형 매크로는 커스텀 파생 매크로와 동일한 방식으로

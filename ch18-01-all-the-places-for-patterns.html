@@ -230,20 +230,20 @@
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let favorite_color: Option&lt;&amp;str&gt; = None;
     let is_tuesday = false;
-    let age: Result&lt;u8, _&gt; = &quot;34&quot;.parse();
+    let age: Result&lt;u8, _&gt; = "34".parse();
 
     if let Some(color) = favorite_color {
-        println!(&quot;Using your favorite color, {color}, as the background&quot;);
+        println!("Using your favorite color, {color}, as the background");
     } else if is_tuesday {
-        println!(&quot;Tuesday is green day!&quot;);
+        println!("Tuesday is green day!");
     } else if let Ok(age) = age {
         if age &gt; 30 {
-            println!(&quot;Using purple as the background color&quot;);
+            println!("Using purple as the background color");
         } else {
-            println!(&quot;Using orange as the background color&quot;);
+            println!("Using orange as the background color");
         }
     } else {
-        println!(&quot;Using blue as the background color&quot;);
+        println!("Using blue as the background color");
     }
 }</code></pre></pre>
 <p><span class="caption">예제 18-1: <code>if let</code>, <code>else if</code>, <code>else if let</code>, <code>else</code>의
@@ -281,7 +281,7 @@
     stack.push(3);
 
     while let Some(top) = stack.pop() {
-        println!(&quot;{}&quot;, top);
+        println!("{}", top);
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-2: <code>while let</code>을 사용하여 <code>stack.pop()</code>이
@@ -300,7 +300,7 @@
 </span>    let v = vec!['a', 'b', 'c'];
 
     for (index, value) in v.iter().enumerate() {
-        println!(&quot;{} is at index {}&quot;, value, index);
+        println!("{} is at index {}", value, index);
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-3: <code>for</code> 루프에서 패턴을 사용하여
@@ -398,7 +398,7 @@ error: could not compile `patterns` due to previous error
 분할합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn print_coordinates(&amp;(x, y): &amp;(i32, i32)) {
-    println!(&quot;Current location: ({}, {})&quot;, x, y);
+    println!("Current location: ({}, {})", x, y);
 }
 
 fn main() {

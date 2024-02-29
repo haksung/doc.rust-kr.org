@@ -209,18 +209,18 @@
 
 impl Drop for CustomSmartPointer {
     fn drop(&amp;mut self) {
-        println!(&quot;Dropping CustomSmartPointer with data `{}`!&quot;, self.data);
+        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
     }
 }
 
 fn main() {
     let c = CustomSmartPointer {
-        data: String::from(&quot;my stuff&quot;),
+        data: String::from("my stuff"),
     };
     let d = CustomSmartPointer {
-        data: String::from(&quot;other stuff&quot;),
+        data: String::from("other stuff"),
     };
-    println!(&quot;CustomSmartPointers created.&quot;);
+    println!("CustomSmartPointers created.");
 }</code></pre></pre>
 <p><span class="caption">예제 15-14: 메모리 정리 코드를 집어넣게 될
 <code>Drop</code> 트레이트를 구현한 <code>CustomSmartPointer</code> 구조체</span></p>
@@ -270,17 +270,17 @@ Dropping CustomSmartPointer with data `my stuff`!
 </span><span class="boring">
 </span><span class="boring">impl Drop for CustomSmartPointer {
 </span><span class="boring">    fn drop(&amp;mut self) {
-</span><span class="boring">        println!(&quot;Dropping CustomSmartPointer with data `{}`!&quot;, self.data);
+</span><span class="boring">        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
     let c = CustomSmartPointer {
-        data: String::from(&quot;some data&quot;),
+        data: String::from("some data"),
     };
-    println!(&quot;CustomSmartPointer created.&quot;);
+    println!("CustomSmartPointer created.");
     c.drop();
-    println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
+    println!("CustomSmartPointer dropped before the end of main.");
 }</code></pre>
 <p><span class="caption">예제 15-15: 메모리를 일찍 정리하기 위한 <code>Drop</code>
 트레이트의 <code>drop</code> 메서드의 수동 호출 시도하기</span></p>
@@ -322,17 +322,17 @@ error: could not compile `drop-example` due to previous error
 </span><span class="boring">
 </span><span class="boring">impl Drop for CustomSmartPointer {
 </span><span class="boring">    fn drop(&amp;mut self) {
-</span><span class="boring">        println!(&quot;Dropping CustomSmartPointer with data `{}`!&quot;, self.data);
+</span><span class="boring">        println!("Dropping CustomSmartPointer with data `{}`!", self.data);
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
     let c = CustomSmartPointer {
-        data: String::from(&quot;some data&quot;),
+        data: String::from("some data"),
     };
-    println!(&quot;CustomSmartPointer created.&quot;);
+    println!("CustomSmartPointer created.");
     drop(c);
-    println!(&quot;CustomSmartPointer dropped before the end of main.&quot;);
+    println!("CustomSmartPointer dropped before the end of main.");
 }</code></pre></pre>
 <p><span class="caption">예제 15-16: <code>std::mem::drop</code>을 호출하여
 값이 스코프를 벗어나기 전에 명시적으로 버리기</span></p>

@@ -220,8 +220,8 @@
 </span>fn main() {
     let user1 = User {
         active: true,
-        username: String::from(&quot;someusername123&quot;),
-        email: String::from(&quot;someone@example.com&quot;),
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
         sign_in_count: 1,
     };
 }</code></pre></pre>
@@ -243,12 +243,12 @@
 </span>fn main() {
     let mut user1 = User {
         active: true,
-        username: String::from(&quot;someusername123&quot;),
-        email: String::from(&quot;someone@example.com&quot;),
+        username: String::from("someusername123"),
+        email: String::from("someone@example.com"),
         sign_in_count: 1,
     };
 
-    user1.email = String::from(&quot;anotheremail@example.com&quot;);
+    user1.email = String::from("anotheremail@example.com");
 }</code></pre></pre>
 <p><span class="caption">예제 5-3: <code>User</code> 인스턴스의
 <code>email</code> 필드 값 변경</span></p>
@@ -278,8 +278,8 @@
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    let user1 = build_user(
-</span><span class="boring">        String::from(&quot;someone@example.com&quot;),
-</span><span class="boring">        String::from(&quot;someusername123&quot;),
+</span><span class="boring">        String::from("someone@example.com"),
+</span><span class="boring">        String::from("someusername123"),
 </span><span class="boring">    );
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 5-4: 사용자의 이메일과 이름을 전달받고
@@ -314,8 +314,8 @@
 <span class="boring">
 </span><span class="boring">fn main() {
 </span><span class="boring">    let user1 = build_user(
-</span><span class="boring">        String::from(&quot;someone@example.com&quot;),
-</span><span class="boring">        String::from(&quot;someusername123&quot;),
+</span><span class="boring">        String::from("someone@example.com"),
+</span><span class="boring">        String::from("someusername123"),
 </span><span class="boring">    );
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 5-5: 변수명과 필드명이 같던
@@ -345,8 +345,8 @@
     // --생략--
 <span class="boring">
 </span><span class="boring">    let user1 = User {
-</span><span class="boring">        email: String::from(&quot;someone@example.com&quot;),
-</span><span class="boring">        username: String::from(&quot;someusername123&quot;),
+</span><span class="boring">        email: String::from("someone@example.com"),
+</span><span class="boring">        username: String::from("someusername123"),
 </span><span class="boring">        active: true,
 </span><span class="boring">        sign_in_count: 1,
 </span><span class="boring">    };
@@ -354,7 +354,7 @@
     let user2 = User {
         active: user1.active,
         username: user1.username,
-        email: String::from(&quot;another@example.com&quot;),
+        email: String::from("another@example.com"),
         sign_in_count: user1.sign_in_count,
     };
 }</code></pre></pre>
@@ -375,14 +375,14 @@
     // --생략--
 <span class="boring">
 </span><span class="boring">    let user1 = User {
-</span><span class="boring">        email: String::from(&quot;someone@example.com&quot;),
-</span><span class="boring">        username: String::from(&quot;someusername123&quot;),
+</span><span class="boring">        email: String::from("someone@example.com"),
+</span><span class="boring">        username: String::from("someusername123"),
 </span><span class="boring">        active: true,
 </span><span class="boring">        sign_in_count: 1,
 </span><span class="boring">    };
 </span>
     let user2 = User {
-        email: String::from(&quot;another@example.com&quot;),
+        email: String::from("another@example.com"),
         ..user1
     };
 }</code></pre></pre>
@@ -478,8 +478,8 @@ fn main() {
 fn main() {
     let user1 = User {
         active: true,
-        username: &quot;someusername123&quot;,
-        email: &quot;someone@example.com&quot;,
+        username: "someusername123",
+        email: "someone@example.com",
         sign_in_count: 1,
     };
 }</code></pre>

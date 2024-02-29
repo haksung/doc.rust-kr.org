@@ -203,8 +203,8 @@
 
     let mut scores = HashMap::new();
 
-    scores.insert(String::from(&quot;Blue&quot;), 10);
-    scores.insert(String::from(&quot;Yellow&quot;), 50);
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-20: 새로운 해시맵을 생성하여 몇 개의 키와 값을
 집어넣기</span></p>
@@ -225,10 +225,10 @@
 
     let mut scores = HashMap::new();
 
-    scores.insert(String::from(&quot;Blue&quot;), 10);
-    scores.insert(String::from(&quot;Yellow&quot;), 50);
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
 
-    let team_name = String::from(&quot;Blue&quot;);
+    let team_name = String::from("Blue");
     let score = scores.get(&amp;team_name).copied().unwrap_or(0);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-23: 해시맵 내에 저장된 블루 팀의 점수
@@ -246,11 +246,11 @@
 
     let mut scores = HashMap::new();
 
-    scores.insert(String::from(&quot;Blue&quot;), 10);
-    scores.insert(String::from(&quot;Yellow&quot;), 50);
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Yellow"), 50);
 
     for (key, value) in &amp;scores {
-        println!(&quot;{key}: {value}&quot;);
+        println!("{key}: {value}");
     }
 <span class="boring">}</span></code></pre></pre>
 <p>이 코드는 각각의 쌍을 임의의 순서로 출력할 것입니다:</p>
@@ -264,8 +264,8 @@ Blue: 10
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
-    let field_name = String::from(&quot;Favorite color&quot;);
-    let field_value = String::from(&quot;Blue&quot;);
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
 
     let mut map = HashMap::new();
     map.insert(field_name, field_value);
@@ -304,14 +304,14 @@ Blue: 10
 
     let mut scores = HashMap::new();
 
-    scores.insert(String::from(&quot;Blue&quot;), 10);
-    scores.insert(String::from(&quot;Blue&quot;), 25);
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Blue"), 25);
 
-    println!(&quot;{:?}&quot;, scores);
+    println!("{:?}", scores);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-23: 특정한 키로 저장된 값을
 덮어쓰기</span></p>
-<p>이 코드는 <code>{&quot;Blue&quot;: 25}</code>를 출력할 것입니다. 원래의 값 <code>10</code>은
+<p>이 코드는 <code>{"Blue": 25}</code>를 출력할 것입니다. 원래의 값 <code>10</code>은
 덮어써졌습니다.</p>
 <!-- Old headings. Do not remove or links may break. -->
 <p><a id="only-inserting-a-value-if-the-key-has-no-value"></a></p>
@@ -330,12 +330,12 @@ Blue: 10
 </span>    use std::collections::HashMap;
 
     let mut scores = HashMap::new();
-    scores.insert(String::from(&quot;Blue&quot;), 10);
+    scores.insert(String::from("Blue"), 10);
 
-    scores.entry(String::from(&quot;Yellow&quot;)).or_insert(50);
-    scores.entry(String::from(&quot;Blue&quot;)).or_insert(50);
+    scores.entry(String::from("Yellow")).or_insert(50);
+    scores.entry(String::from("Blue")).or_insert(50);
 
-    println!(&quot;{:?}&quot;, scores);
+    println!("{:?}", scores);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-24: <code>entry</code> 메서드를 이용하여 어떤 키가 값을
 이미 갖고 있지 않을 경우에만 추가하기</span></p>
@@ -344,7 +344,7 @@ Blue: 10
 값을 해당 키에 대한 새 값으로 삽입하고 수정된 <code>Entry</code>에 대한 값을 반환합니다.
 이 방법은 직접 로직을 작성하는 것보다 훨씬 깔끔하고, 게다가 대여 검사기와 잘
 어울려 동작합니다.</p>
-<p>예제 8-24의 코드를 실행하면 <code>{&quot;Yellow&quot;: 50, &quot;Blue&quot;: 10}</code>를 출력할 것입니다.
+<p>예제 8-24의 코드를 실행하면 <code>{"Yellow": 50, "Blue": 10}</code>를 출력할 것입니다.
 첫 번째 <code>entry</code> 호출은 옐로 팀에 대한 키에 대하여 값 50을 삽입하는데, 이는
 옐로 팀이 값을 가지고 있지 않기 때문입니다. 두 번째 <code>entry</code> 호출은 해시맵을
 변경하지 않는데, 왜냐하면 블루 팀은 이미 값 10을 가지고 있기
@@ -359,7 +359,7 @@ Blue: 10
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
-    let text = &quot;hello world wonderful world&quot;;
+    let text = "hello world wonderful world";
 
     let mut map = HashMap::new();
 
@@ -368,11 +368,11 @@ Blue: 10
         *count += 1;
     }
 
-    println!(&quot;{:?}&quot;, map);
+    println!("{:?}", map);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-25: 단어와 횟수를 저장하는 해시맵을 사용하여
 단어의 등장 횟수 세기</span></p>
-<p>이 코드는 <code>{&quot;world&quot;: 2, &quot;hello&quot;: 1, &quot;wonderful&quot;: 1}</code>를 출력할 것입니다.
+<p>이 코드는 <code>{"world": 2, "hello": 1, "wonderful": 1}</code>를 출력할 것입니다.
 이러한 키/값 쌍의 출력 순서가 다를 수도 있습니다:
 <a href="#accessing-values-in-a-hash-map">‘해시맵의 값 접근하기’</a><!-- ignore -->절에서 해시맵에 대한
 반복 처리가 임의의 순서로 일어난다고 한 것을 상기해 봅시다.</p>

@@ -418,13 +418,13 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 정의를 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
-    println!(&quot;Hello, {name}!&quot;);
+    println!("Hello, {name}!");
 }
 <span class="boring">
 </span><span class="boring">fn main() {}</span></code></pre></pre>
 <p><span class="caption">예제 15-11: <code>&amp;str</code> 타입의 <code>name</code> 매개변수를 갖는
 <code>hello</code> 함수</span></p>
-<p><code>hello</code> 함수는 이를테면 <code>hello(&quot;Rust&quot;);</code>와 같이 문자열 슬라이스를 인수로
+<p><code>hello</code> 함수는 이를테면 <code>hello("Rust");</code>와 같이 문자열 슬라이스를 인수로
 호출될 수 있습니다. 예제 15-12에서 보는 바와 같이, 역참조 강제는 <code>MyBox&lt;String&gt;</code>
 타입 값에 대한 참조자로 <code>hello</code>의 호출을 가능하게 만들어 줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -447,11 +447,11 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn hello(name: &amp;str) {
-</span><span class="boring">    println!(&quot;Hello, {name}!&quot;);
+</span><span class="boring">    println!("Hello, {name}!");
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    let m = MyBox::new(String::from("Rust"));
     hello(&amp;m);
 }</code></pre></pre>
 <p><span class="caption">예제 15-12: 역참조 강제에 의해 작동되는,
@@ -486,11 +486,11 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn hello(name: &amp;str) {
-</span><span class="boring">    println!(&quot;Hello, {name}!&quot;);
+</span><span class="boring">    println!("Hello, {name}!");
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    let m = MyBox::new(String::from(&quot;Rust&quot;));
+    let m = MyBox::new(String::from("Rust"));
     hello(&amp;(*m)[..]);
 }</code></pre></pre>
 <p><span class="caption">예제 15-13: 러스트에 역참조 강제가 없었을 경우
@@ -510,7 +510,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 비슷한 방식으로, <code>DerefMut</code> 트레이트를 사용하여 가변 참조자에 대한 <code>*</code> 연산자를
 오버라이딩할 수 있습니다.</p>
 <p>러스트는 다음의 세 가지 경우에 해당하는 타입과 트레이트 구현을 찾았을 때
-역참조 강제를 수행합니다: </p>
+역참조 강제를 수행합니다:</p>
 <ul>
 <li><code>T: Deref&lt;Target=U&gt;</code>일 때 <code>&amp;T</code>에서 <code>&amp;U</code>로</li>
 <li><code>T: DerefMut&lt;Target=U&gt;</code>일 때 <code>&amp;mut T</code>에서 <code>&amp;mut U</code>로</li>

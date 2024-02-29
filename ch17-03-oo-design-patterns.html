@@ -219,14 +219,14 @@
 fn main() {
     let mut post = Post::new();
 
-    post.add_text(&quot;I ate a salad for lunch today&quot;);
-    assert_eq!(&quot;&quot;, post.content());
+    post.add_text("I ate a salad for lunch today");
+    assert_eq!("", post.content());
 
     post.request_review();
-    assert_eq!(&quot;&quot;, post.content());
+    assert_eq!("", post.content());
 
     post.approve();
-    assert_eq!(&quot;I ate a salad for lunch today&quot;, post.content());
+    assert_eq!("I ate a salad for lunch today", post.content());
 }</code></pre>
 <p><span class="caption">예제 17-11: <code>blog</code> 크레이트에 원하는 요구
 동작을 보여주는 코드</span></p>
@@ -337,7 +337,7 @@ impl State for Draft {}</code></pre>
 일부입니다.</p>
 <h3 id="초안-게시물의-내용이-비어있음을-보장하기"><a class="header" href="#초안-게시물의-내용이-비어있음을-보장하기">초안 게시물의 내용이 비어있음을 보장하기</a></h3>
 <p><code>add_text</code>를 호출하고 게시물에 어떤 콘텐츠를 추가한 이후일지라도, 여전히
-<code>content</code> 메서드가 빈 문자열 슬라이스를 반환하길 원하는데, 그 이유는 
+<code>content</code> 메서드가 빈 문자열 슬라이스를 반환하길 원하는데, 그 이유는
 예제 17-11의 7번째 줄처럼 게시물이 여전히 초안 상태이기 때문입니다. 당장은
 이 요건을 만족할 가장 단순한 것으로 <code>content</code> 메서드를 구현해 놓으려고 합니다:
 언제나 빈 문자열 슬라이스를 반환하는 것으로요. 나중에 게시물이 게시될 수 있도록
@@ -364,7 +364,7 @@ impl State for Draft {}</code></pre>
 </span><span class="boring">    }
 </span><span class="boring">
 </span>    pub fn content(&amp;self) -&gt; &amp;str {
-        &quot;&quot;
+        ""
     }
 }
 <span class="boring">
@@ -400,7 +400,7 @@ impl State for Draft {}</code></pre>
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    pub fn content(&amp;self) -&gt; &amp;str {
-</span><span class="boring">        &quot;&quot;
+</span><span class="boring">        ""
 </span><span class="boring">    }
 </span><span class="boring">
 </span>    pub fn request_review(&amp;mut self) {
@@ -492,7 +492,7 @@ impl State for PendingReview {
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    pub fn content(&amp;self) -&gt; &amp;str {
-</span><span class="boring">        &quot;&quot;
+</span><span class="boring">        ""
 </span><span class="boring">    }
 </span><span class="boring">
 </span><span class="boring">    pub fn request_review(&amp;mut self) {
@@ -707,7 +707,7 @@ impl State for Published {
 </span><span class="boring">    fn approve(self: Box&lt;Self&gt;) -&gt; Box&lt;dyn State&gt;;
 </span><span class="boring">
 </span>    fn content&lt;'a&gt;(&amp;self, post: &amp;'a Post) -&gt; &amp;'a str {
-        &quot;&quot;
+        ""
     }
 }
 
@@ -815,7 +815,7 @@ impl State for Published {
 <code>self</code>를 반환하도록 기본 구현을 만드는 시도를 할 수도 있습니다; 하지만
 이는 트레이트가 구체적인 <code>self</code>가 정확히 무엇인지 모르기 때문에 객체
 안전성을 위반할 수 있습니다. <code>State</code>가 트레이트 객체로 사용될 수 있기를
-원하므로, 해당 메서드들이 객체 안전성을 지킬 필요가 있습니다. </p>
+원하므로, 해당 메서드들이 객체 안전성을 지킬 필요가 있습니다.</p>
 <p><code>Post</code>의 <code>request_review</code>와 <code>approve</code> 메서드의 유사한 구현들도
 그 밖의 중복에 포함됩니다. 두 메서드 모두 <code>Option</code>의 <code>state</code> 필드
 값에 대해 동일한 메서드의 구현을 위임하며, <code>state</code> 필드의 새 값을
@@ -839,14 +839,14 @@ impl State for Published {
 </span>fn main() {
     let mut post = Post::new();
 
-    post.add_text(&quot;I ate a salad for lunch today&quot;);
-    assert_eq!(&quot;&quot;, post.content());
+    post.add_text("I ate a salad for lunch today");
+    assert_eq!("", post.content());
 <span class="boring">
 </span><span class="boring">    post.request_review();
-</span><span class="boring">    assert_eq!(&quot;&quot;, post.content());
+</span><span class="boring">    assert_eq!("", post.content());
 </span><span class="boring">
 </span><span class="boring">    post.approve();
-</span><span class="boring">    assert_eq!(&quot;I ate a salad for lunch today&quot;, post.content());
+</span><span class="boring">    assert_eq!("I ate a salad for lunch today", post.content());
 </span>}</code></pre>
 <p><code>Post::new</code>를 사용하여 초안 상태의 새 게시물을 생성하고 게시물의
 내용에 새 글을 추가할 수 있는 기능은 계속 사용할 수 있습니다. 하지만
@@ -893,7 +893,7 @@ impl DraftPost {
 <p><code>Post::new</code> 함수는 여전히 있지만, <code>Post</code>의 인스턴스를 반환하는
 대신 <code>DraftPost</code>를 반환합니다. <code>content</code>는 비공개이고 <code>Post</code>를 반환할
 어떤 함수도 존재하지 않기 때문에, 곧바로 <code>Post</code>의 인스턴스를 생성하는
-것은 불가능합니다. </p>
+것은 불가능합니다.</p>
 <p><code>DraftPost</code> 구조체에 <code>add_text</code> 메서드가 있으므로 전처럼 <code>content</code>에
 텍스트를 추가할 수 있지만, <code>DraftPost</code>에는 <code>content</code> 메서드가 정의되어 있지
 않다는 것을 주의하세요! 따라서 이제 프로그램은 모든 게시물이 초안 게시물로
@@ -979,13 +979,13 @@ impl PendingReviewPost {
 fn main() {
     let mut post = Post::new();
 
-    post.add_text(&quot;I ate a salad for lunch today&quot;);
+    post.add_text("I ate a salad for lunch today");
 
     let post = post.request_review();
 
     let post = post.approve();
 
-    assert_eq!(&quot;I ate a salad for lunch today&quot;, post.content());
+    assert_eq!("I ate a salad for lunch today", post.content());
 }</code></pre>
 <p><span class="caption">예제 17-21: 새로운 블로그 게시물 작업 흐름
 구현을 사용하기 위한 <code>main</code> 수정</span></p>
@@ -999,7 +999,7 @@ fn main() {
 <p>이번 절의 시작 지점에서 제안되었던 작업을 예제 17-21의 <code>blog</code>
 크레이트에서 그대로 시도해 보면서 이 버전의 코드 디자인에 대해
 어떻게 생각하는지 확인해 보세요. 일부 작업은 이번 디자인에서 이미
-완료되었을 수도 있음을 알려드립니다. </p>
+완료되었을 수도 있음을 알려드립니다.</p>
 <p>러스트에서 객체 지향 디자인 패턴의 구현이 가능할지라도, 러스트에서는
 상태를 타입 시스템으로 인코딩하는 다른 패턴도 사용할 수 있음을
 확인했습니다. 이 패턴들은 서로 다른 장단점을 가지고 있습니다.

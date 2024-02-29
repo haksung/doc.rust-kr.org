@@ -312,14 +312,14 @@ fn main() {
 </span><span class="boring">
 </span>fn main() {
     let a = Rc::new(Cons(5, Rc::new(Cons(10, Rc::new(Nil)))));
-    println!(&quot;count after creating a = {}&quot;, Rc::strong_count(&amp;a));
+    println!("count after creating a = {}", Rc::strong_count(&amp;a));
     let b = Cons(3, Rc::clone(&amp;a));
-    println!(&quot;count after creating b = {}&quot;, Rc::strong_count(&amp;a));
+    println!("count after creating b = {}", Rc::strong_count(&amp;a));
     {
         let c = Cons(4, Rc::clone(&amp;a));
-        println!(&quot;count after creating c = {}&quot;, Rc::strong_count(&amp;a));
+        println!("count after creating c = {}", Rc::strong_count(&amp;a));
     }
-    println!(&quot;count after c goes out of scope = {}&quot;, Rc::strong_count(&amp;a));
+    println!("count after c goes out of scope = {}", Rc::strong_count(&amp;a));
 }</code></pre></pre>
 <p><span class="caption">예제 15-19: Printing the reference count</span></p>
 <p>프로그램 내 참조 카운트가 변하는 각 지점에서 <code>Rc::strong_count</code>

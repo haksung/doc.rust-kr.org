@@ -191,11 +191,11 @@
 다음은 참조자를 매개변수로 받도록 구현한 <code>calculate_length</code> 함수의 정의 및 용례입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let s1 = String::from(&quot;hello&quot;);
+    let s1 = String::from("hello");
 
     let len = calculate_length(&amp;s1);
 
-    println!(&quot;The length of '{}' is {}.&quot;, s1, len);
+    println!("The length of '{}' is {}.", s1, len);
 }
 
 fn calculate_length(s: &amp;String) -&gt; usize {
@@ -219,11 +219,11 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 </blockquote>
 <p>함수 호출부를 좀 더 자세히 살펴봅시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span>    let s1 = String::from(&quot;hello&quot;);
+</span>    let s1 = String::from("hello");
 
     let len = calculate_length(&amp;s1);
 <span class="boring">
-</span><span class="boring">    println!(&quot;The length of '{}' is {}.&quot;, s1, len);
+</span><span class="boring">    println!("The length of '{}' is {}.", s1, len);
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn calculate_length(s: &amp;String) -&gt; usize {
@@ -235,11 +235,11 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 <p>마찬가지로 함수 시그니처에도 <code>&amp;</code>를 사용하여 매개변수 <code>s</code>가 참조자 타입임을
 나타내줍니다. 주석으로 보여드리겠습니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span><span class="boring">    let s1 = String::from(&quot;hello&quot;);
+</span><span class="boring">    let s1 = String::from("hello");
 </span><span class="boring">
 </span><span class="boring">    let len = calculate_length(&amp;s1);
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;The length of '{}' is {}.&quot;, s1, len);
+</span><span class="boring">    println!("The length of '{}' is {}.", s1, len);
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn calculate_length(s: &amp;String) -&gt; usize { // s는 String의 참조자입니다
@@ -259,13 +259,13 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 실행해 보면 알 수 있으나, 미리 말씀드리자면 이 코드는 작동하지 않습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile">fn main() {
-    let s = String::from(&quot;hello&quot;);
+    let s = String::from("hello");
 
     change(&amp;s);
 }
 
 fn change(some_string: &amp;String) {
-    some_string.push_str(&quot;, world&quot;);
+    some_string.push_str(", world");
 }</code></pre>
 <p><span class="caption">예제 4-6: 빌린 값을 수정해 보는 코드</span></p>
 <p>나타나는 에러는 다음과 같습니다:</p>
@@ -276,7 +276,7 @@ error[E0596]: cannot borrow `*some_string` as mutable, as it is behind a `&amp;`
   |
 7 | fn change(some_string: &amp;String) {
   |                        ------- help: consider changing this to be a mutable reference: `&amp;mut String`
-8 |     some_string.push_str(&quot;, world&quot;);
+8 |     some_string.push_str(", world");
   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ `some_string` is a `&amp;` reference, so the data it refers to cannot be borrowed as mutable
 
 For more information about this error, try `rustc --explain E0596`.
@@ -289,13 +289,13 @@ error: could not compile `ownership` due to previous error
 수정하면 에러를 없앨 수 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    let mut s = String::from(&quot;hello&quot;);
+    let mut s = String::from("hello");
 
     change(&amp;mut s);
 }
 
 fn change(some_string: &amp;mut String) {
-    some_string.push_str(&quot;, world&quot;);
+    some_string.push_str(", world");
 }</code></pre></pre>
 <p>우선 <code>s</code>를 <code>mut</code> 로 변경합니다. 그런 다음 <code>change</code> 함수를 호출하는 곳에서
 <code>&amp;mut s</code>로 가변 참조자를 생성하고, 이 함수에서 가변 참조자를 전달받도록
@@ -306,12 +306,12 @@ fn change(some_string: &amp;mut String) {
 <code>s</code>에 대한 두 개의 가변 참조자 생성을 시도하는 코드로, 작동하지 않습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
-</span>    let mut s = String::from(&quot;hello&quot;);
+</span>    let mut s = String::from("hello");
 
     let r1 = &amp;mut s;
     let r2 = &amp;mut s;
 
-    println!(&quot;{}, {}&quot;, r1, r2);
+    println!("{}, {}", r1, r2);
 <span class="boring">}</span></code></pre>
 <p>에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -324,7 +324,7 @@ error[E0499]: cannot borrow `s` as mutable more than once at a time
 5 |     let r2 = &amp;mut s;
   |              ^^^^^^ second mutable borrow occurs here
 6 |
-7 |     println!(&quot;{}, {}&quot;, r1, r2);
+7 |     println!("{}, {}", r1, r2);
   |                        -- first borrow later used here
 
 For more information about this error, try `rustc --explain E0499`.
@@ -352,7 +352,7 @@ error: could not compile `ownership` due to previous error
 <p>중괄호로 새로운 스코프를 만들어, 가변 참조자를 여러 개 만들면서 <em>동시에</em>
 존재하는 상황을 회피하는 방법이 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span>    let mut s = String::from(&quot;hello&quot;);
+</span>    let mut s = String::from("hello");
 
     {
         let r1 = &amp;mut s;
@@ -363,13 +363,13 @@ error: could not compile `ownership` due to previous error
 <p>가변 참조자와 불변 참조자를 혼용할 때도 유사한 규칙이 적용됩니다.
 다음 코드는 컴파일 에러가 발생합니다:</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
-</span>    let mut s = String::from(&quot;hello&quot;);
+</span>    let mut s = String::from("hello");
 
     let r1 = &amp;s; // 문제없음
     let r2 = &amp;s; // 문제없음
     let r3 = &amp;mut s; // 큰 문제
 
-    println!(&quot;{}, {}, and {}&quot;, r1, r2, r3);
+    println!("{}, {}, and {}", r1, r2, r3);
 <span class="boring">}</span></code></pre>
 <p>에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -383,7 +383,7 @@ error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immuta
 6 |     let r3 = &amp;mut s; // BIG PROBLEM
   |              ^^^^^^ mutable borrow occurs here
 7 |
-8 |     println!(&quot;{}, {}, and {}&quot;, r1, r2, r3);
+8 |     println!("{}, {}, and {}", r1, r2, r3);
   |                                -- immutable borrow later used here
 
 For more information about this error, try `rustc --explain E0502`.
@@ -400,15 +400,15 @@ error: could not compile `ownership` due to previous error
 사용되는 <code>println!</code> 이후에 가변 참조자의 정의가 있으므로 컴파일 에러가
 발생하지 않습니다.</p>
 <pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
-</span>    let mut s = String::from(&quot;hello&quot;);
+</span>    let mut s = String::from("hello");
 
     let r1 = &amp;s; // 문제없음
     let r2 = &amp;s; // 문제없음
-    println!(&quot;{} and {}&quot;, r1, r2);
+    println!("{} and {}", r1, r2);
     // 이 지점 이후로 변수 r1과 r2는 사용되지 않습니다
 
     let r3 = &amp;mut s; // 문제없음
-    println!(&quot;{}&quot;, r3);
+    println!("{}", r3);
 <span class="boring">}</span></code></pre></pre>
 <p>불변 참조자 <code>rl</code>, <code>r2</code>의 스코프는 자신들이 마지막으로 사용된
 <code>println!</code> 이후로 종료되고, 해당 <code>println!</code>은  가변 참조자 <code>r3</code>가
@@ -435,7 +435,7 @@ error: could not compile `ownership` due to previous error
 }
 
 fn dangle() -&gt; &amp;String {
-    let s = String::from(&quot;hello&quot;);
+    let s = String::from("hello");
 
     &amp;s
 }</code></pre>
@@ -472,7 +472,7 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">
 </span>fn dangle() -&gt; &amp;String { // dangle은 String의 참조자를 반환합니다
 
-    let s = String::from(&quot;hello&quot;); // s는 새로운 String입니다
+    let s = String::from("hello"); // s는 새로운 String입니다
 
     &amp;s // String s의 참조자를 반환합니다
 } // 여기서 s는 스코프 밖으로 벗어나고 버려집니다. 해당 메모리는 해제됩니다.
@@ -487,7 +487,7 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn no_dangle() -&gt; String {
-    let s = String::from(&quot;hello&quot;);
+    let s = String::from("hello");
 
     s
 }</code></pre></pre>

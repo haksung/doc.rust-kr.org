@@ -249,7 +249,7 @@ fn main() {
     Finished dev [unoptimized + debuginfo] target(s) in 0.61s
      Running `target/debug/minigrep`
 [src/main.rs:5] args = [
-    &quot;target/debug/minigrep&quot;,
+    "target/debug/minigrep",
 ]
 </code></pre>
 <pre><code class="language-console">$ cargo run -- needle haystack
@@ -257,12 +257,12 @@ fn main() {
     Finished dev [unoptimized + debuginfo] target(s) in 1.57s
      Running `target/debug/minigrep needle haystack`
 [src/main.rs:5] args = [
-    &quot;target/debug/minigrep&quot;,
-    &quot;needle&quot;,
-    &quot;haystack&quot;,
+    "target/debug/minigrep",
+    "needle",
+    "haystack",
 ]
 </code></pre>
-<p>벡터의 첫 번째 값이 <code>&quot;target/debug/minigrep&quot;</code>, 즉 이 바이너리 파일의
+<p>벡터의 첫 번째 값이 <code>"target/debug/minigrep"</code>, 즉 이 바이너리 파일의
 이름인 점을 주목하세요. 이는 C에서의 인수 리스트의 동작과 일치하며,
 프로그램이 실행될 때 호출된 이름을 사용할 수 있게 해 줍니다.
 프로그램의 이름에 접근할 수 있는 것은 메시지에 이름을 출력하고 싶을 때라던가
@@ -283,8 +283,8 @@ fn main() {
     let query = &amp;args[1];
     let file_path = &amp;args[2];
 
-    println!(&quot;Searching for {}&quot;, query);
-    println!(&quot;In file {}&quot;, file_path);
+    println!("Searching for {}", query);
+    println!("In file {}", file_path);
 }</code></pre>
 <p><span class="caption">예제 12-2: 질의 (query) 인수와 파일 경로 인수를 담은
 변수 생성하기</span></p>

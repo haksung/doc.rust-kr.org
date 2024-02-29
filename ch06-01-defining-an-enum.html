@@ -281,12 +281,12 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 
     let home = IpAddr {
         kind: IpAddrKind::V4,
-        address: String::from(&quot;127.0.0.1&quot;),
+        address: String::from("127.0.0.1"),
     };
 
     let loopback = IpAddr {
         kind: IpAddrKind::V6,
-        address: String::from(&quot;::1&quot;),
+        address: String::from("::1"),
     };
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 6-1: <code>struct</code>를 사용해서 IP 주소의 데이터와
@@ -309,9 +309,9 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
         V6(String),
     }
 
-    let home = IpAddr::V4(String::from(&quot;127.0.0.1&quot;));
+    let home = IpAddr::V4(String::from("127.0.0.1"));
 
-    let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
+    let loopback = IpAddr::V6(String::from("::1"));
 <span class="boring">}</span></code></pre></pre>
 <p>열거형의 각 배리언트에 직접 데이터를 붙임으로써, 구조체를 사용할 필요가
 없어졌습니다. 또한 여기서 열거형의 동작에 대한 다른 세부 사항을 살펴보기가
@@ -334,7 +334,7 @@ V4 IP 주소는 항상 0 ~ 255 사이의 숫자 4개로 된 구성 요소를 갖
 
     let home = IpAddr::V4(127, 0, 0, 1);
 
-    let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
+    let loopback = IpAddr::V6(String::from("::1"));
 <span class="boring">}</span></code></pre></pre>
 <p>두 가지 다른 종류의 IP 주소를 저장하기 위해
 코드에 열거형을 정의하는 몇 가지 방법을 살펴봤습니다.
@@ -420,11 +420,11 @@ struct ChangeColorMessage(i32, i32, i32); // 튜플 구조체
         }
     }
 
-    let m = Message::Write(String::from(&quot;hello&quot;));
+    let m = Message::Write(String::from("hello"));
     m.call();
 <span class="boring">}</span></code></pre></pre>
 <p>메서드 본문에서는 <code>self</code>를 사용하여 호출한 열거형의 값을 가져올 것입니다.
-이 예제에서 생성한 변수 <code>m</code>은  <code>Message::Write(String::from(&quot;hello&quot;))</code> 값을 갖게 되고,
+이 예제에서 생성한 변수 <code>m</code>은  <code>Message::Write(String::from("hello"))</code> 값을 갖게 되고,
 이 값은 <code>m.call()</code>이 실행될 때
 <code>call</code> 메서드 안에서 <code>self</code>가 될 것입니다.</p>
 <p>이제 표준 라이브러리에 포함된 열거형 중에서 굉장히 유용하고 자주 사용되는

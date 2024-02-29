@@ -254,10 +254,10 @@
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>'ident</code></td><td>기명 라이프타임 혹은 루프 라벨</td></tr>
 <tr><td><code>...u8</code>, <code>...i32</code>, <code>...f64</code>, <code>...usize</code>, etc.</td><td>특정 타입의 수치 값 리터럴</td></tr>
-<tr><td><code>&quot;...&quot;</code></td><td>문자열 리터럴</td></tr>
-<tr><td><code>r&quot;...&quot;</code>, <code>r#&quot;...&quot;#</code>, <code>r##&quot;...&quot;##</code>, etc.</td><td>이스케이프 문자가 처리되지 않는 원시 문자열 리터럴</td></tr>
-<tr><td><code>b&quot;...&quot;</code></td><td>바이트 문자열 리터럴; 문자열 대신 바이트 배열 구성하기</td></tr>
-<tr><td><code>br&quot;...&quot;</code>, <code>br#&quot;...&quot;#</code>, <code>br##&quot;...&quot;##</code>, etc.</td><td>원시 바이트 문자열 리터럴, 원시 문자열과 바이트 문자열 리터럴의 조합</td></tr>
+<tr><td><code>"..."</code></td><td>문자열 리터럴</td></tr>
+<tr><td><code>r"..."</code>, <code>r#"..."#</code>, <code>r##"..."##</code>, etc.</td><td>이스케이프 문자가 처리되지 않는 원시 문자열 리터럴</td></tr>
+<tr><td><code>b"..."</code></td><td>바이트 문자열 리터럴; 문자열 대신 바이트 배열 구성하기</td></tr>
+<tr><td><code>br"..."</code>, <code>br#"..."#</code>, <code>br##"..."##</code>, etc.</td><td>원시 바이트 문자열 리터럴, 원시 문자열과 바이트 문자열 리터럴의 조합</td></tr>
 <tr><td><code>'...'</code></td><td>문자 리터럴</td></tr>
 <tr><td><code>b'...'</code></td><td>ASCII 바이트 리터럴</td></tr>
 <tr><td><code>|...| expr</code></td><td>클로저</td></tr>
@@ -285,7 +285,7 @@
 <p><span class="caption">표 B-4: 제네릭</span></p>
 <div class="table-wrapper"><table><thead><tr><th>기호</th><th>설명</th></tr></thead><tbody>
 <tr><td><code>path&lt;...&gt;</code></td><td>타입에서 제네릭 타입에 대한 매개변수 지정하기 (예: <code>Vec&lt;u8&gt;</code>)</td></tr>
-<tr><td><code>path::&lt;...&gt;</code>, <code>method::&lt;...&gt;</code></td><td>표현식에서 제네릭 타입, 함수, 메서드에 대한 매개변수 지정하기; 종종 터보피쉬 (turbofish) 라고도 불림 (예: <code>&quot;42&quot;.parse::&lt;i32&gt;()</code>)</td></tr>
+<tr><td><code>path::&lt;...&gt;</code>, <code>method::&lt;...&gt;</code></td><td>표현식에서 제네릭 타입, 함수, 메서드에 대한 매개변수 지정하기; 종종 터보피쉬 (turbofish) 라고도 불림 (예: <code>"42".parse::&lt;i32&gt;()</code>)</td></tr>
 <tr><td><code>fn ident&lt;...&gt; ...</code></td><td>제네릭 함수 정의하기</td></tr>
 <tr><td><code>struct ident&lt;...&gt; ...</code></td><td>제네릭 구조체 정의하기</td></tr>
 <tr><td><code>enum ident&lt;...&gt; ...</code></td><td>제네릭 열거형 정의하기</td></tr>

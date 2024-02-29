@@ -408,15 +408,15 @@ fn main() {
                 width: 75,
                 height: 10,
                 options: vec![
-                    String::from(&quot;Yes&quot;),
-                    String::from(&quot;Maybe&quot;),
-                    String::from(&quot;No&quot;),
+                    String::from("Yes"),
+                    String::from("Maybe"),
+                    String::from("No"),
                 ],
             }),
             Box::new(Button {
                 width: 50,
                 height: 10,
-                label: String::from(&quot;OK&quot;),
+                label: String::from("OK"),
             }),
         ],
     };
@@ -451,7 +451,7 @@ fn main() {
 
 fn main() {
     let screen = Screen {
-        components: vec![Box::new(String::from(&quot;Hi&quot;))],
+        components: vec![Box::new(String::from("Hi"))],
     };
 
     screen.run();
@@ -464,7 +464,7 @@ fn main() {
 error[E0277]: the trait bound `String: Draw` is not satisfied
  --&gt; src/main.rs:5:26
   |
-5 |         components: vec![Box::new(String::from(&quot;Hi&quot;))],
+5 |         components: vec![Box::new(String::from("Hi"))],
   |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ the trait `Draw` is not implemented for `String`
   |
   = help: the trait `Draw` is implemented for `Button`

@@ -243,7 +243,7 @@
 
 impl Summary for NewsArticle {
     fn summarize(&amp;self) -&gt; String {
-        format!(&quot;{}, by {} ({})&quot;, self.headline, self.author, self.location)
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
     }
 }
 
@@ -256,7 +256,7 @@ pub struct Tweet {
 
 impl Summary for Tweet {
     fn summarize(&amp;self) -&gt; String {
-        format!(&quot;{}: {}&quot;, self.username, self.content)
+        format!("{}: {}", self.username, self.content)
     }
 }</code></pre>
 <p><span class="caption">예제 10-13: <code>NewsArticle</code>과 <code>Tweet</code> 타입에
@@ -278,15 +278,15 @@ impl Summary for Tweet {
 
 fn main() {
     let tweet = Tweet {
-        username: String::from(&quot;horse_ebooks&quot;),
+        username: String::from("horse_ebooks"),
         content: String::from(
-            &quot;of course, as you probably already know, people&quot;,
+            "of course, as you probably already know, people",
         ),
         reply: false,
         retweet: false,
     };
 
-    println!(&quot;1 new tweet: {}&quot;, tweet.summarize());
+    println!("1 new tweet: {}", tweet.summarize());
 }</code></pre>
 <p>이 코드는 <code>1 new tweet: horse_ebooks: of course, as you probably already know, people</code>를 출력합니다.</p>
 <p><code>aggregator</code> 크레이트에 의존적인 다른 크레이트들 또한 <code>Summary</code> 트레이트를 스코프로
@@ -318,7 +318,7 @@ fn main() {
 <p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub trait Summary {
     fn summarize(&amp;self) -&gt; String {
-        String::from(&quot;(Read more...)&quot;)
+        String::from("(Read more...)")
     }
 }
 <span class="boring">
@@ -340,7 +340,7 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">impl Summary for Tweet {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}: {}&quot;, self.username, self.content)
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 10-14: <code>summarize</code> 메서드의 기본 구현이
@@ -355,16 +355,16 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">fn main() {
 </span>    let article = NewsArticle {
-        headline: String::from(&quot;Penguins win the Stanley Cup Championship!&quot;),
-        location: String::from(&quot;Pittsburgh, PA, USA&quot;),
-        author: String::from(&quot;Iceburgh&quot;),
+        headline: String::from("Penguins win the Stanley Cup Championship!"),
+        location: String::from("Pittsburgh, PA, USA"),
+        author: String::from("Iceburgh"),
         content: String::from(
-            &quot;The Pittsburgh Penguins once again are the best \
-             hockey team in the NHL.&quot;,
+            "The Pittsburgh Penguins once again are the best \
+             hockey team in the NHL.",
         ),
     };
 
-    println!(&quot;New article available! {}&quot;, article.summarize());
+    println!("New article available! {}", article.summarize());
 <span class="boring">}</span></code></pre>
 <p>이 코드는 <code>New article available! (Read more...)</code>를 출력합니다.</p>
 <p>기본 구현을 생성한다고 해서 예제 10-13 코드의 <code>Tweet</code>
@@ -382,7 +382,7 @@ fn main() {
     fn summarize_author(&amp;self) -&gt; String;
 
     fn summarize(&amp;self) -&gt; String {
-        format!(&quot;(Read more from {}...)&quot;, self.summarize_author())
+        format!("(Read more from {}...)", self.summarize_author())
     }
 }
 <span class="boring">
@@ -395,7 +395,7 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">impl Summary for Tweet {
 </span><span class="boring">    fn summarize_author(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;@{}&quot;, self.username)
+</span><span class="boring">        format!("@{}", self.username)
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>이 <code>Summary</code>를 어떤 타입에 구현할 때는 <code>summarize_author</code>만
@@ -404,7 +404,7 @@ fn main() {
 </span><span class="boring">    fn summarize_author(&amp;self) -&gt; String;
 </span><span class="boring">
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;(Read more from {}...)&quot;, self.summarize_author())
+</span><span class="boring">        format!("(Read more from {}...)", self.summarize_author())
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -417,7 +417,7 @@ fn main() {
 </span><span class="boring">
 </span>impl Summary for Tweet {
     fn summarize_author(&amp;self) -&gt; String {
-        format!(&quot;@{}&quot;, self.username)
+        format!("@{}", self.username)
     }
 }</code></pre>
 <p><code>summarize_author</code>를 정의하고 나면 <code>Tweet</code> 인스턴스에서 <code>summarize</code>를 호출할 수 있습니다.
@@ -429,15 +429,15 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">fn main() {
 </span>    let tweet = Tweet {
-        username: String::from(&quot;horse_ebooks&quot;),
+        username: String::from("horse_ebooks"),
         content: String::from(
-            &quot;of course, as you probably already know, people&quot;,
+            "of course, as you probably already know, people",
         ),
         reply: false,
         retweet: false,
     };
 
-    println!(&quot;1 new tweet: {}&quot;, tweet.summarize());
+    println!("1 new tweet: {}", tweet.summarize());
 <span class="boring">}</span></code></pre>
 <p>이 코드는 <code>1 new tweet: (Read more from @horse_ebooks...)</code>를 출력합니다.</p>
 <p>어떤 메서드를 오버라이딩하는 구현을 하면 해당 메서드의 기본 구현을
@@ -462,7 +462,7 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">impl Summary for NewsArticle {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}, by {} ({})&quot;, self.headline, self.author, self.location)
+</span><span class="boring">        format!("{}, by {} ({})", self.headline, self.author, self.location)
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -475,12 +475,12 @@ fn main() {
 </span><span class="boring">
 </span><span class="boring">impl Summary for Tweet {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}: {}&quot;, self.username, self.content)
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span>pub fn notify(item: &amp;impl Summary) {
-    println!(&quot;Breaking news! {}&quot;, item.summarize());
+    println!("Breaking news! {}", item.summarize());
 }</code></pre>
 <p><code>item</code> 매개변수의 구체적 타입을 명시하는 대신 <code>impl</code> 키워드와 트레이트 이름을 명시했습니다.
 이 매개변수에는 지정된 트레이트를 구현하는 타입이라면 어떤 타입이든 전달받을 수 있습니다.
@@ -495,7 +495,7 @@ fn main() {
 <p><code>impl Trait</code> 문법은 간단하지만, 이는 <em>트레이트 바운드 (trait bound)</em> 로 알려진, 좀 더
 기다란 형식의 문법 설탕입니다; 트레이트 바운드는 다음과 같이 생겼습니다:</p>
 <pre><code class="language-rust ignore">pub fn notify&lt;T: Summary&gt;(item: &amp;T) {
-    println!(&quot;Breaking news! {}&quot;, item.summarize());
+    println!("Breaking news! {}", item.summarize());
 }</code></pre>
 <p>앞서 본 예시와 동일한 코드지만, 더 장황합니다.
 트레이트 바운드는 꺾쇠괄호 안의 제네릭 타입 매개변수 선언에 붙은 콜론(<code>:</code>) 뒤에
@@ -558,7 +558,7 @@ where
 </span><span class="boring">
 </span><span class="boring">impl Summary for NewsArticle {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}, by {} ({})&quot;, self.headline, self.author, self.location)
+</span><span class="boring">        format!("{}, by {} ({})", self.headline, self.author, self.location)
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -571,15 +571,15 @@ where
 </span><span class="boring">
 </span><span class="boring">impl Summary for Tweet {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}: {}&quot;, self.username, self.content)
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn returns_summarizable() -&gt; impl Summary {
     Tweet {
-        username: String::from(&quot;horse_ebooks&quot;),
+        username: String::from("horse_ebooks"),
         content: String::from(
-            &quot;of course, as you probably already know, people&quot;,
+            "of course, as you probably already know, people",
         ),
         reply: false,
         retweet: false,
@@ -611,7 +611,7 @@ where
 </span><span class="boring">
 </span><span class="boring">impl Summary for NewsArticle {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}, by {} ({})&quot;, self.headline, self.author, self.location)
+</span><span class="boring">        format!("{}, by {} ({})", self.headline, self.author, self.location)
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -624,7 +624,7 @@ where
 </span><span class="boring">
 </span><span class="boring">impl Summary for Tweet {
 </span><span class="boring">    fn summarize(&amp;self) -&gt; String {
-</span><span class="boring">        format!(&quot;{}: {}&quot;, self.username, self.content)
+</span><span class="boring">        format!("{}: {}", self.username, self.content)
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -632,20 +632,20 @@ where
     if switch {
         NewsArticle {
             headline: String::from(
-                &quot;Penguins win the Stanley Cup Championship!&quot;,
+                "Penguins win the Stanley Cup Championship!",
             ),
-            location: String::from(&quot;Pittsburgh, PA, USA&quot;),
-            author: String::from(&quot;Iceburgh&quot;),
+            location: String::from("Pittsburgh, PA, USA"),
+            author: String::from("Iceburgh"),
             content: String::from(
-                &quot;The Pittsburgh Penguins once again are the best \
-                 hockey team in the NHL.&quot;,
+                "The Pittsburgh Penguins once again are the best \
+                 hockey team in the NHL.",
             ),
         }
     } else {
         Tweet {
-            username: String::from(&quot;horse_ebooks&quot;),
+            username: String::from("horse_ebooks"),
             content: String::from(
-                &quot;of course, as you probably already know, people&quot;,
+                "of course, as you probably already know, people",
             ),
             reply: false,
             retweet: false,
@@ -685,9 +685,9 @@ impl&lt;T&gt; Pair&lt;T&gt; {
 impl&lt;T: Display + PartialOrd&gt; Pair&lt;T&gt; {
     fn cmp_display(&amp;self) {
         if self.x &gt;= self.y {
-            println!(&quot;The largest member is x = {}&quot;, self.x);
+            println!("The largest member is x = {}", self.x);
         } else {
-            println!(&quot;The largest member is y = {}&quot;, self.y);
+            println!("The largest member is y = {}", self.y);
         }
     }
 }</code></pre>

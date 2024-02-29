@@ -287,11 +287,11 @@
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    let mut s = String::from(&quot;hello world&quot;);
+    let mut s = String::from("hello world");
 
     let word = first_word(&amp;s); // word는 값 5를 받습니다
 
-    s.clear(); // 이 코드는 String을 비워서 &quot;&quot;으로 만듭니다
+    s.clear(); // 이 코드는 String을 비워서 ""으로 만듭니다
 
     // 여기서 word에는 여전히 5가 들어있지만, 이 5를 의미있게 쓸 수 있는
     // 문자열은 더 이상 없습니다. word는 이제 전혀 유효하지 않습니다!
@@ -315,7 +315,7 @@
 <h3 id="문자열-슬라이스"><a class="header" href="#문자열-슬라이스">문자열 슬라이스</a></h3>
 <p>문자열 슬라이스 (string slice) 는 <code>String</code>의 일부를 가리키는 참조자를 말합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span>    let s = String::from(&quot;hello world&quot;);
+</span>    let s = String::from("hello world");
 
     let hello = &amp;s[0..5];
     let world = &amp;s[6..11];
@@ -341,7 +341,7 @@ src="img/trpl04-06.svg" class="center" style="width: 50%;" /></p>
 즉 다음 코드에 등장하는 두 슬라이스 표현은 동일합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let s = String::from(&quot;hello&quot;);
+</span>let s = String::from("hello");
 
 let slice = &amp;s[0..2];
 let slice = &amp;s[..2];
@@ -350,7 +350,7 @@ let slice = &amp;s[..2];
 다음 코드에 등장하는 두 슬라이스 표현은 동일합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let s = String::from(&quot;hello&quot;);
+</span>let s = String::from("hello");
 
 let len = s.len();
 
@@ -361,7 +361,7 @@ let slice = &amp;s[3..];
 다음 코드에 등장하는 두 슬라이스 표현은 동일합니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let s = String::from(&quot;hello&quot;);
+</span>let s = String::from("hello");
 
 let len = s.len();
 
@@ -424,13 +424,13 @@ let slice = &amp;s[..];
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    let mut s = String::from(&quot;hello world&quot;);
+    let mut s = String::from("hello world");
 
     let word = first_word(&amp;s);
 
     s.clear(); // 에러!
 
-    println!(&quot;the first word is: {}&quot;, word);
+    println!("the first word is: {}", word);
 }</code></pre>
 <p>컴파일러 에러는 다음과 같습니다:</p>
 <pre><code class="language-console">$ cargo run
@@ -444,7 +444,7 @@ error[E0502]: cannot borrow `s` as mutable because it is also borrowed as immuta
 18 |     s.clear(); // error!
    |     ^^^^^^^^^ mutable borrow occurs here
 19 |
-20 |     println!(&quot;the first word is: {}&quot;, word);
+20 |     println!("the first word is: {}", word);
    |                                       ---- immutable borrow later used here
 
 For more information about this error, try `rustc --explain E0502`.
@@ -465,7 +465,7 @@ error: could not compile `ownership` due to previous error
 슬라이스를 배웠으니, 문자열 리터럴도 제대로 이해해 봅시다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>let s = &quot;Hello, world!&quot;;
+</span>let s = "Hello, world!";
 <span class="boring">}</span></code></pre></pre>
 <p>여기서 <code>s</code>는 바이너리의 특정 지점을 가리키는 슬라이스입니다. <code>&amp;str</code> 타입이죠.
 <code>&amp;str</code>은 불변 참조자이므로, 문자열 리터럴은 왜 변경할 수 없는지에 대한 의문도
@@ -490,7 +490,7 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let my_string = String::from(&quot;hello world&quot;);
+</span><span class="boring">    let my_string = String::from("hello world");
 </span><span class="boring">
 </span><span class="boring">    // `first_word`는 `String`의 일부 혹은 전체 슬라이스에 대해 작동합니다
 </span><span class="boring">    let word = first_word(&amp;my_string[0..6]);
@@ -499,7 +499,7 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">    // 참조자에 대해서도 작동합니다
 </span><span class="boring">    let word = first_word(&amp;my_string);
 </span><span class="boring">
-</span><span class="boring">    let my_string_literal = &quot;hello world&quot;;
+</span><span class="boring">    let my_string_literal = "hello world";
 </span><span class="boring">
 </span><span class="boring">    // `first_word`는 문자열 리터럴의 일부 혹은 전체 슬라이스에 대해 작동합니다
 </span><span class="boring">    let word = first_word(&amp;my_string_literal[0..6]);
@@ -532,7 +532,7 @@ error: could not compile `ownership` due to previous error
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    let my_string = String::from(&quot;hello world&quot;);
+    let my_string = String::from("hello world");
 
     // `first_word`는 `String`의 일부 혹은 전체 슬라이스에 대해 작동합니다
     let word = first_word(&amp;my_string[0..6]);
@@ -541,7 +541,7 @@ error: could not compile `ownership` due to previous error
     // 참조자에 대해서도 작동합니다
     let word = first_word(&amp;my_string);
 
-    let my_string_literal = &quot;hello world&quot;;
+    let my_string_literal = "hello world";
 
     // `first_word`는 문자열 리터럴의 일부 혹은 전체 슬라이스에 대해 작동합니다
     let word = first_word(&amp;my_string_literal[0..6]);

@@ -242,12 +242,12 @@
 </span>    let v = vec![1, 2, 3, 4, 5];
 
     let third: &amp;i32 = &amp;v[2];
-    println!(&quot;The third element is {third}&quot;);
+    println!("The third element is {third}");
 
     let third: Option&lt;&amp;i32&gt; = v.get(2);
     match third {
-        Some(third) =&gt; println!(&quot;The third element is {third}&quot;),
-        None =&gt; println!(&quot;There is no third element.&quot;),
+        Some(third) =&gt; println!("The third element is {third}"),
+        None =&gt; println!("There is no third element."),
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-4: 인덱스 문법 혹은 <code>get</code> 메서드를 사용하여
@@ -299,7 +299,7 @@
 
     v.push(6);
 
-    println!(&quot;The first element is: {first}&quot;);
+    println!("The first element is: {first}");
 <span class="boring">}</span></code></pre>
 <p><span class="caption">예제 8-6: 아이템의 참조자를 가지고 있는 상태에서
 벡터에 새로운 요소 추가 시도하기</span></p>
@@ -315,7 +315,7 @@ error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immuta
 6 |     v.push(6);
   |     ^^^^^^^^^ mutable borrow occurs here
 7 |
-8 |     println!(&quot;The first element is: {first}&quot;);
+8 |     println!("The first element is: {first}");
   |                                      ----- immutable borrow later used here
 
 For more information about this error, try `rustc --explain E0502`.
@@ -342,7 +342,7 @@ error: could not compile `collections` due to previous error
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let v = vec![100, 32, 57];
     for i in &amp;v {
-        println!(&quot;{i}&quot;);
+        println!("{i}");
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-7: <code>for</code> 루프로 벡터의 요소들에 대해
@@ -390,7 +390,7 @@ error: could not compile `collections` due to previous error
 
     let row = vec![
         SpreadsheetCell::Int(3),
-        SpreadsheetCell::Text(String::from(&quot;blue&quot;)),
+        SpreadsheetCell::Text(String::from("blue")),
         SpreadsheetCell::Float(10.12),
     ];
 <span class="boring">}</span></code></pre></pre>

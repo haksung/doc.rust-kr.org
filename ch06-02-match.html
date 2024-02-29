@@ -251,7 +251,7 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 </span>fn value_in_cents(coin: Coin) -&gt; u8 {
     match coin {
         Coin::Penny =&gt; {
-            println!(&quot;Lucky penny!&quot;);
+            println!("Lucky penny!");
             1
         }
         Coin::Nickel =&gt; 5,
@@ -316,7 +316,7 @@ enum Coin {
         Coin::Nickel =&gt; 5,
         Coin::Dime =&gt; 10,
         Coin::Quarter(state) =&gt; {
-            println!(&quot;State quarter from {:?}!&quot;, state);
+            println!("State quarter from {:?}!", state);
             25
         }
     }

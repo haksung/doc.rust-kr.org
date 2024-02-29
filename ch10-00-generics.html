@@ -225,7 +225,7 @@
         }
     }
 
-    println!(&quot;The largest number is {}&quot;, largest);
+    println!("The largest number is {}", largest);
 <span class="boring">    assert_eq!(*largest, 100);
 </span>}</code></pre></pre>
 <p><span class="caption">예제 10-1: 숫자 리스트에서
@@ -253,7 +253,7 @@
         }
     }
 
-    println!(&quot;The largest number is {}&quot;, largest);
+    println!("The largest number is {}", largest);
 
     let number_list = vec![102, 34, 6000, 89, 54, 2, 43, 8];
 
@@ -265,7 +265,7 @@
         }
     }
 
-    println!(&quot;The largest number is {}&quot;, largest);
+    println!("The largest number is {}", largest);
 }</code></pre></pre>
 <p><span class="caption">예제 10-2: <em>두</em> 개의 숫자 리스트에서 가장 큰 숫자를
 찾는 코드</span></p>
@@ -297,13 +297,13 @@ fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
     let result = largest(&amp;number_list);
-    println!(&quot;The largest number is {}&quot;, result);
+    println!("The largest number is {}", result);
 <span class="boring">    assert_eq!(*result, 100);
 </span>
     let number_list = vec![102, 34, 6000, 89, 54, 2, 43, 8];
 
     let result = largest(&amp;number_list);
-    println!(&quot;The largest number is {}&quot;, result);
+    println!("The largest number is {}", result);
 <span class="boring">    assert_eq!(*result, 6000);
 </span>}</code></pre></pre>
 <p><span class="caption">예제 10-3: 두 리스트에서 가장 큰 수를 찾는

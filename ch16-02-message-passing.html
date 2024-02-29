@@ -243,7 +243,7 @@ fn main() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        let val = String::from(&quot;hi&quot;);
+        let val = String::from("hi");
         tx.send(val).unwrap();
     });
 }</code></pre></pre>
@@ -269,12 +269,12 @@ fn main() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        let val = String::from(&quot;hi&quot;);
+        let val = String::from("hi");
         tx.send(val).unwrap();
     });
 
     let received = rx.recv().unwrap();
-    println!(&quot;Got: {}&quot;, received);
+    println!("Got: {}", received);
 }</code></pre></pre>
 <p><span class="caption">예제 16-8: 메인 스레드에서 ‘hi’ 값을
 받아 출력하기</span></p>
@@ -317,13 +317,13 @@ fn main() {
     let (tx, rx) = mpsc::channel();
 
     thread::spawn(move || {
-        let val = String::from(&quot;hi&quot;);
+        let val = String::from("hi");
         tx.send(val).unwrap();
-        println!(&quot;val is {}&quot;, val);
+        println!("val is {}", val);
     });
 
     let received = rx.recv().unwrap();
-    println!(&quot;Got: {}&quot;, received);
+    println!("Got: {}", received);
 }</code></pre>
 <p><span class="caption">예제 16-9: <code>val</code>을 채널로 보낸 뒤
 이에 대한 사용 시도</span></p>
@@ -338,11 +338,11 @@ fn main() {
 error[E0382]: borrow of moved value: `val`
   --&gt; src/main.rs:10:31
    |
-8  |         let val = String::from(&quot;hi&quot;);
+8  |         let val = String::from("hi");
    |             --- move occurs because `val` has type `String`, which does not implement the `Copy` trait
 9  |         tx.send(val).unwrap();
    |                 --- value moved here
-10 |         println!(&quot;val is {}&quot;, val);
+10 |         println!("val is {}", val);
    |                               ^^^ value borrowed here after move
    |
    = note: this error originates in the macro `$crate::format_args_nl` which comes from the expansion of the macro `println` (in Nightly builds, run with -Z macro-backtrace for more info)
@@ -370,10 +370,10 @@ fn main() {
 
     thread::spawn(move || {
         let vals = vec![
-            String::from(&quot;hi&quot;),
-            String::from(&quot;from&quot;),
-            String::from(&quot;the&quot;),
-            String::from(&quot;thread&quot;),
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("thread"),
         ];
 
         for val in vals {
@@ -383,12 +383,12 @@ fn main() {
     });
 
     for received in rx {
-        println!(&quot;Got: {}&quot;, received);
+        println!("Got: {}", received);
     }
 }</code></pre>
 <p><span class="caption">예제 16-10: 여러 메시지를 보내고
 각각마다 멈추기</span></p>
-<p>이번에는 생성된 스레드가 메인 스레드로 보내고 싶은 문자열의 벡터를 
+<p>이번에는 생성된 스레드가 메인 스레드로 보내고 싶은 문자열의 벡터를
 가지고 있습니다. 문자열마다 반복하여 각각의 값을 개별적으로 보내고,
 <code>Duration</code> 값에 1초를 넣어서 <code>thread::sleep</code> 함수를 호출하는 것으로
 각각의 사이에 멈춥니다.</p>
@@ -426,10 +426,10 @@ Got: thread
     let tx1 = tx.clone();
     thread::spawn(move || {
         let vals = vec![
-            String::from(&quot;hi&quot;),
-            String::from(&quot;from&quot;),
-            String::from(&quot;the&quot;),
-            String::from(&quot;thread&quot;),
+            String::from("hi"),
+            String::from("from"),
+            String::from("the"),
+            String::from("thread"),
         ];
 
         for val in vals {
@@ -440,10 +440,10 @@ Got: thread
 
     thread::spawn(move || {
         let vals = vec![
-            String::from(&quot;more&quot;),
-            String::from(&quot;messages&quot;),
-            String::from(&quot;for&quot;),
-            String::from(&quot;you&quot;),
+            String::from("more"),
+            String::from("messages"),
+            String::from("for"),
+            String::from("you"),
         ];
 
         for val in vals {
@@ -453,7 +453,7 @@ Got: thread
     });
 
     for received in rx {
-        println!(&quot;Got: {}&quot;, received);
+        println!("Got: {}", received);
     }
 
     // --생략--

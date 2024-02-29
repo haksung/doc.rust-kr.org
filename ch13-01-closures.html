@@ -181,11 +181,11 @@
                         <!-- Old heading. Do not remove or links may break. -->
 <p><a id="closures-anonymous-functions-that-can-capture-their-environment"></a></p>
 <h2 id="클로저-자신의-환경을-캡처하는-익명-함수"><a class="header" href="#클로저-자신의-환경을-캡처하는-익명-함수">클로저: 자신의 환경을 캡처하는 익명 함수</a></h2>
-<p>러스트의 <em>클로저</em>는 변수에 저장하거나 다른 함수에 인수로 전달할 수 
+<p>러스트의 <em>클로저</em>는 변수에 저장하거나 다른 함수에 인수로 전달할 수
 있는 익명 함수입니다. 한 곳에서 클로저를 만들고 다른 컨텍스트의 다른
-곳에서 이를 호출하여 평가할 수 있습니다. 함수와 다르게 클로저는 
-정의된 스코프에서 값을 캡처할 수 있습니다. 앞으로 클로저의 이러한 
-기능이 어떻게 코드 재사용과 동작 커스터마이징을 가능하게 하는지 살펴볼 
+곳에서 이를 호출하여 평가할 수 있습니다. 함수와 다르게 클로저는
+정의된 스코프에서 값을 캡처할 수 있습니다. 앞으로 클로저의 이러한
+기능이 어떻게 코드 재사용과 동작 커스터마이징을 가능하게 하는지 살펴볼
 것입니다.</p>
 <!-- Old headings. Do not remove or links may break. -->
 <p><a id="creating-an-abstraction-of-behavior-with-closures"></a>
@@ -250,14 +250,14 @@ fn main() {
     let user_pref1 = Some(ShirtColor::Red);
     let giveaway1 = store.giveaway(user_pref1);
     println!(
-        &quot;The user with preference {:?} gets {:?}&quot;,
+        "The user with preference {:?} gets {:?}",
         user_pref1, giveaway1
     );
 
     let user_pref2 = None;
     let giveaway2 = store.giveaway(user_pref2);
     println!(
-        &quot;The user with preference {:?} gets {:?}&quot;,
+        "The user with preference {:?} gets {:?}",
         user_pref2, giveaway2
     );
 }</code></pre>
@@ -324,20 +324,20 @@ The user with preference None gets Blue
 </span><span class="boring">
 </span><span class="boring">fn generate_workout(intensity: u32, random_number: u32) {
 </span>    let expensive_closure = |num: u32| -&gt; u32 {
-        println!(&quot;calculating slowly...&quot;);
+        println!("calculating slowly...");
         thread::sleep(Duration::from_secs(2));
         num
     };
 <span class="boring">
 </span><span class="boring">    if intensity &lt; 25 {
-</span><span class="boring">        println!(&quot;Today, do {} pushups!&quot;, expensive_closure(intensity));
-</span><span class="boring">        println!(&quot;Next, do {} situps!&quot;, expensive_closure(intensity));
+</span><span class="boring">        println!("Today, do {} pushups!", expensive_closure(intensity));
+</span><span class="boring">        println!("Next, do {} situps!", expensive_closure(intensity));
 </span><span class="boring">    } else {
 </span><span class="boring">        if random_number == 3 {
-</span><span class="boring">            println!(&quot;Take a break today! Remember to stay hydrated!&quot;);
+</span><span class="boring">            println!("Take a break today! Remember to stay hydrated!");
 </span><span class="boring">        } else {
 </span><span class="boring">            println!(
-</span><span class="boring">                &quot;Today, run for {} minutes!&quot;,
+</span><span class="boring">                "Today, run for {} minutes!",
 </span><span class="boring">                expensive_closure(intensity)
 </span><span class="boring">            );
 </span><span class="boring">        }
@@ -383,7 +383,7 @@ let add_one_v4 = |x|               x + 1  ;</code></pre>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
 </span>    let example_closure = |x| x;
 
-    let s = example_closure(String::from(&quot;hello&quot;));
+    let s = example_closure(String::from("hello"));
     let n = example_closure(5);
 <span class="boring">}</span></code></pre>
 <p><span class="caption">예제 13-3: 두 개의 다른 타입에 대해 타입이
@@ -425,13 +425,13 @@ error: could not compile `closure-example` due to previous error
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let list = vec![1, 2, 3];
-    println!(&quot;Before defining closure: {:?}&quot;, list);
+    println!("Before defining closure: {:?}", list);
 
-    let only_borrows = || println!(&quot;From closure: {:?}&quot;, list);
+    let only_borrows = || println!("From closure: {:?}", list);
 
-    println!(&quot;Before calling closure: {:?}&quot;, list);
+    println!("Before calling closure: {:?}", list);
     only_borrows();
-    println!(&quot;After calling closure: {:?}&quot;, list);
+    println!("After calling closure: {:?}", list);
 }</code></pre></pre>
 <p><span class="caption">예제 13-4: 불변 참조자를 캡처하는 클로저의
 정의와 호출</span></p>
@@ -456,12 +456,12 @@ After calling closure: [1, 2, 3]
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let mut list = vec![1, 2, 3];
-    println!(&quot;Before defining closure: {:?}&quot;, list);
+    println!("Before defining closure: {:?}", list);
 
     let mut borrows_mutably = || list.push(7);
 
     borrows_mutably();
-    println!(&quot;After calling closure: {:?}&quot;, list);
+    println!("After calling closure: {:?}", list);
 }</code></pre></pre>
 <p><span class="caption">예제 13-5: 가변 참조자를 캡처하는 클로저의
 정의와 호출</span></p>
@@ -494,9 +494,9 @@ After calling closure: [1, 2, 3, 7]
 
 fn main() {
     let list = vec![1, 2, 3];
-    println!(&quot;Before defining closure: {:?}&quot;, list);
+    println!("Before defining closure: {:?}", list);
 
-    thread::spawn(move || println!(&quot;From thread: {:?}&quot;, list))
+    thread::spawn(move || println!("From thread: {:?}", list))
         .join()
         .unwrap();
 }</code></pre></pre>
@@ -607,7 +607,7 @@ fn main() {
     ];
 
     list.sort_by_key(|r| r.width);
-    println!(&quot;{:#?}&quot;, list);
+    println!("{:#?}", list);
 }</code></pre></pre>
 <p><span class="caption">예제 13-7: <code>sort_by_key</code>를 사용하여 너비로
 사각형 정렬하기</span></p>
@@ -652,13 +652,13 @@ fn main() {
     ];
 
     let mut sort_operations = vec![];
-    let value = String::from(&quot;by key called&quot;);
+    let value = String::from("by key called");
 
     list.sort_by_key(|r| {
         sort_operations.push(value);
         r.width
     });
-    println!(&quot;{:#?}&quot;, list);
+    println!("{:#?}", list);
 }</code></pre>
 <p><span class="caption">예제 13-8: <code>FnOnce</code> 클로저를 <code>sort_by_key</code>에 사용
 시도하기</span></p>
@@ -678,7 +678,7 @@ fn main() {
 error[E0507]: cannot move out of `value`, a captured variable in an `FnMut` closure
   --&gt; src/main.rs:18:30
    |
-15 |     let value = String::from(&quot;by key called&quot;);
+15 |     let value = String::from("by key called");
    |         ----- captured outer variable
 16 |
 17 |     list.sort_by_key(|r| {
@@ -716,7 +716,7 @@ fn main() {
         num_sort_operations += 1;
         r.width
     });
-    println!(&quot;{:#?}, sorted in {num_sort_operations} operations&quot;, list);
+    println!("{:#?}, sorted in {num_sort_operations} operations", list);
 }</code></pre></pre>
 <p><span class="caption">예제 13-9: <code>FnMut</code> 클로저를 <code>sort_by_key</code>에 사용하는
 것은 허용됩니다</span></p>

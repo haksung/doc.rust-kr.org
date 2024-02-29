@@ -247,7 +247,7 @@
 </span>impl Drop for ThreadPool {
     fn drop(&amp;mut self) {
         for worker in &amp;mut self.workers {
-            println!(&quot;Shutting down worker {}&quot;, worker.id);
+            println!("Shutting down worker {}", worker.id);
 
             worker.thread.join().unwrap();
         }
@@ -264,7 +264,7 @@
 </span><span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
 </span><span class="boring">
-</span><span class="boring">            println!(&quot;Worker {id} got a job; executing.&quot;);
+</span><span class="boring">            println!("Worker {id} got a job; executing.");
 </span><span class="boring">
 </span><span class="boring">            job();
 </span><span class="boring">        });
@@ -358,7 +358,7 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">impl Drop for ThreadPool {
 </span><span class="boring">    fn drop(&amp;mut self) {
 </span><span class="boring">        for worker in &amp;mut self.workers {
-</span><span class="boring">            println!(&quot;Shutting down worker {}&quot;, worker.id);
+</span><span class="boring">            println!("Shutting down worker {}", worker.id);
 </span><span class="boring">
 </span><span class="boring">            worker.thread.join().unwrap();
 </span><span class="boring">        }
@@ -375,7 +375,7 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
 </span><span class="boring">
-</span><span class="boring">            println!(&quot;Worker {id} got a job; executing.&quot;);
+</span><span class="boring">            println!("Worker {id} got a job; executing.");
 </span><span class="boring">
 </span><span class="boring">            job();
 </span><span class="boring">        });
@@ -397,7 +397,7 @@ note: the method `join` exists on the type `JoinHandle&lt;()&gt;`
   --&gt; /rustc/d5a82bbd26e1ad8b7401f6a718a9c57c96905483/library/std/src/thread/mod.rs:1581:5
 help: consider using `Option::expect` to unwrap the `JoinHandle&lt;()&gt;` value, panicking if the value is an `Option::None`
    |
-52 |             worker.thread.expect(&quot;REASON&quot;).join().unwrap();
+52 |             worker.thread.expect("REASON").join().unwrap();
    |                          +++++++++++++++++
 
 error[E0308]: mismatched types
@@ -470,7 +470,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">impl Drop for ThreadPool {
 </span><span class="boring">    fn drop(&amp;mut self) {
 </span><span class="boring">        for worker in &amp;mut self.workers {
-</span><span class="boring">            println!(&quot;Shutting down worker {}&quot;, worker.id);
+</span><span class="boring">            println!("Shutting down worker {}", worker.id);
 </span><span class="boring">
 </span><span class="boring">            worker.thread.join().unwrap();
 </span><span class="boring">        }
@@ -489,7 +489,7 @@ error: could not compile `hello` due to 2 previous errors
 <span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
 </span><span class="boring">
-</span><span class="boring">            println!(&quot;Worker {id} got a job; executing.&quot;);
+</span><span class="boring">            println!("Worker {id} got a job; executing.");
 </span><span class="boring">
 </span><span class="boring">            job();
 </span><span class="boring">        });
@@ -553,7 +553,7 @@ error: could not compile `hello` due to 2 previous errors
 </span>impl Drop for ThreadPool {
     fn drop(&amp;mut self) {
         for worker in &amp;mut self.workers {
-            println!(&quot;Shutting down worker {}&quot;, worker.id);
+            println!("Shutting down worker {}", worker.id);
 
             if let Some(thread) = worker.thread.take() {
                 thread.join().unwrap();
@@ -572,7 +572,7 @@ error: could not compile `hello` due to 2 previous errors
 </span><span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
 </span><span class="boring">
-</span><span class="boring">            println!(&quot;Worker {id} got a job; executing.&quot;);
+</span><span class="boring">            println!("Worker {id} got a job; executing.");
 </span><span class="boring">
 </span><span class="boring">            job();
 </span><span class="boring">        });
@@ -661,7 +661,7 @@ impl Drop for ThreadPool {
         drop(self.sender.take());
 
         for worker in &amp;mut self.workers {
-            println!(&quot;Shutting down worker {}&quot;, worker.id);
+            println!("Shutting down worker {}", worker.id);
 
             if let Some(thread) = worker.thread.take() {
                 thread.join().unwrap();
@@ -680,7 +680,7 @@ impl Drop for ThreadPool {
 </span><span class="boring">        let thread = thread::spawn(move || loop {
 </span><span class="boring">            let job = receiver.lock().unwrap().recv().unwrap();
 </span><span class="boring">
-</span><span class="boring">            println!(&quot;Worker {id} got a job; executing.&quot;);
+</span><span class="boring">            println!("Worker {id} got a job; executing.");
 </span><span class="boring">
 </span><span class="boring">            job();
 </span><span class="boring">        });
@@ -753,7 +753,7 @@ impl Drop for ThreadPool {
 </span><span class="boring">        drop(self.sender.take());
 </span><span class="boring">
 </span><span class="boring">        for worker in &amp;mut self.workers {
-</span><span class="boring">            println!(&quot;Shutting down worker {}&quot;, worker.id);
+</span><span class="boring">            println!("Shutting down worker {}", worker.id);
 </span><span class="boring">
 </span><span class="boring">            if let Some(thread) = worker.thread.take() {
 </span><span class="boring">                thread.join().unwrap();
@@ -774,12 +774,12 @@ impl Drop for ThreadPool {
 
             match message {
                 Ok(job) =&gt; {
-                    println!(&quot;Worker {id} got a job; executing.&quot;);
+                    println!("Worker {id} got a job; executing.");
 
                     job();
                 }
                 Err(_) =&gt; {
-                    println!(&quot;Worker {id} disconnected; shutting down.&quot;);
+                    println!("Worker {id} disconnected; shutting down.");
                     break;
                 }
             }
@@ -805,7 +805,7 @@ impl Drop for ThreadPool {
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
 </span>fn main() {
-    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
     let pool = ThreadPool::new(4);
 
     for stream in listener.incoming().take(2) {
@@ -816,29 +816,29 @@ impl Drop for ThreadPool {
         });
     }
 
-    println!(&quot;Shutting down.&quot;);
+    println!("Shutting down.");
 }
 <span class="boring">
 </span><span class="boring">fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">    let mut buffer = [0; 1024];
 </span><span class="boring">    stream.read(&amp;mut buffer).unwrap();
 </span><span class="boring">
-</span><span class="boring">    let get = b&quot;GET / HTTP/1.1\r\n&quot;;
-</span><span class="boring">    let sleep = b&quot;GET /sleep HTTP/1.1\r\n&quot;;
+</span><span class="boring">    let get = b"GET / HTTP/1.1\r\n";
+</span><span class="boring">    let sleep = b"GET /sleep HTTP/1.1\r\n";
 </span><span class="boring">
 </span><span class="boring">    let (status_line, filename) = if buffer.starts_with(get) {
-</span><span class="boring">        (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+</span><span class="boring">        ("HTTP/1.1 200 OK", "hello.html")
 </span><span class="boring">    } else if buffer.starts_with(sleep) {
 </span><span class="boring">        thread::sleep(Duration::from_secs(5));
-</span><span class="boring">        (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+</span><span class="boring">        ("HTTP/1.1 200 OK", "hello.html")
 </span><span class="boring">    } else {
-</span><span class="boring">        (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;)
+</span><span class="boring">        ("HTTP/1.1 404 NOT FOUND", "404.html")
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    let contents = fs::read_to_string(filename).unwrap();
 </span><span class="boring">
 </span><span class="boring">    let response = format!(
-</span><span class="boring">        &quot;{}\r\nContent-Length: {}\r\n\r\n{}&quot;,
+</span><span class="boring">        "{}\r\nContent-Length: {}\r\n\r\n{}",
 </span><span class="boring">        status_line,
 </span><span class="boring">        contents.len(),
 </span><span class="boring">        contents
@@ -911,7 +911,7 @@ use std::thread;
 use std::time::Duration;
 
 fn main() {
-    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
     let pool = ThreadPool::new(4);
 
     for stream in listener.incoming().take(2) {
@@ -922,29 +922,29 @@ fn main() {
         });
     }
 
-    println!(&quot;Shutting down.&quot;);
+    println!("Shutting down.");
 }
 
 fn handle_connection(mut stream: TcpStream) {
     let mut buffer = [0; 1024];
     stream.read(&amp;mut buffer).unwrap();
 
-    let get = b&quot;GET / HTTP/1.1\r\n&quot;;
-    let sleep = b&quot;GET /sleep HTTP/1.1\r\n&quot;;
+    let get = b"GET / HTTP/1.1\r\n";
+    let sleep = b"GET /sleep HTTP/1.1\r\n";
 
     let (status_line, filename) = if buffer.starts_with(get) {
-        (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+        ("HTTP/1.1 200 OK", "hello.html")
     } else if buffer.starts_with(sleep) {
         thread::sleep(Duration::from_secs(5));
-        (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+        ("HTTP/1.1 200 OK", "hello.html")
     } else {
-        (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;)
+        ("HTTP/1.1 404 NOT FOUND", "404.html")
     };
 
     let contents = fs::read_to_string(filename).unwrap();
 
     let response = format!(
-        &quot;{}\r\nContent-Length: {}\r\n\r\n{}&quot;,
+        "{}\r\nContent-Length: {}\r\n\r\n{}",
         status_line,
         contents.len(),
         contents
@@ -1008,7 +1008,7 @@ impl Drop for ThreadPool {
         drop(self.sender.take());
 
         for worker in &amp;mut self.workers {
-            println!(&quot;Shutting down worker {}&quot;, worker.id);
+            println!("Shutting down worker {}", worker.id);
 
             if let Some(thread) = worker.thread.take() {
                 thread.join().unwrap();
@@ -1029,12 +1029,12 @@ impl Worker {
 
             match message {
                 Ok(job) =&gt; {
-                    println!(&quot;Worker {id} got a job; executing.&quot;);
+                    println!("Worker {id} got a job; executing.");
 
                     job();
                 }
                 Err(_) =&gt; {
-                    println!(&quot;Worker {id} disconnected; shutting down.&quot;);
+                    println!("Worker {id} disconnected; shutting down.");
                     break;
                 }
             }

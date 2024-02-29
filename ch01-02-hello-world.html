@@ -205,8 +205,8 @@ $ mkdir hello_world
 $ cd hello_world
 </code></pre>
 <p>Windows CMD 사용자는 다음 명령어를 입력해 주세요:</p>
-<pre><code class="language-cmd">&gt; mkdir &quot;%USERPROFILE%\projects&quot;
-&gt; cd /d &quot;%USERPROFILE%\projects&quot;
+<pre><code class="language-cmd">&gt; mkdir "%USERPROFILE%\projects"
+&gt; cd /d "%USERPROFILE%\projects"
 &gt; mkdir hello_world
 &gt; cd hello_world
 </code></pre>
@@ -218,7 +218,7 @@ $ cd hello_world
 <p><em>main.rs</em> 파일에 예제 1-1 코드를 입력합시다.</p>
 <p><span class="filename">파일명: main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-  println!(&quot;Hello, world!&quot;);
+  println!("Hello, world!");
 }</code></pre></pre>
 <p><span class="caption">예제 1-1: <code>Hello, world!</code>를 출력하는 프로그램</span></p>
 <p>파일을 저장하고 터미널 창으로 돌아가 <em>~/projects/hello_world</em>
@@ -263,7 +263,7 @@ Hello, world!
 <p><code>main</code> 함수 내 코드를 살펴봅시다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
-</span>    println!(&quot;Hello, world!&quot;);
+</span>    println!("Hello, world!");
 <span class="boring">}</span></code></pre></pre>
 <p>화면에 텍스트를 출력하는 코드로, 이 한 라인이 이 자그마한 프로그램의 전부입니다.
 하지만 이 단순한 코드에도 눈여겨볼 것이 네 가지 들어있습니다.</p>
@@ -273,7 +273,7 @@ Hello, world!
 매크로는 19장에서 자세히 다루며, 지금은 <code>!</code>가 붙으면 함수가 아니라
 매크로 호출 코드이고, 매크로는 함수와 항상 같은 규칙을 따르지는 않는다는
 것만 알아두시면 됩니다.</p>
-<p>세 번째는 <code>println!</code>의 인수로 넘겨준 <code>&quot;Hello, world!&quot;</code> 문자열이
+<p>세 번째는 <code>println!</code>의 인수로 넘겨준 <code>"Hello, world!"</code> 문자열이
 그대로 화면에 나타난 점입니다.</p>
 <p>마지막으로, 이 라인은 세미콜론(<code>;</code>)으로 끝납니다. 이 표현식이
 끝났으며 다음 표현식이 시작될 준비가 됐다는 표시지요. 러스트

@@ -210,9 +210,9 @@ cd ../../..
 -->
 <p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[package]
-name = &quot;guessing_game&quot;
-version = &quot;0.1.0&quot;
-edition = &quot;2021&quot;
+name = "guessing_game"
+version = "0.1.0"
+edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -222,7 +222,7 @@ edition = &quot;2021&quot;
 <em>src/main.rs</em> 파일을 살펴보면 다음과 같습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn main() {
-    println!(&quot;Hello, world!&quot;);
+    println!("Hello, world!");
 }</code></pre></pre>
 <p>이제 <code>cargo run</code> 명령문을 이용하여 이 ‘Hello, world!’ 프로그램을
 컴파일하고 실행해 봅시다:</p>
@@ -245,17 +245,17 @@ Hello, world!
 <pre><code class="language-rust ignore">use std::io;
 
 fn main() {
-    println!(&quot;Guess the number!&quot;);
+    println!("Guess the number!");
 
-    println!(&quot;Please input your guess.&quot;);
+    println!("Please input your guess.");
 
     let mut guess = String::new();
 
     io::stdin()
         .read_line(&amp;mut guess)
-        .expect(&quot;Failed to read line&quot;);
+        .expect("Failed to read line");
 
-    println!(&quot;You guessed: {guess}&quot;);
+    println!("You guessed: {guess}");
 }</code></pre>
 <p><span class="caption">예제 2-1: 사용자가 추리한 값을 입력받아 그대로
 출력하는 코드</span></p>
@@ -266,17 +266,17 @@ fn main() {
 <pre><code class="language-rust ignore">use std::io;
 <span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span><span class="boring">        .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">        .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">    println!("You guessed: {guess}");
 </span><span class="boring">}</span></code></pre>
 <p>기본적으로 러스트는 모든 프로그램의 스코프로 가져오는 표준 라이브러리에
 정의된 아이템 집합을 가지고 있습니다. 이 집합을 <em>프렐루드 (prelude)</em> 라고
@@ -290,17 +290,17 @@ fn main() {
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span>fn main() {
-<span class="boring">    println!(&quot;Guess the number!&quot;);
+<span class="boring">    println!("Guess the number!");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span><span class="boring">        .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">        .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">    println!("You guessed: {guess}");
 </span><span class="boring">}</span></code></pre>
 <p><code>fn</code> 문법은 새로운 함수를 선언하며, 괄호 <code>()</code>는 매개변수가 없음을 나타내고
 중괄호 <code>{</code>는 함수 본문의 시작을 나타냅니다.</p>
@@ -309,17 +309,17 @@ fn main() {
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span>    println!(&quot;Guess the number!&quot;);
+</span>    println!("Guess the number!");
 
-    println!(&quot;Please input your guess.&quot;);
+    println!("Please input your guess.");
 <span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span><span class="boring">        .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">        .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">    println!("You guessed: {guess}");
 </span><span class="boring">}</span></code></pre>
 <p>이 코드는 게임에 대해 설명하여 사용자의 입력을 요청하는 프롬프트를
 출력하고 있습니다.</p>
@@ -328,17 +328,17 @@ fn main() {
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span>    let mut guess = String::new();
 <span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span><span class="boring">        .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">        .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">    println!("You guessed: {guess}");
 </span><span class="boring">}</span></code></pre>
 <p>이제 프로그램이 점점 흥미로워지고 있습니다! 이 짧은 라인에서 여러 일들이 벌어집니다.
 변수를 만드는 데에는 <code>let</code> 구문을 사용합니다. 다음 코드도 변수를 선언하는 예시입니다:</p>
@@ -378,17 +378,17 @@ let mut bananas= 5; // mutable</code></pre>
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span>    io::stdin()
         .read_line(&amp;mut guess)
-<span class="boring">        .expect(&quot;Failed to read line&quot;);
+<span class="boring">        .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">    println!("You guessed: {guess}");
 </span><span class="boring">}</span></code></pre>
 <p>프로그램 시작 지점에서 <code>use std::io</code>를 통해 <code>io</code> 라이브러리를 가져오지
 않았더라도, 함수 호출 시 <code>std::io::stdin</code>처럼 작성하는 것으로 이 함수를
@@ -421,20 +421,20 @@ let mut bananas= 5; // mutable</code></pre>
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span>        .expect(&quot;Failed to read line&quot;);
+</span>        .expect("Failed to read line");
 <span class="boring">
-</span><span class="boring">    println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">    println!("You guessed: {guess}");
 </span><span class="boring">}</span></code></pre>
 <p>위 코드를 아래처럼 쓸 수도 있습니다.</p>
-<pre><code class="language-rust ignore">io::stdin().read_line(&amp;mut guess).expect(&quot;Failed to read line&quot;);</code></pre>
+<pre><code class="language-rust ignore">io::stdin().read_line(&amp;mut guess).expect("Failed to read line");</code></pre>
 <p>하지만 하나의 긴 라인은 가독성이 떨어지므로 라인을 나누는
 것이 좋습니다. <code>.method_name()</code> 문법으로 어떤 메서드를 호출할 때는
 줄 바꿈과 다른 공백문자로 긴 라인을 쪼개는 것이 보통 현명한 선택입니다.
@@ -471,7 +471,7 @@ warning: unused `Result` that must be used
    = note: this `Result` may be an `Err` variant, which should be handled
    = note: `#[warn(unused_must_use)]` on by default
 
-warning: `guessing_game` (bin &quot;guessing_game&quot;) generated 1 warning
+warning: `guessing_game` (bin "guessing_game") generated 1 warning
     Finished dev [unoptimized + debuginfo] target(s) in 0.59s
 </code></pre>
 <p>러스트는 <code>read_line</code>가 돌려주는 <code>Result</code> 값을 사용하지 않았음을 경고하며 일어날 수 있는
@@ -486,17 +486,17 @@ warning: `guessing_game` (bin &quot;guessing_game&quot;) generated 1 warning
 <pre><code class="language-rust ignore"><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span><span class="boring">        .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">        .expect("Failed to read line");
 </span><span class="boring">
-</span>    println!(&quot;You guessed: {guess}&quot;);
+</span>    println!("You guessed: {guess}");
 <span class="boring">}</span></code></pre>
 <p>이 라인은 사용자가 입력한 값을 담고 있는 문자열을 출력합니다. <code>{}</code>는
 자리표시자 (placeholder) 입니다: <code>{}</code>를 어떤 위치에 값을 자리하도록
@@ -511,7 +511,7 @@ warning: `guessing_game` (bin &quot;guessing_game&quot;) generated 1 warning
 </span>let x = 5;
 let y = 10;
 
-println!(&quot;x = {x} and y + 2 = {}&quot;, y + 2);
+println!("x = {x} and y + 2 = {}", y + 2);
 <span class="boring">}</span></code></pre></pre>
 <p>이 코드는 <code>x = 5 and y + 2 = 12</code>를 출력합니다.</p>
 <h3 id="첫-번째-부분-테스트하기"><a class="header" href="#첫-번째-부분-테스트하기">첫 번째 부분 테스트하기</a></h3>
@@ -557,7 +557,7 @@ You guessed: 6
 -->
 <p><span class="filename">파일명: Cargo.toml</span></p>
 <pre><code class="language-toml">[dependencies]
-rand = &quot;0.8.5&quot;
+rand = "0.8.5"
 </code></pre>
 <p><em>Cargo.toml</em> 파일에서 어떤 섹션 헤더 이후의 모든 내용은
 그 섹션에 포함되며 이는 다음 섹션이 나타날 때까지 계속됩니다.
@@ -671,7 +671,7 @@ as a guide to creating the hypothetical output shown here -->
 확인할 수 있습니다. 0.9.0이나 0.9.<em>x</em>에 해당하는 버전을 사용하고 싶다면
 <em>Cargo.toml</em>을 다음과 같이 업데이트해야 합니다.</p>
 <pre><code class="language-toml">[dependencies]
-rand = &quot;0.9.0&quot;
+rand = "0.9.0"
 </code></pre>
 <p>다음번에 여러분이 <code>cargo build</code>를 실행하면 카고는 사용 가능한 크레이트들의
 레지스트리를 업데이트할 것이고 여러분의 <code>rand</code> 요구사항을 새롭게 명시한 버전에
@@ -689,21 +689,21 @@ rand = &quot;0.9.0&quot;
 use rand::Rng;
 
 fn main() {
-    println!(&quot;Guess the number!&quot;);
+    println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
-    println!(&quot;The secret number is: {secret_number}&quot;);
+    println!("The secret number is: {secret_number}");
 
-    println!(&quot;Please input your guess.&quot;);
+    println!("Please input your guess.");
 
     let mut guess = String::new();
 
     io::stdin()
         .read_line(&amp;mut guess)
-        .expect(&quot;Failed to read line&quot;);
+        .expect("Failed to read line");
 
-    println!(&quot;You guessed: {guess}&quot;);
+    println!("You guessed: {guess}");
 }</code></pre>
 <p><span class="caption">예제 2-3: 임의의 숫자를 생성하기 위한 코드
 추가하기</span></p>
@@ -773,26 +773,26 @@ use std::io;
 
 fn main() {
     // --생략--
-<span class="boring">    println!(&quot;Guess the number!&quot;);
+<span class="boring">    println!("Guess the number!");
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;The secret number is: {secret_number}&quot;);
+</span><span class="boring">    println!("The secret number is: {secret_number}");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">    let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">    io::stdin()
 </span><span class="boring">        .read_line(&amp;mut guess)
-</span><span class="boring">        .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">        .expect("Failed to read line");
 </span>
-    println!(&quot;You guessed: {guess}&quot;);
+    println!("You guessed: {guess}");
 
     match guess.cmp(&amp;secret_number) {
-        Ordering::Less =&gt; println!(&quot;Too small!&quot;),
-        Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
-        Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+        Ordering::Less =&gt; println!("Too small!"),
+        Ordering::Greater =&gt; println!("Too big!"),
+        Ordering::Equal =&gt; println!("You win!"),
     }
 }</code></pre>
 <p><span class="caption">예제 2-4: 두 숫자의 비교에 대한 가능한 반환 값
@@ -878,13 +878,13 @@ error: could not compile `guessing_game` due to previous error
 </span><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;The secret number is: {secret_number}&quot;);
+</span><span class="boring">    println!("The secret number is: {secret_number}");
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">    println!("Please input your guess.");
 </span><span class="boring">
 </span>    // --생략--
 
@@ -892,20 +892,20 @@ error: could not compile `guessing_game` due to previous error
 
     io::stdin()
         .read_line(&amp;mut guess)
-        .expect(&quot;Failed to read line&quot;);
+        .expect("Failed to read line");
 
-    let guess: u32 = guess.trim().parse().expect(&quot;Please type a number!&quot;);
+    let guess: u32 = guess.trim().parse().expect("Please type a number!");
 
-    println!(&quot;You guessed: {guess}&quot;);
+    println!("You guessed: {guess}");
 
     match guess.cmp(&amp;secret_number) {
-        Ordering::Less =&gt; println!(&quot;Too small!&quot;),
-        Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
-        Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+        Ordering::Less =&gt; println!("Too small!"),
+        Ordering::Greater =&gt; println!("Too big!"),
+        Ordering::Equal =&gt; println!("You win!"),
     }
 <span class="boring">}</span></code></pre>
 <p>추가된 라인은 다음과 같습니다:</p>
-<pre><code class="language-rust ignore">let guess: u32 = guess.trim().parse().expect(&quot;Please type a number!&quot;);</code></pre>
+<pre><code class="language-rust ignore">let guess: u32 = guess.trim().parse().expect("Please type a number!");</code></pre>
 <p><code>guess</code>라는 이름의 변수가 만들어졌습니다. 잠깐, 이미 프로그램에서 <code>guess</code>라는
 이름의 변수가 생성되지 않았나요? 그렇긴 하지만 러스트는 이전에 있던 <code>guess</code>의
 값을 새로운 값으로 가리는 (shadow) 것을 허용합니다. <em>섀도잉 (shadowing)</em> 은,
@@ -980,16 +980,16 @@ Too big!
 </span><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
 </span>    // --생략--
 
-    println!(&quot;The secret number is: {secret_number}&quot;);
+    println!("The secret number is: {secret_number}");
 
     loop {
-        println!(&quot;Please input your guess.&quot;);
+        println!("Please input your guess.");
 
         // --생략--
 
@@ -998,16 +998,16 @@ Too big!
 </span><span class="boring">
 </span><span class="boring">        io::stdin()
 </span><span class="boring">            .read_line(&amp;mut guess)
-</span><span class="boring">            .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">            .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">        let guess: u32 = guess.trim().parse().expect(&quot;Please type a number!&quot;);
+</span><span class="boring">        let guess: u32 = guess.trim().parse().expect("Please type a number!");
 </span><span class="boring">
-</span><span class="boring">        println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">        println!("You guessed: {guess}");
 </span><span class="boring">
 </span>        match guess.cmp(&amp;secret_number) {
-            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
-            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
-            Ordering::Equal =&gt; println!(&quot;You win!&quot;),
+            Ordering::Less =&gt; println!("Too small!"),
+            Ordering::Greater =&gt; println!("Too big!"),
+            Ordering::Equal =&gt; println!("You win!"),
         }
     }
 }</code></pre>
@@ -1063,32 +1063,32 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;The secret number is: {secret_number}&quot;);
+</span><span class="boring">    println!("The secret number is: {secret_number}");
 </span><span class="boring">
 </span><span class="boring">    loop {
-</span><span class="boring">        println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">        println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">        let mut guess = String::new();
 </span><span class="boring">
 </span><span class="boring">        io::stdin()
 </span><span class="boring">            .read_line(&amp;mut guess)
-</span><span class="boring">            .expect(&quot;Failed to read line&quot;);
+</span><span class="boring">            .expect("Failed to read line");
 </span><span class="boring">
-</span><span class="boring">        let guess: u32 = guess.trim().parse().expect(&quot;Please type a number!&quot;);
+</span><span class="boring">        let guess: u32 = guess.trim().parse().expect("Please type a number!");
 </span><span class="boring">
-</span><span class="boring">        println!(&quot;You guessed: {guess}&quot;);
+</span><span class="boring">        println!("You guessed: {guess}");
 </span><span class="boring">
 </span>        // --생략--
 
         match guess.cmp(&amp;secret_number) {
-            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
-            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+            Ordering::Less =&gt; println!("Too small!"),
+            Ordering::Greater =&gt; println!("Too big!"),
             Ordering::Equal =&gt; {
-                println!(&quot;You win!&quot;);
+                println!("You win!");
                 break;
             }
         }
@@ -1108,14 +1108,14 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 </span><span class="boring">use std::io;
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    println!(&quot;Guess the number!&quot;);
+</span><span class="boring">    println!("Guess the number!");
 </span><span class="boring">
 </span><span class="boring">    let secret_number = rand::thread_rng().gen_range(1..=100);
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;The secret number is: {secret_number}&quot;);
+</span><span class="boring">    println!("The secret number is: {secret_number}");
 </span><span class="boring">
 </span><span class="boring">    loop {
-</span><span class="boring">        println!(&quot;Please input your guess.&quot;);
+</span><span class="boring">        println!("Please input your guess.");
 </span><span class="boring">
 </span><span class="boring">        let mut guess = String::new();
 </span><span class="boring">
@@ -1123,22 +1123,22 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
         io::stdin()
             .read_line(&amp;mut guess)
-            .expect(&quot;Failed to read line&quot;);
+            .expect("Failed to read line");
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) =&gt; num,
             Err(_) =&gt; continue,
         };
 
-        println!(&quot;You guessed: {guess}&quot;);
+        println!("You guessed: {guess}");
 
         // --생략--
 <span class="boring">
 </span><span class="boring">        match guess.cmp(&amp;secret_number) {
-</span><span class="boring">            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
-</span><span class="boring">            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+</span><span class="boring">            Ordering::Less =&gt; println!("Too small!"),
+</span><span class="boring">            Ordering::Greater =&gt; println!("Too big!"),
 </span><span class="boring">            Ordering::Equal =&gt; {
-</span><span class="boring">                println!(&quot;You win!&quot;);
+</span><span class="boring">                println!("You win!");
 </span><span class="boring">                break;
 </span><span class="boring">            }
 </span><span class="boring">        }
@@ -1205,31 +1205,31 @@ use std::cmp::Ordering;
 use std::io;
 
 fn main() {
-    println!(&quot;Guess the number!&quot;);
+    println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
 
     loop {
-        println!(&quot;Please input your guess.&quot;);
+        println!("Please input your guess.");
 
         let mut guess = String::new();
 
         io::stdin()
             .read_line(&amp;mut guess)
-            .expect(&quot;Failed to read line&quot;);
+            .expect("Failed to read line");
 
         let guess: u32 = match guess.trim().parse() {
             Ok(num) =&gt; num,
             Err(_) =&gt; continue,
         };
 
-        println!(&quot;You guessed: {guess}&quot;);
+        println!("You guessed: {guess}");
 
         match guess.cmp(&amp;secret_number) {
-            Ordering::Less =&gt; println!(&quot;Too small!&quot;),
-            Ordering::Greater =&gt; println!(&quot;Too big!&quot;),
+            Ordering::Less =&gt; println!("Too small!"),
+            Ordering::Greater =&gt; println!("Too big!"),
             Ordering::Equal =&gt; {
-                println!(&quot;You win!&quot;);
+                println!("You win!");
                 break;
             }
         }

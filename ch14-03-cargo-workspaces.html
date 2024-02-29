@@ -206,7 +206,7 @@ $ cd add
 <pre><code class="language-toml">[workspace]
 
 members = [
-    &quot;adder&quot;,
+    "adder",
 ]
 </code></pre>
 <p>다음엔 <em>add</em> 디렉터리 내에서 <code>cargo new</code>를 실행하여 <code>adder</code> 바이너리
@@ -248,8 +248,8 @@ copy output below
 <pre><code class="language-toml">[workspace]
 
 members = [
-    &quot;adder&quot;,
-    &quot;add_one&quot;,
+    "adder",
+    "add_one",
 ]
 </code></pre>
 <p>그런 다음 <code>add_one</code>이라는 이름의 새 라이브러리 크레이트를 생성하세요:</p>
@@ -285,7 +285,7 @@ copy output below
 의존성을 추가할 필요가 있겠습니다.</p>
 <p><span class="filename">파일명: adder/Cargo.toml</span></p>
 <pre><code class="language-toml">[dependencies]
-add_one = { path = &quot;../add_one&quot; }
+add_one = { path = "../add_one" }
 </code></pre>
 <p>카고는 작업 공간 내의 크레이트들이 서로 의존할 것이라고 가정하지 않으므로,
 의존성 관계에 대해 명시할 필요가 있습니다.</p>
@@ -298,7 +298,7 @@ add_one = { path = &quot;../add_one&quot; }
 
 fn main() {
     let num = 10;
-    println!(&quot;Hello, world! {num} plus one is {}!&quot;, add_one::add_one(num));
+    println!("Hello, world! {num} plus one is {}!", add_one::add_one(num));
 }</code></pre>
 <p><span class="caption">예제 14-7: <code>adder</code> 크레이트에서 <code>add_one</code> 라이브러리
 크레이트 사용하기</span></p>
@@ -345,7 +345,7 @@ Hello, world! 10 plus one is 11!
 -->
 <p><span class="filename">파일명: add_one/Cargo.toml</span></p>
 <pre><code class="language-toml">[dependencies]
-rand = &quot;0.8.5&quot;
+rand = "0.8.5"
 </code></pre>
 <p>이제 <em>add_one/src/lib.rs</em> 파일에 <code>use rand;</code>를 추가할 수 있으며,
 <em>add</em> 디렉터리에서 <code>cargo build</code>를 실행하여 전체 작업공간을 빌드하면

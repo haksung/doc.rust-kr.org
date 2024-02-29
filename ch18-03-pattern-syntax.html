@@ -188,10 +188,10 @@
 </span>    let x = 1;
 
     match x {
-        1 =&gt; println!(&quot;one&quot;),
-        2 =&gt; println!(&quot;two&quot;),
-        3 =&gt; println!(&quot;three&quot;),
-        _ =&gt; println!(&quot;anything&quot;),
+        1 =&gt; println!("one"),
+        2 =&gt; println!("two"),
+        3 =&gt; println!("three"),
+        _ =&gt; println!("anything"),
     }
 <span class="boring">}</span></code></pre></pre>
 <p><code>x</code>의 값이 1이므로 이 코드는 <code>one</code>을 출력합니다. 이 문법은
@@ -214,12 +214,12 @@
     let y = 10;
 
     match x {
-        Some(50) =&gt; println!(&quot;Got 50&quot;),
-        Some(y) =&gt; println!(&quot;Matched, y = {y}&quot;),
-        _ =&gt; println!(&quot;Default case, x = {:?}&quot;, x),
+        Some(50) =&gt; println!("Got 50"),
+        Some(y) =&gt; println!("Matched, y = {y}"),
+        _ =&gt; println!("Default case, x = {:?}", x),
     }
 
-    println!(&quot;at the end: x = {:?}, y = {y}&quot;, x);
+    println!("at the end: x = {:?}, y = {y}", x);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-11: 섀도잉된 변수 <code>y</code>가 도입된
 갈래를 갖는 <code>match</code> 표현식</span></p>
@@ -256,9 +256,9 @@
 </span>    let x = 1;
 
     match x {
-        1 | 2 =&gt; println!(&quot;one or two&quot;),
-        3 =&gt; println!(&quot;three&quot;),
-        _ =&gt; println!(&quot;anything&quot;),
+        1 | 2 =&gt; println!("one or two"),
+        3 =&gt; println!("three"),
+        _ =&gt; println!("anything"),
     }
 <span class="boring">}</span></code></pre></pre>
 <p>이 코드는 <code>one or two</code>를 출력합니다.</p>
@@ -270,8 +270,8 @@
 </span>    let x = 5;
 
     match x {
-        1..=5 =&gt; println!(&quot;one through five&quot;),
-        _ =&gt; println!(&quot;something else&quot;),
+        1..=5 =&gt; println!("one through five"),
+        _ =&gt; println!("something else"),
     }
 <span class="boring">}</span></code></pre></pre>
 <p><code>x</code>가 1, 2, 3, 4, 5 중 하나라면 첫 번째 갈래에 매칭됩니다. 이 문법은
@@ -287,9 +287,9 @@
 </span>    let x = 'c';
 
     match x {
-        'a'..='j' =&gt; println!(&quot;early ASCII letter&quot;),
-        'k'..='z' =&gt; println!(&quot;late ASCII letter&quot;),
-        _ =&gt; println!(&quot;something else&quot;),
+        'a'..='j' =&gt; println!("early ASCII letter"),
+        'k'..='z' =&gt; println!("late ASCII letter"),
+        _ =&gt; println!("something else"),
     }
 <span class="boring">}</span></code></pre></pre>
 <p>러스트는 <code>'c'</code>가 첫 번째 패턴의 범위 내에 있음을 인식하고
@@ -361,10 +361,10 @@ fn main() {
     let p = Point { x: 0, y: 7 };
 
     match p {
-        Point { x, y: 0 } =&gt; println!(&quot;On the x axis at {x}&quot;),
-        Point { x: 0, y } =&gt; println!(&quot;On the y axis at {y}&quot;),
+        Point { x, y: 0 } =&gt; println!("On the x axis at {x}"),
+        Point { x: 0, y } =&gt; println!("On the y axis at {y}"),
         Point { x, y } =&gt; {
-            println!(&quot;On neither axis: ({x}, {y})&quot;);
+            println!("On neither axis: ({x}, {y})");
         }
     }
 }</code></pre></pre>
@@ -401,16 +401,16 @@ fn main() {
 
     match msg {
         Message::Quit =&gt; {
-            println!(&quot;The Quit variant has no data to destructure.&quot;);
+            println!("The Quit variant has no data to destructure.");
         }
         Message::Move { x, y } =&gt; {
-            println!(&quot;Move in the x direction {x} and in the y direction {y}&quot;);
+            println!("Move in the x direction {x} and in the y direction {y}");
         }
         Message::Write(text) =&gt; {
-            println!(&quot;Text message: {text}&quot;);
+            println!("Text message: {text}");
         }
         Message::ChangeColor(r, g, b) =&gt; {
-            println!(&quot;Change the color to red {r}, green {g}, and blue {b}&quot;,)
+            println!("Change the color to red {r}, green {g}, and blue {b}",)
         }
     }
 }</code></pre></pre>
@@ -453,10 +453,10 @@ fn main() {
 
     match msg {
         Message::ChangeColor(Color::Rgb(r, g, b)) =&gt; {
-            println!(&quot;Change color to red {r}, green {g}, and blue {b}&quot;);
+            println!("Change color to red {r}, green {g}, and blue {b}");
         }
         Message::ChangeColor(Color::Hsv(h, s, v)) =&gt; {
-            println!(&quot;Change color to hue {h}, saturation {s}, value {v}&quot;)
+            println!("Change color to hue {h}, saturation {s}, value {v}")
         }
         _ =&gt; (),
     }
@@ -499,7 +499,7 @@ fn main() {
 사용할 수도 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust">fn foo(_: i32, y: i32) {
-    println!(&quot;This code only uses the y parameter: {}&quot;, y);
+    println!("This code only uses the y parameter: {}", y);
 }
 
 fn main() {
@@ -528,14 +528,14 @@ fn main() {
 
     match (setting_value, new_setting_value) {
         (Some(_), Some(_)) =&gt; {
-            println!(&quot;Can't overwrite an existing customized value&quot;);
+            println!("Can't overwrite an existing customized value");
         }
         _ =&gt; {
             setting_value = new_setting_value;
         }
     }
 
-    println!(&quot;setting is {:?}&quot;, setting_value);
+    println!("setting is {:?}", setting_value);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-18: <code>Some</code> 배리언트에 매칭되는
 패턴에서 <code>Some</code> 내부 값을 사용할 필요가 없을 경우 패턴 내에 밑줄
@@ -557,7 +557,7 @@ fn main() {
 
     match numbers {
         (first, _, third, _, fifth) =&gt; {
-            println!(&quot;Some numbers: {first}, {third}, {fifth}&quot;)
+            println!("Some numbers: {first}, {third}, {fifth}")
         }
     }
 <span class="boring">}</span></code></pre></pre>
@@ -586,13 +586,13 @@ fn main() {
 바인딩하는 반면, <code>_</code>는 전혀 바인딩하지 않습니다. 이 구분이 중요한 경우를
 보여드리기 위해서, 예제 18-21은 에러가 발생할 것입니다.</p>
 <pre><code class="language-rust ignore does_not_compile"><span class="boring">fn main() {
-</span>    let s = Some(String::from(&quot;Hello!&quot;));
+</span>    let s = Some(String::from("Hello!"));
 
     if let Some(_s) = s {
-        println!(&quot;found a string&quot;);
+        println!("found a string");
     }
 
-    println!(&quot;{:?}&quot;, s);
+    println!("{:?}", s);
 <span class="boring">}</span></code></pre>
 <p><span class="caption">예제 18-21: 밑줄로 시작하는 사용하지 않는
 변수는 여전히 값을 바인딩하여 값의 소유권을 가져갈 수 있습니다</span></p>
@@ -601,13 +601,13 @@ fn main() {
 값이 바인딩되지 않습니다. 예제 18-22는 <code>s</code>가 <code>_</code>로 이동되지
 않기 때문에 에러 없이 컴파일됩니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
-</span>    let s = Some(String::from(&quot;Hello!&quot;));
+</span>    let s = Some(String::from("Hello!"));
 
     if let Some(_) = s {
-        println!(&quot;found a string&quot;);
+        println!("found a string");
     }
 
-    println!(&quot;{:?}&quot;, s);
+    println!("{:?}", s);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-22: 밑줄을 사용하는 것은 값을 바인딩하지
 않습니다</span></p>
@@ -630,7 +630,7 @@ fn main() {
     let origin = Point { x: 0, y: 0, z: 0 };
 
     match origin {
-        Point { x, .. } =&gt; println!(&quot;x is {}&quot;, x),
+        Point { x, .. } =&gt; println!("x is {}", x),
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-23: <code>..</code>를 사용하여 <code>x</code>를 제외한 <code>Point</code>의
@@ -647,7 +647,7 @@ fn main() {
 
     match numbers {
         (first, .., last) =&gt; {
-            println!(&quot;Some numbers: {first}, {last}&quot;);
+            println!("Some numbers: {first}, {last}");
         }
     }
 }</code></pre></pre>
@@ -665,7 +665,7 @@ fn main() {
 
     match numbers {
         (.., second, ..) =&gt; {
-            println!(&quot;Some numbers: {}&quot;, second)
+            println!("Some numbers: {}", second)
         },
     }
 }</code></pre>
@@ -702,8 +702,8 @@ error: could not compile `patterns` due to previous error
 </span>    let num = Some(4);
 
     match num {
-        Some(x) if x % 2 == 0 =&gt; println!(&quot;The number {} is even&quot;, x),
-        Some(x) =&gt; println!(&quot;The number {} is odd&quot;, x),
+        Some(x) if x % 2 == 0 =&gt; println!("The number {} is even", x),
+        Some(x) =&gt; println!("The number {} is odd", x),
         None =&gt; (),
     }
 <span class="boring">}</span></code></pre></pre>
@@ -732,12 +732,12 @@ error: could not compile `patterns` due to previous error
     let y = 10;
 
     match x {
-        Some(50) =&gt; println!(&quot;Got 50&quot;),
-        Some(n) if n == y =&gt; println!(&quot;Matched, n = {n}&quot;),
-        _ =&gt; println!(&quot;Default case, x = {:?}&quot;, x),
+        Some(50) =&gt; println!("Got 50"),
+        Some(n) if n == y =&gt; println!("Matched, n = {n}"),
+        _ =&gt; println!("Default case, x = {:?}", x),
     }
 
-    println!(&quot;at the end: x = {:?}, y = {y}&quot;, x);
+    println!("at the end: x = {:?}, y = {y}", x);
 }</code></pre></pre>
 <p><span class="caption">예제 18-27: 매치 가드를 사용하여 외부 변수
 값과 같은지 테스트하기</span></p>
@@ -762,8 +762,8 @@ error: could not compile `patterns` due to previous error
     let y = false;
 
     match x {
-        4 | 5 | 6 if y =&gt; println!(&quot;yes&quot;),
-        _ =&gt; println!(&quot;no&quot;),
+        4 | 5 | 6 if y =&gt; println!("yes"),
+        _ =&gt; println!("no"),
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-28: 다중 패턴에 매치 가드
@@ -802,11 +802,11 @@ error: could not compile `patterns` due to previous error
     match msg {
         Message::Hello {
             id: id_variable @ 3..=7,
-        } =&gt; println!(&quot;Found an id in range: {}&quot;, id_variable),
+        } =&gt; println!("Found an id in range: {}", id_variable),
         Message::Hello { id: 10..=12 } =&gt; {
-            println!(&quot;Found an id in another range&quot;)
+            println!("Found an id in another range")
         }
-        Message::Hello { id } =&gt; println!(&quot;Found some other id: {}&quot;, id),
+        Message::Hello { id } =&gt; println!("Found some other id: {}", id),
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-29: <code>@</code>를 사용하여 값을 테스트하는 동시에

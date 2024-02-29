@@ -221,7 +221,7 @@ error[E0005]: refutable pattern in local binding: `None` not covered
 3 |     let Some(x) = some_option_value;
   |         ^^^^^^^ pattern `None` not covered
   |
-  = note: `let` bindings require an &quot;irrefutable pattern&quot;, like a `struct` or an `enum` with only one variant
+  = note: `let` bindings require an "irrefutable pattern", like a `struct` or an `enum` with only one variant
   = note: for more information, visit https://doc.rust-lang.org/book/ch18-02-refutability.html
 note: `Option&lt;i32&gt;` defined here
  --&gt; /rustc/d5a82bbd26e1ad8b7401f6a718a9c57c96905483/library/core/src/option.rs:518:1
@@ -251,7 +251,7 @@ error: could not compile `patterns` due to previous error
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span><span class="boring">    let some_option_value: Option&lt;i32&gt; = None;
 </span>    if let Some(x) = some_option_value {
-        println!(&quot;{}&quot;, x);
+        println!("{}", x);
     }
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-9: <code>let</code> 대신 반박 가능한 패턴과 함께
@@ -262,7 +262,7 @@ error: could not compile `patterns` due to previous error
 경고를 줄 것입니다.</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    if let x = 5 {
-        println!(&quot;{}&quot;, x);
+        println!("{}", x);
     };
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-10: <code>if let</code>에 반박 불가능한 패턴 사용
@@ -281,7 +281,7 @@ warning: irrefutable `if let` pattern
   = help: consider replacing the `if let` with a `let`
   = note: `#[warn(irrefutable_let_patterns)]` on by default
 
-warning: `patterns` (bin &quot;patterns&quot;) generated 1 warning
+warning: `patterns` (bin "patterns") generated 1 warning
     Finished dev [unoptimized + debuginfo] target(s) in 0.39s
      Running `target/debug/patterns`
 5

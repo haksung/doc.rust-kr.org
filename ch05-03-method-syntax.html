@@ -211,7 +211,7 @@ fn main() {
     };
 
     println!(
-        &quot;The area of the rectangle is {} square pixels.&quot;,
+        "The area of the rectangle is {} square pixels.",
         rect1.area()
     );
 }</code></pre></pre>
@@ -221,7 +221,7 @@ fn main() {
 (implementation, 구현) 블록을 만드는 것으로 시작합니다. 이 <code>impl</code> 블록 내의
 모든 것은 <code>Rectangle</code> 타입과 연관됩니다. 그런 다음 <code>area</code> 함수를 <code>impl</code>의
 중괄호 안으로 옮기고 함수 시그니처의 첫 번째 매개변수를 (이번 경우는 유일한
-매개변수군요) <code>self</code>로 변경하고 본문 내의 나머지 모든 부분도 변경합니다. 
+매개변수군요) <code>self</code>로 변경하고 본문 내의 나머지 모든 부분도 변경합니다.
 그리고 <code>main</code> 함수 내에서는 <code>rect1</code>을 인수로 전달하여 <code>area</code> 함수를 호출했었는데,
 그 대신 <em>메서드 문법 (method syntax)</em> 을 사용해 <code>Rectangle</code> 인스턴스의 <code>area</code>
 메서드를 호출할 수 있습니다. 메서드 문법은 차례대로 인스턴스, 점,
@@ -273,7 +273,7 @@ fn main() {
     };
 
     if rect1.width() {
-        println!(&quot;The rectangle has a nonzero width; it is {}&quot;, rect1.width);
+        println!("The rectangle has a nonzero width; it is {}", rect1.width);
     }
 }</code></pre></pre>
 <p>여기서는 인스턴스의 <code>width</code> 필드가 <code>0</code>보다 크면 <code>true</code>를 반환하고
@@ -354,8 +354,8 @@ fn main() {
         height: 45,
     };
 
-    println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
-    println!(&quot;Can rect1 hold rect3? {}&quot;, rect1.can_hold(&amp;rect3));
+    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
 }</code></pre>
 <p><span class="caption">예제 5-14: <code>can_hold</code> 메서드를 작성하고 나면
 작동할 코드</span></p>
@@ -409,8 +409,8 @@ Can rect1 hold rect3? false
 </span><span class="boring">        height: 45,
 </span><span class="boring">    };
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
-</span><span class="boring">    println!(&quot;Can rect1 hold rect3? {}&quot;, rect1.can_hold(&amp;rect3));
+</span><span class="boring">    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+</span><span class="boring">    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 5-15: 다른 <code>Rectangle</code> 인스턴스를
 매개변수로 갖는 <code>can_hold</code> 메서드를 <code>Rectangle</code>에 구현</span></p>
@@ -495,8 +495,8 @@ impl Rectangle {
 </span><span class="boring">        height: 45,
 </span><span class="boring">    };
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;Can rect1 hold rect2? {}&quot;, rect1.can_hold(&amp;rect2));
-</span><span class="boring">    println!(&quot;Can rect1 hold rect3? {}&quot;, rect1.can_hold(&amp;rect3));
+</span><span class="boring">    println!("Can rect1 hold rect2? {}", rect1.can_hold(&amp;rect2));
+</span><span class="boring">    println!("Can rect1 hold rect3? {}", rect1.can_hold(&amp;rect3));
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 5-16: 예제 5-15를 여러 <code>impl</code>
 블록을 사용하도록 재작성하기</span></p>

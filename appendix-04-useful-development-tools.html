@@ -260,7 +260,7 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = 3.1415;
     let r = 8.0;
-    println!(&quot;the area of the circle is {}&quot;, x * r * r);
+    println!("the area of the circle is {}", x * r * r);
 }</code></pre></pre>
 <p><code>cargo clippy</code>를 이 프로젝트에 실행하면 다음과 같은 오류가 발생합니다:</p>
 <pre><code class="language-text">error: approximate value of `f{32, 64}::consts::PI` found
@@ -281,7 +281,7 @@ fn main() {
 <pre><pre class="playground"><code class="language-rust">fn main() {
     let x = std::f64::consts::PI;
     let r = 8.0;
-    println!(&quot;the area of the circle is {}&quot;, x * r * r);
+    println!("the area of the circle is {}", x * r * r);
 }</code></pre></pre>
 <p>Clippy에 대한 더 많은 정보를 보려면 <a href="https://github.com/rust-lang/rust-clippy">Clippy 문서</a>를 참조하세요.</p>
 <h3 id="rust-analyzer를-사용한-ide-통합"><a class="header" href="#rust-analyzer를-사용한-ide-통합"><code>rust-analyzer</code>를 사용한 IDE 통합</a></h3>

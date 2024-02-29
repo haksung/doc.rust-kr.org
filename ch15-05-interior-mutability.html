@@ -326,13 +326,13 @@ where
         let percentage_of_max = self.value as f64 / self.max as f64;
 
         if percentage_of_max &gt;= 1.0 {
-            self.messenger.send(&quot;Error: You are over your quota!&quot;);
+            self.messenger.send("Error: You are over your quota!");
         } else if percentage_of_max &gt;= 0.9 {
             self.messenger
-                .send(&quot;Urgent warning: You've used up over 90% of your quota!&quot;);
+                .send("Urgent warning: You've used up over 90% of your quota!");
         } else if percentage_of_max &gt;= 0.75 {
             self.messenger
-                .send(&quot;Warning: You've used up over 75% of your quota!&quot;);
+                .send("Warning: You've used up over 75% of your quota!");
         }
     }
 }</code></pre>
@@ -383,13 +383,13 @@ where
 </span><span class="boring">        let percentage_of_max = self.value as f64 / self.max as f64;
 </span><span class="boring">
 </span><span class="boring">        if percentage_of_max &gt;= 1.0 {
-</span><span class="boring">            self.messenger.send(&quot;Error: You are over your quota!&quot;);
+</span><span class="boring">            self.messenger.send("Error: You are over your quota!");
 </span><span class="boring">        } else if percentage_of_max &gt;= 0.9 {
 </span><span class="boring">            self.messenger
-</span><span class="boring">                .send(&quot;Urgent warning: You've used up over 90% of your quota!&quot;);
+</span><span class="boring">                .send("Urgent warning: You've used up over 90% of your quota!");
 </span><span class="boring">        } else if percentage_of_max &gt;= 0.75 {
 </span><span class="boring">            self.messenger
-</span><span class="boring">                .send(&quot;Warning: You've used up over 75% of your quota!&quot;);
+</span><span class="boring">                .send("Warning: You've used up over 75% of your quota!");
 </span><span class="boring">        }
 </span><span class="boring">    }
 </span><span class="boring">}
@@ -468,7 +468,7 @@ warning: build failed, waiting for other jobs to finish...
 <p>지금이 내부 가변성의 도움을 받을 수 있는 상황입니다! <code>sent_messages</code>가
 <code>RefCell&lt;T&gt;</code> 내에 저장되게 하면, <code>send</code> 메서드는 <code>sent_message</code>를
 수정하여 우리에게 보이는 메시지를 저장할 수 있게 될 것입니다. 예제 15-22는
-이것이 어떤 형태인지를 보여줍니다: </p>
+이것이 어떤 형태인지를 보여줍니다:</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">pub trait Messenger {
 </span><span class="boring">    fn send(&amp;self, msg: &amp;str);
@@ -498,13 +498,13 @@ warning: build failed, waiting for other jobs to finish...
 </span><span class="boring">        let percentage_of_max = self.value as f64 / self.max as f64;
 </span><span class="boring">
 </span><span class="boring">        if percentage_of_max &gt;= 1.0 {
-</span><span class="boring">            self.messenger.send(&quot;Error: You are over your quota!&quot;);
+</span><span class="boring">            self.messenger.send("Error: You are over your quota!");
 </span><span class="boring">        } else if percentage_of_max &gt;= 0.9 {
 </span><span class="boring">            self.messenger
-</span><span class="boring">                .send(&quot;Urgent warning: You've used up over 90% of your quota!&quot;);
+</span><span class="boring">                .send("Urgent warning: You've used up over 90% of your quota!");
 </span><span class="boring">        } else if percentage_of_max &gt;= 0.75 {
 </span><span class="boring">            self.messenger
-</span><span class="boring">                .send(&quot;Warning: You've used up over 75% of your quota!&quot;);
+</span><span class="boring">                .send("Warning: You've used up over 75% of your quota!");
 </span><span class="boring">        }
 </span><span class="boring">    }
 </span><span class="boring">}
@@ -606,13 +606,13 @@ mod tests {
 </span><span class="boring">        let percentage_of_max = self.value as f64 / self.max as f64;
 </span><span class="boring">
 </span><span class="boring">        if percentage_of_max &gt;= 1.0 {
-</span><span class="boring">            self.messenger.send(&quot;Error: You are over your quota!&quot;);
+</span><span class="boring">            self.messenger.send("Error: You are over your quota!");
 </span><span class="boring">        } else if percentage_of_max &gt;= 0.9 {
 </span><span class="boring">            self.messenger
-</span><span class="boring">                .send(&quot;Urgent warning: You've used up over 90% of your quota!&quot;);
+</span><span class="boring">                .send("Urgent warning: You've used up over 90% of your quota!");
 </span><span class="boring">        } else if percentage_of_max &gt;= 0.75 {
 </span><span class="boring">            self.messenger
-</span><span class="boring">                .send(&quot;Warning: You've used up over 75% of your quota!&quot;);
+</span><span class="boring">                .send("Warning: You've used up over 75% of your quota!");
 </span><span class="boring">        }
 </span><span class="boring">    }
 </span><span class="boring">}
@@ -729,9 +729,9 @@ fn main() {
 
     *value.borrow_mut() += 10;
 
-    println!(&quot;a after = {:?}&quot;, a);
-    println!(&quot;b after = {:?}&quot;, b);
-    println!(&quot;c after = {:?}&quot;, c);
+    println!("a after = {:?}", a);
+    println!("b after = {:?}", b);
+    println!("c after = {:?}", c);
 }</code></pre></pre>
 <p><span class="caption">예제 15-24: <code>Rc&lt;RefCell&lt;i32&gt;&gt;</code>를 사용하여
 변경 가능한 <code>List</code> 생성하기</span></p>

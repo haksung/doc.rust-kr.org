@@ -192,7 +192,7 @@
     let height1 = 50;
 
     println!(
-        &quot;The area of the rectangle is {} square pixels.&quot;,
+        "The area of the rectangle is {} square pixels.",
         area(width1, height1)
     );
 }
@@ -218,7 +218,7 @@ The area of the rectangle is 1500 square pixels.
 </span><span class="boring">    let height1 = 50;
 </span><span class="boring">
 </span><span class="boring">    println!(
-</span><span class="boring">        &quot;The area of the rectangle is {} square pixels.&quot;,
+</span><span class="boring">        "The area of the rectangle is {} square pixels.",
 </span><span class="boring">        area(width1, height1)
 </span><span class="boring">    );
 </span><span class="boring">}
@@ -239,7 +239,7 @@ The area of the rectangle is 1500 square pixels.
     let rect1 = (30, 50);
 
     println!(
-        &quot;The area of the rectangle is {} square pixels.&quot;,
+        "The area of the rectangle is {} square pixels.",
         area(rect1)
     );
 }
@@ -276,7 +276,7 @@ fn main() {
     };
 
     println!(
-        &quot;The area of the rectangle is {} square pixels.&quot;,
+        "The area of the rectangle is {} square pixels.",
         area(&amp;rect1)
     );
 }
@@ -320,7 +320,7 @@ fn main() {
         height: 50,
     };
 
-    println!(&quot;rect1 is {}&quot;, rect1);
+    println!("rect1 is {}", rect1);
 }</code></pre>
 <p><span class="caption">예제 5-11: <code>Rectangle</code> 인스턴스
 출력을 시도해 본 모습</span></p>
@@ -342,7 +342,7 @@ fn main() {
    = note: in format strings you may be able to use `{:?}` (or {:#?} for pretty-print) instead
 </code></pre>
 <p><code>{}</code> 대신 <code>{:?}</code>를 사용해 보라는군요. 한번 해보죠.
-<code>println!</code> 매크로 호출을 <code>println!(&quot;rect1 is {:?}&quot;, rect1);</code>으로 바꿔봅시다.
+<code>println!</code> 매크로 호출을 <code>println!("rect1 is {:?}", rect1);</code>으로 바꿔봅시다.
 <code>{}</code> 내에 <code>:?</code>를 추가하는 건 <code>println!</code>에 <code>Debug</code>라는 출력 형식을 사용하고 싶다고 전달하는 것과 같습니다.
 이 <code>Debug</code>라는 트레이트는 최종 사용자가 아닌, 개발자에게 유용한 방식으로 출력하여
 디버깅하는 동안 값을 볼 수 있게 해주는 트레이트입니다.</p>
@@ -370,7 +370,7 @@ fn main() {
         height: 50,
     };
 
-    println!(&quot;rect1 is {:?}&quot;, rect1);
+    println!("rect1 is {:?}", rect1);
 }</code></pre></pre>
 <p><span class="caption">예제 5-12: <code>Rectangle</code> 인스턴스를 디버그 출력 형식으로
 사용하기 위해, 속성을 추가하여 <code>Debug</code> 트레이트 파생 (derive) 하기</span></p>

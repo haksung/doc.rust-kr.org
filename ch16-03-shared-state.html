@@ -233,7 +233,7 @@ fn main() {
         *num = 6;
     }
 
-    println!(&quot;m = {:?}&quot;, m);
+    println!("m = {:?}", m);
 }</code></pre></pre>
 <p><span class="caption">예제 16-12: 간소화를 위해 싱글스레드 컨텍스트에서
 <code>Mutex&lt;T&gt;</code>의 API 탐색하기</span></p>
@@ -288,7 +288,7 @@ fn main() {
         handle.join().unwrap();
     }
 
-    println!(&quot;Result: {}&quot;, *counter.lock().unwrap());
+    println!("Result: {}", *counter.lock().unwrap());
 }</code></pre>
 <p><span class="caption">예제 16-13: <code>Mutex&lt;T&gt;</code>에 의해 보호되는 카운터를
 각자 증가시키는 10개의 스레드</span></p>
@@ -352,7 +352,7 @@ fn main() {
         handle.join().unwrap();
     }
 
-    println!(&quot;Result: {}&quot;, *counter.lock().unwrap());
+    println!("Result: {}", *counter.lock().unwrap());
 }</code></pre>
 <p><span class="caption">예제 16-14: <code>Rc&lt;T&gt;</code>를 사용하여 여러 스레드가
 <code>Mutex&lt;T&gt;</code>를 소유할 수 있도록 하는 시도</span></p>
@@ -438,7 +438,7 @@ fn main() {
         handle.join().unwrap();
     }
 
-    println!(&quot;Result: {}&quot;, *counter.lock().unwrap());
+    println!("Result: {}", *counter.lock().unwrap());
 }</code></pre></pre>
 <p><span class="caption">예제 16-15: <code>Arc&lt;T&gt;</code>를 사용하여 <code>Mutex&lt;T&gt;</code>를 감싸서
 여러 스레드 사이에서 소유권을 공유할 수 있도록 하기</span></p>

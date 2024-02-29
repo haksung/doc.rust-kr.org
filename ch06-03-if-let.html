@@ -187,7 +187,7 @@
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let config_max = Some(3u8);
     match config_max {
-        Some(max) =&gt; println!(&quot;The maximum is configured to be {}&quot;, max),
+        Some(max) =&gt; println!("The maximum is configured to be {}", max),
         _ =&gt; (),
     }
 <span class="boring">}</span></code></pre></pre>
@@ -203,7 +203,7 @@
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let config_max = Some(3u8);
     if let Some(max) = config_max {
-        println!(&quot;The maximum is configured to be {}&quot;, max);
+        println!("The maximum is configured to be {}", max);
     }
 <span class="boring">}</span></code></pre></pre>
 <p><code>if let</code>은 <code>=</code>로 구분된 패턴과 표현식을 입력받습니다. 이는
@@ -245,7 +245,7 @@
 </span><span class="boring">    let coin = Coin::Penny;
 </span>    let mut count = 0;
     match coin {
-        Coin::Quarter(state) =&gt; println!(&quot;State quarter from {:?}!&quot;, state),
+        Coin::Quarter(state) =&gt; println!("State quarter from {:?}!", state),
         _ =&gt; count += 1,
     }
 <span class="boring">}</span></code></pre></pre>
@@ -268,7 +268,7 @@
 </span><span class="boring">    let coin = Coin::Penny;
 </span>    let mut count = 0;
     if let Coin::Quarter(state) = coin {
-        println!(&quot;State quarter from {:?}!&quot;, state);
+        println!("State quarter from {:?}!", state);
     } else {
         count += 1;
     }

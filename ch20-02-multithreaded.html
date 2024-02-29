@@ -202,7 +202,7 @@
 // --생략--
 <span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
 </span><span class="boring">        let stream = stream.unwrap();
@@ -218,12 +218,12 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span><span class="boring">
 </span>    let (status_line, filename) = match &amp;request_line[..] {
-        &quot;GET / HTTP/1.1&quot; =&gt; (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;),
-        &quot;GET /sleep HTTP/1.1&quot; =&gt; {
+        "GET / HTTP/1.1" =&gt; ("HTTP/1.1 200 OK", "hello.html"),
+        "GET /sleep HTTP/1.1" =&gt; {
             thread::sleep(Duration::from_secs(5));
-            (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+            ("HTTP/1.1 200 OK", "hello.html")
         }
-        _ =&gt; (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;),
+        _ =&gt; ("HTTP/1.1 404 NOT FOUND", "404.html"),
     };
 
     // --생략--
@@ -232,7 +232,7 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">    let length = contents.len();
 </span><span class="boring">
 </span><span class="boring">    let response =
-</span><span class="boring">        format!(&quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;);
+</span><span class="boring">        format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 </span><span class="boring">
 </span><span class="boring">    stream.write_all(response.as_bytes()).unwrap();
 </span>}</code></pre></pre>
@@ -315,7 +315,7 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">};
 </span><span class="boring">
 </span>fn main() {
-    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 
     for stream in listener.incoming() {
         let stream = stream.unwrap();
@@ -331,19 +331,19 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span><span class="boring">
 </span><span class="boring">    let (status_line, filename) = match &amp;request_line[..] {
-</span><span class="boring">        &quot;GET / HTTP/1.1&quot; =&gt; (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;),
-</span><span class="boring">        &quot;GET /sleep HTTP/1.1&quot; =&gt; {
+</span><span class="boring">        "GET / HTTP/1.1" =&gt; ("HTTP/1.1 200 OK", "hello.html"),
+</span><span class="boring">        "GET /sleep HTTP/1.1" =&gt; {
 </span><span class="boring">            thread::sleep(Duration::from_secs(5));
-</span><span class="boring">            (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+</span><span class="boring">            ("HTTP/1.1 200 OK", "hello.html")
 </span><span class="boring">        }
-</span><span class="boring">        _ =&gt; (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;),
+</span><span class="boring">        _ =&gt; ("HTTP/1.1 404 NOT FOUND", "404.html"),
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    let contents = fs::read_to_string(filename).unwrap();
 </span><span class="boring">    let length = contents.len();
 </span><span class="boring">
 </span><span class="boring">    let response =
-</span><span class="boring">        format!(&quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;);
+</span><span class="boring">        format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 </span><span class="boring">
 </span><span class="boring">    stream.write_all(response.as_bytes()).unwrap();
 </span><span class="boring">}</span></code></pre></pre>
@@ -372,7 +372,7 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">};
 </span><span class="boring">
 </span>fn main() {
-    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
     let pool = ThreadPool::new(4);
 
     for stream in listener.incoming() {
@@ -389,19 +389,19 @@ fn handle_connection(mut stream: TcpStream) {
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span><span class="boring">
 </span><span class="boring">    let (status_line, filename) = match &amp;request_line[..] {
-</span><span class="boring">        &quot;GET / HTTP/1.1&quot; =&gt; (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;),
-</span><span class="boring">        &quot;GET /sleep HTTP/1.1&quot; =&gt; {
+</span><span class="boring">        "GET / HTTP/1.1" =&gt; ("HTTP/1.1 200 OK", "hello.html"),
+</span><span class="boring">        "GET /sleep HTTP/1.1" =&gt; {
 </span><span class="boring">            thread::sleep(Duration::from_secs(5));
-</span><span class="boring">            (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+</span><span class="boring">            ("HTTP/1.1 200 OK", "hello.html")
 </span><span class="boring">        }
-</span><span class="boring">        _ =&gt; (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;),
+</span><span class="boring">        _ =&gt; ("HTTP/1.1 404 NOT FOUND", "404.html"),
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    let contents = fs::read_to_string(filename).unwrap();
 </span><span class="boring">    let length = contents.len();
 </span><span class="boring">
 </span><span class="boring">    let response =
-</span><span class="boring">        format!(&quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;);
+</span><span class="boring">        format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 </span><span class="boring">
 </span><span class="boring">    stream.write_all(response.as_bytes()).unwrap();
 </span><span class="boring">}</span></code></pre>
@@ -453,7 +453,7 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">};
 </span><span class="boring">
 </span><span class="boring">fn main() {
-</span><span class="boring">    let listener = TcpListener::bind(&quot;127.0.0.1:7878&quot;).unwrap();
+</span><span class="boring">    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
 </span><span class="boring">    let pool = ThreadPool::new(4);
 </span><span class="boring">
 </span><span class="boring">    for stream in listener.incoming() {
@@ -470,19 +470,19 @@ error: could not compile `hello` due to previous error
 </span><span class="boring">    let request_line = buf_reader.lines().next().unwrap().unwrap();
 </span><span class="boring">
 </span><span class="boring">    let (status_line, filename) = match &amp;request_line[..] {
-</span><span class="boring">        &quot;GET / HTTP/1.1&quot; =&gt; (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;),
-</span><span class="boring">        &quot;GET /sleep HTTP/1.1&quot; =&gt; {
+</span><span class="boring">        "GET / HTTP/1.1" =&gt; ("HTTP/1.1 200 OK", "hello.html"),
+</span><span class="boring">        "GET /sleep HTTP/1.1" =&gt; {
 </span><span class="boring">            thread::sleep(Duration::from_secs(5));
-</span><span class="boring">            (&quot;HTTP/1.1 200 OK&quot;, &quot;hello.html&quot;)
+</span><span class="boring">            ("HTTP/1.1 200 OK", "hello.html")
 </span><span class="boring">        }
-</span><span class="boring">        _ =&gt; (&quot;HTTP/1.1 404 NOT FOUND&quot;, &quot;404.html&quot;),
+</span><span class="boring">        _ =&gt; ("HTTP/1.1 404 NOT FOUND", "404.html"),
 </span><span class="boring">    };
 </span><span class="boring">
 </span><span class="boring">    let contents = fs::read_to_string(filename).unwrap();
 </span><span class="boring">    let length = contents.len();
 </span><span class="boring">
 </span><span class="boring">    let response =
-</span><span class="boring">        format!(&quot;{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}&quot;);
+</span><span class="boring">        format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
 </span><span class="boring">
 </span><span class="boring">    stream.write_all(response.as_bytes()).unwrap();
 </span><span class="boring">}</span></code></pre>
@@ -1212,7 +1212,7 @@ impl Worker {
         let thread = thread::spawn(move || loop {
             let job = receiver.lock().unwrap().recv().unwrap();
 
-            println!(&quot;Worker {id} got a job; executing.&quot;);
+            println!("Worker {id} got a job; executing.");
 
             job();
         });
@@ -1350,7 +1350,7 @@ impl Worker {
     fn new(id: usize, receiver: Arc&lt;Mutex&lt;mpsc::Receiver&lt;Job&gt;&gt;&gt;) -&gt; Worker {
         let thread = thread::spawn(move || {
             while let Ok(job) = receiver.lock().unwrap().recv() {
-                println!(&quot;Worker {id} got a job; executing.&quot;);
+                println!("Worker {id} got a job; executing.");
 
                 job();
             }

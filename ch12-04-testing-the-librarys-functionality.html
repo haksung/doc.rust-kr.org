@@ -189,7 +189,7 @@
 <ol>
 <li>실패하는 테스트를 작성하고 실행하여, 여러분이 예상한 이유대로 실패하는지
 확인합니다.</li>
-<li>이 새로운 테스트를 통과하기 충분한 정도의 코드만 작성하거나 수정하세요. </li>
+<li>이 새로운 테스트를 통과하기 충분한 정도의 코드만 작성하거나 수정하세요.</li>
 <li>추가하거나 변경한 코드를 리팩터링하고 테스트가 계속 통과하는지
 확인하세요.</li>
 <li>1단계로 돌아가세요!</li>
@@ -221,7 +221,7 @@
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -243,19 +243,19 @@ mod tests {
 
     #[test]
     fn one_result() {
-        let query = &quot;duct&quot;;
-        let contents = &quot;\
+        let query = "duct";
+        let contents = "\
 Rust:
 safe, fast, productive.
-Pick three.&quot;;
+Pick three.";
 
-        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
     }
 }</code></pre>
 <p><span class="caption">예제 12-15: 구현하고자 하는 <code>search</code> 함수를 위한
 실패하는 테스트 만들기</span></p>
-<p>이 테스트는 문자열 <code>&quot;duct&quot;</code>를 검색합니다. 검색하는 텍스트는 세 줄인데,
-그중 한 줄만이 <code>&quot;duct&quot;</code>를 가지고 있습니다 (앞의 큰 따옴표 뒤에 붙은 역슬래시는
+<p>이 테스트는 문자열 <code>"duct"</code>를 검색합니다. 검색하는 텍스트는 세 줄인데,
+그중 한 줄만이 <code>"duct"</code>를 가지고 있습니다 (앞의 큰 따옴표 뒤에 붙은 역슬래시는
 이 문자열 리터럴 내용의 앞에 줄 바꿈 문자를 집어넣지 않도록 러스트에게
 알려주는 것임을 유의하세요). <code>search</code> 함수가 반환하는 값은 우리가 예상하는
 라인만 가지고 있을 것이라고 단언해 두었습니다.</p>
@@ -263,7 +263,7 @@ Pick three.&quot;;
 걸 지켜볼 수는 없습니다: 아직 <code>search</code> 함수가 없으니까요! TDD 원칙에 따라서,
 예제 12-16과 같이 항상 빈 벡터를 반환하는 <code>search</code> 함수 정의부를
 추가하는 것으로 컴파일과 테스트가 동작하기에 딱 충분한 코드만 집어넣어
-보겠습니다. 그러면 테스트는 컴파일되고, 반환된 빈 벡터가 <code>&quot;safe, fast, productive.&quot;</code> 라인을 가지고 있는 벡터와 일치하지 않으므로 실패해야
+보겠습니다. 그러면 테스트는 컴파일되고, 반환된 빈 벡터가 <code>"safe, fast, productive."</code> 라인을 가지고 있는 벡터와 일치하지 않으므로 실패해야
 합니다.</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground"><span class="boring">use std::error::Error;
@@ -277,7 +277,7 @@ Pick three.&quot;;
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -303,13 +303,13 @@ Pick three.&quot;;
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn one_result() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
-</span><span class="boring">Pick three.&quot;;
+</span><span class="boring">Pick three.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-16: 테스트가 딱 컴파일만 될 정도의
@@ -369,7 +369,7 @@ failures:
 
 ---- tests::one_result stdout ----
 thread 'tests::one_result' panicked at 'assertion failed: `(left == right)`
-  left: `[&quot;safe, fast, productive.&quot;]`,
+  left: `["safe, fast, productive."]`,
  right: `[]`', src/lib.rs:44:9
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
@@ -409,7 +409,7 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -437,13 +437,13 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn one_result() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
-</span><span class="boring">Pick three.&quot;;
+</span><span class="boring">Pick three.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-17: <code>contents</code>의 각 줄에 대한 반복
@@ -469,7 +469,7 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -499,13 +499,13 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn one_result() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
-</span><span class="boring">Pick three.&quot;;
+</span><span class="boring">Pick three.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-18: 라인이 <code>query</code>의 문자열을 포함하는지
@@ -530,7 +530,7 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -564,13 +564,13 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn one_result() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
-</span><span class="boring">Pick three.&quot;;
+</span><span class="boring">Pick three.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><span class="caption">예제 12-19: 매칭된 라인들을 저장하여 반환될 수
@@ -624,7 +624,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </span><span class="boring">impl Config {
 </span><span class="boring">    pub fn build(args: &amp;[String]) -&gt; Result&lt;Config, &amp;'static str&gt; {
 </span><span class="boring">        if args.len() &lt; 3 {
-</span><span class="boring">            return Err(&quot;not enough arguments&quot;);
+</span><span class="boring">            return Err("not enough arguments");
 </span><span class="boring">        }
 </span><span class="boring">
 </span><span class="boring">        let query = args[1].clone();
@@ -638,7 +638,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
     let contents = fs::read_to_string(config.file_path)?;
 
     for line in search(&amp;config.query, &amp;contents) {
-        println!(&quot;{line}&quot;);
+        println!("{line}");
     }
 
     Ok(())
@@ -662,13 +662,13 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn one_result() {
-</span><span class="boring">        let query = &quot;duct&quot;;
-</span><span class="boring">        let contents = &quot;\
+</span><span class="boring">        let query = "duct";
+</span><span class="boring">        let contents = "\
 </span><span class="boring">Rust:
 </span><span class="boring">safe, fast, productive.
-</span><span class="boring">Pick three.&quot;;
+</span><span class="boring">Pick three.";
 </span><span class="boring">
-</span><span class="boring">        assert_eq!(vec![&quot;safe, fast, productive.&quot;], search(query, contents));
+</span><span class="boring">        assert_eq!(vec!["safe, fast, productive."], search(query, contents));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p><code>search</code>로부터 반환된 각 라인에 대해 여전히 <code>for</code>를 사용하여 출력하고 있습니다.</p>

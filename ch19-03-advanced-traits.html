@@ -393,19 +393,19 @@ struct Human;
 
 impl Pilot for Human {
     fn fly(&amp;self) {
-        println!(&quot;This is your captain speaking.&quot;);
+        println!("This is your captain speaking.");
     }
 }
 
 impl Wizard for Human {
     fn fly(&amp;self) {
-        println!(&quot;Up!&quot;);
+        println!("Up!");
     }
 }
 
 impl Human {
     fn fly(&amp;self) {
-        println!(&quot;*waving arms furiously*&quot;);
+        println!("*waving arms furiously*");
     }
 }
 <span class="boring">
@@ -428,19 +428,19 @@ impl Human {
 </span><span class="boring">
 </span><span class="boring">impl Pilot for Human {
 </span><span class="boring">    fn fly(&amp;self) {
-</span><span class="boring">        println!(&quot;This is your captain speaking.&quot;);
+</span><span class="boring">        println!("This is your captain speaking.");
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Wizard for Human {
 </span><span class="boring">    fn fly(&amp;self) {
-</span><span class="boring">        println!(&quot;Up!&quot;);
+</span><span class="boring">        println!("Up!");
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Human {
 </span><span class="boring">    fn fly(&amp;self) {
-</span><span class="boring">        println!(&quot;*waving arms furiously*&quot;);
+</span><span class="boring">        println!("*waving arms furiously*");
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -468,19 +468,19 @@ impl Human {
 </span><span class="boring">
 </span><span class="boring">impl Pilot for Human {
 </span><span class="boring">    fn fly(&amp;self) {
-</span><span class="boring">        println!(&quot;This is your captain speaking.&quot;);
+</span><span class="boring">        println!("This is your captain speaking.");
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Wizard for Human {
 </span><span class="boring">    fn fly(&amp;self) {
-</span><span class="boring">        println!(&quot;Up!&quot;);
+</span><span class="boring">        println!("Up!");
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Human {
 </span><span class="boring">    fn fly(&amp;self) {
-</span><span class="boring">        println!(&quot;*waving arms furiously*&quot;);
+</span><span class="boring">        println!("*waving arms furiously*");
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -526,18 +526,18 @@ struct Dog;
 
 impl Dog {
     fn baby_name() -&gt; String {
-        String::from(&quot;Spot&quot;)
+        String::from("Spot")
     }
 }
 
 impl Animal for Dog {
     fn baby_name() -&gt; String {
-        String::from(&quot;puppy&quot;)
+        String::from("puppy")
     }
 }
 
 fn main() {
-    println!(&quot;A baby dog is called a {}&quot;, Dog::baby_name());
+    println!("A baby dog is called a {}", Dog::baby_name());
 }</code></pre></pre>
 <p><span class="caption">예제 19-19: 연관 함수가 있는 트레이트와
 이 트레이트를 구현하면서 동시에 같은 이름의 연관 함수가 있는
@@ -568,18 +568,18 @@ A baby dog is called a Spot
 </span><span class="boring">
 </span><span class="boring">impl Dog {
 </span><span class="boring">    fn baby_name() -&gt; String {
-</span><span class="boring">        String::from(&quot;Spot&quot;)
+</span><span class="boring">        String::from("Spot")
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Animal for Dog {
 </span><span class="boring">    fn baby_name() -&gt; String {
-</span><span class="boring">        String::from(&quot;puppy&quot;)
+</span><span class="boring">        String::from("puppy")
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    println!(&quot;A baby dog is called a {}&quot;, Animal::baby_name());
+    println!("A baby dog is called a {}", Animal::baby_name());
 }</code></pre>
 <p><span class="caption">예제 19-20: <code>Animal</code> 트레이트의 <code>baby_name</code>을
 호출하는 시도이지만, 러스트는 어떤 구현체를 사용해야 하는지 알지
@@ -595,12 +595,12 @@ error[E0790]: cannot call associated function on trait without specifying the co
 2  |     fn baby_name() -&gt; String;
    |     ------------------------- `Animal::baby_name` defined here
 ...
-20 |     println!(&quot;A baby dog is called a {}&quot;, Animal::baby_name());
+20 |     println!("A baby dog is called a {}", Animal::baby_name());
    |                                           ^^^^^^^^^^^^^^^^^ cannot call associated function of trait
    |
 help: use the fully-qualified path to the only available implementation
    |
-20 |     println!(&quot;A baby dog is called a {}&quot;, &lt;Dog as Animal&gt;::baby_name());
+20 |     println!("A baby dog is called a {}", &lt;Dog as Animal&gt;::baby_name());
    |                                           +++++++       +
 
 For more information about this error, try `rustc --explain E0790`.
@@ -619,18 +619,18 @@ error: could not compile `traits-example` due to previous error
 </span><span class="boring">
 </span><span class="boring">impl Dog {
 </span><span class="boring">    fn baby_name() -&gt; String {
-</span><span class="boring">        String::from(&quot;Spot&quot;)
+</span><span class="boring">        String::from("Spot")
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">impl Animal for Dog {
 </span><span class="boring">    fn baby_name() -&gt; String {
-</span><span class="boring">        String::from(&quot;puppy&quot;)
+</span><span class="boring">        String::from("puppy")
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
 </span>fn main() {
-    println!(&quot;A baby dog is called a {}&quot;, &lt;Dog as Animal&gt;::baby_name());
+    println!("A baby dog is called a {}", &lt;Dog as Animal&gt;::baby_name());
 }</code></pre></pre>
 <p><span class="caption">예제 19-21: 완전 정규화 문법을 사용하여
 <code>Dog</code>에 구현된 <code>Animal</code> 트레이트의 <code>baby_name</code>을 호출하고자 함을
@@ -686,11 +686,11 @@ trait OutlinePrint: fmt::Display {
     fn outline_print(&amp;self) {
         let output = self.to_string();
         let len = output.len();
-        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
-        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
-        println!(&quot;* {} *&quot;, output);
-        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
-        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+        println!("{}", "*".repeat(len + 4));
+        println!("*{}*", " ".repeat(len + 2));
+        println!("* {} *", output);
+        println!("*{}*", " ".repeat(len + 2));
+        println!("{}", "*".repeat(len + 4));
     }
 }
 <span class="boring">
@@ -712,11 +712,11 @@ trait OutlinePrint: fmt::Display {
 </span><span class="boring">    fn outline_print(&amp;self) {
 </span><span class="boring">        let output = self.to_string();
 </span><span class="boring">        let len = output.len();
-</span><span class="boring">        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
-</span><span class="boring">        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
-</span><span class="boring">        println!(&quot;* {} *&quot;, output);
-</span><span class="boring">        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
-</span><span class="boring">        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("* {} *", output);
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -758,11 +758,11 @@ error: could not compile `traits-example` due to previous error
 </span><span class="boring">    fn outline_print(&amp;self) {
 </span><span class="boring">        let output = self.to_string();
 </span><span class="boring">        let len = output.len();
-</span><span class="boring">        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
-</span><span class="boring">        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
-</span><span class="boring">        println!(&quot;* {} *&quot;, output);
-</span><span class="boring">        println!(&quot;*{}*&quot;, &quot; &quot;.repeat(len + 2));
-</span><span class="boring">        println!(&quot;{}&quot;, &quot;*&quot;.repeat(len + 4));
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("* {} *", output);
+</span><span class="boring">        println!("*{}*", " ".repeat(len + 2));
+</span><span class="boring">        println!("{}", "*".repeat(len + 4));
 </span><span class="boring">    }
 </span><span class="boring">}
 </span><span class="boring">
@@ -777,7 +777,7 @@ error: could not compile `traits-example` due to previous error
 
 impl fmt::Display for Point {
     fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
-        write!(f, &quot;({}, {})&quot;, self.x, self.y)
+        write!(f, "({}, {})", self.x, self.y)
     }
 }
 <span class="boring">
@@ -794,7 +794,7 @@ impl fmt::Display for Point {
 구현할 수 있다는 고아 규칙에 대해 설명한 바 있습니다. 튜플 구조체로
 새로운 타입을 생성하는 <em>뉴타입 패턴 (newtype pattern)</em> 을 사용하면 이 제한을 우회할 수
 있습니다. (튜플 구조체에 대해서는 5장의
-<a href="ch05-01-defining-structs.html#using-tuple-structs-without-named-fields-to-create-different-types">‘명명된 필드 없는 튜플 구조체를 사용하여 다른 타입 만들기’</a><!-- ignore -->절에서 
+<a href="ch05-01-defining-structs.html#using-tuple-structs-without-named-fields-to-create-different-types">‘명명된 필드 없는 튜플 구조체를 사용하여 다른 타입 만들기’</a><!-- ignore -->절에서
 다루었습니다.) 튜플 구조체는 하나의 필드를 가지며 트레이트를
 구현하고자 하는 타입을 얇게 감싸는 래퍼 (wrapper) 가
 됩니다. 그러면 래퍼 타입은 우리 크레이트 내에 있게 되어
@@ -814,13 +814,13 @@ struct Wrapper(Vec&lt;String&gt;);
 
 impl fmt::Display for Wrapper {
     fn fmt(&amp;self, f: &amp;mut fmt::Formatter) -&gt; fmt::Result {
-        write!(f, &quot;[{}]&quot;, self.0.join(&quot;, &quot;))
+        write!(f, "[{}]", self.0.join(", "))
     }
 }
 
 fn main() {
-    let w = Wrapper(vec![String::from(&quot;hello&quot;), String::from(&quot;world&quot;)]);
-    println!(&quot;w = {}&quot;, w);
+    let w = Wrapper(vec![String::from("hello"), String::from("world")]);
+    println!("w = {}", w);
 }</code></pre></pre>
 <p><span class="caption">예제 19-23: <code>Display</code> 구현을 위해서 <code>Vec&lt;String&gt;</code>을
 감싼 <code>Wrapper</code> 타입 만들기</span></p>

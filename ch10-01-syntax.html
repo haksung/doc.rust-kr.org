@@ -220,13 +220,13 @@ fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
     let result = largest_i32(&amp;number_list);
-    println!(&quot;The largest number is {}&quot;, result);
+    println!("The largest number is {}", result);
 <span class="boring">    assert_eq!(*result, 100);
 </span>
     let char_list = vec!['y', 'm', 'a', 'q'];
 
     let result = largest_char(&amp;char_list);
-    println!(&quot;The largest char is {}&quot;, result);
+    println!("The largest char is {}", result);
 <span class="boring">    assert_eq!(*result, 'y');
 </span>}</code></pre></pre>
 <p><span class="caption">예제 10-4: 이름과 타입 시그니처만 다른
@@ -273,12 +273,12 @@ fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
     let result = largest(&amp;number_list);
-    println!(&quot;The largest number is {}&quot;, result);
+    println!("The largest number is {}", result);
 
     let char_list = vec!['y', 'm', 'a', 'q'];
 
     let result = largest(&amp;char_list);
-    println!(&quot;The largest char is {}&quot;, result);
+    println!("The largest char is {}", result);
 }</code></pre>
 <p><span class="caption">예제 10-5: 제네릭 타입 매개변수를 이용한 <code>largest</code> 함수;
 아직 컴파일되지는 않습니다</span></p>
@@ -440,7 +440,7 @@ impl&lt;T&gt; Point&lt;T&gt; {
 fn main() {
     let p = Point { x: 5, y: 10 };
 
-    println!(&quot;p.x = {}&quot;, p.x());
+    println!("p.x = {}", p.x());
 }</code></pre></pre>
 <p><span class="caption">예제 10-9: <code>T</code> 타입의 <code>x</code> 필드에 대한
 참조자를 반환하는 <code>x</code> 메서드를 <code>Point&lt;T&gt;</code>에
@@ -481,7 +481,7 @@ fn main() {
 </span><span class="boring">fn main() {
 </span><span class="boring">    let p = Point { x: 5, y: 10 };
 </span><span class="boring">
-</span><span class="boring">    println!(&quot;p.x = {}&quot;, p.x());
+</span><span class="boring">    println!("p.x = {}", p.x());
 </span><span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 10-10: 구조체의 제네릭 타입 매개변수 <code>T</code>가
 특정 구체적 타입인 경우에만 적용되는 <code>impl</code> 블록</span></p>
@@ -513,17 +513,17 @@ impl&lt;X1, Y1&gt; Point&lt;X1, Y1&gt; {
 
 fn main() {
     let p1 = Point { x: 5, y: 10.4 };
-    let p2 = Point { x: &quot;Hello&quot;, y: 'c' };
+    let p2 = Point { x: "Hello", y: 'c' };
 
     let p3 = p1.mixup(p2);
 
-    println!(&quot;p3.x = {}, p3.y = {}&quot;, p3.x, p3.y);
+    println!("p3.x = {}, p3.y = {}", p3.x, p3.y);
 }</code></pre></pre>
 <p><span class="caption">예제 10-11: 구조체 정의와 다른 제네릭 타입을
 사용하는 메서드</span></p>
 <p><code>main</code>에서는 <code>i32</code> 타입 <code>x</code>(<code>5</code>)와
 <code>f64</code> 타입 <code>y</code>(<code>10.4</code>)를 갖는 <code>Point</code>를 정의했습니다.
-<code>p2</code>는 문자열 슬라이스 타입 <code>x</code>(<code>&quot;Hello&quot;</code>)와 <code>char</code> 타입 <code>y</code>(<code>c</code>)를 갖는 <code>Point</code>입니다.
+<code>p2</code>는 문자열 슬라이스 타입 <code>x</code>(<code>"Hello"</code>)와 <code>char</code> 타입 <code>y</code>(<code>c</code>)를 갖는 <code>Point</code>입니다.
 <code>p3</code>는 <code>p1</code>에서 <code>mixup</code> 메서드를 <code>p2</code>를 인수로 호출하여 반환된 값입니다.
 <code>p3</code>의 <code>x</code>는  <code>p1</code>에서 온 <code>i32</code> 타입이며,
 <code>y</code>는 <code>p2</code>에서 온 <code>char</code> 타입입니다.

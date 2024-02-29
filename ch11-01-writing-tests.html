@@ -331,7 +331,7 @@ mod tests {
 
     #[test]
     fn another() {
-        panic!(&quot;Make this test fail&quot;);
+        panic!("Make this test fail");
     }
 }</code></pre>
 <p><span class="caption">예제 11-3: <code>panic!</code> 매크로를 호출하여 실패하도록 만든
@@ -750,7 +750,7 @@ error: test failed, to rerun pass `--lib`
 이름이 결과에 나타나는지 확인하는 테스트를 작성한다고 칩시다.</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
 <pre><code class="language-rust noplayground">pub fn greeting(name: &amp;str) -&gt; String {
-    format!(&quot;Hello {}!&quot;, name)
+    format!("Hello {}!", name)
 }
 
 #[cfg(test)]
@@ -759,8 +759,8 @@ mod tests {
 
     #[test]
     fn greeting_contains_name() {
-        let result = greeting(&quot;Carol&quot;);
-        assert!(result.contains(&quot;Carol&quot;));
+        let result = greeting("Carol");
+        assert!(result.contains("Carol"));
     }
 }</code></pre>
 <p>아직 프로그램의 요구 사항이 정해지지 않아서,
@@ -772,7 +772,7 @@ mod tests {
 <p>이제 기본 테스트 실패 시 출력을 살펴보기 위해, <code>greeting</code> 함수 결괏값에서
 <code>name</code>이 빠지도록 변경하여 버그를 만들어 보았습니다:</p>
 <pre><code class="language-rust not_desired_behavior noplayground">pub fn greeting(name: &amp;str) -&gt; String {
-    String::from(&quot;Hello!&quot;)
+    String::from("Hello!")
 }
 <span class="boring">
 </span><span class="boring">#[cfg(test)]
@@ -781,8 +781,8 @@ mod tests {
 </span><span class="boring">
 </span><span class="boring">    #[test]
 </span><span class="boring">    fn greeting_contains_name() {
-</span><span class="boring">        let result = greeting(&quot;Carol&quot;);
-</span><span class="boring">        assert!(result.contains(&quot;Carol&quot;));
+</span><span class="boring">        let result = greeting("Carol");
+</span><span class="boring">        assert!(result.contains("Carol"));
 </span><span class="boring">    }
 </span><span class="boring">}</span></code></pre>
 <p>테스트 결과는 다음과 같습니다.</p>
@@ -797,7 +797,7 @@ test tests::greeting_contains_name ... FAILED
 failures:
 
 ---- tests::greeting_contains_name stdout ----
-thread 'tests::greeting_contains_name' panicked at 'assertion failed: result.contains(\&quot;Carol\&quot;)', src/lib.rs:12:9
+thread 'tests::greeting_contains_name' panicked at 'assertion failed: result.contains(\"Carol\")', src/lib.rs:12:9
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 
 
@@ -814,7 +814,7 @@ error: test failed, to rerun pass `--lib`
 테스트 함수에 커스텀 실패 메시지를 추가해 봅시다. <code>greeting</code> 함수가
 반환하는 실제 값으로 채워지게 될 자리표시자가 들어있는 포맷 문자열을 작성해 보죠.</p>
 <pre><code class="language-rust ignore"><span class="boring">pub fn greeting(name: &amp;str) -&gt; String {
-</span><span class="boring">    String::from(&quot;Hello!&quot;)
+</span><span class="boring">    String::from("Hello!")
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">#[cfg(test)]
@@ -823,10 +823,10 @@ error: test failed, to rerun pass `--lib`
 </span><span class="boring">
 </span>    #[test]
     fn greeting_contains_name() {
-        let result = greeting(&quot;Carol&quot;);
+        let result = greeting("Carol");
         assert!(
-            result.contains(&quot;Carol&quot;),
-            &quot;Greeting did not contain name, value was `{}`&quot;,
+            result.contains("Carol"),
+            "Greeting did not contain name, value was `{}`",
             result
         );
     }
@@ -876,7 +876,7 @@ error: test failed, to rerun pass `--lib`
 impl Guess {
     pub fn new(value: i32) -&gt; Guess {
         if value &lt; 1 || value &gt; 100 {
-            panic!(&quot;Guess value must be between 1 and 100, got {}.&quot;, value);
+            panic!("Guess value must be between 1 and 100, got {}.", value);
         }
 
         Guess { value }
@@ -925,7 +925,7 @@ test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fini
 impl Guess {
     pub fn new(value: i32) -&gt; Guess {
         if value &lt; 1 {
-            panic!(&quot;Guess value must be between 1 and 100, got {}.&quot;, value);
+            panic!("Guess value must be between 1 and 100, got {}.", value);
         }
 
         Guess { value }
@@ -985,12 +985,12 @@ impl Guess {
     pub fn new(value: i32) -&gt; Guess {
         if value &lt; 1 {
             panic!(
-                &quot;Guess value must be greater than or equal to 1, got {}.&quot;,
+                "Guess value must be greater than or equal to 1, got {}.",
                 value
             );
         } else if value &gt; 100 {
             panic!(
-                &quot;Guess value must be less than or equal to 100, got {}.&quot;,
+                "Guess value must be less than or equal to 100, got {}.",
                 value
             );
         }
@@ -1004,7 +1004,7 @@ mod tests {
     use super::*;
 
     #[test]
-    #[should_panic(expected = &quot;less than or equal to 100&quot;)]
+    #[should_panic(expected = "less than or equal to 100")]
     fn greater_than_100() {
         Guess::new(200);
     }
@@ -1030,12 +1030,12 @@ mod tests {
 </span><span class="boring">    pub fn new(value: i32) -&gt; Guess {
 </span>        if value &lt; 1 {
             panic!(
-                &quot;Guess value must be less than or equal to 100, got {}.&quot;,
+                "Guess value must be less than or equal to 100, got {}.",
                 value
             );
         } else if value &gt; 100 {
             panic!(
-                &quot;Guess value must be greater than or equal to 1, got {}.&quot;,
+                "Guess value must be greater than or equal to 1, got {}.",
                 value
             );
         }
@@ -1049,7 +1049,7 @@ mod tests {
 </span><span class="boring">    use super::*;
 </span><span class="boring">
 </span><span class="boring">    #[test]
-</span><span class="boring">    #[should_panic(expected = &quot;less than or equal to 100&quot;)]
+</span><span class="boring">    #[should_panic(expected = "less than or equal to 100")]
 </span><span class="boring">    fn greater_than_100() {
 </span><span class="boring">        Guess::new(200);
 </span><span class="boring">    }
@@ -1069,8 +1069,8 @@ failures:
 thread 'tests::greater_than_100' panicked at 'Guess value must be greater than or equal to 1, got 200.', src/lib.rs:13:13
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 note: panic did not contain expected string
-      panic message: `&quot;Guess value must be greater than or equal to 1, got 200.&quot;`,
- expected substring: `&quot;less than or equal to 100&quot;`
+      panic message: `"Guess value must be greater than or equal to 1, got 200."`,
+ expected substring: `"less than or equal to 100"`
 
 failures:
     tests::greater_than_100
@@ -1080,7 +1080,7 @@ test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; 
 error: test failed, to rerun pass `--lib`
 </code></pre>
 <p>테스트에서 패닉이 발생하긴 했지만,
-지정한 <code>&quot;less than or equal to 100&quot;</code> 문자열이
+지정한 <code>"less than or equal to 100"</code> 문자열이
 패닉 메시지에 포함되어 있지 않다는 것을 알려줍니다.
 실제로 발생한 패닉 메시지는 <code>Guess value must be greater than or equal to 1, got 200.</code>입니다.
 이제 이 메시지를 단서로 버그를 찾아낼 수 있습니다!</p>
@@ -1095,7 +1095,7 @@ mod tests {
         if 2 + 2 == 4 {
             Ok(())
         } else {
-            Err(String::from(&quot;two plus two does not equal four&quot;))
+            Err(String::from("two plus two does not equal four"))
         }
     }
 }</code></pre>
