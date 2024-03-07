@@ -578,7 +578,9 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 hello_macro_derive = { path = "../hello_macro/hello_macro_derive" }
 </code></pre>
 <p>예제 19-30의 코드를 <em>src/main.rs</em>에 넣고 <code>cargo run</code>을 실행하세요:
-<code>Hello, Macro! My name is Pancakes!"라고 출력되어야 합니다. 절차적 매크로의 </code>HelloMacro<code>트레이트 구현은</code>pancakes<code>크레이트가 구현할 필요 없이 포함되었습니다;</code>#[derive(HelloMacro)]`이 트레이트 구현을
+<code>Hello, Macro! My name is Pancakes!</code>라고 출력되어야 합니다. 절차적
+매크로의 <code>HelloMacro</code> 트레이트 구현은 <code>pancakes</code> 크레이트가 구현할 필요
+없이 포함되었습니다; <code>#[derive(HelloMacro)]</code>이 트레이트 구현을
 추가한 것이지요.</p>
 <p>다음으로 다른 종류의 절차적 매크로는 커스텀 파생 매크로와 어떻게 다른지
 알아보겠습니다.</p>

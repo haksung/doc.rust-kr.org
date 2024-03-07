@@ -20808,7 +20808,7 @@ For more information about this error, try `rustc --explain E0277`.
 error: could not compile `gui` due to previous error
 </code></pre>
 <p>이 에러는 인수로 넘길 의도가 없었던 무언가를 <code>Screen</code>에게 넘기고 있으므로 이를
-다른 타입으로 교체하던가, 아니면 <code>String</code>에 <code>Draw</code>를 구현하여 <code>Screen</code>이
+다른 타입으로 교체하든가, 아니면 <code>String</code>에 <code>Draw</code>를 구현하여 <code>Screen</code>이
 이것의 <code>draw</code>를 호출할 수 있도록 해야 한다는 것을 알려줍니다.</p>
 <h3 id="트레이트-객체는-동적-디스패치를-수행합니다"><a class="header" href="#트레이트-객체는-동적-디스패치를-수행합니다">트레이트 객체는 동적 디스패치를 수행합니다</a></h3>
 <p>10장의 <a href="ch10-01-syntax.html#performance-of-code-using-generics">‘제네릭 코드의 성능’</a><!-- ignore -->절에서
@@ -21667,7 +21667,7 @@ fn main() {
 사용할 수 있다는 것을 알게 되었습니다. 동적 디스패치는
 약간의 실행 성능과 맞바꿔 코드에 유연성을 줄 수 있습니다.
 이 유연성을 사용하여 코드의 유지보수에 도움이 되는
-객체 지행 패턴을 구현할 수 있습니다. 러스트에는 또한 소유권과 같은
+객체 지향 패턴을 구현할 수 있습니다. 러스트에는 또한 소유권과 같은
 객체 지향 언어들에는 없는 다른 기능도 있습니다. 객체 지향 패턴이
 항상 러스트의 강점을 활용하는 최고의 방법은 아니겠지만, 사용할 수 있는
 옵션입니다.</p>
@@ -21811,7 +21811,7 @@ fn main() {
 <p>이 예제는 3, 2, 1을 출력합니다. <code>pop</code> 메서드는 벡터에서 마지막 요소를
 가져와서 <code>Some(value)</code>를 반환합니다. 벡터가 비어있다면 <code>pop</code>은 <code>None</code>을
 반환합니다. <code>while</code> 루프는 <code>pop</code>이 <code>Some</code>을 반환하는 한 블록의 코드를
-계속 실행됩니다. <code>pop</code>이 <code>None</code>을 반환하면 루프는 멈춥니다. <code>while let</code>을
+계속 실행합니다. <code>pop</code>이 <code>None</code>을 반환하면 루프는 멈춥니다. <code>while let</code>을
 사용하여 스택의 모든 요소를 팝할 수 있습니다.</p>
 <h3 id="for-루프"><a class="header" href="#for-루프"><code>for</code> 루프</a></h3>
 <p><code>for</code> 루프에서 키워드 <code>for</code> 바로 뒤에 오는 값은 패턴입니다.
@@ -22140,7 +22140,7 @@ warning: `patterns` (bin "patterns") generated 1 warning
 <p>이 코드는 <code>one or two</code>를 출력합니다.</p>
 <h3 id="를-이용한-값의-범위-매칭"><a class="header" href="#를-이용한-값의-범위-매칭"><code>..=</code>를 이용한 값의 범위 매칭</a></h3>
 <p><code>..=</code> 문법은 경계 값을 포함하는 범위와 매칭시키도록 해 줍니다.
-다음 코드에서는 패턴이 주어진 범위 내의 값과 매칭되면 해당 갈래를
+다음 코드에서는 패턴이 주어진 범위 내의 값과 매칭되면 해당 갈래가
 실행됩니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
 </span>    let x = 5;
@@ -23472,7 +23472,7 @@ impl Human {
 호출하기</span></p>
 <p>이 코드를 실행하면 <code>*waving arms furiously*</code>가 출력되어 러스트가
 <code>Human</code>에 직접 구현된 <code>fly</code> 메서드를 호출했음을 보여줍니다.</p>
-<p><code>Pilot</code> 트레이트가나 <code>Wizard</code> 트레이트의 <code>fly</code> 메서드를 호출하려면, 더 명확한
+<p><code>Pilot</code> 트레이트나 <code>Wizard</code> 트레이트의 <code>fly</code> 메서드를 호출하려면, 더 명확한
 문법을 사용하여 어떤 <code>fly</code> 메서드를 의도한 것인지 지정할 필요가 있습니다.
 예제 19-18에서 이 문법을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -23810,7 +23810,7 @@ impl fmt::Display for Point {
 둘러싼 형식으로 출력할 수 있습니다.</p>
 <h3 id="뉴타입-패턴을-사용하여-외부-타입에-외부-트레이트-구현하기"><a class="header" href="#뉴타입-패턴을-사용하여-외부-타입에-외부-트레이트-구현하기">뉴타입 패턴을 사용하여 외부 타입에 외부 트레이트 구현하기</a></h3>
 <p>10장 <a href="ch10-02-traits.html#implementing-a-trait-on-a-type">‘특정 타입에 트레이트 구현하기’</a><!-- ignore -->절에서
-트레이트가나 타입이 우리 크레이트의 것인 경우에만 타입에 트레이트를
+트레이트나 타입이 우리 크레이트의 것인 경우에만 타입에 트레이트를
 구현할 수 있다는 고아 규칙에 대해 설명한 바 있습니다. 튜플 구조체로
 새로운 타입을 생성하는 <em>뉴타입 패턴 (newtype pattern)</em> 을 사용하면 이 제한을 우회할 수
 있습니다. (튜플 구조체에 대해서는 5장의
@@ -24727,7 +24727,9 @@ pub fn hello_macro_derive(input: TokenStream) -&gt; TokenStream {
 hello_macro_derive = { path = "../hello_macro/hello_macro_derive" }
 </code></pre>
 <p>예제 19-30의 코드를 <em>src/main.rs</em>에 넣고 <code>cargo run</code>을 실행하세요:
-<code>Hello, Macro! My name is Pancakes!"라고 출력되어야 합니다. 절차적 매크로의 </code>HelloMacro<code>트레이트 구현은</code>pancakes<code>크레이트가 구현할 필요 없이 포함되었습니다;</code>#[derive(HelloMacro)]`이 트레이트 구현을
+<code>Hello, Macro! My name is Pancakes!</code>라고 출력되어야 합니다. 절차적
+매크로의 <code>HelloMacro</code> 트레이트 구현은 <code>pancakes</code> 크레이트가 구현할 필요
+없이 포함되었습니다; <code>#[derive(HelloMacro)]</code>이 트레이트 구현을
 추가한 것이지요.</p>
 <p>다음으로 다른 종류의 절차적 매크로는 커스텀 파생 매크로와 어떻게 다른지
 알아보겠습니다.</p>
