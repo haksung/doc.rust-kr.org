@@ -25750,7 +25750,7 @@ error: could not compile `hello` due to previous error
 바운드로 <code>FnOnce</code>를 사용하는 것을 볼 수 있습니다. 이것이 아마도 우리가
 원하는 것일 텐데, <code>execute</code>에서 얻은 인수는 결국 <code>spawn</code>에 전달될 것이기
 때문입니다. 요청을 실행하는 스레드는 해당 요청의 클로저를 딱 <em>한 번</em>만
-실행하기 때문에 <code>FnOnce</code>가 여기서 사용하고자 하는 트레이트가라는 것을 더욱
+실행하기 때문에 <code>FnOnce</code>가 여기서 사용하고자 하는 트레이트라는 것을 더욱
 확신할 수 있으며, 이는 <code>FnOnce</code>의 <code>Once</code>와도 일치합니다.</p>
 <p><code>F</code> 타입 매개변수에는 또한 트레이트 바운드 <code>Send</code>와 라이프타임 바운드 <code>'static</code>이
 있는데, 이는 지금의 상황에서 유용합니다: 한 스레드에서 다른 스레드로 클로저를
