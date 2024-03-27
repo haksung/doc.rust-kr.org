@@ -3870,7 +3870,7 @@ error: could not compile `ownership` due to previous error
 유효하지 않다고 말해줍니다. 첫 번째 가변 대여는 <code>r1</code>에 있고,
 <code>println!</code>에서 사용될 때까지 남아있어야 하지만, 이 가변 참조자의
 생성과 사용 사이에서 <code>r1</code>과 같은 데이터를 빌리는 <code>r2</code>의 가변 참조자를
-만들려고 있습니다.</p>
+만들고 있습니다.</p>
 <p>같은 데이터에 대하여 동시에 여러 가변 참조자의 사용을 막는 이러한
 제약은 값의 변경에 대한 제어가 원활하도록 해 줍니다. 대부분의 언어들이
 언제든 값 변경을 허용하기 때문에, 러스트에 갓 입문한 사람들에게는 장애물처럼
@@ -4666,14 +4666,14 @@ assert_eq!(slice, &amp;[2, 3]);
 <p>예제 5-7의 코드 또한 <code>email</code> 값이 다른 <code>user2</code> 인스턴스를
 생성하지만 <code>username</code>, <code>active</code>, <code>sign_in_count</code>는 <code>user1</code>의
 필드와 같은 값을 갖게 합니다. <code>user1</code>의 값들과 동일한 값들로
-나머지를 채우려면 <code>..user1</code>를 제일 끝에 적어야 하지만,
+나머지를 채우려면 <code>..user1</code>을 제일 끝에 적어야 하지만,
 다른 필드들은 구조체의 정의 내에 있는 필드들의 순서와는
 상관없이 우리 마음대로 몇 개든 임의 순서로 적을 수
 있습니다.</p>
 <p>구조체 업데이트 문법이 대입처럼 <code>=</code>을 이용한다는 점을 주목하세요;
 <a href="ch04-01-what-is-ownership.html#variables-and-data-interacting-with-move">‘변수와 데이터 간 상호작용 방식: 이동’</a><!-- ignore -->절에서
 본 것처럼, 이 구문은 데이터를 이동시킵니다. 이 예제에서 <code>user2</code>를 생성한
-이후에는 <code>user1</code>를 더 이상 사용할 수 없는데, 이는 <code>user1</code>의 <code>username</code>
+이후에는 <code>user1</code>을 더 이상 사용할 수 없는데, 이는 <code>user1</code>의 <code>username</code>
 필드의 <code>String</code>이 <code>user2</code>로 이동되기 때문입니다. <code>user2</code>에 <code>email</code>과
 <code>username</code>의 <code>String</code> 모두를 제공하고 <code>user1</code>에서는 <code>active</code>와
 <code>sign_in_count</code> 값만 사용한다면, <code>user2</code>를 만든 이후에도 <code>user1</code>는
@@ -4927,7 +4927,7 @@ fn area(rectangle: &amp;Rectangle) -&gt; u32 {
 제공합니다. 명료성 측면에서 승리입니다.</p>
 <h2 id="트레이트-파생으로-유용한-기능-추가하기"><a class="header" href="#트레이트-파생으로-유용한-기능-추가하기">트레이트 파생으로 유용한 기능 추가하기</a></h2>
 <p>프로그램을 디버깅하는 동안 <code>Rectangle</code> 인스턴스 내 모든 필드 값을
-출력해서 확인할 수 있다면 좋을 것 같군요. 예제 5-11는 앞서 다뤄본
+출력해서 확인할 수 있다면 좋을 것 같군요. 예제 5-11은 앞서 다뤄본
 <a href="../std/macro.println.html"><code>println!</code> 매크로</a><!-- ignore -->를 사용해 본 예시이나,
 작동하진 않습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -5443,7 +5443,7 @@ impl Rectangle {
 v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 모든 종류의 IP 주소에 적용되는 상황을 다룰 때 동일한 타입으로 처리되는 것이
 좋습니다.</p>
-<p><code>IpAddrKind</code>이라는 열거형을 정의하면서 포함할 수 있는 IP 주소인 <code>V4</code>와 <code>V6</code>를
+<p><code>IpAddrKind</code>라는 열거형을 정의하면서 포함할 수 있는 IP 주소인 <code>V4</code>와 <code>V6</code>를
 나열함으로써 이 개념을 코드에 표현할 수 있습니다.
 이것들을 열거형의 <em>배리언트</em>라고 합니다:</p>
 <pre><pre class="playground"><code class="language-rust">enum IpAddrKind {
@@ -5460,7 +5460,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn route(ip_kind: IpAddrKind) {}</span></code></pre></pre>
-<p>이제 <code>IpAddrKind</code>은 코드 어디에서나 쓸 수 있는 커스텀 데이터 타입이 되었습니다.</p>
+<p>이제 <code>IpAddrKind</code>는 코드 어디에서나 쓸 수 있는 커스텀 데이터 타입이 되었습니다.</p>
 <h3 id="열거형-값"><a class="header" href="#열거형-값">열거형 값</a></h3>
 <p>아래처럼 <code>IpAddrKind</code>의 두 개의 배리언트에 대한 인스턴스를 만들 수 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">enum IpAddrKind {
@@ -5542,8 +5542,8 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 <code>String</code> 타입인 <code>address</code> 필드를 갖는 <code>IpAddr</code>를 정의했습니다.
 그리고 이 구조체의 인스턴스 두 개를 생성했습니다. 첫 번째 <code>home</code>은
 <code>kind</code>의 값으로 <code>IpAddrKind::V4</code>를, 연관된 주소 데이터로
-<code>127.0.0.1</code>를 갖습니다. 두 번째 <code>loopback</code>은 <code>IpAddrKind</code>의 다른 배리언트인
-<code>V6</code>를 값으로 갖고, 연관된 주소로 <code>::1</code>를 갖습니다. <code>kind</code>와 <code>address</code>의
+<code>127.0.0.1</code>을 갖습니다. 두 번째 <code>loopback</code>은 <code>IpAddrKind</code>의 다른 배리언트인
+<code>V6</code>를 값으로 갖고, 연관된 주소로 <code>::1</code>을 갖습니다. <code>kind</code>와 <code>address</code>의
 값을 함께 사용하기 위해 구조체를 사용했습니다. 그렇게 함으로써 배리언트가
 연관된 값을 갖게 되었습니다.</p>
 <p>각 열거형 배리언트에 데이터를 직접 넣는 방식을 사용해서 열거형을 구조체의 일부로
@@ -5564,7 +5564,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 없어졌습니다. 또한 여기서 열거형의 동작에 대한 다른 세부 사항을 살펴보기가
 좀 더 쉬워졌습니다: 각 열거형 배리언트의 이름이 해당 열거형 인스턴스의
 생성자 함수처럼 된다는 것이죠. 즉, <code>IpAddr::V4()</code>는 <code>String</code> 인수를
-입력받아서 <code>IpAddr</code> 타입의 인스턴스를 결과를 만드는 함수입니다.
+입력받아서 <code>IpAddr</code> 타입의 인스턴스 결과를 만드는 함수입니다.
 열거형을 정의한 결과로써 이러한 생성자 함수가 자동적으로
 정의됩니다.</p>
 <p>구조체 대신 열거형을 사용하면 또 다른 장점이 있습니다.

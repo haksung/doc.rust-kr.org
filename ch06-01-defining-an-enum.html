@@ -196,7 +196,7 @@
 v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 모든 종류의 IP 주소에 적용되는 상황을 다룰 때 동일한 타입으로 처리되는 것이
 좋습니다.</p>
-<p><code>IpAddrKind</code>이라는 열거형을 정의하면서 포함할 수 있는 IP 주소인 <code>V4</code>와 <code>V6</code>를
+<p><code>IpAddrKind</code>라는 열거형을 정의하면서 포함할 수 있는 IP 주소인 <code>V4</code>와 <code>V6</code>를
 나열함으로써 이 개념을 코드에 표현할 수 있습니다.
 이것들을 열거형의 <em>배리언트</em>라고 합니다:</p>
 <pre><pre class="playground"><code class="language-rust">enum IpAddrKind {
@@ -213,7 +213,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 </span><span class="boring">}
 </span><span class="boring">
 </span><span class="boring">fn route(ip_kind: IpAddrKind) {}</span></code></pre></pre>
-<p>이제 <code>IpAddrKind</code>은 코드 어디에서나 쓸 수 있는 커스텀 데이터 타입이 되었습니다.</p>
+<p>이제 <code>IpAddrKind</code>는 코드 어디에서나 쓸 수 있는 커스텀 데이터 타입이 되었습니다.</p>
 <h3 id="열거형-값"><a class="header" href="#열거형-값">열거형 값</a></h3>
 <p>아래처럼 <code>IpAddrKind</code>의 두 개의 배리언트에 대한 인스턴스를 만들 수 있습니다:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">enum IpAddrKind {
@@ -295,8 +295,8 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 <code>String</code> 타입인 <code>address</code> 필드를 갖는 <code>IpAddr</code>를 정의했습니다.
 그리고 이 구조체의 인스턴스 두 개를 생성했습니다. 첫 번째 <code>home</code>은
 <code>kind</code>의 값으로 <code>IpAddrKind::V4</code>를, 연관된 주소 데이터로
-<code>127.0.0.1</code>를 갖습니다. 두 번째 <code>loopback</code>은 <code>IpAddrKind</code>의 다른 배리언트인
-<code>V6</code>를 값으로 갖고, 연관된 주소로 <code>::1</code>를 갖습니다. <code>kind</code>와 <code>address</code>의
+<code>127.0.0.1</code>을 갖습니다. 두 번째 <code>loopback</code>은 <code>IpAddrKind</code>의 다른 배리언트인
+<code>V6</code>를 값으로 갖고, 연관된 주소로 <code>::1</code>을 갖습니다. <code>kind</code>와 <code>address</code>의
 값을 함께 사용하기 위해 구조체를 사용했습니다. 그렇게 함으로써 배리언트가
 연관된 값을 갖게 되었습니다.</p>
 <p>각 열거형 배리언트에 데이터를 직접 넣는 방식을 사용해서 열거형을 구조체의 일부로
@@ -317,7 +317,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 없어졌습니다. 또한 여기서 열거형의 동작에 대한 다른 세부 사항을 살펴보기가
 좀 더 쉬워졌습니다: 각 열거형 배리언트의 이름이 해당 열거형 인스턴스의
 생성자 함수처럼 된다는 것이죠. 즉, <code>IpAddr::V4()</code>는 <code>String</code> 인수를
-입력받아서 <code>IpAddr</code> 타입의 인스턴스를 결과를 만드는 함수입니다.
+입력받아서 <code>IpAddr</code> 타입의 인스턴스 결과를 만드는 함수입니다.
 열거형을 정의한 결과로써 이러한 생성자 함수가 자동적으로
 정의됩니다.</p>
 <p>구조체 대신 열거형을 사용하면 또 다른 장점이 있습니다.
