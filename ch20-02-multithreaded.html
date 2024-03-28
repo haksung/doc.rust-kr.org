@@ -812,8 +812,8 @@ impl Worker {
 스레드 생성이 일부 성공하더라도 전체 서버가 패닉에 빠지게 됩니다.
 단순화를 위해서라면 이 동작은 괜찮지만, 프로덕션에서의 스레드 풀
 구현이라면 패닉 대신 <code>Result</code>를 반환하는
-<a href="../std/thread/struct.Builder.html"><code>std::thread::Builder</code></a><!-- ignore -->와 여기서 제공하는
-<a href="../std/thread/struct.Builder.html#method.spawn"><code>spawn</code></a><!-- ignore --> 메서드를 사용하고 싶을 수도 있겠습니다.</p>
+<a href="https://doc.rust-lang.org/std/thread/struct.Builder.html"><code>std::thread::Builder</code></a><!-- ignore -->와 여기서 제공하는
+<a href="https://doc.rust-lang.org/std/thread/struct.Builder.html#method.spawn"><code>spawn</code></a><!-- ignore --> 메서드를 사용하고 싶을 수도 있겠습니다.</p>
 </blockquote>
 <p>이 코드는 컴파일되고 우리가 <code>ThreadPool::new</code>에 인수로 지정한 개수만큼
 <code>Worker</code> 인스턴스를 저장합니다. 하지만 <code>execute</code>에서 얻은 클로저는 <em>여전히</em>

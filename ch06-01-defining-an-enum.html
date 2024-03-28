@@ -339,7 +339,7 @@ V4 IP 주소는 항상 0 ~ 255 사이의 숫자 4개로 된 구성 요소를 갖
 <p>두 가지 다른 종류의 IP 주소를 저장하기 위해
 코드에 열거형을 정의하는 몇 가지 방법을 살펴봤습니다.
 그러나, 누구나 알듯이 IP 주소와 그 종류를 저장하는 것은 흔하기 때문에,
-<a href="../std/net/enum.IpAddr.html">표준 라이브러리에 정의된 것을 사용할 수 있습니다!</a><!-- ignore -->
+<a href="https://doc.rust-lang.org/std/net/enum.IpAddr.html">표준 라이브러리에 정의된 것을 사용할 수 있습니다!</a><!-- ignore -->
 표준 라이브러리에서 <code>IpAddr</code>를 어떻게 정의하고 있는지 살펴봅시다.
 위에서 정의하고 사용했던 것과 동일한 열거형과 배리언트를 갖고 있지만,
 배리언트에 포함된 주소 데이터는 두 가지 다른 구조체로 되어 있으며,
@@ -465,7 +465,7 @@ struct ChangeColorMessage(i32, i32, i32); // 튜플 구조체
 이처럼 러스트에는 널이 없지만,
 값의 존재 혹은 부재의 개념을 표현할 수 있는 열거형이 있습니다.
 그 열거형이 바로 <code>Option&lt;T&gt;</code>이며, 다음과 같이
-<a href="../std/option/enum.Option.html">표준 라이브러리에 정의되어 있습니다</a><!-- ignore -->:</p>
+<a href="https://doc.rust-lang.org/std/option/enum.Option.html">표준 라이브러리에 정의되어 있습니다</a><!-- ignore -->:</p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Option&lt;T&gt; {
@@ -553,7 +553,7 @@ error: could not compile `enums` due to previous error
 <p>그래서, <code>Option&lt;T&gt;</code> 타입인 값을 사용할 때 <code>Some</code> 배리언트에서
 <code>T</code> 값을 가져오려면 어떻게 해야 하냐고요? <code>Option&lt;T&gt;</code> 열거형이 가진
 메서드는 많고, 저마다 다양한 상황에서 유용하게 쓰일 수 있습니다.
-그러니 한번 <a href="../std/option/enum.Option.html">문서에서</a><!-- ignore --> 여러분에게 필요한 메서드를
+그러니 한번 <a href="https://doc.rust-lang.org/std/option/enum.Option.html">문서에서</a><!-- ignore --> 여러분에게 필요한 메서드를
 찾아보세요. <code>Option&lt;T&gt;</code>의 여러 메서드를 익혀두면 앞으로의 러스트 프로그래밍에
 매우 많은 도움이 될 겁니다.</p>
 <p>일반적으로, <code>Option&lt;T&gt;</code> 값을 사용하기 위해서는

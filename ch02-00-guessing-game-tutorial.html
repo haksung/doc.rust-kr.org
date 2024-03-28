@@ -280,7 +280,7 @@ fn main() {
 </span><span class="boring">}</span></code></pre>
 <p>기본적으로 러스트는 모든 프로그램의 스코프로 가져오는 표준 라이브러리에
 정의된 아이템 집합을 가지고 있습니다. 이 집합을 <em>프렐루드 (prelude)</em> 라고
-부르며, 이와 관련한 것은 <a href="../std/prelude/index.html">표준 라이브러리 문서</a>에서 찾아볼 수 있습니다.</p>
+부르며, 이와 관련한 것은 <a href="https://doc.rust-lang.org/std/prelude/index.html">표준 라이브러리 문서</a>에서 찾아볼 수 있습니다.</p>
 <p>만약 여러분이 원하는 타입이 프렐루드에 없다면
 <code>use</code>문을 활용하여 명시적으로 그 타입을 가져와야 합니다.
 <code>std::io</code>는 사용자의 입력을 받는 것을 포함하여 <code>io</code>와 관련된
@@ -361,7 +361,7 @@ let mut bananas= 5; // mutable</code></pre>
 어떤 값을 묶어 넣고자 함을 뜻합니다. 등호의 오른쪽에는 <code>guess</code>에
 묶일 값이 있는데, 이번 예시에서는 함수 <code>String::new</code>의 결괏값인
 새로운 <code>String</code> 인스턴스가 묶일 대상이 됩니다.
-<a href="../std/string/struct.String.html"><code>String</code></a><!-- ignore -->은 표준 라이브러리에서
+<a href="https://doc.rust-lang.org/std/string/struct.String.html"><code>String</code></a><!-- ignore -->은 표준 라이브러리에서
 제공하는 확장 가능한 (growable) UTF-8 인코딩의 문자열 타입입니다.</p>
 <p><code>::new</code>에 있는 <code>::</code>는 <code>new</code>가 <code>String</code> 타입의 <em>연관 함수 (associated function)</em>
 임을 나타냅니다. 연관 함수란 어떤 타입에 구현된 함수고, 위의 경우에는
@@ -393,10 +393,10 @@ let mut bananas= 5; // mutable</code></pre>
 <p>프로그램 시작 지점에서 <code>use std::io</code>를 통해 <code>io</code> 라이브러리를 가져오지
 않았더라도, 함수 호출 시 <code>std::io::stdin</code>처럼 작성하는 것으로 이 함수를
 이용할 수 있습니다. <code>stdin</code> 함수는 터미널의 표준 입력의 핸들 (handle) 을
-나타내는 타입인 <a href="../std/io/struct.Stdin.html"><code>std::io::Stdin</code></a><!-- ignore -->의 인스턴스를
+나타내는 타입인 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html"><code>std::io::Stdin</code></a><!-- ignore -->의 인스턴스를
 돌려줍니다.</p>
 <p>코드의 다음 부분인 <code>.read_line(&amp;mut guess)</code>는 사용자로부터
-입력받기 위해 표준 입력 핸들에서 <a href="../std/io/struct.Stdin.html#method.read_line"><code>read_line</code></a><!-- ignore -->
+입력받기 위해 표준 입력 핸들에서 <a href="https://doc.rust-lang.org/std/io/struct.Stdin.html#method.read_line"><code>read_line</code></a><!-- ignore -->
 메서드를 호출합니다. 여기에 <code>&amp;mut guess</code>를 <code>read_line</code>의
 인수로 전달하여 사용자 입력이 어떤 문자열에 저장될
 것인지 알려줍니다. <code>read_line</code>의 전체 기능은 사용자가 표준 입력 장치에
@@ -441,7 +441,7 @@ let mut bananas= 5; // mutable</code></pre>
 이제 이 라인이 무슨 일을 하는지 살펴봅시다.</p>
 <p>이전에 언급한 것처럼 <code>read_line</code>은 우리가 인수로 넘긴 문자열에 사용자가
 입력한 것을 저장할 뿐만 아니라 하나의 <code>Result</code> 값을 돌려줍니다.
-<a href="../std/result/enum.Result.html"><code>Result</code></a><!-- ignore -->는 <em>enum</em>이라고도 일컫는
+<a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>Result</code></a><!-- ignore -->는 <em>enum</em>이라고도 일컫는
 <a href="ch06-00-enums.html"><em>열거형 (enumeration)</em></a><!-- ignore -->인데, 여러 개의 가능한 상태 중
 하나의 값이 될 수 있는 타입입니다. 이러한 가능한 상태 값을 <em>배리언트 (variant)</em> 라고 부릅니다.</p>
 <p><a href="ch06-00-enums.html">6장</a><!-- ignore -->에서 열거형에 대해 더 자세히 다루겠습니다.
@@ -451,7 +451,7 @@ let mut bananas= 5; // mutable</code></pre>
 <code>Err</code>는 처리가 실패했음을 나타내고 그 이유에 대한 정보를 가지고
 있습니다.</p>
 <p>다른 타입들처럼 <code>Result</code> 타입의 값에도 메서드가 있습니다.
-<code>Result</code> 인스턴스에는 <a href="../std/result/enum.Result.html#method.expect"><code>expect</code> 메서드</a><!-- ignore -->가
+<code>Result</code> 인스턴스에는 <a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.expect"><code>expect</code> 메서드</a><!-- ignore -->가
 있습니다. 만약 <code>Result</code> 인스턴스가 <code>Err</code>일 경우 <code>expect</code>
 메서드는 프로그램의 작동을 멈추고 <code>expect</code>에 인수로 넘겼던
 메시지를 출력하도록 합니다. 만약 <code>read_line</code> 메서드가 <code>Err</code>를
@@ -925,7 +925,7 @@ error: could not compile `guessing_game` due to previous error
 (Windows에서 <span class="keystroke">enter</span>는 캐리지 리턴과
 개행문자, 즉 <code>\r\n</code>을 발생시킵니다.) <code>trim</code> 메서드는 <code>\n</code> 혹은 <code>\r\n</code>을
 제거하고 <code>5</code>만 남도록 처리합니다.</p>
-<p><a href="../std/primitive.str.html#method.parse">문자열의 <code>parse</code> 메서드</a><!-- ignore -->는 문자열을 다른 타입으로
+<p><a href="https://doc.rust-lang.org/std/primitive.str.html#method.parse">문자열의 <code>parse</code> 메서드</a><!-- ignore -->는 문자열을 다른 타입으로
 바꿔줍니다. 여기서는 문자열을 숫자로 바꾸는 데 사용합니다.  <code>let guess: u32</code>를
 사용하여 필요로 하는 정확한 숫자 타입을 러스트에 알려줄 필요가 있습니다.
 <code>guess</code> 뒤의 콜론(<code>:</code>)은 변수의 타입을 명시했음을 의미합니다.

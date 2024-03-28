@@ -702,7 +702,7 @@ fn main() -&gt; Result&lt;(), Box&lt;dyn Error&gt;&gt; {
 반환합니다: 성공적으로 종료된 프로그램은 정수 <code>0</code>을 반환하고, 에러가
 발생한 프로그램은 <code>0</code>이 아닌 어떤 정숫값을 반환합니다. 러스트 또한
 이러한 규칙과 호환될 목적으로 실행파일이 정숫값을 반환합니다.</p>
-<p><code>main</code> 함수가 <a href="../std/process/trait.Termination.html"><code>std::process::Termination</code> 트레이트</a><!-- ignore -->를
+<p><code>main</code> 함수가 <a href="https://doc.rust-lang.org/std/process/trait.Termination.html"><code>std::process::Termination</code> 트레이트</a><!-- ignore -->를
 구현한 타입을 반환할 수도 있는데, 이는 <code>ExitCode</code>를 반환하는
 <code>report</code>라는 함수를 가지고 있습니다. 여러분이 만든 타입에 대해
 <code>Termination</code> 트레이트를 구현하려면 표준 라이브러리 문서에서 더 많은
