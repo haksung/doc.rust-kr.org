@@ -661,7 +661,7 @@ impl State for Published {
 절대 불가능함을 알고 있는 경우 중 한 가지
 입니다.</p>
 <p>이 시점에서 <code>&amp;Box&lt;dyn State&gt;</code>의 <code>content</code>가 호출되면, <code>&amp;</code>와 <code>Box</code>에
-역참조 강제가 적용되어, <code>content</code> 메서드는 궁극적으로 <code>State</code>
+역참조 강제 변환이 적용되어, <code>content</code> 메서드는 궁극적으로 <code>State</code>
 트레이트를 구현하는 타입에서 호출될 것입니다. 이는 즉 <code>State</code> 트레이트
 정의에 <code>content</code>를 추가해야 함을 뜻하고, 예제 17-18처럼
 가지고 있는 상태에 따라 어떤 내용물을 반환할지에 대한 로직을

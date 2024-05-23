@@ -4372,8 +4372,8 @@ error: could not compile `ownership` due to previous error
 <code>first_word</code> 함수 개선하기</span></p>
 <p>문자열 슬라이스라면 이를 바로 인수로써 전달할 수 있습니다. <code>String</code>이라면
 <code>String</code>의 슬라이스 혹은 <code>String</code>에 대한 참조자를 전달할 수 있습니다.
-이러한 유연성은 <em>역참조 강제 (deref coercions)</em> 기능을 이용하는데, 15장의
-<a href="ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">‘함수와 메서드를 이용한 암묵적 역참조 강제’</a><!--ignore-->절에서
+이러한 유연성은 <em>역참조 강제 변환 (deref coercions)</em> 기능을 이용하는데, 15장의
+<a href="ch15-02-deref.html#implicit-deref-coercions-with-functions-and-methods">‘함수와 메서드를 이용한 암묵적 역참조 강제 변환’</a><!--ignore-->절에서
 다룰 것입니다.</p>
 <p><code>String</code>에 대한 참조자 대신에 문자열 슬라이스를 매개변수로 하는 함수를 정의하면
 기능 면에서 손해보지 않으면서 API를 더 일반적이고 유용하게 만들어 줍니다:</p>
@@ -7783,9 +7783,9 @@ API들을 사용할 수 있으며, 이를 통해 다양한 옵션들을 제공�
 아니, 잠깐만요. <code>&amp;s2</code>의 타입은 <code>&amp;String</code>이지, <code>add</code>의 두 번째 매개변수에
 지정된 <code>&amp;str</code>은 아니죠. 어째서 예제 8-18가 컴파일되는 걸까요?</p>
 <p><code>&amp;s2</code>를 <code>add</code> 호출에 사용할 수 있는 이유는 <code>&amp;String</code> 인수가 <code>&amp;str</code>로 <em>강제</em>될
-수 있기 때문입니다. <code>add</code> 함수가 호출되면, 러스트는 <em>역참조 강제 (deref coercion)</em>
-를 사용하는데, 이것이 <code>add</code> 함수 내에서 사용되는 <code>&amp;s2</code>를
-<code>&amp;s2[..]</code>로 바꿉니다. 역참조 강제는 15장에서 더 자세히
+수 있기 때문입니다. <code>add</code> 함수가 호출되면, 러스트는 <em>역참조 강제 변환 (deref coercion)</em>
+을 사용하는데, 이것이 <code>add</code> 함수 내에서 사용되는 <code>&amp;s2</code>를
+<code>&amp;s2[..]</code>로 바꿉니다. 역참조 강제 변환은 15장에서 더 자세히
 다루겠습니다. <code>add</code>가 매개변수의 소유권을 가져가지는 않으므로, <code>s2</code>는
 이 연산 이후에도 계속 유효한 <code>String</code>일 것입니다.</p>
 <p>두 번째로, 시그니처에서 <code>add</code>가 <code>self</code>의 소유권을 가져가는 것을 볼 수 있는데,
@@ -17556,7 +17556,7 @@ fn main() {
 역참조 연산자가 새로 정의한 타입에서는 참조자처럼 동작하지 않는 이유를
 알아보겠습니다. <code>Deref</code> 트레이트를 구현하는 것이 스마트 포인터가
 참조자와 유사한 방식으로 동작하도록 하는 원리를 탐구해 볼 것입니다.
-그리고서 러스트의 <em>역참조 강제 (deref corecion)</em> 기능과 이 기능이
+그리고서 러스트의 <em>역참조 강제 변환 (deref corecion)</em> 기능과 이 기능이
 참조자 혹은 스마트 포인터와 함께 동작하도록 하는 방식을 살펴보겠습니다.</p>
 <blockquote>
 <p>Note: 이제부터 만들려고 하는 <code>MyBox&lt;T&gt;</code> 타입과 실제 <code>Box&lt;T&gt;</code> 간에는
@@ -17765,21 +17765,21 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 <code>*</code> 연산자의 대입이 무한히 재귀적으로 실행되지 않기 때문에,
 결국 <code>i32</code> 타입의 데이터를 얻게 되는데, 이는 예제 15-9의
 <code>assert_eq!</code> 내의 <code>5</code>와 일치합니다.</p>
-<h3 id="함수와-메서드를-이용한-암묵적-역참조-강제"><a class="header" href="#함수와-메서드를-이용한-암묵적-역참조-강제">함수와 메서드를 이용한 암묵적 역참조 강제</a></h3>
-<p><em>역참조 강제 (deref coercion)</em> 는 <code>Deref</code>를 구현한 어떤 타입의 참조자를
-다른 타입의 참조자로 바꿔줍니다. 예를 들어, 역참조 강제는 <code>&amp;String</code>을 <code>&amp;str</code>로
+<h3 id="함수와-메서드를-이용한-암묵적-역참조-강제-변환"><a class="header" href="#함수와-메서드를-이용한-암묵적-역참조-강제-변환">함수와 메서드를 이용한 암묵적 역참조 강제 변환</a></h3>
+<p><em>역참조 강제 변환 (deref coercion)</em> 은 <code>Deref</code>를 구현한 어떤 타입의 참조자를
+다른 타입의 참조자로 바꿔줍니다. 예를 들어, 역참조 강제 변환은 <code>&amp;String</code>을 <code>&amp;str</code>로
 바꿔줄 수 있는데, 이는 <code>String</code>의 <code>Deref</code> 트레이트 구현이 그렇게 <code>&amp;str</code>을
-반환하도록 했기 때문입니다. 역참조 강제는 러스트가 함수와 메서드의 인수에
+반환하도록 했기 때문입니다. 역참조 강제 변환은 러스트가 함수와 메서드의 인수에
 대해 수행해 주는 편의성 기능이고, <code>Deref</code> 트레이트를 구현한 타입에 대해서만
 동작합니다. 이는 어떤 특정한 타입값에 대한 참조자를 함수 혹은 메서드의
 인수로 전달하는데 이 함수나 메서드의 정의에는 그 매개변수 타입이 맞지
 않을 때 자동으로 발생합니다. 일련의 <code>deref</code> 메서드 호출이 인수로 제공한
 타입을 매개변수로서 필요한 타입으로 변경해 줍니다.</p>
-<p>역참조 강제는 함수와 메서드 호출을 작성하는 프로그래머들이 <code>&amp;</code>와 <code>*</code>를
+<p>역참조 강제 변환은 함수와 메서드 호출을 작성하는 프로그래머들이 <code>&amp;</code>와 <code>*</code>를
 사용하여 수많은 명시적인 참조 및 역참조를 추가할 필요가 없도록 하기 위해
-도입되었습니다. 또한 역참조 강제 기능은 참조자나 스마트 포인터 둘 중 어느
+도입되었습니다. 또한 역참조 강제 변환 기능은 참조자나 스마트 포인터 둘 중 어느
 경우라도 작동되는 코드를 더 많이 작성할 수 있도록 해 줍니다.</p>
-<p>역참조 강제가 실제 작동하는 것을 보기 위해서, 예제 15-8에서
+<p>역참조 강제 변환이 실제 작동하는 것을 보기 위해서, 예제 15-8에서
 정의했던 <code>MyBox&lt;T&gt;</code>와 예제 15-10에서 추가했던 <code>Deref</code>의 구현체를
 이용해 봅시다. 예제 15-11은 문자열 슬라이스 매개변수를 갖는 함수의
 정의를 보여줍니다:</p>
@@ -17792,7 +17792,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 <p><span class="caption">예제 15-11: <code>&amp;str</code> 타입의 <code>name</code> 매개변수를 갖는
 <code>hello</code> 함수</span></p>
 <p><code>hello</code> 함수는 이를테면 <code>hello("Rust");</code>와 같이 문자열 슬라이스를 인수로
-호출될 수 있습니다. 예제 15-12에서 보는 바와 같이, 역참조 강제는 <code>MyBox&lt;String&gt;</code>
+호출될 수 있습니다. 예제 15-12에서 보는 바와 같이, 역참조 강제 변환은 <code>MyBox&lt;String&gt;</code>
 타입 값에 대한 참조자로 <code>hello</code>의 호출을 가능하게 만들어 줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
 <pre><pre class="playground"><code class="language-rust"><span class="boring">use std::ops::Deref;
@@ -17821,7 +17821,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
     let m = MyBox::new(String::from("Rust"));
     hello(&amp;m);
 }</code></pre></pre>
-<p><span class="caption">예제 15-12: 역참조 강제에 의해 작동되는,
+<p><span class="caption">예제 15-12: 역참조 강제 변환에 의해 작동되는,
 <code>MyBox&lt;String&gt;</code> 값에 대한 참조자로 <code>hello</code> 호출하기</span></p>
 <p>여기서는 <code>hello</code> 함수에 <code>&amp;m</code> 인수를 넣어 호출하고 있는데, 이것이 <code>MyBox&lt;String&gt;</code>
 값에 대한 참조자입니다. 예제 15-10에서 <code>MyBox&lt;T&gt;</code>에 대한 <code>Deref</code> 트레이트를
@@ -17830,7 +17830,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 구현되어 있는 <code>String</code>의 <code>Deref</code>가 문자열 슬라이스를 반환합니다.
 러스트는 다시 한번 <code>deref</code>를 호출하여 <code>&amp;String</code>을 <code>&amp;str</code>로 바꾸는데,
 이것이 <code>hello</code> 함수의 정의와 일치하게 됩니다.</p>
-<p>만일 러스트에 역참조 강제가 구현되어 있지 않았다면, <code>&amp;MyBox&lt;String&gt;</code>
+<p>만일 러스트에 역참조 강제 변환이 구현되어 있지 않았다면, <code>&amp;MyBox&lt;String&gt;</code>
 타입의 값으로 <code>hello</code>를 호출하기 위해서는 예제 15-12의 코드 대신
 예제 15-13의 코드를 작성했어야 할 것입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
@@ -17860,24 +17860,24 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
     let m = MyBox::new(String::from("Rust"));
     hello(&amp;(*m)[..]);
 }</code></pre></pre>
-<p><span class="caption">예제 15-13: 러스트에 역참조 강제가 없었을 경우
+<p><span class="caption">예제 15-13: 러스트에 역참조 강제 변환이 없었을 경우
 작성했어야 할 코드</span></p>
 <p><code>(*m)</code>은 <code>MyBox&lt;String&gt;</code>을 <code>String</code>으로 역참조해 줍니다. 그런 다음 <code>&amp;</code>과
 <code>[..]</code>가 전체 문자열과 동일한 <code>String</code>의 문자열 슬라이스를 얻어와서 <code>hello</code>
-시그니처와 일치되도록 합니다. 역참조 강제가 없는 코드는 이 모든 기호가 수반된
-상태가 되어 읽기도, 쓰기도, 이해하기도 더 힘들어집니다. 역참조 강제는 러스트가
+시그니처와 일치되도록 합니다. 역참조 강제 변환이 없는 코드는 이 모든 기호가 수반된
+상태가 되어 읽기도, 쓰기도, 이해하기도 더 힘들어집니다. 역참조 강제 변환은 러스트가
 프로그래머 대신 이러한 변환을 자동으로 다룰 수 있도록 해 줍니다.</p>
 <p>인수로 넣어진 타입에 대해 <code>Deref</code> 트레이트가 정의되어 있다면, 러스트는 해당
 타입을 분석하고 <code>Deref::deref</code>를 필요한 만큼 사용하여 매개변수 타입과
 일치하는 참조자를 얻을 것입니다. <code>Deref::deref</code>가 추가되어야 하는 횟수는
-컴파일 타임에 분석되므로, 역참조 강제의 이점을 얻는 데에 관해서 어떠한
+컴파일 타임에 분석되므로, 역참조 강제 변환의 이점을 얻는 데에 관해서 어떠한
 런타임 페널티도 없습니다!</p>
-<h3 id="역참조-강제가-가변성과-상호작용하는-법"><a class="header" href="#역참조-강제가-가변성과-상호작용하는-법">역참조 강제가 가변성과 상호작용하는 법</a></h3>
+<h3 id="역참조-강제-변환이-가변성과-상호작용하는-법"><a class="header" href="#역참조-강제-변환이-가변성과-상호작용하는-법">역참조 강제 변환이 가변성과 상호작용하는 법</a></h3>
 <p><code>Deref</code> 트레이트를 사용하여 불변 참조자에 대한 <code>*</code>를 오버라이딩하는 방법과
 비슷한 방식으로, <code>DerefMut</code> 트레이트를 사용하여 가변 참조자에 대한 <code>*</code> 연산자를
 오버라이딩할 수 있습니다.</p>
 <p>러스트는 다음의 세 가지 경우에 해당하는 타입과 트레이트 구현을 찾았을 때
-역참조 강제를 수행합니다:</p>
+역참조 강제 변환을 수행합니다:</p>
 <ul>
 <li><code>T: Deref&lt;Target=U&gt;</code>일 때 <code>&amp;T</code>에서 <code>&amp;U</code>로</li>
 <li><code>T: DerefMut&lt;Target=U&gt;</code>일 때 <code>&amp;mut T</code>에서 <code>&amp;mut U</code>로</li>
@@ -17886,7 +17886,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 <p>처음 두 가지 경우는 두 번째가 가변성을 구현했다는 점을 제외하면 동일합니다.
 첫 번째 경우는 어떤 <code>&amp;T</code>가 있는데, <code>T</code>가 어떤 타입 <code>U</code>에 대한 <code>Deref</code>를
 구현했다면, 명료하게 <code>&amp;U</code>를 얻을 수 있음을 기술하고 있습니다. 두 번째 경우는
-동일한 역참조 강제가 가변 참조자에 대해서도 발생함을 기술합니다.</p>
+동일한 역참조 강제 변환이 가변 참조자에 대해서도 발생함을 기술합니다.</p>
 <p>세 번째 경우는 좀 더 까다로운데, 러스트는 가변 참조자를 불변 참조자로 강제할
 수도 있습니다. 하지만 그 역은 <em>불가능하며</em>, 불변 참조자는 가변 참조자로
 결코 강제되지 않을 것입니다. 대여 규칙에 의거하여, 가변 참조자가 있을
@@ -21314,7 +21314,7 @@ impl State for Published {
 절대 불가능함을 알고 있는 경우 중 한 가지
 입니다.</p>
 <p>이 시점에서 <code>&amp;Box&lt;dyn State&gt;</code>의 <code>content</code>가 호출되면, <code>&amp;</code>와 <code>Box</code>에
-역참조 강제가 적용되어, <code>content</code> 메서드는 궁극적으로 <code>State</code>
+역참조 강제 변환이 적용되어, <code>content</code> 메서드는 궁극적으로 <code>State</code>
 트레이트를 구현하는 타입에서 호출될 것입니다. 이는 즉 <code>State</code> 트레이트
 정의에 <code>content</code>를 추가해야 함을 뜻하고, 예제 17-18처럼
 가지고 있는 상태에 따라 어떤 내용물을 반환할지에 대한 로직을
