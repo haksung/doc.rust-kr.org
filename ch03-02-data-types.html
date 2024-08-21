@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -189,7 +189,7 @@
 <code>String</code>에 <code>parse</code>를 사용하여 숫자로 변환했던 경우처럼
 여러 가지 타입이 가능한 경우에는 다음과 같이 반드시
 타입 명시를 추가해야 합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let guess: u32 = "42".parse().expect("Not a number!");
 <span class="boring">}</span></code></pre></pre>
@@ -308,7 +308,7 @@ error: could not compile `no_type_annotations` due to previous error
 때문입니다. 모든 부동 소수점 타입은 부호가 있습니다.</p>
 <p>다음은 부동 소수점 숫자의 용례입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let x = 2.0; // f64
 
     let y: f32 = 3.0; // f32
@@ -321,7 +321,7 @@ error: could not compile `no_type_annotations` due to previous error
 가까운 정숫값으로 버림을 합니다. 아래 코드는 <code>let</code> 구문 내에서 각 연산을
 어떻게 사용하는지를 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     // 덧셈
     let sum = 5 + 10;
 
@@ -347,7 +347,7 @@ error: could not compile `no_type_annotations` due to previous error
 값을 가질 수 있습니다. 부울린 값은 1바이트 크기입니다. 러스트에서 부울린 타입은
 <code>bool</code>로 명시됩니다. 예를 들면:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let t = true;
 
     let f: bool = false; // 명시적인 타입 어노테이션
@@ -359,7 +359,7 @@ error: could not compile `no_type_annotations` due to previous error
 <p>러스트의 <code>char</code>는 이 언어의 가장 기본적인 알파벳 타입입니다.
 다음 코드는 <code>char</code> 값을 선언하는 몇 가지 예시입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let c = 'z';
     let z: char = 'ℤ'; // 명시적인 타입 어노테이션
     let heart_eyed_cat = '😻';
@@ -386,14 +386,14 @@ error: could not compile `no_type_annotations` due to previous error
 이 튜플 내의 타입들은 서로 달라도 됩니다. 다음은 (안 써도 괜찮지만)
 타입을 명시해 본 예제입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let tup: (i32, f64, u8) = (500, 6.4, 1);
 }</code></pre></pre>
 <p>튜플은 하나의 복합 요소로 취급되므로 변수 <code>tup</code>은 튜플 전체가 바인딩됩니다.
 튜플로부터 개별 값을 얻어오려면 아래와 같이 패턴 매칭을 하여 튜플 값을
 해체하면 사용하면 됩니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let tup = (500, 6.4, 1);
 
     let (x, y, z) = tup;
@@ -408,7 +408,7 @@ error: could not compile `no_type_annotations` due to previous error
 <p>마침표(<code>.</code>) 뒤에 접근하고자 하는 값의 인덱스를 쓰는 방식으로도 튜플 요소에
 접근할 수 있습니다. 예를 들면:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let x: (i32, f64, u8) = (500, 6.4, 1);
 
     let five_hundred = x.0;
@@ -431,7 +431,7 @@ error: could not compile `no_type_annotations` due to previous error
 <p>대괄호 안에 쉼표로 구분한 값들을 나열해서 배열을
 만들 수 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let a = [1, 2, 3, 4, 5];
 }</code></pre></pre>
 <p>여러분이 힙보다는 스택에 데이터를 할당하고 싶을 때나
@@ -446,14 +446,14 @@ error: could not compile `no_type_annotations` due to previous error
 더 유용합니다. 한 가지 예로, 프로그램에서 달의 이름을 이용하려고 한다면,
 이것이 언제나 12개의 요소만 가지고 있을 것이라는 사실을 알고 있으므로,
 아마도 벡터보다는 배열을 사용할 것입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let months = ["January", "February", "March", "April", "May", "June", "July",
               "August", "September", "October", "November", "December"];
 <span class="boring">}</span></code></pre></pre>
 <p>다음과 같이 대괄호 안에 요소의 타입을 쓰고 세미콜론을 쓴 뒤 요소의
 개수를 적는 식으로 배열의 타입을 작성할 수도 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a: [i32; 5] = [1, 2, 3, 4, 5];
 <span class="boring">}</span></code></pre></pre>
@@ -462,7 +462,7 @@ error: could not compile `no_type_annotations` due to previous error
 <p>또한 다음과 같이 대괄호 안에 초깃값과 세미콜론을 쓴 다음 배열의 길이를
 적는 방식을 사용하여 모든 요소가 동일한 값으로 채워진 배열을 초기화할 수도
 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let a = [3; 5];
 <span class="boring">}</span></code></pre></pre>
@@ -474,7 +474,7 @@ error: could not compile `no_type_annotations` due to previous error
 뭉치입니다. 아래와 같이 인덱스를 통해 배열 요소에 접근할 수
 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let a = [1, 2, 3, 4, 5];
 
     let first = a[0];

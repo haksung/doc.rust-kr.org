@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -214,7 +214,7 @@
 대해서는 13장에서 다뤘습니다.) 예제 16-1의 예제는 메인 스레드에서 어떤
 텍스트를 출력하고 새로운 스레드에서는 다른 텍스트를 출력합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::thread;
 use std::time::Duration;
 
 fn main() {
@@ -271,7 +271,7 @@ hi number 5 from the spawned thread!
 예제 16-1에서 만들었던 스레드의 <code>JoinHandle</code>을 이용해서 <code>join</code>을 호출하여
 <code>main</code>이 끝나기 전에 생성된 스레드가 종료됨을 보장하는 방법을 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::thread;
 use std::time::Duration;
 
 fn main() {
@@ -318,7 +318,7 @@ hi number 9 from the spawned thread!
 <p>그런데 만일 아래와 같이 <code>main</code>의 <code>for</code> 루프 이전으로 <code>handle.join()</code>을
 이동시키면 어떤 일이 생기는지 봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::thread;
 use std::time::Duration;
 
 fn main() {
@@ -457,7 +457,7 @@ after automatic regeneration, look at listings/ch16-fearless-concurrency/listing
 가지도록 합니다. 예제 16-3을 예제 16-5처럼 수정하면 컴파일되어
 의도한 대로 실행됩니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::thread;
 
 fn main() {
     let v = vec![1, 2, 3];

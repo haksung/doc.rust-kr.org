@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -184,7 +184,7 @@
 <h3 id="리터럴-매칭"><a class="header" href="#리터럴-매칭">리터럴 매칭</a></h3>
 <p>6장에서 살펴본 것처럼 패턴과 리터럴을 직접 매칭시킬 수 있습니다.
 다음 코드는 몇 가지 예를 제공합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let x = 1;
 
     match x {
@@ -209,7 +209,7 @@
 전에 매치 갈래의 패턴과 마지막에 있는 <code>println!</code>을 보고 코드가
 무엇을 출력할지 알아보세요.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let x = Some(5);
     let y = 10;
 
@@ -252,7 +252,7 @@
 갈래에 대해 <code>x</code> 값을 매칭시키는데, 첫 번째 갈래에는 <em>또는</em> 옵션이
 있으므로 <code>x</code> 값이 해당 갈래의 값 중 하나와 일치하면 해당 갈래의 코드가
 실행됩니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let x = 1;
 
     match x {
@@ -266,7 +266,7 @@
 <p><code>..=</code> 문법은 경계 값을 포함하는 범위와 매칭시키도록 해 줍니다.
 다음 코드에서는 패턴이 주어진 범위 내의 값과 매칭되면 해당 갈래가
 실행됩니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let x = 5;
 
     match x {
@@ -283,7 +283,7 @@
 비어 있는지를 알 수 있는 유일한 타입은 <code>char</code>와 숫자 값이므로, 범위는
 숫자 또는 <code>char</code> 값으로만 허용됩니다.</p>
 <p>아래는 <code>char</code> 값의 범위를 사용하는 예입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let x = 'c';
 
     match x {
@@ -301,7 +301,7 @@
 <p>예제 18-12는 <code>x</code> 와 <code>y</code> 두 개의 필드를 가진 <code>Point</code> 구조체를
 보여주며, <code>let</code> 구문에 패턴을 사용해 분해할 수 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct Point {
+<pre><pre class="playground"><code class="language-rust edition2021">struct Point {
     x: i32,
     y: i32,
 }
@@ -327,7 +327,7 @@ fn main() {
 코드와 동일한 방식으로 동작하지만, <code>let</code> 패턴에서 생성된
 변수는 <code>a</code>와 <code>b</code> 대신 <code>x</code>와 <code>y</code>입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct Point {
+<pre><pre class="playground"><code class="language-rust edition2021">struct Point {
     x: i32,
     y: i32,
 }
@@ -352,7 +352,7 @@ fn main() {
 표현식이 있습니다: <code>x</code> 축 위의 점 (<code>y = 0</code>이 참인 경우),
 <code>y</code> 축 위의 점 (<code>x = 0</code>), 그 외의 경우입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct Point {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct Point {
 </span><span class="boring">    x: i32,
 </span><span class="boring">    y: i32,
 </span><span class="boring">}
@@ -389,7 +389,7 @@ fn main() {
 예를 들어, 예제 18-15에서는 예제 6-2의 <code>Message</code> 열거형을
 사용하여 각 내부 값을 해체하는 패턴으로 <code>match</code>를 작성합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">enum Message {
+<pre><pre class="playground"><code class="language-rust edition2021">enum Message {
     Quit,
     Move { x: i32, y: i32 },
     Write(String),
@@ -436,7 +436,7 @@ fn main() {
 중첩된 아이템에 대해서도 매칭시킬 수 있습니다! 예를 들어, 예제 18-15의
 코드를 리팩터링하여 예제 18-16처럼 <code>ChangeColor</code> 메시지에서
 RGB 및 HSV 색상을 지원할 수 있습니다.</p>
-<pre><pre class="playground"><code class="language-rust">enum Color {
+<pre><pre class="playground"><code class="language-rust edition2021">enum Color {
     Rgb(i32, i32, i32),
     Hsv(i32, i32, i32),
 }
@@ -472,7 +472,7 @@ fn main() {
 <p>해체 패턴은 훨씬 더 복잡한 방식으로 섞이고, 매칭되고, 중첩될 수 있습니다.
 다음 예제는 구조체와 튜플을 튜플 안에 중첩하고 모든 기본값을 해체하여
 꺼내는 복잡한 해체를 보여줍니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span><span class="boring">    struct Point {
 </span><span class="boring">        x: i32,
 </span><span class="boring">        y: i32,
@@ -498,7 +498,7 @@ fn main() {
 유용하지만, 예제 18-17처럼 함수 매개변수를 포함한 모든 패턴에
 사용할 수도 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn foo(_: i32, y: i32) {
+<pre><pre class="playground"><code class="language-rust edition2021">fn foo(_: i32, y: i32) {
     println!("This code only uses the y parameter: {}", y);
 }
 
@@ -512,9 +512,8 @@ fn main() {
 변경하여 사용하지 않는 매개변수가 포함되지 않도록 합니다. 함수
 매개변수를 무시하는 것은, 예를 들면 특정 타입의 시그니처가 필요한
 트레이트를 구현하는 중인데 구현체의 함수 본문에는 매개변수 중 하나가
-필요하지 않은 경우 특히 유용할 수 있습니다. 그러면 대신 이름을
-사용할 때처럼 사용하지 않는 함수 매개변수에 대한 컴파일러 경고를
-받지 않게 됩니다.</p>
+필요하지 않은 경우 특히 유용할 수 있습니다. 만일 사용하지 않는 매개변수에
+이름을 사용하면 컴파일러 경고를 받게 되는데 이를 방지할 수 있습니다.</p>
 <h4 id="중첩된-_로-값의-일부-무시하기"><a class="header" href="#중첩된-_로-값의-일부-무시하기">중첩된 <code>_</code>로 값의 일부 무시하기</a></h4>
 <p>다른 패턴 내에서 <code>_</code>을 사용하여 값의 일부만 무시할 수도 있습니다.
 예를 들어, 값의 일부만 테스트하고 싶지만 다른 부분은 실행하고자 하는
@@ -522,7 +521,7 @@ fn main() {
 관리를 담당하는 코드를 보여줍니다. 비즈니스 요구사항은 사용자가
 기존의 사용자 설정값을 덮어쓸 수는 없지만 설정값을 해제할 수는 있으며
 해제된 상태라면 값을 지정할 수 있어야 한다는 것입니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut setting_value = Some(5);
     let new_setting_value = Some(10);
 
@@ -552,7 +551,7 @@ fn main() {
 <p>또한 하나의 패턴 내에서 여러 위치에 밑줄을 사용하여 특정 값을
 무시할 수도 있습니다. 예제 18-19는 다섯 개의 아이템으로 구성된
 튜플에서 두 번째 및 네 번째 값을 무시하는 예제를 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let numbers = (2, 4, 8, 16, 32);
 
     match numbers {
@@ -573,7 +572,7 @@ fn main() {
 있습니다. 예제 18-20에서는 사용하지 않는 변수를 두 개 생성했지만,
 이 코드를 컴파일할 때는 이 중 하나에 대해서만 경고를 받게 됩니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let _x = 5;
     let y = 10;
 }</code></pre></pre>
@@ -600,7 +599,7 @@ fn main() {
 하기 때문에 에러가 발생합니다. 그러나 밑줄만 단독으로 사용하면
 값이 바인딩되지 않습니다. 예제 18-22는 <code>s</code>가 <code>_</code>로 이동되지
 않기 때문에 에러 없이 컴파일됩니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let s = Some(String::from("Hello!"));
 
     if let Some(_) = s {
@@ -620,7 +619,7 @@ fn main() {
 예제 18-23에는 3차원 공간 좌표를 갖는 <code>Point</code> 구조체가
 있습니다. <code>match</code> 표현식에서 <code>x</code> 좌표에 대해서만 연산하고
 <code>y</code> 및 <code>z</code> 필드의 값은 무시하려고 합니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    struct Point {
         x: i32,
         y: i32,
@@ -642,7 +641,7 @@ fn main() {
 <p><code>..</code> 문법은 필요한 만큼의 값으로 확장됩니다. 예제 18-24는
 튜플에 <code>..</code>를 사용하는 방법을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let numbers = (2, 4, 8, 16, 32);
 
     match numbers {
@@ -698,7 +697,7 @@ error: could not compile `patterns` due to previous error
 <p>조건은 패턴에서 생성된 변수를 사용할 수 있습니다. 예제 18-26은
 첫 번째 갈래에 <code>Some(x)</code> 패턴이 있고 <code>if x % 2 == 0</code>의 매치
 가드(숫자가 짝수면 참)가 있는 <code>match</code>를 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let num = Some(4);
 
     match num {
@@ -727,7 +726,7 @@ error: could not compile `patterns` due to previous error
 의미했습니다. 예제 18-27은 이 문제를 해결하기 위해 매치 가드를
 사용하는 방법을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let x = Some(5);
     let y = 10;
 
@@ -757,7 +756,7 @@ error: could not compile `patterns` due to previous error
 보여줍니다. 이 예제의 중요한 부분은 <code>if y</code> 매치 가드가 <code>6</code>에만
 적용되는 것처럼 보일지라도 <code>4</code>, <code>5</code>, <em>및</em> <code>6</code>에도 적용된다는
 것입니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let x = 4;
     let y = false;
 
@@ -792,7 +791,7 @@ error: could not compile `patterns` due to previous error
 합니다. 또한 이 값을 <code>id_variable</code> 변수에 바인딩하여 갈래와 관련된
 코드에서 사용하고 싶습니다. 이 변수의 이름을 필드와 동일한 <code>id</code>로
 지정할 수 있지만, 이 예제에서는 다른 이름을 사용하겠습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    enum Message {
         Hello { id: i32 },
     }

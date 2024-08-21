@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -192,7 +192,7 @@
 어떻게 순환 참조가 생길 수 있고, 이를 어떻게 방지하는지
 알아봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use crate::List::{Cons, Nil};
+<pre><pre class="playground"><code class="language-rust edition2021">use crate::List::{Cons, Nil};
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -226,7 +226,7 @@ fn main() {}</code></pre></pre>
 순환 참조를 생성합니다. 이 과정에서 참조 카운트가 얼마인지 여러 곳에서 확인하기
 위해 곳곳에 <code>println!</code> 구문들을 넣었습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use crate::List::{Cons, Nil};
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use crate::List::{Cons, Nil};
 </span><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
@@ -363,7 +363,7 @@ a rc count after changing a = 2
 보겠습니다. <code>i32</code>값과 함께 자식 <code>Node</code> 값들의 참조자들도 가지고 있는 <code>Node</code>라는
 이름의 구조체를 만들겠습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::cell::RefCell;
 use std::rc::Rc;
 
 #[derive(Debug)]
@@ -392,7 +392,7 @@ struct Node {
 <code>leaf</code>라는 이름의 <code>Node</code> 인스턴스, 그리고 5 값과 <code>leaf</code>를 자식으로 갖는
 <code>branch</code>라는 이름의 인스턴스를 만들도록 하겠습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::Rc;
 </span><span class="boring">
 </span><span class="boring">#[derive(Debug)]
@@ -435,7 +435,7 @@ struct Node {
 이용하여 <code>parent</code>의 타입을 만들겠습니다. 이제 <code>Node</code> 구조체 정의는 아래와
 같이 생겼습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::cell::RefCell;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::cell::RefCell;
 use std::rc::{Rc, Weak};
 
 #[derive(Debug)]
@@ -468,7 +468,7 @@ struct Node {
 예제 15-28에서는 <code>main</code>을 업데이트하여 이 새로운 정의를 사용하도록 해서 <code>leaf</code>
 노드가 자기 부모인 <code>branch</code>를 참조할 수 있는 방법을 갖도록 합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::{Rc, Weak};
 </span><span class="boring">
 </span><span class="boring">#[derive(Debug)]
@@ -533,7 +533,7 @@ children: RefCell { value: [] } }] } })
 밖으로 벗어났을 때 어떤 일이 생기는지 알 수 있습니다. 수정본은
 예제 15-29와 같습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::cell::RefCell;
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use std::cell::RefCell;
 </span><span class="boring">use std::rc::{Rc, Weak};
 </span><span class="boring">
 </span><span class="boring">#[derive(Debug)]

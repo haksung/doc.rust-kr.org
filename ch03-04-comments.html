@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -184,14 +184,14 @@
 <em>주석 (comment)</em> 을 코드에 남겨서, 컴파일러는 이를 무시하지만
 코드를 읽는 사람들은 유용한 정보를 얻을 수 있게끔 합니다.</p>
 <p>간단한 주석의 예를 봅시다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// hello, world
 <span class="boring">}</span></code></pre></pre>
 <p>러스트에서 주석은 두개의 슬래시로 시작하며,
 이 주석은 해당 줄의 끝까지 계속됩니다. 한 줄을 넘기는
 주석의 경우에는 아래처럼 각 줄마다 <code>//</code>를 추가하면 됩니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>// 그래서 여기서는 여러 줄의 주석을 달 필요가 있을 정도로
 // 복잡한 작업을 하고 있습니다! 휴우! 이 주석으로 무슨 일이
@@ -199,13 +199,13 @@
 <span class="boring">}</span></code></pre></pre>
 <p>또한 주석은 코드의 뒷 부분에 위치할 수도 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let lucky_number = 7; // 오늘 운이 좋은 느낌이에요
 }</code></pre></pre>
 <p>하지만 아래와 같이 코드 앞줄에 따로 주석을 작성한 형태를
 더 자주 보게 될 겁니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     // 오늘 운이 좋은 느낌이에요
     let lucky_number = 7;
 }</code></pre></pre>

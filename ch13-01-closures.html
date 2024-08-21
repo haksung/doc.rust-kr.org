@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -319,7 +319,7 @@ The user with preference None gets Blue
 위치에서 클로저를 정의하기보다는, 클로저를 정의하여 변수에 저장하고
 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::thread;
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use std::thread;
 </span><span class="boring">use std::time::Duration;
 </span><span class="boring">
 </span><span class="boring">fn generate_workout(intensity: u32, random_number: u32) {
@@ -423,7 +423,7 @@ error: could not compile `closure-example` due to previous error
 참조자를 캡처하는데, 이는 그저 값을 출력하기 위한 불변 참조자가 필요한
 상태이기 때문입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let list = vec![1, 2, 3];
     println!("Before defining closure: {:?}", list);
 
@@ -454,7 +454,7 @@ After calling closure: [1, 2, 3]
 <p>다음으로 예제 13-5에서는 클로저의 본문을 바꾸어 <code>list</code> 벡터에 요소를
 추가하도록 했습니다. 클로저는 이제 가변 참조자를 캡처합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let mut list = vec![1, 2, 3];
     println!("Before defining closure: {:?}", list);
 
@@ -490,7 +490,7 @@ After calling closure: [1, 2, 3, 7]
 생성을 살짝 보겠습니다. 예제 13-6은 예제 13-4를 수정하여
 메인 스레드가 아닌 새 스레드에서 벡터를 출력하는 코드를 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::thread;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::thread;
 
 fn main() {
     let list = vec![1, 2, 3];
@@ -593,7 +593,7 @@ fn main() {
 <code>Rectangle</code> 인스턴스의 리스트가 있고 <code>sort_by_key</code>를 사용하여
 <code>width</code> 속성을 낮은 것부터 높은 순으로 정렬합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021">#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -698,7 +698,7 @@ error: could not compile `rectangles` due to previous error
 대한 가변 참조자를 캡처할 뿐이라서 한 번 이상 호출이 가능하기
 때문입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021">#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,

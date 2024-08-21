@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -192,7 +192,7 @@
 서버가 응답하기 전에 5초 동안 서버를 슬립시키는 시뮬레이션된 느린 응답으로
 처리하는 것을 구현한 것입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021">use std::{
     fs,
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
@@ -249,7 +249,7 @@ fn handle_connection(mut stream: TcpStream) {
 <p>우리 서버가 얼마나 원시적인지 알 수 있습니다: 실제 라이브러리라면 훨씬 덜 장황한
 방식으로 여러 가지 요청에 대한 인식을 처리할 것입니다!</p>
 <p><code>cargo run</code>을 사용하여 서버를 시작하세요. 그런 다음 두 개의 브라우저 창을
-여세요: 하나는 *http://127.0.0.1:7878/*용, 다른 하나는 <em>http://127.0.0.1:7878/sleep</em>용입니다.
+여세요: 하나는 <em>http://127.0.0.1:7878/</em> 용, 다른 하나는 <em>http://127.0.0.1:7878/sleep</em>용입니다.
 이전처럼 <em>/</em> URI를 몇 번 입력해 보면, 빠르게 응답하는 것을 볼 수 있습니다.
 하지만 <em>/sleep</em>을 입력한 다음 <em>/</em> 을 로드하면, <code>sleep</code>이 5초 동안 완전히
 슬립을 끝낼 때까지 <em>/</em> 는 기다렸다가 로드되는 것을 볼 수 있습니다.</p>
@@ -306,7 +306,7 @@ fn handle_connection(mut stream: TcpStream) {
 예제 20-11은 <code>for</code> 루프 내에서 새 스레드를 생성하여 각 스트림을
 처리하기 위해 <code>main</code>에 변경해야 할 사항을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run"><span class="boring">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021"><span class="boring">use std::{
 </span><span class="boring">    fs,
 </span><span class="boring">    io::{prelude::*, BufReader},
 </span><span class="boring">    net::{TcpListener, TcpStream},
@@ -431,7 +431,7 @@ error: could not compile `hello` due to previous error
 </code></pre>
 <p>훌륭합니다! 이 에러는 <code>ThreadPool</code> 타입 또는 모듈이 필요하다는 것을
 알려주므로, 지금 구축해 보겠습니다. <code>ThreadPool</code> 구현은 웹 서버가
-수행하는 작업의 종류와 무관합니다. 따라서, <code>hello</code> 상자를 바이너리
+수행하는 작업의 종류와 무관합니다. 따라서, <code>hello</code> 크레이트를 바이너리
 크레이트에서 라이브러리 크레이트로 전환하여 <code>ThreadPool</code> 구현을 담아봅시다.
 라이브러리 크레이트로 변경한 후에는 웹 요청을 처리하는 것뿐만 아니라,
 스레드 풀을 사용하여 수행하려는 어떤 작업에 대해서라도 분리된 스레드 풀

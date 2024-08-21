@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -192,7 +192,7 @@
 예제 5-13처럼 <code>Rectangle</code> 구조체에 정의된
 <code>area</code> 메서드로 바꿔봅시다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021">#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -254,7 +254,7 @@ fn main() {
 예를 들면, <code>width</code>라는 중복된 이름의 메서드를 <code>Rectangle</code> 상에 정의할 수
 있지요:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
 </span><span class="boring">    height: u32,
@@ -304,7 +304,7 @@ fn main() {
 러스트에서 자동으로 해당 메서드의 시그니처에 맞도록 <code>&amp;</code>, <code>&amp;mut</code>, <code>*</code>를 추가합니다.
 즉, 다음 두 표현은 서로 같은 표현입니다:</p>
 <!-- CAN'T EXTRACT SEE BUG https://github.com/rust-lang/mdBook/issues/1127 -->
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span><span class="boring">#[derive(Debug,Copy,Clone)]
 </span><span class="boring">struct Point {
@@ -379,7 +379,7 @@ Can rect1 hold rect3? false
 그럼 이제 예제 5-13의 <code>impl</code> 블록에 <code>can_hold</code> 메서드를 새로 추가해 보죠!
 추가하고 난 모습은 다음 예제 5-15와 같습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
 </span><span class="boring">    height: u32,
@@ -433,7 +433,7 @@ Can rect1 hold rect3? false
 연관 함수 <code>square</code>를 만들어서, 더 간단하게 정사각형을 만드는 기능을
 제공해 보겠습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
 </span><span class="boring">    height: u32,
@@ -463,7 +463,7 @@ Can rect1 hold rect3? false
 <p>각 구조체는 여러 개의 <code>impl</code> 블록을 가질 수 있습니다.
 다음 예제 5-16은 예제 5-15에 나온 코드를 변경해
 <code>impl</code> 블록을 여러 개로 만든 모습입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#[derive(Debug)]
 </span><span class="boring">struct Rectangle {
 </span><span class="boring">    width: u32,
 </span><span class="boring">    height: u32,

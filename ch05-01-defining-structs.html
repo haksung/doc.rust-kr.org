@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -191,7 +191,7 @@
 각 구성 요소의 이름 및 타입을 정의합니다.
 다음 예제 5-1은 사용자 계정 정보를 저장하는 구조체입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021">struct User {
     active: bool,
     username: String,
     email: String,
@@ -210,7 +210,7 @@
 생각하시면 됩니다. 예를 들면 어떤 특정 사용자를 예제 5-2처럼 선언할
 수 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
 </span><span class="boring">    email: String,
@@ -233,7 +233,7 @@
 다음 예제 5-3은 가변 인스턴스의
 <code>email</code> 필드 값을 변경하는 예시입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
 </span><span class="boring">    email: String,
@@ -260,7 +260,7 @@
 <code>active</code>, <code>sign_in_count</code>를 각각 <code>true</code>, <code>1</code>로 설정한
 <code>User</code> 인스턴스를 반환하는 모습을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
 </span><span class="boring">    email: String,
@@ -296,7 +296,7 @@
 같은 기능을 구현할 수 있습니다. 다음 예제 5-5는 <code>email</code>, <code>username</code>을
 반복 작성하는 대신 필드 초기화 축약법을 사용한 예제입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
 </span><span class="boring">    email: String,
@@ -334,7 +334,7 @@
 인스턴스 <code>user2</code>를 만드는 방법을 보여줍니다. <code>email</code>에는 새로운 값을
 설정했지만, 나머지 값들에는 예제 5-2에서 만들었던 <code>user1</code>의 값과 동일합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
 </span><span class="boring">    email: String,
@@ -364,7 +364,7 @@
 같은 효과를 낼 수 있습니다. <code>..</code> 문법은 따로 명시된 필드를 제외한
 나머지 필드를 주어진 인스턴스의 필드 값으로 설정합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct User {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct User {
 </span><span class="boring">    active: bool,
 </span><span class="boring">    username: String,
 </span><span class="boring">    email: String,
@@ -417,7 +417,7 @@
 그 뒤에는 타입들로 이루어진 튜플이 따라옵니다. 예시로 살펴볼까요?
 다음은 각각 <code>Color</code>, <code>Point</code>라는 두 개의 튜플 구조체 정의 및 사용 예시입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct Color(i32, i32, i32);
+<pre><pre class="playground"><code class="language-rust edition2021">struct Color(i32, i32, i32);
 struct Point(i32, i32, i32);
 
 fn main() {
@@ -441,7 +441,7 @@ fn main() {
 자세히 다루겠습니다. 아래는 <code>AlwaysEqual</code>이라는 이름의 유닛 구조체를
 선언하고 생성하는 예제입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct AlwaysEqual;
+<pre><pre class="playground"><code class="language-rust edition2021">struct AlwaysEqual;
 
 fn main() {
     let subject = AlwaysEqual;

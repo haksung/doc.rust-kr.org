@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -248,7 +248,7 @@ error: could not compile `patterns` due to previous error
 <code>if let</code>을 사용하면 됩니다. 그러면 패턴이 매칭되지 않는 경우 코드가 중괄호
 안의 코드를 그냥 건너뛰어 유효하게 계속하는 방법을 제공합니다. 예제 18-9는
 예제 18-8의 코드를 수정하는 방법을 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span><span class="boring">    let some_option_value: Option&lt;i32&gt; = None;
 </span>    if let Some(x) = some_option_value {
         println!("{}", x);
@@ -260,7 +260,7 @@ error: could not compile `patterns` due to previous error
 수 없다는 뜻이지만, 이 코드는 완벽하게 유효합니다. 예제 18-10에
 나오는 <code>x</code>처럼 <code>if let</code>에 항상 매칭되는 패턴을 사용하면, 컴파일러는
 경고를 줄 것입니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    if let x = 5 {
         println!("{}", x);
     };

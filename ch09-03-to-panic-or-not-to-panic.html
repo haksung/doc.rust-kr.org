@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -217,7 +217,7 @@
 있다면 <code>unwrap</code>을 호출해도 아무런 문제가 없으며, <code>expect</code>의
 문구에 <code>Err</code> 배리언트가 있으면 안 될 이유를 적어주는 것이 더 좋을
 것입니다. 아래에 예제가 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::net::IpAddr;
 
     let home: IpAddr = "127.0.0.1"
@@ -365,7 +365,7 @@ IP 주소가 다른 곳으로부터 가져올 필요가 생길 경우 <code>expe
 file requires the `rand` crate. We do want to include it for reader
 experimentation purposes, but don't want to include it for rustdoc testing
 purposes. -->
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub struct Guess {
     value: i32,

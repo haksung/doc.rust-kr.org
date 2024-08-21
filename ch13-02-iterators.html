@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -188,7 +188,7 @@
 예제 13-10의 코드는 <code>Vec&lt;T&gt;</code> 에 정의된 <code>iter</code> 메서드를 호출함으로써
 벡터 <code>v1</code>에 있는 아이템들에 대한 반복자를 생성합니다. 이 코드 자체로는 어떤
 유용한 동작도 하지 않습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v1 = vec![1, 2, 3];
 
     let v1_iter = v1.iter();
@@ -203,7 +203,7 @@
 반복자 생성을 분리했습니다. <code>v1_iter</code>에 있는 반복자를 사용하여 <code>for</code>
 루프가 호출되면, 반복자의 각 요소가 루프의 한 순번마다 사용되는데, 여기서는
 각각의 값을 출력합니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v1 = vec![1, 2, 3];
 
     let v1_iter = v1.iter();
@@ -225,7 +225,7 @@
 <h3 id="iterator-트레이트와-next-메서드"><a class="header" href="#iterator-트레이트와-next-메서드"><code>Iterator</code> 트레이트와 <code>next</code> 메서드</a></h3>
 <p>모든 반복자는 표준 라이브러리에 정의된 <code>Iterator</code>라는 이름의 트레이트를
 구현합니다. 트레이트의 정의는 아래처럼 생겼습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>pub trait Iterator {
     type Item;
@@ -318,7 +318,7 @@
 여기에서의 클로저는 벡터의 각 아이템에서 1이 증가한 새로운 반복자를
 만듭니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust not_desired_behavior"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust not_desired_behavior edition2021"><span class="boring">fn main() {
 </span>    let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 
     v1.iter().map(|x| x + 1);
@@ -352,7 +352,7 @@ warning: `iterators` (bin "iterators") generated 1 warning
 결과를 모읍니다. 이 벡터는 원본 벡터로부터 1씩 증가한 아이템들을
 담고 있는 상태가 될 것입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v1: Vec&lt;i32&gt; = vec![1, 2, 3];
 
     let v2: Vec&lt;_&gt; = v1.iter().map(|x| x + 1).collect();

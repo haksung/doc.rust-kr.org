@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -204,10 +204,9 @@
 <p><code>match</code> 표현식에 대한 한 가지 요건은 <code>match</code> 표현식의 값에 대한 모든 경우의
 수를 고려해야 한다는 의미에서 <em>철저해야 (exhaustive)</em> 한다는 것입니다.
 모든 가능성을 포괄하는 것을 보장하는 방법 한 가지는 마지막 갈래에 캐치올
-(catchall) 패턴을 사용하는 것입니다: 예를 들면 어떤 값에 매칭되는 변수명은
+(catchall) 패턴을 사용하는 것입니다: 예를 들면 어떤 값과도 매칭될 수 있는 변수명은
 절대 실패할 수 없게 되어 나머지 모든 경우를 포괄합니다.</p>
-<p><code>_</code>라는 특정 패턴은 어떤 값에라도 매칭되지만 변수에 값을
-묶지 않으므로 마지막 매치 갈래에 자주 사용됩니다.
+<p><code>_</code>라는 특정 패턴은 어떤 값과도 매칭되지만 값을 변수에 할당하지 않기 때문에 마지막 <code>match</code> 갈래에 자주 사용됩니다.
 <code>_</code> 패턴은 예를 들면 지정되지 않은 값들을 무시하고
 싶을 때 유용할 수 있습니다. 이 장의
 <a href="ch18-03-pattern-syntax.html#ignoring-values-in-a-pattern">‘패턴에서 값 무시하기’</a><!-- ignore -->절에서
@@ -227,7 +226,7 @@
 사용자 입력으로 받을 수 있는 하드코딩된 값이 들어있는 변수를
 만들었습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let favorite_color: Option&lt;&amp;str&gt; = None;
     let is_tuesday = false;
     let age: Result&lt;u8, _&gt; = "34".parse();
@@ -273,7 +272,7 @@
 매칭되는 동안 <code>while</code> 루프를 실행할 수 있게 해 줍니다. 예제 18-2에서는
 벡터를 스택처럼 사용하여 벡터의 값을 푸시된 역순으로
 출력하는 <code>while let</code> 루프를 코딩했습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut stack = Vec::new();
 
     stack.push(1);
@@ -296,7 +295,7 @@
 예를 들어 <code>for x in y</code>에서는 <code>x</code>가 패턴입니다. 예제 18-3은
 <code>for</code> 루프에서 패턴을 사용하여 <code>for</code> 루프의 일부로서 튜플을
 해체 혹은 분해하는 방법을 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v = vec!['a', 'b', 'c'];
 
     for (index, value) in v.iter().enumerate() {
@@ -324,7 +323,7 @@ c is at index 2
 명시적으로 설명했지만, 실은 다른 곳에서도 패턴을 사용해 왔는데 <code>let</code> 구문도
 여기 해당합니다. 예를 들어, 아래와 같이 <code>let</code>을 사용한 간단한 변수 할당문을
 살펴봅시다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>let x = 5;
 <span class="boring">}</span></code></pre></pre>
@@ -341,7 +340,7 @@ c is at index 2
 ‘값이 무엇이든 간에 전부 변수 <code>x</code>에 바인딩해라’라는 뜻이 됩니다.</p>
 <p>패턴 매칭의 관점에서 <code>let</code> 좀 더 명확하게 보기 위해서, <code>let</code>으로
 튜플을 분해하는 패턴을 사용하는 예제 18-4를 살펴봅시다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let (x, y, z) = (1, 2, 3);
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 18-4: 패턴을 사용해 튜플을 분해하여
@@ -386,7 +385,7 @@ error: could not compile `patterns` due to previous error
 <p>함수 매개변수도 패턴이 될 수 있습니다. 예제 18-6의 코드는
 <code>foo</code>라는 이름의 함수를 선언하고 타입 <code>i32</code>인 <code>x</code>라는 매개변수 하나를
 받는데, 이제는 친숙하게 보일 것입니다.</p>
-<pre><pre class="playground"><code class="language-rust">fn foo(x: i32) {
+<pre><pre class="playground"><code class="language-rust edition2021">fn foo(x: i32) {
     // 여기에 코드를 작성합니다
 }
 <span class="boring">
@@ -397,7 +396,7 @@ error: could not compile `patterns` due to previous error
 매치시킬 수 있습니다. 예제 18-7은 함수에 값을 넘길 때 튜플의 값을
 분할합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn print_coordinates(&amp;(x, y): &amp;(i32, i32)) {
+<pre><pre class="playground"><code class="language-rust edition2021">fn print_coordinates(&amp;(x, y): &amp;(i32, i32)) {
     println!("Current location: ({}, {})", x, y);
 }
 

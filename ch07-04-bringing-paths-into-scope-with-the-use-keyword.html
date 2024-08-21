@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -285,7 +285,7 @@ pub fn eat_at_restaurant() {
 예제 7-14는 <code>HashMap</code> 표준 라이브러리 구조체를
 바이너리 크레이트의 스코프로 가져오는 관용적인 코드 예시입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::collections::HashMap;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::collections::HashMap;
 
 fn main() {
     let mut map = HashMap::new();
@@ -300,7 +300,7 @@ fn main() {
 예제 7-15는 각각 다른 모듈 내에 위치하지만 이름이 같은 두 개의
 <code>Result</code> 타입을 스코프로 가져와 사용하는 예시입니다.</p>
 <p><span class="filename">파일명: src/lib.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fmt;
 use std::io;
@@ -433,7 +433,7 @@ fn main() {
 러스트 언어에 포함되어 있기 때문에 <em>Cargo.toml</em> 에 추가할 필요는 없지만,
 표준 라이브러리에서 우리가 만든 패키지의 스코프로 가져오려면 <code>use</code> 문을 작성해야 합니다.
 예를 들어, <code>HashMap</code>을 가져오는 코드는 다음과 같습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::collections::HashMap;
 <span class="boring">}</span></code></pre></pre>
@@ -534,7 +534,7 @@ use std::io::Write;</code></pre>
 <h3 id="글롭-연산자"><a class="header" href="#글롭-연산자">글롭 연산자</a></h3>
 <p>경로에 글롭 (glob) 연산자 <code>*</code>를 붙이면 경로 안에 정의된
 <em>모든</em> 공개 아이템을 가져올 수 있습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::collections::*;
 <span class="boring">}</span></code></pre></pre>

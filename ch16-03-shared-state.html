@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -223,7 +223,7 @@
 <p>뮤텍스 사용 방법에 대한 예제로, 예제 16-12처럼 싱글스레드 컨텍스트에서
 뮤텍스를 사용하는 것으로 시작해봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::sync::Mutex;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::sync::Mutex;
 
 fn main() {
     let m = Mutex::new(5);
@@ -417,7 +417,7 @@ error: could not compile `shared-state` due to previous error
 <code>use</code> 라인과 <code>new</code> 호출, 그리고 <code>clone</code> 호출 부분을 바꾸는 것으로 프로그램을
 수정합니다. 예제 16-15의 코드는 마침내 컴파일 및 실행이 될 것입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::sync::{Arc, Mutex};
+<pre><pre class="playground"><code class="language-rust edition2021">use std::sync::{Arc, Mutex};
 use std::thread;
 
 fn main() {

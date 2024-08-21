@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -198,7 +198,7 @@ f를 쓰는) <code>fn</code> 타입으로 강제되는데, <code>Fn</code> 클�
 합산합니다. <code>main</code> 함수는 <code>add_one</code> 및 <code>5</code>를 인수로 사용하여
 <code>do_twice</code>를 호출합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn add_one(x: i32) -&gt; i32 {
+<pre><pre class="playground"><code class="language-rust edition2021">fn add_one(x: i32) -&gt; i32 {
     x + 1
 }
 
@@ -232,14 +232,14 @@ fn main() {
 표준 라이브러리의 <code>Iterator</code> 트레이트가 제공하는 <code>map</code> 메서드의
 사용을 살펴봅시다. <code>map</code> 함수를 사용하여 숫자 벡터를 문자열
 벡터로 바꾸려면 다음과 같이 클로저를 사용할 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let list_of_numbers = vec![1, 2, 3];
     let list_of_strings: Vec&lt;String&gt; =
         list_of_numbers.iter().map(|i| i.to_string()).collect();
 <span class="boring">}</span></code></pre></pre>
 <p>혹은 아래와 같이 클로저 대신 <code>map</code>의 인수로 함수 이름을 지정할
 수도 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let list_of_numbers = vec![1, 2, 3];
     let list_of_strings: Vec&lt;String&gt; =
         list_of_numbers.iter().map(ToString::to_string).collect();
@@ -254,7 +254,7 @@ fn main() {
 두세요. 이러한 이니셜라이저 함수는 클로저 트레이트를 구현하는 함수
 포인터로써 사용될 수 있는데, 이는 다음과 같이 클로저를 취하는 메서드의
 인수로 이니셜라이저 함수를 지정할 수 있음을 뜻합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    enum Status {
         Value(u32),
         Stop,

@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -205,7 +205,7 @@
 <code>i32</code> 값의 참조자를 생성하고는 역참조 연산자를 사용하여 참조자를 따라가서 값을
 얻어냅니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let x = 5;
     let y = &amp;x;
 
@@ -255,7 +255,7 @@ error: could not compile `deref-example` due to previous error
 예제 15-6의 참조자에 사용된 역참조 연산자와 동일한 방식으로
 기능합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let x = 5;
     let y = Box::new(x);
 
@@ -280,7 +280,7 @@ error: could not compile `deref-example` due to previous error
 예제 15-8에서 <code>MyBox&lt;T&gt;</code> 타입을 동일한 방식으로 정의했습니다. 또한
 <code>Box&lt;T&gt;</code>에 정의된 <code>new</code> 함수와 짝을 이루는 <code>new</code> 함수도 정의하겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct MyBox&lt;T&gt;(T);
+<pre><pre class="playground"><code class="language-rust edition2021">struct MyBox&lt;T&gt;(T);
 
 impl&lt;T&gt; MyBox&lt;T&gt; {
     fn new(x: T) -&gt; MyBox&lt;T&gt; {
@@ -339,7 +339,7 @@ error: could not compile `deref-example` due to previous error
 빌려와서 내부 데이터의 참조자를 반환합니다. 예제 15-10은 <code>MyBox</code>의 정의에
 덧붙여 <code>Deref</code>의 구현체를 담고 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::ops::Deref;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::ops::Deref;
 
 impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
     type Target = T;
@@ -417,7 +417,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 이용해 봅시다. 예제 15-11은 문자열 슬라이스 매개변수를 갖는 함수의
 정의를 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn hello(name: &amp;str) {
+<pre><pre class="playground"><code class="language-rust edition2021">fn hello(name: &amp;str) {
     println!("Hello, {name}!");
 }
 <span class="boring">
@@ -428,7 +428,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 호출될 수 있습니다. 예제 15-12에서 보는 바와 같이, 역참조 강제 변환은 <code>MyBox&lt;String&gt;</code>
 타입 값에 대한 참조자로 <code>hello</code>의 호출을 가능하게 만들어 줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::ops::Deref;
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use std::ops::Deref;
 </span><span class="boring">
 </span><span class="boring">impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 </span><span class="boring">    type Target = T;
@@ -467,7 +467,7 @@ impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 타입의 값으로 <code>hello</code>를 호출하기 위해서는 예제 15-12의 코드 대신
 예제 15-13의 코드를 작성했어야 할 것입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">use std::ops::Deref;
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">use std::ops::Deref;
 </span><span class="boring">
 </span><span class="boring">impl&lt;T&gt; Deref for MyBox&lt;T&gt; {
 </span><span class="boring">    type Target = T;

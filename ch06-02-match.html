@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -198,7 +198,7 @@
 예제 6-3에서 보는 바와 같이, 어떤 모르는 미국 동전을 입력받아서,
 동전 계수기와 동일한 방식으로 그 동전이 어떤 것이고 센트로 해당 값을
 반환하는 함수를 작성할 수 있습니다.</p>
-<pre><pre class="playground"><code class="language-rust">enum Coin {
+<pre><pre class="playground"><code class="language-rust edition2021">enum Coin {
     Penny,
     Nickel,
     Dime,
@@ -241,7 +241,7 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 옵션이 됩니다. 예를 들어, 아래의 코드는 <code>Coin::Penny</code>와 함께 메서드가
 호출될 때마다 ‘Lucky penny!’를 출력하지만, 여전히 해당 블록의 마지막 값인
 <code>1</code>을 반환할 것입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">enum Coin {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">enum Coin {
 </span><span class="boring">    Penny,
 </span><span class="boring">    Nickel,
 </span><span class="boring">    Dime,
@@ -271,7 +271,7 @@ fn value_in_cents(coin: Coin) -&gt; u8 {
 이 정보를 <code>Quarter</code> 배리언트 내에 <code>UsState</code> 값을 담도록
 <code>enum</code>을 변경하여 추가할 수 있는데,
 이는 예제 6-4와 같습니다:</p>
-<pre><pre class="playground"><code class="language-rust">#[derive(Debug)] // so we can inspect the state in a minute
+<pre><pre class="playground"><code class="language-rust edition2021">#[derive(Debug)] // so we can inspect the state in a minute
 enum UsState {
     Alabama,
     Alaska,
@@ -296,7 +296,7 @@ enum Coin {
 이름의 변수를 추가합니다. <code>Coin::Quarter</code>이 매치될 때, <code>state</code> 변수는 그 쿼터 동전의 주에 대한
 값에 바인딩될 것입니다. 그러면 우리는 다음과 같이 해당 갈래에서의 코드 내에서 <code>state</code>를 사용할 수
 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#[derive(Debug)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#[derive(Debug)]
 </span><span class="boring">enum UsState {
 </span><span class="boring">    Alabama,
 </span><span class="boring">    Alaska,
@@ -343,7 +343,7 @@ enum Coin {
 다른 어떤 연산도 수행하는 시도를 하지 않아야 합니다.</p>
 <p><code>match</code>에 감사하게도, 이 함수는 매우 작성하기 쉽고,
 예제 6-5처럼 보일 것입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    fn plus_one(x: Option&lt;i32&gt;) -&gt; Option&lt;i32&gt; {
         match x {
             None =&gt; None,
@@ -469,7 +469,7 @@ error: could not compile `enums` due to previous error
 구현하는 것은 이 예제의 범위를 벗어나므로 임의의 값 대신 하드코딩된
 주사위 눈 결과를 사용하고, 그 밖의 로직들은 본문 없는 함수로
 작성하겠습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let dice_roll = 9;
     match dice_roll {
         3 =&gt; add_fancy_hat(),
@@ -498,7 +498,7 @@ error: could not compile `enums` due to previous error
 <p>게임의 규칙을 바꿔봅시다: 이제부터 주사위를 굴려 3 혹은 7 이외의 숫자가
 나왔다면 주사위를 다시 굴립니다. 그러면 더 이상 포괄 패턴의 값을 사용할 필요가
 없으므로, <code>other</code>라는 이름의 변수 대신 <code>_</code>를 사용하여 코드를 고칠 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let dice_roll = 9;
     match dice_roll {
         3 =&gt; add_fancy_hat(),
@@ -516,7 +516,7 @@ error: could not compile `enums` due to previous error
 아무 일도 일어나지 않도록 해보겠습니다. 이는 <code>_</code> 갈래에
 (<a href="ch03-02-data-types.html#the-tuple-type">‘튜플 타입’</a><!-- ignore -->에서 다루었던) 유닛 값을 사용하여
 표현할 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let dice_roll = 9;
     match dice_roll {
         3 =&gt; add_fancy_hat(),

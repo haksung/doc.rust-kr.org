@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -187,7 +187,7 @@
 <p>2장의 <a href="ch02-00-guessing-game-tutorial.html#handling-potential-failure-with-result">‘<code>Result</code> 타입으로 잠재적 실패 다루기’</a><!-- ignore -->절에서
 <code>Result</code> 열거형은 다음과 같이 <code>Ok</code>와 <code>Err</code>라는 두 개의 배리언트를 갖도록 정의되어 있음을
 상기해 봅시다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Result&lt;T, E&gt; {
     Ok(T),
@@ -205,7 +205,7 @@
 <p>실패할 가능성이 있어서 <code>Result</code> 값을 반환하는 함수를 한번 호출해 봅시다.
 예제 9-3은 파일을 열어보는 코드입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::fs::File;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::fs::File;
 
 fn main() {
     let greeting_file_result = File::open("hello.txt");
@@ -231,7 +231,7 @@ fn main() {
 예제 9-4는 6장에서 다뤘던 <code>match</code> 표현식을 이용하여
 <code>Result</code>를 처리하는 한 가지 방법을 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust should_panic">use std::fs::File;
+<pre><pre class="playground"><code class="language-rust should_panic edition2021">use std::fs::File;
 
 fn main() {
     let greeting_file_result = File::open("hello.txt");
@@ -347,7 +347,7 @@ fn main() {
 것입니다. 만일 <code>Result</code>가 <code>Err</code> 배리언트라면 <code>unwrap</code>은 <code>panic!</code> 매크로를
 호출해줄 것입니다. 아래에 <code>unwrap</code>이 동작하는 예가 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust should_panic">use std::fs::File;
+<pre><pre class="playground"><code class="language-rust should_panic edition2021">use std::fs::File;
 
 fn main() {
     let greeting_file = File::open("hello.txt").unwrap();
@@ -368,7 +368,7 @@ src/main.rs:4:49
 의도를 전달하면서 패닉의 근원을 추적하는 걸 쉽게 해줍니다. <code>expect</code>의
 문법은 아래와 같이 생겼습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust should_panic">use std::fs::File;
+<pre><pre class="playground"><code class="language-rust should_panic edition2021">use std::fs::File;
 
 fn main() {
     let greeting_file = File::open("hello.txt")
@@ -405,7 +405,7 @@ src/main.rs:5:10
 <!-- Deliberately not using rustdoc_include here; the `main` function in the
 file panics. We do want to include it for reader experimentation purposes, but
 don't want to include it for rustdoc testing purposes. -->
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fs::File;
 use std::io::{self, Read};
@@ -481,7 +481,7 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 <!-- Deliberately not using rustdoc_include here; the `main` function in the
 file panics. We do want to include it for reader experimentation purposes, but
 don't want to include it for rustdoc testing purposes. -->
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fs::File;
 use std::io::{self, Read};
@@ -529,7 +529,7 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 <!-- Deliberately not using rustdoc_include here; the `main` function in the
 file panics. We do want to include it for reader experimentation purposes, but
 don't want to include it for rustdoc testing purposes. -->
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fs::File;
 use std::io::{self, Read};
@@ -557,7 +557,7 @@ fn read_username_from_file() -&gt; Result&lt;String, io::Error&gt; {
 <!-- Deliberately not using rustdoc_include here; the `main` function in the
 file panics. We do want to include it for reader experimentation purposes, but
 don't want to include it for rustdoc testing purposes. -->
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>use std::fs;
 use std::io;
@@ -629,7 +629,7 @@ error: could not compile `error-handling` due to previous error
 안에 있는 값이 이 표현식의 결괏값이 되면서 함수가 계속됩니다.
 예제 9-11은 주어진 텍스트에서 첫 번째 줄의 마지막 문자를 찾는
 함수의 예제를 보여줍니다:</p>
-<pre><pre class="playground"><code class="language-rust">fn last_char_of_first_line(text: &amp;str) -&gt; Option&lt;char&gt; {
+<pre><pre class="playground"><code class="language-rust edition2021">fn last_char_of_first_line(text: &amp;str) -&gt; Option&lt;char&gt; {
     text.lines().next()?.chars().last()
 }
 <span class="boring">

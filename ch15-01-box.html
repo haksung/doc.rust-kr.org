@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -210,7 +210,7 @@
 저장된 값의 사용법을 다루겠습니다.</p>
 <p>예제 15-1은 박스를 사용하여 힙에 <code>i32</code> 값을 저장하는 방법을 보여줍니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let b = Box::new(5);
     println!("b = {}", b);
 }</code></pre></pre>
@@ -329,7 +329,7 @@ error: could not compile `cons-list` due to previous error
 <h4 id="비재귀적-타입의-크기-계산하기"><a class="header" href="#비재귀적-타입의-크기-계산하기">비재귀적 타입의 크기 계산하기</a></h4>
 <p>6장에서 열거형 정의에 대해 논의할 때 예제 6-2에서 정의했던 <code>Message</code>
 열거형을 상기해 봅시다:</p>
-<pre><pre class="playground"><code class="language-rust">enum Message {
+<pre><pre class="playground"><code class="language-rust edition2021">enum Message {
     Quit,
     Move { x: i32, y: i32 },
     Write(String),
@@ -379,7 +379,7 @@ after doing automatic regeneration, look at listings/ch15-smart-pointers/listing
 <p>예제 15-2의 <code>List</code> 열거형의 정의와 예제 15-3의 <code>List</code> 사용법을
 예제 15-5의 코드로 바꿀 수 있고, 이것은 컴파일될 것입니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">enum List {
+<pre><pre class="playground"><code class="language-rust edition2021">enum List {
     Cons(i32, Box&lt;List&gt;),
     Nil,
 }

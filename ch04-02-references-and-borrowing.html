@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -190,7 +190,7 @@
 <p>이번에는 값의 소유권을 넘기는 대신 개체의 참조자를 넘겨주는 방법을 소개하도록 하겠습니다.
 다음은 참조자를 매개변수로 받도록 구현한 <code>calculate_length</code> 함수의 정의 및 용례입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let s1 = String::from("hello");
 
     let len = calculate_length(&amp;s1);
@@ -218,7 +218,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 15장에서 자세한 내용을 배울 예정입니다.</p>
 </blockquote>
 <p>함수 호출부를 좀 더 자세히 살펴봅시다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let s1 = String::from("hello");
 
     let len = calculate_length(&amp;s1);
@@ -234,7 +234,7 @@ fn calculate_length(s: &amp;String) -&gt; usize {
 참조자가 사용되지 않을 때까지 버려지지 않습니다.</p>
 <p>마찬가지로 함수 시그니처에도 <code>&amp;</code>를 사용하여 매개변수 <code>s</code>가 참조자 타입임을
 나타내줍니다. 주석으로 보여드리겠습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span><span class="boring">    let s1 = String::from("hello");
 </span><span class="boring">
 </span><span class="boring">    let len = calculate_length(&amp;s1);
@@ -288,7 +288,7 @@ error: could not compile `ownership` due to previous error
 <p><em>가변 참조자 (mutable reference)</em> 를 사용하는 식으로 예제 4-6을 살짝만
 수정하면 에러를 없앨 수 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let mut s = String::from("hello");
 
     change(&amp;mut s);
@@ -351,7 +351,7 @@ error: could not compile `ownership` due to previous error
 가능성이 있는 코드의 컴파일을 거부하는 것으로 이 문제를 막아줍니다!</p>
 <p>중괄호로 새로운 스코프를 만들어, 가변 참조자를 여러 개 만들면서 <em>동시에</em>
 존재하는 상황을 회피하는 방법이 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut s = String::from("hello");
 
     {
@@ -482,7 +482,7 @@ error: could not compile `ownership` due to previous error
 하지만 코드에서는 <code>&amp;s</code>를 반환하려 했고, 이는 유효하지 않은 <code>String</code>을 가리키는
 참조자를 반환하는 행위이기 때문에 에러가 발생합니다.</p>
 <p>따라서, 이런 경우엔 <code>String</code>을 직접 반환해야 합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span><span class="boring">    let string = no_dangle();
 </span><span class="boring">}
 </span><span class="boring">

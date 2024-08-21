@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -199,7 +199,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 <p><code>IpAddrKind</code>라는 열거형을 정의하면서 포함할 수 있는 IP 주소인 <code>V4</code>와 <code>V6</code>를
 나열함으로써 이 개념을 코드에 표현할 수 있습니다.
 이것들을 열거형의 <em>배리언트</em>라고 합니다:</p>
-<pre><pre class="playground"><code class="language-rust">enum IpAddrKind {
+<pre><pre class="playground"><code class="language-rust edition2021">enum IpAddrKind {
     V4,
     V6,
 }
@@ -216,7 +216,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 <p>이제 <code>IpAddrKind</code>는 코드 어디에서나 쓸 수 있는 커스텀 데이터 타입이 되었습니다.</p>
 <h3 id="열거형-값"><a class="header" href="#열거형-값">열거형 값</a></h3>
 <p>아래처럼 <code>IpAddrKind</code>의 두 개의 배리언트에 대한 인스턴스를 만들 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">enum IpAddrKind {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">enum IpAddrKind {
 </span><span class="boring">    V4,
 </span><span class="boring">    V6,
 </span><span class="boring">}
@@ -234,7 +234,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 이중 콜론(<code>::</code>)을 붙여야 한다는 점을 주의하세요. 이 방식은 <code>IpAddrKind::V4</code>,
 <code>IpAddrKind::V6</code>가 모두 <code>IpAddrKind</code> 타입이라는 것을 표현할 수 있기 때문에
 유용합니다. 이제 <code>IpAddrKind</code> 타입을 인수로 받는 함수를 정의해 봅시다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">enum IpAddrKind {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">enum IpAddrKind {
 </span><span class="boring">    V4,
 </span><span class="boring">    V6,
 </span><span class="boring">}
@@ -249,7 +249,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 </span><span class="boring">
 </span>fn route(ip_kind: IpAddrKind) {}</code></pre></pre>
 <p>그리고, 배리언트 중 하나를 사용해서 함수를 호출할 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">enum IpAddrKind {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">enum IpAddrKind {
 </span><span class="boring">    V4,
 </span><span class="boring">    V6,
 </span><span class="boring">}
@@ -268,7 +268,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 방법이 없고 어떤 <em>종류</em>인지만 알 수 있습니다. 5장에서 구조체에
 대해 배웠다면, 이 문제를 예제 6-1처럼 구조체를 사용하여 해결하고
 싶을 수 있겠습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    enum IpAddrKind {
         V4,
         V6,
@@ -303,7 +303,7 @@ v4, v6는 근본적으로 IP 주소이기 때문에, 이 둘은 코드에서
 사용하는 방식보다 더 간결하게 동일한 개념을 표현할 수 있습니다.
 <code>IpAddr</code> 열거형의 새로운 정의에서 두 개의 <code>V4</code>와 <code>V6</code> 배리언트는 연관된
 <code>String</code> 타입의 값을 갖게 됩니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    enum IpAddr {
         V4(String),
         V6(String),
@@ -326,7 +326,7 @@ V4 IP 주소는 항상 0 ~ 255 사이의 숫자 4개로 된 구성 요소를 갖
 <code>V4</code> 주소에 4개의 <code>u8</code> 값을 저장하길 원하지만, <code>V6</code> 주소는 하나의 <code>String</code>
 값으로 표현되길 원한다면, 구조체로는 이렇게 할 수 없습니다.
 열거형은 이런 경우를 쉽게 처리합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    enum IpAddr {
         V4(u8, u8, u8, u8),
         V6(String),
@@ -344,7 +344,7 @@ V4 IP 주소는 항상 0 ~ 255 사이의 숫자 4개로 된 구성 요소를 갖
 위에서 정의하고 사용했던 것과 동일한 열거형과 배리언트를 갖고 있지만,
 배리언트에 포함된 주소 데이터는 두 가지 다른 구조체로 되어 있으며,
 각 배리언트마다 다르게 정의하고 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>struct Ipv4Addr {
     // --생략--
@@ -369,7 +369,7 @@ enum IpAddr {
 타입을 스코프로 가져오는 것에 대해서는 7장에서 더 살펴보겠습니다.</p>
 <p>예제 6-2에 있는 열거형의 다른 예제를 살펴봅시다. 이 예제에서는 각 배리언트에
 다양한 종류의 타입들이 포함되어 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust">enum Message {
+<pre><pre class="playground"><code class="language-rust edition2021">enum Message {
     Quit,
     Move { x: i32, y: i32 },
     Write(String),
@@ -391,7 +391,7 @@ enum IpAddr {
 것과 모든 배리언트가 <code>Message</code> 타입으로 묶인다는 것입니다.
 아래 구조체들은 이전 열거형의 배리언트가 갖는 것과 동일한 데이터를 가질 수
 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust">struct QuitMessage; // 유닛 구조체
+<pre><pre class="playground"><code class="language-rust edition2021">struct QuitMessage; // 유닛 구조체
 struct MoveMessage {
     x: i32,
     y: i32,
@@ -406,7 +406,7 @@ struct ChangeColorMessage(i32, i32, i32); // 튜플 구조체
 <p>열거형과 구조체는 한 가지 더 유사한 점이 있습니다. 구조체에 <code>impl</code>을 사용해서
 메서드를 정의한 것처럼, 열거형에도 정의할 수 있습니다. 여기 <code>Message</code> 열거형에
 정의한 <code>call</code>이라는 메서드가 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span><span class="boring">    enum Message {
 </span><span class="boring">        Quit,
 </span><span class="boring">        Move { x: i32, y: i32 },
@@ -466,7 +466,7 @@ struct ChangeColorMessage(i32, i32, i32); // 튜플 구조체
 값의 존재 혹은 부재의 개념을 표현할 수 있는 열거형이 있습니다.
 그 열거형이 바로 <code>Option&lt;T&gt;</code>이며, 다음과 같이
 <a href="https://doc.rust-lang.org/std/option/enum.Option.html">표준 라이브러리에 정의되어 있습니다</a><!-- ignore -->:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>enum Option&lt;T&gt; {
     None,
@@ -485,7 +485,7 @@ struct ChangeColorMessage(i32, i32, i32); // 튜플 구조체
 타입을 집어넣는 것이 전체 <code>Option&lt;T&gt;</code> 타입을 모두 다른 타입으로
 만든다는 것만 알아두면 됩니다. 아래에 숫자 타입과 문자열
 타입을 갖는 <code>Option</code> 값에 대한 예들이 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let some_number = Some(5);
     let some_char = Some('e');
 

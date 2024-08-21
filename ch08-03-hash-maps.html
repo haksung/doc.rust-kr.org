@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -198,7 +198,7 @@
 추가하는 것이 있습니다. 예제 8-20에서는 팀 이름이 각각 <em>블루</em>와 <em>옐로</em>인
 두 팀의 점수를 관리하고 있습니다. 블루 팀은 10점, 옐로 팀은 50점으로 시작할
 것입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let mut scores = HashMap::new();
@@ -220,7 +220,7 @@
 <h3 id="해시맵의-값-접근하기"><a class="header" href="#해시맵의-값-접근하기">해시맵의 값 접근하기</a></h3>
 <p>예제 8-21처럼 <code>get</code> 메서드에 키를 제공하여 해시맵으로부터 값을
 얻어올 수 있습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let mut scores = HashMap::new();
@@ -241,7 +241,7 @@
 아이템을 가지고 있지 않을 경우 <code>score</code>에 0을 설정하도록 처리합니다.</p>
 <p>벡터에서와 유사한 방식으로 <code>for</code> 루프를 사용하여 해시맵 내의
 키/값 쌍에 대한 반복 작업을 수행할 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let mut scores = HashMap::new();
@@ -261,7 +261,7 @@ Blue: 10
 <p><code>i32</code>처럼 <code>Copy</code> 트레이트를 구현한 타입의 값은 해시맵 안으로
 복사됩니다. <code>String</code>처럼 소유권이 있는 값의 경우, 아래의 예제 8-22와
 같이 값들이 이동되어 해시맵이 그 값의 소유자가 됩니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let field_name = String::from("Favorite color");
@@ -299,7 +299,7 @@ Blue: 10
 <code>insert</code>를 두 번 호출함에도, 해시맵은 딱 하나의 키/값 쌍을 담게 되는데
 그 이유는 두 번 모두 블루 팀의 키에 대한 값을 삽입하고 있기
 때문입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let mut scores = HashMap::new();
@@ -326,7 +326,7 @@ Blue: 10
 옐로 팀에 대한 키에 대한 값이 있는지 검사하고 싶다고 해봅시다.
 만일 없다면 값 50을 삽입하고, 블루 팀에 대해서도 똑같이 하려고
 합니다. <code>entry</code> API를 사용한 코드는 아래의 예제 8-24와 같습니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let mut scores = HashMap::new();
@@ -356,7 +356,7 @@ Blue: 10
 사용하는 해시맵을 이용하여 해당 단어가 몇 번이나 나왔는지 추적하기 위해
 값을 증가시켜 줍니다. 처음 본 단어라면, 값 <code>0</code>을 삽입할
 것입니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::collections::HashMap;
 
     let text = "hello world wonderful world";

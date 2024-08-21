@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -206,7 +206,7 @@ $ cd hello
 로컬 주소 <code>127.0.0.1:7878</code>에서 들어오는 TCP 스트림을 수신 대기할 것입니다.
 들어오는 스트림을 받으면 <code>Connection established!</code>를 출력합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run">use std::net::TcpListener;
+<pre><pre class="playground"><code class="language-rust no_run edition2021">use std::net::TcpListener;
 
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
@@ -291,7 +291,7 @@ Connection established!
 출력하여 브라우저에서 전송되는 데이터를 볼 수 있도록 하겠습니다.
 코드를 예제 20-2와 같이 변경하세요.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021">use std::{
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
 };
@@ -426,7 +426,7 @@ message-body
 출력했던 <code>println!</code>을 제거하고 예제 20-3의 코드로
 바꾸세요.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run"><span class="boring">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021"><span class="boring">use std::{
 </span><span class="boring">    io::{prelude::*, BufReader},
 </span><span class="boring">    net::{TcpListener, TcpStream},
 </span><span class="boring">};
@@ -491,7 +491,7 @@ HTML 파일</span></p>
 <code>handle_connection</code>을 수정하여 HTML 파일을 읽고 응답에 본문으로 추가한
 후 전송하겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021">use std::{
     fs,
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
@@ -553,7 +553,7 @@ HTML을 반환합니다. HTML 파일을 반환하기 전에 브라우저가 <em>
 생김새와 수신된 요청의 내용을 비교 검사하고 요청을 다르게 처리하기 위해
 <code>if</code>와 <code>else</code> 블록을 추가합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run"><span class="boring">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021"><span class="boring">use std::{
 </span><span class="boring">    fs,
 </span><span class="boring">    io::{prelude::*, BufReader},
 </span><span class="boring">    net::{TcpListener, TcpStream},
@@ -611,7 +611,7 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 추가해 봅시다. 브라우저에서 렌더링하여 최종 사용자에 대한 응답을
 나타내는 HTML 페이지도 반환하겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run"><span class="boring">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021"><span class="boring">use std::{
 </span><span class="boring">    fs,
 </span><span class="boring">    io::{prelude::*, BufReader},
 </span><span class="boring">    net::{TcpListener, TcpStream},
@@ -689,7 +689,7 @@ HTML이 나올 것입니다. 만일 <em>127.0.0.1:7878/something-else</em>과 �
 조건에 상관없이 사용할 수 있습니다. 예제 20-9는 거대한
 <code>if</code>와 <code>else</code> 블록을 교체한 후의 코드를 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust no_run"><span class="boring">use std::{
+<pre><pre class="playground"><code class="language-rust no_run edition2021"><span class="boring">use std::{
 </span><span class="boring">    fs,
 </span><span class="boring">    io::{prelude::*, BufReader},
 </span><span class="boring">    net::{TcpListener, TcpStream},

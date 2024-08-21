@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -187,7 +187,7 @@
 <h3 id="새-벡터-만들기"><a class="header" href="#새-벡터-만들기">새 벡터 만들기</a></h3>
 <p>비어있는 새 벡터를 만들려면 다음 예제 8-1과 같이 <code>Vec::new</code> 함수를
 호출합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v: Vec&lt;i32&gt; = Vec::new();
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-1: <code>i32</code> 타입의 값을 가질 수 있는 비어있는 새 벡터
@@ -207,7 +207,7 @@
 <code>3</code>을 저장한 새로운 <code>Vec&lt;i32&gt;</code>을 생성할 것입니다.
 3장의 <a href="ch03-02-data-types.html#data-types">‘데이터 타입’</a><!-- ignore -->절에서 본 것처럼,
 기본 정수형이 <code>i32</code>기 때문에 여기서도 타입은 <code>i32</code>입니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v = vec![1, 2, 3];
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 8-2: 값을 저장하고 있는 새로운 벡터
@@ -218,7 +218,7 @@
 <h3 id="벡터-업데이트하기"><a class="header" href="#벡터-업데이트하기">벡터 업데이트하기</a></h3>
 <p>벡터를 만들고 여기에 요소를 추가하기 위해서는 다음 예제 8-3처럼
 <code>push</code> 메서드를 사용할 수 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut v = Vec::new();
 
     v.push(5);
@@ -238,7 +238,7 @@
 명시했습니다.</p>
 <p>예제 8-4는 인덱스 문법과 <code>get</code> 메서드를 가지고 벡터의 값에
 접근하는 두 방법을 모두 보여줍니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v = vec![1, 2, 3, 4, 5];
 
     let third: &amp;i32 = &amp;v[2];
@@ -262,7 +262,7 @@
 것인지 선택할 수 있도록 하기 위해서입니다. 예를 들어, 아래의 예제 8-5와
 같이 5개의 요소를 가지고 있는 벡터가 있고 100 인덱스에 있는 요소에
 접근을 시도하는 경우 어떤 일이 생기는지 확인해 봅시다:</p>
-<pre><pre class="playground"><code class="language-rust should_panic panics"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust should_panic panics edition2021"><span class="boring">fn main() {
 </span>    let v = vec![1, 2, 3, 4, 5];
 
     let does_not_exist = &amp;v[100];
@@ -339,7 +339,7 @@ error: could not compile `collections` due to previous error
 한 번에 하나의 값에 접근하기보다는 모든 요소에 대한 반복 처리를 합니다.
 예제 8-7은 <code>for</code> 루프를 사용하여 <code>i32</code>의 벡터에 있는 각 요소에 대한
 불변 참조자를 얻어서 이를 출력하는 방법을 보여줍니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let v = vec![100, 32, 57];
     for i in &amp;v {
         println!("{i}");
@@ -350,7 +350,7 @@ error: could not compile `collections` due to previous error
 <p>모든 요소를 변경하기 위해서는 가변 벡터의 각 요소에 대한 가변
 참조자로 반복 작업을 할 수도 있습니다. 예제 8-8의 <code>for</code> 루프는
 각 요소에 <code>50</code>을 더할 것입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut v = vec![100, 32, 57];
     for i in &amp;mut v {
         *i += 50;
@@ -381,7 +381,7 @@ error: could not compile `collections` due to previous error
 모든 열거형 배리언트들은 해당 열거형 타입과 같은 타입으로 간주됩니다.
 그러면 해당 열거형을 담을 벡터를 생성하여 궁극적으로 다양한 타입을
 담을 수 있습니다. 예제 8-9에서 이를 보여주고 있습니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    enum SpreadsheetCell {
         Int(i32),
         Float(f64),
@@ -413,7 +413,7 @@ error: could not compile `collections` due to previous error
 <h3 id="벡터가-버려지면-벡터의-요소도-버려집니다"><a class="header" href="#벡터가-버려지면-벡터의-요소도-버려집니다">벡터가 버려지면 벡터의 요소도 버려집니다</a></h3>
 <p><code>struct</code>와 마찬가지로, 예제 8-10에 주석으로 표시된 것처럼
 벡터는 스코프를 벗어날 때 해제됩니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    {
         let v = vec![1, 2, 3, 4];
 

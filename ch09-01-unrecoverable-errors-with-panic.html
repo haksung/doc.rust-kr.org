@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -206,7 +206,7 @@ panic = 'abort'
 </blockquote>
 <p>간단한 프로그램에서 <code>panic!</code>을 호출해 봅시다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust should_panic panics">fn main() {
+<pre><pre class="playground"><code class="language-rust should_panic panics edition2021">fn main() {
     panic!("crash and burn");
 }</code></pre></pre>
 <p>프로그램을 실행하면, 다음과 같은 내용이 나타납니다:</p>
@@ -235,7 +235,7 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 통해서 살펴봅시다. 예제 9-1은 유효한 범위를 넘어서는 인덱스로
 벡터에 접근을 시도하는 코드입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust should_panic panics">fn main() {
+<pre><pre class="playground"><code class="language-rust should_panic panics edition2021">fn main() {
     let v = vec![1, 2, 3];
 
     v[99];

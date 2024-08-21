@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -217,7 +217,7 @@ $ cd hello_world
 밑줄 (<code>_</code>) 을 넣는 것이 관례입니다.</p>
 <p><em>main.rs</em> 파일에 예제 1-1 코드를 입력합시다.</p>
 <p><span class="filename">파일명: main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
   println!("Hello, world!");
 }</code></pre></pre>
 <p><span class="caption">예제 1-1: <code>Hello, world!</code>를 출력하는 프로그램</span></p>
@@ -242,7 +242,7 @@ Hello, world!
 <h3 id="러스트-프로그램-뜯어보기"><a class="header" href="#러스트-프로그램-뜯어보기">러스트 프로그램 뜯어보기</a></h3>
 <p>방금 만든 ‘Hello, world!’ 프로그램을 자세히 살펴봅시다.
 우선 첫 부분은 다음과 같습니다:</p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
 
 }</code></pre></pre>
 <p>이 라인은 러스트에서 <code>main</code>이라는 이름의 함수를 정의합니다. <code>main</code> 함수는
@@ -261,7 +261,7 @@ Hello, world!
 포함시켰으므로, 이미 여러분의 컴퓨터에 설치되어 있습니다!</p>
 </blockquote>
 <p><code>main</code> 함수 내 코드를 살펴봅시다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>    println!("Hello, world!");
 <span class="boring">}</span></code></pre></pre>

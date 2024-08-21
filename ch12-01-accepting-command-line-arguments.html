@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -209,7 +209,7 @@ $ cd minigrep
 <p>예제 12-1의 코드는 <code>minigrep</code> 프로그램이 넘겨진 어떤 커맨드 라인 인수들을
 읽은 후, 그 값들을 벡터로 모아주도록 해 줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::env;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::env;
 
 fn main() {
     let args: Vec&lt;String&gt; = env::args().collect();

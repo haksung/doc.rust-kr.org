@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -203,7 +203,7 @@
 인스턴스가 스코프 밖으로 벗어났을 때 <code>Dropping CustomSmartPointer!</code>를
 출력하는 커스텀 기능만을 갖춘 <code>CustomSmartPointer</code> 구조체를 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">struct CustomSmartPointer {
+<pre><pre class="playground"><code class="language-rust edition2021">struct CustomSmartPointer {
     data: String,
 }
 
@@ -316,7 +316,7 @@ error: could not compile `drop-example` due to previous error
 이 함수는 프렐루드에 포함되어 있어서, 예제 15-14의 <code>main</code>을
 예제 15-16처럼 수정할 수 있습니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">struct CustomSmartPointer {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">struct CustomSmartPointer {
 </span><span class="boring">    data: String,
 </span><span class="boring">}
 </span><span class="boring">

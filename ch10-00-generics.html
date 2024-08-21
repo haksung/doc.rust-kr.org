@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -214,7 +214,7 @@
 <p>예제 10-1과 같이 리스트에서 가장 큰 숫자를 찾아내는
 간단한 프로그램부터 시작하겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
     let mut largest = &amp;number_list[0];
@@ -242,7 +242,7 @@
 일감을 받았습니다. 그렇게 하려면 예제 10-2처럼 예제 10-1의 코드를
 프로그램 내 다른 곳에 복사하여 동일한 로직을 이용할 수도 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021">fn main() {
     let number_list = vec![34, 50, 25, 100, 65];
 
     let mut largest = &amp;number_list[0];
@@ -281,7 +281,7 @@
 수를 찾기 위해 이 함수를 호출합니다. 나중에 있을지 모를 다른 어떤 <code>i32</code>
 값의 리스트에 대해서라도 이 함수를 사용할 수 있겠습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">fn largest(list: &amp;[i32]) -&gt; &amp;i32 {
+<pre><pre class="playground"><code class="language-rust edition2021">fn largest(list: &amp;[i32]) -&gt; &amp;i32 {
     let mut largest = &amp;list[0];
 
     for item in list {

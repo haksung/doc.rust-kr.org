@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -257,7 +257,7 @@
 인터페이싱할 수 있는 기능이나 더 나은 성능을 얻을 수 있습니다.</p>
 <p>예제 19-1은 참조자로부터 불변과 가변 원시 포인터를 만드는 방법을
 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut num = 5;
 
     let r1 = &amp;num as *const i32;
@@ -279,16 +279,16 @@
 코드를 최적화하여 메모리 접근이 없도록 할 수도 있고, 세그먼트 에러로
 인해 프로그램에서 에러가 발생할 수도 있습니다. 일반적으로 이런 코드를
 작성할 좋은 이유는 없지만, 가능은 합니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let address = 0x012345usize;
     let r = address as *const i32;
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 19-2: 임의 메모리 주소를 가리키는 원시
 포인터 생성하기</span></p>
 <p>안전한 코드에서 원시 포인터를 생성할 수는 있지만, 원시 포인터를 <em>역참조</em>하여
-가리키는 데이터를 읽을 수는 없다는 점을 상기하세요. 예제 19-3에서는
-<code>unsafe</code> 블록이 필요한 원시 포인터에 역참조 연산자 <code>*</code>를 사용합니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+가리키는 데이터를 읽을 수는 없다는 점을 상기하세요. 예제 19-3에서는 원시 포인터에
+<code>unsafe</code> 블록이 필요한 역참조 연산자 <code>*</code>를 사용합니다.</p>
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut num = 5;
 
     let r1 = &amp;num as *const i32;
@@ -329,7 +329,7 @@
 읽었으며 함수의 계약서를 준수할 책임이 있음을 의미합니다.</p>
 <p>아래는 본문에서 아무 일도 하지 않는 <code>dangerous</code>라는 이름의 안전하지 않은
 함수입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    unsafe fn dangerous() {}
 
     unsafe {
@@ -365,7 +365,7 @@ error: could not compile `unsafe-example` due to previous error
 살펴보겠습니다. 이 안전한 메서드는 가변 슬라이스에 대해 정의됩니다: 하나의
 슬라이스를 받아 인수로 주어진 인덱스에서 슬라이스를 분할하여 두 개로 만듭니다.
 예제 19-4는 <code>split_at_mut</code>을 사용하는 방법을 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    let mut v = vec![1, 2, 3, 4, 5, 6];
 
     let r = &amp;mut v[..];
@@ -377,8 +377,8 @@ error: could not compile `unsafe-example` due to previous error
 <span class="boring">}</span></code></pre></pre>
 <p><span class="caption">예제 19-4: 안전한 <code>split_at_mut</code> 함수
 사용하기</span></p>
-<p>안전한 러스트만 사용하여 이 함수를 구현할 수는 없습니다. 시도는 예제 19-5처럼
-될텐데, 컴파일되지 않을 것입니다. 간단하게 하기 위해 <code>split_at_mut</code>를
+<p>안전한 러스트만 사용하여 이 함수를 구현할 수는 없습니다. 예제 19-5처럼 시도해 볼 수 있지만
+컴파일되지 않을 것입니다. 간단하게 하기 위해 <code>split_at_mut</code>를
 메서드가 아닌 함수로 구현하고 제네릭 타입 <code>T</code> 대신 <code>i32</code> 값의 슬라이스에
 대해서 만으로 구현하겠습니다.</p>
 <pre><code class="language-rust ignore does_not_compile">fn split_at_mut(values: &amp;mut [i32], mid: usize) -&gt; (&amp;mut [i32], &amp;mut [i32]) {
@@ -429,7 +429,7 @@ error: could not compile `unsafe-example` due to previous error
 괜찮다는 것을 알지만 러스트는 그렇지 않다면, 안전하지 않은 코드를 이용할 시간입니다.</p>
 <p>예제 19-6은 <code>split_at_mut</code>의 구현체를 작동시키기 위해 <code>unsafe</code> 블록,
 원시 포인터, 그리고 안전하지 않은 함수 호출을 사용하는 방법을 보여줍니다.</p>
-<pre><pre class="playground"><code class="language-rust">use std::slice;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::slice;
 
 fn split_at_mut(values: &amp;mut [i32], mid: usize) -&gt; (&amp;mut [i32], &amp;mut [i32]) {
     let len = values.len();
@@ -481,7 +481,7 @@ fn split_at_mut(values: &amp;mut [i32], mid: usize) -&gt; (&amp;mut [i32], &amp;
 <p>반면 예제 19-7의 <code>slice::from_raw_parts_mut</code> 사용은 슬라이스가 사용될 때
 크래시가 발생하기 쉽습니다. 이 코드는 임의의 메모리 위치를 가져와서 10,000개의
 아이템을 가진 슬라이스를 생성합니다.</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">fn main() {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">fn main() {
 </span>    use std::slice;
 
     let address = 0x01234usize;
@@ -506,7 +506,7 @@ fn split_at_mut(values: &amp;mut [i32], mid: usize) -&gt; (&amp;mut [i32], &amp;
 적용하지 않고, 러스트가 이를 확인할 수 없어서 프로그래머에게 안전을
 보장할 책임이 있기 때문입니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">extern "C" {
+<pre><pre class="playground"><code class="language-rust edition2021">extern "C" {
     fn abs(input: i32) -&gt; i32;
 }
 
@@ -536,7 +536,7 @@ fn main() {
 불리도록 하려면 러스트 컴파일러의 이름 맹글링 기능을 비활성화해야 합니다.</p>
 <p>다음 예제에서는 <code>call_from_c</code> 함수를 공유 라이브러리로 컴파일하고 C에서
 링크한 후, C 코드에서 함수에 접근할 수 있도록 합니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>#[no_mangle]
 pub extern "C" fn call_from_c() {
@@ -553,7 +553,7 @@ pub extern "C" fn call_from_c() {
 문자열 슬라이스를 값으로 사용하는 정적 변수의 선언과 사용례를
 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">static HELLO_WORLD: &amp;str = "Hello, world!";
+<pre><pre class="playground"><code class="language-rust edition2021">static HELLO_WORLD: &amp;str = "Hello, world!";
 
 fn main() {
     println!("name is: {}", HELLO_WORLD);
@@ -576,7 +576,7 @@ fn main() {
 것은 <em>안전하지 않습니다</em>. 예제 19-10은 <code>COUNTER</code>라는 가변 정적
 변수를 선언하고, 접근하고, 수정하는 방법을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">static mut COUNTER: u32 = 0;
+<pre><pre class="playground"><code class="language-rust edition2021">static mut COUNTER: u32 = 0;
 
 fn add_to_count(inc: u32) {
     unsafe {
@@ -609,7 +609,7 @@ fn main() {
 그 트레이트는 안전하지 않습니다. 예제 19-11에 표시된 것처럼 <code>trait</code>
 앞에 <code>unsafe</code> 키워드를 추가하고 그 트레이트의 구현체도 <code>unsafe</code>로 표시함으로써
 트레이트가 <code>unsafe</code>하다고 선언할 수 있습니다.</p>
-<pre><pre class="playground"><code class="language-rust">unsafe trait Foo {
+<pre><pre class="playground"><code class="language-rust edition2021">unsafe trait Foo {
     // 여기에 메소드가 작성됩니다
 }
 
@@ -644,7 +644,7 @@ fn main() {}</code></pre></pre>
 것도 아니고, 심지어 눈살을 찌푸릴 일도 아닙니다. 하지만 컴파일러가 메모리 안전성을
 유지할 수 없기 때문에, <code>unsafe</code> 코드를 올바르게 만드는 것은 더 까다롭습니다.
 <code>unsafe</code> 코드를 사용해야 할 이유가 있다면 그렇게 할 수 있으며, 명시적인 <code>unsafe</code>
-어노테이션이 있으면 문제가 발생했을 때 문제의 원인을 더 쉽게 추적할 수 있습니다.</p>
+어노테이션을 통해 문제가 발생했을 때 문제의 원인을 더 쉽게 추적할 수 있습니다.</p>
 
                     </main>
 

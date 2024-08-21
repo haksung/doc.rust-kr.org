@@ -149,7 +149,7 @@
                         <a href="print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-lang/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/rust-kr/doc.rust-kr.org" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
 
@@ -279,7 +279,7 @@ API 문서에 연관 타입을 문서화하는 것이 좋습니다.</p>
 더합니다. 이 작업은 <code>Point</code> 구조체에 <code>Add</code> 트레이트를 구현하여
 수행합니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::ops::Add;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::ops::Add;
 
 #[derive(Debug, Copy, Clone, PartialEq)]
 struct Point {
@@ -312,7 +312,7 @@ fn main() {
 결정합니다.</p>
 <p>이 코드에서 기본 제네릭 타입은 <code>Add</code> 트레이트 안에 있습니다. 아래는
 그 정의입니다:</p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">#![allow(unused)]
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
 </span>trait Add&lt;Rhs=Self&gt; {
     type Output;
@@ -381,7 +381,7 @@ impl Add&lt;Meters&gt; for Millimeters {
 그런 다음 이미 <code>fly</code>라는 메서드가 구현된 <code>Human</code> 타입에 두 트레이트를 모두
 구현합니다. 각각의 <code>fly</code> 메서드는 다른 일을 합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">trait Pilot {
+<pre><pre class="playground"><code class="language-rust edition2021">trait Pilot {
     fn fly(&amp;self);
 }
 
@@ -416,7 +416,7 @@ impl Human {
 <p><code>Human</code>의 인스턴스에 <code>fly</code>를 호출하면, 예제 19-17에서 보시는 것처럼
 컴파일러는 기본적으로 타입에 직접 구현된 메서드를 호출합니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">trait Pilot {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">trait Pilot {
 </span><span class="boring">    fn fly(&amp;self);
 </span><span class="boring">}
 </span><span class="boring">
@@ -456,7 +456,7 @@ impl Human {
 문법을 사용하여 어떤 <code>fly</code> 메서드를 의도한 것인지 지정할 필요가 있습니다.
 예제 19-18에서 이 문법을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">trait Pilot {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">trait Pilot {
 </span><span class="boring">    fn fly(&amp;self);
 </span><span class="boring">}
 </span><span class="boring">
@@ -518,7 +518,7 @@ Up!
 트레이트를 만듭니다. <code>Animal</code> 트레이트는 구조체 <code>Dog</code>에 대해 구현되며, 여기에도
 메서드가 아닌 연관 함수 <code>baby_name</code>가 직접 제공됩니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">trait Animal {
+<pre><pre class="playground"><code class="language-rust edition2021">trait Animal {
     fn baby_name() -&gt; String;
 }
 
@@ -611,7 +611,7 @@ error: could not compile `traits-example` due to previous error
 완전 정규화 문법을 사용해야 합니다. 예제 19-21은 완전 정규화
 문법을 사용하는 방법을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">trait Animal {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">trait Animal {
 </span><span class="boring">    fn baby_name() -&gt; String;
 </span><span class="boring">}
 </span><span class="boring">
@@ -680,7 +680,7 @@ A baby dog is called a puppy
 바운드를 추가하는 것과 유사합니다. 예제 19-22는 <code>OutlinePrint</code>
 트레이트의 구현을 보여줍니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::fmt;
 
 trait OutlinePrint: fmt::Display {
     fn outline_print(&amp;self) {
@@ -754,7 +754,7 @@ error: could not compile `traits-example` due to previous error
 <p>이를 해결하려면, <code>Point</code>에 <code>Display</code>를 구현하고 <code>OutlinePrint</code>가
 요구하는 제약 조건을 만족시키면 됩니다:</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust"><span class="boring">trait OutlinePrint: fmt::Display {
+<pre><pre class="playground"><code class="language-rust edition2021"><span class="boring">trait OutlinePrint: fmt::Display {
 </span><span class="boring">    fn outline_print(&amp;self) {
 </span><span class="boring">        let output = self.to_string();
 </span><span class="boring">        let len = output.len();
@@ -808,7 +808,7 @@ impl fmt::Display for Point {
 <code>Wrapper</code> 구조체를 만들 수 있습니다; 그러면 예제 19-23에 나온 것처럼
 <code>Wrapper</code>에 <code>Display</code>를 구현하고 <code>Vec&lt;T&gt;</code> 값을 사용할 수 있습니다.</p>
 <p><span class="filename">파일명: src/main.rs</span></p>
-<pre><pre class="playground"><code class="language-rust">use std::fmt;
+<pre><pre class="playground"><code class="language-rust edition2021">use std::fmt;
 
 struct Wrapper(Vec&lt;String&gt;);
 
@@ -838,7 +838,7 @@ fn main() {
 반환하는 것이 해결책이 될 수 있습니다. <code>Wrapper</code> 타입이 내부
 타입의 모든 메서드를 갖지 않도록 하려면 (이를테면 <code>Wrapper</code>
 타입의 동작을 제한하려면) 원하는 메서드만 수동으로 구현해야 합니다.</p>
-<p>이 뉴타입 패턴은 또한 트레이트가 포함되지 않은 경우에도 유용합니다. 이제 초점을
+<p>이 뉴타입 패턴은 트레이트가 관련되지 않은 경우에도 유용합니다. 이제 초점을
 바꿔서 러스트의 타입 시스템과 상호작용하는 몇 가지 고급 방법을 살펴봅시다.</p>
 
                     </main>
